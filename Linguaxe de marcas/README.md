@@ -1,1 +1,1 @@
-Aquí Subire los proyectos personales de Lenguaje de marcas
+Aquí subire los proyectos personales de Lenguaje de marcas
