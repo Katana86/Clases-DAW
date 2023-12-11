@@ -1,2 +1,2 @@
 # Clases-DAW
-Repositorio de Clases-DAW
+Repositorio de sobre el ciclo de desarollo web y aplicaciones multiplataformas.
