@@ -1,0 +1,40 @@
+1. Nombre del propietario de la agenda.
+
+/agenda/propietario/identificadores/nombre
+
+Respuesta: Alma
+
+2. Teléfono de casa del propietario.
+
+/agenda/propietario/telefonos/casa
+
+Respuesta: 942 124 567
+
+3. Nombres y apellidos de los contactos de la agenda.
+
+/agenda/contactos/persona/identificadores/nombre
+
+Respuesta: Inés,Roberto y Juán
+
+/agenda/contactos/persona/identificadores/apellidos
+
+Respuesta: López Pérez,Gutiérrez Gómez y Sánchez Martínez
+
+4. Nombre e identificador de cada contacto.
+
+/agenda/contactos/persona/@id
+ID´s = p01,p02,p03
+/agenda/contactos/persona/nombre
+Respuesta: Inés,Roberto y Juán
+
+5. Datos del contacto con identificador p02.
+
+/agenda/contactos/persona[@id="p02"]
+
+Usuario p02: Roberto
+
+6. Identificadores de los contactos que tienen móvil.
+
+/agenda/contactos/persona[telefonos/movil]/@id
+
+Respuesta: id="p01",id="p02",id="p03"
