@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefa 05</title>
+</head>
+<body>
+    <h1>Formulario de datos de alta dun usuario</h1>
+    <fieldset>
+    <legend>Datos persoais</legend>
+    <form>
+        <p>Nome <input type="text"></p>
+        <p>Apelidos <input type="text" style="width: 300px;"></p>
+        <p>Suba unha foto recente do/a usuario/a<input type="file" name="Selecionar Archivo"></p>
+        <p>¿É a primeira vez que se dá de alta como usuario/a?<input type="radio" name="Verdadero" value="1" checked>Sí<input type="radio" name="Falso" value="2">Non</p>
+        <p>Provincia galega onde está censado/a<select name="Provincias" id=""> <option value="Ferrol">- selecciona -</option><option value="Coruña">Coruña</option><option value="Lugo">Lugo</option><option value="Pontevedra">Pontevedra</option><option value="Vigo">Vigo</option></select></p>
+        <p>Redes sociais que emprega habitualmente<input type="checkbox" name="Facebook">Facebook<input type="checkbox" name="Twitter">Twitter<input type="checkbox" name="Pinterest">Pinterest<input type="checkbox" name="Instagram">Instagram<input type="checkbox" name="Outras">Outras</p>
+        <p>Observacións</p>
+        <input type="text" style="width: 400px; height: 80px;">
+    </fieldset>
+        <fieldset>
+            <legend>Datos de acceso</legend>
+            <p>Nome de usuario/a <input type="text"</p>
+            <p>Contrasinal <input type="text"</p>
+            <p>Repite contrasinal <input type="text"</p>
+        </fieldset>
+    </from>
+        <br>
+        <pre><button><option value="Borrar">Borrar datos do formulario</option></button> <button><option value="Crear">Crear conta</option></button></pre>
+</body>
+</html>

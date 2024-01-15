@@ -1,0 +1,21 @@
+<DOCTYPE HTML!>
+ <html>
+  <head>
+  <title>Tarefa 01</title>
+   <body>
+   <h1>Cabeceira de primeiro nivel</h1>
+   <h2>Cabeceira de segundo nivel</h2>
+   <p>Os nomes <strong>Galiza</strong> e <strong>Galicia</strong> derivan da palabra latina Gallaecia (ou Callaecia)
+   que significaba <strike>literalmente</strike> terra dos galaicos.<br>Os galaicos foron o pobo mais numeroso do noreste da Peninsula Iberica xa antes da súa integración ao Imperio Romano no século I a.C. </p>
+   <hr>
+   <p> A primeira referencia historica dos galaicos, remóntase ao ano 136 a.C, cando o <br>xeneral romano Décimo Xunio Bruto Galaico regresa a Roma despois da súa</br> victoriosa campaña bélica contra dous pobos previamente descoñecidos, lusitanos <br>e galaicos recibindo do propio Senado romano o titulo de Gallaecus ou galaico</br> en honor</p>
+   <p>á dura</p>
+   <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;expedición</p>
+      <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;militar contra</p>
+	     <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;estes.</p>
+	<h1>Outra cabeceira de primeiro nivel</h1>
+	<br>
+	<p><center> E somentes preservando as nosas enerxias autóctonas, a nosa <br>capacidade creadora, é como podémos contribuir á civilización.</br> universal incorporando a ela as nosas creacións inéditas.</center></p>
+   </body>
+  </head>
+ </html>
