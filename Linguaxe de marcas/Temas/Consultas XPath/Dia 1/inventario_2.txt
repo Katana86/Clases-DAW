@@ -10,7 +10,7 @@
 
 /inventario/producto/peso/node()
 
-4. Extraer las distintas unidades en las que se han almacenado los pesos.
+4. Extraer las distintas unidades en las que se han almacenado los pesos. #Me costo este apartado tuve que usar ayuda de google para hacerlo
 
 /inventario/producto/peso/@unidad
 
