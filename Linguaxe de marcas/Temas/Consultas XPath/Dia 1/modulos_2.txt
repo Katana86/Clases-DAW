@@ -1,12 +1,29 @@
 1. Nombre de los módulos que se imparten en el instituto.
 /ies/modulos/modulo/nombre
+
+Resultado: Resultado: Aplicaciones web,Gestión de bases de datos y Lenguajes de marcas y sistemas de gestión de información.
+
 2. Nombre de los módulos del ciclo ASIR.
 /ies/modulos/modulo[ciclo='ASIR']/nombre
+
+Resultado: Gestión de base de datos,Lenguajes de marcas y sistemas de gestión de información
+
 3. Nombre de los módulos que se imparten en el segundo curso de cualquier ciclo.
 /ies/modulos/modulo[curso='2']/nombre
+
+Resultado: Aplicaciones web y Implementación de aplicaciones web
+
 4. Nombre de los módulos de menos de 5 horas semanales.
 /ies/modulos/modulo[horasSemanales<'5']/nombre
+
+Resultado: Aplicaciones web y Lenguajes de marcas y sistemas de gestión de información
+
 5. Nombre de los módulos que se imparten en el primer curso de ASIR.
 /ies/modulos/modulo[curso='1'][ciclo='ASIR']/nombre
+
+Resultado: Gestión de bases de datos y Lenguajes de marcas y sistemas de gestión de información
+
 6. Horas semanales de los módulos de más de 3 horas semanales.
 /ies/modulos/modulo[horasSemanales>'3']/nombre
+
+Resultado: Aplicaciones web,Gestión de bases de datos y Implantación de aplicaciones web
