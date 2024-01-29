@@ -20,6 +20,9 @@ Páginas recomendadas para XPath:
 Ejercicios:
 
 <ul>
+   <li>Ejercicios Agenda</li>
+https://ikastaroak.ulhi.net/edu/es/DAM/LMSGI/LMSGI01/es_DAM_LMSGI01_SolucionTarea/   
+
    <li>Ejercicios Ciclo</li>
 https://www.mclibre.org/consultar/xml/ejercicios/xpath.html
 </ul>
