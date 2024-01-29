@@ -25,4 +25,6 @@ https://ikastaroak.ulhi.net/edu/es/DAM/LMSGI/LMSGI01/es_DAM_LMSGI01_SolucionTare
 
    <li>Ejercicios Ciclo</li>
 https://www.mclibre.org/consultar/xml/ejercicios/xpath.html
+   <li>Ejercicio Inventario</li>
+https://oscarmaestre.github.io/lenguajes_marcas/ejercicios/xpath/anexo_ejercicios_xpath.html
 </ul>
