@@ -13,4 +13,6 @@ Páginas recomendadas para XPath:
 <li>https://www.w3schools.com/xml/xpath_intro.asp</li>
 
 <li>https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/tutorial-de-xpath/</li>
+
+<li>https://www.w3schools.com/xml/xpath_syntax.asp</li>
 </ul>
