@@ -23,7 +23,7 @@ Ejercicios:
    <li>Ejercicios Agenda</li>
 https://ikastaroak.ulhi.net/edu/es/DAM/LMSGI/LMSGI01/es_DAM_LMSGI01_SolucionTarea/   
 
-   <li>Ejercicios Ciclo</li>
+   <li>Ejercicios Ciclo y ciclo avanzado</li>
 https://www.mclibre.org/consultar/xml/ejercicios/xpath.html
    <li>Ejercicio Inventario</li>
 https://oscarmaestre.github.io/lenguajes_marcas/ejercicios/xpath/anexo_ejercicios_xpath.html
