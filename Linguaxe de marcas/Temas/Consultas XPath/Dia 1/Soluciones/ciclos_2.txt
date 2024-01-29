@@ -1,49 +1,37 @@
-1. Nombre del instituto.  /ies/nombre
+1. Nombre del instituto.
 
-Respuesta: IES Gonzalo Nazareno
+/ies/nombre
 
-2. Página web del instituto. /ies/web
+2. Página web del instituto.
 
-Respuesta: http://www.gonzalonazareno.org
+/ies/web
 
-3. Nombre de los ciclos formativos. /ies/ciclos/nombre
+3. Nombre de los ciclos formativos.
 
-Respuesta: Administración de Sistemas Informáticos en Red,Desarrollo de Aplicaciones Web y Sistemas Microinformáticos y Redes
+//ciclos/ciclo/nombre
 
-4. Siglas por las que se conocen los ciclos formativos. /ies/ciclos/ciclo/@id
+4. Siglas por las que se conocen los ciclos formativos.
 
-Respuesta: ASIR,DAW y SMR
+/ies/ciclos/ciclo/@id
 
-5. Años en los que se publicaron los decretos de título de los ciclos formativos./ies/ciclos/ciclo/decretoTitulo/@año
+5. Años en los que se publicaron los decretos de título de los ciclos formativos.
 
-Respuesta: 2009,2010 y 2008
+/ies/ciclos/ciclo/decretoTitulo/@año
 
-6. Ciclos formativos de Grado Medio (se trata de obtener el elemento completo)./ies/ciclos/ciclo[grado='Medio']
+6. Ciclos formativos de Grado Medio (se trata de obtener el elemento completo)
 
-Respuesta: SMR/Sistemas Microinformáticos y Redes
+/ies/ciclos/ciclo[grado="Medio"]
 
 7. Nombre de los ciclos formativos de Grado Superior. 
 
-/ies/ciclos/ciclo[grado='Superior']/nombre
-
-Respuesta: Administración de Sistemas Informáticos en Red y Desarrollo de Aplicaciones Web
+/ies/ciclos/ciclo[grado="Superior"]
 
 8. Nombre de los ciclos formativos anteriores a 2010.
 
-/ies/ciclos/ciclo/decretoTitulo [@año<2010]/../nombre
-
-Respuesta: ASIR y SMR
+/ies/ciclos/ciclo/decretoTitulo[@año<2010]/..
 
 9. Nombre de los ciclos formativos de 2008 o 2010.
 
-2008:
+¿Por que aquí me funciona con un or en vez de un and?
 
-/ies/ciclos/ciclo/decretoTitulo [@año="2008"]/../nombre
-
-Respuesta: Sistemas Microinformáticos y Redes
-
-2010:
-
-/ies/ciclos/ciclo/decretoTitulo [@año="2010"]/../nombre
-
-Respuesta: Desarrollo de Aplicaciones Web
+/ies/ciclos/ciclo/decretoTitulo[@año=2010 or @año=2008]/..
