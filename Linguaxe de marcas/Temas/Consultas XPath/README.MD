@@ -16,3 +16,10 @@ Páginas recomendadas para XPath:
 
 <li>https://www.w3schools.com/xml/xpath_syntax.asp</li>
 </ul>
+
+Ejercicios:
+
+<ul>
+   <li>Ejercicios Ciclo</li>
+https://www.mclibre.org/consultar/xml/ejercicios/xpath.html
+</ul>
