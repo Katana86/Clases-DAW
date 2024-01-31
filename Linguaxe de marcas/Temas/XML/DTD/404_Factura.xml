@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE factura[
+    <!--ELEMENTO FACTURA-->
     <!ELEMENT factura (emision,vendedor,cliente,articulo*,descuento)>
-        <!ATTLIST factura id CDATA #REQUIRED>
-        <!ATTLIST factura descuento CDATA #IMPLIED>
     <!ELEMENT emision (#PCDATA)>
     <!ELEMENT vendedor (nombre)>
-    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT nombre (#PCDATA)>   
+    <!ELEMENT descuento (#PCDATA)>
+    <!--ATRIBUTOS FACTURA-->
+        <!ATTLIST factura id CDATA #REQUIRED>
+        <!ATTLIST factura descuento CDATA #IMPLIED>
         <!ATTLIST vendedor id CDATA #REQUIRED>
-    <!ELEMENT cliente (nombre,direccion)>
-        <!ATTLIST cliente id CDATA #REQUIRED>
+    <!--FIN ELEMENTO FACTURA-->
+    
+    <!--ELEMENTO CLIENTE-->
+    <!ELEMENT cliente (nombre,direccion,telefono*)>
     <!ELEMENT direccion (via,cp,localidad,provincia)>
+    <!ELEMENT via (#PCDATA)>
+    <!ELEMENT cp (#PCDATA)>
+    <!ELEMENT localidad (#PCDATA)>
+    <!ELEMENT provincia (#PCDATA)>
+    <!ELEMENT telefono (#PCDATA)>
+    <!--ATRIBUTOS CLIENTE-->
+        <!ATTLIST cliente id CDATA #REQUIRED>
+        <!ATTLIST telefono num CDATA #IMPLIED>
+        
+         <!--FIN ELEMENTO CLIENTE-->
+        <!--ELEMENTO ARTICULO-->
+    <!ELEMENT articulo (denominacion,precio,cantidad)>
+    <!ELEMENT denominacion (#PCDATA)>
+    <!ELEMENT precio (#PCDATA)>
+    <!ELEMENT cantidad (#PCDATA)>
+    <!--ATRIBUTOS ARTICULO-->
+        <!ATTLIST articulo id CDATA #REQUIRED>
+        <!ATTLIST articulo iva CDATA #REQUIRED>
 ]>
 
 <factura id="876">
