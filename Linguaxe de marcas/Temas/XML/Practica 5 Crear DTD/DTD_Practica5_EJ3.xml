@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!--Zona DTD-->
+<!DOCTYPE Aeropuerto [
+<!ELEMENT Aeropuerto (Vuelos,Diario,Origen,Destino,HoraSalida,HoraLlegada)>
+<!ELEMENT Vuelos EMPTY>
+<!ATTLIST Vuelos
+          Codigo CDATA #REQUIRED
+          Estado (C | E | R) #REQUIRED>
+<!ELEMENT Diario (#PCDATA)>
+<!ELEMENT Origen (#PCDATA)>
+<!ELEMENT Destino (#PCDATA)>
+<!ELEMENT HoraSalida (#PCDATA)>
+<!ELEMENT HoraLlegada (#PCDATA)>
+]>
+
+<!--Zona XML-->
+
+<Aeropuerto>
+    <!--Vuelo 1-->
+     <Vuelos Codigo="V22" Estado="R"/>
+     <Diario>Sí</Diario>
+     <Origen>New York</Origen>
+     <Destino>Chicago</Destino>
+     <HoraSalida>9:30</HoraSalida>
+     <HoraLlegada>11:30</HoraLlegada>
+     <!--Vuelo 2-->
+     <Vuelos Codigo="V23" Estado="C"/>
+     <Diario>No</Diario>
+     <Origen>New York</Origen>
+     <Destino>Miami</Destino>
+     <HoraSalida>10:15</HoraSalida>
+     <HoraLlegada>11:15</HoraLlegada>
+</Aeropuerto>

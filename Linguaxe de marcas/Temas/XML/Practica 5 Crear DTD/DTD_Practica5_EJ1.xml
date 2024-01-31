@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE equipos_de_baloncesto [
+<!ELEMENT equipos_de_baloncesto (equipo,jugador*)>
+<!ELEMENT equipo (nombre,ciudad,entrenador,jugadores)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT ciudad (#PCDATA)>
+<!ELEMENT entrenador (#PCDATA)>
+<!ELEMENT jugadores (#PCDATA)>
+<!ELEMENT jugador (nombre_jug,posicion,nacionalidad)>
+<!ATTLIST jugador
+          numero CDATA #REQUIRED>
+<!ELEMENT nombre_jug (#PCDATA)>
+<!ELEMENT posicion (#PCDATA)>
+<!ATTLIST posicion
+          pos (Base|Escolta|Alero|Pivot) #REQUIRED>
+<!ELEMENT nacionalidad (#PCDATA)>
+]>
+
+<equipos_de_baloncesto>
+    <equipo>
+        <nombre>FC Barcelona Basket</nombre>
+        <ciudad>Barcelona</ciudad>
+        <entrenador>Roger Grimau</entrenador>
+        <jugadores>14</jugadores>
+    </equipo>
+    <!--Bases-->
+    <jugador numero="13">
+        <nombre_jug>Tomáš Satoranský</nombre_jug>
+        <posicion pos="Base">Base</posicion>
+        <nacionalidad>Checoslovaquia</nacionalidad>
+    </jugador>
+    <jugador numero="20">
+        <nombre_jug>Nicolás Laprovittola</nombre_jug>
+        <posicion pos="Base">Base</posicion>
+        <nacionalidad>Argentino</nacionalidad>
+    </jugador>
+    <jugador numero="31">
+        <nombre_jug>Rokas Jokubaitis</nombre_jug>
+        <posicion pos="Base">Base</posicion>
+        <nacionalidad>Lituano</nacionalidad>
+    </jugador>
+    <!--Escoltas-->
+    <jugador numero="3">
+        <nombre_jug>Oriol Paulí</nombre_jug>
+        <posicion pos="Escolta">Escolta</posicion>
+        <nacionalidad>Español</nacionalidad>
+    </jugador>
+    <jugador numero="8">
+        <nombre_jug>Darío Brizuela</nombre_jug>
+        <posicion pos="Escolta">Escolta</posicion>
+        <nacionalidad>Español</nacionalidad>
+    </jugador>
+    <jugador numero="24">
+        <nombre_jug>Michael Caicedo</nombre_jug>
+        <posicion pos="Escolta">Escolta</posicion>
+        <nacionalidad>Español</nacionalidad>
+    </jugador>
+    <!--Aleros-->
+    <jugador numero="10">
+        <nombre_jug>Nikola Kalinić</nombre_jug>
+        <posicion pos="Alero">Alero</posicion>
+        <nacionalidad>Serbio</nacionalidad>
+    </jugador>
+    <jugador numero="21">
+        <nombre_jug>Álex Abrines</nombre_jug>
+        <posicion pos="Alero">Alero</posicion>
+        <nacionalidad>Español</nacionalidad>
+    </jugador>
+    <jugador numero="44">
+        <nombre_jug>Joel Parra</nombre_jug>
+        <posicion pos="Alero">Alero</posicion>
+        <nacionalidad>Español</nacionalidad>
+    </jugador>
+    <!--Pivots-->
+    <jugador numero="6">
+        <nombre_jug>Jan Veselý</nombre_jug>
+        <posicion pos="Pivot">Pivot</posicion>
+        <nacionalidad>Checo</nacionalidad>
+    </jugador>
+    <jugador numero="14">
+        <nombre_jug>Juancho Hernangómez</nombre_jug>
+        <posicion pos="Pivot">Pivot</posicion>
+        <nacionalidad>Español</nacionalidad>
+    </jugador>
+    <jugador numero="23">
+        <nombre_jug>James Nnaji</nombre_jug>
+        <posicion pos="Pivot">Pivot</posicion>
+        <nacionalidad>Nigeria</nacionalidad>
+    </jugador>
+</equipos_de_baloncesto>

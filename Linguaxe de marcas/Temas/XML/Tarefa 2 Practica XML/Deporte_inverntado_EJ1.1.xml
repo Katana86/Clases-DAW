@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<root>
+    <deporte>
+        <deporte>Fútbol</deporte>
+    </deporte>
+    <categroia>
+        <categoria>Masculino</categoria>
+    </categroia>
+    <resultados>
+        <resultados>Resultados del balon de oro masculino del 2022:</resultados>
+        <ganador>Ganador del balon de oro masculino:</ganador>
+        <nombre>Karim Benzema</nombre>
+        <equipo>Real Madrid</equipo>
+    </resultados>
+    <resultados>
+        <categoria>
+            <categoria>Femenino</categoria>
+        </categoria>
+        <ganadora>Ganadora del balon de oro femenino del 2022</ganadora>
+        <nombre>Alexia Putellas</nombre>
+        <eqipo>Barcelona</eqipo>
+    </resultados>
+    <nominados>
+        <nominado id = "1">
+            <nombre>Sadio Mané</nombre>
+            <eqipo>Bayern</eqipo>
+        </nominado>
+        <nominado id = "2">
+            <nombre>Kevin De Bruyne</nombre>
+            <equipo>Manchester City</equipo>
+        </nominado>
+        <nominado id = "3">
+            <nombre>Robert Lewandoski</nombre>
+            <eqipo>Barcelona</eqipo>
+        </nominado>
+    </nominados>
+</root>
+

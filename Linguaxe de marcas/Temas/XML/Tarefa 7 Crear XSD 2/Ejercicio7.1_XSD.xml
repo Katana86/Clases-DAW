@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fichas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="Ejercicio7.1.xsd">
+   <ficha>
+      <nombre>Antonio Machado Ruiz</nombre>
+      <iniciales>AMR</iniciales>
+      <edad>22</edad>
+   </ficha>
+   <!---El fallo esta en que falta una letra en las iniciales para que sea valido por la restricción del XSD-->
+   <ficha>
+      <nombre>Mario Moreno</nombre>
+      <iniciales>MMO</iniciales>
+      <edad>23</edad>
+   </ficha>
+   <!--- El fallo esta en las iniciales estan encima del nombre.-->
+   <ficha>
+      <nombre>Ada Lovelace</nombre>
+      <iniciales>ALO</iniciales>
+      <edad>24</edad>
+   </ficha>
+   <!--El fallo esta en la edad que marca como adulto y en las iniciales que deben de ir en mayusculas-->
+   <ficha>
+      <nombre>pablo ruiz picasso</nombre>
+      <iniciales>PRP</iniciales>
+      <edad>18</edad>
+   </ficha>
+</fichas>

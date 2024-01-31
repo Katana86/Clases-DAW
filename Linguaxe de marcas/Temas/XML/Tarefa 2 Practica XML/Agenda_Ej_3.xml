@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<root>
+    <Agenda>
+    <Contactos>
+        <Contacto id = "1">
+            <Nombre>Antonio</Nombre>
+            <Apellidos>Gonzalez Garcia</Apellidos>
+            <Dirección>Calle Amargura 3º</Dirección>
+            <Grupo>Trabajo</Grupo>
+            <Numero>789374513</Numero>
+        </Contacto>
+            <Contacto id = "2">
+                <Nombre>Abuelos</Nombre>
+                <Apellidos>Sin Apellidos</Apellidos>
+                <Dirección>Calle Sevilla 8º</Dirección>
+                <Grupo>Familia</Grupo>
+                <Numero>8456912342</Numero>
+            </Contacto>
+                <Contacto id = "3">
+                    <Nombre>Casa</Nombre>
+                    <Apellido>Sin Apellidos</Apellido>
+                    <Dirección>Calle buena vista 2º</Dirección>
+                    <Grupo>Movíl</Grupo>
+                    <Numero>72212345690</Numero>
+                </Contacto>
+    </Contactos>
+    </Agenda>            
+</root>
+

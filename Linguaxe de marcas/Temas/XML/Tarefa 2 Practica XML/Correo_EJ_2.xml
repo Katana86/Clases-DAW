@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <Fecha>        
+        <Fecha>11/06/2019</Fecha>
+    </Fecha>
+    <Hora>
+        <Hora>17:45</Hora>
+    </Hora>
+    <Emisor>
+        <Nombre>Alberto Díaz</Nombre>
+        <Correo>abdiaz@correo.com</Correo>
+    </Emisor>
+    <Asunto>
+        <Cuerpo>Reunión del martes 19</Cuerpo>
+    </Asunto>
+    <Mensaje>
+        <Cuerpo>Hola Sara, este es un recordatorio para la reunión del martes con los de calidad a las 19:00. Te adjunto el proyecto para que lo revises antes Saludos.</Cuerpo>
+        <Hora>19:00</Hora>
+        <Nombre>Alberto</Nombre>
+        <Archivos>proyecto.pdf</Archivos>
+        <Tamaño>56kb</Tamaño>
+    </Mensaje>
+    <Destinatario>
+        <Nombre>Sara Martínez</Nombre>
+        <Correo>smartinez@correo.com</Correo>
+    </Destinatario>
+</root>

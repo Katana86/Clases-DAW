@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+  <Deporte>
+        <Deporte>Atletismo</Deporte>
+  </Deporte>
+  <Atributos>
+<Especialidad>
+        <Especialidad>100m</Especialidad>
+</Especialidad>
+<Categoria>
+        <Categoria>Femenino</Categoria>
+</Categoria>
+  </Atributos>
+<Resultados>
+        <Resultados>Resultados:</Resultados>
+</Resultados>
+<Medalla>
+        <Atributo_DEP> 
+        <Medalla>Oro</Medalla>
+        <Nombre>Elaine Thompson</Nombre>
+        <Pais>JAMAICA</Pais>
+        <Medalla>Plata</Medalla>
+        <Nombre>Tori Bowie</Nombre>
+        <Pais>USA</Pais>
+        <Medalla>Bronce</Medalla>
+        <Nombre>S.Fraser-Pryce</Nombre>
+        <Pais>JAMAICA</Pais>
+        </Atributo_DEP>
+</Medalla> 
+</root>

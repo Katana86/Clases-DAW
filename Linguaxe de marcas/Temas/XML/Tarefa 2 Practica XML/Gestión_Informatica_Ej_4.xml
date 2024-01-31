@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+- Ana Fernández Gutiérrez, con NIF 16965696L, teléfono 789654321, correo electrónico
+ana.fdezgtrrez@hotmail.com, y dirección “r/El Percebe, 13” de Santander y CP 39302. 
+No hay información sobre las faltas de asistencia o sus notas de momento.
+- Pepe Pérez, con NIF 98765432H, teléfono 656566555, correo electrónico 
+yhyh@yahoo.com, y dirección “Avda. El Pez, 5” de Suances, con CP 39401. Su nota es 
+"apto" y no tiene faltas de asistencia.
+
+
+<root>
+    <Alumnado>
+        <Alumno id="1">
+            <Nombre>Ana</Nombre>
+            <Apellidos>Fernández Gutiérrez</Apellidos>
+            <NIF>98765432H</NIF>
+            <Telefono>656566555</Telefono>
+            <Correo>ana.fdezgtrrez@hotmail.com</Correo>
+            <Dirreción>r/El Percebe, 13” de Santander</Dirreción>
+            <CP>39302</CP>
+            <Faltas>No hay faltas</Faltas>
+            <Notas>No hay notas</Notas>
+        <Alumno id="2">
+            <Nombre>Pepe</Nombre>
+            <Apellidos>Pérez</Apellidos>
+            <NIF>98765432H</NIF>
+            <Telefono>656566555</Telefono>
+            <Correo>yhyh@yahoo.com</Correo>
+            <Dirección>Avda. El Pez, 5” de Suances</Dirección>
+            <CP>39401</CP>
+            <Faltas>No hay faltas</Faltas>
+            <Notas>APTO</Notas>
+        </Alumno>
+    </Alumnado>
+</root>
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!--Declaraciones-->
+
+<!DOCTYPE mensaje SYSTEM "mensaje.dtd" [
+<!ELEMENT mensaje (de,para,asunto,adjunto)*>
+<!ELEMENT de (#PCDATA)>
+<!ELEMENT para (#PCDATA)>
+<!ELEMENT asunto (#PCDATA)>
+<!ELEMENT adjunto (#PCDATA)>
+]>
+
+<!--CuerpoXML-->
+
+<root>
+    <mensaje>
+	<de>maria@gmail.com</de>
+	<para>ignacio@gmail.com</para>
+	<para>pedro@edu.xunta.es</para>
+	<asunto>Envíoche os arquivos</asunto>
+	<adjunto>D:\fotos\dePesca.jpg</adjunto>
+	<adjunto>D:\docs\carta.odt</adjunto>
+	<adjunto>D:\fotos\naCea.jpg</adjunto>
+</mensaje>
+</root>
+

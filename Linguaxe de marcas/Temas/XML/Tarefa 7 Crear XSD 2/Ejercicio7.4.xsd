@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="fichas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="fichas" type="tipofichas"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="tipoficha">
+        <xs:sequence>
+            <xs:element name="ficha" type="tipoficha">
+                <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="codigo" type="xs:string"/>
+                    <xs:element name="nombre" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name=""
+    </xs:complexType>
+</xs:element>
+
+
+</xs:schema>

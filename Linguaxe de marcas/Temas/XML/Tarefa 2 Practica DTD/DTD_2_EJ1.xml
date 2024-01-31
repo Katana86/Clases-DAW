@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mensaje [
+<!ELEMENT mensaje (de,para,asunto,adjunto)>
+<!ELEMENT de (#PCDATA)>
+<!ATTLIST prioridad tipo (bajo|normal|urjente) #IMPLIED>
+<!ELEMENT para (#PCDATA)>
+<!ATTLIST prioridad tipo (bajo|normal|urjente) #IMPLIED>
+<!ELEMENT asunto (#PCDATA)>
+<!ELEMENT adjunto (#PCDATA)>
+]>
+
+<mensaje>
+    <prioridades>
+                <prioridad tipo="Normal">
+                    <de id= "Emisor">maria@gmail.com</de>
+                </prioridad>
+                <prioridad tipo="Normal">
+                    <para id= "Destinatario1">ignacio@gmail.com</para>
+                </prioridad>
+                <prioridad tipo="Normal">	
+                    <para id= "Destinatario2">pedro@edu.xunta.es</para>
+                </prioridad>
+                <prioridad tipo="Alto">
+                    <asunto id= "Encabezado">Envíoche os arquivos</asunto>
+                </prioridad>
+                <prioridad tipo="Alto">
+                    <adjunto id= "Archivo1">D:\fotos\dePesca.jpg</adjunto>
+                </prioridad>
+                <prioridad tipo="Alto">
+                    <adjunto id= "Archivo2">D:\docs\carta.odt</adjunto>
+                </prioridad>
+                <prioridad tipo="Alto">
+                    <adjunto id= "Archivo3">D:\fotos\naCea.jpg</adjunto>
+                </prioridad>
+    </prioridades>
+</mensaje>
+
