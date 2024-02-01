@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE biblioteca [
-    <!ELEMENT biblioteca (libro*, autor, titulo)>
-    <!ELEMENT libro ANY>
+    <!ELEMENT biblioteca (libro*)>
+    <!ELEMENT libro (autor, titulo)>
     <!ATTLIST libro codigo CDATA #REQUIRED>
     <!ATTLIST libro ubicacion CDATA #IMPLIED>
     <!ELEMENT autor (#PCDATA)>
