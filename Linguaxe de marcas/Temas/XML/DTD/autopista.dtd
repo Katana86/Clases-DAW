@@ -16,5 +16,5 @@
     <!ATTLIST retencion long CDATA #IMPLIED>
 <!ELEMENT sentido (#PCDATA)>
 <!ELEMENT carrilescortados EMPTY>
-    <!ATTLIST carrilescortado valor (1|2|3|4) #IMPLIED>
+    <!ATTLIST carrilescortados valor (1|2|3|4) #IMPLIED>
 
