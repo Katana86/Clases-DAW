@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT autopista (paneles)>
+<!ELEMENT paneles (elemento)>
+<!ELEMENT elemento (via,pk,retencion,sentido,carrilescortados)>
+    <!ATTLIST elemento tipo CDATA #REQUIRED>
+    <!ATTLIST elemento fecha CDATA #IMPLIED>
+<!ELEMENT via (nombre,ref,origen,destino,carriles)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT ref (#PCDATA)>
+<!ELEMENT origen (#PCDATA)>
+<!ELEMENT destino (#PCDATA)>
+<!ELEMENT carriles EMPTY>
+    <!ATTLIST carriles sentido (unico|doble) #IMPLIED>
+<!ELEMENT pk EMPTY>
+<!ELEMENT retencion EMPTY>
+    <!ATTLIST retencion long CDATA #IMPLIED>
+<!ELEMENT sentido (#PCDATA)>
+<!ELEMENT carrilescortados EMPTY>
+    <!ATTLIST carrilescortado valor (1|2|3|4) #IMPLIED>
+

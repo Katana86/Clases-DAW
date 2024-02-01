@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE autopista SYSTEM "autopista.dtd">
+
+
+<autopista>
+    <paneles>
+        <elemento tipo="" fecha="">
+            <via>
+                <nombre></nombre>
+                <ref></ref>
+                <origen></origen>
+                <destino></destino>
+                <carriles sentido="unico"/>
+            </via>
+            <pk/>
+            <retencion long=""></retencion>
+            <sentido></sentido>
+            <carrilescortados valor="3"/>
+        </elemento>
+    </paneles> 
+</autopista>
