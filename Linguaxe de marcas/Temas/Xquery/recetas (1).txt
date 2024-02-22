@@ -1,0 +1,49 @@
+Escribe las consultas XQuery que permitan obtener la siguiente información:
+1. Una lista que contiene, para cada receta, el elemento <titulo> de la receta y un elemento <calorias> que contenga el número de calorías.
+
+for $receta in //recetas/receta
+for $calorias in //nutricion/@caloria
+return <receta>{$calorias}{$receta/titulo}</receta>
+
+2. Una lista similar a la primera, ordenada según las calorías.
+
+for $receta in //recetas/receta
+for $calorias in //nutricion/@caloria
+where $calorias >= "349"
+return <receta>{$calorias}{$receta/titulo}</receta>
+
+//////////////////////////////////Segunda manera//////////////////////////////////////////////
+
+for $receta in //recetas/receta
+for $calorias in //nutricion/@caloria
+order by $calorias descending
+return <receta>{$calorias}{$receta/titulo}</receta>
+
+
+3. Una lista similar a la primera, ordenada alfabéticamente según el título.
+
+for $receta in //recetas/receta
+order by $receta/titulo
+return <receta>{$receta/titulo}</receta>
+
+4. Una lista similar a la primera, ordenada según el contenido de grasa.
+
+for $receta in //recetas/receta
+for $grasa in //nutricion/@grasa
+order by $grasa ascending
+return <receta>{$grasa}{$receta/titulo}</receta>
+
+
+5. Una lista similar a la primera, con el título como atributo y las calorías como contenido.
+
+
+6. Una lista que contenga para cada receta, el título como atributo y cada uno de los ingredientes de nivel superior (sin añadir los ingredientes que están dentro de otros ingredientes).
+
+
+7. Una lista con cada una de las recetas que contengan el ingrediente harina. Poner el título de la receta como atributo del elemento receta.
+
+
+8. Una lista de todas aquellas recetas que tengan un ingrediente llamado relleno y este contenga en su interior más de 5 elementos ingrediente. 
+* La lista resultante estará formada por elementos receta que contienen un atributo titulo con el valor del elemento titulo de la receta. 
+* Además, dentro de cada elemento receta habrá elementos ingrediente con el nombre de cada uno de los ingredientes.
+
