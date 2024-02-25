@@ -58,4 +58,15 @@ return
 8. Una lista de todas aquellas recetas que tengan un ingrediente llamado relleno y este contenga en su interior más de 5 elementos ingrediente. 
 * La lista resultante estará formada por elementos receta que contienen un atributo titulo con el valor del elemento titulo de la receta. 
 * Además, dentro de cada elemento receta habrá elementos ingrediente con el nombre de cada uno de los ingredientes.
+for $receta in /recetas/receta
+where 
+  $receta/ingrediente/@nombre='relleno' and 
+  count($receta/ingrediente[@nombre='relleno']/ingrediente) > 5
+return
+  <receta title="{$receta/titulo}">
+    {
+      for $ingrediente in $receta/ingrediente[@nombre='relleno']/ingrediente
+      return <ingrediente>{data($ingrediente/@nombre)}</ingrediente>
+    }
+  </receta>
 
