@@ -44,7 +44,7 @@ Nota: los ejercicios 21,22,24,25,26 y 27 no funcionan
 //alumnos/alumno[sexo = "Hombre"]/apellido1
 //alumnos/alumno[sexo = "Hombre"]/apellido2
 21. Nombre de la carrera que estudia Víctor Manuel.
-
+//alumnos/alumno[nombre='Víctor Manuel']/estudios/carrera | //carreras/carrera[@id='c01']
 22. Nombre de las asignaturas que estudia Luisa.
 
 23. Primer apellido de los alumnos matriculados en Ingeniería del Software.
