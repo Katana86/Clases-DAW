@@ -46,7 +46,7 @@ Nota: los ejercicios 21,22,24,25,26 y 27 no funcionan
 21. Nombre de la carrera que estudia Víctor Manuel.
 //alumnos/alumno[nombre='Víctor Manuel']/estudios/carrera | //carreras/carrera[@id='c01']
 22. Nombre de las asignaturas que estudia Luisa.
-
+//alumnos/alumno[nombre='Luisa']/estudios/asignaturas | //asignaturas/asignatura[@id = 'a01'] | //asignaturas/asignatura[@id = 'a02']
 23. Primer apellido de los alumnos matriculados en Ingeniería del Software.
 //alumnos/alumno[estudios/asignaturas/asignatura/@codigo = "a02"]/apellido1
 24. Nombre de las carreras que estudian los alumnos matriculados en la asignatura Tecnología de los Alimentos.
