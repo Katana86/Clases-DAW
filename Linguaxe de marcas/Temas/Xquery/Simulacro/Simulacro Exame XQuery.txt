@@ -1,0 +1,69 @@
+
+CONSULTAS XQUERY PARA SIMULACRO
+Tiempo estimado: 2 horas
+
+1. El modelo de las impresoras de tipo láser.
+
+for $impresora in //impresoras/impresora
+where $impresora/@tipo="láser"
+return $impresora/modelo
+
+2. La marca y modelo (separados por un espacio en blanco) de las impresoras con más de un tamaño.
+
+for $impresora in //impresoras/impresora
+where $impresora/count(tamano)>1
+return <marca>{data($impresora/marca)}</marca> | <modelo>{data($impresora/modelo)}</modelo>
+
+3. La marca y modelo (separados por un espacio en blanco) de las impresoras con tamaño A3 (pueden tener otros).
+
+for $impresora in //impresoras/impresora
+where $impresora/tamano = 'A3'
+return <marca>{data($impresora/marca)}</marca> | <modelo>{data($impresora/modelo)}</modelo>
+
+4. La marca y modelo (separados por un espacio en blanco) de las impresoras con tamaño A3 como único tamaño.
+
+for $impresora in //impresoras/impresora
+where distinct-values($impresora/tamano = 'A3')
+return <marca>{data($impresora/marca)}</marca> | <modelo>{data($impresora/modelo)}</modelo>
+
+5. El modelo de las impresoras en red.
+
+for $impresora in //impresoras/impresora
+where $impresora/boolean(enred)
+return $impresora/modelo
+
+6. La cantidad de impresoras guardadas en el fichero XML.
+
+count
+(
+for $impresora in //impresoras/impresora
+return $impresora
+)
+
+
+7. Las impresoras (elementos <impresora>) compradas en 2018 o después. Los resultados se deben ordenar por año de compra (orden ascendente).
+
+for $impresora in //impresoras/impresora
+where $impresora/@compra > "2018"
+order by $impresora/@compra ascending
+return $impresora
+
+8. Las impresoras (elementos <impresora>) con un peso igual o superior a 5 kg.
+
+for $impresora in //impresoras/impresora
+where $impresora/peso >= 5
+return $impresora
+
+9. Las impresoras (elementos <impresora>) que tienen cartucho con código C-456P.
+
+for $impresora in //impresoras/impresora
+where $impresora/cartucho =  "C-456P"
+return $impresora
+
+10. La impresora (elemento <impresora>) más pesada.
+
+for $impresora in //impresoras/impresora
+where $impresora/@numSerie="i253"
+where $impresora/@tipo="tinta"
+order by $impresora/peso descending
+return $impresora
