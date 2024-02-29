@@ -6,5 +6,6 @@ Ayudas:
 <li>https://www.tutorialspoint.com/xquery/index.htm</li>
 <li>https://es.wikipedia.org/wiki/XQuery</li>
 <li>https://docs.basex.org/wiki/Main_Page</li>
+<li>https://docs.basex.org/wiki/Table_of_Contents</li>
 Solucion Ejercicios
 <li>https://mp0373-lmsxi.vercel.app/docs/unidades/06/ejercicios/606</li>
