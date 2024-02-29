@@ -75,6 +75,7 @@ return
   </body> 
 </html>
 12.Generar el siguiente documento html con la información de los libros del autor Stevens. El valor precio total es un campo calculado utilizando una consulta con una cláusula let.
+#No lo supe hacer
 <html> 
  <head> 
   <title> Libros de Stevens </title> 
