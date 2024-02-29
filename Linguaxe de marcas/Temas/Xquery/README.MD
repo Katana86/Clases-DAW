@@ -8,3 +8,4 @@ Ayudas:
 <li>https://docs.basex.org/wiki/Table_of_Contents</li>
 Solucion Ejercicios
 <li>https://mp0373-lmsxi.vercel.app/docs/unidades/06/ejercicios/606</li>
+<li>https://www.ticarte.com/contenido/ejercicios-practicos-de-xquery</li>
