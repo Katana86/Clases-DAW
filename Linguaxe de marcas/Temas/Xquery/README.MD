@@ -5,5 +5,6 @@ Ayudas:
 <li>https://wiki.cifprodolfoucha.es/index.php?title=Exercicios_de_XQuery</li>
 <li>https://www.tutorialspoint.com/xquery/index.htm</li>
 <li>https://es.wikipedia.org/wiki/XQuery</li>
+<li>https://docs.basex.org/wiki/Main_Page</li>
 Solucion Ejercicios
 <li>https://mp0373-lmsxi.vercel.app/docs/unidades/06/ejercicios/606</li>
