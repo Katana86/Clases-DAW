@@ -1,0 +1,32 @@
+<html> 
+ <head> 
+  <title> Listado de libros </title> 
+  </head>
+ <body> 
+  <table border="1">
+   <caption>Listado de libros</caption>
+   <th> Titulo </th>  
+   <th> Editorial </th>  
+   <th> Precio </th>  
+
+{ 
+for $a in doc("../prueba/libros.xml")/bib/libro 
+return 
+   <tr> 
+    <td align ="left"> <i> { string( $a/titulo ) } </i> </td> 
+	<td align ="left"> { string( $a/editorial ) } </td>
+	<td align ="right"> { string( $a/prezo) } </td>
+   </tr> 
+}
+
+(: No lo pide el enunciado, pero así se podría mostrar el precio medio de los libros :)
+{ 
+let $a := doc("../prueba/libros.xml")/bib/libro 
+return 
+   <tr> 
+    <td> {avg( $a/prezo ) } </td> 
+   </tr> 
+} 
+  </table> 
+  </body> 
+</html>
