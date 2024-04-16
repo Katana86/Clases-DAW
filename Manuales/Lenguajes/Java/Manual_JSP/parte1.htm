@@ -1,0 +1,593 @@
+<html>
+
+<head>
+
+<title>JavaServerPages.Parte 1</title>
+<style type="text/css">
+<!--
+.subseccion {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #000000; text-decoration: none}
+.subtemas {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #000000; text-decoration: none}
+.subseccionactual {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #FFFFFF; text-decoration: none}
+.cabecera_tabla {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12pt; font-weight: bold; color: #990000; text-decoration: none}
+.tema {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-transform: uppercase; color: #990000; text-decoration: none}
+.titulo {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16pt; font-weight: bold; color: #000000; text-decoration: none}
+.texto {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #333333; text-decoration: none}
+.textotablas { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #000000; text-decoration: none }
+.titulo_entradilla { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #006666; text-decoration: none }
+.fecha {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; color: #990000; text-decoration: none}
+.titulo_tabla {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #000000; text-decoration: none}
+-->
+</style>
+</head>
+
+<body lang=ES style='tab-interval:35.4pt' bgcolor="#FFFFFF">
+<span class="MsoNormal"></span> <span class="MsoNormal"></span> 
+<div> 
+  <div align="center"> 
+    <table width="100%" border="0">
+      <tr bgcolor="#CCCC99"> 
+        <td> 
+          <div align="center"><font face="Arial, Helvetica, sans-serif" size="2" color="#990000" class="titulo"><font size="3" color="#000000"><b>JavaServer 
+            Pages</b></font></font> </div>
+        </td>
+      </tr>
+    </table>
+    <p><span class="texto"><span class="titulo_tabla"><font size="2" face="Times New Roman, Times, serif"><span class="fecha"><b>Parte 
+      I</b></span></font></span><b> Introducci&oacute;n a JavaServerPages </b></span> 
+    </p>
+    <p align="left" class="titulo_entradilla">Indice del tema:</p>
+    <table width="70%" border="0" bgcolor="#CCCC99" cellpadding="3">
+      <tr>
+        <td>
+          <table width="100%" border="0">
+            <tr bgcolor="#EFEFEF"> 
+              <td> 
+                <ul>
+                  <li><span class="subseccion">Introducci&oacute;n</span></li>
+                  <li><span class="subseccion">Resumen de la arquitectura de una 
+                    p&aacute;gina JSP</span></li>
+                  <li><span class="subseccion">Una p&aacute;gina JSP simple</span></li>
+                  <li><span class="subseccion">Elementos de una p&aacute;gina 
+                    JSP</span></li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <hr>
+    <p>&nbsp; </p>
+  </div>
+  <table width="100%" border="0">
+    <tr bgcolor="#336699"> 
+      <td><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Introducci&oacute;n</font></span></td>
+    </tr>
+  </table>
+  <p><i><span style='font-size:10.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'><span class="texto"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b>J</b></font></span></span></i><span class="texto"><span class="texto"><span style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:Arial'>ava</span></span><b><i><span style='font-size:10.0pt;
+mso-bidi-font-size:12.0pt;font-family:Arial'><font size="2" face="Verdana, Arial, Helvetica, sans-serif">S</font></span></i></b><span
+style='font-size:8.0pt;mso-bidi-font-size:12.0pt;font-family:Arial' class="texto">erver 
+    </span><b><i><span
+style='font-size:10.0pt;mso-bidi-font-size:12.0pt;font-family:Arial'><font face="Verdana, Arial, Helvetica, sans-serif" size="2">P</font></span></i></b><span
+style='font-size:8.0pt;mso-bidi-font-size:12.0pt;font-family:Arial'><span class="texto">ages 
+    (JSP) combinan HTML con fragmentos de Java para producir páginas web dinámicas. 
+    <o:p></o:p></span><o:p></o:p></span></span></p>
+  <p class=MsoNormal><span class="texto"><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'><span class="texto">Cada página es automáticamente compilada 
+    a servlet por el motor de JSP , en primer lugar es recogida y a continuación 
+    ejecutada. <o:p></o:p></span></span></span></p>
+  <p class=MsoNormal><span class="texto"><span class="texto"><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'>JSP tiene gran variedad de formas para comunicarse con las 
+    clases de Java, servlets, applets y el servidor web; por esto se puede aplicar 
+    una funcionalidad a nuestra web a base de componentes.<o:p></o:p></span></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'><o:p></o:p></span></span></p>
+  <table width="100%" border="0">
+    <tr bgcolor="#336699"> 
+      <td><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Resumen 
+        de la arquitectura de una p&aacute;gina JSP</font></span></td>
+    </tr>
+  </table>
+  <p class=cabecera_tabla><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'><span class="texto">Una página JSP es archivo de texto simple 
+    que consiste en contenido HTML o XML con elementos JSP. Cuando un cliente 
+    pide una página JSP del sitio web y no se ha ejecutado antes, la página es 
+    inicialmente pasada al motor de JSP, el cual compila la página convirtiéndola 
+    en Servlet, la ejecuta y devuelve el contenido de los resultados al cliente.<o:p></o:p></span></span></p>
+  <p class=MsoNormal><span class="texto"><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'>Es posible ver el código del servlet generado, este código 
+    debe estar en el directorio que se informa en la estructura de directorios 
+    del servidor.<o:p></o:p></span></span></p>
+  <p class=MsoNormal><span class="texto"><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'>Si nos fijamos en este archivo podemos encontrar las siguientes 
+    clases:<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1;
+tab-stops:list 36.0pt'><span class="texto"><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-bidi-font-family:Arial'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'>JSPPage<o:p><br>
+    </o:p></span></span><span class="texto"><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-bidi-font-family:Arial'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'>HttpJspPage <o:p></o:p></span></span></p>
+  <p class=MsoNormal><span class="texto"><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'>Ellas definen la interface para el compilador de páginas JSP.<o:p></o:p></span></span></p>
+  <p class=MsoNormal><span class="texto"><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'>Nos encontramos también tres métodos:<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l1 level1 lfo2;
+tab-stops:list 36.0pt'><span class="texto"><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-bidi-font-family:Arial'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'>JspInit()<o:p><br>
+    </o:p></span></span><span class="texto"><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-bidi-font-family:Arial'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'>JspDestroy()<o:p><br>
+    </o:p></span></span><span class="texto"><span lang=EN-GB style='font-size:
+8.0pt;mso-bidi-font-size:12.0pt;font-family:Symbol;mso-bidi-font-family:Arial;
+mso-ansi-language:EN-GB'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:Arial;mso-ansi-language:EN-GB'>_jspService(HttpServletRequest 
+    request, HttpServletResponse response)<o:p></o:p></span></span></p>
+  <p class=MsoNormal><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p></o:p></span></span></p>
+  <p class=MsoNormal><span class="texto"><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'>Los dos primeros métodos pueden ser definidos por el autor 
+    de la página JSP, pero el tercer método es una versión compilada de la página 
+    JSP, y su creación es responsabilidad del motor de JSP.</span></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'><o:p></o:p></span></p>
+  <table width="100%" border="0">
+    <tr bgcolor="#336699"> 
+      <td><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Una 
+        p&aacute;gina JSP simple</font></span></td>
+    </tr>
+  </table>
+  <p class=MsoNormal><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'>Es el momento de ver el código de una página JSP bastante simple.<o:p></o:p></span></p>
+  <table width="80%" border="0" cellpadding="1" align="center">
+    <tr bgcolor="#CCCCCC"> 
+      <td> 
+        <pre class=MsoNormal><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New"'>&lt;HTML&gt;<o:p><br></o:p></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New"'>&lt;HEAD&gt;<o:p><br></o:p></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New"'>&lt;TITLE&gt;<o:p></o:p></span><span lang=EN-GB
+style='font-size:8.0pt;mso-bidi-font-size:12.0pt;font-family:"Courier New";
+mso-ansi-language:EN-GB'>Página simple JSP<o:p></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'>&lt;/TITLE&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'>&lt;/HEAD&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'>&lt;BODY&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:1'>      </span></span><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt;font-family:"Courier New"'>&lt;%// INFORMACION GLOBAL PARA LA PAGINA%&gt;<o:p><br></o:p></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New"'><span style='mso-tab-count:1'>      </span></span><span
+lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:12.0pt;font-family:"Courier New";
+mso-ansi-language:EN-GB'>&lt;%@ page language=”java” %&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:1'>      </span></span><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt;font-family:"Courier New"'>&lt;% // DECLARACION DE VARIABLES %&gt;<o:p><br></o:p></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New"'><span style='mso-tab-count:1'>      </span>&lt;% char c = 0;%&gt;<o:p><br></o:p></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New"'><span style='mso-tab-count:1'>      </span>&lt;%<o:p><br></o:p></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New"'><span style='mso-tab-count:1'>      </span><span
+style='mso-tab-count:1'>       </span></span><span lang=EN-GB style='font-size:
+8.0pt;mso-bidi-font-size:12.0pt;font-family:"Courier New";mso-ansi-language:
+EN-GB'>for (int i=0;i &lt; 26;i++)<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:1'>      </span><span style='mso-tab-count:1'>       </span>{<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:2'>              </span><span style='mso-tab-count:1'>       </span>for (j = 0;j &lt; 26;j++)<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:2'>              </span><span style='mso-tab-count:1'>       </span>{<o:p></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:2'><br>              </span><span style='mso-tab-count:1'>       </span><span
+style='mso-tab-count:1'>       </span>c = (char) (0x41 + (26 – i + j)%26); %&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:2'>              </span><span style='mso-tab-count:1'>       </span><span
+style='mso-tab-count:1'>       </span></span><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt;font-family:"Courier New"'>&lt;%// IMPRIME LAS LETRAS DEL ALFABETO EN MAYUSCULAS %&gt;<span style='mso-tab-count:1'>  </span><o:p><br></o:p></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New"'><span style='mso-tab-count:2'>              </span><span
+style='mso-tab-count:1'>       </span><span style='mso-tab-count:1'>       </span></span><span
+lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:12.0pt;font-family:"Courier New";
+mso-ansi-language:EN-GB'>&lt;%=c%&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:2'>              </span><span style='mso-tab-count:1'>       </span>&lt;%}<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:1'>      </span><span style='mso-tab-count:1'>       </span>}<o:p><br></o:p></span><span lang=EN-GB
+style='font-size:8.0pt;mso-bidi-font-size:12.0pt;font-family:"Courier New";
+mso-ansi-language:EN-GB'>      %&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'>&lt;/BODY&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'>&lt;/HTML&gt;<o:p><br></o:p></span></pre>
+      </td>
+    </tr>
+  </table>
+  <p class=MsoNormal><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'><o:p></o:p></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:Arial'><o:p></o:p></span></p>
+  <table width="100%" border="0">
+    <tr bgcolor="#336699"> 
+      <td><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Elementos 
+        de una p&aacute;gina JSP</font></span></td>
+    </tr>
+  </table>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p><span class="texto">El 
+    c&oacute;digo fuente de una p&aacute;gina JSP incluye:</span></o:p></span></p>
+  <table width="85%" border="0" align="center" cellpadding="3" cellspacing="1">
+    <tr bgcolor="#CCCC99"> 
+      <td> 
+        <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p><span class="texto"><span class="titulo_entradilla"><span class="texto"><span class="fecha"><span class="subseccion"><span class="subseccion">1. 
+          Directivas</span>:</span></span></span></span><span class="subseccion"> 
+          </span>Dan informaci&oacute;n global de la p&aacute;gina, por ejemplo, 
+          importaci&oacute;n de estamentos, p&aacute;gina que majena los errores 
+          o cuando la p&aacute;gina forma parte de una sesi&oacute;n, en el ejemplo 
+          anterior informamos del tipo de script de Java.</span></o:p></span></p>
+        <p class=MsoNormal><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p> <span class="texto"><span class="fecha"><span class="fecha"><span class="subseccion">2. 
+          Declaraciones</span></span><span class="subseccion">:</span></span> 
+          Sirven para declarar m&eacute;todos y variables.</span></o:p></span></span></p>
+        <p class=MsoNormal><span class="texto"><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"><span class="fecha"><span class="subseccion"><span class="subseccion">3. 
+          Scripts de JSP</span>:</span></span> Es el c&oacute;digo Java embebido 
+          en la p&aacute;gina.</o:p></span></span></span></p>
+        <p class=MsoNormal><span class="texto"><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"><span class="subseccion">4. 
+          Expresiones de JSP: </span>Formatea las expresiones como cadenas para 
+          incluirlas en la p&aacute;gina de salida.</o:p></span></span></span></p>
+  </td>
+    </tr>
+  </table>
+  <p class=MsoNormal><span class="texto"><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"></o:p></span></span></span><span class="texto"><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p></o:p></span></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p></o:p></span></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p><span class="texto">Estos 
+    elementos siguen una sintaxis como XML, as&iacute; se obtiene un significado 
+    con una presentaci&oacute;n totalmente separada de la l&oacute;gica.Un buen 
+    ejemplo es <i><font face="Courier New, Courier, mono" size="1"><span class="titulo_entradilla">&lt;jsp:useBean 
+    .../&gt;</span></font></i> el cual busca o crea una instancia de un bean. 
+    Con el mecanismo de extensiones de tag se tiene la posibilidad de definir 
+    tags con acciones similares y poner la funcionalidad en una librer&iacute;a 
+    de tags.</span></o:p></span></p>
+  <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1">
+    <tr bgcolor="#CCCC99"> 
+      <td> 
+        <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p><span class="texto"><span class="titulo_entradilla"><span class="texto"><span class="fecha"><span class="subseccion"><span class="subseccion">1. 
+          Directivas</span></span></span></span></span></span></o:p></span></p>
+        </td>
+    </tr>
+  </table>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="subseccion"></o:p></span></p>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p><span class="texto">Una 
+    directiva de JSP es una estamento que proporciona la informaci&oacute;n del 
+    motor de JSP para la p&aacute;gina que la pide. Su sintaxis general es <font face="Courier New, Courier, mono" size="1" class="titulo_entradilla">&lt;%@ 
+    directiva {atributo =&quot;valor&quot;} %&gt;</font> d&oacute;nde la directiva 
+    debe tener un n&uacute;mero de atributos. Cada directiva tiene un XML opcional 
+    equivalente, pero esto son intentos para una futura herramienta JSP, por esto 
+    no lo consideraremos ahora. </span></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p></o:p></span></p>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p><span class="texto">Posibles 
+    directivas en JSP 1.0 son:</span></o:p></span></p>
+  <p class=MsoNormal><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"><span class="fecha">Page:</span> 
+    Informaci&oacute;n para la p&aacute;gina.</o:p></span></span></p>
+  <p class=MsoNormal><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"><span class="fecha">Include:</span> 
+    Incluye archivos completos palabra por palabra.</o:p></span></span></p>
+  <p class=MsoNormal><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"><span class="fecha">Taglib:</span> 
+    La direcci&oacute;n de la librer&iacute;a de tags que se usar&aacute; en la 
+    p&aacute;gina.</o:p></span></span></p>
+  <p class=MsoNormal><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto">Tal 
+    y como esperabamos, la directiva Page posee varios atributos.</o:p></span></span></p>
+  <table width="80%" border="0" align="center" bgcolor="#CCCCCC" cellpadding="3">
+    <tr>
+      <td>
+        <table width="100%" border="0" cellpadding="5" align="center" cellspacing="0">
+          <tr valign="top" bgcolor="#CCCCCC" class="titulo_tabla"> 
+            <td class="cabecera_tabla" width="45%"><span class="texto"><b><span class="titulo_tabla">A<span class="titulo_tabla">tributos 
+              y posibles valores</span></span></b></span></td>
+            <td class="texto" width="55%"><b class="titulo_tabla">Descripci&oacute;n</b></td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>language=&quot;java&quot;</i></td>
+            <td class="texto" width="55%">Comunica al servidor el lenguaje que 
+              va a ser utilizado en el archivo. Java es el &uacute;nico posible 
+              es esta especificaci&oacute;n</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>extends=&quot;package.class&quot;</i></td>
+            <td class="texto" width="55%">La variale extends, define la clase 
+              padre del servlet generado. Normalmente no es necesario utilizar 
+              otras que no sean las clases base del proveedor.</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>import=&quot;package.*,package.class&quot;</i></td>
+            <td class="texto" width="55%">Sirve para especificar los paquetes 
+              y clases que se quieran utilizar.</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>session=&quot;true|false&quot;</i></td>
+            <td class="texto" width="55%">Por defecto session vale true, manteniendo 
+              los datos de las sesi&oacute;n para la p&aacute;gina.</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>isThreadSafe=&quot;true|false&quot;</i></td>
+            <td class="texto" width="55%">Por defecto vale <i>true</i>, le hace 
+              se&ntilde;ales al motor de JSP para que multiples pedidos del cliente 
+              puedan ser tomadas como una. </td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>info=&quot;text&quot;</i></td>
+            <td class="texto" width="55%">Informaci&oacute;n en la p&aacute;gina 
+              a la que puede accederse a trav&eacute;s del m&eacute;todo Servlet.getServletInfo()</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>errorPage=&quot;pagina_error&quot;</i></td>
+            <td class="texto" width="55%">P&aacute;gina que manejar&aacute; las 
+              excepciones de errores.</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>isErrorPage=&quot;true|false&quot;</i></td>
+            <td class="texto" width="55%">Marca a la p&aacute;gina como la p&aacute;gina 
+              que manejar&aacute; los errores</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <p>&nbsp;</p><table width="100%" border="0" align="center" cellpadding="3" cellspacing="1">
+    <tr bgcolor="#CCCC99"> 
+      <td> 
+        <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p></o:p></span><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p><span class="texto"><span class="fecha"><span class="fecha"><span class="subseccion">2. 
+          Declaraciones</span></span></span></span></o:p></span></span><span class="texto"><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"></o:p></span></span></span></p>
+        </td>
+    </tr>
+  </table>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="subseccion"></o:p><o:p class="texto"></o:p></span></p>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto">Una 
+    declaraci&oacute;n de JSP, puede definirse como una definici&oacute;n de variables 
+    y m&eacute;todos a nivel de clase que son usadas en la p&aacute;gina. <br>
+    </o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto">Un 
+    bloque de declaraciones t&iacute;pico ser&iacute;a <span class="titulo_entradilla">&lt;%! 
+    declaraci&oacute;n %&gt;</span></o:p> </span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"><span class="titulo_entradilla"><br>
+    <span class="texto">Un ejemplo de declaraci&oacute;n de script ser&iacute;a 
+    el siguiente:</span></span></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"></o:p></span></p>
+  <table width="80%" border="0" cellpadding="1" align="center">
+    <tr bgcolor="#CCCCCC"> 
+      <td> 
+        <pre class=MsoNormal><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New"'>&lt;HTML&gt;<o:p><br></o:p></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New"'>&lt;HEAD&gt;<o:p><br></o:p></span><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New"'>&lt;TITLE&gt;<o:p></o:p></span><span lang=EN-GB
+style='font-size:8.0pt;mso-bidi-font-size:12.0pt;font-family:"Courier New";
+mso-ansi-language:EN-GB'>Página simple JSP<o:p></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'>&lt;/TITLE&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'>&lt;/HEAD&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'>&lt;BODY&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:1'>      </span></span><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt;font-family:"Courier New"'>&lt;%! String strCadena = &quot;x&quot;; 
+          int intContador = 0; 
+      %&gt;<o:p><br></o:p></span><span lang=EN-GB
+style='font-size:8.0pt;mso-bidi-font-size:12.0pt;font-family:"Courier New";
+mso-ansi-language:EN-GB'>      <o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'>&lt;/BODY&gt;<o:p><br></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'>&lt;/HTML&gt;<o:p></o:p></span></pre>
+      </td>
+    </tr>
+  </table>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"></o:p></span></p>
+  <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1">
+    <tr bgcolor="#CCCC99"> 
+      <td> 
+        <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p></o:p></span><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p><span class="texto"><span class="fecha"><span class="fecha"><span class="subseccion">3. 
+          Scripts de JSP</span></span></span></span></o:p></span></span><span class="texto"><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"></o:p></span></span></span></p>
+      </td>
+    </tr>
+  </table>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="subseccion"></o:p></span><span class="texto">Los 
+    Scripts son bloques de c&oacute;digo Java residentes entre los tags &lt;% 
+    y %&gt;.</span></p>
+  <p class=MsoNormal><span class="texto">Este bloques de c&oacute;digo estar&aacute;n 
+    dentro del servlets generado inclu&iacute;dos en m&eacute;todo _jspService(). 
+    Los Scripts pueden acceder a cualquier variable o Beans que haya sido declarado. 
+    Tambi&eacute;n hay algunos objetos impl&iacute;citos disponibles para los 
+    Scripts desde entorno del Servlet. Vamos a verlos a continuaci&oacute;n.</span></p>
+  <table width="80%" border="0" align="center" bgcolor="#CCCCCC" cellpadding="3">
+    <tr> 
+      <td> 
+        <table width="100%" border="0" cellpadding="5" align="center" cellspacing="0">
+          <tr valign="top" bgcolor="#CCCCCC" class="titulo_tabla"> 
+            <td class="cabecera_tabla" width="45%"><span class="texto"><b><span class="titulo_tabla">Objetos 
+              impl&iacute;citos <span class="titulo_tabla"></span></span></b></span></td>
+            <td class="texto" width="55%"><b class="titulo_tabla">Descripci&oacute;n</b></td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>request</i></td>
+            <td class="texto" width="55%">Es la petici&oacute;n del cliente. Es 
+              normalmente una subclase de la case HttpServletRequest.</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>response</i></td>
+            <td class="texto" width="55%">Es la p&aacute;gina JSP de respuesta 
+              y es una subclase de HttpServletResponse.</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>pageContext</i></td>
+            <td class="texto" width="55%">Los atributos de la p&aacute;gina y 
+              los objetos implicitos necesitan ser accesibles a trav&eacute;s 
+              de API, para permitir al motro de JSP compilar la p&aacute;gina. 
+              Pero cada servidor tiene implementaciones espec&iacute;ficas de 
+              cada uno de esos atributos y objetos. <br>
+              Para solucionar este problema, el motor de JSP utilizar la clase 
+              Factory para devolver la implementaci&oacute;n de clase PageContext 
+              del servidor. Esta clase PageContext es inicializada con los objetos 
+              response y request y algunos atributos de la directiva de la p&aacute;gina 
+              (erropage, session,buffer and autoflush) y facilita los otros objetos 
+              impl&iacute;citos para la pagina de petici&oacute;n.Veremos m&aacute;s 
+              m&aacute;s adelante.</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>session</i></td>
+            <td class="texto" width="55%">El objeto de sesi&oacute;n HTTP asociado 
+              a la petici&oacute;n.</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>application</i></td>
+            <td class="texto" width="55%">Lo que devuelve el servlet cuando se 
+              llama a getServletConfig().getContext()</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>out</i></td>
+            <td class="texto" width="55%">El objeto que representa la salida de 
+              texto por pantalla.</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>config</i></td>
+            <td class="texto" width="55%">El objeto ServletConfig de la p&aacute;gina.</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF">
+            <td class="titulo_entradilla" width="45%">page</td>
+            <td class="texto" width="55%">Es la forma que tiene la p&aacute;gina 
+              para referirse a si misma. Se usa como alternativa al objeto this</td>
+          </tr>
+          <tr valign="top" bgcolor="#FFFFFF"> 
+            <td class="titulo_entradilla" width="45%"><i>exception</i></td>
+            <td class="texto" width="55%">Es una subclase libre de Throwable que 
+              es pasada a la p&aacute;gina que majena los errores.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <p class=MsoNormal><span class="texto">El siguiente fragmento de c&oacute;digo 
+    muestra como obtener el valor de una par&aacute;metro mediante el objeto request, 
+    y como pasarlo a una cadena para mostrarlo en pantalla. </span><br>
+  </p>
+  <table width="80%" border="0" cellpadding="1" align="center">
+    <tr bgcolor="#CCCCCC"> 
+      <td> 
+        <pre class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:1'>      </span></span><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt;font-family:"Courier New"'>&lt;%
+         String strNombre  = request.getParameter(&quot;nombre&quot;);
+         out.println(strNombre);
+      %&gt;<o:p></o:p></span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p></o:p></span></pre>
+      </td>
+    </tr>
+  </table>
+  <p class=MsoNormal>&nbsp; </p>
+  <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1">
+    <tr bgcolor="#CCCC99"> 
+      <td> 
+        <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p></o:p></span><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p><span class="texto"><span class="fecha"><span class="fecha"><span class="subseccion">4. 
+          Expresiones de JSP</span></span></span></span></o:p></span></span><span class="texto"><span class="texto"><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="texto"></o:p></span></span></span></p>
+      </td>
+    </tr>
+  </table>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p class="subseccion"><span class="texto">Las 
+    expresiones son una magnifica herramienta para insertar c&oacute;digo embebido 
+    dentro de la p&aacute;gina HTML. Cualquier cosa que este entre los tags &lt;%= 
+    y %&gt; ser&aacute; evaluado, convertido a cadena y posteriormente mostrado 
+    en pantalla. La conversi&oacute;n desde el tipo inicial a String es manejada 
+    aut&oacute;maticamente. </span></o:p></span><span class="texto"><br>
+    Es importante remarcar que que la expresi&oacute;n no termina en punto y coma 
+    (;) . Esto es as&iacute; porque motro de JSP, pondr&aacute; la expresi&oacute;n 
+    autom&aacute;ticamente entre out.println().</span></p>
+  <p class=MsoNormal><span class="texto">Las expresiones JSP te permiten parametrizar 
+    las p&aacute;ginas HTML (es parecido a cuando parametrizas una consulta SQL 
+    pero difieren la forma de los valores). Una y otra vez , en el c&oacute;digo 
+    de la p&aacute;gina HTML, ser ver&aacute;n bucles o condiciones usando c&oacute;digo 
+    Java, simplemente empezando y acabando las condiciones o bucles entre los 
+    tags &lt;% y %&gt;. Un ejemplo ser&iacute;a:</span></p>
+  <table width="80%" border="0" cellpadding="1" align="center">
+    <tr bgcolor="#CCCCCC"> 
+      <td> 
+        <pre class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><span
+style='mso-tab-count:1'>      </span></span><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt;font-family:"Courier New"'>&lt;% for (int i=0;i&lt;5;i++) { %&gt;
+          &lt;BR&gt;El valor del contador es &lt;%=i%&gt;
+      &lt;% } %&gt;</span><span lang=EN-GB style='font-size:8.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Courier New";mso-ansi-language:EN-GB'><o:p></o:p></span></pre>
+      </td>
+    </tr>
+  </table>
+  <p class=MsoNormal>&nbsp;</p>
+  <hr>
+  <p><span class="texto"><span class="tema">Fin Parte I</span><br>
+    </span></p>
+  <table width="100%" border="0" cellpadding="2" align="center" bgcolor="#CCCCCC">
+    <tr> 
+      <td> 
+        <table width="100%" border="0" align="center" cellpadding="0">
+          <tr bgcolor="#CCCCCC"> 
+            <td width="12%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="index-1.htm" tppabs="http://www.verextremadura.com/miguel/jsp/index.htm">Principal</a> 
+              </font></td>
+            <td width="18%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="parte1.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte1.htm">Parte 
+              I</a> </font></td>
+            <td width="20%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="parte2.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte2.htm">Parte 
+              II</a></font> </td>
+            <td width="31%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="parte3.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte3.htm">Parte 
+              III</a></font> </td>
+            <td width="19%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="parte4.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte4.htm">Parte 
+              IV</a></font></td>
+          </tr>
+          <tr bgcolor="#FFFFFF"> 
+            <td width="12%"><font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Indice</font></td>
+            <td width="18%"><font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Introducci&oacute;n 
+              a JSP</font></td>
+            <td width="20%"><font color="#999999" face="Arial, Helvetica, sans-serif" size="1">Servlets 
+              y JabaBeans</font></td>
+            <td width="31%"><font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Recuperando 
+              datos desde un Servlet</font></td>
+            <td width="19%"> <font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Acceso 
+              a Datos</font></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <p><span class="texto"> <br>
+    Autor: <i><b>Miguel Angel Garc&iacute;a</b></i><br>
+    E-Mail: <a href="mailto:webmaster@verextremadura.conm">webmaster@verextremadura.com</a> 
+    </span></p>
+  </div>
+</body>
+
+</html>

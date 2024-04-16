@@ -1,0 +1,386 @@
+<html>
+<head>
+<title>JavaServerPages.Parte 4</title>
+<style type="text/css"><!--
+.subseccion {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #000000; text-decoration: none}
+.tema {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-transform: uppercase; color: #990000; text-decoration: none}
+.titulo {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16pt; font-weight: bold; color: #000000; text-decoration: none}
+.texto {font-family: Arial, Helvetica, sans-serif; font-size: xx-small; font-weight: normal; color: #333333; text-decoration: none}
+.titulo_entradilla {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #006666; text-decoration: none}
+.fecha {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; color: #990000; text-decoration: none}
+.titulo_tabla {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #000000; text-decoration: none}
+li {  font: x-small Arial, Helvetica, sans-serif}
+-->
+</style>
+</head>
+<body lang=ES bgcolor="#ffffff">
+<span class="MsoNormal"></span> <span class="MsoNormal"></span> 
+<div align="center"> 
+  <table width="100%" border="0">
+    <tr bgcolor="#CCCC99"> 
+      <td> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2" color="#990000" class="titulo"><font size="3" color="#000000"><b>JavaServer 
+          Pages</b></font></font> </div>
+      </td>
+    </tr>
+  </table>
+  <p><span class="texto"><span class="titulo_tabla"><font size="2" face="Times New Roman, Times, serif"><span class="fecha"><b>Parte 
+    IV</b></span></font></span><b> Acceso a Bases de Datos</b></span></p>
+  <p align="left" class="titulo_entradilla">Indice del tema:</p>
+  <table width="70%" border="0" bgcolor="#CCCC99" cellpadding="3">
+    <tr> 
+      <td> 
+        <table width="100%" border="0">
+          <tr bgcolor="#EFEFEF"> 
+            <td> 
+              <ul>
+                <li><span class="subseccion">Qu&eacute; es JDBC</span></li>
+                <li><span class="subseccion">Configurar la conexi&oacute;n a la 
+                  Base de Datos</span></li>
+                <li><span class="subseccion">Ejecutando comandos SQL</span></li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <hr>
+  <table width="100%" border="0">
+    <tr bgcolor="#336699"> 
+      <td><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New";' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Qu&eacute; 
+        es JDBC</font></span></td>
+    </tr>
+  </table>
+  <div align="left"> 
+    <p><br>
+      <span class="texto">JDBC es una API pura de Java que se usa para ejecutar 
+      comandos de SQL. Suministra una serie de clases e interfaces que permiten 
+      al desarrollador de web escribir aplicaciones que gestionen Bases de Datos. 
+      <br>
+      </span></p>
+    <p><span class="texto"> La interacci&oacute;n t&iacute;pica con una base de 
+      datos consta de los siguientes cuatro pasos b&aacute;sicos:</span></p>
+  </div>
+</div>
+<ul>
+  <li> 
+    <div align="center"> 
+      <div align="left"><span class="texto">Abrir la conexi&oacute;n a la base 
+        de datos</span></div>
+    </div>
+  </li>
+  <li> 
+    <div align="center"> 
+      <div align="left"><span class="texto">Ejecutar consultas contra la base 
+        de datos</span></div>
+    </div>
+  </li>
+  <li> 
+    <div align="center"> 
+      <div align="left"><span class="texto">Procesar los resultados</span></div>
+    </div>
+  </li>
+  <li> 
+    <div align="center"> 
+      <div align="left"><span class="texto">Cerrar la conexi&oacute;n a la base 
+        de datos</span> 
+        <div align="center"> 
+          <div align="left"></div>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+<p><br>
+  <span class="texto">Y sin m&aacute;s demora, vamos a ver como se usan los cuantro 
+  pasos anteriores:<br>
+  </span> </p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC"> 
+    <td height="45"> 
+      <pre><font size="1" face="Courier New, Courier, mono"><b>// Paso 1. Abrir la conexi&oacute;n a la base de datos.</b>
+ Connection conexion = DriverManager.getConnection(&quot;jdbc:odbc:Nombre_ODBC&quot;,&quot;usuario&quot;,&quot;password&quot;);
+
+
+
+<b>// Paso 2. Ejecutar consultas a la base de datos.</b>
+ Statement Estamento = conexion.creStatement();
+ ResultSet rs = Estamento.executeQuery(&quot;select dni,nombre,apellidos,edad from agenda&quot;);
+
+
+
+<b>// Paso 3. Procesar los resultados. En este caso los muestra en pantalla</b>.
+ while (rs.next()) {
+    out.println(&quot;DNI -&gt;&quot;+ rs.getString(&quot;dni&quot;));
+    out.println(&quot;NOMBRE -&gt;&quot;+ rs.getString(&quot;nombre&quot;));
+    out.println(&quot;APELLIDOS -&gt;&quot;+ rs.getString(&quot;apellidos&quot;));
+    out.println(&quot;EDAD -&gt;&quot;+ rs.getInt(&quot;edad&quot;));
+    }
+   
+<b>// Paso 4 . Cerrar la conexi&oacute;n a la base de datos</b>.
+ rs.close();
+ Estamento.close();
+ conexion.close();</font></pre>
+    </td>
+  </tr>
+</table>
+<p class="texto">Nota: Mas adelante explicaremos cada una de las instrucciones 
+  vistas en este fragmento de c&oacute;digo.</p>
+<table width="100%" border="0">
+  <tr bgcolor="#336699"> 
+    <td><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New";' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Configurar 
+      la conexi&oacute;n a la Base de Datos</font></span></td>
+  </tr>
+</table>
+<p class="texto">Lo primero que se debe hacer para poder atacar a bases de datos 
+  con p&aacute;ginas JSP o con Servlets, es instalar el Driver correcto de la 
+  base de datos que se desee utilizar. <br>
+  Por ejemplo, supongamos que tenemos una base de datos Microsoft Access. Para 
+  instalar el puente JDBC-ODBC, simplemente bajamos el JDK y seguimos la directrices 
+  de instalaci&oacute;n del mismo. El puente JDBC-ODBC est&aacute; inclu&iacute;do 
+  en JDK desde la versi&oacute;n 1.1.</p>
+<p class="texto"><b><i>Configurando ODBC para Access</i></b><br>
+  <br>
+  El puente JDBC-ODBC no necesita pasos espec&iacute;ficos para su instalaci&oacute;n, 
+  pero ODBC si. Por ejemplo si asumimos que estamos utilizando un m&aacute;quina 
+  con Windows/9x o NT. necesitaremos configurar nuestra conexi&oacute;n mediante 
+  ODBC, si has llegado hasta aqu&iacute; estoy seguro que alguna vez has configurado 
+  una conexi&oacute;n mediante ODBC a cualquier base de datos, ya sea Access, 
+  Oracle o SQL Server, as&iacute; que la configuraci&oacute;n de la conexi&oacute;n 
+  de ODBC, no vamos a detallarla demasiado, s&oacute;lo informar&eacute; de los 
+  pasos b&aacute;sicos, que se ven en la siguiente lista:</p>
+<ol>
+  <li><span class="texto"><span class="texto"><span class="texto">Ir al Panel 
+    de Control.</span></span></span></li>
+  <li><span class="texto"><span class="texto"><span class="texto">Fuentes de datos 
+    ODBC.</span></span></span></li>
+  <li><span class="texto"><span class="texto"><span class="texto">Agregar.</span></span></span></li>
+  <li><span class="texto"><span class="texto"><span class="texto">Seleccionar 
+    Driver <i>Controlador para Microsoft Access (*.mdb).</i></span></span></span></li>
+  <li><span class="texto"><span class="texto"><span class="texto">Facilitar a 
+    la conexi&oacute;n ODBC las caracter&iacute;sticas b&aacute;sicas de la base 
+    de datos.</span></span></span></li>
+</ol>
+<p class="texto">Mediante estos pasos suponemos que ya hemos configurado el ODBC.</p>
+<p class="texto"><b><i>Estableciendo la conexi&oacute;n</i></b><br>
+  <br>
+  La primera cosa que debe hacerse para trabajar con bases de datos es establecer 
+  la conexi&oacute;n con la base de datos, para ello tenemos dos simples pasos, 
+  cargar el driver y establecer la conexi&oacute;n.</p>
+<p class="texto">Cargar el driver es una operaci&oacute;n muy simple que requiere 
+  s&oacute;lo una &uacute;nica l&iacute;nea de c&oacute;digo.Si vamos a cargar 
+  una fuente ODBC utilizaremos una clase llamada sun.jdbc.odbc.jdbcOdbcDriver 
+  y la instrucci&oacute;n de c&oacute;digo quedar&iacute;a as&iacute;</p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC"> 
+    <td height="45">
+      <pre><font size="1" face="Courier New, Courier, mono"> Class.forName(&quot;sun.jdbc.odbc.JdbcOdbDriver);</font></pre>
+    </td>
+  </tr>
+</table>
+<p class="texto">Cuando se llama a Class.forName, lo que se est&aacute; haciendo 
+  es crear una instancia al driver y registrarlo con el DriverManager. Esto es 
+  lo &uacute;nico que hay que hacer para cargar el Driver</p>
+<p class="texto">Despu&eacute;s de esto, necesitamos esblacer una conexi&oacute;n 
+  a la base de datos mediante el ODBC que hemos creado anteriormente, para ello 
+  bastar&iacute;a con esta l&iacute;nea de c&oacute;digo.</p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC"> 
+    <td height="45"> 
+      <pre><font size="1" face="Courier New, Courier, mono"> conexion = DriverManager.getConnection(&quot;jdbc:odbc:NombreODBC&quot;,&quot;nombre_usuario&quot;,&quot;clave&quot;);</font></pre>
+    </td>
+  </tr>
+</table>
+<p class="texto">La conexi&oacute;n a la base de datos, ya est&aacute; realizada, 
+  esto es debido al m&eacute;todo est&aacute;tico DriverManager.getConnection(); 
+  que lo que hace es devolver una conexi&oacute;n a la base de datos. <br>
+  Los param&eacute;tros son tres, uno es la URL d&oacute;nde se encuentra la base 
+  de datos, y los otros se explican por si s&oacute;lo, el segundo es el nombre 
+  de usuario y tercero es el password para poder acceder a la base de datos.</p>
+<p class="texto">Imaginemos ahora que tenemos una base de datos <i><b>ORACLE</b></i> 
+  llamada <b>BASE</b> en un servidor cuya direcci&oacute;n HTTP es <i><b>171.10.10.1</b></i> 
+  en el puerto <i><b>1515</b></i>.El nombre de usuario es <i><b>miguel</b></i> 
+  y la contrase&ntilde;a es <i> <b>gato</b></i>. </p>
+<p class="texto">En este caso la conexi&oacute;n se har&iacute;a de la siguiente 
+  manera:</p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC"> 
+    <td height="45"> 
+      <pre><font size="1" face="Courier New, Courier, mono">String dbURL = &quot;jdbc:oracle:thin:@171.10.10.1:1515:BASE&quot;;
+String usuario = &quot;miguel&quot;;
+String pwd = &quot;gato&quot;;
+Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);
+Connection conexion = DriverManager.getConnection(dbURL,usuario,pwd);</font></pre>
+    </td>
+  </tr>
+</table>
+<p class="texto">Con estas instrucciones tan simples y teniendo el diver adecuado 
+  de Oracle se har&iacute;a una conexi&oacute;n a una base de datos ORACLE.</p>
+<table width="100%" border="0">
+  <tr bgcolor="#336699"> 
+    <td><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New";' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Ejecutando 
+      consultas a la Base de Datos</font></span></td>
+  </tr>
+</table>
+<p class="texto"><b><span class="texto">Para ejecutar cualquier instrucci&oacute;n 
+  SQL contra la base de datos debemos usar el objeto estamento. Para crearlo tiene 
+  que llamarse al m&eacute;todo Connection.createStatements(). Este devolver&aacute; 
+  un estamento que sirve para enviar las consultas a la base de datos. Con la 
+  siguiente instrucci&oacute;n se crea un estamento.</span></b></p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC"> 
+    <td height="45"> 
+      <pre><font size="1">Statement estamento = conexion.createStatement();</font></pre>
+    </td>
+  </tr>
+</table>
+<p class="texto">Para los que est&eacute;n familiarizados con Visual Basic, podr&aacute;n 
+  enterderlo mejor si lo consideran como si fuera el objeto Workspace</p>
+<p class="texto">El paso siguiente es ejecutar instrucciones SQL, estas instrucciones 
+  pueden ser cualquiera que nos haga falta para gestionar nuestra base de datos. 
+  Por ejemplo, gracias al Estamento, podemos ejecutar instrucciones como SELECT, 
+  UPDATE o DELETE. Veamos un ejemplo completo:</p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC" valign="top"> 
+    <td height="45"> 
+      <pre><font size="1" face="Courier New, Courier, mono"> import java.sql.*;
+ public class CrearTablaAgenda{
+     public void CrearTablas(){
+       Connection conexion = null; 
+       String strSQL = &quot;&quot;;
+       try {
+
+            Class.forName(&quot;sun.jdbc.odbc.JdbcOdbcDriver&quot;);
+            conexion = DiverManager(&quot;jdb:odbc:NombreODBC&quot;,&quot;nombre_usuario&quot;,&quot;clave&quot;);
+            Statement Estamento = conexion.createStatement();
+            strSQL = &quot;CREATE TABLE AGENDA (DNI VARCHAR(5),NOMBRE VARCHAR(30),APELLIDOS VARCHAR(30))&quot;;
+            Estamento.executeUpdate(strSQL);
+
+       } catch (SQLException excepcion_SQL) {
+
+                System.err.println(excepcion_SQL.getMessage());
+
+       } catch (ClassnotFoundException excepcion_ClassForName) {
+
+                System.err.println(excepcion_ClassForName.getMessage());
+
+
+       } catch (Exception excepcion_general) {
+                System.err.println(excepcion_general.getMessage());
+       } finally {
+            try {
+                if (conexion != null) { 
+                      conexion.close();
+                 }
+                }
+        }catch (SQLException sql_excepcion) {
+                 System.err.println(sqq_excepcion.getMessage());
+         }
+        }
+      }
+     public static void main(String[] argumentos) {
+         CrearTablaAgenga tablas_agenda = new CrearTablaAgenga();
+         tablas_agenda.CrearTablas();
+      }
+}
+</font></pre>
+    </td>
+  </tr>
+</table>
+<p class="texto">En realidad puede llegar a asustar tanto c&oacute;digo, pero 
+  la verdad es que lo que m&aacute;s ocupa es el control de las excepciones de 
+  error, como todos sabemos los errores pueden o no controlarse, yo recomiendo 
+  controlarlos al m&aacute;ximo posible y creo adem&aacute;s que es una buena 
+  pr&aacute;ctica a la hora de programar. Si nos fijamos la conexi&oacute;n a 
+  la base de datos, y la ejecuci&oacute;n de la sentencia SQL ocupa s&oacute;lo 
+  cinco lineas (cuatro si quitamos la variable strSQL).</p>
+<p class="texto">Las instrucciones INSERT, UPDATE y DELETE al ser su codificaci&oacute;n 
+  igual que la que acabamos de ver, no vamos a remarcar m&aacute;s en ellos, pero 
+  lo que si vamos a ver es la clausula SELECT, ya que tiene una menejo distinto 
+  de los resultados.</p>
+<p class="texto">Lo m&aacute;s com&uacute;n es mostrar los resultados en pantalla 
+  de una sentencia SELECT, para ello valga el siguiente fragmento de c&oacute;digo:</p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC" valign="top"> 
+    <td height="45"> 
+      <pre><font size="1" face="Courier New, Courier, mono">
+  Class.forName(&quot;sun.jdbc.odbc.JdbcOdbcDriver&quot;);
+  cn = DiverManager(&quot;jdb:odbc:NombreODBC&quot;,&quot;nombre_usuario&quot;,&quot;clave&quot;);
+  StringBuffer strsql = new StringBuffer(); 
+
+  strsql.append(" SELECT "); 
+  strsql.append(" DNI, "); 
+  strsql.append(" NOMBRE, "); 
+  strsql.append(" APELLIDOS, "); 
+  strsql.append(" EDAD "); 
+  strsql.append(" FROM AGENDA ");   
+  strsql.append(" ORDER BY NOMBRE ");
+
+  Statement s=cn.createStatement();
+
+  ResultSet rs = s.executeQuery(strsql.toString());
+
+  out.println(&quot;&lt;TABLE&gt;&quot;);
+  out.println(&quot;&lt;TR&gt;&quot;);
+  out.println(&quot;&lt;TD&gt;DNI&lt;/TD&gt;&quot;);
+  out.println(&quot;&lt;TD&gt;NOMBRE&lt;/TD&gt;&quot;);
+  out.println(&quot;&lt;TD&gt;APELLIDOS&lt;/TD&gt;&quot;);
+  out.println(&quot;&lt;TD&gt;EDAD&lt;/TD&gt;&quot;);
+  out.println(&quot;&lt;/TR&gt;&quot;);
+  while (rs.next()){
+     out.println(&quot;&lt;TR&gt;&quot;);
+     out.println(&quot;&lt;TD&gt;&quot; + rs.getString(&quot;DNI&quot;)       + &quot;&lt;/TD&gt;&quot;);
+     out.println(&quot;&lt;TD&gt;&quot; + rs.getString(&quot;NOMBRE&quot;)    + &quot;&lt;/TD&gt;&quot;);
+     out.println(&quot;&lt;TD&gt;&quot; + rs.getString(&quot;APELLIDOS&quot;) + &quot;&lt;/TD&gt;&quot;);
+     out.println(&quot;&lt;TD&gt;&quot; + rs.getString(&quot;EDAD&quot;)      + &quot;&lt;/TD&gt;&quot;);
+     out.println(&quot;&lt;/TR&gt;&quot;);
+  }
+  out.println(&quot;&lt;/TABLE&gt;&quot;);
+
+  rs.close();
+  s.close();
+  cn.close();</font></pre>
+    </td>
+  </tr>
+</table>
+<p class="texto">&nbsp;</p>
+<p class="texto">&nbsp; </p>
+<hr>
+<p><span class="texto"><span class="tema">Fin Parte IV</span></span></p>
+<table width="100%" border="0" cellpadding="2" align="center" bgcolor="#CCCCCC">
+  <tr> 
+    <td> 
+      <table width="100%" border="0" align="center" cellpadding="0">
+        <tr bgcolor="#CCCCCC"> 
+          <td width="12%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="index-1.htm" tppabs="http://www.verextremadura.com/miguel/jsp/index.htm">Principal</a> 
+            </font></td>
+          <td width="18%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="parte1.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte1.htm">Parte 
+            I</a> </font></td>
+          <td width="20%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="parte2.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte2.htm">Parte 
+            II</a></font> </td>
+          <td width="31%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="parte3.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte3.htm">Parte 
+            III</a></font> </td>
+          <td width="19%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="parte4.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte4.htm">Parte 
+            IV</a></font></td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td width="12%"><font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Indice</font></td>
+          <td width="18%"><font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Introducci&oacute;n 
+            a JSP</font></td>
+          <td width="20%"><font color="#999999" face="Arial, Helvetica, sans-serif" size="1">Servlets 
+            y JabaBeans</font></td>
+          <td width="31%"><font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Recuperando 
+            datos desde un Servlet</font></td>
+          <td width="19%"> <font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Acceso 
+            a Datos</font></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p><span class="texto"> Autor: <i><b>Miguel Angel Garc&iacute;a</b></i><br>
+  E-Mail: <a href="mailto:webmaster@verextremadura.conm">webmaster@verextremadura.com</a> 
+  </span></p>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<html>
+<head>
+<title>JavaServerPages.Parte 2</title>
+<style type="text/css"><!--
+.subseccion {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #000000; text-decoration: none}
+.tema {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-transform: uppercase; color: #990000; text-decoration: none}
+.titulo {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16pt; font-weight: bold; color: #000000; text-decoration: none}
+.texto {font-family: Arial, Helvetica, sans-serif; font-size: xx-small; font-weight: normal; color: #333333; text-decoration: none}
+.titulo_entradilla {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #006666; text-decoration: none}
+.fecha {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; color: #990000; text-decoration: none}
+.titulo_tabla {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #000000; text-decoration: none}
+-->
+</style>
+</head>
+<body lang=ES bgcolor="#ffffff">
+<span class="MsoNormal"></span> <span class="MsoNormal"></span> 
+<div align="center"> 
+  <table width="100%" border="0">
+    <tr bgcolor="#CCCC99"> 
+      <td> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2" color="#990000" class="titulo"><font size="3" color="#000000"><b>JavaServer 
+          Pages</b></font></font> </div>
+      </td>
+    </tr>
+  </table>
+  <p><span class="texto"><span class="titulo_tabla"><font size="2" face="Times New Roman, Times, serif"><span class="fecha"><b>Parte 
+    II</b></span></font></span><b> Servlets y JavaBeans</b></span></p>
+  <p align="left" class="titulo_entradilla">Indice del tema:</p>
+  <table width="70%" border="0" bgcolor="#CCCC99" cellpadding="3">
+    <tr> 
+      <td> 
+        <table width="100%" border="0">
+          <tr bgcolor="#EFEFEF"> 
+            <td> 
+              <ul>
+                <li><span class="subseccion">Introducci&oacute;n a los Servlets</span></li>
+                <li><span class="subseccion">Ciclo de vida de un servlet</span></li>
+                <li><span class="subseccion">Un Servlet B&aacute;sico</span></li>
+                <li><span class="subseccion">Contruyendo e instalando el Serlvet 
+                  B&aacute;sico </span></li>
+                <li><span class="subseccion">Qu&eacute; es un JavaBean</span></li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <hr>
+  <table width="100%" border="0">
+    <tr bgcolor="#336699"> 
+      <td><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New";' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Introducci&oacute;n 
+        a los Servlets</font></span></td>
+    </tr>
+  </table>
+  <div align="left"><br>
+    <span class="texto">La herramienta m&aacute;s importante que se usa a la hora 
+    de desarrollar web con Jsp son los Servlets; los servlets son la primera l&iacute;nea 
+    de batalla del desarrollo de las aplicaciones web. Estos aportan una manera 
+    facil para que nuestro servidor se comunique con el lado cliente.</span> 
+    <p><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"> 
+      </span></span></span><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"><span class="texto">Los 
+      servlets dan un modelo general de clases para ejecutar servicios. Al m&aacute;s 
+      b&aacute;sico nivel, este es la definici&oacute;n de un servidor.</span></span></span></span></p>
+    <p><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"><span class="texto">Tanto 
+      la API de los servlets como el motor de servlets pueden ser bajados como 
+      parte de <a href="tppmsgs/msgs0.htm#1" tppabs="http://java.sun.com/products/servlet/">Java Servlet Development 
+      Kit</a> (JSDK) en la p&aacute;gina web de Sun.</span></span></span></span></p>
+    <p><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"><b>Contenedor 
+      de Servlet</b></span></span></span></p>
+    <p><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"><span class="texto">El 
+      contenedor de servlets tiene que encargarse, entre otras cosas, de pasar 
+      las peticiones del cliente al servlet y este &uacute;ltimo de devolver la 
+      respuesta solicitada al cliente. La implementaci&oacute;n actual del servlet 
+      difiere de un programa a otro, pero la interface entre contenedor del servlet 
+      y el servlet se especifica en la API del servlet.</span></span></span></span></p>
+    <p><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"><span class="texto">Basicamente, 
+      el ciclo de vida de un servlet es como se detalla a continuaci&oacute;n:</span></span></span></span> 
+    </p>
+  </div>
+</div>
+<ul>
+  <li> 
+    <div align="center"> 
+      <div align="left"><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"><span class="texto">El 
+        contenedor de servlet crea una instancia del servlet</span></span></span></span></div>
+    </div>
+  </li>
+  <li> 
+    <div align="center"> 
+      <div align="left"><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"><span class="texto">El 
+        contenedor llama al m&eacute;todo init() del servlet</span></span></span></span></div>
+    </div>
+  </li>
+  <li> 
+    <div align="center"> 
+      <div align="left"><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"><span class="texto">Si 
+        el contenedor tiene una petici&oacute;n para el servlet, se llama al m&eacute;todo 
+        service()</span></span></span></span></div>
+    </div>
+  </li>
+  <li> 
+    <div align="center"> 
+      <div align="left"><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"><span class="texto">Despu&eacute;s 
+        de destruir la instancia, el contenedor llama al m&eacute;todo destroy()</span></span></span></span></div>
+    </div>
+  </li>
+  <li> 
+    <div align="center"> 
+      <div align="left"><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"><span class="texto">La 
+        instancia es destru&iacute;da y marcada como una colecci&oacute;n desechada.</span></span></span></span></div>
+    </div>
+    
+  </li>
+</ul>
+<table width="100%" border="0">
+  <tr bgcolor="#336699"> 
+    <td><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New";' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Ciclo 
+      de vida de un Servlet</font></span></td>
+  </tr>
+</table>
+<p><b class="texto">El ciclo de vida de un Servlet tiene un dise&ntilde;o muy 
+  simple orientado a objetos. Un Servlet es constru&iacute;do e inicializado, 
+  despu&eacute;s se procesan cero o varias peticiones y por &uacute;ltimo se destruye. 
+  En este punto el servlet es totalmente destru&iacute;do y es una colecci&oacute;n 
+  de deshechos. Este dise&ntilde;o explica porque un Servlet reemplaza perfectamente 
+  a un CGI. El servlet es cargado un s&oacute;la vez y est&aacute; residente en 
+  memoria mientras se procesan las respuestas, </b></p>
+<p><b><span class="texto">La interface que define esta estructura es javax.servlet.Serlvet. 
+  La interface del Serlvet define lo m&eacute;todos del ciclo de vida. Estos m&eacute;todos 
+  son </span></b><span class="texto"><i>Init()</i></span><b><span class="texto">, 
+  el m&eacute;todo </span></b><span class="texto"><i>service()</i></span><b><span class="texto"> 
+  y el m&eacute;todo </span></b><span class="texto"><i>destroy()</i></span><b><span class="texto">;</span></b></p>
+<p><span class="texto"><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><b>Init()</b></span></span></span></span></p>
+<p><span class="texto">En el m&eacute;todo Init() es d&oacute;nde empieza la vida 
+  de un servlet. Es llamado inmediatamente despu&eacute;s de ser instanciado. 
+  Y es llamado un s&oacute;lo vez. El m&eacute;todo Init() crea e inicializa los 
+  recursos que ser&aacute;n usados mientras se manejan las peticiones. Este m&eacute;todo 
+  tiene la siguiente forma:</span></p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC"> 
+    <td height="45"><code><font size="1">public void init(ServletConfig config) 
+      throws ServletException;</font></code></td>
+  </tr>
+</table>
+<p class="subseccion">&nbsp;</p>
+<p class="subseccion"><span class="texto"><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><b>Service()</b></span></span></span></span></p>
+<p class="subseccion"><b class="texto">El m&eacute;todo Service() majena las peticiones 
+  enviadas por el cliente.No pueden dar comienzo los servicios de las peticiones 
+  hasta que el m&eacute;todo Init() no ha sido ejecutado.</b><b class="texto">La 
+  implementaci&oacute;n m&aacute;s habitual del met&oacute;do Service() est&aacute; 
+  en la clase HttServlet. <br>
+  La forma del m&eacute;todo Services es como sigue:</b></p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC"> 
+    <td height="45"><code><font size="1">public void service(ServletRequest peticion, 
+      ServletResponse respuesta) throws ServletExpetion, IOException;</font></code></td>
+  </tr>
+</table>
+<p class="subseccion"><span class="texto">El m&eacute;todo service() implementa 
+  el paradigma de la respuesta y de la petici&oacute;n. El objeto ServletRequest 
+  contiene informaci&oacute;n sobre la petici&oacute;n del servicio e informaci&oacute;n 
+  encapsulada que proporciona el cliente. El objeto ServletResponse contiene la 
+  informaci&oacute;n que se devuelve al cliente.</span></p>
+<p class="subseccion"><span class="texto"><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><b>Destroy()</b></span></span></span></span></p>
+<p class="subseccion"><span class="texto">Este m&eacute;todo significa el final 
+  de la vida de un Servlet. Cuando un servicio se finaliza se llama al m&eacute;todo 
+  Destroy(). Este m&eacute;todo es d&oacute;nde todos los recursos creados en 
+  el m&eacute;todo Init() deben ser limpiados. Por ejemplo es el lugar d&oacute;nde, 
+  si tenemos una conexi&oacute;n a una base de datos, debe cerrarse. Tambi&eacute;n 
+  es el lugar d&oacute;nde debe guardarse informaci&oacute;n persistente en caso 
+  de que la utilicemos en alg&uacute;n otro servicio. Esta es la forma que tiene 
+  el m&eacute;todo Destroy():</span></p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC"> 
+    <td height="45"><code><font size="1">public void destroy();</font></code></td>
+  </tr>
+</table>
+<p class="subseccion">&nbsp;</p>
+<table width="100%" border="0">
+  <tr bgcolor="#336699"> 
+    <td><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New";' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Un 
+      Servlet b&aacute;sico</font></span></td>
+  </tr>
+</table>
+<p class="texto">A continuaci&oacute;n se muestra la estructura que tiene un Servlet 
+  B&aacute;sico.</p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC"> 
+    <td height="45"> 
+      <pre><font face="Courier New, Courier, mono" size="1">import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import java.util.*;
+         
+public class ServletBasico extends HttpServlet{
+  public void init(ServletConfig config) throws SerlvetException {
+   // Siempre se pasa el objet ServletConfig a la superclase
+     super.init(config);
+}
+// Proceso HTTP Get de la petici&oacute;n
+public void doGet(HttpSerlvetRequest peticion,HttpserlvetResponse respuesta) 
+                   throws SerlvetException, IOException {
+     respuesta.setContentType(&quot;text/html&quot;);<br>     PrintWriter out = respuesta.getWriter();
+     out.println(&quot;&lt;html&gt;&quot;);
+     out.println(&quot;&lt;head&gt;&lt;title&gt;Servlet Basico&lt;/title&gt;&lt;/head&gt;&quot;);
+     out.println(&quot;&lt;body&gt;&quot;);
+     // Imprime en pantalla el m&eacute;todo enviado por la petici&oacute;n
+     out.println(&quot;El m&eacute;todo de la petici&oacute;n es&quot; + peticion.getMethod()+&quot;\n&quot;);
+     out.println(&quot;&lt;/body&gt;&lt;/html&gt;&quot;);
+     out.close();
+}
+
+// Proceso HTTP Post de la petici&oacute;n
+public void doPost(HttpSerlvetRequest peticion,HttpServletResponse respuesta)          
+                    throws ServletException,IOException {
+
+     respuesta.setContentType(&quot;text/html&quot;);<br>     PrintWriter out = respuesta.getWriter();
+     out.println(&quot;&lt;html&gt;&quot;);
+     out.println(&quot;&lt;head&gt;&lt;title&gt;Servlet Basico&lt;/title&gt;&lt;/head&gt;&quot;);
+     out.println(&quot;&lt;body&gt;&quot;);
+     // Imprime en pantalla el m&eacute;todo enviado por la petici&oacute;n
+     out.println(&quot;El m&eacute;todo de la petici&oacute;n es&quot; + peticion.getMethod()+&quot;\n&quot;);
+     out.println(&quot;&lt;/body&gt;&lt;/html&gt;&quot;);
+     out.close();
+}
+
+// Devuelve la informaci&oacute;n del Servlet
+public String getServletInfo(){
+     return &quot;Informaci&oacute;n del Servlet de ejemplo b&aacute;sico&quot;;
+}</font></pre>
+      </td>
+  </tr>
+</table>
+<p class="texto">En este Servlet, se han pasado por encima m&eacute;todos tambi&eacute;n 
+  muy importantes, pero debido a la naturaleza b&aacute;sica de este tutorial 
+  no los comentaremos en detalle al menos de momento, pero si merece la pena la 
+  menos nombrarlos.</p>
+<table width="70%" border="0" bgcolor="#CCCCCC" cellpadding="3" align="center">
+  <tr>
+    <td>
+      <table width="100%" border="0" align="center" cellpadding="3" cellspacing="0">
+        <tr bgcolor="#CCCCCC"> 
+          <td class="titulo_tabla">M&eacute;todo</td>
+          <td class="titulo_tabla">Descripci&oacute;n</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td class="texto">getAuthType</td>
+          <td class="texto">Devuelve el equema de aut&eacute;ntificaci&oacute;n 
+            de la petici&oacute;n.</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td class="texto">getCookies</td>
+          <td class="texto">Devuelve un array de Cookies encontrados en la petici&oacute;n.</td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td class="texto">getHeader()</td>
+          <td class="texto">Devuelve las especificaciones del campo de cabecera 
+            de la petici&oacute;n. </td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td class="texto" colspan="2">Hay otros muchos m&eacute;todos, como 
+            getServetPath, getQueryString(), getSession(), getMethod() etc, que 
+            de momento no comentaremos.</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+<table width="100%" border="0">
+  <tr bgcolor="#336699"> 
+    <td><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New";' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Contruyendo 
+      e instalando el Servlet B&aacute;sico</font></span></td>
+  </tr>
+</table>
+<p class="texto">Existen dos pasos necesarios para completar la ejecuci&oacute;n 
+  de todo servlet:</p>
+<ol>
+  <li class="texto">Compilar el Servlet.</li>
+  <li class="texto">Colocarlo en un lugar d&oacute;nde Java Web Server pueda econtrarlo.</li>
+</ol>
+<p><span class="texto">Para compilar el Servlet puede hacerse mediante cualquier 
+  entorno de programaci&oacute;n de Java, como puede ser <i>JBuilder </i>o bien 
+  mediante <i>JSDK.</i> Hay que asegurarse que el <i>SDK</i> de Servlet est&aacute; 
+  en el <i>CLASSPATH</i>. Si se tiene instalado en Java Web Server puede encontrarse 
+  en el archivo <i>lib/jws.jar</i>.</span></p>
+<p><span class="texto">Despu&eacute;s de compilar, lo primero que debe hacer es 
+  poner el archivo generado .class en el <i>CLASSPATH</i>. La forma m&aacute;s 
+  sencilla de hacer esto es moverlo a la carpeta <i>/servlet.</i></span></p>
+<p><span class="texto">Por ultimo para llamar al servlet debe hacerse de la siguiente 
+  manera: <i>http://localhost:8080/servlet/ServletBasico</i> o mejor a&uacute;n 
+  creando una simple p&aacute;gina web que invoque al m&eacute;todo <i>doGet()</i> 
+  o al m&eacute;todo <i>doPost()</i>.</span></p>
+<p><span class="texto">Esta ser&iacute;a la p&aacute;gina web sencilla que llamar&iacute;a 
+  al servlet:</span></p>
+<table width="90%" border="0" align="center">
+  <tr bgcolor="#CCCCCC"> 
+    <td height="45"> 
+      <pre>
+
+<font size="1" face="Courier New, Courier, mono">&lt;html&gt;
+&lt;head&gt;
+
+&lt;title&gt;Servlet B&aacute;sico&lt;/title&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action=&quot;http://localhost:8080/servlet/ServletBasico&quot; 
+      method=&quot;post&quot;&gt;
+
+      &lt;input type=&quot;submit&quot; value=&quot;Enviar&quot; name=&quot;btn_enviar&quot;&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+
+
+</font></pre>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="100%" border="0">
+  <tr bgcolor="#336699"> 
+    <td><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New";' class="titulo"><font face="Arial, Helvetica, sans-serif" size="3" color="#FFFFFF">Qu&eacute; 
+      es una JavaBean</font></span></td>
+  </tr>
+</table>
+<p><span class="texto"><span
+style='font-size:8.0pt;font-family:Arial'><span class="texto">Cuando analizamos 
+  el desarrollo de la arquitectura de una aplicaci&oacute;n que envuelve JavaSerPages, 
+  es una buena idea intentar poner toda la l&oacute;gica de negocio en componentes 
+  reutilizables. Estos componentes pueden ser insertados dentro de una p&aacute;gina 
+  JSP cuando sean requeridos.</span></span></span></p>
+<p><span class="texto">El lenguage Java implementa la idea de componentes con 
+  los llamados JavaBeans<span class="texto"><span style='font-size:8.0pt;font-family:Arial'>. 
+  </span></span></span><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><span class="texto">Un 
+  JavaBean es una clase de Java que se adapta a </span></span></span></span><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto">los 
+  siguientes criterios:</span></span></span><span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto"></span></span></span></p>
+<ul>
+  <li> <span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto">Clase 
+    publica.</span></span></span></li>
+  <li> <span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto">Contructor 
+    p&uacute;blico sin argumentos.</span></span></span></li>
+  <li> <span class="texto"><span class="texto"><span style='font-size:8.0pt;font-family:Arial'><o:p class="texto">Posee 
+    m&eacute;todos publicos &quot;Set&quot; y &quot;Get&quot; con el fin de simular 
+    propiedades. El m&eacute;todo &quot;Get&quot; no tiene argumentos al menos 
+    que haga funci&oacute;n de propiedad indexada.<br>
+    </span></span></span></li>
+</ul>
+<p class="texto">Las propiedades son siempre colocadas y recuperadas utilizando 
+  una conveci&oacute;n denominada com&uacute;n. Para cada propiedad, deben existir 
+  dos m&eacute;todos, uno getxxx() y otro setxxx() d&oacute;nde xxx es el nombre 
+  de la propiedad.</p>
+<p class="texto">Ya sabemos que un Bean es como cualquier otra clase de Java y 
+  tipicamente un Bean es incorporado o insertado dentro de un programa, sus propiedades 
+  son colocadas y sus m&eacute;todos llamados.</p>
+<p class="texto">Casi en todos los casos los Beans son usados para encapsular 
+  elementos de la GUI visuales y no visuales. Hay muchas maneras elegantes y eficientes 
+  de enlazar un Bean para implementar drag-and-drop y salvar el estado de un Bean 
+  entre instancias. <br>
+  La meta final de los JavaBeans, es tener una herramienta gr&aacute;fica en nuestro 
+  c&oacute;digo, pero si no pensamos en ellos como algo meramente gr&aacute;fico, 
+  el poder entenderlos nos resultar&aacute; m&aacute;s facil.</p>
+<p class="texto">Por esta historia, los JavaBeans, no tiene sitio en JSP, al menos 
+  no si los tenemos en cuenta con el objetivo para lo que fueron dise&ntilde;ados. 
+  Si pensamos en ellos como componentes, como simple encapsulaci&oacute;n de c&oacute;digo 
+  Java, entonces su prop&oacute;sito est&aacute; m&aacute;s claro. Los Beans hacen 
+  que nuestras p&aacute;ginas no est&eacute;n aisladas.</p>
+<p class="texto">Mucha de la l&oacute;gica de negocio que hayamos podido pensar 
+  estar&iacute;a mejor colocada en un Enterprise JavaBean, d&oacute;nde las transacciones 
+  y el escalado son problemas del contenedor y no del Bean. Estos pesos pesados 
+  son necesarios algunas veces pero pienso que los JavaBeans gr&aacute;ficos est&aacute;n 
+  por encima del trabajo sencillo que estamos viendo en este tutorial.</p>
+<hr>
+<p><span class="texto"><span class="tema">Fin Parte II</span></span></p>
+<table width="100%" border="0" cellpadding="2" align="center" bgcolor="#CCCCCC">
+  <tr> 
+    <td> 
+      <table width="100%" border="0" align="center" cellpadding="0">
+        <tr bgcolor="#CCCCCC"> 
+          <td width="12%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="index-1.htm" tppabs="http://www.verextremadura.com/miguel/jsp/index.htm">Principal</a> 
+            </font></td>
+          <td width="18%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="parte1.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte1.htm">Parte 
+            I</a> </font></td>
+          <td width="20%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="parte2.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte2.htm">Parte 
+            II</a></font> </td>
+          <td width="31%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="parte3.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte3.htm">Parte 
+            III</a></font> </td>
+          <td width="19%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a href="parte4.htm" tppabs="http://www.verextremadura.com/miguel/jsp/parte4.htm">Parte 
+            IV</a></font></td>
+        </tr>
+        <tr bgcolor="#FFFFFF"> 
+          <td width="12%"><font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Indice</font></td>
+          <td width="18%"><font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Introducci&oacute;n 
+            a JSP</font></td>
+          <td width="20%"><font color="#999999" face="Arial, Helvetica, sans-serif" size="1">Servlets 
+            y JabaBeans</font></td>
+          <td width="31%"><font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Recuperando 
+            datos desde un Servlet</font></td>
+          <td width="19%"> <font face="Arial, Helvetica, sans-serif" size="1" color="#999999">Acceso 
+            a Datos</font></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p><span class="texto"> Autor: <i><b>Miguel Angel Garc&iacute;a</b></i><br>
+  E-Mail: <a href="mailto:webmaster@verextremadura.conm">webmaster@verextremadura.com</a> 
+  </span></p>
+<p>&nbsp;</p>
+</body>
+</html>
