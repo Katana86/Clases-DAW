@@ -1,0 +1,317 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>
+JavaScript METHOD: window::open
+</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT  = "O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</A>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td></tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 src="/images/grey.gif" width=2><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<A href="test_list.html"><IMG border=0 height=21 src="images/cant_find.gif" width=200 ></A><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" target = "body">
+	<option value="js_objects.html" selected>All Objects
+    <option value="window.html">Window Object
+	<option value="win_closed.html">window.closed</select></font><br></td>
+	
+<td valign="top" width="20"><br>
+<A href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  BORDER = 0><IMG border=0 height=22 src="images/go.gif" width=20  value = Go><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+          <IMG border=0 height=1885 src="/images/grey.gif" width=2 ><br>
+</center>
+</td>
+
+      <td valign="top" width="460"> <FONT    
+      face="arial, helvetica" size='2'> <font size="+1"> <!-- TEMPLATE: Item name -->METHOD: 
+        &nbsp;Window::open <!-- END TEMPLATE --> </font></font> <BR>
+        <HR>
+        <FONT    
+      face="arial, helvetica" size='2'> <b><span class="object">window.</span><span class="PROPERTY">open</span><span class="argument">(URL, 
+        name [, features])</span></b><br>
+        <br>
+        <!-- TEMPLATE: Item Description, examples, etc. -->This method is used 
+        to open a new browser window. Note that, when using this method with event 
+        handlers, you must use the syntax <b>window.open()</b> as opposed to just 
+        <b>open()</b>. Calling just<b> open()</b> will, because of the scoping 
+        of static objects in JavaScript, create a new document (equivalent to 
+        <b>document.open()</b>), not a window. 
+        <P>
+        The available parameters are as follows: <br>
+        <br>
+        <b class="ARGUMENT">URL</b> - this is a string containing the URL to open 
+        in the new window.<br>
+        <br>
+        <b class="ARGUMENT">name</b> - this is a string containing the name of 
+        the new window. This can be used as the 'target' attribute of a &lt;FORM&gt; 
+        or &lt;A&gt; tag to point to the new window. <br>
+        <br>
+        <b class="ARGUMENT">features</b> - this is an optional string that contains 
+        details of which of the standard window features are to be used with the 
+        new window. This takes the form of a comma-delimited list. Most of these 
+        features require yes or no (1 or 0 is also o.k.) and any of these can 
+        be turned on by simply listing the feature (they default to yes). Also, 
+        if you don't supply any of the feature arguments, all features with a 
+        choice of yes or no are enabled; if you do specify any feature parameters, 
+        <b>titlebar</b> and <b>hotkeys</b> still default to yes but all others 
+        are no. Details of the available features are given below. <br>
+        </font><br>
+        <table width="94%" border="0">
+          <tr>
+            <td height="22" width="30%" valign="bottom"><font face="Arial, Helvetica, sans-serif"><b><font size="2">Feature</font></b></font></td>
+            <td height="22" width="70%" valign="bottom"><b><font face="Arial, Helvetica, sans-serif" size="2"> 
+              Description</font></b></td>
+          </tr>
+        </table>
+        <hr>
+        <FONT    
+      face="arial, helvetica" size='2'><br>
+        </font> 
+        <table width="94%" border="0">
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>alwaysLowered</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes, this creates a window that always floats below other 
+              windows.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>alwaysRaised</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes, this creates a window that always floats above other 
+              windows.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>dependant</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes, the new window is created as a child (closes when the 
+              parent window closes and does not appear on the task bar on Windows 
+              platforms) of the current window.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>directories</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes, the new browser window has the standard directory buttons.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%"><font face="Arial, Helvetica, sans-serif" size="2"><b>height</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">This 
+              sets the height of the new window in pixels.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>hotkeys</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to no, this disables the use of hotkeys (except security and 
+              quit hotkeys) in a window without a menubar.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%"><font face="Arial, Helvetica, sans-serif" size="2"><b>innerHeight</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">This 
+              sets the inner height of the window in pixels.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%"><font face="Arial, Helvetica, sans-serif" size="2"><b>innerWidth</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">This 
+              sets the inner width of the window in pixels.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>location</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes, this creates the standard Location entry feild in the 
+              new browser window.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>menubar</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes, this creates a new browser window with the standard 
+              menu bar (File, Edit, View, etc.).</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>outerHeight</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">This 
+              sets the outer height of the new window in pixels.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>resizable</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes this allows the resizing of the new window by the user.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>screenX</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">This 
+              allows a new window to be created at a specified number of pixels 
+              from the left side of the screen.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>screenY</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">This 
+              allows a new window to be created at a specified number of pixels 
+              from the top of the screen.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>scrollbars</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes the new window is created with the standard horizontal 
+              and vertical scrollbars, where needed</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>status</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes, the new window will have the standard browser status 
+              bar at the bottom.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>titlebar</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes the new browser window will have the standard title bar.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>toolbar</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes the new window will have the standard browser tool bar 
+              (Back, Forward, etc.).</font></td>
+          </tr>
+          <tr> 
+            <td width="29%"><font face="Arial, Helvetica, sans-serif" size="2"><b>width</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">This 
+              sets the width of the new window in pixels.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>z-lock</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">When 
+              set to yes this prevents the new window from rising above other 
+              windows when it is made active (given focus).</font></td>
+          </tr>
+        </table>
+<P>
+<font face="Arial, Helvetica, sans-serif" size="2">These features may only be used with IE4:</font>
+<P>
+<TABLE>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>channelmode</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2"> 
+              sets if the window appears in channel mode.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>fullscreen</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2"> 
+              the new window will appear in full screen.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>left</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2"> 
+              same as screenX, allows a new window to be created at a specified number of pixels 
+              from the left side of the screen.</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" valign="top"><font face="Arial, Helvetica, sans-serif" size="2"><b>top</b></font></td>
+            <td width="71%"><font face="Arial, Helvetica, sans-serif" size="2">
+              same as screenY, allows a new window to be created at a specified number of pixels 
+              from the top of the screen.</font></td>
+          </tr>
+</table>
+        <FONT    
+      face="arial, helvetica" size='2'><FONT    
+      face="arial, helvetica" size='2'><br>
+        The following example creates a new window of the specified dimensions complete with toolbar, changes the background color and writes a message to it.<br>
+        <br>
+        Code:<br>
+        <span class="code"> myWindow = window.open("", "tinyWindow", 'toolbar, width=150, height=100')<br>
+myWindow.document.write("Welcome to this new window!")<br>
+myWindow.document.bgColor="lightblue"<br>
+        <br>
+        </span> Output:<br><br>
+        <img src="/images/winOpen.gif">
+        <br>
+        <!-- END TEMPLATE --> </font> 
+ 
+        <font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

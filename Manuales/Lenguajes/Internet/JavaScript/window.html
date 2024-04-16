@@ -1,0 +1,451 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>
+Javascript OBJECT: Window
+</title>
+<!-- END TEMPLATE -->
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+</head>
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT  = "O" MARGINWIDTH = "0">
+<form name="MainForm">
+  <img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+  </A> 
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=60 src="/images/grey.gif" width=2><br>
+        </center>
+      </td>
+      <td valign="top" width="200" align="left" colspan="2"><br>
+        <A href="test_list.html"><IMG border=0 height=21 src="images/cant_find.gif" width=200 ></A><br>
+      </td>
+      <td valign="top" colspan="2"><br>
+        <font size=2 face="arial, helvetica, ventura"> 
+        <select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" target = 
+            "body">
+          <option value="js_objects.html">All Objects</option>
+          <option value="js_eventhandler.html">Event Object</option>
+		  <option value="document.html">Document Object</option>
+		  <option value="frame.html">frame</option></select></font><br></td>
+		  
+      <td valign="top" width="20"><br>
+        <A href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  BORDER = 0><IMG border=0 height=22 src="images/go.gif" width=20  value = Go><br>
+        </A> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=6345 src="/images/grey.gif" width=2 ><br>
+        </center>
+      </td>
+      <td valign="top" width="460"> <FONT    
+            face="arial, helvetica" size='2'> <font size="+1"> <!-- TEMPLATE: Item name -->OBJECT: 
+        &nbsp;Window <!-- END TEMPLATE --> </font> <BR>
+        <HR>
+        <!-- TEMPLATE: Item Description, examples, etc. --> As the top level object in the JavaScript 
+        client hierarchy, every browser window and frame has a corresponding <b>Window 
+        </b>object, created automatically with every instance of a &lt;BODY&gt; or &lt;FRAMESET&gt; tag. <br>
+        <br>
+        <SPAN CLASS=PROPERTY><b>PROPERTIES</b></SPAN><br>
+        <br>
+        <b><a href="win_closed.html">closed</a> Property</b><br>
+        This property is used to return a Boolean value that determines if a window has been closed. If it has, the value returned is true.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">closed</span></B><br>
+        <br>
+        <b><A href="win_defaultstatus.html">defaultStatus</A> Property</b><br>
+        This property is used to define the default message displayed in a window's status bar.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">defaultStatus</span><span class="argument">( = &quot;message&quot;)</span></B><br>
+        <br>
+        <b>document Property</b><br>
+        This property's value is the document object contained within the window. See <a href="document.html"><B>Document</B></a> object.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">document</span></B><br>
+        <br>
+        <b><a href="win_frames.html">frames</a> Property</b><br>
+        This property is an array containing references to all the named child frames 
+        in the current window.
+        <br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">frames</span><span class="argument"> 
+         ( = "frameID") </span></B><br>
+        <br>
+        <b>history Property<br></b>
+        This property's value is the window's History object, containing details of the URL's visited from within that window. See <a href="history.html"><B>History</B></a> object.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">history</span></B><br>
+        <br>
+        <b>innerHeight / innerWidth Properties</b><br>
+        These properties determine the inner dimensions of a window's content area. <br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">innerHeight</span><span class="argument"> = pixelDimensions </span></B><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="object"><b>window.</b></span><b><span class="PROPERTY">innerWidth</span><span class="argument"> = pixelDimensions </span></B><br>
+        <br>
+        <b>length Property</b><br>
+        This property returns the number of child frames contained within a window, 
+        and gives identical results as using the length property of the <b class="PROPERTY">frames</b> 
+        array.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">length</span></B><br>
+        <br>
+        <b>location Property</b><br>
+        This property contains details of the current URL of the window and it's value is always the <a href="location.html">Location</a> object for that window.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">location</span></B><br>
+        <br>
+        <b>locationbar Property</b><br>
+        This property relates to the area of a browser's window that contains the details of the URL or bookmark (this is where you physically enter URL details). The locationbar property has it's own property, visible, that defaults to true (visible) and can be set to false (hidden).<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">locationbar</span><span class="argument">[.visible = false]</span></B><br>
+        <br>
+        <b>menubar Property</b><br>
+        This property relates to the area of a browser's window that contains the various pull-down menus (File, Edit, View, etc.). The menubar property has it's own property, visible, that defaults to true (visible) and can be set to false (hidden).<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">menubar</span><span class="argument">[.visible = false]</span></B><br>
+        <br>
+        <b>name Property</b><br>
+        This property is used to return or set a window's name.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">name</span></B><br>
+        <br>
+        <b>opener Property</b><br>
+        When opening a window using window.open, use this property from the destination window to return details of the source window. This has many uses, for example, window.opener.close() will close the source window.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">opener</span></B><br>
+        <br>
+        <b>outerheight / outerwidth Property</b><br>
+         These properties determine the dimensions, in pixels, of the outside boundary, including all interface elements, of a window.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">outerheight</span></B><br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">outerwidth</span></B><br>
+		<br>
+        <b>pageXoffset / pageYoffset Property</b><br>
+        These properties return the X and Y position of the current page in relation to the upper left corner of a window's display area.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">pageXoffset</span></B><br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">pageXoffset</span></B><br>
+		<br>
+        <b>parent Property</b><br>
+        This property is a reference to the window or frame that contains the calling child frame.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">parent</span></B><br>
+        <br>
+        <b>personalbar Property</b><br>
+        This property relates to the browser's personal bar (or directories bar). The personalbar property has it's own property, visible, that defaults to true (visible) and can be set to false (hidden).<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">personalbar</span><span class="argument">[.visible = false]</span></B><br>
+        <br>
+        <b>scrollbars Property</b><br>
+        This property relates to the browser's scrollbars (vertical and horizontal). The scrollbars property has it's own property, visible, that defaults to true (visible) and can be set to false (hidden).<br>
+		<br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">scrollbars</span><span class="argument">[.visible = false]</span></B><br>
+        <br>
+        <b>self Property</b><br>
+        This property is a reference (or synonym) for the current active window or frame. <br>
+        Syntax: <span class="object"><b>self.</b></span><b><span class="ARGUMENT">property or method</span></B><br>
+        <br>
+        <b><a href="win_status.html">status</a> Property</b><br>
+        This property, which can be set at any time, is used to define the transient message displayed 
+        in a window's status bar such as the text displayed when you <b>onMouseOver</b> a link or anchor.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">status</span><span class="argument">(= "message")</span></B><br>
+        <br>
+        <b>statusbar Property</b><br>
+        This property relates to the browser's status bar. The statusbar property has it's own property, visible, that defaults to true (visible) and can be set to false (hidden).<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">statusbar</span><span class="argument">[.visible = false] </span></B><br>
+        <br>
+		<b>toolbar Property</b><br>
+        This property relates to the browser's tool bar. The <B>toolbar</B> property has it's own property, visible, that defaults to true (visible) and can be set to false (hidden).<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="PROPERTY">toolbar</span><span class="argument">[.visible = false]</span></B><br>
+        <br>
+		<b>top Property</b><br>
+        This property is a reference (or synonym) for the topmost browser window.<br>
+        <br>
+        Syntax: <span class="object"><b>top.</b></span><b><span class="argument">property or method
+        </span></B><br>
+        <br>
+		<b>window Property</b><br>
+        This property is a reference (or synonym) for the current window or frame.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="argument">property or method</span></B><br>
+        <br>
+        <br>
+        <SPAN CLASS=METHOD><b>METHODS</b></SPAN><br>
+        <br>
+        <b><a href="win_alert.html">alert</a> Method</b><br>
+        This method displays an alert box containing a message and an o.k. button.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">alert</span><span class="argument">("message")</span></B><br>
+        <br>
+        <b><a href="win_back.html">back</a> Method</b>    <img src="/images/icons/ns.gif" width="24" height="24"><br>
+         Using this method is the same as clicking the browser's Back button, i.e. it undoes the last navigation step performed from the current top-level window.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">back( )</span></B><br>
+        <br>
+        <b>blur Method</b><br>
+        This method is used to remove focus from the current window.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">blur( )</span></B><br>
+        <br>
+        <b>captureEvents Method</b><br>
+        This method instructs the window to capture all events of a particular type. See the event object for a list of event types.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">captureEvent</span><span class="argument">(eventType)</span></B><br>
+        <br>
+        <b>clearInterval Method</b><br>
+        This method is used to cancel a timeout previously set with the <a href="win_setinterval.html">setInterval</a> method.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">clearInterval</span><span class="argument">(intervalID)</span></B><br>
+        <br>
+        <b>clearTimeout Method</b><br>
+        This method is used to cancel a timeout previously set with the <a href="win_settimeout.html">setTimeout</a> method.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">clearTimeout</span><span class="argument">(timeoutID)</span></B><br>
+        <br>
+        <b>close Method</b><br>
+        This method is used to close a specified window. If no window reference is supplied, the close() method will close the current active window. Note that this method will only close windows created using the open() method; if you attempt to close a window not created using open(), the user will be prompted to confirm this action with a dialog box before closing. The single exception to this is if the current active window has only one document in it's session history. In this case the closing of the window will not require confirmation.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">close( )</span></B><br>
+        <br>
+        <b><a href="win_confirm.html">confirm</a> Method</b><br>
+        This method brings up a dialog box that prompts the user to select either 'o.k.' or 'cancel', the first returning true and the latter, false.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">confirm</span><span class="argument">(&quot;message&quot;)</span></B><br>
+        <br>
+		<b>disableExternalCapture Method</b><br>
+        This method disables the capturing of events previously enabled using the enableExternalCapture method below.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">disableExternalCapture( )</span></B><br>
+        <br>
+		<b>enableExternalCapture Method</b><br>
+        This method allows a window that contains frames to capture events in documents loaded from different servers.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">enableExternalCapture( )</span></B><br>
+        <br>
+        <b><a href="win_find.html">find</a> Method</b><br>
+        This method allows the searching of the contents of a window for a specified string. The <B>caseSensitive</B> and <B>backward</B> arguments are Booleans and to use either of these you must also specify the other. If a search string is not supplied, JavaScript will display a Find dialog box which prompts the user for a string to search for, and also provides the facility to set the other two (<B>caseSensitive</B> and <B>backward</B>) arguments.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">find</span><span class="argument">([string[, caseSensitive, backward]])</span></B><br>
+        <br>
+        <b>focus Method</b><br>
+        This method is used to give focus to the specified window. This is useful for bringing windows to the top of any others on the screen.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">focus( )</span></B><br>
+        <br>
+        <b><a href="win_forward.html">forward</a> Method</b><br>
+        Using this method 
+        is the same as clicking the browser's Forward button, i.e. it goes to the next URL in the history list of the current top-level window.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">forward( )</span></B><br>
+        <br>
+        <b>handleEvent Method</b><br>
+        This method is used to call the handler for the specified event.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">handleEvent</span><span class="argument">(&quot;eventID&quot;)</span></B><br>
+        <br>
+        <b>home Method</b><br>
+        Using this method has the same effect as pressing the Home button in the browser, i.e. the browser goes to the URL set by the user as their home page.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">home( )</span></B><br>
+        <br>
+		<b>moveBy Method</b><br>
+        This method is used to move the window a specified number of pixels in relation to it's current co-ordinates.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">moveBy</span><span class="argument">(horizPixels, vertPixels)</span></B><br>
+        <br>
+        <b>moveTo Method</b><br>
+        This method moves the window's left edge and top edge to the specified x and y co-ordinates, respectively.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">moveTo</span><span class="argument">(Xposition, Yposition)</span></B><br>
+        <br>
+        <b><a href="win_open.html">open</a> Method</b><br>
+        This method is used to open a new browser window.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">open</span><span class="argument">(URL, 
+        name [, features])</span></B><br>
+        <br>
+        <b>print Method</b><br>
+        This method is used to print the contents of the specified window.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">print( )</span></B><br>
+        <br>
+        <b><a href="win_prompt.html">prompt</a> Method</b><br>
+        This method displays a dialog box prompting the user for some input.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">prompt</span><span class="argument">(message[, defaultInput])</span></B><br>
+        <br>
+        <b>releaseEvents Method</b><br>
+        This method is used to release any captured events of the specified type and to send them on to objects further down the event hierarchy<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">releaseEvents</span><span class="argument">(&quot;eventType&quot;)</span></B><br>
+        <br>
+		<b>resizeBy Method</b><br>
+        This method is used to resize the window. It moves the bottom right corner of the window by the specified horizontal and vertical number of pixels while leaving the top left corner anchored to it's original co-ordinates.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">resizeBy</span><span class="argument">(horizPixels, vertPixels)</span></B><br>
+        <br>
+        <b>resizeTo Method</b><br>
+        This method is used to resize a window to the dimensions supplied with the <B>outerWidth</B> and <B>outerHeight</B> (both integers, in pixels) parameters.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">resizeTo</span><span class="argument">(outerWidth, outerHeight)</span></B><br>
+        <br>
+        <b>routeEvent Method</b><br>
+        This method is used to send a captured event further down the normal event hierarchy; specifically, the event is passed to the original target object unless a sub-object of the window (a document or layer) is also set to capture this type of event, in which case the event is passed to that sub-object.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">routeEvent</span><span class="argument">(eventType)</span></B><br>
+        <br>
+        <b>scroll Method</b><br>
+        This method is used to scroll the window to the supplied co-ordinates. This method is now deprecated; use the scrollTo method detailed below instead.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">scroll</span><span class="argument">(coordsPixels)</span></B><br>
+        <br>
+        <b>scrollBy Method</b><br>
+        This method is used to scroll the window's content area by the specified number of pixels. This is only useful when there are areas of the document that cannot be seen within the window's current viewing area, and the visible property of the window's scrollbar must be set to true for this method to work.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">scrollBy</span><span class="argument">(horizPixels, vertPixels)</span></B><br>
+        <br>
+        <b><a href="win_scrollto.html">scrollTo</a> Method</b><br>
+        This method scrolls the contents of a window, the specified co-ordinate becoming the top left corner of the viewable area.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">scrollTo</span><span class="argument">(xPosition, yPosition)</span></B><br>
+        <br>
+		<b><a href="win_setinterval.html">setInterval</a> Method</b><br>
+        This method is used to call a function or evaluate an expression at specified intervals, in milliseconds. <br>
+        <br>
+        Syntax: <b><span class="object">window.</span><span class="METHOD">setInterval</span><span class="argument">(expression/function, milliseconds)</span></b><br>
+        <br>
+        <b><a href="win_settimeout.html">setTimeout</a> Method</b><br>
+        This method is used to call a function or evaluate an expression after a specified number of milliseconds.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">setTimeout</span><span class="argument">(expression/function, milliseconds)</span></B><br>
+        <br>
+        <b>stop Method</b><br>
+        This method is used to cancel the current download. This is the same as clicking the browser's Stop button.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD">stop( )</span></span></B><br>
+        <br>
+		<br>
+        <span class="statement"><b><span class="UNUSED">EVENT HANDLERS</span></b></span><br>
+        <br>
+        <b><a href="evhan_onblur.html">onBlur</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>Blur</b> event (when an window loses focus).<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onBlur</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b> <br>
+        <br>
+        <b><a href="evhan_ondragdrop.html">onDragDrop</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>DragDrop</b> event.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onDragDrop</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b> <br>
+        <br>
+        <b><a href="evhan_onerror.html">onError</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of an <b>Error</b> event.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onError</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b> <br>
+        <br>
+        <b><a href="evHan_onfocus.html">onFocus</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>Focus</b> event.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onFocus</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b><br>
+        <br>
+        <b><a href="evhan_onload.html">onLoad</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>Load</b> event.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onLoad</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b> <br>
+        <br>
+        <b><a href="evhan_onmove.html">onMove</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>Move</b> event.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onMove</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b> <br>
+        <br>
+        <b><a href="evhan_onresize.html">onResize</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>Resize</b> event.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onResize</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b>
+		<br>
+        <b><a href="evhan_onunload.html">onUnload</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>Unload</b> event.<br>
+        <br>
+        Syntax: <span class="object"><b>window.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onUnload</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b><br>
+        <!-- END TEMPLATE --> <font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></FONT> <br>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

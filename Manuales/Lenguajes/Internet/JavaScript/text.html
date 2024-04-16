@@ -1,0 +1,196 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Text</title>
+<!-- END TEMPLATE -->
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+</head>
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT  = "O" MARGINWIDTH = "0">
+<form name="MainForm">
+  
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+  </A> <img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=60 src="/images/grey.gif" width=2><br>
+        </center>
+      </td>
+      <td valign="top" width="200" align="left" colspan="2"><br>
+        <A href="test_list.html"><IMG border=0 height=21 src="images/cant_find.gif" width=200 ></A><br>
+      </td>
+      <td valign="top" colspan="2"><br>
+        <font size=2 face="arial, helvetica, ventura"> 
+        <select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" target = "body">
+          <option value="js_objects.html">All Objects</option>
+          <option value="js_eventhandler.html">Event Object</option>
+		   <option value="form.html">Form</option>
+		    <option value="password.html">Password</option>
+			 <option value="string.html">String</option>
+			  <option value="textarea.html">Textarea</option></select>
+</font><br></td>
+      <td valign="top" width="20"><br>
+        <A href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  BORDER = 0><IMG border=0 height=22 src="images/go.gif" width=20  value = Go><br>
+        </A> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=1515 src="/images/grey.gif" width=2 ><br>
+        </center>
+      </td>
+      <td valign="top" width="460"> <FONT    
+            face="arial, helvetica" size='2'> <font size="+1"> <!-- TEMPLATE: Item name -->OBJECT: 
+        &nbsp;Text <!-- END TEMPLATE --> </font> <BR>
+        <HR>
+        <!-- TEMPLATE: Item Description, examples, etc. --> A <strong>Text</strong> object provides a field on a form in which the user can enter data and is created with every instance of an HTML &lt;INPUT&gt;  tag with the type attribute set to "text". These objects are then stored in the elements array of the parent form and accessed using either the name defined within the HTML tag or an integer (with '0' being the first element defined, in source order, in the specified form). <br>
+        <br>
+        <SPAN CLASS=PROPERTY><b>PROPERTIES</b></SPAN><br>
+        <br>
+        <b>defaultValue Property</b><br>
+        This property sets or returns a string indicating the initial value of the <strong>Text</strong> object. The value of this property initially reflects the value between the start and end &lt;TEXT&gt; tags. Use of  the defaultValue property, which can be done at any time, will override the original value.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="PROPERTY">defaultValue</span><span class = "argument">[ = "newdefaultvalue"]</span></B><br>
+        <br>
+        <b>form Property</b><br>
+        This property returns a reference to the parent <b>Form</b> of the <b>Text 
+        </b>object.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="PROPERTY">form</span></B><br>
+        <br>
+        <b>name Property</b><br>
+        This property sets or returns the value of the <b>Text </b>object's<b> 
+        </b> <b>name</b> attribute.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="PROPERTY">name</span></B><br>
+        <br>
+        <b>type Property</b><br>
+        Every element on a form has an associated <b>type</b> property. In the 
+        case of a <b>Text</b> object, the value of this property is always 
+        "text".<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="PROPERTY">type</span></B><br>
+        <br>
+        <b>value Property</b><br>
+        This property sets or returns the <b>Text </b> object's <b>value</b> 
+        attribute. This is the text that is actually displayed in the text field and can be set at any time with any changes being immediately displayed.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="PROPERTY">value</span></B>
+        <br>
+        <br><br>
+        <SPAN CLASS=METHOD><b>METHODS</b></SPAN><br>
+        <br>
+        <b>blur Method</b><br>
+        This method removes the <b>focus</b> from the specified <b>Text</b> 
+        object.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">blur( )</span></B><br>
+        <br>
+        <b>focus Method</b><br>
+        This method gives focus to the specified <b>Text</b> object.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">focus( )</span></B><br>
+        <br>
+        <b>handleEvent Method</b><br>
+        This method calls the handler for the specified event.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">handleEvent</span><span class="argument">(event)</span></B><br>
+        <br>
+		<b>select Method</b><br>
+        This method is used to select and highlight all or a portion of a text in a Text element. 
+        Used in conjunction with the focus method, this makes it easy to prompt the user for input 
+        and places the cursor in the correct place.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">select( )</span></B><br>
+        <br><br>
+        <SPAN CLASS="statement"><b><span class="UNUSED">EVENT HANDLERS</span></b></SPAN><br>
+        <br>
+        
+        <b><a href="evHan_onBlur.html">onBlur</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurrence 
+        of a <b>blur</b> event (when the <b>Text</b> object loses focus).<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onBlur</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></B><br>
+        <br>
+        <b><a href="evhan_onchange.html">onChange</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurrence 
+        of a <b>click</b> event (when the <b>Text</b> object loses focus and it's value has altered).<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onClick</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></B> <br>
+        <br>
+        <b><a href="evhan_onfocus.html">onFocus</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurrence 
+        of a <b>focus</b> event (when the <b>Text</b> object receives focus).<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onFocus</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></B> <br>
+        <br>
+        <b><a href="evhan_onselect.html">onSelect</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurrence 
+        of a <b>select</b> event (when some text in the text field is selected).<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onSelect</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></B> <br>
+        <br>
+        
+        <!-- END TEMPLATE --> <font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>
