@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>The "Hello World" Applet</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="../application/index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#applet" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="anatomy.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+
+<br>
+<font size="-1">
+<b>Trail</b>: Getting Started
+</font>
+
+<h2>
+Lesson: The "Hello World" Applet
+</h2>
+<blockquote>
+<p>
+By following the steps on this page,
+you can create and use an applet.
+If you aren't interested in applets, 
+you might want to skip ahead to the
+<a target="_top" href="../../java/index.html">Learning the Java Language</a><a target="_top" href="../../java/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Getting Started trail)"></a> trail.
+
+</blockquote>
+<h3> Create a Java Source File </h3>
+<blockquote>
+Create a file named 
+
+<a target="source" href="example/HelloWorld.java"><font color="#bb000f"><code>HelloWorld.java</code></font></a><a href="example/HelloWorld.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+with the Java code shown here:
+<blockquote><pre>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class HelloWorld extends Applet {
+    public void paint(Graphics g) {
+        g.drawString(&quot;Hello world!&quot;, 50, 25);
+    }
+}
+</pre></blockquote>
+</blockquote>
+
+<h3>Compile the Source File</h3>
+
+<blockquote>
+<a href="_compiling.html">Compile the source file</a>
+using the Java compiler.
+<P>
+
+If the compilation succeeds,
+the compiler creates a file named <code>HelloWorld.class</code>
+in the same directory (folder) as the Java source file 
+(<code>HelloWorld.java</code>). 
+This class file contains Java bytecodes.
+
+<p>
+
+If the compilation fails,
+make sure you typed in and named the program
+exactly as shown above.  If you can't find the problem,
+see
+<a target="_top" href="../problems/index.html">Solving Common Compiler and Interpreter Problems</a><a target="_top" href="../problems/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Getting Started trail)"></a>.
+
+</blockquote>
+
+<h3>Create an HTML File that Includes the Applet</h3>
+<blockquote>
+Using a text editor, create a file 
+named <a href=example/Hello.html><code>Hello.html</code></a>
+in the same directory
+that contains <code>HelloWorld.class</code>.
+This HTML file should contain the following text:
+<blockquote><pre>
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt; A Simple Program &lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+Here is the output of my program:
+&lt;APPLET CODE=&quot;HelloWorld.class&quot; WIDTH=150 HEIGHT=25&gt;
+&lt;/APPLET&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre></blockquote>
+</blockquote>
+
+<h3>Run the Applet</h3>
+<blockquote>
+To run the applet, you need to
+<a href=_loading.html>load the HTML file</a> into an application
+that can run Java applets.
+This application might be a Java-compatible browser
+or another Java applet viewing program,
+such as the Applet Viewer provided in the JDK.
+To load the HTML file, you usually need to tell the application
+the URL of the HTML file you've created.
+For example, you might enter something like the following
+into a browser's URL or Location field:
+
+<blockquote><pre>
+file:/home/kwalrath/HTML/Hello.html
+</pre></blockquote>
+<p>
+
+Once you've successfully completed these steps,
+you should see something like this
+in the browser window:
+<p><center><IMG SRC="../../figures/getStarted/5world.gif" WIDTH="369" HEIGHT="18 " ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT=""></center></p>
+</blockquote>
+
+<h3>What Next?</h3>
+<blockquote>
+Now you can:
+<ul>
+<li> <a href=anatomy.html>Continue</a> on in this lesson
+     to learn about the anatomy of applets
+     and about importing classes.
+
+<li>Go back to 
+<a target="_top" href="../application/anatomy.html">The Anatomy of a Java Application</a><a target="_top" href="../application/anatomy.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Getting Started trail)"></a>    if you haven't already read it and you're
+    interested in a quick introduction to key Java concepts.
+
+<li> Learn more about writing applets by going to the
+<a target="_top" href="../../applet/index.html">Writing Applets</a><a target="_top" href="../../applet/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Getting Started trail)"></a>     trail.
+
+<li> Go back to the <a href="../../index.html">Trail Map</a>
+    to get an overview of the trails you can follow.
+</ul>
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="../application/index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#applet" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="anatomy.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

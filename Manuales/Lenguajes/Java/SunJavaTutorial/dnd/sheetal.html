@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>A Drag and Drop Example by Sheetal Gupta</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="TOC.html" target="_top"><img src="../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="./TOC.html" target="_top"><img src="../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="./end.html" target="_top"><img src="../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="./index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../search.html" target="_top">Search</a>
+<br><a href="../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Drag and Drop
+</font>
+
+<h2>
+A Drag and Drop Example by Sheetal Gupta
+</h2>
+<blockquote>
+<h3>About the example</h3>
+<blockquote>
+This simple example contains two lists from which a user can 
+drag and drop items from one list to another.
+It illustrates the concept that a <code>Component</code>
+can act as a "Drop Target" and as a "Drag Source."
+Here's a snapshot of this example:
+
+<p><center><IMG SRC="../figures/dnd/dndGupta.gif" WIDTH="300" HEIGHT="161" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="A snapshot of Sheetal Gupta's Drag and Drop example."></center></p>
+
+The example uses <code>JList</code>, but any other <code>Component</code> 
+could easily replace <CODE>JList</CODE>. All you would
+have to do is revise implementations of the
+<code>DNDComponentInterface</code> methods. 
+
+</blockquote>
+
+<h3>About the files</h3>
+<blockquote>
+<ul>
+<li> 
+<a target="source" href="example-1dot2/DNDList.java"><font color="#bb000f"><code>DNDList.java</code></font></a><a href="example-1dot2/DNDList.java"><img src="../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>: the
+     specialized <code>JList</code> which can behave as
+     a <code>DropTarget</code> and as a <code>DragSource</code>.
+<li> 
+<a target="source" href="example-1dot2/DNDComponentInterface.java"><font color="#bb000f"><code>DNDComponentInterface.java</code></font></a><a href="example-1dot2/DNDComponentInterface.java"><img src="../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>: the interface
+     that all components must implement to 
+     add/remove elements to itself and to detect when a drop/drag occurs.
+<li> 
+<a target="source" href="example-1dot2/TestDND.java"><font color="#bb000f"><code>TestDND.java</code></font></a><a href="example-1dot2/TestDND.java"><img src="../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>: the tester for this class.
+</ul>
+</blockquote>
+
+<h3>Running this example</h3>
+<blockquote>
+To run this example, do the following using JDK 1.2:
+
+<ol>
+<li> <code>javac DNDList.java</code>
+<li> <code>javac DNDComponentInterface.java</code>
+<li> <code>javac TestDND.java</code>
+<li> <code>java TestDND</code>
+</ol>
+</blockquote>
+
+<h3>About the Author</h3>
+<blockquote>
+Sheetal Gupta is a Senior Consultant with
+Ernst and Young's Java Service Line,
+based in New York.
+</blockquote>
+
+
+</blockquote>
+
+<img src="../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="TOC.html" target="_top"><img src="../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="./TOC.html" target="_top"><img src="../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="./end.html" target="_top"><img src="../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="./index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../search.html" target="_top">Search</a>
+<br><a href="../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
