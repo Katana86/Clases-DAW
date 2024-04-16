@@ -1,0 +1,150 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript METHOD: document::close</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT  = "O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</A>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td></tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 src="/images/grey.gif" width=2><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<A href="test_list.html"><IMG border=0 height=21 src="images/cant_find.gif" width=200 ></A><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" target = "body">
+	<option value="js_objects.html">All Objects
+	<option value="document.html"> Document Object
+    <option value="doc_open.html">Document.open
+	<option value="doc_write.html">Document.write</select></font><br></td>
+	
+<td valign="top" width="20"><br>
+<A href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  BORDER = 0><IMG border=0 height=22 src="images/go.gif" width=20  value = Go><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+          <IMG border=0 height=455 src="/images/grey.gif" width=2 ><br>
+</center>
+</td>
+
+      <td valign="top" width="460"> <FONT    
+      face="arial, helvetica" size='2'> <font size="+1"> <!-- TEMPLATE: Item name -->METHOD: 
+        &nbsp;Document::close <!-- END TEMPLATE --> </font> <BR>
+<HR>
+        </FONT> <FONT    
+      face="arial, helvetica" size='2'> <b><span class="object">document.</span><span class="method">close</span><span class="METHOD">( 
+        )</span> </b><br>
+        <br>
+        <!-- TEMPLATE: Item Description, examples, etc. --> This method closes 
+        an output stream previously opened with the <b>document.open</b> method 
+        and forces data collected from any instances of the <b>document.write</b> 
+        or <b>document.writeln</b> methods to be displayed. <br>
+        <Br>
+        The following code demonstrates this and displays the output stream in 
+        a new window.<br>
+        <br>
+        
+        
+        Code:<br><span class="code">
+        function newWindowTest() {<br>
+  &nbsp;&nbsp;var message1 = "Hello, world!"<br>
+  &nbsp;&nbsp;var message2 = "This is a test."<br> 
+  &nbsp;&nbsp;newWindow.document.open("text/html", "replace")<Br>
+  &nbsp;&nbsp;newWindow.document.writeln("message1)<br>
+  &nbsp;&nbsp;newWindow.document.write("message2)<br>
+  &nbsp;&nbsp;newWindow.document.close()<Br>
+}<Br><Br>
+
+newWindow=window.open('','','toolbar=no,scrollbars=no,width=200,height=150')<br>
+newWindowTest()<br></span><br>
+        
+ Output: (to new window)<br>
+ <span class="output">
+ "Hello, world! This is a test."
+ </span>       
+        
+        <!-- END TEMPLATE --> <font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

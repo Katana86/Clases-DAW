@@ -1,0 +1,134 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Applet</title>
+<!-- END TEMPLATE -->
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+</head>
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT  = "O" MARGINWIDTH = "0">
+<form name="MainForm">
+  <img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+  </A> <img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0" >
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map></td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=60 src="/images/grey.gif" width=2><br>
+        </center>
+      </td>
+      <td valign="top" width="200" align="left" colspan="2"><br>
+        <A href="test_list.html"><IMG border=0 height=21 src="images/cant_find.gif" width=200 ></A><br>
+      </td>
+      <td valign="top" colspan="2"><br>
+        <font size=2 face="arial, helvetica, ventura"> 
+        <select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" target = 
+            "body">
+          <option value="js_objects.html" SELECTED>All Objects
+          <option value="doc_plugins.html">Plugins</option>
+        </select>
+        </font><br>
+      </td>
+      <td valign="top" width="20"><br>
+        <A href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  BORDER = 0><IMG border=0 height=22 src="images/go.gif" width=20  value = Go><br>
+        </A> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=520 src="/images/grey.gif" width=2 ><br>
+        </center>
+      </td>
+      <td valign="top" width="460"> <FONT    
+            face="arial, helvetica" size='2'> <font size="+1"> <!-- TEMPLATE: Item name -->OBJECT: 
+        &nbsp;Applet <!-- END TEMPLATE --> </font> <BR>
+        <HR>
+        <!-- TEMPLATE: Item Description, examples, etc. --> An <STRONG>Applet 
+        </STRONG> object, created for every instance of the HTML &lt;APPLET&gt; 
+        tag in your document, allows the inclusion of a Java applet in a web page. 
+        These objects are then stored in an array in the <b>document.applets</b> 
+        property.<br>
+        <br>
+        To enable an applet to access Javascript on your page, you must specify 
+        the &lt;APPLET&gt; tag's MAYSCRIPT attribute; failure to do this will 
+        cause an exception if the applet tries to access JavaScript. This allows 
+        a measure of security for each HTML page that contains the applet.<br>
+        <br>
+        The following HTML code executes the myApp applet and sets the MAYSCRIPT 
+        attribute to allow it access to JavaScript. This will also automatically 
+        create an Applet object called "myApp" which will be added to the <b>document.applets</b> 
+        array and can be referenced as <b>document.applets[0]</b> (providing this 
+        is the first instance of the &lt;APPLET&gt; tag in your document) or <b>document.applets["myApp"]</b>. 
+        <br>
+        <br>
+        Code:<br>
+        <span class="code">&lt;APPLET CODE="myApp.class" WIDTH=150 HEIGHT=80 NAME="myApp" MAYSCRIPT&gt;</span><br><br>
+        <SPAN CLASS=PROPERTY><b>PROPERTIES</b></SPAN><br>
+        <br>
+        All public properties of a Java applet are inherited by the <b>Applet</b> 
+        object. <br>
+        <br>
+        <SPAN CLASS=METHOD><b>METHODS</b></SPAN><br>
+        <br>
+        All public methods of a Java applet are inherited by the <b>Applet</b> 
+        object. 
+        <P>
+		<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font>
+<!-- END TEMPLATE -->
+</font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

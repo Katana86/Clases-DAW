@@ -1,0 +1,239 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OPERATORS:  +  ++ - -- * / % (Arithmetic Operators)</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_operators.html" SELECTED> All Operators
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=1535 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OPERATORS:&nbsp; +&nbsp;&nbsp;++&nbsp;&nbsp;-
+&nbsp;&nbsp;--&nbsp;&nbsp;*&nbsp;&nbsp;/&nbsp;&nbsp;%
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+
+JavaScript contains the standard arithmetic operators plus ones
+for modulus, increment, decrement and unary negation.</P>
+<P><b><SPAN CLASS=OPERATOR>+</SPAN></b></P>
+<P>
+This is the standard addition operator and returns the sum of 
+two numerical values (either literals or variables):</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+x = a + 6;
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>++</SPAN></b></P>
+<P>
+This is the increment operator and is used to increment (add one to)
+its operand. The position of the operator in relation to its operand
+determines whether the increment takes place before or after returning
+a value. If it is placed after the operand, then it returns the value 
+before incrementing as in the following example which, assuming 'a' 
+to be 5, sets 'x' to 5 and then increments 'a' to 6:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+x = a++;
+</SPAN></P>
+<P>
+...whereas, if the operator is placed before the operand, 'a' of
+the above example will first be incremented to 6, 
+and then the value 6 will be assigned to 'x':</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+x = ++a;
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>-</SPAN></b></P>
+<P>
+This is the standard subtraction operator and it subtracts 
+one number from another:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+x = a - 6;
+</SPAN></P>
+<P>
+This is also the unary negation operator which precedes and 
+negates its operand. In the following example with 'a' being 6,
+the value -6 is assigned to the variable 'x' while 'a'
+retains the value 6:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+x = -a;
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>--</SPAN></b></P>
+<P>
+This is the decrement operator which decrements (deducts one from)
+its operand. As with the increment operator, the position of the 
+decrement operator in relation to its operand determines whether
+the decrement takes place before or after the assignment operation.
+If it is placed after the operand, then a value is returned before
+decrementing, as in the next example which, assuming 'a' to be 6,
+assigns 6 to the variable 'x' and then decrements 'a' to 5:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+x = a--;
+</SPAN></P>
+<P>
+...while, if the decrement operator is placed before its operand,
+the decrement takes place before the assignment. Assuming 'a'
+to be 6, this next example decrements 'a' to 5 and then sets 
+the variable 'x' to 5:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+x = --a;
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>*</SPAN></b></P>
+<P>
+This is the standard multiplication operator and it returns
+the product of two numerical values (either literals or variables):</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+x = a * 7;
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>/</SPAN></b></P>
+This is the standard division operator which divides one number by another:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+x = a / 7;
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>%</SPAN></b></P>
+<P>
+This is the modulus operator which returns the integer remainder of dividing
+the preceding operand by the one following it. The next example returns the 
+value 2 to the variable 'x':</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+x = 9 % 7;
+</SPAN></P>
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

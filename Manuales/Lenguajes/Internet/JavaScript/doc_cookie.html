@@ -1,0 +1,161 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>
+JavaScript PROPERTY: document::cookie
+</title>
+<!-- END TEMPLATE -->
+
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT  = "O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</A>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td></tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 src="/images/grey.gif" width=2><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<A href="test_list.html"><IMG border=0 height=21 src="images/cant_find.gif" width=200 ></A><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" target = 
+            "body">
+	<option value="document.html" selected> Document Object
+
+</select>
+             
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  BORDER = 0><IMG border=0 height=22 src="images/go.gif" width=20  value = Go><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+          <IMG border=0 height=560 src="/images/grey.gif" width=2 ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT    
+      face="arial, helvetica" size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->PROPERTY: 
+            &nbsp;Document::cookie
+<!-- END TEMPLATE --> 
+            
+
+</font>
+<BR>
+<HR>
+        </FONT> <FONT    
+      face="arial, helvetica" size='2'> <b><span class="object">document.</span><span class="property">cookie</span><span class="argument">[ = "expression(s)"] </span></b><br>
+        <br>
+        <!-- TEMPLATE: Item Description, examples, etc. --> This property is a string that returns a report detailing all visible and un-expired cookies that are associated with the specified document. The value returned using this method only contains the name and value attributes of the associated cookies in a single string.<br>
+        <br>
+        When setting the <b class="PROPERTY">cookie</b> property, which can be 
+        done at any time, the following syntax must be used:<br>
+        <br>
+        "name" = "value"; expires = "date"; path = "directory"; domain = "domainName"; secure
+        <br><br>
+        The "date" parameter must be in the format as returned by the <b>toGMTString()</b> 
+        method of the <a href="date.html">Date</a> object. The expires attribute 
+        is optional; not setting this will mean that the cookie will expire when 
+        the user shuts down their browser. If set, the cookie survives until the 
+        set expiry date. "domainName" sets the cookie's visibility to a particular 
+        domain although this attribute is rarely use as it defaults to the domain 
+        of the carrying document and visibility of the cookie is normally restricted 
+        to this document alone. The path parameter is similar to domain in that 
+        it restricts the cookie's visibilty to the specified directory on the 
+        web server. The secure attribute is less commonly used. It is a Boolean 
+        (true or false) that, when true, suggests that the browser should only 
+        make secure (SSL) URL requests when the cookie is sent to the server. 
+        <br>
+        <br>Code:<br>
+        <span class="CODE">document.write(document.cookie)</span><br>
+        <br>
+        Output:<br>
+        <span class="output">usr_id=13455; bookmark=products.html
+        <!-- END TEMPLATE --> </span><font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+    </tr></table>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Document</title>
+<!-- END TEMPLATE -->
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+<script language="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</script>
+</head>
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" marginheight  = "O" marginwidth = "0">
+<form name="MainForm">
+  <img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+  </a> <img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <img border=0 height=60 src="/images/grey.gif" width=2><br>
+        </center>
+      </td>
+      <td valign="top" width="200" align="left" colspan="2"><br>
+        <a href="test_list.html"><img border=0 height=21 src="images/cant_find.gif" width=200 ></a><br>
+      </td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" target = "body">
+	<option value="js_objects.html" selected>All Objects
+	<option value="js_eventhandler.html">Event Object
+	<option value="frame.html">frame
+	<option value="window.html">Window</select></font><br></td>
+      <td valign="top" width="20"><br>
+        <a href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  border = 0><img border=0 height=22 src="images/go.gif" width=20  value = go><br>
+        </a> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <img border=0 height=3830 src="/images/grey.gif" width=2 ><br>
+        </center>
+      </td>
+      <td valign="top" width="460"> <font    
+            face="arial, helvetica" size='2'> <font size="+1"> <!-- TEMPLATE: Item name -->OBJECT: 
+        &nbsp;Document <!-- END TEMPLATE --> </font> <br>
+        <hr>
+        <!-- TEMPLATE: Item Description, examples, etc. --> The <b>Document 
+        </b>object provides access to the elements in an HTML page from within 
+        your script. This includes the properties of every form, link and anchor 
+        (and, where applicable, any sub-elements), as well as global <b>Document</b> 
+        properties such as background and foreground colors. <br>
+        <br>
+        <span class=property><b>PROPERTIES</b></span><br>
+        <br>
+        <b><a href="doc_alinkcolor.html">alinkColor</a> Property</b><br>
+        This property defines the color of an active link. The <span class="ARGUMENT"><b>&quot;colorinfo&quot;</b></span> 
+        argument is a string that can contain either the hexadecimal definition 
+        of the color or it's literal description.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">alinkColor</span><span class="argument"> 
+        = &quot;colorinfo&quot; </span></b><br>
+        <br>
+        <b><a href="doc_anchors.html">anchors</a> Property</b><br>
+        This property is an array containing references to all the named <b>Anchor</b> 
+        objects in the current document.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">anchors</span><span class="argument">[&quot;anchorID&quot;]</span></b><br>
+        <br>
+        <b><a href="doc_applets.html">applets</a> Property</b><br>
+        This property is an array containing references to all the <b>Applet</b> 
+        objects in the current document.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">applets</span><span class="argument">[&quot;appletID&quot;]</span></b><br>
+        <br>
+        <b><a href="doc_bgcolor.html">bgColor</a> Property</b><br>
+        This property defines a document's background color. The <span class="ARGUMENT"><b>&quot;colorinfo&quot;</b></span> 
+        argument is a string that can contain either the hexadecimal definition 
+        of the color or it's literal description. <br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">bgColor</span><span class="argument"> 
+        = "colorinfo" </span></b><br>
+        <br>
+        <b><a href="doc_cookie.html">cookie</a> Property</b><br>
+        This property is a string that returns a report detailing all visible and un-expired cookies that are associated with the specified document. <br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">cookie</span><span class="argument"> 
+        [ = "expression(s)"] </span></b><br>
+        <br>
+        <b><a href="doc_domain.html">domain</a> Property</b><br>
+        This property sets or returns the domain name of the server from which 
+        the document originated.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">domain</span><span class="argument"> 
+        = "domaininfo" </span></b><br>
+        <br>
+        <b><a href="doc_embeds.html">embeds</a> Property</b><br>
+        This property is an array containing references to all the embedded objects 
+        in the current document.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">embeds</span><span class="argument">[&quot;embed_objID&quot;]</span></b><br>
+        <br>
+        <b><a href="doc_fgcolor.html">fgColor</a> Property</b><br>
+        This property defines a document's foreground (text) color. The <span class="ARGUMENT"><b>&quot;colorinfo&quot;</b></span> 
+        argument is a string that can contain either the hexadecimal definition 
+        of the color or it's literal description.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">fgColor</span><span class="argument"> 
+        = &quot;colorinfo&quot; </span></b><br>
+        <br><a name="formname"></a>
+        <b>formName Property</b><br>
+        Every form in a document has a seperate <b>document</b> object property, 
+        the name of which is taken from the value asigned to the form with the 
+        &lt;FORM NAME = "formID"&gt; tag. Any form in the document can then be 
+        referred to with the syntax below.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">&quot;formname&quot;</span></b><br>
+        <br>
+        <b><a href="doc_forms.html">forms</a> Property</b><br>
+        This property is an array containing references to all the <b>Form</b> 
+        objects in the current document.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">forms</span><span class="argument">[&quot;formID&quot;]</span></b><br>
+        <br>
+        <b><a href="doc_images.html">images</a> Property</b><br>
+        This property is an array containing references to all the <b>Image</b> 
+        objects in the current document.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">images</span><span class="argument">[&quot;imageID&quot;]</span></b><br>
+        <br>
+        <b><a href="doc_lastmod.html">lastModified</a> Property</b><br>
+        This property returns the date that the document was last modified.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">lastModified</span></b><br>
+        <br>
+        <b><a href="doc_layers.html">layers</a> Property</b><br>
+        This property is an array containing references to all the <b>Layer</b> 
+        objects in the current document.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">layers</span><span class="argument">[&quot;layerID&quot;]</span></b><br>
+        <br>
+        <b><a href="doc_linkcolor.html">linkColor</a> Property</b><br>
+        This property defines the color of any hyperlinks in the document. The 
+        <span class="ARGUMENT"><b>&quot;colorinfo&quot;</b></span> argument is 
+        a string that can contain either the hexadecimal definition of the color 
+        or it's literal description.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">linkColor</span><span class="argument">&nbsp;=&nbsp;&quot;colorinfo&quot;</span></b><br>
+        <br>
+        <b><a href="doc_links.html">links</a> Property</b><br>
+        This property is an array containing references to all the <b>Area</b> 
+        and <b>Link</b> objects in the current document.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">links</span><span class="argument">["linkID"]</span></b><br>
+        <br>
+        <b><a href="doc_plugins.html">plugins</a> Property</b> <img src="/images/icons/ns.gif" width="24" height="24"><br>
+        This property is an array containing references to all the <b>Plugin</b> 
+        objects in the current document.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">plugins</span><span class="argument">["pluginID"]</span></b><br>
+        <br>
+        <b>referrer Property</b><br>
+        If a destination document is reached by a user clicking on a <b>Link</b> 
+        object in another document (the referrer), this property returns the referring 
+        document's URL.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">referrer</span><span class="argument"> 
+        </span></b><br>
+        <br>
+        <b>title Property</b><br>
+        This property returns the document's name as defined between the &lt;TITLE&gt;&lt;/TITLE&gt; 
+        tags.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">title</span><span class="argument"> 
+        </span></b><br>
+        <br>
+        <b>URL Property</b><br>
+        This property is used to retrieve the document's full URL.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">URL</span><span class="argument"> 
+        </span></b><br>
+        <br>
+        <b><a href="doc_vlinkcolor.html">vlinkColor</a> Property</b><br>
+        This property defines the color of any visited links in the document. 
+        The <span class="ARGUMENT"><b>&quot;colorinfo&quot;</b></span> argument 
+        is a string that can contain either the hexadecimal definition of the 
+        color or it's literal description.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="PROPERTY">vlinkColor</span><span class="argument"> 
+        = "colorinfo" </span></b><br>
+        <br>
+        <br>
+        <span class=method><b>METHODS</b></span><br>
+        <br>
+        <b>captureEvents Method</b><br>
+        This method instructs the document to capture and handle all events of 
+        a particular type. See the <b>event</b> object for a list of event types.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD">captureEvents</span><span class="argument">(eventType)</span></b><br>
+        <br>
+        <b><a href="doc_close.html">close</a> Method</b><br>
+        This method closes an output stream previously opened with the <b>document.open</b> 
+        method and forces data collected from any instances of the <b>document.write</b> 
+        or <b>document.writeln</b> methods to be displayed.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD">close( 
+        )</span></b><br>
+        <br>
+        <b><a href="doc_getselection.html">getSelection</a> Method</b> <img src="/images/icons/ns.gif" width="24" height="24"><br>
+        This method can be used to return the contents of selected text in the 
+        current document.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD">getSelection( 
+        )</span></b><br>
+        <br>
+        <b>handleEvent Method</b><br>
+        This method calls the handler for the specified event.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD">handleEvent</span><span class="argument">(event)</span></b><br>
+        <br>
+        <b><a href="doc_open.html">open</a> Method</b><br>
+        This method is used to open a stream to collect the output from any <b>write</b> 
+        or <b>writeln</b> methods.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD">open</span><span class="argument">([mimeType[, 
+        replace]])</span></b><br>
+        <br>
+        <b>releaseEvents Method</b><br>
+        This method is used to set the document to release any events of the type 
+        <b class="ARGUMENT">eventType</b> and passes them along to objects further 
+        down the event heirarchy.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD">releaseEvents</span><span class="argument">(eventType)</span></b><br>
+        <br>
+        <b>routeEvent Method</b><br>
+        This method is used to send the event specified along the normal event 
+        hierarchy.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD">routeEvent</span><span class="argument">(event)</span></b><br>
+        <br>
+        <b><a href="doc_write.html">write</a> Method</b><br>
+        This method is used to write HTML expressions to the specified document.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD">write</span><span class="argument">(&quot;expression(s)&quot;)</span></b><br>
+        <br>
+        <b>writeln Method</b><br>
+        This method is identical to the <b class="METHOD">write</b> method detailed 
+        above, with the addition of writing a new line character after any specified 
+        expressions.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD">writeln</span><span class="argument">(&quot;expression(s)&quot;)</span></b><br>
+        <br>
+        <br>
+        <span class="statement"><b><span class="UNUSED">EVENT HANDLERS</span></b></span><br>
+        <br>
+        <b><a href="evhan_onclick.html">onClick</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>Click</b> event (when an element is clicked).<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onClick</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b> <br>
+        <br>
+        <b><a href="evhan_ondblclick.html">onDblClick</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>DblClick</b> event (when an element is double-clicked).<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onDblClick</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b> <br>
+        <br>
+        <b><a href="evhan_onkeydown.html">onKeyDown</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>KeyDown</b> event (when a key is depressed).<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onKeyDown</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b> <br>
+        <br>
+        <b><a href="evHan_onkeypress.html">onKeyPress</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>KeyPress</b> event (when a key is depressed and held down).<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onKeyPress</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b><br>
+        <br>
+        <b><a href="evhan_onkeyup.html">onKeyUp</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>KeyUp</b> event (when a key is released).<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onKeyUp</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b> <br>
+        <br>
+        <b><a href="evhan_onmousedown.html">onMouseDown</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>MouseDown</b> event (when a mouse button is depressed).<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onMouseDown</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b> <br>
+        <br>
+        <b><a href="evhan_onmouseup.html">onMouseUp</a> Event handler</b><br>
+        This event handler executes some specified JavaScript code on the occurance 
+        of a <b>MouseUp</b> event (when a mouse button is released).<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD"><span class="STATEMENT"><span class="UNUSED">onMouseUp</span></span></span><span class="ARGUMENT"><span class="ARGUMENT">=&quot;myJavaScriptCode&quot; 
+        </span></span></b><br>
+        <br>
+        <!-- END TEMPLATE --> <font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

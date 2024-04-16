@@ -1,0 +1,217 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Boolean</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+    <option value="constructor.html">Object.constructor
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=1690 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; Boolean
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=operator>new </span><span class=object>Boolean</span><span
+class=argument>(value)</span></b></P>
+<P>
+The <b>Boolean</b> object is an object wrapper for a Boolean value and is constructed with
+the above Boolean constructor. If there is no initial value or it is 0, -0, <b>null</b>,
+<b>false</b>, <b>NaN</b>, <b>undefined</b> or the empty string (""), the initial value is
+<b>false</b>. Otherwise, even with the string "false", it is true. So, all the following
+objects have an initial value of <b>false</b>:</P>
+<P><span class= code>
+<BR>x = new Boolean()
+<BR>x = new Boolean(0)
+<BR>x = new Boolean(-0)
+<BR>x = new Boolean(null)
+<BR>x = new Boolean(false)
+<BR>x = new Boolean(NaN)<img src="/images/icons/ns.gif" width="24" height="24">
+<BR>x = new Boolean(undefined)<img src="/images/icons/ns.gif" width="24" height="24">
+<BR>x = new Boolean("")</span></P>
+<P>
+...whereas in the following examples the Boolean object 'x' has an initial value of <b>true</b>:</P>
+<P><span class=code>
+myBool = new Boolean(false)
+<BR>x = new Boolean(myBool)</P>
+<P>x = new Boolean("false")</span></P>
+<P>
+Any <b>Boolean</b> object that is passed to a conditional statement (except those with an initial
+value of <b>null</b> or <b>undefined</b>) evaluates to true. So, for instance, the conditional
+statement in the following code evaluates to <b>true</b>.</P>
+<P>Code:
+<BR><span class=code>x = new Boolean(false)
+<BR>if(x)</span></P>
+<P>
+However, this does not apply to Boolean primitives, and the conditional statement in the following
+code evaluates to <b>false</b>.</P>
+<P>Code:
+<BR><span class=code>x = false
+<BR>if(x)</span></P>
+<P>NOTE:</P>
+<P>
+In JavaScript 1.3 and later versions, don't use a <b>Boolean</b> object instead of a Boolean
+primitive, nor should you use a <b>Boolean</b> object to convert a non-Boolean value to a Boolean 
+one. To do so use <b>Boolean</b> as a function. For example, the following converts 
+the expression 'a+b' to a Boolean value:</P>
+<P>Code:
+<BR><span class=code>x = Boolean(a+b)</span></P>
+<P><b><span class=property>PROPERTIES</span></b></P>
+<P><b>constructor property</b>
+<BR>This property specifies the function that created the object's prototype. See also the 
+<b><a href="constructor.html">Object.constructor</a></b> property.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>constructor</span></b></P>
+<P><b>prototype property</b>
+<BR>This property represents the prototype for this object and allows you to add methods
+and properties of your own. See also the 
+<b><a href="function_object.html#prototype">Function.prototype</a></b> property.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>prototype</span></b></P>
+<P><b><span class=method>METHODS</span></b></P>
+<P><b>toSource method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This method, which is usually called internally by JavaScript, returns a string
+representing the source code of the object. It overrides the 
+<b><a href="tosource.html">Object.toSource</a></b> method.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>toSource</span><span
+class=argument>()</span></b></P>
+<P><b>toString method</b>
+<BR>This method converts a <b>Boolean</b> object to a string representing its value: i.e. either
+"true" or "false", and is called by JavaScript automatically whenever a <b>Boolean</b> object
+is used in a situation requiring a string. This method overrides the 
+<b><a href="tostring.html">Object.toString</a></b> method.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>toString</span><span
+class=argument>()</span></b></P>
+<P><b>valueOf method</b>
+<BR>This method, which is usually called internally by JavaScript, returns a primitive value
+(either "true" or "false") for the <b>Boolean</b> object. It overrides the
+<b><a href="valueof.html">Object.valueOf</a></b> method.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>valueOf</span><span
+class=argument>()</span></b></P>
+<P>NOTE:</P>
+<P>
+The <b>Boolean</b> object also inherits the <b><a href="watch.html">watch</a></b> and
+<b><a href="object.html#unwatch">unwatch</a></b> methods from the <b><a href="object.html">Object</a></b>
+object.</P>
+
+
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript PROPERTY: Function::arguments</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	 <option value="js_objects.html" SELECTED>All Objects
+	<option value="function_object.html">Function Object
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=1370 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+PROPERTY:&nbsp; Function::arguments
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=object>[Function.]</span><span class=property>arguments</span></b></P>
+<P>
+The <b>arguments</b> property, which is now deprecated, consists of an array of all the arguments
+passed to a function. The <b>arguments</b> property is only available inside a function, but can be
+used to refer to any of the function's arguments by stating the appropriate element of the array.
+For example; <b>arguments[0]</b>; <b>newFunction.arguments[1]</b> etc. (Note that the <b>arguments</b> property can
+be preceeded by the function name). The <b>arguments</b> array is especially useful with functions
+that can be called with a variable number of arguments, or with more arguments than they were
+formally declared to accept. 
+</P>
+<P>
+In this next example, a function is declared to calculate the 
+average of a variable number of numbers (which are the function's arguments). By using the 
+<b>arguments</b> array and the <b>arguments.length</b> property, you can pass the function any number of
+arguments and have it return the average of them:</P>
+<P>Code:
+<BR><span class=code>
+function calcAverage()
+<BR>{
+<BR>&nbsp;&nbsp;&nbsp;var sum = 0
+<BR>&nbsp;&nbsp;&nbsp;for(var i=0; i&lt;arguments.length; i++)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum = sum + arguments[i]
+<BR>&nbsp;&nbsp;&nbsp;var average = sum/arguments.length
+<BR>&nbsp;&nbsp;&nbsp;return average
+<BR>}
+<BR>document.write("Average = " + calcAverage(400, 600, 83))
+</span></P>
+<P>Output:
+<BR><span class=output>
+Average = 361 </span></P>
+<P>
+The <b>arguments</b> property itself has the following three properties:</P>
+<P><span class=property><b>PROPERTIES</b></span></P>
+<P><b><a name="arguments.callee">arguments.callee</a> Property</b>
+<BR>
+The <b>arguments.callee</b> property can only be used within the body of a function
+and returns a string specifying what that function is. As the <b>this</b> keyword doesn't refer to
+the current function, you can use the <b>arguments.callee</b> property instead.</P> 
+<P>
+Syntax: <b><span class=object>[Function.]</span><span class=property>arguments.callee</span></b></P>
+<P>
+The next example demonstrates the use of this property:</P>
+<P>Code:
+<BR><span class=code>
+function testCallee(){return arguments.callee}
+<BR>document.write(testCallee())</span></P>
+<P>Output:
+<BR><span class=output>
+function testCallee(){return arguments.callee}</span></P>
+<P><b>arguments.caller Property</b>
+<BR>
+The <b>arguments.caller</b> property is deprecated in JavaScript 1.3 and is no longer used, 
+but where it is, it specifies the name of the function that called the currently 
+executing function.</P>
+<P><b><a name="arguments.length">arguments.length</a> Property</b>
+<BR>
+The <b>arguments.length</b> property returns the number of arguments passed to a function, as 
+opposed to the <b><a href="function_object.html#length">function.length</a></b> property, 
+which returns the number of arguments that a function expects to receive.</P>
+<P>
+Syntax: <b><span class=object>[Function.]</span><span class=property>arguments.length</span></b></P>
+<P>
+The distinction between the <b>arguments.length</b> and <b>Function.length</b> properties is demonstrated
+in this next example of a function which is designed to take as its arguments 3 numbers
+and then calculate the average of them. If exactly 3 arguments are passed to it, it carries
+out the calculation, otherwise it returns an appropriate message: 
+<P>Code:
+<BR><span class=code>
+function calc3Average(x, y, z)
+<BR>{
+<BR>&nbsp;&nbsp;&nbsp;if(arguments.length != calc3Average.length)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Use 3 arguments!"
+<BR>&nbsp;&nbsp;&nbsp;else
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var average = (x + y + z)/3
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "The average is " + average
+<BR>}</span></P>
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

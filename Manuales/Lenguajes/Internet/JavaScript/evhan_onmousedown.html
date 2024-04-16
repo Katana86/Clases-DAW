@@ -1,0 +1,161 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript EVENT HANDLER: onMouseDown</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_eventhandler.html" SELECTED>All Event Handlers</select>
+	<!-- END TEMPLATE -->
+</font><br></td>
+
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=460 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+EVENT HANDLER:&nbsp; onMouseDown
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class="unused">onMouseDown</span><span class="argument"> = myJavaScriptCode</span></b></P>
+<P>
+	Event handler for <b><a href="button.html">Button</a></b>, <b><a href="document.html">Document</a> and <a href="link.html">Link</a></b>
+</P>
+<P>
+	The <b>onMouseDown</b> event handler is used to execute specified Javascript code whenever
+	the user depresses a mouse button. <b>onMouseDown</b>
+	uses the following properties of the <b><a href="event.html">Event</a></b> object:
+</P>
+<P>
+	<b>type</b> - indicates the type of event.
+	<BR><b>target</b> - indicates the target object to which the event was sent.
+	<BR><b>layerX, layerY, pageX, pageY, screenX, screenY</b>
+	<BR>&nbsp;&nbsp;&nbsp;indicate the cursor location at the time of the MouseDown event.<br>
+    <b>which</b> - 1 represents a left mouse click and 3 a right click.<br>
+        <b>modifiers</b> - lists the modifier keys (shift, alt, ctrl, etc.) held down when the 
+        &nbsp;&nbsp;&nbsp;MouseDown event occurs.<br><br>
+        
+</P>
+<P>
+	For example, with the following code, the user can click on the word 'green'
+	to alter the background color to green. Depressing the mouse button calls the 'changeColor'
+	function to do this:
+</P>
+<P>
+	Code:<BR><span class=code>
+	&lt;P&gt;Click on &lt;B&gt;&lt;A onMouseDown="changeColor()"&gt;
+	green&lt;/A&gt;&lt;/B&gt; to change background color.&lt;/P&gt;</span>
+</P>
+
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

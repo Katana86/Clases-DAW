@@ -1,0 +1,291 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Array</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT  = "O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td></tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 src="/images/grey.gif" width=2><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<A href="test_list.html"><IMG border=0 height=21 src="images/cant_find.gif" width=200 ></a><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" target = 
+            "body">
+	<option value="js_objects.html" SELECTED>All Objects
+    <option value="image.html">Image
+
+</select>
+             
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  BORDER = 0><IMG border=0 height=22 src="images/go.gif" width=20  value = Go><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=2685 src="/images/grey.gif" width=2 ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT    
+            face="arial, helvetica" size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->OBJECT:&nbsp; 
+            Array
+<!-- END TEMPLATE --> 
+            
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=operator>new&nbsp;</span><span class=object>Array</span><span 
+class=argument>(arrayLength)</span>
+            <P></P>
+<P><span class=operator>new&nbsp;</span><span class=object>Array</span><span 
+class=argument>(element0, element1, ..., elementN)</span></b>
+<P>
+An array is an ordered set of values grouped together under a single variable name
+created by using an <b>Array</b> object constructor. You can create an <b>Array</b> literal by
+specifying the name of the array and the values of all its elements. 
+</P>
+<P>
+The following
+example creates an array of three elements:<P>
+<P>
+Code:
+<BR><span class=code>
+cars = [&quot;Mercedes&quot;, &quot;Ford&quot;, &quot;Chrysler&quot;]</span></P>
+<P>
+The elements of an array are indexed using their ordinal number, starting with 0.
+You could, therefore, refer to the second element in the above array (&quot;Ford&quot;)
+as 'cars[1]'.
+You can specify the number of elements in a new array by using a single numeric
+parameter with the <b>Array</b> constructor. 
+</P>
+<P>
+For example, the following code creates
+an array of 7 elements:</P>
+<P>
+Code:
+<BR><span class=code>
+fruit = new Array(7)</span></P>
+<P>
+If you create an array with a single numeric parameter, that number is stored in
+the <b>length</b> property, and the array doesn't actually have any elements until some
+are specifically assigned to it. If, however, the parameter is not a number, an
+array of 1 element is created and that value assigned to it. You can easily
+increase the size of an array by assigning a value to an element higher than
+its current length.</P>
+<P>
+NOTE: </P>
+<P>If you specify 'language=&quot;Javascript1.2&quot;' in the &lt;SCRIPT&gt; tag and use
+a single numeric parameter with the <b>Array</b> constructor, it will be seen as the
+value of a single element of the array rather than the number of elements you
+want that array to contain.</P>  
+<P><span class=property><b>PROPERTIES</b></span></P>
+<P><b>constructor Property</b>
+<BR>The <b>constructor</b> property contains the function that created an object's prototype.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>constructor</span></b></P>
+<P><b>index Property</b>
+<BR>The read-only <b>index</b> property for an array created by a regular expression match
+and containing the zero-based index of that match.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>index</span></b></P>
+<P><b>input Property</b>
+<BR>The read-only <b>input</b> property for an array created by a regular expression match
+and containing the original string against which the match was made.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>input</span></b></P>
+<P><b>length Property</b>
+<BR>The <b>length</b> property holds an unsigned 32 bit integer representing the length of 
+the array. It can be altered independently of the number of elements in the array.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>length</span></b></P>
+<P><b>prototype Property</b>
+<BR>The <b>prototype</b> property allows the addition of properties to an array.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>prototype</span></b></P>
+<P><SPAN CLASS=METHOD><b>METHODS</b></SPAN></P>
+<P><b><A href="Concat.html">concat</a> Method</b>
+<BR>The <b>concat</b> method joins two or more <b>Array</b> objects producing one new one. The original 
+<b>Array</b> objects are unaffected by this but, if one copy of a string or number is altered,
+it is not reflected in the other, whereas a change to an object reference can be 
+seen in both copies. </P>
+<P>
+Syntax: <b><span class=object>Array.</span><span class=method>concat</span><span 
+class=argument>(arrayName2, arrayName3, ..., arrayNameN)</span></b></P>
+<P><b><A href="Join.html">join</a> Method</b>
+<BR>The <b>join</b> method is used to join all the elements of an array into a single string
+seperated by a specified string seperator (if none is specified, the default is a 
+comma).</P>
+<P>
+Syntax: <b><span class=object>Array.</span><span class=method>join</span><span
+ class=argument>(separator)</span></b></P>
+<P><b><A href="Pop.html">pop</a> Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>The <b>pop</b> method is used to remove and return the last element of an array. This affects
+the length of the array.</P>
+
+<P>
+Syntax: <b><span class=object>Array.</span><span class=method>pop</span><span
+ class=argument>()</span></b></P>
+<P><b><A href="Push.html">push</a> Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>The <b>push</b> method is used to add one or more elements to an array, returning the new
+length of it. This affects the length of the array.</P>
+
+<P>
+Syntax: <b><span class=object>Array.</span><span class=method>push</span><span
+ class=argument>(element1, ..., elementN)</span></b></P>
+<P><b>reverse Method</b>
+<BR>The <b>reverse</b> method, as the name implies, reverses the order of the elements in an array
+making the first last and the last first.</P>
+Syntax: <b><span class=object>Array.</span><span class=method>reverse</span><span
+ class=argument>()</span></b></P>
+            
+<P><b><A href="Shift.html">shift</a> Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+ 
+<BR>The <b>shift</b> method removes and returns the first element of an array. This affects the
+length of the array.</P>
+
+<P>
+Syntax: <b><span class=object>Array.</span><span class=method>shift</span><span
+ class=argument>()</span></b></P>
+<P><b><A href="Slice.html">slice</a> Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>The <b>slice</b> method creates a new array from a selected section of an array.</P>
+
+<P>
+Syntax: <b><span class=object>Array.</span><span class=method>slice</span><span
+ class=argument>(begin[,end])</span></b></P>
+<P><b><A href="Splice.html">splice</a> Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>The <b>splice</b> method is used to add and/or remove elements of an array.</P>
+
+<P>
+Syntax; <b><span class=object>Array.</span><span class=method>splice</span><span
+ class=argument>(index, howMany, [element1][, ..., elementN])</span></b></P>
+<P><b><A href="Sort.html">sort</a> Method</b>
+<BR>The <b>sort</b> method sorts the elements of an <b>array</b>.</P>
+<P>
+Syntax: <b><span class=object>Array.</span><span class=method>sort</span><span
+ class=argument>(compareFunction)</span></b></P>
+<P><b>toSource Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>The <b>toSource</b> method is inherited from the <b>Object</b> object and returns the source 
+code of the array. For details see the <b><A href="ToSource.html">Object.toSource</a></b> 
+method.</P>
+
+<P>
+Syntax: <b><span class=object>Array.</span><SPAN CLASS=METHOD>toSource</SPAN><span
+class=argument>()</span></b></P>
+<P><b>toString Method</b>
+<BR>The <b>toString</b> method is inherited from the <b>Object</b> object and returns a string
+representing the specified array and its elements. For more details see the
+<b><A href="ToString.html">Object.toString</a></b> method.</P>
+<P>
+Syntax: <b><span class=object>Array.</span><SPAN CLASS=METHOD>toString</SPAN><span
+class=argument>()</span></b></P>
+<P><b><A href="Unshift.html">unshift</a> Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>The <b>unshift</b> method adds one or more elements to the beginning of an array
+and returns the new length.</P>
+
+<P>
+Syntax: <b><span class=object>Array.</span><span class=method>unshift</span><span
+ class=argument>(element1,..., elementN)</span></P></SPAN></B>
+<P><b>valueOf Method</b>
+<BR>The <b>valueOf</b> method is inherited from the <b>Object</b> object and returns a primitive
+value for a specified array. For details see the <b><A href="valueOf.html">Object.valueOf</a> 
+</b>method.</P>
+<P>
+Syntax: <b><span class=object>Array.</span><span class=method>valueOf</span><span 
+class=argument>()</span></b></P>
+
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Function</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED> All Objects
+<!-- END TEMPLATE -->
+
+</select>
+</font><br></td>
+
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=3285 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; Function
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=operator>new </span><span class=object>Function</span><span
+class=argument>([arg1[, arg2[, ... argN]],] functionBody)</span></b></P>
+<P>
+
+The <b>Function</b> object permits a function to have methods and
+properties associated with it. 
+To accomplish this, the function is temporarily considered to an object whenever
+you wish to invoke a method or read the value of a property.
+<P> 
+Note that JavaScript treats the function, itself, as a data type that has a value.
+To return that value, the function must have a 
+<b><a href="return.html">return</a></b> statement.
+<P>
+When a <b>Function</b> object is created by using
+the <b>Function</b> constructor, it is evaluated each time.  This is not as efficient
+as the alternative method of declaring a function using the <b><a href="Function.html">function</a> 
+</b>statement where the code is compiled. 
+
+<P>
+The following example creates a <b>Function</b> object to calculate the average of two numbers, and
+then displays that average:</P>
+<P>Code:
+<BR><span class=code>
+var twoNumAverage = new Function("x", "y", "return (x + y)/2")
+<BR>document.write(twoNumAverage(3,7))</span></P>
+<P>
+The <b>Function</b> object can be called just as if it were a function by specifying the variable name:</P>
+<P>Code:
+<BR><span class=code>
+var average = twoNumAverage(12,17)</span></P>
+<P>
+If a function changes the value of a parameter, this change is not reflected globally or in the
+calling function, unless that parameter is an object, in which case any changes made 
+to any if its properties will be reflected outside of it. In the next example, an object
+called TaxiCo is created with a property containing the size of the taxi fleet. A <b>Function</b> 
+object called AddCar is then created which allows a user to alter the size of the Fleet
+property to reflect an increase in the number of cars, and then an instance of this function
+adds 2 to the Fleet property with the final line of code displaying the new size of the 
+taxi fleet:</P>
+<P>Code:
+<BR><span class=code>
+taxiCo = {name:"City Cabs", phone:"321765", fleet:17}
+<BR>var addCar = new Function("obj", "x", "obj.fleet = obj.fleet + x")
+<BR>addCar(taxiCo, 2)
+<BR>document.write("New fleet size = " + taxiCo.fleet)</span></P>
+<P>Output:
+<BR><span class=output>
+New fleet size = 19 </span></P>
+<P>
+The function in the above example could also be created by declaring it using the <b>function</b>
+statement as follows...</P>
+<P><span class=code>
+function addCar(obj,x){obj.fleet = obj.fleet + x}</span></P>
+<P>
+...the difference being that when you use the <b>Function</b> constructor, AddCar is a variable whose
+value is just a reference to the function created, whereas with the <b>function</b> statement AddCar
+is not a variable at all but the name of the function itself.</P>
+<P>
+You can also nest a function
+within a function in which case the inner function can only be accessed by statements in
+the outer function. The inner function can use arguments and variables of the outer function,
+but not vice versa. The following example has an inner function that converts a monetary
+value from Pounds Sterling into Dollars. The outer function takes four values (the first two
+in Dollars and the second two in Pounds), passes each of the Pound values 
+to the inner function to be converted to Dollars, and then adds them all together returning
+the sum:</P>
+<P>Code:
+<BR><span class=code>
+function totalDollars(v,w,x,y)
+<BR>{
+<BR>&nbsp;&nbsp;&nbsp;function convertPounds(a)
+<BR>&nbsp;&nbsp;&nbsp;{
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return a * 1.62
+<BR>&nbsp;&nbsp;&nbsp;}
+<BR>&nbsp;&nbsp;&nbsp;return v + w + convertPounds(x) + convertPounds(y)
+<BR>}
+<BR>document.write("Total Dollars = " + totalDollars(400, 560, 250, 460))</span></P>
+<P>Output:
+<BR><span class=output>
+Total Dollars = 2110.2 </span></P>
+<P>
+A <b>Function</b> object can also be assigned to an event handler (which must be spelled in lowercase)
+as in the following example:</P>
+<P>Code:
+<BR><span class=code>
+window.onmouseover = new Function("document.bgColor='lightgreen'")</span></P>
+<P>
+A <b>Function</b> object can be assigned to a variable, which in turn can then be assigned to an
+event handler, provided it doesn't take any arguments, because event-handlers cannot handle
+them. In the following example a function which changes the background color to green is 
+assigned to a variable ChangeBGColor. This in turn is assigned to an <b>onMouseOver</b> event connected
+to an anchor in a line of text:</P>
+<P>Code:
+<BR><span class=code>
+&lt;script language="javascript"&gt;
+<BR>var changeBGColor = new Function("document.bgColor='lightgreen'")
+<BR>&lt;/script&gt;
+<BR>He turned &lt;a name="ChangeColor" onMouseOver="changeBGColor()"&gt;green
+&lt;/a&gt; with envy.</span></P>
+<P><b><span class=property>PROPERTIES</span></b></P>
+<P><b><a href="arguments.html">arguments</a> Property</b>
+<BR>The <b>arguments</b> property, which is now deprecated, consists of an array of all the arguments
+passed to a function.</P>
+<P>
+Syntax: <b><span class=object>[Function.]</span><span class=property>arguments</span></b></P>
+<P><b><a href="arguments.html#arguments.callee">arguments.callee</a> Property</b>
+<BR>The <b>arguments.callee</b> property can only be used within the body of a function
+and returns a string specifying what that function is.</P>
+<P>
+Syntax: <b><span class=object>[Function.]</span><span class=property>arguments.callee</span></b></P>
+<P><b>arguments.caller Property</b>
+<BR>The <b>arguments.caller</b> property is deprecated in JavaScript 1.3 and is no longer used, 
+but where it is, it specifies the name of the function that called the currently 
+executing function.</P>
+<P>
+Syntax: <b><span class=object>[Function.]</span><span class=property>arguments.caller</span></b></P>
+<P><b><a href="arguments.html#arguments.length">arguments.length</a> Property</b>
+<BR>The <b>arguments.length</b> property returns the number of arguments passed to a function.</P>
+<P>
+Syntax: <b><span class=object>[Function.]</span><span class=property>arguments.length</span></b></P>
+<P><b>arity Property</b>
+<BR>The <b>arity</b> property specifies the number of arguments expected by a function. It is external to 
+the function and is in contrast to the <b><a href="arguments.html#arguments.length">arguments.length</a></b>
+property which specifies the number of arguments actually passed to a function.
+<P>
+Syntax: <b><span class=object>[Function.]</span><span class=property>arity</span></b></P> 
+Compare the <b>length</b> property below.</P>
+<P><b>constructor Property</b>
+<BR>The <b><a name=constructor>constructor</a></b> property specifies the function that creates an object's prototype. It
+is a direct reference to the function itself rather than a string containing the function's name.
+See the <b><a href="Constructor.html">constructor</a></b> property of the 
+<b><a href="Object.html">Object</a></b> object for more details and examples.</P>
+<P>
+Syntax: <span class=object><b>Function.</span><span class=property>constructor</span></b></P>
+<P><b><a name="length">length</a> Property</b>
+<BR>The <b>length</b> property specifies the number of arguments expected by a function. It is external to 
+the function and is in contrast to the <b><a href="arguments.html#arguments.length">arguments.length</a></b>
+property which specifies the number of arguments actually passed to a function. 
+Compare the <b>arity</b> property above.</P>
+<P>
+Syntax: <span class=object><b>Function.</span><span class=property>length</span></b></P>
+<P><b><a name="prototype">prototype</a> Property</b>
+<BR>The <b>prototype</b> property is a value from which all instances of an object are constructed,
+and which also allows you to add other properties and methods to an object. See also the 
+<b><a href="prototype.html">prototype</a></b> property of the <b><a href="Object.html">Object</a></b> 
+object for more details and examples.</P>
+<P>
+Syntax: <b><span class=object>Function.</span><span class=property>prototype.</span><span
+class=argument>name = value</span></b></P>
+<P><b><span class=method>METHODS</span></b></P>
+<P><b><a href="apply.html">apply</a> Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>The <b>apply</b> method allows you to apply to a function a method from another function.</P>
+
+<P>
+Syntax: <b><span class=object>Function.</span><span class=method>apply</span><span
+class=argument>(thisArg[, argArray])</span></b></P>
+<P><b><a href="call.html">call</a> Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>The <b>call</b> method allows you to call a method from another object</P>
+
+<P>
+Syntax: <b><span class=object>Function.</span><span class=method>call</span><span
+class=argument>(thisArg[, arg1[, arg2[, ...]]])</span></b></P>
+<P><b><a href="function_toSource.html">toSource</a> Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>The <b>toSource</b> method creates a string representing the source code of the function.
+This over-rides the <b><a href="toSource.html">Object.toSource</a></b> method</P>
+
+<P>
+Syntax: <b><span class=object>Function.</span><span class=method>toSource
+</span><span class=argument>()</span></b></P>
+<P><b><a href="function_toString.html">toString</a> Method</b>
+<BR>The <b>toString</b> method (like the <b>valueOf</b> method below) returns a string which represents the 
+source code of a function. This over-rides the <b><a href="toString.html">Object.toString</a></b> 
+method.</P>
+<P>
+Syntax: <b><span class=object>Function.</span><span class=method>toString
+</span><span class=argument>()</span></b></P>
+<P><b><a href="function_valueOf.html">valueOf</a> Method</b><BR>
+The <b>valueOf</b> method (like the <b>ToString</b> method above) returns a string which represents the
+source code of a function. This over-rides the <b><a href="ValueOf.html">Object.valueOf</a></b> 
+method.</P>
+<P>
+Syntax: <b><span class=object>Function.</span><span class=method>valueOf
+</span><span class=argument>()</span></b></P>
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

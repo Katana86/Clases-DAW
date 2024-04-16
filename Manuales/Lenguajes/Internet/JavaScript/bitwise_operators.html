@@ -1,0 +1,238 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OPERATORS: & | ^ ~ << >> >>> (Bitwise)</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_operators.html" SELECTED> All Operators
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=1475 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OPERATORS:&nbsp; & | ^ ~ << >> >>> 
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+
+Bitwise operators perform logical and shift operations. They work
+by treating their operands as a series of 32 bits and 
+performing their operations on them at this bit level. However, 
+the return value is a decimal format number. 
+</P>
+<P>
+The following examples
+of bitwise logical operators assume the variable 'a' to be 13 
+(binary 1101) and 'b' to be 9 (binary 1001)</P>
+<P><b><SPAN CLASS=OPERATOR>& </SPAN></b></P>
+<P>
+This is the bitwise AND operator which returns a 1 for 
+each bit position where the corresponding bits of both 
+its operands are 1. The following code would
+return 9 (1001):</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+result = a & b;
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>|</SPAN></b></P>
+<P>
+This is the bitwise OR operator and returns a one for 
+each bit position where one or both of the corresponding 
+bits of its operands is a one. This example would return
+13 (1101):</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+result = a | b;
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>^</SPAN></b></P>
+This is the bitwise XOR operator, which returns a one
+for each position where one (not both) of the corresponding
+bits of its operands is a one. The next example returns
+4 (0100):</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+result = a ^ b;
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>~</SPAN></b></P>
+<P>
+This is the bitwise NOT operator and it works by converting
+each bit of its operand to its opposite. This example 
+returns -14:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+result = ~a;
+</SPAN></P>
+<P>
+The following bitwise operators perform shift operations. In
+the examples the variable 'a' is assumed to be 13 (binary 1101)
+and the variable 'b' 2 (binary 10).</P>
+<P><b><SPAN CLASS=OPERATOR><<</SPAN></b></P>
+<P>
+This is the left shift operator and it works by shifting the digits
+of the binary representation of the first operand to the left by 
+the number of places specified by the second operand. The spaces
+created to the right are filled in by zeros, and any digits falling
+off the left are discarded. The following code returns 52 as the 
+binary of 13 (1101) is shifted two places to the left giving 
+110100:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+result = a << b;
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>>></SPAN></b></P>
+<P>
+This is the sign-propagating right shift operator which shifts the
+digits of the binary representation of the first operand to the right
+by the number of places specified by the second operand, discarding
+any shifted off to the right. The copies of the leftmost bit are added
+on from the left, thereby preserving the sign of the number. This next
+example returns 3 (11) as the two right-most bit of 13 (1101) are shifted
+off to the right and discarded:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+result = a >> b;
+</SPAN></P>
+<P>
+Note that if 'a' were -13 in the above example, the code would return -4
+as the sign is preserved.</P>
+<P><b><SPAN CLASS=OPERATOR>>>></SPAN></b></P>
+<P>
+This is the zero-fill right shift operator which shifts the binary representation
+of the first operand to the right by the number of places specified by the 
+second operand. Bits shifted off to the right are discarded and zeroes are
+added on to the left. With a positive number you would get the same result
+as with the sign-propagating right shift operator, but negative numbers
+lose their sign becoming positive as in the next example, which (assuming
+'a' to be -13) would return 1073741820:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+result = a >>> b;
+</SPAN></P>
+
+
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

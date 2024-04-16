@@ -1,0 +1,146 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript EVENT HANDLER: onKeyDown</title>
+<!-- END TEMPLATE -->
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+</head>
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT  = "O" MARGINWIDTH = "0">
+<form name="MainForm">
+  <img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+  </A> <img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=60 src="/images/grey.gif" width=2><br>
+        </center>
+      </td>
+      <td valign="top" width="200" align="left" colspan="2"><br>
+        <A href="test_list.html"><IMG border=0 height=21 src="images/cant_find.gif" width=200 ></A><br>
+      </td>
+      <td valign="top" colspan="2"><br>
+        <font size=2 face="arial, helvetica, ventura"> 
+        <select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" target = "body">
+          <option value="js_eventhandler.html" selected>All Event Handlers</option>
+		   <option value="evhan_onKeyPress.html">onKeyPress</option>
+		    <option value="evhan_onKeyUp.html">onKeyUp</option></select></font><br></td>
+			
+      <td valign="top" width="20"><br>
+        <A href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  BORDER = 0><IMG border=0 height=22 src="images/go.gif" width=20  value = Go><br>
+        </A> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=750 src="/images/grey.gif" width=2 ><br>
+        </center>
+      </td>
+      <td valign="top" width="460"> <FONT    
+            face="arial, helvetica" size='2'> <font size="+1"> <!-- TEMPLATE: Item name -->EVENT HANDLER: 
+        &nbsp;onKeyDown <!-- END TEMPLATE --> </font> <BR>
+        <HR>
+        <!-- TEMPLATE: Item Description, examples, etc. -->
+		 <b><span class="unused">onKeyDown</span><span class="argument"> = myJavaScriptCode</span></b><br><br>
+        Event handler for <a href="document.html"><b>Document</b></a>, <b><a href="image.html">Image</a></b>, 
+        <b><a href="link.html">Link</a></b>, <b><a href="textarea.html">TextArea</a></b>.<br>
+        <br>
+        The <b>onKeyDown</b> event handler executes the specified JavaScript code 
+        or function on the occurance of a KeyDown event. A KeyDown event occurs when the user depresses a key.<br>
+        <br>
+        The <b>onKeyDown</b> event handler uses the following <a href="event.html"><b>Event</b></a> 
+        object properties.<br>
+        <br>
+        <b>type</b> - this property indicates the type of event.
+        <br>
+        <b>target</b> - this property indicates the object to which the event was originally sent.<br>
+        <b>layerX</b> - the cursor location when the KeyDown event occurs.<br>
+        <b>layerY</b> - the cursor location when the KeyDown event occurs.<br>
+        <b>pageX</b> - the cursor location when the KeyDown event occurs.<br>
+        <b>pageY</b> - the cursor location when the KeyDown event occurs.<br>
+        <b>screenX</b> - the cursor location when the KeyDown event occurs.<br>
+        <b>screenY</b> - the cursor location when the KeyDown event occurs.<br>
+        <b>which</b> - this represents the key pressed as it's ASCII value.<br>
+        <b>modifiers</b> - lists the modifier keys (shift, alt, ctrl, etc.) held 
+        down when the KeyDown event occurs.<br><br>
+        The following example shows the use of the <b>onKeyDown</b> event handler 
+        to display a message in the text box. <br>
+        <br>
+		Code:<br>
+		<span class ="code">
+        &lt;body onKeyDown  = "changeVal()" &gt;<br>
+&lt;form action="" method="POST" id="myForm" &gt;<br>
+&lt;input type="text" name="myText"  &gt;<br><br>
+
+&lt;script type="text/javascript" language="JavaScript"&gt;<br>
+s1 = new String(myForm.myText.value)<br><br>
+
+function changeVal() {<br>
+  &nbsp;&nbsp;&nbsp; &nbsp;s1 = "You pressed a key"<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;myForm.myText.value = s1.toUpperCase() <br>
+} <br><br>
+
+&lt;/script&gt;<br>  
+&lt;/form&gt;<br>
+&lt;/body&gt;
+        </span>
+		<br><br>
+   
+        
+        <!-- END TEMPLATE --> <font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

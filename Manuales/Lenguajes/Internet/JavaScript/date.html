@@ -1,0 +1,391 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Date</title>
+<!-- END TEMPLATE -->
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+<script language="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</script>
+</head>
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" marginheight  = "O" marginwidth = "0">
+<form name="MainForm">
+  <img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+  </a> <img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <img border=0 height=60 src="/images/grey.gif" width=2><br>
+        </center>
+      </td>
+      <td valign="top" width="200" align="left" colspan="2"><br>
+        <a href="test_list.html"><img border=0 height=21 src="images/cant_find.gif" width=200 ></a><br>
+      </td>
+      <td valign="top" colspan="2"><br>
+        <font size=2 face="arial, helvetica, ventura"> 
+        <select name="SeeAlsoSelect" onChange=viewcrossreference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" target = 
+            "body">
+          <option value="js_objects.html" Selected>All Objects</option></select>
+        </font><br>
+      </td>
+      <td valign="top" width="20"><br>
+        <a href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  border = 0><img border=0 height=22 src="images/go.gif" width=20  value = go><br>
+        </a> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <img border=0 height=5300 src="/images/grey.gif" width=2 ><br>
+        </center>
+      </td>
+      <td valign="top" width="460"> <font    
+            face="arial, helvetica" size='2'> <font size="+1"> <!-- TEMPLATE: Item name -->OBJECT: 
+        &nbsp;Date <!-- END TEMPLATE --> </font> <br>
+        <hr>
+        <!-- TEMPLATE: Item Description, examples, etc. --> <span class="ARGUMENT"><b>new 
+        <span class="OBJECT">Date</span>()</b></span><b><br><br>
+        <span class="ARGUMENT">new <span class="OBJECT">Date</span>(milliseconds)</span><br><br>
+        <span class="ARGUMENT">new <span class="OBJECT">Date</span>(dateString)</span></b><br><br>
+        <span class="ARGUMENT"><b>new <span class="OBJECT">Date</span>(yr_num, 
+        mo_num, day_num [, hr_num, min_num, </b></span><b><br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="ARGUMENT">sec_num, 
+        ms_num])</span></b> <br>
+        <br>
+        The <strong>Date </strong>object allows you to work programatically with 
+        dates and times. You create a <b>Date</b> object using the Date constructor 
+        as shown in the syntax above and the available parameters are as follows:<br>
+        <br>
+        <b class="ARGUMENT">milliseconds</b> - an integer that represents the 
+        number of milliseconds since 01/01/70 00:00:00.<br>
+        <br>
+        <b class="ARGUMENT">dateString</b> - a string that represents the date 
+        in a format that is recognized by the <b>Date.parse</b> method.<br>
+        <br>
+        <b class="ARGUMENT">yr_num, mo_num, day_num</b> - an integer that represents 
+        the year, month or day of the date.<br>
+        <br>
+        <b class="ARGUMENT">hr_num, min_num, sec_num, ms_num</b> - an integer 
+        that represents the hours, minutes, seconds and milliseconds.<br> 
+        <br>
+        If you don't supply any of the above parameters, JavaScript creates an object for today's date according to the time on the local machine. If any arguments are supplied, you have to include the year, month and day as a minimum, with the time parameters being optional. Note that if you only supply some arguments, any not supplied are set to 0.<br>
+        <br>
+        All dates are calculated in milliseconds from 01 January, 1970 00:00:00 
+        Universal Time (UTC) with a day containing 86,400,000 milliseconds. The 
+        range of a <b>Date</b> object relative to 01/01/1970 (UTC) is -100,000,000 
+        to 100,000,000 days and both Universal (UTC) time and Greenwich Mean Time 
+        (GMT) are supported. <br>
+        <br>
+        The following code uses <b>Date</b> objects to calculate the time remaining, 
+        in days, to the start of the new Millenium.<br>
+        <br>
+        Code:<br>
+        <span class="CODE">d = new Date() &nbsp; &nbsp;//today's date<br>
+        mill=new Date(2000, 00, 01, 00, 00, 00) &nbsp; &nbsp;//Millenium start date<br>
+        diff = mill-d &nbsp; &nbsp;//difference in milliseconds<br>
+        mtg = new String(diff/86400000)&nbsp; &nbsp; //calculate days and convert to string<br>
+        point=mtg.indexOf(".") &nbsp; &nbsp;//find the decimal point<br>
+        days=mtg.substring(0,point)&nbsp; &nbsp; //get just the whole days<br>
+        document.write("There are " + days + " days remaining to the start of 
+        the new Millenium.") </span><br><br>
+        Output:<br>
+        <span class="OUTPUT">There are 176 days remaining to the start of the 
+        new Millenium.</span><br><br>
+        <br><span class=property><b>PROPERTIES</b></span><br>
+        <br><b>constructor Property</b><br>
+        This property returns a reference to the function that created the <b>Date</b> 
+        object's prototype.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="PROPERTY">constructor</span></b><br>
+        <br>
+        <b>prototype Property</b><br>
+        This property represents the prototype for the object's class and can be used to add properties and methods to all instances of that class.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="PROPERTY">prototype</span></b><br>
+        <br><br>
+		
+        <span class=method><b>METHODS</b></span><br><br>
+        <b>getDate Method</b><br>
+        This method returns an integer (between 1 and 31) representing the day of the month for the specified (local time) date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getDate( )</span></b><br>
+        <br>
+        <b>getDay Method</b><br>
+        This method returns an integer (0 for Sunday thru 6 for Saturday) representing the day of the week.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getDay( 
+        )</span></b><br>
+        <br>
+        <b>getFullYear Method</b> <br>
+        This method returns an integer representing the year of a specified date. The integer returned is a four digit number, 1999, for example, and this method is to be prefered over getYear.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getFullYear( 
+        )</span></b><br>
+        <br>
+        <b>getHours Method</b><br>
+        This method returns an integer between 0 and 30 that represents the hour (local time) for the specified date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getHours( )</span></b><br>
+        <br>
+        <b>getMilliseconds Method</b><br>
+        This method returns an integer between 0 and 999 that represents the milliseconds (local time) for the specified date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getMilliseconds( )</span></b><br>
+        <br>
+        <b>getMinutes Method</b><br>
+        This method returns an integer between 0 and 59 that represents the minutes (local time) for the specified date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getMinutes( )</span></b><br>
+        <br>
+        <b>getMonth Method</b><br>
+        This method returns an integer (0 for January thru 11 for December) that represents the month for the specified date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getMonth( )</span></b><br>
+        <br>
+        <b>getSeconds Method</b><br>
+        This method returns an integer between 0 and 59 that represents the seconds (local time) for the specified date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getSeconds( )</span></b><br>
+        <br>
+        <b>getTime Method</b><br>
+        This method returns a numeric value representing the number of milliseconds since midnight 01/01/1970 for the specified date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getTime( )</span></b><br>
+        <br>
+		<b>getTimezoneOffset Method</b><br>
+        This method returns the difference in minutes between local time and Greenwich Mean Time. This value is not a constant, as you might think, because of the practice of using Daylight Saving Time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getTimezoneOffset( )</span></b><br>
+        <br>
+        <b>getUTCDate Method</b><br>
+        This method returns an integer between 1 and 31 that represents the day of the month, according to universal time, for the specified date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getUTCDate( 
+        )</span></b><br>
+        <br>
+        <b>geUTCDay Method</b> <br>
+        This method returns an integer (0 for Sunday thru 6 for Saturday) that represents the day of the week, according to universal time, for the specified date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getUTCDay( 
+        )</span></b><br>
+        <br>
+        <b>getUTCFullYear Method</b><br>
+        This method returns a four-digit absolute number that represents the year, according to universal time, for the supplied date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getUTCFullYear( )</span></b><br>
+        <br>
+        <b>getUTCHours Method</b><br>
+        This method returns an integer between 0 and 23 that represents the hours, according to universal time, in the supplied date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getUTCHours( )</span></b><br>
+        <br>
+        <b>getUTCMilliseconds Method</b><br>
+        This method returns an integer between 0 and 999 that represents the milliseconds, according to universal time, in the specified date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getUTCMilliseconds( )</span></b><br>
+        <br>
+        <b>getUTCMinutes Method</b><br>
+        This method returns an integer between 0 and 59 that represents the minutes, in universal time, for the supplied date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getUTCMinutes( )</span></b><br>
+        <br>
+        <b>getUTCMonth Method</b><br>
+        This method returns an integer, 0 for January thru 11 for December, according to universal time, for the specified date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getUTCMonth</span></b><br>
+        <br>
+        <b>getUTCSeconds Method</b><br>
+        This method returns an integer between 0 and 59 that represents the seconds, according to universal time, for the specified date.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">getUTCSeconds( )</span></b><br>
+        <br>
+        <b><a href="date_parse.html">parse</a> Method</b><br>
+        This method returns takes a date string and returns the number of milliseconds 
+        since January 01 1970 00:00:00.<br>
+        <br>
+        Syntax: <span class="object"><b>Date.</b></span><b><span class="METHOD">parse</span><span class="argument">dateString</span></b><br>
+        <br>
+        <b>setDate Method</b> <br>
+        This method is used to set the day of the month, using an integer from 1 to 31, for the supplied date according to local time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setDate</span><span class="argument">(dateVal)</span></b><br>
+        <br>
+        <b><a href="date_setfullyear.html">setFullYear</a> Method</b><br>
+        This method is used to set the full year for the supplied date according to local time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setFullYear</span><span class="argument">(yearVal [, monthVal, dayVal])</span></b><br>
+        <br>
+        <b><a href="date_sethours.html">setHours</a> Method</b><br>
+        This method is used to set the hours for the supplied date according to local time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setHours</span><span class="argument">(hoursVal [, minutesVal, secondsVal, msVal])</span></b><br>
+        <br>
+        <b>setMiliiseconds Method</b><br>
+        This method is used to set the milliseconds for the supplied date according 
+        to local time. The <b class="ARGUMENT">millisecondsVal</b> parameter expects 
+        a number between 0 and 999 athough if this is exceeded, the <b>setMilliseconds</b> 
+        method will automatically increment other values in the <b>Date</b> object, 
+        e.g. if 1020 is specified, the seconds value is incremented by one and 
+        <b class="ARGUMENT">millisecondsVal</b> is set to 20.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setMilliseconds</span><span class="argument">(millisecondsVal)</span></b><br>
+        <br>
+        <b><a href="date_setminutes.html">setMinutes</a> Method</b><br>
+         This method is used to set the minutes for the supplied date according to local time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setMinutes</span><span class="argument">(minutesVal [, secondsVal, msVal])</span></b><br>
+        <br>
+        <b><a href="date_setmonth.html">setMonth</a> Method</b><br>
+        This method is used to set the month for the supplied date according to local time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setMonth</span><span class="argument">(monthVal [, dayVal])</span></b><br>
+        <br>
+        <b><a href="date_setseconds.html">setSeconds</a> Method</b><br>
+        This method is used to set the seconds for the specified date according to local time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setSeconds</span><span class="argument">(secondsVal [, msVal)</span></b><br>
+        <br>
+		<b>setTime Method</b><br>
+        This method is used to set the time of a <b>Date</b> object according 
+        to local time. The <b class="ARGUMENT">timeVal</b> argument is an integer 
+        that represents the number of milliseconds elapsed since 1 January 1970 
+        00:00:00.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setTime</span><span class="argument">(timeVal)</span></b><br>
+        <br>
+        <b>setUTCDate Method</b><br>
+        This method is used to set the day of the month, using an integer from 1 to 31, for the supplied date according to universal time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setUTCDate</span><span class="argument">(dateVal)</span></b><br>
+        <br>
+        <b><a href="date_setutcfullyear.html">setUTCFullYear</a> Method</b> <br>
+         This method is used to set the full year for the supplied date according to universal time.<br>
+        <br>
+        Syntax: <span class="object"><b>document.</b></span><b><span class="METHOD">getSelection( 
+        )</span></b><br>
+        <br>
+        <b><a href="date_setutchours.html">setUTCHours</a> Method</b><br>
+        This method is used to set the hours for the supplied date according to universal time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setUTCHours</span><span class="argument">(hoursVal [, minutesVal, secondsVal, msVal])</span></b><br>
+        <br>
+        <b>setUTCMiliiseconds Method</b><br>
+        This method is used to set the milliseconds for the supplied date according 
+        to universal time. The <b class="ARGUMENT">millisecondsVal</b> parameter expects 
+        a number between 0 and 999 athough if this is exceeded, the <b>setMilliseconds</b> 
+        method will automatically increment other values in the <b>Date</b> object, 
+        e.g. if 1020 is specified, the seconds value is incremented by one and 
+        <b class="ARGUMENT">millisecondsVal</b> is set to 20.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setUTCMilliseconds</span><span class="argument">(millisecondsVal)</span></b><br>
+        <br>
+        <b><a href="date_setutcminutes.html">setUTCMinutes</a> Method</b><br>
+         This method is used to set the minutes for the supplied date according to universal time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setUTCMinutes</span><span class="argument">(minutesVal [, secondsVal, msVal])</span></b><br>
+        <br>
+        <b><a href="date_setutcmonth.html">setUTCMonth</a> Method</b><br>
+        This method is used to set the month for the supplied date according to universal time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setUTCMonth</span><span class="argument">(monthVal [, dayVal])</span></b><br>
+        <br>
+        <b><a href="date_setutcseconds.html">setUTCSeconds</a> Method</b><br>
+        This method is used to set the seconds for the specified date according to universal time.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">setUTCSeconds</span><span class="argument">(secondsVal [, msVal)</span></b><br>
+        <br>
+        <b><a href="date_tolocalestring.html">toLocaleString</a> Method</b><br>
+        This method uses the relevant locale's date conventions when converting a date to a string.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">toLocaleString( )</span></b><br>
+        <br>
+        <b>toSource Method</b> <br>
+        This method is used to return the source code that created the specified 
+        <b>Date</b> object.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">toSource( 
+        )</span></b><br>
+        <br>
+        <b>toString Method</b><br>
+        This method returns a string that represents the <b>Date</b> object. This 
+        method is automatically called by JavaScript whenever a <b>Date</b> object 
+        needs to be displayed as text (as with many of the other methods of the 
+        <b>Date</b> object).<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">toString( )</span></b><br>
+        <br>
+        <b>toUTCString Method</b><br>
+        This method uses the universal time convention when converting a date to a string.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">toUTCString( )</span></b><br>
+        <br>
+        <b>UTC Method</b><br>
+        This method returns the number of milliseconds from the date in a <b>Date</b> 
+        object since January 1, 1970 00:00:00 according to universal time. This 
+        is a static method of <b>Date</b> so the format is always <b>Date.UTC()</b> 
+        as opposed to <b>objectName.UTC()</b>.<br>
+        <br>
+        Syntax: <span class="object"><b>Date.</b></span><b><span class="METHOD">UTC</span><span class="argument">(year, month, day [, hours, minutes, seconds, ms])</span></b><br>
+        <br>
+        <b>valueOf Method</b><br>
+        This method is used to return a primitive value, as a number data type, 
+        of the specified <b>Date</b> object. This is returned as the number of 
+        millisecond since January 1, 1970 00:00:00.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">valueOf( )</span></b><br>
+        <br><br>
+        <!-- END TEMPLATE --> <font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

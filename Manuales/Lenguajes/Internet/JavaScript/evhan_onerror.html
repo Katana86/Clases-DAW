@@ -1,0 +1,152 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript EVENT HANDLER: onError</title>
+<!-- END TEMPLATE -->
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+</head>
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT  = "O" MARGINWIDTH = "0">
+<form name="MainForm">
+  <img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+  </A> <img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map></td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=60 src="/images/grey.gif" width=2><br>
+        </center>
+      </td>
+      <td valign="top" width="200" align="left" colspan="2"><br>
+        <A href="test_list.html"><IMG border=0 height=21 src="images/cant_find.gif" width=200 ></A><br>
+      </td>
+      <td valign="top" colspan="2"><br>
+        <font size=2 face="arial, helvetica, ventura"> 
+        <select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" target = 
+            "body">
+          <option value="js_eventhandler.html" selected>All Event Handlers</option>
+		  <option value="evhan_onabort.html">onAbort</option>
+		  <option value="evhan_onload.html">onLoad</option></select></font><br></td>
+		  
+      <td valign="top" width="20"><br>
+        <A href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  BORDER = 0><IMG border=0 height=22 src="images/go.gif" width=20  value = Go><br>
+        </A> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=890 src="/images/grey.gif" width=2 ><br>
+        </center>
+      </td>
+      <td valign="top" width="460"> <FONT    
+            face="arial, helvetica" size='2'> <font size="+1"> <!-- TEMPLATE: Item name -->EVENT HANDLER: 
+        &nbsp;onError <!-- END TEMPLATE --> </font> <BR>
+        <HR>
+        <!-- TEMPLATE: Item Description, examples, etc. -->
+		 <b><span class="unused">onError</span><span class="argument"> = myJavaScriptCode</span></b><br><br>
+        Event handler for <b><a href="image.html">Image</a></b>, <b><a href="window.html">Window</a></b>. 
+        <br>
+        <br>
+        The <b>onError</b> event handler executes the specified JavaScript code 
+        or function on the occurance of an error event. This is when an image or document causes an error during loading. The distinction must be made between a browser error, when the user types in a non-existant URL, for example, and a JavaScript run-time or syntax error. This event handler will only be triggered by a JavaScript error, not a browser error.<br>
+        <br>
+        As well as the <b>onError</b> handler triggering a JavaScript function, 
+        it can also be set to <b>onError="null"</b> which suppresses the standard 
+        JavaScript error dialog boxes. To suppress JavaScript error dialogs when 
+        calling a function using <b>onError</b>, the function must return true 
+        (example 2 below demonstrates this). <br>
+        <br>
+        There are two things to bear in mind when using <b>window.onerror</b>. 
+        Firstly, this only applies to the window containing window.onerror, not 
+        any others, and secondly, <b>window.onerror</b> must be spelt all lower-case 
+        and contained within <strong>&lt;script&gt;</strong> tags; it cannot be 
+        defined in HTML (this obviously doesn't apply when using <b>onError</b> 
+        with an image tag, as in example 1 below). <br>
+		<br>
+        The <b>onFocus</b> event handler uses the following <a href="event.html"><b>Event</b></a> 
+        object properties.<br>
+        <br>
+        <b>type</b> - this property indicates the type of event.
+        <br>
+        <b>target</b> - this property indicates the object to which the event was originally sent.<br>
+        <br>
+        The first example suppresses the normal JavaScript error dialogs if a problem arises when trying to load the specified image, while example 2 does the same, but applied to a window, by using return true in the called function, and displays a customized message instead.<br>
+        <br>
+		Code:<br>
+		<span class ="code">&lt;IMG NAME="imgFaulty" SRC="dodgy.jpg onError="null"&gt;<br><br></span>
+		Code:
+		<span class="code"><br>
+        &lt;script type="text/javascript" language="JavaScript"&gt;<br><br>
+       s1 = new String(myForm.myText.value)<br><br>
+	   window.onerror=myErrorHandler()<br><br>
+
+function myErrorHandler()	{<br>
+	alert('A customized error message')<br>
+	return true<br>
+}<br><br>
+
+&lt;/script&gt;<br><br>
+
+&lt;body onload=nonexistantFunc()&gt;
+
+        </span>
+		<br><br>
+   
+        
+        <!-- END TEMPLATE --> <font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>
