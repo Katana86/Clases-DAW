@@ -1,0 +1,251 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Radio</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+    <option value="chkbox.html">Checkbox
+	<option value="form.html">Form
+	<option value="select.html">Select
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=2230 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; Radio
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+The <b>Radio</b> object represents a single radio button, created by an HTML &lt;INPUT&gt; tag
+of type "radio", in a series from which the user may select only one. It is for this reason 
+that all radio buttons in a group must have the same value for the NAME attribute.
+The <b>Radio</b> object is a form element and as such must be included within a &lt;FORM&gt; tag.
+The JavaScript runtime engine creates a <b>Radio</b> object for each individual radio button
+on the form. Those which form a group, and hence share the same NAME attribute, are stored
+as an array of that name. This array is in turn stored as a single element of the 
+<b>elements</b> array of the <b>Form</b> object. You can access a set of radio buttons through
+this <b>elements</b> array either by the index number or by name. To access an individual 
+button you need to refer to it as an element of the array of those buttons with the same
+NAME attribute. 
+</P><P>
+For instance, assuming a set of radio buttons with the name "drink", you could
+refer to it as follows:</P>
+<P>Code:
+<BR><span class=code>document.myForm.drink</span></P>
+<P>
+...or by its number in the <b>elements</b> array of the appropriate form (assume it to be 3
+in this case):</P>
+<P>Code:
+<BR><span class=code>document.myForm.elements[3]</span></P>
+<P>
+Then, say, to display the value of the radio button at element # 1 of the "drink" array,
+you could use the following code:</P>
+<P>Code:
+<BR><span class=code>document.write(document.myForm.drink[1].value)</span></P>
+<P><b><span class=property>PROPERTIES</span></b></P>
+<P><b>checked Property</b>
+<BR>This property, which is by default tainted, is a Boolean value which reflects whether a particular 
+radio button has been selected, returning <b>true</b> if it has and <b>false</b> if not. 
+As only one radio button in a set can be selected at any one time, 
+it follows that if the <b>select</b> property of one is <b>true</b>, 
+then that property for the others of that set is <b>false</b>.
+The <b>checked</b> property can be set at any time and the change is immediately reflected 
+in the display.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>checked</span></b></P>
+<P><b>defaultChecked Property</b>
+<BR>This property, which is by default tainted, is a Boolean value initially reflecting whether
+a particular radio button was selected by default using the CHECKED attribute, returning
+<b>true</b> if it was, and <b>false</b> if not. The <b>defaultChecked</b> property can be
+set at any time, but the change is not displayed, nor does it affect the <b>defaultChecked</b>
+property of any other radio button in the set.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>defaultChecked</span></b></P>
+<P><b>form Property</b>
+<BR>This property is a reference to the parent form of a set of radio buttons that
+share the same NAME attribute.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>form</span></b></P>
+<P><b>name Property</b>
+<BR>This property, tainted by default, refers to the NAME attribute of the set to which one 
+particular radio button belongs. The <b>name</b> property can be set at any time but doing
+so places a radio button in a different group.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>name</span></b></P>
+<P><b>type Property</b>
+<BR>This property specifies the type of an element in a form and reflects the TYPE attribute. 
+In the case of a set of radio buttons, this is "radio".</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>type</span></b></P>
+<P><b>value Property</b>
+<BR>It is this property that is returned to the server when a radio button is selected
+and the form submitted. It is not displayed and so is not necessarily the same as any text
+that may appear alongside the radio button. The <b>value</b> property is tainted by default 
+and reflects the VALUE attribute of the HTML code. Where no value is specified, the <b>value</b> 
+property is the string "on".</P>
+<P>Syntax: <b><span class=object>document.</span><span class=property>value</span></b></P>
+<P><b><span class=method>METHODS</span></b></P>
+<P><b>blur Method</b>
+<BR>This method removes focus from a selection list.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=method>blur</span><span 
+class=argument>()</span></b></P>
+<P><b>click Method</b>
+<BR>This method programatically triggers a radio buttons <b><a href="evhan_onclick.html">onClick</a></b>
+event handler.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=method>click</span><span 
+class=argument>()</span></b></P>
+<P><b>focus Method</b>
+<BR>This method moves the focus to the specified selection list allowing the user to then
+select from it.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=method>focus</span><span 
+class=argument>()</span></b></P>
+<P><b>handleEvent Method</b>
+<BR>This method calls the handler for a specified event.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=method>handleEvent</span><span 
+class=argument>(event)</span></b></P>
+<P>NOTE:</P>
+<P>
+The <b>Radio</b> object also inherits the <b><a href="watch.html">watch</a></b> and
+<b><a href="object.html#unwatch">unwatch</a></b> methods from the <b><a href="object.html">Object</a></b>
+object.</P>
+<P><b><span class=unused>EVENT HANDLERS</span></b></P>
+<P><b><a href="evhan_onblur.html">onBlur</a> EventHandler</b>
+<BR>This event handler causes JavaScript code to be executed whenever a blur event occurs;
+i.e. whenever a window, frame or form element loses focus.</P>
+<P>
+Syntax: <b><span class=unused>onBlur </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onclick.html">onClick</a> EventHandler</b>
+<BR>The <b>onClick</b> event handler executes javaScript code whenever the user clicks
+(i.e. when the mouse button is pressed and released) on a <b>Form</b> object.</P>
+<P>
+Syntax: <b><span class=unused>onClick </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onfocus.html">onFocus</a> EventHandler</b>
+<BR>This event handler executes JavaScript whenever a focus event occurs; i.e.
+whenever the user focuses on a window, frame or frameset, or inputs to a form element.</P>
+<P>
+Syntax: <b><span class=unused>onFocus </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Option</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+<!-- END TEMPLATE -->
+
+</select></font><br></td>
+
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=1240 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; Option
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=operator>new </span><span class=object>Option</span><span
+class=argument>([text[, value[, defaultSelected[, selected]]]])</span></b></P>
+<P>
+An <b>Option</b> object is created for every option in a selection list, and is put
+in the <b>options</b> property of the <b>Select</b> object. It can be
+created in one of two ways: you can either use the HTML &lt;OPTION&gt; tag, or use the
+<b>Option</b> constructor. Using HTML you could create a 'Dachshund' option for a selection list
+of dog breeds as follows:<P>
+Code:
+<BR><span class=code>&lt;option&gt; Dachshund</span></P>
+<P>
+You could also create the same option using the <b>Option</b> constructor and assigning it
+to an index of the <b>options</b> property of the relevent <b>Select</b> object:<P>
+<P>
+Code:
+<BR><span class=code>document.myForm.dogBreed[4] = new Option("Dachshund")</span></P>
+<P>
+After creating an <b>Option</b> object in this way you must refresh the document by using
+<b>history.go(0)</b> at the end of the code.
+Using the <b>Option</b> constructor, you can optionally specify a value to be returned to
+the server when an option is selected and the form submitted (in this case "dachs"):</P>
+<P>
+Code:
+<BR><span class=code>new Option("Dachshund", "dachs")</span></P>
+<P>
+It is also possible to specify whether the option is initially selected, and whether it is
+currently selected using the values <b>true</b> and <b>false</b>. Expanding on the previous
+example, the following code specifies that the Dachshund option should not initially be
+selected, but that it should be currently selected:</P>
+<P>
+Code:
+<BR><span class=code>new Option("Dachshund", "dachs", false, true)</span></P>
+<P><b><span class=property>PROPERTIES</span></b></P>
+<P><b><a href="option_defaultselected.html">defaultSelected</a> Property</b>
+<BR>This property, by default tainted, is a Boolean value which initially reflects whether 
+an option was declared with the HTML SELECTED attribute, reading <b>true</b> if it was 
+and <b>false</b> if not</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>defaultSelected</span></b></P>
+<P><b>selected Property</b>
+<BR>This property, which is tainted by default, is a Boolean value reflecting whether a particular
+option is selected, returning <b>true</b> if it is and <b>false</b> if not. The
+<b>selected</b> property can be set at any time, immediately updating the display of the 
+<b>Select</b> object.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>selected</span></b></P>
+<P><b>text Property</b>
+<BR>This property, by default tainted, reflects the text value following any particular
+HTML OPTION tag for a <b>Select</b> object. It can be reset at any time, immediately updating
+the display of the selection.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>text</span></b></P>
+<P><b>value Property</b>
+<BR>This property, tainted by default, is a string value that is returned to the 
+server when an option is selected and the form submitted. It reflects the VALUE attribute
+in the HTML. If there is no VALUE attribute, then the <b>value</b> property is
+an empty string.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>value</span></b></P>
+<P><b><span class=method>METHODS</span></b></P>
+<P>
+The <b>Select</b> object inherits the <b><a href="watch.html">watch</a></b> and
+<b><a href="object.html#unwatch">unwatch</a></b> methods from the <b><a href="object.html">Object</a></b>
+object.</P>   
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

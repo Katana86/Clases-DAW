@@ -1,0 +1,180 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: History</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+    <option value="location.html">Location
+<!-- END TEMPLATE -->
+
+</select></font><br></td>
+
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=1000 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; History
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+
+The <b>History</b> object is a predefined JavaScript object which is accessible through the <b>history</b>
+property of a <b>window</b> object. The <b>window.history</b> property is an array of URL strings which
+reflect the entries in the <b>History</b> object. 
+The <b>History</b> object consists of an array of URLs, accessible through the browser's
+Go menu, which the client has visited within a window. It is possible to change a window's current
+URL without an entry being made in the <b>History</b> object by using the 
+<b><a href="Location.html#Replace">location.replace</a></b> method.</P>
+<P><b><span class=property>PROPERTIES</span></b></P>
+<P><b>current Property</b>
+<BR>The <b>current</b> property contains the complete URL of the current <b>History</b> entry.</P>
+<P>
+Syntax: <b><span class=object>history.</span><span class=property>current</span></b></P>
+<P><b>length Property</b>
+<BR>The <b>length</b> property contains the number of elements in the <b>History</b> list.</P>
+<P>
+Syntax: <b><span class=object>history.</span><span class=property>length</span></b></P>
+<P><b>next Property</b>
+<BR>The <b>next</b> property contains the complete URL of the next element in the <b>History</b> list, and
+is the equivalent of the URL the user would go to if they selected Forward in the Go menu.</P>
+<P>
+Syntax: <b><span class=object>history.</span><span class=property>next</span></b></P>
+<P><b>previous Property</b>
+<BR>The <b>previous</b> property contains the complete URL of the previous element in the <b>History</b> list, and
+is the equivalent of the URL the user would go to if they selected Back in the Go menu.</P>
+<P>
+Syntax: <b><span class=object>history.</span><span class=property>previous</span></b></P>
+<P><b><span class=method>METHODS</span></b></P>
+<P><b>back Method</b>
+<BR>The <b>back</b> method loads the previous URL in the <b>History</b> list, and is equivalent to the browser's
+Back button and to <b>history.go(-1)</b>.</P>
+<P>
+Syntax: <b><span class=object>history.</span><span class=method>back</span><span
+class=argument>()</span></b></P>
+<P><b>forward Method</b>
+<BR>The <b>forward</b> method loads the next URL in the <b>History</b> list, and is equivalent to the
+browser's Forward button and to <b>history.go(1)</b>.</P>
+<P>
+Syntax: <b><span class=object>history.</span><span class=method>forward</span><span
+class=argument>()</span></b></P>
+<P><b><a href="History_Go.html">go</a> Method</b>
+<BR>The <b>go</b> method loads a specified URL from the <b>History</b> list.</P>
+<P>
+Syntax: <b><span class=object>history.</span><span class=method>go</span><span 
+class=argument>(delta)</span></P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=object>history.</span><span class=method>go</span><span 
+class=argument>(location)</span></b></P>
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

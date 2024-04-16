@@ -1,0 +1,202 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Number</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+<!-- END TEMPLATE -->
+
+</select></font><br></td>
+
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=1640 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; Number
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=operator>new </span><span class=object>Number</span><span
+class=argument>(value)</span></b></P>
+<P>
+The <b>Number</b> object is an object wrapper fo primitive numeric values, allowing
+for their manipulation. To create a <b>Number</b> object use the <b>Number</b> constructor
+above. The following example creates a <b>Number</b> object of the numeric value 5:</P>
+<P>Code:
+<BR><span class=code>five = new Number(5)</span></P>
+<P>
+The main reason for doing this is to be able to use the constant properties fo the <b>Number</b>
+object, although you can create one in order to add properties to it. You can also convert
+any object to a number by using the <b>Number</b> function.</P>
+<P><b><span class=property>PROPERTIES</span></b></P>
+<P><b>constructor property</b>
+<BR>This property specifies the function that created the object's prototype. See also the 
+<b><a href="constructor.html">Object.constructor</a></b> property.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>constructor</span></b></P>
+<P><b>MAX_VALUE property</b>
+<BR>This property represents the largest value possible in JavaScript. It is a static property 
+and hence always referred to as <b>Number.MAX_VALUE</b>, and has a value of 
+approximately 1.79769e+308. Numbers larger than this are represented as infinity.</P>
+<P>Syntax: <b><span class=object>Number.</span><span class=property>MAX_VALUE</span></b></P>
+<P><b>MIN_VALUE property</b>
+This property represents the smallest positive number possible in JavaScript, and as a 
+static property is always referred to as <b>Number.MIN_VALUE</b>. Its value is 5e-324, 
+and any value smaller than that is converted to 0.</P>
+<P>Syntax: <b><span class=object>Number.</span><span class=property>MIN_VALUE</span></b></P>
+<P><b>NaN property</b>
+<BR>This read-only property represents the special value Not-a-Number, and is always unequal to any
+other number (including 0) and to NaN itself. As a static property, it is always referred to as
+<b>Number.NaN</b>.</P>
+<P>Syntax: <b><span class=object>Number.</span><span class=property>NaN</span></b></P>
+<P><b><a href="number_neg-pos_infinity.html">NEGATIVE_INFINITY</a> property</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This static, read-only property is a special value representing negative infinity,
+which is returned on overflow.</P>
+<P>Syntax: <b><span class=object>Number.</span><span class=property>NEGATIVE_INFINITY</span></b></P>
+<P><b><a href="number_neg-pos_infinity.html#pos_infinity">POSITIVE_INFINITY</a> property</b>
+<BR>This static, read-only property is a special value representing infinity,
+which is returned on overflow.</P>
+<P>Syntax: <b><span class=object>Number.</span><span class=property>POSITIVE_INFINITY</span></b></P>
+<P><b>prototype property</b>
+<BR>This property represents the prototype for this object and allows you to add methods
+and properties of your own. See also the 
+<b><a href="function_object.html#prototype">Function.prototype</a></b> property.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>prototype</span></b></P>
+<P><b><span class=method>METHODS</span></b></P>
+<P><b>toSource method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This method, which is usually called by JavaScript behind the scenes, returns a string
+representing the source code of the <b>Number</b> object. This method overrides the 
+<b><a href="tosource.html">Object.toSource</a></b> method.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>toSource</span><span
+class=argument>()</span></b></P>
+<P><b>toString method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This method returns a string representing the <b>Number</b> object, and is called
+by JavaScript whenever the code requires a string value. The optional 'radix'
+parameter is an integer between 2 and 36 which specifies the base to be used when
+representing numeric values. This method overrides the 
+<b><a href="tostring.html">Object.toString</a></b> method.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>toString</span><span
+class=argument>([radix])</span></b></P>
+<P><b>valueOf method</b>
+<BR>This method, which is usually called by Javascript behind the scenes, returns the
+primitive value of a <b>Number</b> object as a number data type. This method overrides
+the <b><a href="valueof.html">Object.valueOf</a></b> method.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>valueOf</span><span
+class=argument>()</span></b></P>
+<P>NOTE:</P>
+<P>
+The <b>Number</b> object also inherits the <b><a href="watch.html">watch</a></b> and
+<b><a href="object.html#unwatch">unwatch</a></b> methods from the <b><a href="object.html">Object</a></b>
+object.</P>
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

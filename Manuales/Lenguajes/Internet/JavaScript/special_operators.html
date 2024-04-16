@@ -1,0 +1,329 @@
+<html>
+<head>
+<!-- TEMPLATE: Title --><title>JavaScript OPERATORS: ?: , delete new this typeof void</title><!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT  = "O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td></tr>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 src="/images/grey.gif" width=2><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<A href="test_list.html"><IMG border=0 height=21 src="images/cant_find.gif" width=200 ></a><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" target = "body">
+	<option value="js_operators.html" SELECTED>All Operators</select></font><br></td>
+
+<td valign="top" width="20"><br>
+<A href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  BORDER = 0><IMG border=0 height=22 src="images/go.gif" width=20  value = Go><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=3180 src="/images/grey.gif" width=2 ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT    
+            face="arial, helvetica" size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+	OPERATORS:&nbsp;&nbsp;?:&nbsp&nbsp;,&nbsp;&nbsp;delete&nbsp;&nbsp;new&nbsp;&nbsp;this&nbsp;&nbsp;typeof&nbsp;&nbsp;void  
+<!-- END TEMPLATE --> 
+            
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+
+<b><SPAN CLASS=OPERATOR>?:</SPAN></b></P>
+<P>
+This is a conditional operator that takes three operands and
+is used to replace simple <b><a href="if...else.html">if</a></b> statements. The first operand is
+a condition that evaluates to true or false, the second is an 
+expression of any type to be returned if the condition is
+true, and third is an expression of any type to be returned
+if the condition is false. The following code displays one
+of two messages depending on the value of the object property
+'percent_proof':</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+with(beer) 
+<BR>&nbsp;&nbsp;&nbsp;document.write("This beer is " + 
+((percent_proof < 5) ? "mild" : "strong"));
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>,</SPAN></b></P>
+<P>
+This is the comma operator which is most often used to include multiple
+expressions where only one is required, particularly in a <b><a href="for.html">for</a></b> loop. 
+It evaluates both its operands and returns the value of the second.
+The following code uses a two-dimensional array of 3 by 3
+elements and initializes two counters (one for each dimension)
+incrementing them both, which results in a display of the 
+left-to-right diagonal values:
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+for(var i=0, j=0; i<3; i++, j++)
+<BR>&nbsp;&nbsp;&nbsp;document.write(a[i][j] + "&lt;BR&gt;");
+</SPAN></P>
+<P>
+...while using the comma operator inside the square brackets
+of the next example causes the code to display all the 
+elements of the array one row at a time:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+for(var i=0, j=0; i<3; i++, j++)
+<BR>&nbsp;&nbsp;&nbsp;document.write(a[i, j] + "&lt;BR&gt;");
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>delete</SPAN></b></P>
+<P>
+The <b>delete</b> operator is used to delete an object, an object's
+property or a specified element in an array, returning true
+if the operation is possible, and false if not. With the defined
+object 'fruit' below, the following delete operations are possible:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+fruit = new Object;
+<BR>fruit.name = 'apple';
+<BR>fruit.color = 'green';
+<BR>fruit.size = 'large';</P>
+<P>
+delete fruit.size;</P>
+<P>with(fruit)
+<BR>&nbsp;&nbsp;&nbsp;delete color;</P>
+<P>delete fruit;</SPAN></P>
+<P>
+NOTE:</P>
+<P>
+To delete an object's property, you must precede that property's name
+with the name of the object, unless it's used in a <b><a href="with.html">with</a></b> statement.</P>
+<P>
+The <b>delete</b> operator can also be used to delete an element of an array.
+This does not affect the length of the array or any of the other elements
+but changes the deleted element to undefined. The following example 
+creates an array called 'fruit' and then deletes element #2 (orange):</P>
+<P>Code:
+<BR><SPAN CLASS=CODE>
+fruit = new Array ("apple", "pear", "orange", "cherry", "grape");
+<BR>delete fruit[2];</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR><a name="new_oper">new</a></SPAN></b></P>
+<P>
+The <b>new</b> operator can be used to create an instance of a user-defined
+object type or of one of the built-in object types that has a 
+<b><a href="Constructor.html#constructor">constructor</a></b>
+function. To create a user-defined object type you must first define it
+by writing a function that specifies its name, properties and methods.
+For example, the following function creates an object for books with 
+properties for title, category and author:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+function book(title, category, author)
+<BR>{
+<BR>&nbsp;&nbsp;&nbsp;this.title = title
+<BR>&nbsp;&nbsp;&nbsp;this.category = category
+<BR>&nbsp;&nbsp;&nbsp;this.author = author
+<BR>}</SPAN></P>
+<P>
+You can than create an instance of the object as in the following
+example which assigns the values "The Thing", "horror" and "John
+Lynch" to the respective properties:<P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+mybook = new book("The Thing", "horror", "John Lynch")
+</SPAN></P>
+<P>
+The property of an object can even be another object. You could, for example,
+create an object for authors and use it in the above example of the 'book'
+object. Again you would first define it by writing a function, and then
+you could create an instance of it for "John Lynch" as follows:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+function author(name, real_name, age)
+<BR>{
+<BR>&nbsp;&nbsp;&nbsp;this.name = name
+<BR>&nbsp;&nbsp;&nbsp;this.real_name = real_name
+<BR>&nbsp;&nbsp;&nbsp;this.age = age
+<BR>}
+<BR>author1 = new author("John Lynch", "Charlie Schwarz", 43)
+</SPAN></P>
+<P>
+Now, as long as the 'author' object and the relevent instance of it
+have already been defined, the 'author' property in the 'book' 
+object will refer to it, and you can display, say,
+the age of the author of 'mybook' as follows:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+document.write(mybook.author.age)</SPAN></P>
+<P>
+You can also add a property to any instance of an object as in the next
+example which adds the property 'publisher' to the 'mybook' object 
+and assigns it the value "Centurion Books":</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+mybook.publisher = "Centurion Books"</SPAN></P>
+<P>
+If, however, you wanted to add a property to a previously defined
+object type (and, therefore, all instances of it) you would have
+to use the <b>prototype</b> property. This next example adds the property
+'publisher' to the 'book' object type, and then assigns the value
+'Centurion Books' to one particular instance of it:</P>
+<P>
+Code:
+<BR><SPAN CLASS=CODE>
+book.prototype.publisher = null
+<BR>mybook.publisher = "Centurion Books"
+</SPAN></P>
+<P><b><SPAN CLASS=OPERATOR>this</SPAN></b></P>
+<P>
+The keyword <b>this</b> is used to refer to the current object. In a method, it usually refers to 
+the calling object. In the following example the code first creates a function DescribeAge 
+that takes as it's parameter an object, and returns one of two text values depending on 
+the value of that same object's Year property. Then another object called Car is created
+whose third property Description is the value returned by the DescribeAge function. The keyword
+<b>this</b> is used as the parameter of the DescribeAge function to refer to whichever object is calling
+it, as seen in the final bit of code which creates a specific instance of the Car object
+whose Description property will now contain the string "Old-fashioned":</P>
+<P>Code:
+<BR><span class=code>
+function describeAge(obj)
+<BR>{
+<BR>&nbsp;&nbsp;&nbsp;if(obj.year < 1996)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Old-fashioned"
+<BR>&nbsp;&nbsp;&nbsp;else
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Good-as-new"
+<BR>}</P>
+<P>
+function car(make, year, description)
+<BR>{this.make = make, this.year = year, this.description = describeAge(this)}</P>
+<P>
+myCar = new car("Ford", "1993", describeAge(this))
+</span></P>
+<P><b><SPAN CLASS=OPERATOR><A NAME="typeof">typeof</A></SPAN></b></P>
+<P>
+The <b>typeof</b> operator returns the type of an unevaluated operand which
+can be a number, string, variable, object or keyword. 
+It can be used with or without brackets as in the following examples
+of a numeric literal and the variable 'age' being 60:</P>
+<P><SPAN CLASS=CODE>
+typeof(age)</SPAN>&nbsp;&nbsp;&nbsp;returns&nbsp;&nbsp;&nbsp;
+<SPAN CLASS=CODE>number
+<BR>typeof 33</SPAN>&nbsp;&nbsp;&nbsp;returns&nbsp;&nbsp;&nbsp;
+<SPAN CLASS=CODE>number</SPAN></P>
+<P>
+The following values are returned for various types of data:<P>
+<P>
+a number returns 'number';
+<BR>a string returns 'string';
+<BR>the keyword <b>true</b> returns 'boolean';
+<BR>the keyword <b>null</b> returns 'object';
+<BR>methods, functions and predefined objects return 'function';
+<BR>a variable returns the type of the data assigned to it;
+<BR>a property returns the type of its value;</P>
+<P><b><SPAN CLASS=OPERATOR>void</SPAN></b></P>
+<P>
+The <b>void</b> operator evaluates an expression without returning a value.
+Although the use of brackets after it is optional, it is good style
+to use them. The following example creates a hyperlink on the word "green"
+which, when clicked, changes the background color to light green:</P>
+<P>Code:
+<BR><span class=code>
+Sam turned &lt;a href="javascript:void(document.bgColor='lightgreen')"&gt;green&lt;/a&gt;.
+</span>
+ 	
+
+<!-- END TEMPLATE --> 
+            
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

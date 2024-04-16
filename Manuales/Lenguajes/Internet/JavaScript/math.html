@@ -1,0 +1,308 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Math</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=3220 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; Math
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+The <b>Math</b> object is a top-level, built-in JavaScript object which can be accessed without
+using a constructor or calling a method. It also has static properties and methods
+for mathematical constants and functions. This means that you can refer to, say, the constant
+PI as <b>Math.PI</b>, and you can call the Tangent function with <b>Math.tan(x)</b>. To illustrate this,
+the following code calculates the length of the side of a right-angled triangle 
+opposite the angle Theta:</P>
+<P>Code:
+<BR><span class=code>
+len = Math.tan(theta) * adj</span></P>
+<P>
+All constants are defined as precision real numbers in JavaScript. When using several Math
+constants and methods, it is often more convenient to use the <b>with</b> statement to avoid having
+to repeatedly type the word Math:</P>
+<P>Code:
+<BR><span class=code>
+with(Math)
+<BR>{
+<BR>&nbsp;&nbsp;&nbsp;a = 28.27
+<BR>&nbsp;&nbsp;&nbsp;adj = sqrt(a/PI)
+<BR>&nbsp;&nbsp;&nbsp;len = adj * tan(1.1071)	
+<BR>}</span></P>
+
+<P><span class=property><B>PROPERTIES</B></span></P>
+<P><b>E Property</b>
+<BR>This property is Euler's constant and the base of natural logarithms 
+(approximately 2.7183)</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=property>E</span></b></P>
+<P><b>LN10 Property</b>
+<BR>This property is the natural logarithm of 10, (approximately 2.3026).</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=property>LN10</span></b></P>
+<P><b>LN2 Property</b>
+<BR>This property is the natural logarithm of 2, which is approximately 0.6931.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=property>LN2</span></b></P>
+<P><b>LOG10E Property</b>
+<BR>This property is the base 10 logarithm of E (approximately 0.4343).</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=property>LOG10E</span></b></P>
+<P><b>LOG2E Property</b>
+<BR>This property is the base 2 logarithm of E (approximately 1.4427).</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=property>LOG2E</span></b></P>
+<P><b>PI Property</b>
+<BR>This property is the ratio of the circuference of a circle to its diameter
+(approximately 3.1416). </P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=property>PI</span></b></P>
+<P><b>SQRT1_2 Property</b>
+<BR>This property is the value of 1 divided by
+the square root of 2 and is approximately equal to 0.7071.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=property>SQRT1_2</span></b></P>
+<P><b>SQRT2 Property</b>
+<BR>This property is the square root of 2 (approximately 1.4142).</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=property>SQRT2</span></b></P>
+<P><span class=method><b>METHODS</b></span>
+<P><b>abs Method</b>
+<BR>This method returns the absolute value of a number.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>abs</span><span
+class=argument>(x)</span></b></P>
+<P><b>acos Method</b>
+<BR>This method returns the arccosine of a number as a numeric value between
+0 and PI radians. Passing it a value for 'x' which is outsite the range -1 to 1 will cause 
+the Netscape browser to return <b>NaN</b>, and the Internet Explorer browser to return an error
+message. Passing it -1 will return the value of PI.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>acos</span><span
+class=argument>(x)</span></b></P>
+<P><b>asin Method</b>
+<BR>This method returns the arcsine of a number as a numeric value between<BR>
+-PI/2 and PI/2 radians. Passing it a value for 'x' which is outsite the range -1 to 1 will cause 
+the Netscape browser to return <b>NaN</b>, and the Internet Explorer browser to return an error
+message. Passing it 1 will return the value of PI/2.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>asin</span><span
+class=argument>(x)</span></b></P>
+<P><b>atan Method</b>
+<BR>This method returns the arctangent of a number as a numeric value between -PI/2 
+and PI/2 radians.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>atan</span><span
+class=argument>(x)</span></b></P>
+<P><a href="atan2.html"><b>atan2 Method</b></a>
+<BR>This method returns the arctangent of the quotient of its arguments.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>atan2</span><span
+class=argument>(y, x)</span></b></P>
+<P><b>ceil Method</b>
+<BR>This method returns an integer equal to, or the next integer greater than, the 
+number passed to it. Hence, if you passed it 3.79, it would return 4, and passing it -3.79
+would return -3.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>ceil</span><span
+class=argument>(x)</span></b></P>
+<P><b>cos Method</b>
+<BR>This method returns the cosine of a number, which will be a numeric value between -1
+and 1.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>cos</span><span
+class=argument>(x)</span></b></P>
+<P><b>exp Method</b>
+<BR>This method returns the value of E<sup>x</sup> where E is Euler's constant and x is
+the argument passed to it.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>exp</span><span
+class=argument>(x)</span></b></P>
+<P><b>floor Method</b>
+<BR>This method returns an integer equal to, or the next integer less than, 
+the number passed to it. Hence, if you passed it 3.79, it would return 3, and passing it -3.79
+would return -4.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>floor</span><span
+class=argument>(x)</span></b></P>
+<P><b>log Method</b>
+<BR>This method returns the natural logarithm (base E) of a number. If you pass the 
+<b>log</b> method the number 0, the Netscape browser will return -Infinity, and with an argument
+of a negative number <b>NaN</b>. In both these cases Internet Explorer returns an error message.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>log</span><span
+class=argument>(x)</span></b></P>
+<P><b>max Method</b>
+<BR>This method returns the greater of the two numbers passed to it as arguments.
+Hence, if you passed it the numbers 9 and 11, it would return 11, whereas passing it 
+-9 and -11 returns -9.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>max</span><span
+class=argument>(x, y)</span></b></P>
+<P><b>min Method</b>
+<BR>This method returns the lesser of the two numbers passed to it as arguments.
+Hence, if you passed it the numbers 9 and 11, it would return 9, whereas passing it
+-9 and -11 returns -11.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>min</span><span
+class=argument>(x, y)</span></b></P>
+<P><b>pow Method</b>
+<BR>This method returns the value of x to the power of y (x<sup>y</sup>), where x
+is the base, and y is the exponent.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>pow</span><span
+class=argument>(x, y)</span></b></P>
+<P><b>random Method</b>
+<BR>This method takes no arguments and returns a pseudo-random number between 0 and 1. 
+The random number generator is seeded from the current time.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>random</span><span
+class=argument>()</span></b></P>
+<P><b>round Method</b>
+<BR>This method is used to round a number to the nearest integer. If the fractional
+portion of the number is .5 or higher, then the number is rounded up, otherwise it is 
+rounded down.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>round</span><span
+class=argument>(x)</span></b></P>
+<P><b>sin Method</b>
+<BR>This method is used to return the sine of its argument, which will be 
+a number between -1 and 1.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>sin</span><span
+class=argument>(x)</span></b></P>
+<P><b>sqrt Method</b>
+<BR>This method returns the square root of a number. If that number is negative, 
+then the Netscape browser returns the value of <b>NaN</b>, whereas the Internet Explorer
+browser returns an Error message. </P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>sqrt</span><span
+class=argument>(x)</span></b></P>
+<P><b>tan Method</b>
+<BR>This method returns a number representing the tangent of an angle.</P>
+<P>
+Syntax: <b><span class=object>Math.</span><span class=method>tan</span><span
+class=argument>(x)</span></b></P>
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

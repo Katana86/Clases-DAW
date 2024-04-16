@@ -1,0 +1,177 @@
+<html>
+<head>
+<!-- TEMPLATE: Title --><title>JavaScript PROPERTY: Select::options</title><!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+	<option value="select.html">Select Object
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=960 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+PROPERTY:&nbsp; Select::options
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+The <b>options</b> property is an array of all the options in a particular <b>Select</b> object. There is one
+element (numbered in ascending order from zero) for each &lt;OPTION&gt; tag. You can use the <b>length</b>
+property of this array to refer to the number of options in a particular <b>Select</b> object as follows:</P>
+<P>Code:
+<BR><span class=code>document.myForm.mySelect.options.length</span></P>
+<P>
+...or by simply using the <b>length</b> property of the <b>Select</b> object:</P>
+<P>Code:
+<BR><span class=code>document.myForm.mySelect.length</span></P>
+<P>
+You can use the <b>options</b> array to add options to, or delete options from 
+any <b>Select</b> object. When adding or altering an option, you assign an 
+<b><a href="option.html">Option</a></b> object
+to a particular element of the array. The following code first creates an <b>Option</b> object
+called Folk, and then assigns it to element # 3 of the <b>options</b> array of a user-defined
+<b>Select</b> object called MusicType. If there is a value already assigned to element 3, it
+will be replaced by Folk, otherwise it will be created along with undefined elements at every
+index between the one created and the last existant one.</P>
+<P>Code:
+<BR><span class=code>
+document.forms[0].musicType.options[3] = new Option("Folk", "folk", false, false)</span></P>
+<P>
+Similarly, you can delete any option by assigning the value <b>null</b> to the appropriate
+element of the <b>options</b> array:</P>
+<P>Code:
+<BR><span class=code>document.forms[0].musicType.options[2] = null</span></P>
+<P>
+This will have the effect of removing element # 2 from the <b>options</b> array, and at the same
+time compressing the array so that element # 3 becomes # 2, element # 4 becomes # 3 etc.
+After deleting an option you must refresh the document by using <b>history.go(0)</b> at the 
+end of the code. To determine which option of a <b>Select</b> object is currently selected, you
+can use the <b>selectedIndex</b> property along with the <b>options</b> property as follows:</P>
+<P>Code:
+<BR><span class=code>document.forms[0].musicType.options.selectedIndex</span></P>
+<P>
+...or you could simply use the <b>selectedIndex</b> property of the <b>Select</b> object:</P>
+<P>Code:
+<BR><span class=code>document.forms[0].musicType.selectedIndex</span></P>
+<P>
+Both the above lines of code return the number of the currently-selected index. If, however,
+the <b>Select</b> object allows for multiple selections (i.e. when the &lt;SELECT&gt; tag
+includes the MULTIPLE attribute), the <b>selectedIndex</b> property will only return the index
+of the first option selected. To determine all of the selected options, you would have to loop
+through the <b>options</b> array testing each option individually.</P>
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

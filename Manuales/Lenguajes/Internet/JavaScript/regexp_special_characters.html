@@ -1,0 +1,296 @@
+<html>
+<head>
+<!-- TEMPLATE: Title --><title>JavaScript Special Characters</title><!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+	<option value="regexp.html"> RegExp Object
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=3520 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+Special Characters
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+The following is a complete list of all the special characters that can be used in a 
+regular expression. Note that the flags 'g', 'i' and 'gi' can be used after the final slash
+to specify a global, case-insensitive or global, case-insensitive search respectively.
+See the <b><a href="regexp.html">RegExp</a></b> object.</P>
+<P><b>\</b></P>
+<P>
+The backslash is used in two ways. Firstly it is used before any letter of the alphabet 
+when not used literally, but to indicate a special character. For example, a regular expression
+consisting of the letter 't' would be created using <span class=code>/t/</span>, whereas for a tab 
+character you would use <span class=code>/\t/</span>. Secondly it is used before a special 
+character which you want to use literally e.g. the character <span class=code>$</span>, 
+which is used to match a character at the end of a line or of input, would become 
+<span class=code>\$</span> when used literally.</P>
+<P><b>^</b></P>
+<P>
+The caret is used for a match at the beginning of a line or of input. For example,
+with the string "Association of Carpenters", the regular expression <span class=code>/^A/</span> 
+would match the initial capital letter 'A' of Association' but not the initial 'A' of  
+'Association' in the string "Teachers Association".</P>
+<P><b>$</b></P>
+<P>
+The dollar sign is used for a match at the end of a line or of input. So, with the string
+"his cats" the regular expression <span class=code>/s$/</span> would match the final letter 's'
+in 'cats' but not in 'his'.
+<P><b>*</b></P>
+<P>
+The asterisk is used to match 0 or more occurrences of the preceding character. So, for
+example, the regular expression <span class=code>/ators*/</span> would match the 'ator' of 
+"alligator" and the 'ators' of "navigators". However, the regular expression 
+<span class=code>/a*/g</span>, where the asterisk follows a single letter, would match 1 or more 
+occurrences of the letter 'a' throughout the string</P>
+<P><b>+</b></P>
+<P>
+The plus sign matches one or more occurrences of the preceding character the first time it
+appears in a string. As such, it is equivalent to {1,}. For example, the regular expression
+<span class=code>/e+/</span> would match the 'e' in 'sped' and the 'e' in 'speed'.</P>
+<P><b>?</b></P>
+<P>
+The question mark is used to match the preceding character 0 or 1 times. For example, the regular
+expression <span class=code>/e?re?/</span> would match the string "theater" and also the 
+British spelling "theatre".</P>
+<P><b>.</b></P>
+<P>
+The decimal point matches any single character except the new line character. So, for instance,
+with the string "The cat eats moths" the regular expression <span class=code>/.t/gi</span> 
+would match the letters  'at' in 'cat', 'at' in 'eats' and 'ot' in 'moths', but not the initial
+'T' of 'The'.
+<P><b><a name="(x)">(x)</a></b></P>
+Putting a regular expression inside parens causes it to be matched and remembered. Each bracketed
+expression can then be referenced using the index of the resulting array, or by using the 
+<b>$1, ..., $9</b> property of the <b>RegExp</b> object.</P>
+<P><b>x|y</b></P>
+This expression matches either x or y, so, for example, the regular expression <span class=code>
+/hot|cold/</span> will match the 'hot' of 'hot potato' and the 'cold' of 'cold potato'.</P>
+<P><b>{n}</b></P>
+<P>
+This expression matches 'n' occurrences of the preceding character, where 'n' is an integer. So with the 
+string "the missing snake hisssed" the regular expression <span class=code>/s{2}/g</span> would 
+match both the 'ss' in 'missing' and the first two of the three 's's in 'hisssed'.</P>
+<P><b>{n,}</b></P>
+<P>
+This expression matches at least n occurrences of the preceding character, where 'n' is
+a positive integer. With the string "the missing snake hisssed", the regular expression
+<span class=code>/s{2,}/g/</span> would match the 'ss' of 'missing' and the 'sss' of
+'hisssed'.</P>
+<P><b>{n,m}</b></P>
+<P>
+This expression matches at least 'n' and at most 'm' occurrences of the preceding character, where
+'n' and 'm' are positive integers. So, with the string "the missing snake hisssssed", the regular
+expression <span class=code>/s{2,4}/g</span> will match the 'ss' of 'missing' and the first four
+'s's of 'hisssssed'.
+<P><b>[xyz]</b></P>
+<P>
+This expression matches any one of the set of characters enclosed within the square brackets.
+A series of characters can be seperated by a hyphen: e.g. you can use [abcde] or [a-e]. With 
+the string "the black cat", the regular expression <span class=code>/[abc]/g</span> would
+match the 'b', 'a' and 'c' in 'black' and the 'c' and 'a' in 'cat'.
+<P><b>[^xyz]</b></P>
+This expression matches any character other than those following the caret. A series of
+characters can be seperated by a hyphen: e.g. you can use [a-e] instead of [abcde]. With
+the string "black", the regular expression <span class=code>/[^bla]/</span> would match
+the letter 'c'.
+<P><b>[\b]</b></P>
+<P>
+This expression matches a backspace character.</P>
+<P><b>\b</b></P>
+<P>
+This expression matches any word boundary such as a space. So, for instance, with the
+string "the black cat", the regular expression <span class=code>/\bc/</span> would match
+the 'c' in 'cat', not the one in 'black'.</P>
+<P><b>\B</b></P>
+<P>
+This expression is used to match a non-word boundary. For example, with the string "the 
+black cat", the regular expression <span class=code>/\Bc/g</span> would match the 'c'
+in 'black' but not the one in 'cat'.</P>
+<P><b>\cX</b></P>
+<P>
+This expression matches a control character: i.e. a combination of the contol key 
+&lt;CTRL&gt; and any other key represented by the 'X'.</P>
+<P><b>\d</b></P>
+<P>
+This expression matches any digit character, and is equivalent to [0-9]. For example,
+with the string "the 4th of July", the regular expression <span class=code>/\d/</span>
+would match the character '4'. (The expression <span class=code>/[0-9]/</span> would
+work just the same.)</P>
+<P><b>\D</b></P>
+<P>
+This expression matches any non-digit character, and is equivalent to [^0-9]. So, with
+the string "45X", the regular expression <span class=code>/\D/</span> would match the 
+letter 'X'. (The expression <span class=code>[^0-9]</span> would work just as well.</P>
+<P><b>\f</b></P>
+<P>
+This expression matches a formfeed.</P>
+<P><b>\n</b></P>
+<P>
+This expression matches a linefeed.</P>
+<P><b>\r</b></P>
+<P>
+This expression matches a carriage return.</P>
+<P><b>\s</b></P>
+<P>
+This expression matches any white space character including tab, line feed and form feed.
+It is equivalent to [ \t\v\f\n\r]. So, for example, with the string "Christmas Day", the
+expression <span class=code>/\s/</span> would match the space between the two words.</P>
+<P><b>\S</b></P>
+<P>
+This expression is the opposite to \s and matches any non-white space character. it is 
+equivalent to [^ \t\v\f\n\r]. So, with the string "Christmas Day", the expression <span
+class=code>/\S/</span> would match the 'C' of 'Christmas'.</P>
+<P><b>\t</b></P>
+<P>
+This expression matches a tab character.</P>
+<P><b>\v</b></P>
+<P>
+This expression matches a vertical tab character.<P>
+<P><b>\w</b></P>
+<P>
+This expression matches any alpha-numeric character including the underscore, and is therefore
+equivalent to [a-zA-Z0-9_]. For example, with the string "O = 2a", the regular expression
+<span class=code>/\w/</span> would match the character '2'.</P>
+<P><b>\W</b></P>
+<P>
+This expression is the opposite of \w and matches any character other than an alpha-numeric
+character or the underscore. It is therefore equivalent to [^a-zA-Z0-9_]. With the string
+"O = 2a", the expression <span class=code>/\W/</span> matches the character 'O'.
+<P><b>\n</b></P>
+<P>
+Where n is a positive integer, this expression refers to a previous parenthesized substring
+within a regular expression. (See the <b><a href="#(x)">(x)</a></b> expression.) With the 
+string "John, Francis, Bob, Sherri", the regular expression <span 
+class=code>/[E-H]\w*(,)(\s)\w*\1\2/</span> would match the substring "Francis, Bob, ".
+This saves you having to type a complicated substring repeated within a regular expression.</P>
+<P>
+Note that if n represents a number higher than the number of previous parenthesized
+substrings, then it is treated as an octal return. See below.</P>
+<P><b>\o<em>octal</em></b></P>
+<P>
+Where o is an octal escape value, this expression allows you to embed ASCII codes into
+regular expressions.</P> 
+<P><b>\x<em>hex</em></b></P>
+<P>
+Where x is an hexadecimal escape value, this expression allows you to embed ASCII codes
+into regular expressions.</P>
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

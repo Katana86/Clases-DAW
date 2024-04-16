@@ -1,0 +1,306 @@
+<html>
+<head>
+<!-- TEMPLATE: Title --><title>JavaScript OBJECT: String</title><!-- END TEMPLATE -->
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+</head>
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT  = "O" MARGINWIDTH = "0">
+<form name="MainForm">
+  <img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+  </A> <img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=60 src="/images/grey.gif" width=2><br>
+        </center>
+      </td>
+      <td valign="top" width="200" align="left" colspan="2"><br>
+        <A href="test_list.html"><IMG border=0 height=21 src="images/cant_find.gif" width=200 ></A><br>
+      </td>
+      <td valign="top" colspan="2"><br>
+        <font size=2 face="arial, helvetica, ventura"> 
+        <select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" target = "body">
+          <option value="js_objects.html">All Objects</option>
+          <option value="js_eventhandler.html">Event Object</option>
+        </select>
+        </font><br>
+      </td>
+      <td valign="top" width="20"><br>
+        <A href="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"  BORDER = 0><IMG border=0 height=22 src="images/go.gif" width=20  value = Go><br>
+        </A> </td>
+    </tr>
+  </table>
+  <table  border="0" cellspacing="0" cellpadding="0">
+    <tr Valign="top"> 
+      <td valign="top" width="10"> 
+        <center>
+          <IMG border=0 height=3515 src="/images/grey.gif" width=2 ><br>
+        </center>
+      </td>
+      <td valign="top" width="460"> <FONT    
+            face="arial, helvetica" size='2'> <font size="+1"> <!-- TEMPLATE: Item name -->OBJECT: 
+        &nbsp;String <!-- END TEMPLATE --> </font> <BR>
+        <HR>
+        <!-- TEMPLATE: Item Description, examples, etc. --> A <strong>String</strong> 
+        object, created using the <strong>String</strong> constructor, represents 
+        a series of characters in a string. The string can be enclosed between single or double quotes.<br>
+        <br>
+        The following code shows the use of the <b>String</b> constructor to create 
+        a <b>String</b> object called 'myString'.<br>
+        <br>
+		Code:<br>
+		<span class="code">
+		myString = new String("This is a string object")<br><br>
+		</span>
+        <SPAN CLASS=PROPERTY><b>PROPERTIES</b></SPAN><br>
+        <br>
+        <b>constructor Property</b><br>
+        This property returns a reference to the function that created the <b>String</b> 
+        object's prototype.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b class="PROPERTY">constructor</B><br>
+        <br>
+        <b>length Property</b><br>
+        This property returns the length of the string.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="PROPERTY">length</span></B><br>
+        <br>
+        <b><a href="prototype.html#prototype">prototype</a> Property</b><br>
+       This property is used to add properties and methods to an object.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b class="PROPERTY">prototype</B><br>
+       <br><br>
+        <SPAN CLASS=METHOD><b>METHODS</b></SPAN><br>
+        <br>
+        <b><a href="string_anchor.html">anchor</a> Method</b><br>
+        This method is used to create an HTML anchor.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">anchor</span><span class="argument">("name")</span></b><br>
+        <br>
+        <b><a href="string_formatting.html">big</a> Method</b><br>
+        This method displays the string using a big font, as if contained within HTML &lt;BIG&gt;&lt;/BIG&gt; tags.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">big( 
+        )</span></b><br>
+        <br>
+        <b><a href="string_formatting.html">blink</a> Method</b> <br>
+        This method makes the displayed string blink, as if contained within HTML &lt;BLINK&gt;&lt;/BLINK&gt; tags.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">blink( 
+        )</span></b><br>
+        <br>
+        <b><a href="string_formatting.html">bold</a> Method</b><br>
+        This method displays the string using a bold font, as if contained within HTML &lt;B&gt;&lt;/B&gt; tags.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">bold()</span></b><br>
+        <br>
+        <b><a href="string_charat.html">charAt</a> Method</b><br>
+        This method returns a character from a string by referring to it's index within that string.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">charAt</span><span class="argument">(index)</span></b><br>
+        <br>
+        <b><a href="string_charcodeat.html">charCodeAt</a> Method</b><br>
+        This method returns 
+        a character's Unicode value from a string by referring to it's index within that string.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">charCodeAt</span><span class="argument">( index
+        )</span></b><br>
+        <br>
+        <b><a href="string_concat.html">concat</a> Method</b> <br>
+        This method joins the text contained in one string with the text from other specified strings and returns a new string.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">concat</span><span class="argument">(strName2, strName3....strName[n])</span></b><br>
+        <br>
+        <b><a href="string_formatting.html">fixed</a> Method</b><br>
+       This method displays the string using a fixed-pitch font, as if contained within HTML &lt;TT&gt;&lt;/TT&gt; tags.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">fixed()</span></b><br>
+        <br>
+        <b><a href="string_formatting.html">fontcolor</a> Method</b><br>
+        This method displays the string using a specified color, as if contained within HTML &lt;FONT COLOR="color"&gt;&lt;/FONT&gt; tags.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">fontcolor</span><span class="argument">("color")</span></b><br>
+        <br>
+        <b><a href="string_formatting.html">fontsize</a> Method</b><br>
+        This method displays the string using a specified font size, as if contained within HTML &lt;FONT SIZE="fontsize"&gt;&lt;/FONT&gt; tags.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">fontsize</span><span class="argument">("fontsize")</span></b><br>
+        <br>
+        <b><a href="string_fromcharcode.html">fromCharCode</a> Method</b><br>
+        This method takes 
+        the specified Unicode values and returns a string.<br>
+        <br>
+        Syntax: <span class="object"><b>String.</b></span><b><span class="METHOD">fromCharCode</span><span class="argument">(num1,....,numN)</span></b><br>
+        <br>
+        <b><a href="string_indexof.html">indexOf</a> Method</b><br>
+        When called from a <b>String</b> object, this method returns the index of the first occurance 
+        of the specified <span class="ARGUMENT"><b>searchValue</b></span> argument, 
+        starting from the specified <b class="ARGUMENT">fromIndex</b> argument.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">indexOf</span><span class="argument">(searchValue,[fromIndex])</span></b><br>
+        <br>
+        <b><a href="string_formatting.html">italics</a> Method</b><br>
+        This method displays the string using italics, as if contained within HTML &lt;I&gt;&lt;/I&gt; tags.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">italics()</span></b><br>
+        <br>
+        <b><a href="string_lastindexof.html">lastIndexOf</a> Method</b><br>
+        When called from a <b>String</b> object, this method returns the index of the last occurance 
+        of the specified <span class="ARGUMENT"><b>searchValue</b></span> argument, 
+        searchng backwards from the specified <b class="ARGUMENT">fromIndex</b> argument. <br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">lastIndexOf</span><span class="argument">(searchValue,[fromIndex])</span></b><br>
+        <br>
+        <b><a href="string_link.html">link</a> Method</b><br>
+        This method is used to create an HTML hyperlink in a document.<br>
+        <br>
+        Syntax: <b><span class="object">object.</span><span class="METHOD">link</span><span class="argument">("targetURL")</span></b> <br>
+        <br>
+        <b><a href="string_match.html">match</a> Method</b> <br>
+        This method is used to match a specified regular expression against a string.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">match</span><span class="argument">(regexp)</span></b><br>
+        <br>
+        <b><a href="string_replace.html">replace</a> Method</b><br>
+        This method is used 
+        to match a specifed regular expression against a string and replace any 
+        match with a new substring.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">replace</span><span class="argument">(regexp, newSubString)</span></b><br>
+        <br>
+        <b><a href="string_search.html">search</a> Method</b><br>
+        This method is used 
+        to search for a match between a regular expression and the specified string.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">search</span><span class="argument">(regexp)</span></b><br>
+        <br>
+        <b><a href="string_slice.html">slice</a> Method</b><br>
+        This method is used 
+        to 'slice' a section of a string and return a new string containing that 
+        section.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">slice</span><span class="argument">(startSlice, endSlice)</span></b><br>
+        <br>
+        <b><a href="string_formatting.html">small</a> Method</b><br>
+        This method displays the string using a small font, as if contained within HTML &lt;SMALL&gt;&lt;/SMALL&gt; tags.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">smal()</span></b><br>
+        <br>
+        <b><a href="string_split.html">split</a> Method</b><br>
+        This method splits a string into substrings and creates an array containing the resulting substrings.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">split</span><span class="argument">([separator][, limit])</span></b><br>
+        <br>
+        <b><a href="string_formatting.html">strike</a> Method</b><br>
+        This method displays the string using struck-out text, as if contained within HTML &lt;STRIKE&gt;&lt;/STRIKE&gt; tags.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">strike()</span></b><br>
+        <br>
+        <b><a href="string_formatting.html">sub</a> Method</b><br>
+        This method displays the string as subscript text, as if contained within HTML &lt;SUB&gt;&lt;/SUB&gt; tags.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">sub()</span></b><br>
+        <br>
+        <b>substr Method</b><br>
+        This method extracts the characters from a string beginning at the specified start index for the specified number of characters.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">substr</span><span class="argument">(start[, length])</span></b><br>
+        <br>
+        <b>substring Method</b> <br>
+        This method returns the characters  in a string between two specified indices as a substring.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">substring</span><span class="argument">(indexA, indexB)</span></b><br>
+        <br>
+        <b><a href="string_formatting.html">sup</a> Method</b><br>
+        This method displays the string as superscript text, as if contained within HTML &lt;SUP&gt;&lt;/SUP&gt; tags.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">sup()</span></b><br>
+        <br>
+        <b>toLowerCase Method</b><br>
+        This method is used to convert the characters in a string to lower case.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">toLowerCase( )</span></b><br>
+        <br>
+        <b>toSource Method</b><br>
+        This method is used to return a string that represents the source code 
+        of the object. Note that the source code of native JavaScript objects 
+        will not be available using this method, i.e. the value returned if applying 
+        this method to the generic <b>String</b> object will be [native code] 
+        whereas applying it to an instance of a <b>String</b> object created in 
+        your code will return that code.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">toSource( )</span></b><br>
+        <br>
+        <b>toString Method</b><br>
+        This method is used to return a string representation of an object, i.e. 
+        <b>myString.toString()</b> will simply return the contents of myString.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">toString( )</span></b><br>
+        <br>
+        <b>toUpperCase Method</b><br>
+        This method is used to convert characters in a string to upper case.<br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">toUpperCase( )</span></b><br>
+        <br>
+        <b>valueOf Method</b><br>
+        This method returns the primitive value of a <b>String</b> object as a 
+        string datatype. The value returned using this method is identical to 
+        using<b> String.toString</b>. <br>
+        <br>
+        Syntax: <span class="object"><b>object.</b></span><b><span class="METHOD">valueOf</span></b><br>
+        <br>
+        <!-- END TEMPLATE --> <font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

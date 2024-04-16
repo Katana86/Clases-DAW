@@ -1,0 +1,179 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript METHOD: navigator::preference</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be to "obvious" previous page -->
+	<option value="js_objects.html" Selected>All Objects
+	<option value="navigator.html">Navigator Object
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=735 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+METHOD:&nbsp; navigator::preference<img src="/images/icons/ns.gif" width="24" height="24">
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=object>navigator.</span><span class=method>preference</span><span
+class=argument>(prefName[, setValue])</span></b></P>
+<P>
+The <b>preference</b> method allows a signed script to get and set certain Navigator preferences.
+These preferences, along with their possible values, are as follows:</P>
+
+<P><b>autoupdate.enabled</b>
+<BR>This preference is used to enable SmartUpDate, and its value can be set to either 
+<b>true</b> or <b>false</b>.
+</P>
+
+<P><b>browser.enable_style_sheets</b>
+<BR>This preference is used to enable style sheet, and its value can be set to either
+<b>true</b> or <b>false</b>.
+</P>
+
+<P><b>general.always_load_images</b>
+<BR>This preference is used to automatically load images, and its value can be set to 
+either <b>true</b> or <b>false</b>.
+</P>
+
+<P><b>javascript.enabled</b>
+<BR>This preference is used to enable JavaScript, and its value can be set to either
+<b>true</b> or <b>false</b>.
+</P>
+
+<P><b>network.cookie.cookieBehavior</b>
+<BR>This preference is used to determine how the browser deals with cookies: if its value is 
+set to 0, it accepts all cookies, if 1, it only accepts those cookies that get sent back
+to the originating server, and if it is set to 2, it'll disable cookies
+</P>
+<P><b>network.cookie.warnAboutCookies</b>
+<BR>This preference is used to warn before accepting cookies, and its value can be set to 
+either <b>true</b> or <b>false</b>.
+</P>
+<P><b>security.enable_java</b>
+<BR>This preference is used to enable Java, and its value can be set to either <b>true</b>
+or <b>false</b>.
+</P>
+
+<P>NOTES:</P>
+<P>
+To read a preference requires a <b>UniversalPreferencesRead</b> privilege, while setting a 
+preference requires a <b>UniversalPreferencesWrite</b> privilege.
+</P>
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></TD>
+</tr></table>
+
+</form>
+</body>
+</html>

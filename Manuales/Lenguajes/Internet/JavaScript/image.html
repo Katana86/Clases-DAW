@@ -1,0 +1,291 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Image</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+    <option value="link.html">Link
+	<option value="evhan_onclick.html">onClick
+	<option value="evhan_onmouseout.html">onMouseOut
+	<option value="evhan_onmouseover.html">OnMouseOver
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=2930 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; Image
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=operator>new </span><span class=object>Image</span><span
+class=argument>([width,] [height])</span></b></P>
+<P>
+The <b>Image</b> object is an image on an HTML form, created by using the HTML 'IMG' tag. 
+Any images created in a document are then stored in an array in the <b>document.images</b> property, 
+and it is from here that they are accessed. 
+If you have specified a name for an image created using the HTML 'IMG' tag, 
+you can use that name when you index the image in the <b>images</b> array.
+You can also use the <b>Image</b> constructor and the <b>new</b> operator to create an image object which
+can then be displayed within an existing cell. The main use of this is to load an image from
+the network so that it is in cache before it needs to be displayed. 
+<P>
+For example the following
+code creates an <b>Image</b> object called MyImage:</P>
+<P>Code:
+<BR><span class=code>
+myImage = new Image()
+<BR>myImage.src = "C:/Personal/Mountain.gif"
+</span></P>
+<P>
+...you could then have this image replace an existing image River on, say, the click of a button:</P>
+<P>Code:
+<BR><span class=code>
+onClick="javascript:void(document.River.src = myImage.src)"</span></p>
+
+<P>
+When one <b>Image</b> object replaces another, as in the above example, it cannot change the <b>width</b> and
+<b>height</b> properties of it (these are read-only for this object) and the browser displays the image
+with the dimensions set in the IMG tag. JavaScript can also be used to create animation by
+repeatedly changing the value of the <b>src</b> property. This isn't as fast as GIF animation because
+Javascript has to load each indivual frame as a seperate file, whereas with GIF animation
+all the frames are contained in one file.</P>
+
+<P>
+<b><span class=property>PROPERTIES</span></b></P>
+<P><b>border Property</b>
+<BR>The <b>border</b> property is read-only, and is a string stating the width of the border of an
+image in pixels. For an image created using the <b>Image</b> constructor, this is 0.</P>
+<P>
+Syntax: <b><span class=object>Image.</span><span class=property>border</span></b></P>
+<P><b>complete Property</b>
+<BR>The <b>complete</b> property is read-only and returns a Boolean value indicating whether or not
+the browser has completed loading the image.</P>
+<P>
+Syntax: <b><span class=object>Image.</span><span class=property>complete</span></b></P>
+<P><b>height Property</b>
+<BR>The <b>height</b> property is read-only, and is a string stating the HEIGHT attribute of
+an IMG tag in pixels. Where an image has been created using the <b>Image</b> constructor,
+the height is of the image itself, not the HEIGHT value of the display.</P>
+<P>
+Syntax: <b><span class=object>Image.</span><span class=property>height</span></b></P>
+<P><b>hspace Property</b>
+<BR>The <b>hspace</b> property is read-only and specifies the HSPACE value of the IMG tag, which is
+the number of pixels space between the left and right margins of an image and surrounding text.
+For an image created using the <b>Image</b> constructor, the value of this property is null.</P>
+<P>
+Syntax: <b><span class=object>Image.</span><span class=property>hspace</span></b></P>
+<P><b>lowsrc Property</b>
+<BR>The <b>lowsrc</b> property specifies the URL of a low-resolution version of an image relating to
+the LOWSRC attribute of an IMG tag. A browser first loads a low-resolution version 
+before replacing it with the high-resolution version of the <b>src</b> property.</P>
+<P>
+Syntax: <b><span class=object>Image.</span><span class=property>lowsrc</span></b></P>
+<P><b>name Property</b>
+<BR>The <b>name</b> property is read-only and reflects the NAME attribute of an IMG tag. If the <b>Image</b>
+object has been created by using the <b>Image</b> constructor, the value of this property is null.</P>
+<P>
+Syntax: <b><span class=object>Image.</span><span class=property>name</span></b></P>
+<P><b><a name="src">src Property</a></b>
+<BR>The <b>src</b> property is a string representing the URL of an image and reflects the SRC attribute
+of an IMG tag. The <b>src</b> property can be altered at any time, but when you do so the new image (if
+not the same size) is scaled to fit the height and width attributes of the IMG tag. 
+Also, the loading of any other image into that cell is aborted, so the <b>Lowsrc</b> property should
+be altered before setting the <b>src</b> property.</P>
+<P>
+Syntax: <b><span class=object>Image.</span><span class=property>src</span></b></P>
+<P><b>vspace Property</b>
+<BR>The <b>vspace</b> property is read-only and specifies the VSPACE value of the IMG tag, which is
+the number of pixels space between the top and bottom margins of an image and surrounding text.
+For an image created using the <b>Image</b> constructor, the value of this property is null.</P>
+<P>
+Syntax: <b><span class=object>Image.</span><span class=property>vspace</span></b></P>
+<P><b>width Property</b>
+<BR>The <b>width</b> property is read-only, and is a string stating the WIDTH attribute of
+an IMG tag in pixels. Where an image has been created using the <b>Image</b> constructor,
+the width is of the image itself, not the WIDTH value of the display.</P>
+<P>
+Syntax: <b><span class=object>Image.</span><span class=property>width</span></b></P>
+<P>
+<b><span class=method>METHODS</span></b></P>
+<P><b>handleEvent Method</b>
+<BR>The <b>handleEvent</b> method is used to evoke the handler for a specified event.</P>
+<P>
+Syntax: <b><span class=object>Image.</span><span class=method>handleEvent</span><span
+class=argument>(event)</span></b></P>
+<P>
+<b><span class=unused>EVENT-HANDLERS</span></b></P>
+<P>
+All the event-handlers that are available with the <b>Image</b> object also have an equivalent 
+property (spelled entirely in lower case letters) which can be used to set an image's 
+event-handlers when created using the <b>Image</b> constructor. Assume you have a function called
+MyFunction which you want to set to the <b>onLoad</b> event-handler for an image called Ocean, you
+could accomplish this with the following statement:</P>
+<P>Code:
+<BR><span class=code>
+Ocean.onload = myFunction</span></P>
+<P>
+The same applies for all the following event-handlers.</P>
+<P><b><a href="evhan_onabort.html">onAbort</a> EventHandler</b>
+<BR>The <b>onAbort</b> event handler is used to execute certain JavaScript code whenever an abort
+event occurs, such as when the user stops the loading of an image by clicking a link or 
+a Stop button.</P>
+<P>
+Syntax: <b><span class=unused>onAbort </span><span class=Operator>= </span><span 
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onerror.html">onError</a> EventHandler</b>
+<BR>The <b>onError</b> event handler executes  certain Javascript code whenever a Javascript syntax
+or run-time error occurs during the loading of a document or image.</P>
+<P>
+Syntax: <b><span class=unused>onError </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></p>
+<P><b><a href="evhan_onkeydown.html">onKeyDown</a> EventHandler</b>
+<BR>The <b>onKeyDown</b> event handler is used to execute certain JavaScript code whenever the user
+depresses a key.</P>
+<P>
+Syntax: <b><span class=unused>onKeyDown </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onkeypress.html">onKeyPress</a> EventHandler</b>
+<BR>The <b>onKeyPress</b> event handler executes JavaScript code whenever the user presses or holds
+down a key</P>
+<P>
+Syntax: <b><span class=unused>onKeyPress </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onkeyup.html">onKeyUp</a> EventHandler</b>
+<BR>The <b>onKeyUp</b> event handler executes JavaScript code whenever the user releases a 
+depressed key.</P>
+<P>
+Syntax: <b><span class=unused>onKeyUp </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onload.html">onLoad</a> EventHandler</b>
+<BR>The <b>onLoad</b> event handler is used to execute JavaScript code whenever the browser has 
+finished loading a window or all of the frames within a FRAMESET tag.</P>
+<P>
+Syntax: <b><span class=unused>onLoad </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P>NOTE:</P>
+<P>The event handlers <b><a href="evhan_onclick.html">onClick</a></b>, 
+<b><a href="evhan_onmouseout.html">onMouseOut</a></b> and 
+<b><a href="evhan_onmouseover.html">onMouseOver</a></b> 
+can also be used with the Internet Explorer browser, but not with Netscape. 
+You can, however, use these event handlers in conjunction
+with the <b>Image</b> object with Netscape, if you define an <b>Area</b> object for the image, 
+or if the IMG tag is placed within a <b>Link</b> object.</P>
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

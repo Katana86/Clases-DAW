@@ -1,0 +1,177 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript PRIMITIVE VALUE: Infinity</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	 <option value="js_constants.html" SELECTED>All Primitive Values</OPTION>
+	 <option value="isfinite.html">isFinite Function</OPTION>
+	 <option value="number.html">Number Object</OPTION>
+	 <option value="math.html">Math Object</OPTION>
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=625 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+Primitive Value:&nbsp; Infinity
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=CONSTANT>Infinity</span></b>
+<P>
+In ECMAScript, <B>Infinity</B> is classified as a primitive value.
+<P>
+<B>Infinity</B> is a numeric value that represents positive infinity.
+It is displayed, or printed out, when a very large positive number exceeds the upper limit of the floating point numbers type 
+which is 1.7976931348623157E+10<SUP>308</SUP>.  
+<P>
+<B>-Infinity</B> is a numeric value that represents negative infinity.
+It is displayed, or printed out, when a very large negative number exceeds the lower limit of the floating point numbers type 
+which is -1.7976931348623157E+10<SUP>308</SUP>.  
+<P>
+Also see <A HREF="number_neg-pos_infinity.html">number.NEGATIVE_INFINITY and number.POSITIVE_INFINITY</A>.
+<P>
+Code:
+<SPAN CLASS="CODE"><BR>
+BigPosNum = 1.5E+339 * 2.4E+317<BR>
+document.write("BigPosNum = " + BigPosNum)
+</SPAN>
+<P>
+Output:
+<SPAN CLASS="CODE"><BR>
+BigNum = Infinity
+</SPAN>
+<P>
+Code:
+<SPAN CLASS="CODE"><BR>
+BigNegNum = -1.5E+333<BR>
+document.write("BigNegNum = " + BigNegNum)
+</SPAN>
+<P>
+Output:
+<SPAN CLASS="CODE"><BR>
+BigNegNum = -Infinity
+</SPAN>
+<P>
+NOTE:
+<P>
+In JavaScript, all numbers, including integers, are treated as floating point numbers.
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

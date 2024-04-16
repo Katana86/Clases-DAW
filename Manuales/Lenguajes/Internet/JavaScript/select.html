@@ -1,0 +1,230 @@
+<html>
+<head>
+<!-- TEMPLATE: Title --><title>JavaScript OBJECT: Select</title><!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td></tr>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+    <option value="form.html">Form
+	<option value="radio.html">Radio
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)"><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=1885 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; Select
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+The <b>Select</b> object represents a selection list in a <b>Form</b> object. As such, it must be declared
+inside &lt;FORM&gt; tags. The JavaScript run-time engine creates such an object 
+for every selection list in a particular form, and assigns it to the Form's <b>elements</b> array. 
+It is through this array that a particular <b>Select</b> object can be accessed, 
+either by index-number or by its NAME attribute.</P>
+<P>
+<b><span class=property>PROPERTIES</span></b></P>
+<P><b>form Property</b>
+<BR>This property is a reference to the parent form to which a particular <b>Select</b>
+object belongs.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>form</span></b></P>
+<P><b>length Property</b>
+<BR>This property contains the number of options in the selection list. For example, to refer
+to the length of the first <b>Select</b> object in the first form of the current document,
+you could use the following code:</P>
+<P>Code:
+<BR><span class=code>document.forms[0].elements[0].length</span></P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>length</span></b></P>
+<P><b>name Property</b>
+<BR>This property consists of a string which gives the name of the selection. For example, to refer
+to the name of the first <b>Select</b> object in the first form of the current document,
+you could use the following code:</P>
+<P>Code:
+<BR><span class=code>document.forms[0].elements[0].name</span></P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>name</span></b></P>
+<P><b><a href="select_options.html">options</a> Property</b>
+<BR>This property is an array of all the options in a particular <b>Select</b> object. There is one
+element (numbered in ascending order from zero) for each &lt;OPTION&gt; tag.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>options</span></b></P>
+<P><b>selectedIndex Property</b>
+<BR>This property, which is tainted by default, is an integer relating to the currently-selected option
+of a <b>Select</b> object. If, however, the <b>Select</b> object allows for multiple selections 
+(i.e. when the &lt;SELECT&gt; tag includes the MULTIPLE attribute), 
+the <b>selectedIndex</b> property will only return the index of the first option selected.
+For example, the following code would return the index of the selected option of a <b>Select</b>
+object called MySelect in MyForm:</P>
+<P>Code:
+<BR><span class=code>document.myForm.mySelect.selectedIndex</span></P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>selectedIndex</span></b></P>
+<P><b>type Property</b>
+<BR>This property holds the type of the <b>Select</b> object, having the value "select-one" 
+where only one option can be selected and "select-multiple" where multiple selections are possible.
+The following code could be used to determine the type of the first <b>Select</b> object
+of the first form of the current document:</P>
+<P>Code:
+<BR><span class=code>document.forms[0].elements[0].type</span>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>type</span></b></P>
+<P>
+<b><span class=method>METHODS</span></b>
+<P><b>blur Method</b>
+<BR>This method removes focus from a selection list.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=method>blur</span><span 
+class=argument>()</span></b></P>
+<P><b>focus Method</b>
+<BR>This method moves the focus to the specified selection list allowing the user to then
+select from it.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=method>focus</span><span 
+class=argument>()</span></b></P>
+<P><b>handleEvent Method</b>
+<BR>This method calls the handler for a specified event.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=method>handleEvent</span><span 
+class=argument>(event)</span></b></P>
+<P>NOTE:</P>
+<P>
+The <b>Select</b> object also inherits the <b><a href="watch.html">watch</a></b> and
+<b><a href="object.html#unwatch">unwatch</a></b> methods from the <b><a href="object.html">Object</a></b>
+object.</P>
+<P>
+<b><span class=unused>EVENT HANDLERS</span></b></P>
+<P><b><a href="evhan_onblur.html">onBlur</a> EventHandler</b>
+<BR>This event handler causes JavaScript code to be executed whenever a blur event occurs;
+i.e. whenever a window, frame or form element loses focus.</P>
+<P>
+Syntax: <b><span class=unused>onBlur </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onchange.html">onChange</a> EventHandler</b>
+<BR>This event handler executes JavaScript code whenever a <b>Select</b>, <b>Text</b> 
+or <b>Textarea</b> field loses focus after having been altered.</P>
+<P>
+Syntax: <b><span class=unused>onChange </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onfocus.html">onFocus</a> EventHandler</b>
+<BR>This event handler executes JavaScript whenever a focus event occurs; i.e.
+whenever the user focuse on a window, frame or frameset, or inputs to a form element.</P>
+<P>
+Syntax: <b><span class=unused>onFocus </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Link</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+<option value="js_objects.html" selected>All Objects
+	<option value="anchor.html">Anchor
+	<option value="image.html">Image
+	<option value="link.html">Link
+<!-- END TEMPLATE -->
+
+</select></font><br></td>
+
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=2830 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; Link
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+
+The <b>Link</b> object is a piece of text, an image or an area of an image that loads a hypertext
+link reference into the target window when selected. <b>Area</b> objects are also a type of <b>Link</b>
+object. A link can be created either by using the HTML 'A' or 'AREA' tags, or by calling
+the <b>String.link</b> method. Each 'A' or 'AREA' tag that has an HREF attribute is
+placed by the JavaScript engine in an array in the <b>document.links</b> property.
+A <b>Link</b> object can then be accessed by indexing this array. The following code demonstrates
+the creation of a link to an anchor in the 'Authors.htm' page using the <b>String.link</b>
+method:</P>
+<P>Code:
+<BR><span class=code>
+document.write("AUTHORS".link("Authors.htm#author"))</span></P>
+<P>
+The exact same link can also be created using HTML as follows:</P>
+<P>Code:
+<BR><span class=code>
+&lt;a href="Authors.htm#author"&gt;AUTHORS&lt;/a&gt;</span></P>
+<P>
+A <b>Link</b> object is a <b>Location</b> object and shares the same properties. When you click a <b>Link</b> object,
+the destination document's <b>referrer</b> property then contains the URL of the source page.
+A link can also be used to execute JavaScript code rather than to reference a hyperlink.
+The following code, for example, simply creates a function to display the message "Hello
+World!" which is then called if the user clicks on the 'GREETINGS' link:</P>
+<P>Code:
+<BR><span class=code>
+&lt;script language="javascript"&gt;
+<BR>function write_hello()
+<BR>{
+<BR>&nbsp;&nbsp;&nbsp;document.write("Hello World!")
+<BR>}
+<BR>&lt;/script&gt;
+<BR>&lt;a href="javascript:write_hello()"&gt;GREETINGS&lt;/a&gt;</span></P>
+<P>
+A full URL takes the following form:</P>
+<P>
+&lt;protocol&gt;//&lt;host&gt;[:&lt;port&gt;]/&lt;pathname&gt;[&lt;hash&gt;][&lt;search&gt;]</P>
+<P>
+<b><span class=property>PROPERTIES</span></b></P>
+
+<P>
+<b><a href="Hash.html">hash</a> Property</b>
+<BR>The <b>hash</b> property is a string beginning with a hash (#), that specifies 
+an anchor name in an HTTP URL.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>hash</span></b></P>
+<P>
+<b><a href="Host.html">host</a> Property</b>
+<BR>The <b>host</b> property is a string comprising of the <b>hostname</b> and <b>host</b> strings.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>host</span></b></P>
+<P>
+<b><a href="Hostname.html">hostname</a> Property</b>
+<BR>
+The <b>hostname</b> property specifies the server name, subdomain and domain name 
+(or IP address) of a URL.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>hostname</span></b></P>
+<P>
+<b><a href="Href.html">href</a> Property</b>
+<BR>The <b>href</b> property is a string specifying the entire URL, and of which all other <b>Link</b> 
+properties are substrings.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>href</span></b></P>
+<P>
+<b><a href="Pathname.html">pathname</a> Property</b>
+<BR>The <b>pathname</b> property is a string portion of a URL specifying how a particular resource 
+can be accessed.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>pathname</span></b></P>
+<P>
+<b><a href="Port.html">port</a> Property</b>
+<BR>The <b>port</b> property is a string specifying the communications port that the server uses.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>port</span></b></P>
+<P>
+<b><a href="Protocol.html">protocol</a> Property</b>
+<BR>The <b>protocol</b> property is the string at the beginning of a URL, up to and including the
+first colon (:), which specifies the method of access to the URL.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>protocol</span></b></P>
+<P>
+<b><a href="Search.html">search</a> Property</b>
+<BR>The <b>search</b> property is a string beginning with a question mark that specifies any query 
+information in an HTTP URL.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>search</span></b></P>
+<P>
+<b><a href="Target.html">target</a> Property</b>
+<BR>The <b>target</b> property is a string specifying the window that displays the contents
+of a clicked hyperlink.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>target</span></b></P>
+<P>
+<b>text Property</b>
+<BR>The <b>text</b> property is a string containing the text of a corresponding 'A' tag.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=property>text</span></b></P>
+<P>
+<b><span class=method>METHODS</span></b></P>
+<P>
+<b>handleEvent Method</b>
+<BR>The <b>HandleEvent</b> method invokes the handler for the specified event.</P>
+<P>
+Syntax: <b><span class=object>object.</span><span class=method>handleEvent</span><span
+class=argument>(event)</span></b></P>
+<P><b><span class=unused>EVENTHANDLERS</span></b></p>
+<P>
+The <b>Link</b> object has all of the following event handlers, but the <b>Area</b> object can
+only use the <b><a href="evhan_ondblclick.html">onDblClick</a></b>, 
+<b><a href="evhan_onmouseout.html">onMouseOut</a></b> and  
+<b><a href="evhan_onmouseover.html">onMouseOver</a></b> event handlers.
+<P><b><a href="evhan_onclick.html">onClick</a> EventHandler</b>
+<BR>The <b>onClick</b> event handler executes javaScript code whenever the user clicks
+(i.e. when the mouse button is pressed and released) on a form object.</P>
+<P>
+Syntax: <b><span class=unused>onClick </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_ondblclick.html">onDblClick</a> EventHandler</b>
+<BR>The <b>onDblClick</b> event handler executes JavaScript code whenever the user double clicks
+on an object in a form.</P>
+<P>
+Syntax: <b><span class=unused>onDblClick </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onkeydown.html">onKeyDown</a> EventHandler</b>
+<BR>The <b>onKeyDown</b> event handler is used to execute certain JavaScript code whenever the user
+depresses a key.</P>
+<P>
+Syntax: <b><span class=unused>onKeyDown </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onkeypress.html">onKeyPress</a> EventHandler</b>
+<BR>The onKeyPress event handler executes JavaScript code whenever the user presses or holds
+down a key</P>
+<P>
+Syntax: <b><span class=unused>onKeyPress </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onkeyup.html">onKeyUp</a> EventHandler</b>
+<BR>The <b>onKeyUp</b> event handler executes JavaScript code whenever the user releases a 
+depressed key.</P>
+<P>
+Syntax: <b><span class=unused>onKeyUp </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onmousedown.html">onMouseDown</a> EventHandler</b>
+<BR>The <b>onMouseDown</b> event handler executes JavaScript code whenever the user
+depresses the mouse button over an area or link.</P>
+<P>
+Syntax: <b><span class=unused>onMouseDown </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onmouseout.html">onMouseOut</a> EventHandler</b>
+<BR>The <b>onMouseOut</b> event handler executes JavaScript code whenever the mouse pointer
+leaves an area or a link within that area or link.</P>
+<P>
+Syntax: <b><span class=unused>onMouseOut </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onmouseup.html">onMouseUp</a> EventHandler</b>
+<BR>The <b>onMouseUp</b> event handler executes JavaScript code whenever the user releases
+a depressed mouse button over an area or link.</P>
+<P>
+Syntax: <b><span class=unused>onMouseUp </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+<P><b><a href="evhan_onmouseover.html">onMouseOver</a> EventHandler</b>
+<BR>The <b>onMouseOver</b> event handler cause JavaScript code to be executed whenever the mouse
+pointer leaves an area or a link within an area or link.</P>
+<P>
+Syntax: <b><span class=unused>onMouseOut </span><span class=operator>= </span><span
+class=argument>"JavaScriptCode"</span></b></P>
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

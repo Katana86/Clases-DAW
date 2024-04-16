@@ -1,0 +1,221 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: navigator</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=1630 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; Navigator
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+The <b>Navigator</b> object is designed to contain information about the version of Netscape Navigator
+which is being used. However, it can also be used with Internet Explorer. All of its properties,
+which are read-only, contain information about different aspects of the browser.</P>
+<P><b><span class=property>PROPERTIES</span></b></P>
+<P>
+<b>appCodeName Property</b>
+<BR>This property contains a string which specifies the code name of the browser.</P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span class=property>appCodeName</span></b></P>
+<P>
+<b>appName Property</b>
+<BR>This property is a string that specifies the name of the browser. With a Netscape
+browser this property contains the string "Netscape", while with an IE explorer it contains
+"Microsoft Internet Explorer".</P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span class=property>appName</span></b></P>
+<P>
+<b>appVersion Property</b>
+<BR>This property contains information about the browser version being used. If 
+it is a Netscape browser, it contains the release number, the language used, the platform 
+on which the browser is running, and either the letter I to indicate the international
+release, or the letter U for the domestic US release which has stronger encryption. e.g., 
+'4.5 [en] (WinNT; I)'. With IE, this property only contains information about the compatible 
+version of Internet Explorer and the platform, such as: '4.0 (compatible; MSIE 4.01; Windows NT)'.</P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span class=property>appVersion</span></b></P>
+<P>
+<b>language property</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This Property contains information, usually in the form of two letters, 
+on the language translation of the browser.</P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span class=property>language</span></b></P>
+<P>
+<b>mimeTypes Property</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This property is an array of all the MIME (Multipart Internet Mail Extension) types 
+supported by the client.</P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span class=property>mimeTypes</span></b></P>
+<P>
+<b>platform Property</b>
+<BR>This property contains a string indicating the machine type for which the browser
+was compiled. e.g., 'Win32' is a 32 bit Windows machine.</P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span class=property>platform</span></b></P>
+<P>
+<b>plugins Property</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This property is an array of all the plugins installed on the client. The plugin property 
+also has its own method: <B><a href="#refresh">plugins.refresh</a></b></P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span class=property>plugins</span></b></P>
+<P>
+<b>userAgent Property</b>
+<BR>This property contains a string representing the value of the user-agent
+header sent by the client to the server in the http protocol. This information consists of
+the code name and the version of the browser, and is used by the server to identify the client.</P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span class=property>userAgent</span></b></P>
+<P><b><span class=method>METHODS</span></b></P>
+<P>
+<b>javaEnabled Method</b>
+<BR>This method tests whether or not Java is enabled returning <b>true</b> if it is 
+and <b>false</b> if not.</P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span class=method>javaEnabled</span><span
+class=argument>()</span></b></P>
+<P>
+<b><a name="refresh">plugins.refresh</a> Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This method makes newly-installed plugins available and updates
+relevent arrays such as the <b>plugins</b> array. If you specify the value <b>true</b>, this method
+reloads all open documents containing embedded objects, whereas supplying <b>false</b> does not
+cause this to happen.</P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span
+class=property>plugins.</span><span class=method>refresh</span><span
+class=argument>(true | false)</span></b></P>
+<P>
+<b><a href="preference.html">preference</a> Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This method allows a signed script to get and set certain Navigator preferences.</P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span class=method>preference</span><span
+class=argument>(prefName[, setValue])</span></b></P>
+<P>
+<b>taintEnabled Method</b>
+<BR>This method determines whether or not data tainting is enabled returning
+<b>true</b> if it is, and <b>false</b> if not. </P>
+<P>
+Syntax: <b><span class=object>navigator.</span><span class=method>taintEnabled</span><span
+class=argument>()</span></b></P>
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

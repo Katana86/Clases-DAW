@@ -1,0 +1,227 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript FUNCTION: parseInt</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	 <option value="js_functions.html" SELECTED>All Functions</OPTION>
+	 <option value="nan.html">NaN Primitive Value</OPTION>
+
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=1350 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+Function:&nbsp; parseInt
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class="FUNCTION">parseInt</span><SPAN CLASS="ARGUMENT">(string, <EM>radix</EM>)</B></SPAN>
+<P>
+The top-level function, <B>parseInt</B>, find the first integer in a string.
+<P>
+There are two arguments.  
+The mandatory <B>string</B> argument is the string which is presumed to contain an integer.  
+The optional <B>radix</B> argument specifies the base of the integer and can range from 2 to 36.
+For example, 16 is the hexidecimal base (0123456789ABCDEF).
+<P>
+If no <B>radix</B> argument is provided or if it is assigned a value of 0, the function tries to determine the base.
+If the string starts with a 1-9, it will be parsed as base 10.
+If the string starts with 0x or 0X it will be parsed as a hexidecimal number.
+If the string starts with a 0 it will be parsed as an octal number. 
+(Note that just because a number starts with a zero, it does not mean that it is really octal.)
+<P>
+After determining if the first character in the <B>string</B> argument is a number, 
+the <B>parseInt</B> function parses the string from left to right until the end of the number or a decimal point is encountered, 
+then it discards any characters that occur after the end of the number 
+(including a decimal point and all numbers after the decimal point), 
+and finally it returns the number as an integer (not as a string).
+<P>
+Only the first integer in the string is returned, regardless of how many other numbers occur in the string.
+<P>
+If the first character in the string is not a number, the function returns 
+the Not-a-Number value <A HREF="nan.html"><B>NaN</B></A>.
+<P>
+Code:
+<SPAN CLASS="CODE"><BR>
+document.write("&lt;BR&gt;" + parseInt("50"))<BR>
+document.write("&lt;BR&gt;" + parseInt("50.12345"))<BR>
+document.write("&lt;BR&gt;" + parseInt("32.00000000"))<BR>
+document.write("&lt;BR&gt;" + parseInt("71.348 &nbsp;92.218 &nbsp;95.405"))<BR>
+document.write("&lt;BR&gt;" + parseInt("37 aardvarks"))<BR>
+document.write("&lt;BR&gt;" + parseInt("Awarded the best wine of 1999"))<P>
+
+</SPAN>
+<P>
+Output:
+<SPAN CLASS="OUTPUT"><BR>
+50<BR>
+50<BR>
+32<BR>
+71<BR>
+37<BR>
+NaN<P>
+</SPAN>
+<P>
+
+You can use the optional <B>radix</B> argument to convert a binary number string to the decimal (base 10) equivalent.
+<P>
+Code:
+<SPAN CLASS="CODE"><BR>
+document.write(parseInt("110", 2))<BR>
+</SPAN>
+<P>
+Output:
+<BR><SPAN CLASS="OUTPUT">
+6
+<P></SPAN>
+
+You can use the optional <B>radix</B> argument to convert a hexidecimal number string to the decimal (base 10) equivalent.
+<P>
+Code:
+<SPAN CLASS="CODE"><BR>
+document.write(parseInt("0xD9", 16))<BR>
+</SPAN>
+<P>
+Output:
+<BR><SPAN CLASS="OUTPUT">
+217
+<P></SPAN>
+
+You can use the <A HREF="isnan.html"><B>isNaN</B></A> function to see if the returned value is a <B>NaN</B>.
+<P>
+Code:
+<SPAN CLASS="CODE"><BR>
+pet = "Rachel has 312 baby aardvarks"<BR>
+CheckNum = parseInt(pet)<BR>
+if(isNaN(CheckNum))<BR>
+&nbsp;&nbsp; {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp; document.write("&lt;BR&gt;Sorry, CheckNum is a NaN")<BR>
+&nbsp;&nbsp;&nbsp;&nbsp; document.write("&lt;BR&gt;Left-most character = " + pet.substring(0,1))<BR>
+&nbsp;&nbsp; }<BR>
+</SPAN>
+<P>
+Output:
+<SPAN CLASS="OUTPUT"><BR>
+Sorry, CheckNum is a NaN<BR>
+Left-most character = R
+</SPAN><P>
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

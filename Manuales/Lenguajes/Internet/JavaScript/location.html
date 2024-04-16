@@ -1,0 +1,212 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: Location</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+    <option value="history.html">History
+<!-- END TEMPLATE -->
+
+</select></font><br></td>
+
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=1390 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; Location
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+
+The <b>Location</b> object is part of a <b>Window</b> object and is accessed through the <b>window.location</b>
+property. It contains the complete URL of a given <b>Window</b> object, or, if none is specified,
+of the current <b>Window</b> object. All of its properties are strings representing different 
+portions of the URL, which generally takes the following form:</P>
+<P>
+&lt;protocol&gt;//&lt;host&gt;[:&lt;port&gt;]/&lt;pathname&gt;[&lt;hash&gt;][&lt;search&gt;]</P>
+<P>
+You can create a <b>Location</b> object by simply assigning a URL to the <b>location</b> property of an object:</P>
+<P>Code:
+<BR><span class=code>
+window.location = "file:///C:/Projects"</span>
+<P>
+<b><span class=property>PROPERTIES</span></b></P>
+
+<P>
+<b><a href="location_hash.html">hash</a> Property</b>
+<BR>The <b>hash</b> property is a string beginning with a hash (#), that specifies 
+an anchor name in an HTTP URL.</P>
+<P>
+Syntax: <b><span class=object>location.</span><span class=property>hash</span></b></P>
+<P>
+<b><a href="location_host.html">host</a> Property</b>
+<BR>The <b>host</b> property is a string comprising of the <b>hostname</b> and <b>port</b> strings.</P>
+<P>
+Syntax: <b><span class=object>location.</span><span class=property>host</span></b></P>
+<P>
+<b><a href="location_hostname.html">hostname</a> Property</b>
+<BR>
+The <b>hostname</b> property specifies the server name, subdomain and domain name 
+(or IP address) of a URL.</P>
+<P>
+Syntax: <b><span class=object>location.</span><span class=property>hostname</span></b></P>
+<P>
+<b><a href="location_href.html">href</a> Property</b>
+<BR>The <b>href</b> property is a string specifying the entire URL, and of which all other <b>Link</b> 
+properties are substrings.</P>
+<P>
+Syntax: <b><span class=object>location.</span><span class=property>href</span></b></P>
+<P>
+<b><a href="location_pathname.html">pathname</a> Property</b>
+<BR>The <b>pathname</b> property is a string portion of a URL specifying how a particular resource 
+can be accessed.</P>
+<P>
+Syntax: <b><span class=object>location.</span><span class=property>pathname</span></b></P>
+<P>
+<b><a href="location_port.html">port</a> Property</b>
+<BR>The <b>port</b> property is a string specifying the communications port that the server uses.</P>
+<P>
+Syntax: <b><span class=object>location.</span><span class=property>port</span></b></P>
+<P>
+<b><a href="location_protocol.html">protocol</a> Property</b>
+<BR>The <b>protocol</b> property is the string at the beginning of a URL, up to and including the
+first colon (:), which specifies the method of access to the URL.</P>
+<P>
+Syntax: <b><span class=object>location.</span><span class=property>protocol</span></b></P>
+<P>
+<b><a href="location_search.html">search</a> Property</b>
+<BR>The <b>search</b> property is a string beginning with a question mark that specifies any query 
+information in an HTTP URL.</P>
+<P>
+Syntax: <b><span class=object>location.</span><span class=property>search</span></b></P>
+<P>
+<b><span class=method>METHODS</span></b></P>
+<P>
+<b><a href="Reload.html">reload</a> Method</b>
+<BR>The <b>reload</b> method forces a reload of the window's current document, i.e. the one contained in
+the <b>Location.href</b> property.</P>
+<P>
+Syntax: <b><span class=object>location.</span><span class=method>reload</span><span
+class=argument>([forceGet])</span></b></P>
+<P>
+<b><a name="Replace">replace</a> Method</b>
+<BR>The <b>replace</b> method replaces the current <b>History</b> entry with the specified URL.
+After calling the <b>replace</b> method, you cannot navigate back to the previous URL
+using the browser's Back button.</P>
+<P>
+Syntax: <b><span class=object>location.</span><span class=method>replace</span><span
+class=argument>(URL)</span></b></P>
+ 
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

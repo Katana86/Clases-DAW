@@ -1,0 +1,186 @@
+<html>
+<head>
+<!-- TEMPLATE: Title --><title>JavaScript METHOD: Array::sort</title><!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); 
+            style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+    <option value="array.html">Array Object
+	<option value="join.html">Join
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=895 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+METHOD:&nbsp; Array::sort
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=object>Array.</span><span class=method>sort</span><span
+class=argument>(compareFunction)</span></b></P>
+<P>
+The <b>sort</b> method sorts the elements of an array. If no <B>compareFunction</B> argument is supplied,
+all the elements are converted into strings and sorted lexicographically (i.e. in
+dictionary order). This means, for example, that 30 would come before 4. The following
+example is a straight-forward sort of an array of names:</P>
+<P>
+Code:
+<BR><span class=code>
+names = ["John", "Andrea", "Charlie", "Sam", "Kate"]
+<BR>sorted_names = names.sort()
+<BR>document.write(sorted_names)</span></P>
+<P>Output:
+<BR><span class=output>
+Andrea,Charlie,John,Kate,Sam</span></P>
+<P>
+By including a <B>compareFunction</B> argument, you can define the sort order. Two array elements are
+sorted according to the return value of the compare function: 
+if it is 0, the order of the two elements remains unchanged;
+if it is greater than 0, the first of the two elements is sorted to a higher index 
+than the second; and if it is less than 0, 
+the second element is sorted to a higher index than the first.
+The following code creates an array called 'trees' and then,
+using the user-defined function 'reverseSort', displays the elements sorted in reverse order:</P>
+<P>Code:
+<BR><span class=code>
+trees = ["oak", "ash", "beech", "maple", "sycamore"]
+<BR>function reverseSort(a, b)
+<BR>{
+<BR>&nbsp;&nbsp;&nbsp;if(a > b)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return -1
+<BR>&nbsp;&nbsp;&nbsp;if(a < b)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1
+<BR>&nbsp;&nbsp;&nbsp;return 0
+<BR>}
+<BR>document.write(trees.sort(reverseSort))</span></P>
+<P>Output:
+<BR><span class=output>
+sycamore,oak,maple,beech,ash</span></P>
+<P>
+If two numbers are compared, the <B>compareFunction</B> simply needs to subtract the second
+from the first number:</P>
+<P>Code:
+<BR><span class=code>
+ages = [30, 25, 47, 19, 21, 8]
+<BR>function sortNumbers(a, b) {   return a - b}
+<BR>document.write(ages.sort(sortNumbers))</span></P>
+<P>Output:
+<BR><span class=output>
+8,19,21,25,30,47</span></P>
+ 
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

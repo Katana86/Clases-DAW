@@ -1,0 +1,295 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript OBJECT: RegExp</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A></td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=3645 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+OBJECT:&nbsp; RegExp
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=operator>new </span><span class=object>RegExp</span><span
+class=argument>("pattern"[, "flags"])</span></b></P>
+<P>
+The <b>RegExp</b> object contains the pattern of a regular expression, and is used to match
+strings using its methods and properties. The predefined <b>RegExp</b> object has static
+properties set whenever a regular expression is used, as well as user-defined ones for
+individual objects. A <b>RegExp</b> object can be created in two ways: either by using the
+<b>constructor</b> function, or with a literal text format. In both cases you need to specify
+the text pattern of the regular expression, and optionally one of the three possible flags:
+'g' for a global match, 'i' to ignore case, or 'gi' for a case-insensitive global match.
+</P>
+<P>
+The following code creates a regular expression using the <b>constructor</b> function, that
+matches an initial letter 'a' irrespective of case:</P>
+<P>Code:
+<BR><span class=code>myRegExp = new RegExp("^a", "i")</span></P>
+<P>
+Note that when using the <b>constructor</b> function, you must use quotation marks to indicate
+strings. Also, the normal string escape rules apply and you must use a back slash before special
+characters as in the following code which creates a regular expression of a tab character:</P>
+<P>Code:
+<BR><span class=code>myRegExp = new RegExp("\\t")</span></P>
+<P>
+Using the literal text format you do not need to use quotation marks. To create a regular expression
+consisting of a case-insensitve initial 'a' you could use the following code:</P>
+<P>Code:
+<BR><span class=code>myRegExp = /^a/i</span></P>
+<P>
+...and a regular expression consisting of a tab character could be created as follows:</P>
+<P>Code:
+<BR><span class=code>myRegExp = /\t/</span></P>
+<P>
+The literal notation of a regular expression provides compilation of it when the expression is 
+evaluated, and this is used when you know that a regular expression is going to remain constant.
+When you know that an expression is going to change, or you don't know what that expression is 
+because it will be input by a user, you need to use the <b>constructor</b> function which is 
+compiled at run time. You can, however, compile a regular expression at any time using the 
+<b>compile</b> method. Each window has its own predefined <b>RegExp</b> object thus ensuring that 
+different threads of JavaScript execution don't overwrite values of the <b>RegExp</b> object.</P>
+<P>
+For a complete list and description of the special characters that can be used in a regular
+expression, see the <b><a href="regexp_special_characters.html">special characters</a></b> page.
+<P><b><span class=property>PROPERTIES</span></b></P>
+<P><b><a href="regexp_$1-$9.html">$1, ..., $9</a> Property</b>
+<BR>These are properties containing parenthized substrings (if any) from a regular expression.
+</P>
+<P><b>$ Property</b>
+<BR>See the <b><a href="#input">input</a></b> property.</P>
+<P><b>$* Property</b>
+<BR> See the <b><a href="#multiline">multiline</a></b> property.</P>
+<P><b>$&amp Property</b>
+<BR>See the <b><a href="#lastmatch">lastMatch</a></b> property.</P>
+<P><b>$+ Property</b>
+<BR>See the <b><a href="#lastparen">lastParen</a></b> property.</P>
+<P><b>$` Property</b>
+<BR>See the <b><a href="#leftcontext">leftContext</a></b> property.</P>
+<P><b>$' Property</b>
+<BR>See the <b><a href="#rightcontext">rightContext</a></b> property.</P>
+<P><b>constructor Property</b>
+<BR>This property specifies the function that creates an object's prototype. See the 
+<b><a href="constructor.html">Object.constructor</a></b> property.</P>
+<P>Syntax: <b><span class=object>RegExp.</span><span class=property>constructor</span></b></P>
+<P><b><a name="global">global</a> Property</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This property reflects whether the 'g' flag was used to match a regular expression
+globally in a string, or just the first occurrence of it. Its value is <b>true</b> if
+the 'g' flag was used and <b>false</b> if not. Note that this property is read-only
+but that calling the <b>compile</b> method does alter it.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>global</span></b></P>
+<P><b><a name="ignorecase">ignoreCase</a> Property</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This property reflects whether the 'i' flag was used for a case-insensitive match
+of a regular expression in a string, returning <b>true</b> if it was and <b>false</b>
+if not. Note that this property is read-only but that calling the <b>compile</b>
+method does alter it.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>ignoreCase</span></b></P>
+<P><b><a name="input" href="regexp_input.html">input</a> Property</b><img src="/images/icons/ie.gif" width="24" height="24">
+<BR>This property is a string against which a regular expression is matched.</P>
+<P>Syntax: <b><span class=object>RegExp.</span><span class=property>input</span></b></P>
+<P><b><a href="regexp_lastindex.html">lastIndex</a> Property</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This property is an integer that specifies the index at which to start the next match, but
+is only set if the regular expression uses the 'g' flag to specify a global search.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>lastIndex</span></b></P>
+<P><b><a name="lastmatch" href="regexp_lastmatch.html">lastMatch</a> Property</b>
+			<img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This property is the last matched characters. As this property is static, you always use 
+<b>RegExp.lastMatch</b>.</P>
+<P>Syntax: <b><span class=object>RegExp.</span><span class=property>lastMatch</span></b></P>
+<P><b><a name="lastparen" href="regexp_lastparen.html">lastParen</a> Property</b>
+			<img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This property contains the last matched parenthesized substring (if any), and as a static 
+property is always refered to using <b>RegExp.lastParen</b>.</P>
+<P>Syntax: <b><span class=object>RegExp.</span><span class=property>lastParen</span></b></P>
+<P><b><a name="leftcontext" href="regexp_leftcontext.html">leftContext</a> Property</b>
+            <img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This property is the substring upto the character most recently matched; i.e. everything
+that comes before it, and as a static property, is always used as <b>RegExp.leftContext</b>.</P>
+<P>Syntax: <b><span class=object>RegExp.</span><span class=property>leftContext</span></b></P>
+<P><b><a name="multiline">multiline</a> Property</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This property reflects whether a search is to be carried out over multiple lines,
+returning <b>true</b> if it is, and <B>false</b> if not. Being a static property, 
+you always use <b>RegExp.multiline</b>. When an event handler is called for a TEXTAREA
+form element, the browser sets the <b>multiline</b> property to <b>true</b>. Once the event
+handler has finished executing, it is reset to <b>false</b>, even if it was set at <b>true</b>
+before the event handler was called.</P>
+<P>
+Syntax: <b><span class=object>RegExp.</span><span class=property>multiline</span></b></P>
+<P><b>prototype Property</b>
+<BR>This property represents the prototype for this class, and allows you to add your own
+properties and methods to all instances of it. See the 
+<b><a href="function_object.html#prototype">Function.prototype</a></b> property.</P>
+<P>Syntax: <b><span class=object>RegExp.</span><span class=property>prototype</span></b></P>
+<P><b><a name="rightcontext" href="regexp_rightcontext.html">rightContext</a> Property</b>
+			<img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This property is the substring after the character most recently matched; i.e. everything
+that follows it, and as a static property, is always used as <b>RegExp.rightContext</b>.</P>
+<P>Syntax: <b><span class=object>RegExp.</span><span class=property>rightContext</span></b></P>
+<P><b><a name="source">source</a> Property</b>
+			<img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This is a read-only property containing the source of the regular expression: 
+i.e. everything except the forward slashes and any flags. The <b>source</b> property cannot
+be changed directly, however calling the <b><a href="regexp.html#compile">compile</a></b> 
+method does alter it. For example, with the regular expression <span class=code>
+rexp = /[^aeiou\s]{2}/g</span> the value of the <b>source</b> property would be
+<span class=code>[^aeiou\s]{2}</span>.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=property>source</span></b></P>
+<P><b><span class=method>METHODS</span></b></P>
+<P><b><a name="compile" href="regexp_compile.html">compile</a> Method</b>
+<BR>This method compiles a regular expression object during execution of a script.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>compile</span><span
+class=argument>(pattern[, flags])</span></b></P>
+<P><b><a href="regexp_exec.html">exec</a> Method</b>
+<BR>This method executes a search for a match in a specified string, returning a result array.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>exec</span><span
+class=argument>([str])</span></b></P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><span class=object>object</span><span class=argument>([str])</span></b>
+			<img src="/images/icons/ns.gif" width="24" height="24"></P>
+<P><b><a name="test" href="regexp_test.html">test</a> Method</b>
+<BR>This method tests for a match of a regular expression in a string, returning <b>true</b>
+if successful, and <b>false</b> if not.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>test</span><span
+class=argument>([str])</span></b></P>
+<P><b>toSource Method</b><img src="/images/icons/ns.gif" width="24" height="24">
+<BR>This method returns the source code of a <b>RegExp</b> object and is usually called internally
+by JavaScript. It also overrides the <b><a href="tosource.html">Object.toSource</a></b> method.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>toSource</span><span
+class=argument>()</span></b></P>
+<P><b>toString Method</b>
+<BR>This method returns a string representing the <b>RegExp</b> object, and this overrides
+the <b><a href="tostring.html">Object.toString</a> method</b>.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>toString</span><span
+class=argument>()</span></b></P>
+<P><b>valueOf Method</b>
+<BR>This method returns a primitive value for the <b>RegExp</b> object as a string data type,
+and is equivalent to the <b>RegExp.toString</b> method. It is usually called internally by 
+JavaScript and overrides the <b><a href="valueof.html">Object.valueOf</a></b> method.</P>
+<P>Syntax: <b><span class=object>object.</span><span class=method>valueOf</span><span
+class=argument>()</span></b></P>
+<P>NOTE:</P>
+<P>
+The <b>regExp</b> object also inherits the <b><a href="watch.html">watch</a></b> and
+<b><a href="object.html#unwatch">unwatch</a></b> methods from the <b><a href="object.html">Object</a></b>
+object.</P>
+
+
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>

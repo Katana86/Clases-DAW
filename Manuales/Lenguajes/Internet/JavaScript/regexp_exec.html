@@ -1,0 +1,170 @@
+<html>
+<head>
+<!-- TEMPLATE: Title -->
+<title>JavaScript METHOD: RegExp::exec</title>
+<!-- END TEMPLATE -->
+	
+<link rel="STYLESHEET" type="text/css" href="Include/STYLERULES.css">
+	
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+
+function ViewCrossReference (selSelectObject)
+{
+	if (selSelectObject.options[selSelectObject.selectedIndex].value != "")
+	{ 
+		location.href=selSelectObject.options[selSelectObject.selectedIndex].value
+    }
+}
+
+// -->
+
+</SCRIPT>
+
+</head>
+
+
+<body background="" bgcolor="#ffffff" text="#000000"  leftmargin="0" topmargin="0" MARGINHEIGHT="O" MARGINWIDTH = "0">
+
+<form name="MainForm">
+
+
+
+<img height=2 width=314 src="/images/grey.gif"  border="0"><br>
+<a href="javascript_index.html" onMouseOver='rollover_1.src="images/ecmascript_on.gif"' onMouseOut='rollover_1.src="images/ecmascript.gif"'>
+<img height=54 width=340 src="images/ecmascript.gif" name="rollover_1" border="0"><br>
+</a>
+
+<img src="images/submenu.gif" width="338" height="20" usemap="#submenu" ismap alt="" border="0"><br>
+
+<map name="submenu">
+<area shape="rect" coords="281,0,334,20"  href="js_objects.html" >
+<area shape="rect" coords="212,0,282,20"  href="js_constants.html" >
+<area shape="rect" coords="145,0,213,20"  href="js_operators.html" >
+<area shape="rect" coords="73,0,146,20"  href="js_statements.html" >
+<area shape="rect" coords="6,0,73,20"  href="js_functions.html" >
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG align="top" border=0 height=26 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+<td valign="top">
+
+<img src="images/method_property.gif" width="338" height="22" usemap="#blagh" ismap alt="" border="0">
+
+
+<map name="blagh">
+<area shape="rect" coords="238,0,297,22"  href="js_property.html">
+<area shape="rect" coords="196,0,239,22"  href="js_eventhandler.html">
+<area shape="rect" coords="145,0,196,22"  href="js_methods.html">
+<AREA SHAPE="DEFAULT" NOHREF>
+</map>
+</td>
+</table>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=60 width=2 src="/images/grey.gif"><br>
+</center>
+</td>
+
+<td valign="top" width="200" align="left" colspan="2"><br>
+<IMG border=0 height=21 width=200 src="images/cant_find.gif"><br>
+
+</td>
+<td valign="top" colspan="2"><br>
+
+<font size=2 face="arial, helvetica, ventura">
+
+<select name="SeeAlsoSelect" onChange=ViewCrossReference(this); style="HEIGHT: 22px; WIDTH: 240px" >
+
+<!-- TEMPLATE: Cross references - first reference should be
+     to "obvious" previous page -->
+	<option value="js_objects.html" SELECTED>All Objects
+	<option value="regexp.html"> RegExp Object
+<!-- END TEMPLATE -->
+
+</select>
+</font><br>
+
+</td>
+<td valign="top" width="20"><br>
+<A HREF="javascript:ViewCrossReference(document.MainForm.SeeAlsoSelect)" BORDER=0><IMG src="images/go.gif" border="0" height=22 width="20" value="Go"><br></A>
+
+</td>
+</tr>
+</table>
+
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr Valign="top">
+<td valign="top" width="10">
+<center>
+<IMG border=0 height=700 width=2 src="/images/grey.gif" ><br>
+</center>
+</td>
+
+<td valign="top" width="460">
+<FONT  face='arial, helvetica' size='2'>
+<font size="+1">
+
+<!-- TEMPLATE: Item name -->
+METHOD:&nbsp; RegExp::exec
+<!-- END TEMPLATE -->
+
+</font>
+<BR>
+<HR>
+
+<!-- TEMPLATE: Item Description, examples, etc. -->
+<b><span class=object>object.</span><span class=method>exec</span><span
+class=argument>([str])</span></b></P>
+<P>
+<b><span class=object>object</span><span class=argument>([str])</span></b>
+<img src="/images/icons/ns.gif" width="24" height="24"></P>
+<P>
+This method executes a search for a match in a specified string, returning a result array.
+(If, however, you simply want to test whether or not there is a match, it is best to use the
+<b><a href="regexp.html#test">test</a></b> method or the <b><a href=string_search.html>String.search</a></b>
+method.)
+For example, the following blocks of code, one for the Internet Explorer browser and the other
+for Netscape, each execute a search of the string "the fisherman" for a match with the regular
+expression 'rexp'. If one is found (and in the case of the example it is), then an appropriate
+message is printed.</P>
+<P>Code:<img src="/images/icons/ie.gif" width="24" height="24">
+<BR><span class=code>rexp = /[aeiou]/g
+<BR>myString = "the fisherman"
+<BR>if(rexp.exec(myString))
+<BR>&nbsp;&nbsp;&nbsp;match = rexp.exec(myString)
+<BR>&nbsp;&nbsp;&nbsp;document.write("Successfully matched " + match)</span></P>
+<P>Code:<img src="/images/icons/ns.gif" width="24" height="24">
+<BR><span class=code>rexp = /[aeiou]/g
+<BR>myString = "the fisherman"
+<BR>if(rexp(myString))
+<BR>&nbsp;&nbsp;&nbsp;match = RegExp.lastMatch
+<BR>&nbsp;&nbsp;&nbsp;document.write("Successfully matched " + match)</span></P>
+<P>Output:<img src="/images/icons/ie.gif" width="24" height="24">
+			<img src="/images/icons/ns.gif" width="24" height="24">
+<BR><span class=output>Successfully matched e</span></P>
+<P>NOTE:</P>
+<P>
+The Netscape browser can call the <b>exec</b> method both directly (<b>object.exec([str])</b>) or
+indirectly (<b>object([str])</b>), whereas Microsoft Internet Explorer can only call it
+directly. If no string is declared then the value of 
+<b><a href="regexp.html#input">RegExp.input</a></b> is used.
+If the search fails, the <b>exec</b> method returns <b>null</b>.</P>
+<!-- END TEMPLATE -->
+
+<font face="arial,helvetica" size="1"><P><A HREF="Include/COPYRIGHT.html" style="COLOR: #333364; TEXT-DECORATION: none">Copyright 1999 by Infinite Software Solutions, Inc.</A><br>
+<A HREF="Include/TRADEMARK.html" style="COLOR: #333364; TEXT-DECORATION: none">Trademark Information</A><P></font></font></td>
+</tr></table>
+
+</form>
+</body>
+</html>
