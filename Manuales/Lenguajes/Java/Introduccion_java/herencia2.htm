@@ -1,0 +1,240 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Herencia (II)</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="numericas.htm" tppabs="http://www.programacion.net/java/intjava/numericas.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="identificacion.htm" tppabs="http://www.programacion.net/java/intjava/identificacion.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#herencia2">Herencia (II)</a>
+</li>
+</font>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#abstractos">Clases y m&eacute;todos abstractos</a>
+</li>
+</font>
+</ul>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#interfaces">Interfaces</a>
+</li>
+</font>
+</ul>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#final">Modificador final</a>
+</li>
+</font>
+</ul>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Herencia (II)</p>
+
+<p>Vamos a seguir estudiando la herencia en Java, que tiene cosas algo m&aacute;s
+avanzadas que las que vimos en el primer cap&iacute;tulo dedicado a ella.</p>
+
+
+<p class="tituloSubCap">Clases y m&eacute;todos abstractos</p>
+
+<p>Como vimos anteriormente, es posible que con la herencia terminemos
+creando una familia de clases con un interfaz com&uacute;n. En esos casos es posible,
+y hasta probable, que la clase ra&iacute;z de las dem&aacute;s no sea una clase &uacute;til, y que
+hasta deseemos que el usuario nunca haga instancias de ella, porque su
+utilidad es inexistente. No queremos implementar sus m&eacute;todos, s&oacute;lo declararlos
+para crear una interfaz com&uacute;n. Entonces declaramos sus m&eacute;todos como abstractos:</p>
+
+<pre class="codigosimple">public abstract void mi_metodo();</pre>
+
+<p>Como vemos, estamos declarando el m&eacute;todo pero no implementandolo, ya que
+sustituimos el c&oacute;digo que deber&iacute;a ir entre llaves por un punto y coma. Cuando
+existe un m&eacute;todo abstracto deberemos declarar la clase abstracta o el
+compilador nos dar&aacute; un error. Al declarar como abstracta una clase nos
+aseguramos de que el usuario no pueda crear instancias de ella:</p>
+
+<b>Abstractos.java</b>
+<pre class="codigo">abstract class Mamifero {
+  String especie, color;
+  public abstract void mover();
+}
+
+class Gato extends Mamifero {
+  int numero_patas;
+  public void mover() {
+    System.out.println("El gato es el que se mueve");
+  }
+}
+
+public class Abstractos {
+  public static void main(String[] args) {
+    Gato bisho = new Gato();
+    bisho.mover();
+  }
+}</pre>
+
+<p>En nuestro ejemplo de herencia, parece absurdo pensar que vayamos a crear
+instancias de <span class="codigoenlinea">Mamifero</span>, sino de alguna de sus
+clases derivadas. Por eso decidimos declararlo abstracto.</p>
+
+
+
+
+<p class="tituloSubCap">Interfaces</p>
+
+<p>Los interfaces tienen como misi&oacute;n en esta vida llevar el concepto de
+clase abstracta un poco m&aacute;s lejos, am&eacute;n de permitirnos algo parecido a la
+herencia m&uacute;ltiple. Pero vamos pasito a pasito. Un interfaz es como una clase
+abstracta pero no permite que ninguno de sus m&eacute;todos est&eacute; implementado. Es como
+una clase abstracta pero en estado m&aacute;s puro y cristalino. Se declaran
+sustituyendo class por interface:</p>
+
+<pre class="codigosimple">interface Mamifero {
+  String especie, color;
+  public void mover();
+}
+
+class Gato implements Mamifero {
+  int numero_patas;
+  public void mover() {
+    System.out.println("El gato es el que se mueve");
+  }
+}</pre>
+
+<p>No tenemos que poner ning&uacute;n <span class="codigoenlinea">abstract</span> en
+ning&uacute;n sitio porque ya se le supone. Hay que fijarse tambi&eacute;n que ahora
+<span class="codigoenlinea">Gato</span> no utiliza <span class="codigoenlinea">extends</span>
+para hacer la herencia, sino <span class="codigoenlinea">implements</span>.</p>
+
+<p>Sin embargo, la mayor utilidad de los interfaces consiste en permitir la
+existencia de herencia m&uacute;ltiple, que consiste en que una clase sea heredera de
+m&aacute;s de una clase (que tenga varios pap&aacute;s, vamos). En C++ exist&iacute;a pero daba
+enormes problemas, al poder estar implementado un mismo m&eacute;todo de distinta
+forma en cada una de las clases padre. En Java no existe ese problema. S&oacute;lo
+podemos heredar de una clase, pero podemos a su vez heredar de uno o varios
+interfaces (que no tienen implementaci&oacute;n). Modifiquemos nuestro adorado
+ejemplo gatuno:</p>
+
+<b>Interfaces.java</b>
+<pre class="codigo">interface PuedeMoverse {
+  public void mover();
+}
+
+interface PuedeNadar {
+  public void nadar();
+}
+
+class Mamifero {
+  String especie, color;
+  public void mover() {
+    System.out.println("El mam&iacute;fero se mueve");
+  }
+}
+
+class Gato extends Mamifero 
+           implements PuedeMoverse, PuedeNadar {
+  int numero_patas;
+  public void mover() {
+    System.out.println("El gato es el que se mueve");
+  }
+  public void nadar() {
+    System.out.println("El gato nada");
+  }
+}
+
+public class Interfaces {
+  public static void main(String[] args) {
+    Gato bisho = new Gato();
+    bisho.mover();
+    bisho.nadar();
+  }
+}</pre>
+
+<p>Vemos que <span class="codigoenlinea">Gato</span> tiene la obligaci&oacute;n de
+implementar los m&eacute;todos <span class="codigoenlinea">mover()</span> y
+<span class="codigoenlinea">nadar()</span>, ya que sino lo hace provocar&aacute; un error
+de compilaci&oacute;n. Podr&iacute;a no implementar <span class="codigoenlinea">mover()</span>,
+ya que hereda su implementaci&oacute;n de <span class="codigoenlinea">Mamifero</span>.
+Pero si decidi&eacute;ramos no hacerlo no habr&iacute;a problemas, ya que tomar&iacute;a la
+implementaci&oacute;n de su clase padre, ya que los interfaces no tienen
+implementaci&oacute;n. As&iacute; nos quitamos los problemas que tra&iacute;a la herencia
+m&uacute;ltiple de C++.</p>
+
+
+
+
+<p class="tituloSubCap">Modificador final</p>
+
+<p>Si declaramos un m&eacute;todo como <span class="codigoenlinea">final</span>,
+indicaremos que no puede ser sobreescrito en clases heredadas, por lo que
+mantendr&aacute; su implementaci&oacute;n. Si es la clase la que lleva el modificador,
+entonces nos aseguramos de que nadie pueda heredar de dicha clase (la castramos,
+vaya). Por &uacute;ltimo, si declaramos una propiedad como <span class="codigoenlinea">final</span>,
+crearemos una constante, ya que dicha variable se puede inicializar, pero no
+modificar. Este &uacute;ltimo caso presenta un uso m&aacute;s habitual de este modificador:</p>
+
+<pre class="codigosimple">class Dias {
+  static final int LUNES=0, MARTES=1, MIERCOLES=2, JUEVES=3, 
+  VIERNES=4, SABADO=5, DOMINGO=6;
+}</pre>
+
+<p>Como la clase es est&aacute;tica podremos acceder a las constantes como
+<span class="codigoenlinea">Dias.LUNES</span>. Lo bueno del modificador
+<span class="codigoenlinea">final</span> es que nos aseguramos que nadie pueda
+cambiar el valor de esas propiedades.</p>
+
+
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="identificacion.htm" tppabs="http://www.programacion.net/java/intjava/identificacion.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

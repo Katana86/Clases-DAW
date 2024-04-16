@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Clases num&eacute;ricas</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="static.htm" tppabs="http://www.programacion.net/java/intjava/static.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="herencia2.htm" tppabs="http://www.programacion.net/java/intjava/herencia2.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#numericas">Clases num&eacute;ricas</a>
+</li>
+</font>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+
+<p class="tituloCap">Clases num&eacute;ricas</p>
+
+<p>Al igual que sucede con otros tipos de datos b&aacute;sicos, los num&eacute;ricos
+tambi&eacute;n tiene su clase equivalente. Disponen de varios m&eacute;todos m&aacute;s o menos
+comunes, siendo est&aacute;ticos los m&aacute;s &uacute;tiles, que ser&aacute;n los que veremos.</p>
+
+<dl>
+
+<dt>
+</dt>
+<b>Double.POSITIVE_INFINITY<br>
+Double.NEGATIVE_INFINITY<br>
+Float.POSITIVE_INFINITY<br>
+Float.NEGATIVE_INFINITY</b>
+<dd>
+</dd>Constantes que representan valores infinitos, negativos y positivos.
+
+<dt>
+</dt>
+<b>Double.NaN<br>
+Float.NaN</b>
+<dd>
+</dd>Constante que indica que no es un n&uacute;mero. Puede ser, por ejemplo, la
+cl&aacute;sica ra&iacute;z de -1.
+
+<dt>
+</dt>
+<b>Double.MAX_VALUE<br>
+Double.MIN_VALUE<br>
+Float.MAX_VALUE<br>
+Float.MIN_VALUE<br>
+Long.MAX_VALUE<br>
+Long.MIN_VALUE<br>
+Integer.MAX_VALUE<br>
+Integer.MIN_VALUE</b>
+<dd>
+</dd>Constante que representan el mayor y menor n&uacute;mero representables por cada
+uno de los tipos de datos.
+
+<dt>
+</dt>
+<b>boolean Double.isNaN( double )<br>
+boolean Float.isNaN( float )<br>
+boolean Long.isNaN( long )<br>
+boolean Integer.isNaN( int )</b>
+<dd>
+</dd>Devuelve verdadero si el n&uacute;mero que recibe como argumento es un
+"no-n&uacute;mero". Existe una versi&oacute;n no est&aacute;tica del estilo de
+<span class="codigoenlinea">f.isNaN()</span>.
+
+<dt>
+</dt>
+<b>boolean Double.isFinite( double )<br>
+boolean Float.isFinite( float )</b>
+<dd>
+</dd>Devuelve verdadero si el n&uacute;mero que recibe no es infinito. Existe una
+versi&oacute;n no est&aacute;tica del estilo de <span class="codigoenlinea">f.isFinite()</span>.
+
+</dl>
+
+<p>Por &uacute;ltimo, existen m&eacute;todos para convertir un objeto de este tipo en un
+valor de su tipo de datos correspondiente:</p>
+
+<pre class="codigosimple">Float f1 = new Float(6.5);
+float f2 = f1.floatValue();</pre>
+
+<p>Todas las clases num&eacute;ricas implementan estos m&eacute;todos, que aparte de
+<span class="codigoenlinea">floatValue</span> son <span class="codigoenlinea">doubleValue</span>,
+<span class="codigoenlinea">longValue</span> e <span class="codigoenlinea">integerValue</span>.
+Si estamos convirtiendo de un tipo real a otro entero, estos m&eacute;todos redondean
+eliminando la parte decimal. Estas clases disponen de algunos m&eacute;todos m&aacute;s,
+pero por su escasa utilidad no vamos a verlos.</p>
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="herencia2.htm" tppabs="http://www.programacion.net/java/intjava/herencia2.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

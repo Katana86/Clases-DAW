@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Clase Character</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="math.htm" tppabs="http://www.programacion.net/java/intjava/math.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="array.htm" tppabs="http://www.programacion.net/java/intjava/array.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#character">Clase Character</a>
+</li>
+</font>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#estaticos">M&eacute;todos est&aacute;ticos</a>
+</li>
+</font>
+</ul>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#otros">Otros m&eacute;todos</a>
+</li>
+</font>
+</ul>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Clase Character</p>
+<p>Las funciones necesarias al trabajar con caracteres est&aacute;n contenidas en la
+clase Character.</p>
+
+
+<p class="tituloSubCap">M&eacute;todos est&aacute;ticos</p>
+
+<p>Aunque esta clase no es est&aacute;tica y s&iacute; se pueden crear instancias de la
+misma, posee algunos m&eacute;todos est&aacute;ticos:</p>
+
+<dl>
+
+<dt>
+</dt>
+<b>char Character.isLowerCase( char )<br>
+char Character.isUpperCase( char )</b>
+<dd>
+</dd>Devuelven el car&aacute;cter c convertido a min&uacute;sculas o may&uacute;sculas,
+respectivamente.
+
+<dt>
+</dt>
+<b>boolean Character.isDigit( char )<br>
+boolean Character.isLetter( char )<br>
+boolean Character.isSpace( char )</b>
+<dd>
+</dd>Nos devuelven verdadero si el car&aacute;cter es un d&iacute;gito, una letra o un
+espacio.
+
+<dt>
+</dt>
+<b>int Character.digit( char , int )</b>
+<dd>
+</dd>Devuelve el n&uacute;mero correspondiente al car&aacute;cter que recibe como primer
+par&aacute;metro suponiendo que est&aacute; expresado en la base que recibe como segundo
+argumento.
+
+<dt>
+</dt>
+<b>char Character.forDigit( int ,int )</b>
+<dd>
+</dd>Parecido al anterior, convierte a car&aacute;cter el d&iacute;gito que recibe como primer
+par&aacute;metro suponiendo que est&aacute; expresado en la base que recibe como segundo
+argumento.
+
+</dl>
+
+<p>Existen tambi&eacute;n muchas variables est&aacute;ticas para poder hacer referencia a
+caracteres especiales. Dado que su utilidad tambi&eacute;n est&aacute; restringida a casos
+especiales recomiendo echar un vistazo a la documentaci&oacute;n del API de Java si
+se necesita.</p>
+
+
+
+
+<p class="tituloSubCap">Otros m&eacute;todos</p>
+
+<p>Dado que podemos crear instancias de Character, es probable que los
+autores de Java hayan incluido funcionalidad no est&aacute;tica en dicha clase.
+Suponiendo que tenemos una variable c de tipo car&aacute;cter:</p>
+
+<pre class="codigosimple">c = new Character( 'J' );</pre>
+
+<p>Disponemos de pocos m&eacute;todos para c:</p>
+
+<dl>
+
+<dt>
+</dt>
+<b>char c.charValue()</b>
+<dd>
+</dd>Devuelve el car&aacute;cter que almacena c, en este caso &#145;J'.
+
+<dt>
+</dt>
+<b>String c.toString()</b>
+<dd>
+</dd>Convierte el car&aacute;cter que hay en c en cadena. Este m&eacute;todo es com&uacute;n a muchos
+objetos, ya que est&aacute; incluido en Object, y se puede sobreescribir en cualquier
+clase. De hecho no se suele invocar directamente, ya que Java lo llama cuando
+necesita convertir un objeto cualquiera en cadena.
+
+</dl>
+
+
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="array.htm" tppabs="http://www.programacion.net/java/intjava/array.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

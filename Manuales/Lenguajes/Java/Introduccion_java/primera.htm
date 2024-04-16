@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Creando nuestra primera clase</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="documentacion.htm" tppabs="http://www.programacion.net/java/intjava/documentacion.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#primera">Creando nuestra primera clase</a>
+</li>
+</font>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Creando nuestra primera clase</p>
+<p>Vamos a empezar pronto con las cosas pr&aacute;cticas creando nuestra primera clase y viendo as&iacute;
+c&oacute;mo se programa, compila y ejecuta el c&oacute;digo Java. En Java, todo lo que hagamos ser&aacute;
+programar clases. Cualquier programa ser&aacute; una clase que a su vez podr&aacute; hacer uso de una,
+dos, tres o m&aacute;s clases. As&iacute; pues, escribiremos el siguiente c&oacute;digo:</p>
+
+<b>HolaMundo.java</b>
+<pre class="codigo">
+public class HolaMundo {
+  public static void main(String[] args) {
+    System.out.println("Hola, mundo");
+  }
+}
+</pre>
+
+<p>Este ejemplo expone varios elementos del lenguaje Java a los que tendremos que prestar
+atenci&oacute;n. Pero lo primero es editar este fichero y grabarlo con el nombre de
+MiPrimerPrograma.java. Si tenemos bien instalado el JDK, no tenemos m&aacute;s que compilarlo
+escribiendo:</p>
+
+<pre class="codigosimple">javac HolaMundo.java</pre>
+
+<p>Y ejecutarlo:</p>
+
+<pre class="codigosimple">java HolaMundo</pre>
+
+<p>Una cosa a recordar es que ejecutamos "HolaMundo", no "HolaMundo.class". El
+int&eacute;rprete a&ntilde;ade la extensi&oacute;n.</p>
+
+<p>Veremos que nos muestra el mensaje "Hola, mundo" en la pantalla al ejecutarlo, tal y como
+cabe esperar de un primer programa en cualquier lenguaje. Vamos a analizarlo l&iacute;nea a l&iacute;nea:</p>
+
+<pre class="codigosimple">public class HolaMundo {
+}</pre>
+
+<p>Con esto estamos indicando que todo lo encerrado entre llaves pertenece al c&oacute;digo de la
+clase HolaMundo. En Java, el &aacute;mbito de algo est&aacute; indicado por las llaves. &iquest;Y qu&eacute; es el
+&aacute;mbito? El &aacute;mbito es lo que determina tanto la visibilidad de la definici&oacute;n de un nombre. Por
+lo tanto, todo nombre definido entre las llaves arriba indicadas (ya corresponda a una
+propiedad, variable o m&eacute;todo) ser&aacute; visible dentro de esas mismas llaves y dentro de sus
+llaves "hijas". Por ejemplo:</p>
+
+<pre class="codigosimple">{
+  int x1;
+  {
+    int x2;
+  }
+  {
+    int x3;
+  }
+}</pre>
+
+<p>En este ejemplo, x1 ser&iacute;a visible en todos los &aacute;mbitos, mientras que x2 y x3 s&oacute;lo se ver&iacute;an en
+los &aacute;mbitos en que se han definido.</p>
+
+<p>Hay que resaltar que hemos especificado que la clase HolaMundo sea p&uacute;blica (<span class="codigoenlinea">public</span>). Con
+esto cambiamos la accesibilidad de la clase. Podemos hacerla p&uacute;blica, de modo que todo el
+mundo pueda acceder a ella, sus propiedades y m&eacute;todos. Podemos hacerla privada
+(<span class="codigoenlinea">private</span>), que impide que nadie pueda acceder a la misma o protegida (<span class="codigoenlinea">protected</span>), de
+modo que nadie excepto sus clases heredadas (ya veremos que significa esto) tienen permiso
+de acceso. Por defecto una clase permite el acceso s&oacute;lo a miembros de su mismo paquete
+(<span class="codigoenlinea">package</span>), que es el equivalente en Java a las librer&iacute;as.</p>
+
+<p>En este caso, podr&iacute;amos haber dejado el valor de accesibilidad por defecto, pero conviene
+irse acostumbrando a hacer bien las cosas. Dado que en realidad queremos que la clase
+HolaMundo sea accesible al mundo exterior la haremos p&uacute;blica. Esto, sin embargo, tiene un
+par de restricciones que hay que tener en cuenta:</p>
+
+<ol>
+  <li>S&oacute;lo puede haber una clase p&uacute;blica por fichero.</li>
+  <li>El fichero debe llamarse igual que dicha clase p&uacute;blica.</li>
+</ol>
+
+<p>Continuemos examinando el c&oacute;digo fuente:</p>
+
+<pre class="codigosimple">  public static void main(String[] args) {
+  }</pre>
+
+<p>Con esto estamos definiendo un m&eacute;todo de la clase HolaMundo. Un m&eacute;todo con varias
+caracter&iacute;sticas especiales:</p>
+
+<ol>
+  <li>Es p&uacute;blico.</li>
+  <li>Es est&aacute;tico. Esto significa que, por muchas instancias que creemos de la clase,
+existir&aacute; un &uacute;nico miembro de este tipo en la memoria. De hecho &eacute;ste existe aunque no
+creemos instancias de la clase y, por tanto, se puede llamar.</li>
+  <li>Como es un m&eacute;todo (funci&oacute;n) y no una propiedad (variable), debemos indicar el tipo
+del valor de retorno. En este caso ser&aacute; <span class="codigoenlinea">void</span>, es decir, ninguno.</li>
+  <li>El m&eacute;todo se llama <span class="codigoenlinea">main</span>. Este nombre es un nombre especial, ya que es el que deber&aacute;
+tener el m&eacute;todo que se ejecute cuando se ejecute nuestra aplicaci&oacute;n.</li>
+  <li>Recibe como par&aacute;metro un vector de cadenas. Aunque en nuestro programa no lo
+vamos a utilizar es necesario que as&iacute; sea, pues este vector recibe los par&aacute;metros que
+haya podido introducir el usuario al programa en la l&iacute;nea de comandos.</li>
+</ol>
+
+<p>Por &uacute;ltimo, vamos a ver lo que realmente hace el programa:</p>
+
+<pre class="codigosimple">    System.out.println("Hola, mundo");</pre>
+
+<p>Llamamos a una funci&oacute;n del sistema. Entre las librer&iacute;as que ofrece Java, existe una que se
+incluye por defecto en todos los programas, es <span class="codigoenlinea">java.lang</span>. Entre las clases disponibles en la
+misma est&aacute; la clase est&aacute;tica <span class="codigoenlinea">System</span>, uno de cuyos miembros es <span class="codigoenlinea">out</span>, uno de cuyos m&eacute;todos
+es <span class="codigoenlinea">println</span>. Navegando entre la ayuda de Java podemos comprobar todo esto. Este m&eacute;todo
+recibe como par&aacute;metro una cadena que se encargar&aacute; de escribir en pantalla.</p>
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="documentacion.htm" tppabs="http://www.programacion.net/java/intjava/documentacion.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

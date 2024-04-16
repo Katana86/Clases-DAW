@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Control de flujo</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="sintaxis.htm" tppabs="http://www.programacion.net/java/intjava/sintaxis.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="constructores.htm" tppabs="http://www.programacion.net/java/intjava/constructores.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#flujo">Control de flujo</a>
+</li>
+</font>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Control de flujo</p>
+<p>El m&aacute;s b&aacute;sico, sencillo y utilizado es el <span class="codigoenlinea">if-else</span>.
+Dado que <span class="codigoenlinea">else</span> es opcional, se puede escribir de
+dos formas:</p>
+
+<pre class="codigosimple">if (expresi&oacute;n booleana)
+  sentencia</pre>
+
+o
+
+<pre class="codigosimple">if (expresi&oacute;n booleana)
+  sentencia
+else
+  sentencia</pre>
+
+<p>En general, cada vez que aparezca de ahora en adelante la palabra sentencia
+podr&aacute; significar dos cosas: una es una sentencia simple terminada en un punto
+y coma y otra es una serie de sentencias agrupadas mediante llaves. Esta
+construcci&oacute;n permite ejecutar la sentencia primera si la expresi&oacute;n l&oacute;gica
+es verdadera. En caso de que sea falsa (y de que el
+<span class="codigoenlinea">if-else</span> est&eacute; en la segunda forma) se ejecutar&aacute;
+la segunda sentencia.</p>
+
+<p>Para bifurcar tambi&eacute;n existe el <span class="codigoenlinea">switch</span>:</p>
+
+<pre class="codigosimple">switch (expresi&oacute;n) {
+  case valor1: sentencia; break;
+  case valor2: sentencia; break;
+  case valor3: sentencia; break;
+  // ...
+  default: sentencia;
+}</pre>
+
+<p>La estructura switch compara el valor contenido en la expresi&oacute;n con cada uno de
+los valores situados despu&eacute;s del case, ejecutando en caso de que exista
+coincidencia el c&oacute;digo situado a la derecha de los dos puntos. Ese c&oacute;digo no
+se engloba mediante llaves. Si no existe coincidencia, se ejecuta la sentencia
+<span class="codigoenlinea">default</span>.</p>
+
+<p>Vamos a ver ahora las distintas estructuras que nos ofrece Java para realizar
+iteraciones. Las m&aacute;s gen&eacute;ricas son <span class="codigoenlinea">while</span> y
+<span class="codigoenlinea">do-while</span>:</p>
+
+<pre class="codigosimple">while (expresi&oacute;n booleana)
+  sentencia</pre>
+
+y
+
+<pre class="codigosimple">do
+  sentencia;
+while (expresi&oacute;n booleana)</pre>
+
+<p>En ambos casos se ejecutar&aacute; la sentencia mientras se cumpla la expresi&oacute;n
+booleana. La diferencia consiste en que en el primer caso esa expresi&oacute;n se
+comprueba antes de iterar (ejecutar la sentencia) y en el segundo despu&eacute;s. Por
+tanto, en ese &uacute;ltimo caso, la sentencia se ejecutar&aacute; al menos una vez.</p>
+
+<p>Otra iteraci&oacute;n interesante es el bucle <span class="codigoenlinea">for</span>:</p>
+
+<pre class="codigosimple">for (inicializaci&oacute;n; expresi&oacute;n booleana; paso)
+  sentencia</pre>
+
+<p>En este caso lo primero que har&aacute; ser&aacute; ejecutar las sentencias (separadas por
+comas) contenidas en <span class="codigoenlinea">inicializaci&oacute;n</span>, luego
+comprobar&aacute; si es cierta la <span class="codigoenlinea">expresi&oacute;n booleana</span> y
+ejecutar&aacute; el c&oacute;digo de <span class="codigoenlinea">sentencia</span>. Finalmente
+ejecutar&aacute; las sentencias (separadas por comas) contenidas en
+<span class="codigoenlinea">paso</span> y comprobar&aacute; de nuevo la
+<span class="codigoenlinea">expresi&oacute;n booleana</span>.</p>
+
+<p>Por &uacute;ltimo, conviene recordar el uso de <span class="codigoenlinea">return</span>.
+Se utiliza para devolver un valor de retorno en los m&eacute;todos (en caso de que
+&eacute;stos no devuelvan <span class="codigoenlinea">void</span>). Pero tambi&eacute;n
+conviene destacar que en el momento que se llega a return, el programa sale
+del m&eacute;todo que se est&eacute; ejecutando.</p>
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="constructores.htm" tppabs="http://www.programacion.net/java/intjava/constructores.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

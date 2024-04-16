@@ -1,0 +1,216 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Identificadores especiales</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="string.htm" tppabs="http://www.programacion.net/java/intjava/string.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="static.htm" tppabs="http://www.programacion.net/java/intjava/static.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#idesp">Identificadores especiales</a>
+</li>
+</font>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#null">null</a>
+</li>
+</font>
+</ul>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#this">this</a>
+</li>
+</font>
+</ul>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#super">super</a>
+</li>
+</font>
+</ul>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Identificadores especiales</p>
+
+<p>Existen un par de identificadores especiales que vamos a estudiar a
+continuaci&oacute;n.</p>
+
+
+<p class="tituloSubCap">null</p>
+<p>Este identificador es la referencia nula. Es decir, cuando tenemos una
+referencia a un objeto, no queremos a&uacute;n asignarle uno, pero deseamos utilizar
+esa variable deberemos igualarla a <span class="codigoenlinea">null</span>:</p>
+<b>Peano.java</b>
+<pre class="codigo">public class Nulo {
+  public static void main(String[] args) {
+    String cad = null;
+    if (cad == null)
+      System.out.println("Es nulo");
+  }
+}</pre>
+
+<p>Como Java es un lenguaje seguro, si no inicializamos la referencia
+<span class="codigoenlinea">cad </span> e intentamos acceder a ella nos dar&aacute; un
+error de compilaci&oacute;n. Esto tiene una excepci&oacute;n: cuando creamos un vector
+todos sus elementos se autoinicializar&aacute;n a <span class="codigoenlinea">null</span>.
+Esto es debido a que en compilaci&oacute;n Java no tiene manera de saber qu&eacute; elementos
+est&aacute;n inicializados y cuales no, por lo que no podr&iacute;a dar error. Elige entonces
+curarse en salud.</p>
+
+
+
+
+<p class="tituloSubCap">this</p>
+
+<p>En algunos momentos puede resultar &uacute;til tener una referencia a la
+instancia actual, aquella que se est&aacute; ejecutando. Por ejemplo:</p>
+
+
+<b>Peano.java</b>
+<pre class="codigo">public class Peano {
+  private int i = 0;
+  Peano sucesor() {
+    i++;
+    return this;
+  }
+  Peano escribir() {
+
+    System.out.println(i);
+  }
+  public static void main(String[] args) {
+    Peano x = new Peano();
+    x.sucesor().sucesor().escribir();
+  }
+}</pre>
+
+<p>En este caso el m&eacute;todo sucesor no s&oacute;lo incrementa la propiedad privada
+<span class="codigoenlinea">i</span>, sino que se devuelve a s&iacute; mismo, lo que
+permite llamarlo varias veces en la misma sentencia. Por otro lado,
+<span class="codigoenlinea">this</span> tambi&eacute;n se puede utilizar como m&eacute;todo, o
+m&aacute;s bien como constructor. En ocasiones puede ser muy c&oacute;modo, cuando tenemos
+diversos constructores con diversos par&aacute;metros, permitir que se llamen entre
+ellos. Por ejemplo, en nuestro ejemplo del rect&aacute;ngulo:</p>
+
+<b>Rectangulo.java</b>
+<pre class="codigo">/** Calcula el area de un rectangulo
+ */
+public class Rectangulo {
+  private float x1,y1,x2,y2;
+  public Rectangulo(float ex1, float ey1, float ex2, float ey2) {
+    x1 = ex1;
+    x2 = ex2;
+    y1 = ey1;
+    y2 = ey2;
+  }
+  public Rectangulo() {
+    this(0, 0, 1, 1);
+  }
+  public float calcularArea() {
+    return (x2?x1) * (y2?y1);
+  }
+  public static void main(String[] args) {
+    Rectangulo prueba1 = new Rectangulo(1,4,7,6);
+    Rectangulo prueba2 = new Rectangulo();
+    System.out.println(prueba1.calcularArea());
+    System.out.println(prueba2.calcularArea());
+  }
+}
+</pre>
+
+<p>S&oacute;lo hemos modificado desde la &uacute;ltima versi&oacute;n el constructor sin
+argumentos. Ahora, en lugar de modificar directamente los valores de las
+variables, llama al constructor que admite cuatro par&aacute;metros utilizando
+<span class="codigoenlinea">this</span>.</p>
+
+
+  
+
+<p class="tituloSubCap">super</p>
+
+<p>En muchos casos, al sobreescribir un m&eacute;todo, puede que necesitemos el
+c&oacute;digo del m&eacute;todo de la clase padre. En ese caso, en lugar de reescribirlo todo
+entero, podemos llamar a ese otro m&eacute;todo de la clase inmediatamente superior
+por medio de la variable <span class="codigoenlinea">super</span>:</p>
+
+<b>UsarSuper.java</b>
+<pre class="codigo">class Mamifero {
+  String especie, color;
+  public void mover() {
+    System.out.println("El mam&iacute;fero se mueve");
+  }
+}
+
+class Gato extends Mamifero {
+  int numero_patas;
+  public void mover() {
+    super.mover();
+    System.out.println("El gato es el que se mueve");
+  }
+}
+
+public class UsarSuper {
+  public static void main(String[] args) {
+    Gato bisho = new Gato();
+    bisho.mover();
+  }
+}</pre>
+
+<p>Ahora veremos que, al llamar al m&eacute;todo <span class="codigoenlinea">mover()</span>
+de <span class="codigoenlinea">Gato</span>, &eacute;ste a su vez llama al de
+<span class="codigoenlinea">Mamifero.</span>.</p>
+
+
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="static.htm" tppabs="http://www.programacion.net/java/intjava/static.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

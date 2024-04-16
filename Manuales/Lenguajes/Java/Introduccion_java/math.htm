@@ -1,0 +1,187 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Clase Math y "clases est&aacute;ticas"</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="paquetes.htm" tppabs="http://www.programacion.net/java/intjava/paquetes.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="character.htm" tppabs="http://www.programacion.net/java/intjava/character.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#math">Clase Math y "clases est&aacute;ticas"</a>
+</li>
+</font>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Clase Math y "clases est&aacute;ticas"</p>
+
+<p>En este curso vamos a ser originales e intercalaremos las explicaciones
+del lenguaje con la de las librer&iacute;as, para no aburrirnos ni con una cosa ni
+con otra. Para empezar con lo sencillo vamos a ver la clase Math. Es una clase
+que tiene un constructor privado, lo que significa que no podemos hacer
+instancias de ella. Pero como todos sus miembros son est&aacute;ticos, s&iacute; que podemos
+acceder a ellos. Para hacerlo simplemente ponemos el nombre de la clase (en este
+caso Math), un punto y el nombre de su m&eacute;todo o propiedad. Math tiene los
+siguientes:</p>
+
+<dl>
+
+<dt>
+</dt>
+<b>int Math.abs( int )<br>
+long Math.abs( long )<br>
+float Math.abs( float )<br>
+double Math.abs( double )</b>
+<dd>
+</dd>Calcula el valor absoluto de su par&aacute;metro (le cambia el signo si es
+negativo).
+
+<dt>
+</dt>
+<b>double Math.sin( double )<br>
+double Math.cos( double )<br>
+double Math.tan( double )</b>
+<dd>
+</dd>Calculan el seno, coseno o tangente del &aacute;ngulo (expresado en radianes) que
+recibe como argumento.
+
+<dt>
+</dt>
+<b>double Math.asin( double )<br>
+double Math.acos( double )<br>
+double Math.atan( double )</b>
+<dd>
+</dd>Devuelven el &aacute;ngulo (expresado en radianes) correspondiente al seno,
+coseno o tangente que reciben.
+
+<dt>
+</dt>
+<b>double Math.exp( double )</b>
+<dd>
+</dd>Devuelve e elevado al par&aacute;metro.
+
+<dt>
+</dt>
+<b>double Math.log( double )</b>
+<dd>
+</dd>Devuelve el logaritmo natural (con base e) del par&aacute;metro.
+
+<dt>
+</dt>
+<b>double Math.sqrt( double )</b>
+<dd>
+</dd>Devuelve la ra&iacute;z cuadrada del par&aacute;metro.
+
+<dt>
+</dt>
+<b>double Math.ceil( double )</b>
+<dd>
+</dd>Redondea al entero menor de los que son mayores que el par&aacute;metro (redondeo hacia arriba).
+
+<dt>
+</dt>
+<b>double Math.floor( double )</b>
+<dd>
+</dd>Redondea al entero mayor de los que son menores que el par&aacute;metro (redondeo hacia abajo).
+
+<dt>
+</dt>
+<b>double Math.pow( double a, double b )</b>
+<dd>
+</dd>a elevado a b.
+
+<dt>
+</dt>
+<b>int Math.rint( double )<br>
+long Math.round( double )<br>
+int Math.round( float )</b>
+<dd>
+</dd>Redondea al entero m&aacute;s cercano.
+
+<dt>
+</dt>
+<b>double Math.random()</b>
+<dd>
+</dd>Devuelve un valor aleatorio situado entre 0 y 1.
+
+<dt>
+</dt>
+<b>int Math.max( int,int )<br>
+long Math.max( long,long )<br>
+float Math.max( float,float )<br>
+double Math.max( double,double )</b>
+<dd>
+</dd>Devuelven el m&aacute;ximo de los dos valores que recibe.
+ 
+<dt>
+</dt>
+<b>int Math.min( int,int )<br>
+long Math.min( long,long )<br>
+float Math.min( float,float )<br>
+double Math.min( double,double )</b>
+<dd>
+</dd>Devuelven el m&iacute;nimo.
+
+<dt>
+</dt>
+<b>double Math.E</b>
+<dd>
+</dd>Devuelve el n&uacute;mero E (2.718...)
+
+<dt>
+</dt>
+<b>double Math.PI</b>
+<dd>
+</dd>Devuelve el n&uacute;mero PI (3.1415...)
+
+</dl>
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="character.htm" tppabs="http://www.programacion.net/java/intjava/character.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

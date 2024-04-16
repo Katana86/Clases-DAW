@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Herencia</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="constructores.htm" tppabs="http://www.programacion.net/java/intjava/constructores.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="polimorfismo.htm" tppabs="http://www.programacion.net/java/intjava/polimorfismo.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#herencia">Herencia</a>
+</li>
+</font>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Herencia</p>
+<p>Si se supone que somos buenos programando, cuando creemos una clase es
+posible que sea algo &uacute;til. De modo que cuando estemos haciendo un programa
+distinto y necesitemos esa clase podremos incluirla en el c&oacute;digo de ese nuevo
+programa. Es la manera m&aacute;s sencilla de reutilizar una clase.</p>
+
+<p>Tambi&eacute;n es posible que utilicemos esa clase incluyendo instancias de la
+misma en nuevas clases. A eso se le llama composici&oacute;n. Representa una relaci&oacute;n
+"tiene un". Es decir, si tenemos una clase <span class="codigoenlinea">Rueda</span>
+y una clase <span class="codigoenlinea">Coche</span>, es de esperar que la clase
+<span class="codigoenlinea">Coche</span> tenga cuatro instancias de
+<span class="codigoenlinea">Rueda</span>:</p>
+
+<pre class="codigosimple">class Coche {
+  Rueda rueda1, rueda2, rueda3, rueda 4;
+  ...
+}</pre>
+
+<p>Sin embargo, en ocasiones, necesitamos una relaci&oacute;n entre clases algo m&aacute;s
+estrecha. Una relaci&oacute;n del tipo "es un". Por ejemplo, sabemos bien que un gato
+es un mam&iacute;fero. Sin embargo es tambi&eacute;n un concepto m&aacute;s espec&iacute;fico, lo que
+significa que una clase <span class="codigoenlinea">Gato</span> puede compartir con
+<span class="codigoenlinea">Mamifero</span> propiedades y m&eacute;todos, pero tambi&eacute;n
+puede tener algunas propias.</p>
+
+<b>Herencia.java</b>
+<pre class="codigo">
+class Mamifero {
+  String especie, color;
+}
+
+class Gato extends Mamifero {
+  int numero_patas;
+}
+
+public class Herencia {
+  public static void main(String[] args) {
+    Gato bisho;
+    bisho = new Gato();
+    bisho.numero_patas = 4;
+    bisho.color = "Negro";
+    System.out.println(bisho.color);
+  }
+}</pre>
+
+<p>Como vemos en el ejemplo, el objeto bisho no s&oacute;lo tiene la propiedad
+<span class="codigoenlinea">numero_patas</span>, tambi&eacute;n color que es una propiedad
+de <span class="codigoenlinea">Mamifero</span>. Se dice que
+<span class="codigoenlinea">Mamifero</span> es la clase padre y
+<span class="codigoenlinea">Gato</span> la clase hija en una relaci&oacute;n de herencia.
+Esta relaci&oacute;n se consigue en Java por medio de la palabra reservada
+<span class="codigoenlinea">extends</span>.</p>
+
+<p>Pero, adem&aacute;s de heredad la funcionalidad de la clase padre, una clase hija
+puede sobreescribirla. Podemos escribir un m&eacute;todo en la clase hija que tenga
+el mismo nombre y los mismos par&aacute;metros que un m&eacute;todo de la clase padre:</p>
+
+<b>Herencia.java</b>
+<pre class="codigo">
+class Mamifero {
+  String especie, color;
+  public void mover() {
+    System.out.println("El mam&iacute;fero se mueve");
+  }
+}
+
+class Gato extends Mamifero {
+  int numero_patas;
+  public void mover() {
+    System.out.println("El gato es el que se mueve");
+  }
+}
+
+public class Herencia {
+  public static void main(String[] args) {
+    Gato bisho = new Gato();
+    bisho.mover();
+  }
+}</pre>
+
+<p>Al ejecutar esta nueva versi&oacute;n veremos que se escribe el mensaje de la
+clase hija, no el del padre.</p>
+
+<p>Conviene indicar que Java es una lenguaje en el que todas las clases son
+heredadas, a&uacute;n cuando no se indique expl&iacute;citamente. Hay una jerarqu&iacute;a de objetos
+&uacute;nica, lo que significa que existe una clase de la cual son hijas todas las
+dem&aacute;s. Este Ad&aacute;n se llama <span class="codigoenlinea">Object</span> y, cuando no
+indicamos que nuestras clases hereden de nadie, heredan de &eacute;l. Esto permite que
+todas las clases tengan algunas cosas en com&uacute;n, lo que permite que funcione,
+entre otras cosas, el recolector de basura.</p>
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="polimorfismo.htm" tppabs="http://www.programacion.net/java/intjava/polimorfismo.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

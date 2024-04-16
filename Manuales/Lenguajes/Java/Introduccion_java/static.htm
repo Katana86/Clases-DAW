@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Elementos est&aacute;ticos</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="idesp.htm" tppabs="http://www.programacion.net/java/intjava/idesp.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="numericas.htm" tppabs="http://www.programacion.net/java/intjava/numericas.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#static">Elementos est&aacute;ticos</a>
+</li>
+</font>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Elementos est&aacute;ticos</p>
+
+<p>Ahora estamos en mejor disposici&oacute;n para entender un poco mejor en qu&eacute;
+consiste eso de declarar a m&eacute;todos y propiedades como est&aacute;ticos. Se
+declara uno de estos elementos como est&aacute;tico cuando queremos que s&oacute;lo exista
+una copia del mismo.</p>
+
+<p>Si escuchas a gente hablar de clases est&aacute;ticas en Java, que sepas que
+miente. Se llama as&iacute; coloquialmente a las clases que tienen todos sus m&eacute;todos
+y propiedades est&aacute;ticos y que no permiten ser instanciadas (como pasa con Math).
+Ese tipo de clases suelen ser repositorios de m&eacute;todos y/o propiedades y suelen
+alejarse un poco de la idea de programaci&oacute;n orientada a objetos.</p>
+
+<p>Las propiedades y m&eacute;todos est&aacute;ticos (en clases que no lo son) traen otro
+problema a&ntilde;adido. Desde los m&eacute;todos "normales" podremos acceder a todas ellas,
+pero desde los est&aacute;ticos s&oacute;lo podemos acceder a los est&aacute;ticos. Esto es debido a
+que, cuando llamamos a un m&eacute;todo no est&aacute;tico, Java le pasa impl&iacute;citamente
+(us&eacute;ase, que nosotros ni nos enteramos) como par&aacute;metro la referencia
+<span class="codigoenlinea">this</span>, que como sabemos apunta a la instancia
+actual. En el caso de los m&eacute;todos est&aacute;ticos esto no sucede, por lo que dentro
+del c&oacute;digo del m&eacute;todo no sabe qu&eacute; instancia le ha llamado y por tanto no puede
+acceder a la copia de las variables de dicha instancia, s&oacute;lo a la copia &uacute;nica
+de las propiedades y m&eacute;todos est&aacute;ticos.</p>
+
+<p>Un problema de las propiedades est&aacute;ticas es su inicializaci&oacute;n. Puesto
+que son comunes a todas las instancias de un objeto, no es buena idea hacerlo
+desde un constructor ya que inicializar&iacute;a dichas propiedades cada vez que se
+creara una instancia nueva. Normalmente se puede inicializar en la misma declaraci&oacute;n:</p>
+
+<pre class="codigosimple">static int i = 324;</pre>
+
+<p>Pero, en algunos casos, puede ser necesario algo m&aacute;s complicado. O quiz&aacute;
+simplemente queramos separar la declaraci&oacute;n de la variable de su inicializaci&oacute;n.
+En ese caso utilizaremos la siguiente sintaxis:</p>
+
+<b>Inicializando.java</b>
+<pre class="codigo">public class Inicializando {
+  static String mensaje;
+  static {
+    mensaje = new String("Este es el mensajito");
+  }
+  public static void main(String[] args) {
+    System.out.println(mensaje);
+  }
+}</pre>
+
+<p>Vemos, adem&aacute;s, reflejado en este ejemplo el hecho de que los m&eacute;todos
+est&aacute;ticos pueden acceder a otros miembros est&aacute;ticos de la clase.</p>
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="numericas.htm" tppabs="http://www.programacion.net/java/intjava/numericas.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

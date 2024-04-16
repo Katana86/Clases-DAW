@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Identificaci&oacute;n de objetos</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="herencia2.htm" tppabs="http://www.programacion.net/java/intjava/herencia2.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="object.htm" tppabs="http://www.programacion.net/java/intjava/object.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#identificacion">Identificaci&oacute;n de objetos</a>
+</li>
+</font>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#class">Clase Class</a>
+</li>
+</font>
+</ul>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#instanceof">Operador instanceof</a>
+</li>
+</font>
+</ul>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Identificaci&oacute;n de objetos</p>
+
+<p>En ocasiones puede ser necesario identificar en tiempo de ejecuci&oacute;n el
+tipo de objeto con el que estamos tratando. Debido a las capacidades de
+polimorfismo de Java, cuando tenemos una referencia a un objeto puede que
+s&oacute;lo sepamos que dicho objeto es una instancia de una clase o de cualquiera
+de sus derivadas. Y en ocasiones puede ser necesario saber de qu&eacute; clase
+espec&iacute;fica es dicho objeto.</p>
+
+
+<p class="tituloSubCap">Clase Class</p>
+
+<p>Las instancias de <span class="codigoenlinea">Class</span> contienen
+informaci&oacute;n sobre cada una de las clases (ojo: clases, no instancias) de
+nuestro programa. Al ejecutarse un programa, la m&aacute;quina virtual de Java crea
+una instancia de Class por cada clase que vayamos a utilizar, por lo que no
+tendremos nunca que inicializar una. En ese cas</p>
+
+<dl>
+
+<dt>
+</dt>
+<b>Class Class.forName(String)</b>
+<dd>
+</dd>Devuelve la instancia de Class correspondiente al objeto cuyo nombre
+coincide con la etiqueta pasada como par&aacute;metro.
+
+<dt>
+</dt>
+<b>String c.getName()</b>
+<dd>
+</dd>Siendo c una instancia de Class, devuelve el nombre de la clase que
+representa. Es la inversa del anterior.
+
+</dl>
+
+<p>Gracias al m&eacute;todo <span class="codigoenlinea">getClass()</span> que posee
+<span class="codigoenlinea">Object</span> (y, por tanto, todos sus descendientes),
+podremos obtener el tipo de una referencia y por tanto, su nombre. Este m&eacute;todo
+es &uacute;til para comprobar si dos referencias son del mismo tipo.</p>
+
+
+
+
+<p class="tituloSubCap">Operador instanceof</p>
+
+<p>Hay otra manera de lo m&aacute;s sencilla de identificar el tipo de un objeto:</p>
+
+<b>Identificacion.java</b>
+<pre class="codigo">public class Identificacion {
+  public static void main(String[] args) {
+    Object o = new String("Hola");
+    if (o instanceof String)
+      System.out.println("Es una cadena")
+    else
+      System.out.println("No es una cadena");
+  }
+}</pre>
+
+<p>Veremos que nos dice que, efectivamente, es una cadena. Si inicializaramos
+<span class="codigoenlinea">o</span> a cualquier cosa que no fuera una cadena nos
+dir&iacute;a que no lo es. &iquest;Que no me cre&eacute;is? Pues haced la prueba, haced la prueba.</p>
+
+<p>Como se puede ver f&aacute;cilmente, este segundo m&eacute;todo es mucho m&aacute;s sencillo y
+es el que usaremos habitualmente. &iquest;Y para qu&eacute; el primero? Bueno, es posible que
+en ocasiones necesitemos saber si existe una determinada clase que no pertenece
+a la librer&iacute;a est&aacute;ndar y puede, por tanto, no existir, por lo que no podr&iacute;amos
+emplear <span class="codigoenlinea">instanceof</span>.</p>
+
+
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="object.htm" tppabs="http://www.programacion.net/java/intjava/object.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

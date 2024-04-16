@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Tipos de datos b&aacute;sicos</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="documentacion.htm" tppabs="http://www.programacion.net/java/intjava/documentacion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="sintaxis.htm" tppabs="http://www.programacion.net/java/intjava/sintaxis.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#tipos">Tipos de datos b&aacute;sicos</a>
+</li>
+</font>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#literales">Literales</a>
+</li>
+</font>
+</ul>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Tipos de datos b&aacute;sicos</p>
+<p>En Java todo lo que se mueve es un objeto... excepto los tipos de datos
+b&aacute;sicos, es decir, los n&uacute;meros enteros, reales, los caracteres, los valores
+l&oacute;gicos, etc.. Todo lo dem&aacute;s ser&aacute;n objetos o, mejor dicho, referencias a
+objetos. Son los &uacute;nicos valores que se crean sin utilizar el operador
+<span class="codigoenlinea">new</span>, que veremos m&aacute;s adelante. Son los
+siguientes:</p>
+
+<table border="1">
+  <tr>
+    <th>Tipo</th>
+    <th>Descripci&oacute;n</th>
+    <th>Tama&ntilde;o</th>
+    <th>Clase equivalente</th>
+  </tr>
+  <tr>
+     <td>boolean</td>
+     <td>Valor l&oacute;gico</td>
+     <td>1 bit</td>
+     <td>Boolean</td>
+  </tr>
+  <tr>
+    <td>char</td>
+    <td>Car&aacute;cter</td>
+    <td>16 bit</td>
+    <td>Character</td>
+  </tr>
+  <tr>
+    <td>byte</td>
+    <td>Entero muy peque&ntilde;o</td>
+    <td>8 bit</td>
+  </tr>
+  <tr>
+    <td>short</td>
+    <td>Entero peque&ntilde;o</td>
+    <td>16 bit</td>
+  </tr>
+  <tr>
+    <td>int</td>
+    <td>Entero normal</td>
+    <td>32 bit</td>
+    <td>Integer</td>
+  </tr>
+  <tr>
+    <td>long</td>
+    <td>Entero grande</td>
+    <td>64 bit</td>
+    <td>Long</td>
+  </tr>
+  <tr>
+    <td>float</td>
+    <td>N&uacute;mero real de precisi&oacute;n simple</td>
+    <td>32 bit</td>
+    <td>Float</td>
+  </tr>
+  <tr>
+    <td>double</td>
+    <td>N&uacute;mero real de doble precisi&oacute;n</td>
+    <td>64 bit</td>
+    <td>Double</td>
+  </tr>
+  <tr>
+    <td>void</td>
+    <td>Tipo vac&iacute;o</td>
+  </tr>
+</table>
+
+<p>Podemos crear variables de estos tipos de la manera normal en todos los
+lenguajes que siguen a C:</p>
+
+<pre class="codigosimple">int numero = 12;</pre>
+
+<p>El definir un valor al declararlos no es necesario, especialmente porque
+en Java todos tienen un valor por defecto (0 en los n&uacute;meros, false en los
+booleanos y el car&aacute;cter n&uacute;mero cero); en ese caso escribir&iacute;amos simplemente:</p>
+
+<pre class="codigosimple">int numero;</pre>
+
+<p>En algunas ocasiones, que veremos en el futuro, es necesario utilizar
+clases que representen los mismos valores que los tipos de datos b&aacute;sicos. En
+esos casos utilizamos la clase equivalente. En nuestro ejemplo har&iacute;amos:</p>
+
+<pre class="codigosimple">Integer numero = new Integer(12);</pre>
+
+
+<p class="tituloSubCap">Literales</p>
+
+<p>Los literales son el mecanismo utilizado para expresar un valor constante.
+Java utiliza cinco tipos de elementos: enteros, reales en coma flotante,
+booleanos, caracteres y cadenas:</p>
+
+<table border="1">
+  <tr>
+    <th>Tipo</th>
+    <th>Ejemplo</th>
+  </tr>
+  <tr>
+    <td>Enteros</td>
+    <td>21, 0xDC</td>
+  </tr>
+  <tr>
+    <td>Reales</td>
+    <td>3.14, 2e12</td>
+  </tr>
+  <tr>
+    <td>Booleanos</td>
+    <td>true, false</td>
+  </tr>
+  <tr>
+    <td>Caracteres</td>
+    <td>'x', \t, \u0234</td>
+  </tr>
+  <tr>
+    <td>Cadenas	</td>
+    <td>"Esto es una cadena"</td>
+  </tr>
+</table>
+
+<p>Conviene fijarse en que, mientras los caracteres se expresan encerrados en
+comillas simples, las cadenas lo hacen en comillas dobles.</p>
+
+
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="sintaxis.htm" tppabs="http://www.programacion.net/java/intjava/sintaxis.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

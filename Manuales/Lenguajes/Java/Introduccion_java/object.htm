@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Clase Object</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="identificacion.htm" tppabs="http://www.programacion.net/java/intjava/identificacion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="excepciones.htm" tppabs="http://www.programacion.net/java/intjava/excepciones.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#object">Clase Object</a>
+</li>
+</font>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Clase Object</p>
+
+<p>Esta clase rara vez la vamos a utilizar directamente, pero por ser la
+clase de la que heredan todas las dem&aacute;s en Java, existen varios m&eacute;todos que
+podremos y, a veces, deberemos sobreescribir para lograr que nuestras clases
+realicen ciertas tareas. As&uacute; pies, si
+<span class="codigoenlinea">o=new Object()</span> entonces:</p>
+
+<dl>
+
+<dt>
+</dt>
+<b>boolean o.equals( Object )</b>
+<dd>
+</dd>Comprueba si el objeto dado como par&aacute;metro es igual al objeto actual. Esta
+implementaci&oacute;n comprueba si ambas referencias son iguales por lo que no resulta
+muy &uacute;til, ya que es equivalente al operador <span class="codigoenlinea">==</span>.
+Las distintas clases de la librer&iacute;a de Java suelen sobreescribirlo para
+comprobar si los contenidos de la instancia son los mismos. Por ejemplo, cuando
+<span class="codigoenlinea">String</span> sobreescribe este m&eacute;todo compara si las
+cadenas contenidas en ambas instancias son iguales.
+
+<dt>
+</dt>
+<b>void o.finalize()</b>
+<dd>
+</dd>Este m&eacute;todo es llamado por el recolector de basura antes de eliminar el
+objeto. Esta implementaci&oacute;n no hace nada, debemos ser nosotros los que
+sobreescribamos este m&eacute;todo en caso de que queramos realizar alguna cosita
+especial antes de eliminar el objeto de la memoria. Desafortunadamente, las
+distintas implementaciones de Sun de la m&aacute;quina virtual de Java no ofrecen
+mucha seguridad de que realmente se vaya a ejecutar.
+
+<dt>
+</dt>
+<b>Object o.clone()</b>
+<dd>
+</dd>Este m&eacute;todo copia el objeto. La intenci&oacute;n es que, al sobreescribirlo,
+creemos un objeto nuevo cuyas propiedades tengan el mismo valor que las
+del objeto a copiar. Es decir, que <span class="codigoenlinea">x.clone.equals(x)</span>
+sea cierto. Si vamos a sobreescribirlo deberemos obligar a la clase a
+implementar el interfaz <span class="codigoenlinea">Cloneable</span> si no queremos
+que surjan errores en ejecuci&oacute;n.
+
+<dt>
+</dt>
+<b>Class o.getClass()</b>
+<dd>
+</dd>Devuelve un objeto de tipo <span class="codigoenlinea">Class</span> que
+identifica el tipo de objeto que tenemos. Podemos comprobar con
+<span class="codigoenlinea">x.getClass() == y.getClass()</span> si
+<span class="codigoenlinea">x</span> e <span class="codigoenlinea">y</span> son del
+mismo tipo.
+
+<dt>
+</dt>
+<b>int o.hashCode()</b>
+<dd>
+</dd>Devuelve el c&oacute;digo Hash del objeto. Este c&oacute;digo se utiliza para las tablas
+Hash, que son la manera m&aacute;s eficiente de almacenar objetos. Pero para que dichas
+tablas funcionen necesitan que cada objeto almacenado tenga un c&oacute;digo num&eacute;rico
+que se mantenga durante toda la ejecuci&oacute;n del programa y que sea el mismo para
+dos objetos si dichos objetos son iguales seg&uacute;n el m&eacute;todo
+<span class="codigoenlinea">equals()</span>. Un ejemplo ser&iacute;a, para las cadenas,
+devolver la longitud de la misma.
+
+<dt>
+</dt>
+<b>String o.toString()</b>
+<dd>
+</dd>Devuelve una representaci&oacute;n del objeto en formato de cadena. Es llamado
+autom&aacute;ticamente por Java cuando necesita convertir el objeto en cadena. Esta
+implementaci&oacute;n devuelve una cadena que contiene el nombre de la clase del
+objeto, seguido de una arroba y del c&oacute;digo Hash del mismo.
+
+</dl>
+
+<p>Existen otros m&eacute;todos, pero al estar relacionados con las capacidades
+multihilo de Java, los veremos entonces... quiz&aacute;.</p>
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="excepciones.htm" tppabs="http://www.programacion.net/java/intjava/excepciones.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

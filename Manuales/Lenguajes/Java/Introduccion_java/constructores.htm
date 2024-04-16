@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Constructores</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="flujo.htm" tppabs="http://www.programacion.net/java/intjava/flujo.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="herencia.htm" tppabs="http://www.programacion.net/java/intjava/herencia.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#constructores">Constructores</a>
+</li>
+</font>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Constructores</p>
+<p>Con lo que ya sabemos ya estamos preparados para entender y realizar
+ejemplos m&aacute;s complejos.</p>
+
+<b>Rectangulo.java</b>
+<pre class="codigo">
+/** Calcula el area de un rectangulo
+*/
+public class Rectangulo {
+  private float x1,y1,x2,y2;
+  public Rectangulo(float ex1, float ey1, float ex2, float ey2) {
+    x1 = ex1;
+    x2 = ex2;
+    y1 = ey1;
+    y2 = ey2;
+  }
+  public float calcularArea() {
+    return (x2-x1) * (y2-y1);
+  }
+  public static void main(String[] args) {
+    Rectangulo prueba = new Rectangulo(1,4,7,6);
+    System.out.println(prueba.calcularArea());
+  }
+}</pre>
+
+<p>Seguimos incluyendo una sola clase en nuestro programa fuente, que
+guardaremos como <span class="codigoenlinea">Rectangulo.java</span> y que
+compilaremos y ejecutaremos como vimos hace un par de cap&iacute;tulos. Veremos que
+nos responde con 12.0. Observando la clase que hemos creado, vemos que tiene
+cuatro propiedades, de tipo float, y tres m&eacute;todos. Uno es el ya conocido
+<span class="codigoenlinea">main</span>, otro parece un m&eacute;todo normal y por
+&uacute;ltimo tenemos uno que se llama igual que la clase. Es un constructor.</p>
+
+<p>Un constructor es el m&eacute;todo que se llama cuando se crea una instancia
+nueva. Se suele utilizar para inicializar valores. Aqu&iacute; vemos c&oacute;mo se crea un
+objeto de tipo <span class="codigoenlinea">Rectangulo</span> y se asigna a una
+referencia llamada <span class="codigoenlinea">prueba</span>:</p>
+
+<pre class="codigosimple">Rectangulo prueba = new Rectangulo(1,4,7,6);</pre>
+
+<p>Como vemos, al crear el objeto colocamos a la derecha de
+<span class="codigoenlinea">new</span> una llamada al constructor. Si no
+especificamos ning&uacute;n constructor, los objetos se crean un constructor por
+defecto que no admite par&aacute;metros y no realiza ninguna tarea de inicializaci&oacute;n.
+Por ejemplo, si no hubi&eacute;semos especificado un constructor en nuestro
+ejemplo, podr&iacute;amos haber creado un objeto rect&aacute;ngulo de este modo:</p>
+
+<pre class="codigosimple">Rectangulo prueba = new Rectangulo();</pre>
+
+<p>En cuyo caso tendr&iacute;a todos sus propiedades en su valor inicial, es decir,
+cero. En el ejemplo vemos que recibe como par&aacute;metros las cuatro coordenadas
+necesarias para definir un rect&aacute;ngulo y las asigna a sus propiedades.</p>
+
+<p>Finalmente, el programa realiza algo &uacute;til:</p>
+
+<pre class="codigosimple">System.out.println(prueba.calcularArea());</pre>
+
+<p>Como vimos, esta llamada sirve para escribir en pantalla lo que le
+indiquemos. En este caso es una llamada al m&eacute;todo de la clase
+<span class="codigoenlinea">Rectangulo</span> llamado
+<span class="codigoenlinea">calcularArea()</span>. Este m&eacute;todo toma las coordenadas
+que alberga en las propiedades de la clase y a partir de ellas calcula el
+&aacute;rea seg&uacute;n la f&oacute;rmula geom&eacute;trica debida.</p>
+
+<p>Sin embargo, este m&eacute;todo devuelve un valor de tipo
+<span class="codigoenlinea">float</span>, es decir, no devuelve una cadena. &iquest;C&oacute;mo
+es que nos lo escribe por pantalla? Java lo convierte autom&aacute;ticamente en cadena
+cuando necesita una cadena. Esta peque&ntilde;a violaci&oacute;n en el estricto sistema de
+tipos de Java s&oacute;lo se da con cadenas y m&aacute;s que nada por comodidad. En un futuro
+veremos de que manera podemos conseguir que nuestros objetos tambi&eacute;n se
+conviertan en cadenas de manera transparente.</p>
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="herencia.htm" tppabs="http://www.programacion.net/java/intjava/herencia.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Excepciones</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="object.htm" tppabs="http://www.programacion.net/java/intjava/object.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#excepciones">Excepciones</a>
+</li>
+</font>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#try">try...catch...finally</a>
+</li>
+</font>
+</ul>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#exception">Clase Exception</a>
+</li>
+</font>
+</ul>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#capturar">Capturar excepciones</a>
+</li>
+</font>
+</ul>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Excepciones</p>
+
+<p>Las excepciones son la manera que ofrece Java de manejar los errores en
+tiempo de ejecuci&oacute;n. Muchos lenguajes imperativos, cuando ten&iacute;an un error de
+este clase lo que hac&iacute;an era detener la ejecuci&oacute;n del programa. Las excepciones
+nos permiten escribir c&oacute;digo que nos permita manejar ese error y continuar
+(si lo estimamos conveniente) con la ejecuci&oacute;n del programa.</p>
+
+<p>El error en ejecuci&oacute;n m&aacute;s cl&aacute;sico en Java es el de desbordamiento. Es
+decir, el intento de acceso a una posici&oacute;n de un vector que no existe. Por
+ejemplo:</p>
+
+<b>Desbordamiento.java</b>
+<pre class="codigo">public class Desbordamiento {
+  static String mensajes[] = {"Primero", "Segundo", "Tercero" };
+  public static void main(String[] args) {
+    for (int i=0; i&lt;=3; i++)
+      System.out.println(mensajes[i]);
+    System.out.println("Ha finalizado la ejecuci&oacute;n");
+  }
+}</pre>
+
+<p>Este programa tendr&aacute; un serio problema cuando intente acceder a
+<span class="codigoenlinea">mensajes[3]</span>, pues no existe dicho valor. Al
+ejecutarlo nos dir&aacute; lo siguiente (o algo parecido):</p>
+
+<pre class="codigosimple">Primero
+Segundo
+Tercero
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException
+        at Desbordamiento.main(Desbordamiento.java, Compiled Code)</pre>
+
+<p>Nos da un error de ejecuci&oacute;n (en esta terminolog&iacute;a se dir&iacute;a que se lanz&oacute;
+una excepci&oacute;n) al intentar acceder a dicho valor inexistente. Vemos que,
+por ahora, el comportamiento de nuestro c&oacute;digo es el mismo que en los lenguajes
+imperativos. Cuando encuentra el error, se para la ejecuci&oacute;n. Ahora veremos
+como evitar esto.</p>
+
+
+<p class="tituloSubCap">try...catch...finally</p>
+
+<p>Existe una estructura que nos permitir&aacute; capturar excepciones, es decir,
+reaccionar a un error de ejecuci&oacute;n. De este modo podremos imprimir mensajes
+de error "a la medida" y continuar con la ejecuci&oacute;n del programa si consideramos
+que el error no es demasiado grave. Para ver como  funcionan vamos a modificar
+el ejemplo anterior, pero asegurandonos ahora de que capturamos las excepciones:</p>
+
+<b>NuestroPrimerCatch.java</b>
+<pre class="codigo">public class NuestroPrimerCatch {
+  static String mensajes[] = {"Primero", "Segundo", "Tercero" };
+  public static void main(String[] args) {
+    try {
+      for (int i=0; i&amp;lt;=3; i++)
+        System.out.println(mensajes[i]);
+    }
+    catch ( ArrayIndexOutOfBoundsException e ) {
+      System.out.println("El asunto se nos ha desbordado");
+    }
+    finally {
+      System.out.println("Ha finalizado la ejecuci&oacute;n");
+    }
+  }
+}</pre>
+
+<p>Dentro del bloque que sigue a <span class="codigoenlinea">try</span> colocamos
+el c&oacute;digo a ejecutar. Es como si dijeramos que vamos a intentar ejecutar dicho
+c&oacute;digo a ver qu&eacute; pasa. Despu&eacute;s de <span class="codigoenlinea">try</span> deberemos
+colocar al menos un bloque <span class="codigoenlinea">catch</span> o un bloque
+<span class="codigoenlinea">finally</span>, pudiendo tener ambos e incluso
+m&aacute;s de un bloque <span class="codigoenlinea">catch</span>.</p>
+
+<p>En el bloque <span class="codigoenlinea">finally</span> ponemos el c&oacute;digo que
+se ejecutar&aacute; siempre, tanto si se lanza la excepci&oacute;n como si no. Su utilidad no
+es mucha, ya que si se permite continuar con la ejecuci&oacute;n del programa basta
+con poner el c&oacute;digo despu&eacute;s del bloque <span class="codigoenlinea">try...catch</span>.
+En nuestro ejemplo podr&iacute;amos haber puesto lo siguiente:</p>
+
+<pre class="codigosimple">    try {
+      for (int i=0; i&lt;=3; i++)
+        System.out.println(mensajes[i]);
+    }
+    catch ( ArrayIndexOutOfBoundsException e ) {
+      System.out.println("El asunto se nos ha desbordado");
+    }
+    System.out.println("Ha finalizado la ejecuci&oacute;n");</pre>
+
+<p>Y habr&iacute;a funcionado exactamente igual. La miga est&aacute; en los bloques
+<span class="codigoenlinea">catch</span>.</p>
+
+
+
+
+<p class="tituloSubCap">Clase Exception</p>
+
+<p>Cuando se lanza una excepci&oacute;n, en nuestro mundo orientado objetos lo que
+se hace es lanzar una instancia de <span class="codigoenlinea">Exception</span> o
+de una clase derivada de &eacute;l. Normalmente las clases derivadas no a&ntilde;aden mucha
+funcionalidad (muchas veces ninguna en absoluto), pero al ser distintas nos
+permiten distinguir entre los distintos tipos de excepciones.</p>
+
+<p>En el programa anterior, por ejemplo, en el bloque catch captur&aacute;bamos
+una excepci&oacute;n del tipo <span class="codigoenlinea">ArrayIndexOutOfBoundsException</span>,
+ignorando cualquier otro tipo de excepci&oacute;n.</p>
+
+<p>Esta clase tiene como cositas interesantes dos constructores y dos m&eacute;todos
+(tiene m&aacute;s m&eacute;todos pero s&oacute;lo vamos a ver &eacute;stos):</p>
+
+<dl>
+
+<dt>
+</dt>
+<b>Exception e = new Exception()</b>
+<dd>
+</dd>Crea una excepci&oacute;n si ning&uacute;n mensaje espec&iacute;fico.
+
+<dt>
+</dt>
+<b>Exception e = new Exception ( String )</b>
+<dd>
+</dd>Crea una excepci&oacute;n con un mensaje que detalla el tipo de excepci&oacute;n.
+
+<dt>
+</dt>
+<b>String e.getMessage()</b>
+<dd>
+</dd>Devuelve el mensaje detallado si existe o
+<span class="codigoenlinea">null</span> en caso contrario.
+
+<dt>
+</dt>
+<b>void e.printStackTrace()</b>
+<dd>
+</dd>Escribe por la salida de error est&aacute;ndar una traza que nos permitir&aacute;
+localizar donde se gener&oacute; el error. Es muy &uacute;til para depurar, pero no es
+conveniente que lo usuarios finales vean estas cosas.
+
+</dl>
+
+
+
+
+<p class="tituloSubCap">Capturar excepciones</p>
+
+<p>Ahora sabemos lo suficiente como para entender c&oacute;mo funcionan los
+<span class="codigoenlinea">catch</span>. Entre par&eacute;ntesis, cual par&aacute;metro se pone
+la declaraci&oacute;n de una excepci&oacute;n, es decir, el nombre de una clase derivada de
+<span class="codigoenlinea">Exception</span> (o la misma
+<span class="codigoenlinea">Exception</span>) seguido por el nombre de la variable.
+Si se lanza una excepci&oacute;n que es la que deseamos capturar o una derivada de la
+misma se ejecutar&aacute; el c&oacute;digo que contiene el bloque. As&iacute;, por ejemplo:</p>
+
+<pre class="codigosimple">catch (Exception e) {
+  ...
+}</pre>
+
+<p>Se ejecutar&aacute; siempre que se produzca una excepci&oacute;n del tipo que sea, ya
+que todas las excepciones se derivan de <span class="codigoenlinea">Exception</span>.
+No es recomendable utilizar algo as&iacute; ya que estamos capturando cualquier tipo
+de excepciones sin saber si eso afectar&aacute; a la ejecuci&oacute;n del programa o no.</p>
+
+<p>Se pueden colocar varios bloques <span class="codigoenlinea">catch</span>. En
+ese caso, se comprobar&aacute; en orden si la excepci&oacute;n lanzada es la que deseamos
+capturar y si no pasa a comprobar la siguiente. Eso s&iacute;, s&oacute;lo se ejecuta un
+bloque <span class="codigoenlinea">catch</span>. En cuanto captura la excepci&oacute;n
+deja de comprobar los dem&aacute;s bloques. Por eso, lo siguiente:</p>
+
+<pre class="codigosimple">catch (Exception e) {
+  ...
+}
+catch (DerivadaDeException e) {
+ ...
+}</pre>
+
+<p>Dar&iacute;a error, ya que el segundo bloque no podr&iacute;a ejecutarse nunca.</p>
+
+
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

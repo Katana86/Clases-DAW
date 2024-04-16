@@ -1,0 +1,203 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Clase String</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="array.htm" tppabs="http://www.programacion.net/java/intjava/array.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="idesp.htm" tppabs="http://www.programacion.net/java/intjava/idesp.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#string">Clase String</a>
+</li>
+</font>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#conversion">M&eacute;todos est&aacute;ticos de conversi&oacute;n </a>
+</li>
+</font>
+</ul>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Clase String</p>
+
+<p>Esta clase almacena una cadena de caracteres. Y en este caso, decir una es ser extremadamente preciso, ya que no podremos cambiarla una vez creada una instancia de este modo:</p>
+
+
+<pre class="codigosimple">String cad = new String("Hola, mundo");</pre>
+
+<p>Normalmente, para cambiar una cadena se crea una nueva, aunque sea impl&iacute;citamente por medio de concatenaciones y llamadas a m&eacute;todos. Como sabemos que el recolector de basura se llevar&aacute; por delante a las viejas tampoco vamos a preocuparnos en demas&iacute;a. Esta clase dispone de diversos m&eacute;todos para manipular cadenas:</p>
+  
+<dl>
+
+<dt>
+</dt>
+<b>int cad.length()</b>
+<dd>
+</dd>Devuelve la longitud de la cadena.
+
+<dt>
+</dt>
+<b>char cad.charAt( int)</b>
+<dd>
+</dd>Devuelve el car&aacute;cter que encuentre en la posici&oacute;n indicada por el par&aacute;metro.
+
+<dt>
+</dt>
+<b>boolean cad.equals( Object )</b>
+<dd>
+</dd>Como ya dijimos, este m&eacute;todo comprueba que dos instancias son iguales. En este caso comprueba que el objeto dado como argumento sea de tipo String y contenga la misma cadena de caracteres que el objeto actual.
+
+<dt>
+</dt>
+<b>boolean cad.equalsIgnoreCase( Object )</b>
+<dd>
+</dd>Realiza la misma tarea que equals() pero sin tener en cuenta may&uacute;sculas o min&uacute;sculas.
+
+<dt>
+</dt>
+<b>int cad.compareTo( String )</b>
+<dd>
+</dd>Devuelve un entero menor que cero si la cadena es alfab&eacute;ticamente menor que la dada como argumento, cero si las dos cadenas son l&eacute;xicamente iguales y un entero mayor que cero si la cadena es mayor.
+
+<dt>
+</dt>
+<b>boolean cad.regionMatches( int toffset, String other,  int ooffset, int len )<br>
+boolean cad.regionMatches( boolean ignoreCase, int, String,  int, int )</b>
+<dd>
+</dd>Comprueba si una regi&oacute;n de la cadena actual es igual a una regi&oacute;n de la cadena pasada como par&aacute;metro. En el primer caso compara la subcadena de la cadena actual que empieza por toffset de longitud len con la subcadena de other que comienza en ooffset de la misma longitud. El segundo caso es similar, agregando un nuevo par&aacute;metro, que ignora en la comparaci&oacute;n may&uacute;sculas y min&uacute;sculas cuando es verdadero.
+
+<dt>
+</dt>
+<b>boolean cad.startsWith( String )<br>
+boolean cad.endsWith( String )</b>
+<dd>
+</dd>Comprueba si el comienzo o el final de la cadena actual coincide con la cadena pasada como par&aacute;metro.
+	
+<dt>
+</dt>
+<b>int cad.indexOf( int )<br>
+int cad.indexOf( int, int )<br>
+int cad.indexOf( String )<br>
+int cad.indexOf( String , int )</b>
+<dd>
+</dd>Devuelve la primera vez que aparece el car&aacute;cter (expresado como entero) o cadena pasados como par&aacute;metro, pudiendo especificar en un segundo par&aacute;metro a partir de donde buscar.
+	
+<dt>
+</dt>
+<b>int cad.lastIndexOf( int )<br>
+int cad.lastIndexOf( int, int )<br>
+int cad.lastIndexOf( String )<br>
+int cad.lastIndexOf( String, int )</b>
+<dd>
+</dd>Devuelve la &uacute;ltima vez que aparece el car&aacute;cter (expresado como entero) o cadena pasados como par&aacute;metro, pudiendo especificar en un segundo par&aacute;metro a partir de donde buscar (buscar hacia atr&aacute;s, se entiende).
+
+	
+<dt>
+</dt>
+<b>String cad.toLowerCase()<br>
+String cad.toUpperCase()</b>
+<dd>
+</dd>Convierte la cadena a min&uacute;sculas o may&uacute;sculas.
+
+<dt>
+</dt>
+<b>String cad.trim()</b>
+<dd>
+</dd>Elimina espacios al principio y final de la cadena.
+
+<dt>
+</dt>
+<b>String cad.substring( int )<br>
+String cad.substring( int, int )</b>
+<dd>
+</dd>Devuelve una subcadena de la cadena actual, empezando por el primer &iacute;ndice indicado y llegando hasta el segundo &iacute;ndice (si lo hubiera) o hasta el final de la cadena.
+
+<dt>
+</dt>
+<b>String cad.replace( char, char )</b>
+<dd>
+</dd>Reemplaza todos los caracteres iguales al primer par&aacute;metro y los sustituye por el car&aacute;cter  que pasamos en segundo lugar.
+
+<dt>
+</dt>
+<b>char[] cad.toCharArray()</b>
+<dd>
+</dd>Convierte la cadena a un vector de caracteres.
+
+</dl>
+
+
+<p class="tituloSubCap">M&eacute;todos est&aacute;ticos de conversi&oacute;n </p>
+
+<p>La clase String dispone de varios m&eacute;todos para transformar valores de otros tipos de datos a cadena. Todos se llaman valueOf y son est&aacute;ticos:</p>
+
+<dl>
+
+<dt>
+</dt>
+<b>String String.valueOf( boolean )<br>
+String String.valueOf( int )<br>
+String String.valueOf( long )<br>
+String String.valueOf( float )<br>
+String String.valueOf( double )<br>
+String String.valueOf( Object )<br>
+String String.valueOf( char[] )<br>
+String String.valueOf( char[], int, int )</b>
+<dd>
+</dd>Devuelve la &uacute;ltima vez que aparece el car&aacute;cter (expresado como entero) o cadena pasados como par&aacute;metro, pudiendo especificar en un segundo par&aacute;metro a partir de donde buscar (buscar hacia atr&aacute;s, se entiende).
+
+</dl>
+
+
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="idesp.htm" tppabs="http://www.programacion.net/java/intjava/idesp.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

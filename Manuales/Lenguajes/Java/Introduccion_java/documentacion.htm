@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Documentaci&oacute;n</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="primera.htm" tppabs="http://www.programacion.net/java/intjava/primera.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="tipos.htm" tppabs="http://www.programacion.net/java/intjava/tipos.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#documentacion">Documentaci&oacute;n</a>
+</li>
+</font>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Documentaci&oacute;n</p>
+<p>Java es un lenguaje cuya sintaxis es similar a C, C++ y Javascript. La
+explicaremos, por tanto, de forma r&aacute;pida, empezando por los comentarios.</p>
+
+<p>Los comentarios en Java son como los de C++ pero con a&ntilde;adidos. Tenemos el
+comentario que dura hasta final de l&iacute;nea:</p>
+
+<pre class="codigosimple">// Esto es un comentario</pre>
+
+<p>Y el comentario que ocupa varias l&iacute;neas:</p>
+
+<pre class="codigosimple">/* Esto es un
+comentario */</pre>
+
+<p>Sin embargo tambi&eacute;n tenemos un tipo especial de comentarios que procuran
+ayudar en la tarea de documentar nuestros programas. Todo programador sabe la
+pereza que da documentar nuestros programas, y por eso Java intenta ayudarnos
+con un tipo especial de comentarios. Es equivalente al anterior, pero se utiliza
+un asterisco m&aacute;s para empezar:</p>
+
+<pre class="codigosimple">/** Esto es un comentario
+que servir&aacute; para documentar nuestro programa */</pre>
+
+<p>La herramienta javadoc recoger&aacute; esos comentarios y los incluir&aacute; en una
+documentaci&oacute;n en HTML que genera de forma autom&aacute;tica. Dado que el resultado es
+HTML, se puede incluir HTML en los comentarios. Para respetar el modo de
+comentar de muchos programadores , un asterisco al comienzo de la l&iacute;nea ser&aacute;
+ignorado. Tambi&eacute;n admite etiquetas especiales que comienzan por una arroba. Por
+ejemplo, nuestro anterior programa puede ser documentado de la siguiente forma:</p>
+
+<b>HolaMundo.java</b>
+<pre class="codigo">
+/** Este es el primer programa del Curso de Java
+* Simplemente escribe la frase "Hola, mundo"
+* @author Daniel Rodr&iacute;guez
+* @version 1.0
+*/
+public class HolaMundo {
+/** Punto de entrada a la clase y la aplicaci&oacute;n
+* @param args vector de cadenas que contiene los argumentos
+* @return No devuelve valor de retorno alguno
+* @exception Ninguna No lanza excepciones
+*/
+  public static void main(String[] args) {
+    System.out.println("Hola, mundo");
+  }
+}</pre>
+
+<p>Podemos ver el resultado escribiendo la siguiente l&iacute;nea:</p>
+
+<pre class="codigosimple">javadoc -author -version HolaMundo.java</pre>
+
+<p>Y viendo con el navegador el HTML resultante.</p>
+
+<p>Entre las etiquetas especiales, cabe destacar que se diferencian entre
+etiquetas de clase (@author y @version) y etiquetas de m&eacute;todo (@param, @return,
+@exception y @deprecated). Este &uacute;ltimo requiere una atenci&oacute;n especial. No existe
+un &uacute;nico Java, pues despu&eacute;s de la primera versi&oacute;n se lanzaron la 1.1 y la 1.2
+(tambi&eacute;n conocida como Java 2). Algunos aspectos del Java original comenzaron a
+parecer obsoletos y se decidi&oacute; desaconsejar su uso, pues podr&iacute;an dejar de ser
+soportados en el futuro. Se marcaron con la etiqueta deprecated. As&iacute; pues,
+se permiti&oacute; utilizar esa etiqueta a los programadores de clases.</p>
+
+<p>Llegados a este punto, puede ser necesario comenzar a distinguir entre
+dos tipos de programadores. Unos son los que se dedican a programar las
+librer&iacute;as y las clases. Suelen ser m&aacute;s experimentados y estar mejor pagados,
+son los "programadores de clases". Otros, en cambio, recogen las clases que
+otros han programado y las unen para realizar aplicaciones; son los
+"consumidores de clases". Conviene saber cual es nuestra funci&oacute;n, pues muchas
+cosas no resultan necesarias o, al menos, importantes para un consumidor como,
+por ejemplo, todo este asunto del deprecated.</p>
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="tipos.htm" tppabs="http://www.programacion.net/java/intjava/tipos.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

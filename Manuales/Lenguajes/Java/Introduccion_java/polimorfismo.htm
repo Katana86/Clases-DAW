@@ -1,0 +1,179 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Polimorfismo</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="herencia.htm" tppabs="http://www.programacion.net/java/intjava/herencia.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="paquetes.htm" tppabs="http://www.programacion.net/java/intjava/paquetes.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#polimorfismo">Polimorfismo</a>
+</li>
+</font>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#sobrecarga">Sobrecarga de m&eacute;todos</a>
+</li>
+</font>
+</ul>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Polimorfismo</p>
+
+<p>En muchas ocasiones, cuando utilizamos herencia podemos terminar teniendo
+una familia de clases que comparten un interfaz com&uacute;n. Por ejemplo, si creamos
+un nuevo fichero que contenga a Mamifero y Gato le a&ntilde;adimos:</p>
+
+<b>Polimorfismo.java</b>
+<pre class="codigo">
+class Perro extends Mamifero {
+  int numero_patas;
+  public void mover() {
+    System.out.println("Ahora es un perro el que se mueve");
+  }
+}
+
+public class Polimorfismo {
+  public static void muevete(Mamifero m) {
+    m.mover();
+  }
+  public static void main(String[] args) {
+    Gato bisho = new Gato();
+    Perro feo = new Perro();
+    muevete(bisho);
+    muevete(feo);
+  }
+}</pre>
+
+<p>Vemos que el m&eacute;todo muevete llama al m&eacute;todo
+<span class="codigoenlinea">mover</span> de un mam&iacute;fero. El no sabe con qu&eacute; clase de
+mam&iacute;fero trata, pero la cosa funciona y se llama al m&eacute;todo correspondiente al
+objeto espec&iacute;fico que lo llama (es decir, primero un gato y luego un perro). Y
+esto no s&oacute;lo se aplica a los m&eacute;todos. Por ejemplo, podemos reescribir el
+c&oacute;digo del procedimiento principal:</p>
+
+<pre class="codigosimple">public static void main(String[] args) {
+  Mamifero bisho = new Gato();
+  muevete(bisho);
+  bisho = new Perro();
+  muevete(bisho);
+}</pre>
+
+<p>Y vemos que funciona exactamente igual. El polimorfismo consiste en que
+toda referencia a un objeto de una clase espec&iacute;fica puede tomar la forma de
+una referencia a un objeto de una clase heredada a la suya.</p>
+
+
+<p class="tituloSubCap">Sobrecarga de m&eacute;todos</p>
+
+<p>El concepto de polimorfismo, en cuanto a cambio de forma,  se puede
+extender a los m&eacute;todos. Java permite que varios m&eacute;todos dentro de una clase se
+llamen igual, siempre y cuando su lista de par&aacute;metros sea distinta. Por ejemplo,
+si tuvi&eacute;ramos un m&eacute;todo que sirviera para sumar n&uacute;meros pero sin indicar de
+qu&eacute; tipo:</p>
+
+<b>Sumar.java</b>
+<pre class="codigo">
+/** Diversos modos de sumar */
+public class Sumar {
+  public float suma(float a, float b) {
+    System.out.println("Estoy sumando reales");
+    return a+b;
+  }
+  public int suma(int a, int b) {
+    System.out.println("Estoy sumando enteros");
+    return a+b;
+  }
+  public static void main(String[] args) {
+    float x = 1, float y = 2;
+    int v = 3, int w = 5;
+    System.out.println(suma(x,y));
+    System.out.println(suma(v,w));
+  }
+}</pre>
+
+<p>Esto tambi&eacute;n se aplica a los constructores. De hecho, es la aplicaci&oacute;n
+m&aacute;s habitual de la sobrecarga:</p>
+
+<b>Rectangulo.java</b>
+<pre class="codigo">
+/** Calcula el area de un rectangulo
+ */
+public class Rectangulo {
+  private float x1,y1,x2,y2;
+  public Rectangulo(float ex1, float ey1, float ex2, float ey2) {
+    x1 = ex1;
+    x2 = ex2;
+    y1 = ey1;
+    y2 = ey2;
+  }
+  public Rectangulo() {
+    x1 = 0;
+    x2 = 0;
+    y1 = 1;
+    y2 = 1;
+  }
+  public float calcularArea() {
+    return (x2-x1) * (y2-y1);
+  }
+  public static void main(String[] args) {
+    Rectangulo prueba1 = new Rectangulo(1,4,7,6);
+    Rectangulo prueba2 = new Rectangulo();
+    System.out.println(prueba1.calcularArea());
+    System.out.println(prueba2.calcularArea());
+  }
+}</pre>
+
+
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="paquetes.htm" tppabs="http://www.programacion.net/java/intjava/paquetes.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

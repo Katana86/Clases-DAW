@@ -1,0 +1,217 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Paquetes</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="polimorfismo.htm" tppabs="http://www.programacion.net/java/intjava/polimorfismo.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="math.htm" tppabs="http://www.programacion.net/java/intjava/math.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#paquetes">Paquetes</a>
+</li>
+</font>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#jdk">Algunos paquetes de Java</a>
+</li>
+</font>
+</ul>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#control">Control de acceso</a>
+</li>
+</font>
+</ul>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Paquetes</p>
+
+<p>Como ya hemos visto, el elemento fundamental de este lenguaje son
+las clases. Existe, sin embargo, un elemento de mayor rango llamado paquete, que
+no es m&aacute;s que un contenedor de clases. Act&uacute;an a modo de librer&iacute;as y existen
+m&aacute;s que nada por comodidad. Para agrupar varios ficheros fuente de Java en un
+s&oacute;lo paquete incluiremos una l&iacute;nea al comienzo de los mismos:</p>
+
+<pre class="codigosimple">package net.programacion.ejemplos;</pre>
+
+<p>Y el c&oacute;digo resultante (los ficheros con extensi&oacute;n class) se situar&iacute;a
+en el directorio <span class="codigoenlinea">net/programacion/ejemplos</span>.
+Pertenecer&iacute;an al paquete <span class="codigoenlinea">net.programacion.ejemplos</span>.
+Para poder utilizarlos desde otro programa deber&iacute;amos
+utilizar la sentencia <span class="codigoenlinea">import</span>, que tambi&eacute;n se
+coloca al principio del programa (aunque despu&eacute;s de
+<span class="codigoenlinea">package</span>):</p>
+
+<pre class="codigosimple">import net.programacion.net.*;</pre>
+
+<p>Hay que indicar que import es una palabra clave que indica las clases que
+deseamos cargar, no los paquetes. Sin embargo, al admitir el uso del comod&iacute;n *,
+se puede utilizar para cargar paquetes enteros. Por ejemplo, si deseamos
+utilizar la clase Date, situada en el paquete java.util, podemos
+cargarla de dos maneras:</p>
+
+<pre class="codigosimple">import java.util.Date;
+import java.util.*;</pre>
+
+
+<p class="tituloSubCap">Algunos paquetes de Java</p>
+
+<p>Existen muchos paquetes en la librer&iacute;a est&aacute;ndar de Java, paquetes que,
+adem&aacute;s, han ido variando seg&uacute;n se suced&iacute;an las versiones del mismo. As&iacute;, pues,
+vamos a destacar algunos paquetes presentes en todos los JDK:</p>
+
+<dl>
+<dt>
+</dt>
+<b>java.lang</b>
+<dd>
+</dd>Este paquete incluye las clases imprescindibles para que el lenguaje Java
+funcione como tal, es decir, clases como Object, Thread, Exception, System,
+Integer, Float, Math, Package, String, etc., que implementan la base del
+lenguaje. No es necesario importar nada desde ese paquete porque
+se carga por defecto.
+
+<dt>
+</dt>
+<b>java.util</b>
+<dd>
+</dd>Este paquete es el segundo en importancia, ya que incluye muchas clases
+&uacute;tiles como pueda ser Date (fecha) y, sobre todo, diversas clases que
+permiten el almacenamiento din&aacute;mico de informaci&oacute;n, como Vector, LinkedList,
+HashMap, etc..
+
+<dt>
+</dt>
+<b>java.applet</b>
+<dd>
+</dd>Contiene la archifamosa clase Applet, que nos permite crear applets para
+verlos en nuestro navegador.
+
+<dt>
+</dt>
+<b>java.awt</b>
+<dd>
+</dd>Este paquete, cuyo nombre corresponde a las siglas de Abstract Windowing
+Toolkit, contiene las clases necesarias para crear interfaces de usuario,
+por medio de men&uacute;s, botones, &aacute;reas de texto, cajas de confirmaci&oacute;n, etc..
+
+<dt>
+</dt>
+<b>java.io</b>
+<dd>
+</dd>Este paquete contiene las clases necesarias para realizar las operaciones
+de entrada/salida, ya sea a pantalla o a ficheros, clases heredadas de
+FileInputStream y FileOutputStream.
+
+<dt>
+</dt>
+<b>java.net</b>
+<dd>
+</dd>Paquete que permite la programaci&oacute;n de aplicaciones que accedan a bajo
+nivel a redes TCP/IP.
+
+</dl>
+
+
+
+
+<p class="tituloSubCap">Control de acceso</p>
+
+<p>Ha llegado el momento de especificar lo que en el primer ejemplo llamamos
+control de acceso. Cuando se crea una nueva clase en Java, se puede especificar
+el nivel de acceso que se quiere para las variables de instancia y los m&eacute;todos
+definidos en la clase por medio de los siguientes modificadores de acceso:</p>
+
+<dl>
+
+<dt>
+</dt>
+<b>public</b>
+<dd>
+</dd>Cualquier clase puede acceder a las propiedades y m&eacute;todos p&uacute;blicos.
+
+<dt>
+</dt>
+<b>protected</b>
+<dd>
+</dd>S&oacute;lo las clases heredades y aquellas situadas en el mismo paquete pueden
+acceder a las propiedades y m&eacute;todos protegidos.
+
+<dt>
+</dt>
+<b>private</b>
+<dd>
+</dd>Las variables y m&eacute;todos privados s&oacute;lo pueden ser accedidos desde dentro de
+la clase.
+
+<dt>
+</dt>
+<b>"friendly"</b> (valor por defecto)
+<dd>
+</dd>Si no se especifica ning&uacute;n modificador de acceso, las variables y m&eacute;todos se
+declaran "friendly" (amigas), lo que en la pr&aacute;ctica significa lo mismo que
+<span class="codigoenlinea">protected</span>.
+
+<dt>
+</dt>
+<b>private protected</b>
+<dd>
+</dd>S&oacute;lo las clases heredades pueden acceder a las propiedades y m&eacute;todos
+protegidos.
+
+</dl>
+
+
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="math.htm" tppabs="http://www.programacion.net/java/intjava/math.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

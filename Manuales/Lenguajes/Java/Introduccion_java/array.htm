@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>Introducci&oacute;n a Java: Vectores y matrices</title>
+<link rel="stylesheet" type="text/css" href="tppmsgs/msgs0.htm#5" tppabs="http://www.programacion.net/java/intjava/manual.css">
+</head>
+<body bgcolor="#ffffff" link="#800080" vlink="#ff0000" alink="#808000" background="fondotut.gif" tppabs="http://www.programacion.net/java/graficos/fondotut.gif">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="60"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="60" height="1"></td><td>
+<center>
+<table border="0" width="610">
+<tr>
+<td valign="top"><a href="tppmsgs/msgs0.htm#1" tppabs="http://www.programacion.net/java/index.html"><img src="logojava.gif" tppabs="http://www.programacion.net/java/graficos/logojava.gif" alt="Volver a la p&aacute;gina principal de JAVA en castellano" border="0"></a></td><td valign="top" width="470">
+<table border="0" cellpadding="3" cellspacing="3" width="100%">
+<tr>
+<td valign="top" align="center">Java en castellano recomienda...</td>
+</tr>
+<tr>
+<td align="center"><IFRAME SRC="tppmsgs/msgs0.htm#2" tppabs="http://ad.es.doubleclick.net/adi/ES-programacion.net/ES-redferca-programacion-java;sz=468x60;ord=66414537083757200?" name="frame1" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"><SCRIPT language="JavaScript1.1" SRC="tppmsgs/msgs0.htm#3" tppabs="http://ad.es.doubleclick.net/adj/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"></SCRIPT>
+<NOSCRIPT>
+<A HREF="tppmsgs/msgs0.htm#4" tppabs="http://ad.es.doubleclick.net/jump/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?"><IMG SRC="ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200-" tppabs="http://ad.es.doubleclick.net/ad/ES-programacion.net/ES-redferca-programacion-java;abr=!ie;sz=468x60;ord=66414537083757200?" border="0" height="60" width="468"></A>
+</NOSCRIPT>
+</IFRAME></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p class="tituloMan">Introducci&oacute;n a Java</p>
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="character.htm" tppabs="http://www.programacion.net/java/intjava/character.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="string.htm" tppabs="http://www.programacion.net/java/intjava/string.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+<p>En esta p&aacute;gina:</p>
+<table bgcolor="#F5F4EB" width="100%">
+<tr>
+<td>
+<ul>
+<font face="Verdana" size="2">
+<li>
+<a href="#array">Vectores y matrices</a>
+</li>
+</font>
+</ul>
+</td>
+</tr>
+</table>
+<br>
+<p class="tituloCap">Vectores y matrices</p>
+
+<p>Un vector (array) es una manera de agrupar valores de un mismo tipo bajo
+un mismo nombre. Para acceder a los valores individuales se asigna a cada uno
+de ellos un n&uacute;mero denominado &iacute;ndice. En Java podemos declarar vectores de dos
+maneras:</p>
+
+<pre class="codigosimple">char c[];
+char[] c;</pre>
+
+<p>De cualquiera de las dos formas obtendr&iacute;amos un vector de caracteres. A
+partir de ahora, cuando declaremos un vector, utilizaremos la segunda manera,
+que separa la declaraci&oacute;n de tipo del nombre de la variable; al contrario que
+la primera, herencia de C y C++.</p>
+
+<p>Crear matrices (vectores multidimensionales) es tan sencillo como
+a&ntilde;adir corchetes:</p>
+
+<pre class="codigosimple">char[][] c;</pre>
+
+<p>Los vectores en Java son en realidad objetos (como casi todo) y por lo
+tanto se inicializan llamando a un constructor con new, aunque el constructor
+tenga una sintaxis totalmente distinta a la estudiada hasta ahora:</p>
+
+<pre class="codigosimple">int numeros[][] = new int[30][10];</pre>
+
+<p>Existen otra manera de hacerlo y es indicando los valores iniciales en
+la declaraci&oacute;n:</p>
+
+<pre class="codigosimple">String[] paises = { "Espa&ntilde;a", "Holanda", "Brasil" }</pre>
+
+<p>Esta declaraci&oacute;n es equivalente a crear el vector por medio de un
+constructor e ir asignandole los valores uno a uno:</p>
+
+<pre class="codigosimple">String[] paises = new String[3];
+paises[0] = "Espa&ntilde;a";
+paises[1] = "Holanda";
+paises[2] = "Brasil";</pre>
+
+<p>Como podemos observar, para acceder a un valor espec&iacute;fico de un vector,
+se pone el nombre del mismo acompa&ntilde;ado del &iacute;ndice correspondiente al valor
+encerrado entre corchetes. Esto tambi&eacute;n es v&aacute;lido cuando queremos consultar
+el valor del mismo:</p>
+
+<b>Vectores.java</b>
+<pre class="codigo">
+public class Vectores {
+ static String[] paises = { "Espa&ntilde;a", "Holanda", "Brasil" };
+  public static void main(String[] args) {
+    System.out.println(paises[1]);
+  }
+}</pre>
+
+<p>Y, como buen objeto que son, todos tienen un m&eacute;todo llamado
+<span class="codigoenlinea">length</span>, que indica la longitud del vector.
+A&ntilde;adamos una l&iacute;nea m&aacute;s al programa anterior.</p>
+
+<pre class="codigosimple">public static void main(String[] args) {
+  System.out.println(paises[1]);
+  System.out.println(paises.length);
+}</pre>
+
+<p>Conviene recordar que los vectores son objetos porque, a la hora de pasar
+argumentos a una funci&oacute;n, se pasar&aacute;n por referencia y no por valor, como los
+tipos de datos b&aacute;sicos.</p>
+
+<table border="0" width="100%">
+<tr>
+<td align="right"><a href="indice.htm" tppabs="http://www.programacion.net/java/intjava/indice.htm"><img src="indice.gif" tppabs="http://www.programacion.net/java/graficos/indice.gif" border="0"></a><a href="introduccion.htm" tppabs="http://www.programacion.net/java/intjava/introduccion.htm"><img src="anterior.gif" tppabs="http://www.programacion.net/java/graficos/anterior.gif" border="0"></a><a href="string.htm" tppabs="http://www.programacion.net/java/intjava/string.htm"><img src="siguiente.gif" tppabs="http://www.programacion.net/java/graficos/siguiente.gif" border="0"></a>
+<br>
+<img src="linea.gif" tppabs="http://www.programacion.net/java/graficos/linea.gif" width="100%" height="1"></td>
+</tr>
+</table>
+</td><td width="40"><img src="empty.gif" tppabs="http://www.programacion.net/java/graficos/empty.gif" width="40" height="1"></td>
+</tr>
+</table>
+</body>
+</html>
