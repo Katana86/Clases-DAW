@@ -1,0 +1,98 @@
+
+<html>
+<head>
+<title>El Lenguaje Java</title>
+</head>
+<body>
+
+<center><h3>Construcción de Applets</h3></center>
+
+Los applets usan los mismos artefactos de AWT que hemos visto.
+En particular un applet puede crear botones, ventanas independientes,
+canvas para despliegue general, etc.
+<p>
+Lo que no puede hacer un applet es accesar archivos o abrir
+conexiones con cualquier computador en la red.  Sólo puede
+abrir conexiones con el computador desde donde ser recuperó
+el applet.
+<p>
+A futuro, los browsers Web incorporarán mecanismos para permitir
+que un applet tenga distintos grados de privilegio para correr.
+De este modo uno podría recuperar un applet que es un hoja
+de cálculo la cuál podrá escribir en archivos locales.  Este
+es un nuevo enfoque para la distribución del software.  Incluso,
+no será difícil hacer applets que midan el tiempo de uso de
+la aplicación para cobrar proporcionalmente.
+<p>
+<h4>Definición de un applet</h4>
+<p>
+Un applet se crea extendiendo la clase Applet, que a su vez es
+una subclase de Panel.  Un applet se distingue porque posee
+los siguentes métodos:
+
+<ul>
+<li><strong>init()</strong>: Se invoca cuando se carga el applet y
+se usa para inicializar el applet.
+Aquí se crean todos los artefactos del applet.
+
+<p><li><strong>start()</strong>: Se invoca cada vez que el usuario
+visita la página Web.  El applet permanece cargado.
+
+<p><li><strong>stop()</strong>: Se invoca cuando el usuario
+abandona la página Web.  Si el usuario revisita la página y el
+applet todavía esta cargado, entonces se invocará start (sin init).
+
+<p><li><strong>destroy()</strong>: Se invoca justo antes de que
+el browser Web destruya el applet.  Sirve para cerrar archivos,
+cerrar conexiones y realizar otras labores.   No es necesario
+liberar objetos porque el recolector de basura sabe hacerlo.
+<p><li><strong>String getParameter(String nombre)</strong>: se usa para
+recuperar parámetros que se espeficican en la página Web en
+donde se ubica el applet.
+</ul>
+
+Es importante que el applet procese rápidamente los eventos originados
+de la interacción con el usuario.  En particular en ninguno de
+estos métodos, ni en los métodos de AWT, se puede realizar cálculos
+que tomen varios segundos, puesto que esto hará que no se muestren
+las componentes en el momento adecuado.
+Para realizar cálculos prolongados se deben crear <em>threads</em>.
+<p>
+<hr>
+<p>
+<h4>Cómo incorporar un Applet en una página Web</h4>
+<p>
+Un applet se incorpora en una página Web usando los siguientes
+comandos html:
+<blockquote><pre>
+&lt;applet codebase=examples code=GuiApplet.class width=550 height=200&gt;
+... (parámetros)
+&lt;/applet&gt;
+</pre></blockquote>
+En donde:
+<ul>
+<li><strong>codebase</strong>: es el directorio que contiene la
+clase del applet.  En este caso el directorio es relativo al
+directorio en donde se encuentra la página Web.
+
+<p><li><strong>code</strong>: es el nombre del archivo que
+contiene el bytecode de la clase ya compilada.
+
+<p><li><strong>width y height</strong>: es el tamaño del rectángulo
+que ocupará el applet en la página Web.
+</ul>
+
+Entre los comandos applet y /applet se pueden colocar parámetros
+para el applet con:
+
+<blockquote><pre>
+&lt;param name=UNARGUMENTO value="valor"&gt;
+</pre></blockquote>
+
+Estos parámetros se reciben en el applet con:
+<blockquote><pre>
+String arg= miApplet.getParameter("UNARGUMENTO");
+</pre></blockquote>
+
+</body>
+</html>

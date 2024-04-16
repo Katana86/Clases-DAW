@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>El Lenguaje Java</title>
+</head>
+<body>
+
+<center><h3>Arreglos</h3></center>
+
+<ul>
+<p><li>Declaración de un arreglo:
+<pre>
+int A[];    // A es un arreglo de enteros
+int A[10];  // error, el tamaño no va aquí
+int[] A;    // A es un arreglo de enteros
+int A,B[];  // A es un entero, B un arreglo
+int[] A,B;  // A y B son arreglos
+String S[]; // S es un arreglo de strings
+S[1]=""     // error, el arreglo no ha sido
+            // creado
+</pre>
+
+<p><li>Creación de un arreglo
+<pre>
+int A[]= new int[10]; // 10 enteros
+</pre>
+
+<p><li>Subindicación de un arreglo:
+<pre>
+A[0], A[1], ..., A[9] // correcto
+A[10]                 // error, índice fuera
+                      // de rango
+</pre>
+
+<p><li>Modificación de un arreglo:
+<pre>
+A[3]= 8;
+</pre>
+
+<p><li>Tamaño de un arreglo:
+<pre>
+A.length   // correcto
+A.length() // error, sin paréntesis
+</pre>
+
+<p><li>Inicialización de un arreglo:
+<pre>
+for (int i=0; i&lt;A.length; i++)
+  A[i]= i;
+</pre>
+
+<p><li>Asignación de punteros a arreglos
+<pre>
+int B[];
+B= A;      // A y B son el mismo arreglo
+if (A==B)  // Comparación de punteros
+           // true!
+ ...
+A[0]= 10;
+B[0]       // también 10
+</pre>
+
+<p><li>Copia de un arreglo:
+<pre>
+B= (int[])A.clone();
+</pre>
+</ul>
+
+<hr>
+</body>
+</html>

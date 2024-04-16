@@ -1,0 +1,157 @@
+<html>
+<head>
+<title></title>
+</head>
+<body>
+
+<center><h4>Paquetes de Clases</h4></center>
+
+Todas las clases que se encuentran en archivos de un mismo directorio
+forman un mismo paquete.  Los paquetes se organizan a su vez
+en una jerarquía de paquetes.  En la siguiente figura se
+aprecia un jerarquía de paquetes.
+<p>
+<center><img src="paquetes.gif" tppabs="http://www.dcc.uchile.cl/~lmateu/Java/Apuntes/images/paquetes.gif"></center>
+<p>
+Los paquetes se referencian en una forma similar a la jerarquía
+de directorios en Unix o DOS, separando los nombres de paquetes
+con un '.'.  En la figura se aprecian los siguientes paquetes:
+
+<blockquote><pre>
+P  Q  P.R
+</pre></blockquote>
+
+Las clases se accesan referenciando primero el paquete en
+que se encuentran y luego el nombre de la clase:
+
+<ul>
+<li> El paquete P contiene las clases P.B y P.C
+<li> El paquete Q contiene las clases Q.B y Q.D
+<li> El paquete P.R contiene la clase P.R.D
+</ul>
+
+Si una clase no pertenece a un paquete específico se coloca en
+un paquete por omisión y en este caso se accesan directamente
+por su nombre.  Este es el caso de las clases A y B.
+<p>
+Consideraciones al usar paquetes:
+
+<ul>
+<p><li>Toda clase especifica el paquete al cual pertenece
+con la cláusula <strong>package</strong> que se coloca al comienzo
+del archivo:
+<blockquote><pre>
+<strong>package</strong> P.R;
+</pre></blockquote>
+Si el archivo no contiene esta cláusula entonces el paquete
+se coloca en un paquete por omisión.
+
+<p><li>Una clase se nombra a través de la siguiente sintaxis:
+
+<blockquote>
+<em>paquete</em>.<em>clase</em>
+</blockquote>
+
+Por ejemplo en:
+
+<blockquote><pre>
+package Q;
+
+... P.R.D.M() ...
+
+... B.N() ...
+</pre></blockquote>
+
+La primera referencia es la método M de la clase D que está en el
+paquete P.R.
+<p>
+En la segunda referencia no se especifica el paquete. En este
+caso se busca la clase B en el mismo paquete en donde aparece
+la referencia, es decir D.  Por lo tanto se trata de Q.B
+y no P.B.
+
+<p><li>Para no tener que especificar el paquete cada vez que
+se menciona una clase (de otro paquete), se usa la cláusula
+<strong>import</strong>.  La sintaxis es:
+
+<blockquote>
+<strong>import</strong> <em>paquete</em>.<em>clase</em>;
+<p>
+<strong>import</strong> <em>paquete</em>.*;
+</blockquote>
+
+En el primer caso se interna el nombre de una clase específica de un paquete,
+la cuál podrá ser nombrada directamente como clase en el archivo que
+contiene la cláusula import.
+<p>
+En el segundo caso se internan todas las clases de un paquete.
+Todas ellas se conocerán directamente por su nombre sin necesidad
+de colocar el paquete.
+<p>
+Por ejemplo:
+
+<blockquote><pre>
+package Q;
+import P.C;
+... C ... // es P.C
+</pre></blockquote>
+
+O bien en otro archivo del paquete P.R:
+<blockquote><pre>
+package P.R;
+import Q.*;
+... B ... // es Q.B
+</pre></blockquote>
+
+En caso de ambiguedad será necesario incluir el nombre del paquete.
+
+<p><li>Al referenciar una clase dada, él archivo que la contiene
+se busca usando la variable de ambiente CLASSPATH (esta variable se
+define a nivel del intérprete de comandos del sistema operativo).
+Supongamos que CLASSPATH
+tiene ".:/home/yo/classes:otrodir", entonces la clase P.R.D se buscará
+en los siguientes archivos:
+<blockquote><pre>
+./P/R/D.class
+/home/yo/classes/P/R/D.class
+otrodir/P/R/D.class
+<em>biblioteca de Java</em>/P/R/D.class
+</pre></blockquote>
+
+Si la clase no se encuentra en ninguno de estos archivos, es un error.
+Esta búsqueda se realiza tanto al compilar como al ejecutar.
+Si al momento de accesar una clase ésta todavía no se encuentra
+compilada, es decir sólo se encuentra el archivo fuente, entonces
+se compila.
+</ul>
+<hr>
+<p>
+<h4>El método <strong>main</strong></h4>
+
+Un programa se ejecuta con el comando <strong>java</strong>.  Este
+comando recibe el nombre de una clase seguido de una lista
+de argumentos:
+
+<blockquote>
+java <em>paquete</em>.<em>clase</em> <em>argumento</em>, ...
+</blockquote>
+
+El intérprete busca la clase especificada usando el método descrito
+anteriormente.  Luego en esta clase busca un método que tenga la siguiente
+declaración:
+
+<blockquote>
+public static void main(String args[]) { ... }
+</blockquote>
+
+Si no se encuentra es un error.  Posteriormente, el intérprete busca y
+carga (recursivamente) todas las clases que necesite la clase
+especificada.  Luego ejecuta el código de inicialización de todas
+las clases.
+<p>
+Finalmente, el intérprete invoca el método main, pasándole
+en <strong>args</strong> todos los argumentos encontrados en la
+línea de comando.
+
+</body>
+</html>

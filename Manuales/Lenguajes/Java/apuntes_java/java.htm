@@ -1,0 +1,400 @@
+<html>
+<head>
+<title>Java en la Internet</title>
+</head>
+
+<body>
+<center><h2>El lenguaje Java</h2></center>
+
+Java es un <em>lenguaje orientado a objetos</em>.  Esto significa que
+posee ciertas características que hoy día se consideran estándares
+en los lenguajes OO:
+
+<ul>
+<li>Objetos
+<li>Clases
+<li>Métodos
+<li>Subclases
+<li>Herencia simple
+<li>Enlace dinámico
+<li>Encapsulamiento
+</ul>
+
+<p>Estos conceptos no son simples, por lo que explicaremos su significado
+más adelante en el curso.
+
+<p>Por el momento, comenzaremos por mostrar el lado oscuro de los objetos:
+
+<p><blockquote>
+Para programar orientado a objetos es necesario primero
+<em>diseñar un conjunto
+de clases</em>.  La claridad, eficiencia y mantenibilidad del programa
+resultante dependerá principalmente de la calidad del diseño de clases.
+Un buen diseño de clases significará una gran economía en tiempo de
+desarrollo y mantención.
+
+<p>Lamentablemente se necesita mucha habilidad y experiencia para lograr
+diseños de clases de calidad.  Un mal diseño de clases puede llevar
+a programas OO de peor calidad y de más alto costo que el programa equivalente
+no OO.
+</blockquote>
+
+<p>Es válido entonces preguntarse: ¿Por qué programar en un lenguaje OO,
+si se requiere una experiencia que probablemente uno nunca tendrá
+el tiempo de práctica para llegar a dominarla?
+
+<p>La respuesta a esta pregunta es la siguiente: Java es un lenguaje
+multiparadigma (como muchos otros lenguajes de programación).
+Uno no necesita hacer un diseño de clases para programar una aplicación
+de mil líneas.
+
+<p>¿Entonces por qué no usar otro lenguaje más simple como Visual Basic,
+si no necesito orientación a objetos?
+
+<p>Porque la ventaja potencial más importante de un lenguaje OO está
+en las <em>bibliotecas de clases</em> que se pueden construir para él.
+Una biblioteca de clases cumple el mismo objetivo de una biblioteca
+de procedimientos en una lenguaje como C.  Sin embargo:
+
+<p><em>
+Una biblioteca de clases es mucho más fácil de usar que una biblioteca
+de procedimientos, incluso para programadores sin experiencia en
+orientación a objetos.  Esto se debe a que las clases ofrecen
+mecanismos de abstracción más eficaces que los procedimientos.
+</em>
+ 
+<p>
+<p>Más adelante quedará clara esta afirmación cuando examinemos ejemplos
+de bibliotecas de clases.
+
+<p>Por lo tanto podemos distinguir entre varios tipos de programadores
+en Java:
+
+<ul>
+<li>El diseñador de clases: Es el encargado de definir qué clases ofrece
+una biblioteca y cuál es la funcionalidad que se espera de estas clases.
+Esta persona tiene que ser muy hábil y de mucha experiencia.  Un diseño
+equivocado puede conducir a clases que son incomprensibles para los clientes
+de la biblioteca.
+
+<p><li>El programador de clases de biblioteca: Sólo programa la
+clases especificadas por el diseñador de clases.  Esta persona debe
+entender orientación a objetos, pero no requiere mayor experiencia en
+diseño de clases.
+
+<p><li>El cliente de bibliotecas: Es el programador de aplicaciones.
+Él sólo usa las clases que otros han diseñado y programado.  Como
+en el caso anterior necesita entender orientación a objetos y conocer
+la biblioteca que va usar,  pero no necesita mayor experiencia.
+</ul>
+
+<p>Tanto programadores de clases como clientes de bibliotecas pueden
+llegar a convertirse en buenos diseñadores de clases en la medida
+que adquieran experiencia, comparando los diseños de las bibliotecas
+que utilicen.
+
+<p>Por lo tanto es importante destacar que no se necesita gran experiencia
+en diseño orientado a objetos para poder aprovechar las ventajas
+de la orientación a objetos.
+
+<p>
+<hr>
+<h3>La Simplicidad de Java</h3>
+
+<p>Java ha sido diseñado de modo de eliminar las complejidades
+de otros lenguajes como C y C++.
+
+<p>Si bien Java posee una sintaxis similar a C, con el objeto de
+facilitar la migración de C hacia a Java, Java es semánticamente
+muy distinto a C:
+
+<ul>
+<p>
+<li>Java no posee aritmética de punteros:  La aritmética de punteros es
+    el origen de muchos errores de programación que no se manifiestan
+    durante la depuración y que una vez que el usuario los detecta
+    son difíciles de resolver.
+<p>
+<li>No se necesita hacer <strong>delete</strong>: Determinar el
+    momento en que se debe liberar el espacio ocupado por un objeto
+    es un problema difícil de resolver correctamente.  Esto también
+    es el origen a errores difíciles de detectar y solucionar.
+<p>
+<li>No hay herencia múltiple: En C++ esta característica da origen
+    a muchas situaciones de borde en donde es difícil predecir
+    cuál será el resultado.  Por esta razón en Java se opta por
+    herencia simple que es mucho más simple de aprender y dominar.
+</ul>
+
+<p>
+<hr>
+<h3>Java posee bibliotecas de clases estándares</h3>
+
+<p>Toda implementación de Java debe tener las siguientes bibliotecas
+de clases:
+
+<ul>
+<li>Manejo de archivos
+<p>
+<li>Comunicación de datos
+<p>
+<li>Acceso a la red internet
+<p>
+<li>Acceso a bases de datos
+<p>
+<li>Interfaces gráficas
+</ul>
+
+La interfaz de programación de estas clases es estándar, es decir
+en todas ellas las operaciones se invocan con el mismo nombre y los mismos
+argumentos.
+
+<p>
+<hr>
+<h3>Java es multiplataforma</h3>
+
+<p>Los programas en Java pueden ejecutarse en cualquiera de las
+siguientes plataformas, sin necesidad de hacer cambios:
+
+<ul>
+<li>Windows/95 y /NT
+<li>Power/Mac
+<li>Unix (Solaris, Silicon Graphics, ...)
+</ul>
+
+<p>La compatibilidad es total:
+
+<ul>
+<li>A nivel de fuentes: El lenguaje es exactamente el mismo en todas
+las plataformas.
+
+<p><li>A nivel de bibliotecas: En todas las plataformas están presentes
+las mismas bibliotecas estándares.
+
+<p><li>A nivel del código compilado: el código intermedio que genera
+el compilador es el mismo para todas las plataformas.  Lo que cambia
+es el intérprete del código intermedio.
+
+</ul>
+
+<p>
+<hr>
+<h3>El Look-and-Feel</h3>
+
+<p>Lo único que varia de acuerdo a la plataforma es el <em>look-and-feel</em>.
+Un programa en Windows/95 tendrá el aspecto característico de esta
+plataforma (en cuanto a la forma de los botones, barras de deslizamiento,
+menúes, etc.).  El <em>mismo programa</em> en Unix tendrá el aspecto
+característico de Motif.  Y en Power/Mac se verá como un programa
+para Macintosh.
+
+<p>Sin embargo el código que escriben los programadores no tiene que tener
+presente las características de ninguna de estas plataformas.  Es
+la implementación de la interfaz gráfica estándar de Java la que se
+encarga de desplegar las ventanas con el <em>look-and-feel</em>
+de la plataforma local.
+
+<p>
+<hr>
+<h3>C es poco robusto</h3>
+
+<p>Se dice que el lenguaje C es un lenguaje <em>poco robusto</em> porque a
+menudo un error de programación se traduce en un mensaje críptico del
+estilo <tt>segmentation fault</tt>.
+Este tipo de mensajes se origina en 4 errores clásicos:
+
+<p><ul>
+<li>Se accesa un elemento de un arreglo con un índice fuera de rango.
+
+<p><blockquote>Ejemplo: <tt>a[-3]=5;</tt></blockquote>
+
+<p><li>Se usa un puntero como si referenciara a una estructura de tipo A,
+cuando en realidad en esa área de memoria hay una estructura de tipo B,
+incompatible con A.  En C esto ocurre debido al uso de <em>casts</em>.
+
+<p><blockquote>Ejemplo: <tt>*(int*)pdistance</tt></blockquote>
+
+<p><li>Se usa un puntero a una estructura cuyo espacio ya se liberó.
+Luego volveremos a hablar de este punto.
+
+<p><blockquote>Ejemplo: <tt>free(p); *p= 1;</tt></blockquote>
+
+<p><li>Al usar aritmética de punteros se comete un error.
+
+<p><blockquote>Ejemplo: <tt>*(p+i*sizeof(*p))</tt></blockquote>
+</ul>
+
+<p>Todos estos errores conducen a que tarde o temprano se use
+un puntero que direcciona un área de memoria no asignada por
+el sistema operativo.  Esto es lo que detiene la ejecución con
+el mensaje <tt>segmentation fault</tt>.
+
+<p>Lo más desagradable de este tipo de errores es que es muy difícil
+determinar en qué línea del código está la verdadera fuente del error.
+Podría ser en cualquier parte del programa.  Encontrar la línea
+puede llevar varios días y hasta semanas, incluso en el caso de
+programadores expertos.
+
+<h4>Java sí es robusto</h4>
+
+<p>En Java no se pueden cometer los 4 errores mencionados:
+
+<ul>
+<p><li>Java siempre chequea los índices al accesar un arreglo.
+
+<p><li>Java realiza chequeo de tipos durante la compilación (al igual
+que C).  En una asignación entre punteros el compilador verifica
+que los tipos sean compatibles.
+
+<p>Además, Java realiza chequeo de tipos durante la ejecución (cosa que C
+y C++ no hacen).  Cuando un programa usa un <em>cast</em> para accesar un
+objeto como si fuese de un tipo específico, se verifica durante la ejecución
+que el objeto en cuestión sea compatible con el <em>cast</em> que se le
+aplica.  Si el objeto no es compatible, entonces se levanta una
+excepción que informa al programador la línea exacta en donde está la
+fuente del error.
+
+<p><li>Java posee un recolector de basuras que administra automáticamente
+la memoria.  Es el recolector el que determina cuando se puede
+liberar el espacio ocupado por un objeto.  El programador no puede
+liberar explícitamente el espacio ocupado por un objeto.
+
+<p><li>Java no posee aritmética de punteros, porque es una propiedad
+que no se necesita para programar aplicaciones.  En C sólo se necesita
+la aritmética de punteros para programa <tt>malloc/free</tt> o
+para programar el núcleo del sistema operativo.
+
+</ul>
+
+<p>Por lo tanto Java no es un lenguaje para hacer sistemas operativos
+o administradores de memoria, pero sí es un excelente lenguaje
+para programar aplicaciones.
+
+<p>
+<hr>
+<h3>Java es flexible</h3>
+
+<p>Pascal también es un lenguaje robusto, pero logra su robustez
+prohibiendo tener punteros a objetos de tipo desconocido.  Lamentablemente
+esta prohibición es demasiado rígida.  Aunque son pocos los casos
+en que se necesita tener punteros a objetos de tipo desconocido,
+las contorsiones que están obligados a realizar los programadores
+cuando necesitan estos punteros dan origen a programas ilegibles.
+
+<p>Lisp por su parte es un lenguaje flexible y robusto.  Todas las
+variables son punteros a objetos de cualquier tipo (un arreglo, un
+elemento de lista, etc.).  El tipo del objeto se encuentra almacenado
+en el mismo objeto.  Durante la ejecución, en cada operación se chequea
+que el tipo del objeto manipulado sea del tipo apropiado.  Esto da
+flexibilidad a los programadores sin sacrificar la robustez.
+Lamentablemente, esto hace que los programas en Lisp sean poco legibles
+debido a que al estudiar su código es difícil determinar cuál es el tipo
+del objeto que referencia una variable.
+
+<p>Java combina flexibilidad, robustez y legibilidad gracias a una
+mezcla de chequeo de tipos durante la compilación y durante la
+ejecución.  En Java se pueden tener punteros a objetos de un tipo
+específico y también se pueden tener punteros a objetos de
+cualquier tipo.  Estos punteros se pueden convertir a punteros de un
+tipo específico aplicando un <em>cast</em>, en cuyo caso se
+chequea en tiempo de ejecución de que el objeto sea de un tipo
+compatible.
+
+<p>El programador usa entonces punteros de tipo específico en la mayoría
+de los casos con el fin de ganar legibilidad y en unos pocos
+casos usa punteros a tipos
+desconocidos cuando necesita tener flexibilidad.  Por lo tanto
+Java combina la robustez de Pascal con la flexibilidad de Lisp,
+sin que lo programas pierdan legibilidad en ningún caso.
+
+<p>
+<hr><h3>Java administra automáticamente la memoria</h4>
+
+<p>En Java los programadores no necesitan preocuparse de liberar
+un trozo de memoria cuando ya no lo necesitan.  Es el recolector
+de basuras el que determina cuando se puede liberar la memoria
+ocupada por un objeto.
+
+<p>Un recolector de basuras es un gran aporte a la productividad.
+Se ha estudiado en casos concretos que los programadores han dedicado
+un 40% del tiempo de desarrollo a determinar en qué momento se
+puede liberar un trozo de memoria.
+
+<p>Además este porcentaje de tiempo aumenta a medida que aumenta
+la complejidad del software en desarrollo.  Es relativamente sencillo
+liberar correctamente la memoria en un programa de 1000 líneas.
+Sin embargo, es difícil hacerlo en un programa de 10000 líneas.
+Y se puede postular que es imposible liberar correctamente la memoria
+en un programa de 100000 líneas.
+
+<p>Para entender mejor esta afirmación, supongamos que hicimos un
+programa de 1000 líneas hace un par de meses y ahora necesitamos
+hacer algunas modificaciones.  Ahora hemos olvidado gran parte de
+los detalles de la lógica de este programa y ya no es sencillo
+determinar si un puntero referencia un objeto que todavía existe,
+o si ya fue liberado.  Peor aún, suponga que el programa fue
+hecho por otra persona y evalúe cuan probable es cometer errores
+de memoria al tratar de modificar ese programa.
+
+<p>Ahora volvamos al caso de un programa de 100000 líneas.  Este tipo
+de programas los desarrolla un grupo de programadores que pueden tomar
+años en terminarlo.  Cada programador desarrolla un módulo que
+eventualmente utiliza objetos de otros módulos desarrollados por otros
+programadores.  ¿Quién libera la memoria de estos objetos? ¿Cómo se
+ponen de acuerdo los programadores sobre cuándo y quién libera un objeto
+compartido?  ¿Como probar el programa completo ante las infinitas
+condiciones de borde que pueden existir en un programa de 100000 líneas?
+
+<p>Es inevitable que la fase de prueba dejará pasar errores en el manejo
+de memoria que sólo serán detectados más tarde por el usuario final.
+Probablemente se incorporán otros errores en la fase de mantención.
+
+<p>Se puede concluir:
+
+<ul>
+<li>Todo programa de 100000 líneas que libera explícitamente la memoria
+tiene errores latentes.
+
+<p><li>Sin un recolector de basuras no hay verdadera modularidad.
+
+<p><li>Un recolector de basuras resuelve todos los problemas de manejo
+de memoria en forma trivial.
+</ul>
+
+<p>La pregunta es: ¿Cuál es el impacto de un recolector de basura en
+el desempeño de un programa?
+
+<p>El sobrecosto de la recolección de basuras no es superior al 100%.
+Es decir si se tiene un programa que libera explícitamente
+la memoria y que toma tiempo X, el mismo programa modificado de
+modo que utilice un recolector de basuras para liberar la memoria
+tomará un tiempo no superior a 2X.
+
+<p>Este sobrecosto no es importante si se considera el periódico
+incremento en la velocidad de los procesadores.  El impacto
+que un recolector de basura en el tiempo de desarrollo y en la
+confiabilidad del software resultante es muchos más importante
+que la pérdida en eficiencia.
+
+<p>
+<hr>
+<h3>Resumen</h3>
+
+<p>Java es un lenguaje que ha sido diseñado para producir software:
+
+<ul>
+<li>Confiable: Minimiza los errores que se escapan a la fase de prueba.
+
+<p><li>Multiplataforma: Los mismos binarios
+funcionan correctamente en Windows/95 y /NT, Unix/Motif
+y Power/Mac.
+
+<p><li>Seguro: Applets recuperados por medio de la red no pueden
+causar daño a los usuarios.
+
+<p><li>Orientado a objetos: Beneficioso tanto para el proveedor
+de bibliotecas de clases como para el programador de aplicaciones.
+
+<p><li>Robusto: Los errores se detectan en el momento de producirse,
+lo que facilita la depuración.
+</ul>

@@ -1,0 +1,182 @@
+<html>
+<head>
+<title>El Lenguaje Java</title>
+</head>
+<body>
+
+<center><h3>Objetos y Clases</h3></center>
+
+<ul>
+<p><li>Un <em>objeto</em> en Java cumple las funciones que realiza
+un record en Pascal o una estructura en C.  En Java las
+variables sólo pueden contener <em>referencias a objetos</em>, es decir
+punteros a objetos.
+
+<p><li>Todos los objetos se crean con <strong>new</strong>:
+<pre>
+A a1= <strong>new A()</strong>;
+</pre>
+A es el tipo del objeto creado.  También se dice que A es la <em>clase
+del objeto</em> o que el objeto es una instancia de la clase A.
+La variable a1 también es de tipo A, o análogamente a1
+es de la clase A, porque a1 debe contener siempre referencias
+a objetos que pertenecen a la clase A.
+
+<p><li>Un objeto posee <em>variables de instancia</em> o <em>campos</em>
+que se pueden consultar o asignar.  Los campos que posee un objeto
+se definen al momento de declarar la clase a la cual pertenece:
+<pre>
+<strong>class A { int <strong>x</strong>, <strong>y</strong>; }</strong>
+A a= new A();
+a.<strong>x</strong>= 1;
+a.<strong>y</strong>= 2;
+System.out.println(a.<strong>x</strong>+" "+a.<strong>y</strong>); // 1 2
+</pre>
+
+<p><li>Un objeto también puede poseer <em>métodos</em>. Un método es un
+procedimiento cuya invocación siempre va asociada a un objeto.
+Los métodos se definen en la declaración de la clase:
+<pre>
+class A {
+  int x, y; // variables de instancia
+  // Métodos
+  <strong>void Set(int vx, int vy) { x= vx; y= vy; }</strong>
+  <strong>void Incx()</strong> { x++; }
+  <strong>void Print()</strong> { System.out.println(x+" "+y); }
+}
+A a= new A();
+a.<strong>Set</strong>(10, 20);
+a.<strong>Print</strong>();      // 10 20
+a.<strong>Incx</strong>();
+a.Print(); // 11 20
+Incx(); // error, falta indicar el objeto
+A a2= new A();
+a2.Set(5, 6);
+a2.Print();     // 5 6
+a.Print();      // 11 20
+</pre>
+
+<p><li>La definición de un método tiene las siguiente sintaxis:
+
+<pre>
+tipo-retorno nombre-método
+       ( tipo-parámetro nombre, ... )
+{ instrucciones }
+</pre>
+
+Si el procedimiento no retorna nada se coloca void.
+En las instrucciones las variables que se accesen que
+no sean parámetros o variables locales del procedimiento
+deben ser variables de instancia del objeto.
+
+<p><li>Una variable de tipo objeto es una <em>referencia</em> (puntero)
+a un objeto:
+<pre>
+A a1= new A();
+A a2= new A();
+A <strong>a3= a2</strong>;
+a1.Set(1,2);
+a2.Set(5,6);
+a3.Set(8,9);
+a1.Print(); // 1 2
+a2.Print(); // 8 9
+a3.Print(); // 8 9
+</pre>
+En este caso las variables a2 y a3 referencian el mismo objeto,
+mientras que a1 y a2 referencian objetos distintos.
+
+<p><li> Una referencia puede ser pasada como argumento y puede ser retornada
+por un método.
+<pre>
+class A {
+  ...
+  void CopyFrom(<strong>A from</strong>) { x= from.x; y= from.y }
+  A MakeCopy()
+  {
+    A acopy= new A();
+    acopy.Set(x, y);
+    <strong>return acopy</strong>;
+  }
+}
+
+A a1= new A();
+a1.Set(1,2);
+A a2= new A();
+a2.CopyFrom(<strong>a1</strong>);
+a2.IncX();
+a2.Print(); // 2 2
+a1.Print(); // 1 2
+A a3=<strong>a1.MakeCopy()</strong>;
+a3.Print(); // 1 2
+</pre>
+
+<p><li>Dentro de un método, el identificador <strong>this</strong>
+contiene una referencia al objeto con que se invocó este método.
+<pre>
+class A {
+  ...
+  void CopyTo(A to)
+  { to.CopyFrom(<strong>this</strong>); }
+}
+</pre>
+
+<p><li>En Java no existe enlace directo entre identificador y objeto
+como en C o Pascal:
+<pre>
+En C o C++
+  <strong>A a;</strong>   // a es el objeto
+  A *pa; // pa es una referencia al objeto
+En Pascal
+  var <strong>a: A</strong>;  // a es el record
+      a: A^; // a es una referencia al objeto
+</pre>
+
+<p><li>Las variables se pueden inicializar con la referencia nula:
+
+<pre>
+A a;
+a= <strong>null</strong>;
+a.x= 0;    // error, a es la ref. nula
+</pre>
+
+<p><li>Un objeto puede referenciar otros objetos:
+<pre>
+class <strong>Eslabon</strong> {
+  <strong>Eslabon next</strong>;
+  <strong>A a</strong>;
+  void Encadenar(Eslabon anext) { <strong>next</strong>= anext; }
+}
+...
+for(Eslabon e= prim; e!=null; e= e.<strong>next</strong>)
+  e.<strong>a</strong>.Print();
+</pre>
+<p><li>Los arreglos y strings son objetos predefinidos.
+<pre>
+String s= null;
+s.substring(1,2); // error
+int[] a= null;
+a[0]=0;           // error
+</pre>
+
+<p><li>Se pueden crear arreglos de referencias a objetos.  No se pueden
+crear arreglos de objetos.
+<pre>
+A[] aArr= <strong>new A[10]</strong>;
+aArr[0].x=1; // error, aArr[0] es nulo
+for (int i=0; i&lt;aArr.length; i++)
+  <strong>aArr[i]= new A()</strong>;
+</pre>
+
+<p><li>Ningún objeto se destruye explícitamente: No hay
+<strong>free</strong> ni <strong>delete</strong>
+<pre>
+A a= new A();
+a= new A();   
+</pre>
+El objeto que se creó primero ya no es alcanzable y
+por lo tanto el recolector de basura recuperará el
+espacio que ocupa.
+</ul>
+<hr>
+</body>
+</html>

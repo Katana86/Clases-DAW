@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>El Lenguaje Java</title>
+</head>
+<body>
+
+<center><h3>Interacción con el usuario</h3></center>
+
+Hasta el momento sólo hemos visto como colocar artefactos en
+una ventana, pero no tenemos ninguna forma de enterarnos cuando
+el usuario activa un artefacto, como por ejemplo cuando apreta un botón.
+<p>
+En AWT la aplicación se entera de cómo interactúa el usuario
+con los artefactos a través de eventos.
+<p>
+Un evento es un objeto de la clase Event que indica:
+
+<ul>
+<li>El artefacto (un objeto de la clase del artefacto) que accionó
+el usuario.
+<p><li>La identificación del evento que indica la naturaleza del
+evento.
+<p><li>La posición del mouse al momento de la interacción.
+<p><li>Teclas modificadores presionadas por el usuario, como
+la tecla control, la tecla shift, la tecla meta, etc.
+<p><li>Otros.
+</ul>
+
+La aplicación recibe los eventos ya sea a nivel de los mismos
+artefactos o también a nivel de los contenedores.
+
+Por ejemplo para detectar cuando el usuario presiona un botón
+específico se redefine el método <strong>action</strong> del botón.
+Es decir será necesario crear una clase derivada de la clase Button.
+
+<blockquote><pre>
+class MyButton extends Button
+{
+  Button(String nombre) { super(nombre); }
+  <strong>public boolean action(Event evt, Object artefacto)</strong>
+  {
+    ... ; // código de la aplicación
+    <strong>return true;</strong>
+  }
+}
+</pre></blockquote>
+En artefacto se indica el objeto con que interactuó el usuario.
+Cuando este método retorna false se indica que el evento
+no pudo ser procesado por este método y que debe ser propagado
+hacia el contenedor de este artefacto.  Esto significa que
+entonces se invocará el método action del contenedor.
+<p>
+En este método se retorna true para que el contenedor no vuelva a procesar
+el mismo evento.
+Cuando no se redefine action, el método provisto por Button retorna
+false y por lo tanto debe ser el contenedor el que procesa el evento.
+<p>
+Por lo tanto la otra forma de recibir eventos es en
+la raíz.  El problema de la raíz es que recibe los eventos de
+todos los artefactos y por lo tanto hay que comparar el artefacto
+recibido con cada uno de los artefactos contenidos en la raíz, para
+poder determinar cuál es la acción que debe llevar a cabo la aplicación.
+<p>
+Por lo tanto otra forma de recibir eventos es:
+
+<blockquote><pre>
+class Gui extends Frame // contenedor raíz
+{
+  ...
+  public boolean action(Event evt, Object art)
+  {
+    if (art==boton) ...
+    else if (art==check) ...
+    else if (art==texto) ...
+    else ... // otro
+
+    return true;
+  }
+}
+</pre></blockquote>
+
+Existe una última forma no recomendada de captar eventos
+usando <strong>handleEvent</strong>.  Lo delicado de este
+método es que recibe todos los eventos, por lo tanto es fácil
+introducir errores atrapando eventos que deberían procesarse
+en otro punto en la jerarquía de componentes.
+<hr>
+</body>
+</html>

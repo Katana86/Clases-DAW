@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>El Lenguaje Java</title>
+</head>
+<body>
+
+<center><h3>Constructores</h3></center>
+
+<ul>
+<p><li><strong>Definicion:</strong>
+
+<em>El constructor de una clase es un método estándar para inicializar los
+objetos de esa clase</em>
+
+<p>Se invoca automáticamente cuando <strong>new</strong> crea un
+objeto de esa clase.
+
+<p><li>Los constructores se declaran en el momento de definir la clase.
+
+<pre>
+class A {
+  int x, y;
+  <strong>A() { x=0; y=0; }</strong> // el constructor
+  ...
+}
+
+A a= <strong>new  A()</strong>;
+a.Print(); // 0 0
+</pre>
+
+<p><li>El constructor puede tener parámetros.  En este caso,
+se deben colocar los argumentos respectivos al crear el objeto:
+
+<pre>
+class A {
+  int x, y;
+  <strong>A(int ix, int iy)</strong>
+  { x=ix; y=iy; } // el constructor
+  ...
+}
+
+A a= new <strong>A(1,2)</strong>;
+a.Print(); // 1 2
+
+a= new A(); // error, hay que colocar
+            // los argumentos
+a.A(1,2);   // error, no se puede
+            // invocar el constructor
+</pre>
+
+<p><li>Se pueden colocar varios constructores.  Durante la
+creación de un objeto, se invoca aquel que calza con los
+argumentos dados:
+
+<pre>
+class A {
+  int x, y;
+  <strong>A()</strong> { x=0; y= 0; }
+  <strong>A(int ix, int iy)</strong>
+  { x=ix; y=iy; }
+  <strong>A(A from)</strong>
+  { x= from.x; y= from.y; }
+  ...
+}
+
+A a1= new <strong>A()</strong>;
+a1.Print();    // 0 0
+A a2= new <strong>A(1,2)</strong>;
+a2.Print();    // 1 2
+A a3= new <strong>A(a2)</strong>;
+a3.Print();    // 1 2
+</pre>
+
+<p><li>Un destructor es un método que se invoca automáticamente
+cuando el objeto se destruye.  Java no posee destructores,
+porque tiene recolección de basuras.  C++ posee destructores.
+</ul>
+<hr>
+</body>
+</html>

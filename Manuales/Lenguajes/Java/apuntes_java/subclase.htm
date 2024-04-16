@@ -1,0 +1,442 @@
+<html>
+<head>
+<title>El Lenguaje Java</title>
+</head>
+<body>
+
+<center><h3>Subclases y Herencia</h3></center>
+
+Los métodos y variables que posee un objeto definen la clase
+a la cual pertenece.  Por ejemplo, todos los objetos de la clase A
+poseen los métodos Set, Incx y Print y las variables x e y. En cambio
+los objetos de la clase Eslabon poseen el método Encadenar y las
+variables next y a.
+<p>
+Una variable de tipo Eslabon no puede contener una referencia a un
+objeto de la clase A.
+<blockquote><pre>
+Eslabon e= new A(); // error de tipos
+</pre></blockquote>
+
+Puede existir una clase B de objetos que poseen todos los métodos
+y todas las variables de A, pero además poseen otros métodos y/o variables
+que no poseen los objetos de A.  En ese caso se dice que B es una
+<em>subclase</em> de A.
+
+<blockquote><em>
+Los objetos de la clase B también pertenecen a la clase A.
+</em></blockquote>
+
+El principio es que todo el código que se haya escrito para
+objetos de la clase A también funcionará con objetos de la
+clase B.
+
+<p>Una subclase se define mediante:
+<blockquote><pre>
+class B <strong>extends A</strong>
+{
+  // variables que B agrega a A
+  int z;
+  // Métodos que B agrega a A
+  // Observe que B también posee x
+  void Incz() { z= z+<strong>x</strong>; }
+}
+</pre></blockquote>
+
+Se dice que la clase B <em>hereda</em> todas las variables y métodos
+de A.  También se dice que B se <em>deriva</em> de A o que A es la
+<em>clase base</em> para B.
+<p>
+La <em>jerarquía de clases</em> permite apreciar fácilmente qué
+clases son subclases de otras.
+<p>
+<center><img src="jerarqui.gif" tppabs="http://www.dcc.uchile.cl/~lmateu/Java/Apuntes/images/jerarqui.gif"></center>
+<p>
+Observe que todos los objetos pertenecen a la clase Object.
+<p>
+Consideraciones importantes al usar subclases:
+<ul>
+<p><li>Una variable de la clase A, también puede contener
+referencias a objetos de la clase B, porque estos objetos
+pertenecen a la clase B y a la clase A.  Este concepto
+se denomina <em>proyección</em>.
+
+<pre>
+A a;
+<strong>a= new B()</strong>; // Proyección
+</pre>
+
+Se dice que A es el <em>tipo estático</em> de la variable a y B es el
+<em>tipo dinámico</em> de a.  El tipo estático siempre se determina
+en tiempo de compilación mientras que el tipo dinámico en general
+sólo se puede conocer en tiempo de ejecución y puede cambiar.
+
+<p><li>Dada una variable a, Java sólo permite invocar los métodos
+y accesar las variables conocidas para el tipo estático de a.
+
+<pre>
+a.Incx(); // Ok
+a.x;      // Ok
+a.Incz(); // error, Incz no está definido para A
+</pre>
+
+Del mismo modo, Java sólo permite asignar una expresión a una variable
+de tipo A si el tipo de la expresión es A o una subclase de A:
+
+<pre>
+B b= new A(); // error, el objeto no pertence a
+              // la clase B
+A a= new B(); // Ok
+...
+B b= a;       // error, la clase estática de a
+              // no es una subclase de B.
+</pre>
+
+<p><li>Un objeto se puede convertir a una referencia de la clase B
+mediante un <em>cast</em>:
+
+<pre>
+A a=new B();
+B b=<strong>(B)</strong>a;
+b.Incz();        // Ok
+<strong>( (B)a )</strong>.Incz(); // Ok
+</pre>
+
+No todo objeto se puede convertir a la clase B.
+
+<pre>
+A a= new A();
+...
+B b=<strong>(B)</strong>a;      // Ok, en compilación, pero
+               // error en tiempo de ejecución
+</pre>
+
+Java chequea durante la ejecución todas las conversiones explícitas
+(casts).  Si el objeto no pertence a la clase a la cual se pretende
+convertir, entonces se produce una excepción.
+</ul>
+<hr>
+
+<h4>El operador instanceof</h4>
+
+Se puede consultar si un objeto pertenece a una clase
+mediante:
+<blockquote><pre>
+Object obj;
+...
+if (<strong>obj instanceof A</strong>)
+  // obj pertenece a la clase A
+  A a=(A)obj; // Ok, nunca hay error
+</pre></blockquote>
+
+Los objetos de la clase B también son instancias
+de la clase A:
+<blockquote><pre>
+Object obj= new B();
+if (obj <strong>instanceof</strong> A) // true
+  A a= (A)obj;        // Ok
+</pre></blockquote>
+
+<hr>
+
+<h4>El constructor en una subclase</h4>
+
+Los constructores no se heredan:
+<blockquote><pre>
+class A
+{
+  ...
+  <strong>A(int ix, int iy)</strong>{ ... };
+}
+
+class B extends A
+{
+  ...
+}
+
+B b= new B(1,2); // error, ningún
+                 // constructor calza
+</pre></blockquote>
+
+El constructor de la clase base se puede invocar con
+<strong>super</strong>:
+<blockquote><pre>
+class B extends A
+{
+  ...
+  B(int ix, int iy)
+  {
+    <strong>super(ix, iy)</strong>;
+    z= 0;
+  }
+  B(int ix, int iy, int iz)
+  {
+    <strong>super(ix, iy)</strong>;
+    z= iz;
+  }
+  B(B b)
+  {
+    z= b.z; // x=y=?
+    <strong>super</strong>(b.x, b.y); // error, super debe ser
+  }                  // la primera instrucción
+}
+</pre></blockquote>
+
+La invocación del constructor de A siempre debe ser la primera
+instrucción del constructor de B.  El principio es que en B
+las componentes de la clase base (A) deben inicializarse antes
+que las componentes que se agregan en la clase B.
+<p>
+<hr>
+
+<h4>Redefinición de Métodos</h4>
+
+Un problema que tiene la clase B que heredó de A es que
+el método Print sólo imprime los campos x e y:
+<blockquote><pre>
+B b= new B(1, 2, 3);
+b.Print();  // 1 2   >8^(
+</pre></blockquote>
+
+Al declarar una clase B derivada de A, aparte de agregar
+campos y métodos, también se pueden redefinir métodos.  Por ejemplo,
+para B se puede <em>redefinir</em> el método Print:
+<blockquote><pre>
+class B extends A
+{
+  ...
+  <strong>void Print() // Redefinición
+  { System.out.println(x+" "+y+" "+z); }</strong>
+}
+B b= new B(1, 2, 3);
+b.Print(); // 1 2 3    8^)
+</pre></blockquote>
+
+El número y tipo de los parámetros del método redefinido
+debe coincidir exactamente con los del método original.
+<p>
+Observe que el método Print para la clase A no cambia:
+<blockquote><pre>
+A a= new <strong>A</strong>(1, 2);
+a.Print(); // 1 2
+</pre></blockquote>
+<hr>
+<h4>Enlace dinámico</h4>
+<p>
+¿Qué método se invoca en el siguiente caso?
+<blockquote><pre>
+A a= new <strong>B</strong>(1, 2, 3);
+a.Print(); // ?
+</pre></blockquote>
+El tipo estático de la variable a es la clase A en donde Print
+sólo imprime x e y, por lo que una posible respuesta es
+que se invoca el método definido en la clase A.
+<p>
+Sin embargo, la respuesta correcta es que <em>se invoca el método
+definido para el tipo dinámico</em> de la variable a.  Es decir
+la clase más específica a la cual pertenece el objeto referenciado
+por la variable a.  Esta clase es B.  Por lo tanto se invoca
+el Print definido para la clase B y la salida será:
+<blockquote><pre>
+    1 2 3
+</pre></blockquote>
+Esta forma de enlazar el nombre de un método con el código que
+se ejecutará para un objeto determinado se denomina
+<em>enlace dinámico</em>, porque el método que finalmente se
+invocará en general sólo se conoce durante la ejecución y no
+durante la compilación.
+<p>
+<hr>
+<h4>Clases y Métodos Abstractos</h4>
+<p>
+Una clase abstracta es una clase que se introduce
+sólo para que se deriven nuevas clases de ella, no para que se
+creen objetos con su nombre.  Del mismo modo, un método abstracto
+es un método que se introduce para que sea redefinido en
+una clase derivada.  Por ejemplo
+
+<blockquote><pre>
+<strong>abstract</strong> class GraphObj
+{
+  int x, y; // La posición central
+  GraphObj(int ix, int iy)
+  { x= ix; y= iy; } // constructor
+  void Move(int dx, int dy)
+  { x+= dx; y+= dy; }
+  abstract void Paint(Graphics g);
+  // Paint es abstracto
+}
+</pre></blockquote>
+Esta clase no se puede usar para crear un
+objeto, por lo que lo siguiente es un error:
+<blockquote><pre>
+GraphObj gf= new <strong>GraphObj</strong>(10,20);
+  // error
+</pre></blockquote>
+La idea es que sólo se pueden crear objetos
+de clases derivadas de la clase anterior:
+<blockquote><pre>
+class Line <strong>extends GraphObj</strong>
+{
+  // x e y se heredan
+  int ix, iy;
+  GraphObj(int aix, int aiy,
+           int afx, int afy)
+  {
+    super((aix+afx)/2, (aiy+afy)/2);
+    ix= aix; iy= aiy;
+  }
+  void Paint(Graphics g)
+  { g.DrawLine(xi,yi,x+(x-xi),y+(y-yi)); }
+  // Move se hereda de GraphObj
+}
+
+// Ahora sí!
+Line line= <strong>new Line</strong>(0,0, 10,20);
+</pre></blockquote>
+El principio es que se use varias veces la clase abstracta
+para definir varias otras clases que poseen un conjunto
+común de métodos: Paint y Move.
+<blockquote><pre>
+// Una caja
+class Box extends GraphObj
+{
+  int height, width;
+  Box(int lx, int ly, int hx, int hy)
+  {
+    super( ... ); // Ejercicio
+    ...
+  }
+  void Paint(Graphics g)
+  {
+    ... // Ejercicio
+  }
+}
+</pre></blockquote>
+<hr>
+<p>
+<strong>Redefinición parcial de métodos</strong>
+<p>
+Supongamos que ahora se desea introducir una caja con color.
+Este objeto gráfico es similar a un caja sola.  Por lo
+tanto derivamos la caja con color a partir de una caja
+simple.  Conservamos casi todo, pero tenemos que redefinir
+Paint.  Aún así podemos reutilizar el Paint de Box:
+
+<blockquote><pre>
+<strong>class ColorBox extends Box</strong>
+{
+  int color;
+  // El mismo constructor
+  ColorBox(int lx, int ly,
+           int hx, int hy,
+           int acolor)
+  {
+    super(lx, hx, ly, hy);
+    color= acolor;
+  }
+  <strong>void Paint()</strong> // Redefinición
+  {
+    int savecolor= g.currColor();
+    g.setColor(color);
+    <strong>super.Paint()</strong>; // el Paint de Box
+    g.setColor(savecolor);
+  }
+}
+</pre></blockquote>
+Al redefinir un método, se puede invocar
+el método de la clase base usando <strong>super</strong>
+con sus respectivos argumentos.
+<p>
+<hr>
+<p>
+<h4>Clases, Métodos y Campos finales</h4>
+Una <em>clase final</em> es una clase que no se puede derivar.
+Es decir no posee subclases.
+
+<blockquote><pre>
+<strong>final class B</strong> extends A
+{
+  ...
+}
+class C <strong>extends B</strong> // error B es final
+{
+  ...
+}
+</pre></blockquote>
+
+Un <em>método final</em> es un método que no se puede redefinir
+en una subclase de la clase en donde se definió.  Por ejemplo
+el método Move asociado a un objeto gráfico se puede declarar
+final en la clase GraphObj mediante:
+
+<blockquote><pre>
+<strong>final void Move</strong>(int dx, int dy)
+{ x+= dx; y+= dy; }
+</pre></blockquote>
+De esta forma este método no podrá ser redefinido posteriormente
+en las clases Line, Box o ColorBox.
+<p>
+Una <em>campo final</em> es una variable a la que no se puede asignar
+un valor.  La variable se inicializa con un valor durante su declaración,
+pero luego no puede cambiar.  Cumple el papel de las constante de otros
+lenguajes, pero observe que en Java se trata de constantes dinámica cuyo
+valor se calcula en ejecución.
+<p>
+<hr>
+<p>
+<h4>Variables y métodos de la clase</h4>
+
+Los campos que se definen en una clase se denominan variables
+de instancia porque se encuentran en los objetos.  En Java
+también se pueden definir <em>variables de la clase</em>.
+Este tipo de variables se encuentra en la clase y no en los
+objetos.
+
+Las variables de clase se definen usando el atributo
+<strong>static</strong>:
+
+<blockquote><pre>
+class A
+{
+  int iv;
+  <strong>static int cv</strong>;
+
+  void Inc()
+  {
+    iv++; <strong>cv</strong>++;
+    System.out.println(iv+" "+<strong>cv</strong>);
+  }
+
+  // Constructor para los objetos
+  A() { iv=0; }
+  // Inicializador de la clase
+  <strong>static { cv=0; }</strong>
+}
+
+A a1= new A();
+A a2= new A();
+a1.Inc(); // 1 1
+a2.Inc(); // 1 <strong>2</strong>
+a1.Inc(); // 2 <strong>3</strong>
+</pre></blockquote>
+
+a1.Inc y a2.Inc incrementan las misma variable <strong>cv</strong>.
+
+<p>Un método <strong>static</strong> de la clase es un método que sólo accesa
+variables de la clase.  Se definen usando el
+atributo static:
+
+<blockquote><pre>
+  <strong>static void Inc2()</strong> { cv++; }
+  <strong>static void Inc3()</strong>
+  { iv++; } // error iv es de un objeto
+  <strong>static</strong> void Inc4()
+  {
+    Inc();  // error Inc necesita un obj.
+    Inc2(); // Ok, porque Inc2 es static
+  }
+</pre></blockquote>
+
+</body>
+</html>

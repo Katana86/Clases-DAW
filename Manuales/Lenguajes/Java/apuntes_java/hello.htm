@@ -1,0 +1,197 @@
+<html>
+<head>
+<title>El Lenguaje Java</title>
+</head>
+<body>
+
+<p>
+<h3>La aplicacion Hello World</h3>
+
+<p>Una aplicación es un programa convencional que se invoca desde
+el intérprete de comandos.  Este programa se carga directamente
+desde el disco y no de la red Internet.
+
+<p>Ahora veremos la aplicación más simple que se puede escribir
+en Java: el clásico ``Hello World''.
+
+<ul>
+<p><li>
+Crear un archivo llamado Hello1.java con:
+<blockquote><tt><pre>
+// La aplicación Hello World!
+public class Hello1 {
+    public static void main (String args[]) {
+        System.out.println("Hello World!");
+    }
+}
+</pre></tt></blockquote>
+
+<li>Compilar con: <tt> javac Hello1.java </tt><p>
+
+<li>Ejecutar con: <tt> java Hello1 </tt><p>
+</ul>
+
+Observaciones:
+
+<ul>
+<li>La primera línea es un comentario.  Todo lo que viene
+después de la secuencia // hasta el fin de línea es un comentario.<p>
+
+Java también acepta comentarios ``a la C'': /* ... */<p>
+
+<li>Luego viene la definición de una clase llamada Hello1:<p>
+
+<tt><blockquote>public class Hello1 { ... }</blockquote></tt><p>
+
+<em>En Java un programa es un conjunto de definiciones de clases que
+están dispuestas en uno o más archivos.</em><p>
+
+<li>Dentro de la clase Hello1 se define el método <tt>main</tt>:<p>
+
+<tt>public static void main (String args[]) { ... }</tt><p>
+
+<em>En una clase se definen uno o más métodos.</em><p>
+
+<li>Las palabras <tt>public</tt> y <tt>static</tt> son atributos del
+método que discutiremos más tarde.<p>
+
+<li>La palabra <tt>void</tt> indica que el método <tt>main</tt> no retorna
+ningún valor.<p>
+
+<li>La forma <tt>(String args[])</tt> es la definición de los argumentos
+que recibe el método <tt>main</tt>.  En este caso se recibe un argumento.
+Los paréntesis [] indican que el argumentos es un arreglo y la palabra
+<tt>String</tt> es el tipo de los elementos del arreglo.<p>
+
+Por lo tanto <tt>main</tt> recibe como argumento un arreglo de strings
+que corresponden a los argumentos con que se invoca el programa.<p>
+
+<li>La instrucción <tt>System.out.println(...)</tt> despliega un
+string en la consola.<p>
+
+Java no posee una sintaxis abreviada para desplegar strings.<p>
+
+</ul>
+
+Consideraciones importantes:<p>
+
+<ul>
+
+<li>El nombre del archivo (Hello1.java) siempre debe ser el nombre
+de la clase (Hello1) con la extensión ``.java''.<p>
+
+<li>Todas las aplicaciones deben definir el método <tt>main</tt>.
+
+<li>Al invocar el intérprete de java con java Hello1, se busca y se invoca
+un método <tt>main</tt> que textualmente haya sido definido con:<p>
+
+<tt>public static void main (String args[]) { ... }</tt><p>
+
+No cambie el nombre de este procedimiento ni omita ninguno de sus
+atributos.  Tampoco cambie el tipo de los argumentos
+o el valor retornado.<p>
+
+</ul>
+
+<hr>
+<p>
+<h3>El applet Hello World</h3>
+
+Un applet es un programa que anima una porción de una página Web.
+Se recupera a partir de la red y corre en la máquina del usuario, pero con
+muchas restricciones de modo que no pueda afectar la integridad
+del ambiente del usuario.<p>
+
+A continuación veremos la versión applet del ejemplo anterior.
+Es decir un programa que coloca en una página Web
+el mensaje ``Hello World!''.<p>
+
+<ul>
+<p><li>Crear el programa fuente <tt>Hello2.java</tt> con:
+<blockquote><tt><xmp>
+import java.awt.Graphics;
+import java.applet.Applet;
+
+public class Hello2 extends Applet {
+  public void paint(Graphics g) {
+    g.drawString("Hello world!", 50, 25);
+  }
+}
+</xmp></tt></blockquote>
+
+<p><li>Compilar con: <tt>javac Hello2.java</tt>
+
+<p><li>Crear la página <tt>Hello.html</tt> con el siguiente contenido:
+
+<xmp>
+<html>
+<body>
+Este es un applet:
+<applet code="Hello2.class" tppabs="http://www.dcc.uchile.cl/~lmateu/Java/Apuntes/Hello2.class" width=150 height=25>
+</applet>
+</body>
+</html>
+</xmp>
+
+Atención: Hello.html debe estar en el mismo directorio que Hello2.java.<p>
+
+<p><li>Ver el applet con: <tt>appletviewer Hello.html</tt>
+
+<p><li>El mismo applet también se puede ver desde un browser Web
+como netscape 2.x o superior.
+
+</ul>
+
+Observaciones:<p>
+
+<ul>
+
+<li>Dado que un applet no se invoca desde el intérprete de comandos,
+no tiene sentido definir el método <tt>main</tt>.  El browser
+Web notifica al applet que debe dibujar su contenido invocando
+el método <tt>paint</tt>.  Esto ocurre cada vez que se muestra
+la porción de la página html que contiene este applet.  Por lo
+tanto un applet debe definir el método <tt>paint</tt> (en vez
+de <tt>main</tt>).<p>
+
+<li>Las instrucciones:<p>
+
+<tt><blockquote><pre>
+import java.awt.Graphics;
+import java.applet.Applet;
+</pre></blockquote></tt>
+
+indican que dentro del archivo las clases <tt>java.awt.Graphics</tt>
+y <tt>java.applet.Applet</tt> serán conocidas simplemente
+como <tt>Graphics</tt> y <tt>Applet</tt>.<p>
+
+<li>Luego viene la definición de la clase Hello2 con:<p>
+
+<tt>public class Hello2 extends Applet { ... }</tt><p>
+
+Las palabras <tt>extends</tt> indican que Hello2 es una
+extensión de la clase de biblioteca Applet.  Esto significa
+que Hello2 es casi como Applet, solo que se modifica el
+comportamiento del método <tt>paint</tt>.<p>
+
+<li>El método <tt>paint</tt> recibe como argumento un objeto
+de tipo Graphics que corresponde a una clase de biblioteca.
+Este objeto se usa para dibujar en la porción de página html
+asignada al applet.<p>
+
+<li>La instrucción <tt>g.drawString("Hello world!", 50, 25);</tt>
+dibuja el string ``Hello World!'' en la porción asignada en
+las coordenadas (50, 25).<p>
+
+<li>Además de programar el applet es necesario construir la
+página html que va a contener el applet.  Por limitaciones
+de espacio en este curso sólo veremos las etiquetas de html
+que permiten agregar un applet a la página, sin detenernos
+a ver en profundidad el lenguaje html.<p>
+
+</ul>
+
+<hr>
+</body>
+</html>
+

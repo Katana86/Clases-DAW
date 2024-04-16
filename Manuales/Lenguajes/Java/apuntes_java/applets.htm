@@ -1,0 +1,192 @@
+<html>
+<head>
+<title>Java en la Internet</title>
+</head>
+
+<body>
+<center><h2>Applets en Java</h2></center>
+
+<p>El funcionamiento del Web está basado en el paradigma
+cliente/servidor.  Un servidor almacena páginas Web en formato html y
+los clientes las consultan.  Los clientes corresponden a programas de
+navegación en el Web como por ejemplo Netscape, Internet Explorer, etc.
+Una página Web se transmite del servidor al cliente por medio de la red
+internet, en el momento en que el cliente la consulta.
+
+<p>Una página Web puede contener varios medios audio/visuales:
+
+<ul>
+<li>texto
+<li>imágenes
+<li>sónido
+<li>video
+<li><em>applets</em>
+</ul>
+
+<p>Un <em>applet</em> es un programa escrito en Java que anima una
+porción de la página Web.  Al igual que el resto de los medio
+audio/visuales, el applet está almacenado en el servidor y se transmite
+al cliente por medio de internet.
+
+
+<p>La ventaja de los applets con respecto a otros medios audio/visuales
+es que el usuario puede interactuar con un applet, gracias a que
+se trata de un programa.  Un applet puede desplegar texto, imágenes,
+sonido y realizar animaciones gráficas, pero todo esto bajo el control
+de un programa que se transmite por la red y que interactúa con el usuario.
+
+<p>Un applet se ejecuta completamente en el cliente.  Esto significa
+que una vez que fue transmitido, la velocidad de la interacción no
+depende de la velocidad y latencia de la red.  Si es necesario, el
+applet también se puede comunicar con el servidor.
+
+<p>Para que un programa de navegación en el Web pueda ejecutar un applet
+es necesario que posea un intérprete de Java.  Actualmente Netscape,
+Internet Explorer y Hotjava cumplen con este requisito.
+
+<p>
+<hr>
+<h3>Portabilidad de Applets</h3>
+
+<p>A medida que la computación va madurando como tecnología de
+diversión y de aumento de la productividad, la tendencia es que
+cada vez el software debe ser más fácil de usar.
+
+<p>El sueño de la internet es que un usuario apunte y seleccione un
+ítem en la pantalla para recuperar y ejecutar en el instante un
+programa de cualquier parte del mundo.  Éste es el sueño que
+Java pretende realizar.
+
+<p><center><img src="applet.gif" tppabs="http://www.dcc.uchile.cl/~lmateu/Java/Apuntes/images/applet.gif"></center>
+
+<p>Sin embargo esto no es fácil de lograr.  El primer problema
+que se presenta es el de la portabilidad.  Existe una amplia
+gama de plataformas con procesadores y sistemas operativos
+incompatibles entre sí.  Sería impensable tener en cada servidor
+programas binarios para todas las plataformas existentes.
+
+<p>Java resuelve el problema de la incompatibilidad de los procesadores
+haciendo que los applets se almacenen en los servidores en un código
+intermedio independiente de la plataforma (el <em>byte-code</em>).
+Es este byte-code el que se transmite hacia los cliente y los
+clientes ejecutan este código por medio de un intérprete que sí
+es dependiente de la plataforma.
+ 
+<center><img src="multipla.gif" tppabs="http://www.dcc.uchile.cl/~lmateu/Java/Apuntes/images/multipla.gif"></center>
+
+<p>Para cuando se requiere mayor eficiencia, ya existen clientes que son
+capaces de compilar el byte-code hacia el código nativo de la máquina
+del cliente, en el momento de recibir el código.  Este compilador
+también es dependiente de la plataforma, pero lo importante es que los
+applets sean independientes de la plataforma.
+
+
+<p>
+<hr>
+<h3>El problema de la seguridad</h3>
+
+<p>El segundo problema que se presenta para hacer realidad el sueño de la
+internet es el riesgo que corre un usuario cuando recupera programas por
+medio de internet.  Después de ejecutarlo se puede encontrar con la
+sorpresa:
+
+<pre>
+> DIR
+
+FILE NOT FOUND
+</pre>
+
+Es decir el applet puede ser un programa malicioso que destruye el
+contenido de los discos del usuario.  Entonces el usuario afectado
+puede quejarse ante el administrador del servidor Web que contenía el
+applet malicioso.
+
+<p>Pero la respuesta puede ser tan simple como pedir disculpas:
+
+<cite>Lo siento, fuimos atacados por un hacker.</cite>
+
+<p>Java resuelve el problema de la seguridad de los usuarios haciendo
+que un applet no tenga acceso a:
+
+<ul>
+<li>Los archivos del cliente.
+<li>Los dispositivos del cliente (por ejemplo la impresora).
+<li>La red.
+</ul>
+
+Esto se logra colocando un monitor entre el applet y los recursos
+que posee el computador del cliente.
+
+<p><center><img src="monitor.gif" tppabs="http://www.dcc.uchile.cl/~lmateu/Java/Apuntes/images/monitor.gif"></center>
+
+<p>Actualmente el monitor prohibe el acceso al disco, la red y
+la impresora, pero a futuro el usuario podrá dar acceso gradual
+a estos dispositivos, dependiendo de la confianza que tenga
+del applet que está ejecutando.  El usuario podría considerar
+que los applets de su proveedor de Software son absolutamente
+confiables.
+
+<p>
+<hr>
+<h3>Seguridad del monitor</h3>
+
+<p>Un programa en C puede modificar cualquier parte de la memoria
+aprovechándose de que no hay chequeo de punteros nulos o índices
+fuera de rango.
+
+<xmp>
+char *p= 0;
+p[1000]= 15;
+</xmp>
+
+Este programa coloca un 15 en la dirección 1000.
+
+<p>Si Java es sintácticamente similar a C, ¿Puede un hacker
+confeccionar un applet que altere el monitor para conseguir acceso a
+los dispositivos prohibidos?
+
+<p>No, el lenguaje Java fue diseñado de modo que un applet sólo puede
+consultar y modificar la memoria que pidió legalmente para sus
+objetos.
+
+<p>Esto se logra porque Java es semánticamente muy distinto a C:
+
+<ul>
+<li>Java chequea los índices en arreglos.
+<li>Java no posee aritmética de punteros.
+<li>Java realiza chequeo estático y dinámico de tipos.
+</ul>
+
+<p>Por lo tanto Java es un lenguaje seguro: prohibe cualquier tipo de
+operación que pueda afectar la integridad del ambiente en que se
+ejecutan sus programas.
+
+<p>
+<hr><h3>Seguridad del código intermedio</h3>
+
+<p>Si bien un programa escrito en Java no puede ejecutar operaciones
+peligrosas, dijimos que lo que se almacena en el servidor es un
+código intermedio.  ¿Puede un hacker fabricar un applet, escribiendo
+directamente su código intermedio sin pasar por el fuente escrito
+en Java? Entonces: ¿Qué tan seguro es el código intermedio?
+
+<p>Sí, el código intermedio puede ser fabricado a mano.  Además el
+código intermedio no es seguro.  Pero el código intermedio ha sido
+diseñado para que pueda ser validado.  La validación consiste en
+verificar que en el código intermedio no se realicen operaciones
+peligrosas.  Todos los programas para navegar en Internet incluyen un
+<em>validador</em> del código intermedio.  El programa navegante rechaza
+aquellos programas que no pasan este proceso de validación.
+
+<p><center><img src="valida.gif" tppabs="http://www.dcc.uchile.cl/~lmateu/Java/Apuntes/images/valida.gif"></center>
+
+<p>Formalmente podríamos decir que el validador demuestra que existe un
+programa en Java cuya compilación es el código intermedio que se
+recuperó por la red.  En este caso se ejecuta el applet sin problemas.
+Pero si el validador encuentra secuencias de instrucciones que no
+pueden ser generadas por el compilador de Java entonces el applet se
+rechaza.
+
+</body>
+</html>
+

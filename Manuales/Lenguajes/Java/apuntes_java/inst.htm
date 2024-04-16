@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>El Lenguaje Java</title>
+</head>
+<body>
+
+<center><h3>Instrucciones</h3></center>
+
+Java posee prácticamente las mismas instrucciones de C.  A continuación
+presentamos las instrucciones más usadas:
+
+<ul>
+<p><li>Declaración:
+<pre>
+<em>tipo</em> <em>variables</em>;
+
+            int a, b=1, c;
+            boolean v,  w=true;
+</pre>
+<p><li>Asignación:
+<pre>
+<em>var</em>= <em>expresión</em>; // asignación
+
+            a= b + 1;
+</pre>
+
+<p><li>Grupo de instrucciones:
+<pre>
+{ <em>inst1 inst2 ... instn</em> }
+</pre>
+
+<p><li>Ejecución condicional
+<pre>
+if (<em>expresión booleana</em>)
+  <em>instrucción</em>
+
+            int a, b;
+            ...
+            if (a==1) b= 2;
+
+if (<em>expresión booleana</em>)
+  <em>instrucción</em>
+else
+  <em>instrucción</em>
+</pre>
+
+Ejemplos:
+
+<pre>
+  boolean v;
+  int a, b;
+  ...
+  if (v) b= 2;
+  else b= 3;
+
+  if (a) b= 2; // error, a no es boolean
+  if (a=1) b=4; // error, a=1 no es boolean
+                          // es una asignación
+</pre>
+
+<p><li>Ciclos simples:
+<pre>
+while (<em>expresión booleana</em>)
+  <em>instrucción</em>
+
+  int a=1;
+  while (a&lt;=5) a++;
+</pre>
+
+O también:
+
+<pre>
+do { <em>instrucciones</em> }
+  while (<em>expresión booleana</em>);
+</pre>
+
+<p><li>Salida de ciclos y término de iteraciones:
+
+<p>Dentro de los ciclos se pueden usar las instrucciones <tt>break</tt>
+para salir del ciclo y <tt>continue</tt> para terminar una
+iteración y comenzar la próxima.
+
+<p>Ejemplo:
+
+<xmp>
+while (i<MAX)
+{
+  ...
+  if ( Found("key") ) break;
+  ...
+}
+</xmp>
+
+<p><li>Ciclo abreviado:
+
+<pre>
+for (<em>instrucción</em>; <em>expresión booleana</em>; <em>instrucción</em>)
+  <em>instrucción</em>
+</pre>
+
+Ejemplo:
+
+<pre>
+  for (int a=1; a&lt;=5; a++)
+    b++;
+</pre>
+
+<p><li>Selección: <tt>switch/case</tt>
+
+<pre>
+  switch (<em>expresión</em>)
+  {
+  case <em>expresión-constante</em>: <em>instrucciones</em>
+  case <em>expresión-constante</em>: <em>instrucciones</em>
+  ...
+  default: <em>instrucciones</em>
+  }
+</pre>
+
+Ejemplo:
+
+<pre>
+  char c= ... ;
+
+  switch (c)
+  {
+  case 'a':
+  case 'b':
+  case 'c':
+      System.out.println("a, b o c");
+      break;
+  case 'd':
+      System.out.println("d"); // No termina en break
+  case 'e':
+      System.out.println("d o e!!"); 
+      break;
+  }
+</pre>
+
+Observación: Para mantener la compatibilidad con C, si no se especifica
+<tt>break</tt> al final de un caso, se continúa ejecutando las
+instrucciones del siguiente caso.  De esta forma se puede colocar
+un solo grupo de instrucciones para un conjunto de casos.
+
+<p><li>Retorno de un método:
+<pre>
+return <em>expresión</em>;
+</pre>
+</ul>
+
+<hr>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<html>
+<head>
+<title>Programación en Java</title>
+</head>
+<body>
+
+<center><h3>Variables y Tipos</h3></center>
+<p>
+Una variable en Java es un identificador que representa
+una palabra de memoria que contiene información.  El tipo
+de información almacenado en una variable sólo puede
+ser del tipo con que se declaró esa variable.
+
+<p>Una variable se declara usando la misma sintaxis de C.
+Por ejemplo la siguiente tabla indica una declaración,
+el nombre de la variable introducida y el tipo de información
+que almacena la variable:
+
+<center>
+<p>
+<table border=2 cellspacing=4 cellpadding=4>
+<tr> <th> Declaración </th> <th> identificador </th> <th> tipo </th> </tr>
+<tr> <td> int i; </td> <td> i </td> <td> entero </td> </tr>
+<tr> <td> String s; </td> <td> s </td> <td> referencia a string </td> </tr>
+<tr> <td> int a[]; </td> <td> a </td> <td> referencia a arreglo de enteros </td> </tr>
+<tr> <td> int[] b; </td> <td> b </td> <td> referencia a arreglo de enteros </td> </tr>
+</table>
+</center>
+
+<p>Java posee dos grandes categorías de tipos para las variables:
+<p>
+<center>
+<table border=2 cellspacing=4 cellpadding=4>
+<tr> <th> Tipos Primitivos</th> <th> referencias a Objetos </th> </tr>
+<tr> <td> int, short, byte, long</td> <td>Strings</td> </tr>
+<tr> <td> char, boolean </td>         <td>Arreglos</td> </tr>
+<tr> <td> float, double </td>         <td>otros objetos</td> </tr>
+</table>
+</center>
+
+<p>Las variables de tipos primitivos almacenan directamente
+un valor que siempre pertenece al rango de ese tipo.  Por ejemplo
+una variable <tt>int</tt> almacena un valor entero como 1, 2, 0, -1,
+etc.
+
+<p>Esto significa que al asignar una variable entera a otra variable
+entera, se copia el valor de la primera en el espacio que ocupa la
+segunda variable.
+
+<p>Las variables de tipo referencia a objetos en cambio almacenan
+direcciones y no valores directamente.  Una referencia a un objeto
+es la dirección de un área en memoria destinada a representar ese objeto.
+El área de memoria se solicita con el operador <tt>new</tt>.
+
+<p>Al asignar una variable de tipo referencia a objeto a otra variable se
+asigna la dirección y no el objeto referenciado por
+esa dirección.  Esto significa que ambas variables quedan refenciando
+el mismo objeto.
+
+<p>La diferencia entre ambas asignaciones se observa en la siguiente
+figura:
+
+<center><img src="asigobj.gif" tppabs="http://www.dcc.uchile.cl/~lmateu/Java/Apuntes/images/asigobj.gif"></center>
+
+<p>Esto tiene implicancias mayores ya que si se modifica el objeto
+referenciado por r, entonces también se modifica el objeto referenciado
+por s, puesto que son el mismo objeto.
+
+<p><em>En Java una variable no puede almacenar directamente un objeto,
+como ocurre en C y C++.</em>
+
+<p>Por lo tanto cuando se dice en Java que una variable es un string,
+lo que se quiere decir en realidad es que la variable es una
+referencia a un string.
+
+<p>
+<hr>
+<p>
+<h4>Tipos primitivos</h4>
+<p>
+En la siguiente tabla se indica para cada tipo primitivo
+el número de bits que se emplea en su representación y el rango
+de valores que se puede almacenar en las variables de estos tipos.
+
+<p>
+<center>
+<table border=2 cellspacing=4 cellpadding=4>
+<tr> <th> Tipo </th> <th> Bits </th> <th> Rango </th>
+     <th> Ejemplos </th> </tr>
+<tr> <td> int  </td> <td> 32   </td> <td> -2**31 .. 2**31-1 </td>
+     <td> 0, 1, 5, -120, ... </td> </tr>
+<tr> <td> short  </td> <td> 16   </td> <td> -2**15 .. 2**15-1 </td>
+     <td> 0, 1, 5, -120, ... </td> </tr>
+<tr> <td> byte  </td> <td> 8   </td> <td> -2**7 .. 2**7-1 </td>
+     <td> 0, 1, 5, -120, ... </td> </tr>
+<tr> <td> long  </td> <td> 64   </td> <td> -2**63 .. 2**63-1 </td>
+     <td> 0, 1, 5, -120, ... </td> </tr>
+<tr> <td> boolean  </td> <td> 1   </td> <td> n/a </td>
+     <td> false, true </td> </tr>
+<tr> <td> char  </td> <td> 16   </td> <td> n/a </td>
+     <td> 'a', 'A', '0', '*', ... </td> </tr>
+<tr> <td> float  </td> <td> 32   </td> <td> IEEE </td>
+     <td> 1.2 </td> </tr>
+<tr> <td> double  </td> <td> 64   </td> <td> IEEE </td>
+     <td> 1.2 </td> </tr>
+</table>
+</center>
+
+<p>Se dice que un tipo A es de mayor rango que un tipo B si A es
+un superconjunto de B.  Esto quiere decir que las variales de tipo
+B siempre se pueden asignar a variables de tipo A (eventualmente
+con pérdida de significancia).
+
+<p>Por ejemplo int es de mayor rango que short, que a su vez es de
+mayor rango que byte.  Float y double son de mayor rango que int.
+Double es de mayor rango que float.
+
+<p>Esto se puede resumir en:
+
+<p><center>double > float > long > int > short > byte</center>
+
+<p>
+<hr>
+<p>
+<h4>Expresiones</h4>
+
+<p>En Java cada expresión tiene un tipo que se determina durante
+la compilación, es decir es independiente del valor durante la ejecución.
+Una expresión puede ser:
+
+<ul>
+<p><li>Una constante: 1, 1.0, true, etc.
+
+<p>El tipo de esta expresión es el tipo de la constante.  En el ejemplo
+los tipos son int, double y boolean respectivamente.
+
+<p><li>Una variable: i, s, a
+
+<p>El tipo de esta expresión es el tipo con que se declaró aquella variable.
+En el ejemplo los tipos son entero, referencia a string y referencia a
+arreglo.
+
+<p><li>El resultado de una operación: i+1, a[1], etc.
+
+<p>El tipo se determina en función de los tipos de las expresiones
+que se indican como argumentos de la operación.
+
+</ul>
+
+Java tiene prácticamente los mismos operadores de C y C++.
+Cada operador acepta una, dos o tres expresiones de diversos tipos.
+A veces un operador no está definido para argumentos de ciertos tipos.
+Por ejemplo la resta entre strings no esta definida.  Pero la
+suma de strings esta definida como la concatenación.
+
+A continuación veremos los operadores más frecuentes en Java.
+
+<center>
+<h4>Operadores binarios entre expresiones numéricas</h4>
+<p>
+<table border=2 cellspacing=4 cellpadding=4>
+<tr> <th> Símbolo </th> <th> Operación </th> </tr>
+<tr> <td> + </td> <td> Suma </td> </tr>
+<tr> <td> - </td> <td> Resta </td> </tr>
+<tr> <td> * </td> <td> Multiplicación </td> </tr>
+<tr> <td> / </td> <td> División </td> </tr>
+<tr> <td> % </td> <td> Resto </td> </tr>
+</table>
+</center>
+
+<p>Los operandos y el resultado de estos operadores pueden ser:
+<p>
+
+<center>
+<table border=2 cellspacing=4 cellpadding=4>
+<tr> <th> Dominio </th> <th> Rango </th> </tr>
+<tr> <td> int*int </td> <td> int </td> </tr>
+<tr> <td> long*long </td> <td> long </td> </tr>
+<tr> <td> float*float </td> <td> float </td> </tr>
+<tr> <td> double*double </td> <td> double </td> </tr>
+</table>
+</center>
+
+<ul>
+<li> Al operar con byte y short, estos se convierten implícitamente
+a int.
+<li> Cuando los tipos de los operandos no coinciden, el operando de menor
+rango se convierte implícitamente al tipo de mayor rango.
+El resultado de la operación es del tipo de mayor rango.
+</ul>
+
+Ejemplos:
+
+<xmp>
+    int a=1, b=2;
+    int c= a + b;
+
+    short s= 1;
+    int d= s + c; // s se convierte a int
+
+    float f= 1.0 + a; // a se convierte a float
+</xmp>
+
+<hr>
+<p>
+
+<center>
+<h4>Operadores unarios sobre expresiones numéricas</h4>
+<p>
+<table border=2 cellspacing=4 cellpadding=4>
+<tr> <th> Símbolo </th> <th> Operación </th> <th> Argumento </th> </tr>
+<tr> <td> + exp </td> <td> nada </td> <td> int | long | float | double </td> </tr>
+<tr> <td> - exp </td> <td> cambio de signo </td> <td> int | long | float | double </td> </tr>
+</table>
+</center>
+
+<p>El resultado de estas operaciones es siempre del mismo tipo
+del operando.
+
+<p>Si el operando es byte o short entonces se convierte a int,
+se realiza la operación y el resultado es un int.
+
+<center>
+<h4>Operadores sobre variables enteras</h4>
+<table border=2 cellspacing=4 cellpadding=4>
+<tr> <th> Símbolo </th> <th> Operación </th> <th> Argumento </th> </tr>
+<tr> <td> ++ var </td> <td> preincremento </td> <td> int | short | byte | long </td> </tr>
+<tr> <td> -- var </td> <td> predecremento </td> <td> int | short | byte | long </td> </tr>
+<tr> <td> var ++ </td> <td> postincremento </td> <td> int | short | byte | long </td> </tr>
+<tr> <td> var -- </td> <td> postdecremento </td> <td> int | short | byte | long </td> </tr>
+</table>
+</center>
+<p>
+El resultado de estas operaciones es siempre del mismo tipo del
+operando.
+<p>
+Ejemplos:
+
+<xmp>
+    int a=1, b=2;
+    int c= +a;
+    int d= -(c+1);
+
+    b= a++; // b= 1, a=2
+    a= --b; // a=b= 0
+
+    (a+1)++; // error a+1 no es una variable
+    float f= a;
+    f++;     // error f no es entero
+</xmp>
+
+<hr>
+<p>
+<center>
+<h4>Operadores binarios relacionales</h4>
+<p>
+<table border=2 cellspacing=4 cellpadding=4>
+<tr> <th> Símbolo </th> <th> Operación </th> </tr>
+<tr> <td> > </td> <td> mayor </td> </tr>
+<tr> <td> &lt; </td> <td> menor </td> </tr>
+<tr> <td> >= </td> <td> mayor igual </td> </tr>
+<tr> <td> &lt;= </td> <td> menor igual </td> </tr>
+<tr> <td> == </td> <td> igual </td> </tr>
+<tr> <td> != </td> <td> distinto </td> </tr>
+</table>
+</center>
+
+<p>Los operandos y el resultado de estos operadores pueden ser:
+<p>
+
+<center>
+<table border=2 cellspacing=4 cellpadding=4>
+<p>
+<tr> <th> Dominio </th> <th> Rango </th> </tr>
+<tr> <td> int*int </td> <td> boolean </td> </tr>
+<tr> <td> long*long </td> <td> boolean </td> </tr>
+<tr> <td> float*float </td> <td> boolean </td> </tr>
+<tr> <td> double*double </td> <td> boolean </td> </tr>
+</table>
+</center>
+<p>
+<hr>
+<p>
+
+<center>
+<h4>Operadores entre valores booleanos</h4>
+<p>
+<table border=2 cellspacing=4 cellpadding=4>
+<tr> <th> Operación </th> <th> Significado </th> </tr>
+<tr> <td> exp && exp </td> <td> y-lógico </td> </tr>
+<tr> <td> exp || exp </td> <td> o-lógico </td> </tr>
+<tr> <td> ! exp </td> <td> negación </td> </tr>
+</table>
+</center>
+
+<p>
+Los operandos y el resultado de estos operadores son siempre
+booleanos.
+
+<p>Los operadores && y || evalúan la expresión del lado derecho
+sólo si es necesario.
+
+<p>Ejemplos:
+
+<xmp>
+    int a=1, b=2;
+
+    boolean v= ! a<=b && a==5 || b!=4;
+    boolean w= ((! a<=b) && a==5) || b!=4;
+
+    boolean w2= a<=b && a; // error a no es boolean
+</xmp>
+
+<hr>
+<p>
+<h4>Conversiones: cast</h4>
+
+<ul>
+<li>Java realiza conversiones implícitas de menor a mayor rango.
+<p><li>Eventualmente hay pérdida de significacia al convertir
+enteros a punto flotante.
+<p><li>Todas las conversiones de mayor a menor rango deben ser
+explícitas por medio del operador de cast:
+
+<blockquote>
+(<em>tipo</em>)<em>expresión</em>
+</blockquote>
+</ul>
+
+Ejemplos:
+
+<xmp>
+    int i= 1;
+    short s= 2;
+    int j= i+s;
+
+    s= a; // error short < int
+    s= (short)a; // Ok
+
+    i= 1.0; // error int < double
+    i= (int)1.0; // Ok
+
+    f= 1.0; // error float < double
+    f= (float)1.0; // Ok
+    f= 1.0f; // Ok
+
+    boolean v=(boolean)a; // error no existe conversión
+</xmp>
+
+<hr>
+<p>
+<center>
+<h4>Precedencia de Operadores</h4>
+<p>
+<xmp>
+. () []
+unarios: - + (cast)
+* / %
++ -
+< > <= >= == !=
+!
+||
+&&
+</xmp>
+</center>
+
+<hr>
+</body>
+</html>

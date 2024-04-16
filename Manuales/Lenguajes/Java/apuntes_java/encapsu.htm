@@ -1,0 +1,128 @@
+<html>
+<head>
+<title></title>
+</head>
+<body>
+
+<center><h3>Encapsulamiento de Clases</h3></center>
+
+Definición previa: un <em>paquete</em> es una colección de clases
+que se encuentran en el mismo directorio.
+<p>
+Las clases permiten implementar <em>tipos de datos abstractos</em>.
+El problema que se presenta es que desde cualquier clase se
+puede accesar los campos de un objeto perteneciente a otra clase.
+Esto es una violación al principio de abstracción que dice que
+un tipo de datos abstracto sólo puede ser manipulado a través de
+las operaciones que se definen para éste.
+<p>
+<h4>Visibilidad de Campos y Métodos</h4>
+<p>
+En java al definir una clase se puede controlar la visibilidad que
+tendrán sus campos y métodos al exterior de la clase.  Este control
+se efectúa de la siguiente forma:
+
+<blockquote><pre>
+class A
+{
+  <strong>private</strong> int privx;
+  <strong>protected</strong> int protb;
+  <strong>public</strong> int pubc;
+  int paqd;
+
+  <strong>private</strong> void MetPriv() { ... }
+  <strong>protected</strong> void MetProt() { ... }
+  <strong>public</strong> void MetPub(A a)
+  {
+  // Un campo siempre es visible
+  // en la clase en donde se define
+    ... privx ... a.privx ...
+    ... protb ... a.protb ...
+    ... pubc  ... a.pubc ...
+  // Un método siempre es visible
+  // en la clase en donde se define
+    MetPriv(); a.MetPriv();
+  }
+  void MetPaq() { ... }
+}
+</pre></blockquote>
+
+Las palabras <strong>private</strong>, <strong>protected</strong> y
+<strong>public</strong> son atributos de un campo o un método y su significado
+es el siguiente:
+
+<ul>
+<p><li><strong>private</strong>: El campo o método sólo es visible
+dentro de la clase donde se define.
+
+<p><li><strong>protected</strong>: El campo o método es visible
+en la clase en donde se define y en cualquiera de sus subclases.
+
+<p><li><strong>public</strong>: El campo o método es visible
+en cualquier clase.
+
+<p><li>Ninguna de las anteriores: El campo o método es visible
+en cualquiera de las clases pertenecientes al paquete en donde
+se define.
+</ul>
+
+Ejemplo:
+
+<blockquote><pre>
+class B
+{
+  public void MetB()
+  {
+    A a= new A();
+    a.<strong>pubc</strong>= 1;   // Ok
+    a.<strong>priva</strong>= 2;  // error, privado
+    a.<strong>protb</strong>= 3;  // error, B no es
+                 // subclase de A
+
+    a.<strong>MetPub</strong>();  // Ok
+    a.<strong>MetPriv</strong>(); // error, privado
+  }
+}
+</pre></blockquote>
+
+<hr>
+<h4>Visibilidad de Clases</h4>
+<p>
+Al declarar una clase se puede especificar que es pública usando
+el atributo <strong>public</strong>.  De este modo la clase podrá
+ser usada por cualquier otra clase.  Si la clase no es pública entonces
+la clase sólo puede ser usada dentro del paquete que la contiene.
+
+<pre><blockquote>
+<strong>public</strong> class Box extends GraphObj
+{ ... }
+</blockquote></pre>
+
+Podemos hacer un resumen de los atributos que pueden tener campos,
+métodos o clases:
+
+<ul>
+<li>Campo: {private | public | protected} {final} {static}
+<p><li>Método: {private | public | protected} {final | abstract} {static}
+<p><li>Clase: {public} {final | abstract}
+</ul>
+
+Sólo se puede especificar uno de los atributos puestos en la misma llave.
+<p>
+<hr>
+<p>
+<h4>El nombre de archivo</h4>
+
+Un archivo puede contener a lo más una clase pública, en cuyo caso
+el nombre del archivo debe ser el mismo de la clase pública, más
+la extensión <em>.java</em>.  El resto de las clases del archivo sólo
+serán visibles dentro del paquete.
+
+Es usual que los archivos contengan una sola clase, pero también
+a veces se agregan otras clases al archivo cuando éstas son usadas
+sólo dentro de ese mismo archivo.
+
+<p>
+<hr>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<html>
+<head>
+<title>El Lenguaje Java</title>
+</head>
+<body>
+
+<center><h3>El Kit Gráfico: AWT</h3></center>
+
+AWT permite hacer interfaces gráficas mediante artefactos de interacción
+con el usuario, como botones, menús,
+texto, botones para selección, barras de deslizamiento, ventanas
+de diálogo, selectores de archivos, etc.  Y por supuesto despliegue
+gráfico general.  
+
+La siguiente figura muestra algunos de estos artefactos de interacción:
+<p>
+<center>
+<applet code="GuiApp.class" tppabs="http://www.dcc.uchile.cl/~lmateu/Java/Apuntes/GuiApp.class" xcodbase="Awt" width=477 height=191>
+<img src="widgets.gif" tppabs="http://www.dcc.uchile.cl/~lmateu/Java/Apuntes/images/widgets.gif">
+</applet>
+</center>
+<p>
+Estos artefactos de interacción se denominan <em>widgets</em>.
+En la ventana los artefactos se organizan en una jerarquía de componentes
+gráficas:
+<ul>
+<li>En la parte superior hay una etiqueta que dice <strong>label</strong>.
+La aplicación usa las etiquetas para mostrar texto.
+<p><li>A la izquierda hay un área para texto  que contiene:
+   <ul>
+   <li>Un superficie para ingresar texto
+   <li>Una barra de deslizamiento vertical
+   <li>Una barra de deslizamiento horizontal
+   </ul>
+<p><li>A la derecha se observa una lista de ítemes que contiene:
+   <ul>
+   <li>Una superficie para mostrar texto
+   <li>Una barra de deslizamiento (sólo aparece si es necesario)
+   </ul>
+<p><li>Al centro hay un canvas, donde la aplicación dibuja figuras
+geométricas y/o texto.
+<p><li>Abajo hay un panel de componentes con:
+   <ul>
+   <li>Un campo para ingreso de texto (una sola línea)
+   <li>Un botón
+   <li>Un botón de encendido/apagado que dice <strong>checkbox</strong>
+   </ul>
+</ul>
+Es el programador de la interfaz gráfica el que diseña esta jerarquía
+de componentes.
+<p>
+<hr>
+<p>
+<h4>Jerarquía de clases de AWT</h4>
+Cada una de las componentes de una ventana en AWT se representa mediante
+uno o más objetos de la aplicación.  Estos objetos pertenecen a las
+clases que se observan en la siguiente jerarquía de clases para AWT:
+<p>
+<center><img src="componen.gif" tppabs="http://www.dcc.uchile.cl/~lmateu/Java/Apuntes/images/componen.gif"></center>
+<p>
+La clase de los contenedores sirve para crear áreas en la ventana
+cuyo único fin es colocar otras componentes en su interior.
+Hay dos tipos de contenedores:
+
+<ul>
+<p><li>Panel: sirve para colocar botones, etiquetas, etc.  En particular
+un applet es un panel.
+<p><li>Window: sirve para crear nuevas ventanas independientes
+del browser Web.  Es decir ventanas que serán manejadas por el
+administrador de ventanas de la plataforma (Motif, Windows, etc.).
+Una ventana independiente puede ser:
+  <ul>
+  <p><li>Frame es un tipo de ventana en donde se pueden colocar menús.
+  <p><li>Dialog es un tipo de ventana para dialogar con el usuario.
+  Se usan para colocar botones, etiquetes, etc.  Es decir cumple la
+  misma función que un panel, pero en una ventana independiente.  En
+  particular FileDialog es un artefacto para que el usuario escoja
+  un archivo.
+  </ul>
+</ul>
+<p>
+<hr>
+<p>
+<h4>Construcción de una jerarquía de artefactos de interacción</h4>
+
+Un artefacto de interacción se construye creando el objeto correspondiente
+de la jerarquía de clases.  Por ejemplo el botón de la ventana de la figura
+se creó con:
+<blockquote><pre>
+Button boton= new Button("Button")
+</pre></blockquote>
+El argumento que recibe el constructor es la etiqueta que se colocará sobre
+el botón.  El aspecto y comportamiento de este botón es dependiente
+de la plataforma.  La aplicación se basa sólo en que será informada cuando
+el botón sea presionado por el usuario para ejecutar alguna acción.
+<p>
+Los otros artefactos se crearon con:
+<ul>
+<li>Etiquetas:
+<blockquote><pre>
+Label etiq= new Label("Label", Label.CENTER);
+</pre></blockquote>
+Label.CENTER es una constante de la clase Label y puesta como argumento
+en el constructor indica que el nombre de la etiqueta estará centrado
+en el rectángulo que se le asigne dentro de la ventana.
+
+<p><li>Areas de texto:
+<blockquote><pre>
+TextArea textArea= new TextArea("TextArea", 5, 20);
+</pre></blockquote>
+Usualmente un artefacto posee varios constructores con distintos parámetros.
+En este caso se especificó que el contenido inicial es "TextArea" y
+se necesitan 5 filas y 20 columnas.  Sin embargo el contenedor puede
+asignar más espacio para distribuir mejor los artefactos en la ventana.
+
+<p><li>La lista de ítemes:
+<blockquote><pre>
+List lista = new List(3, false);
+for (int i = 1; i &lt;= 10; i++) {
+  lista.addItem("List item " + i);
+}
+</pre></blockquote>
+Las componentes de AWT se manipulan mediante métodos.  En éste
+la lista se llena usando <strong>addItem</strong>.
+<p><li>Etc.
+</ul>
+<hr>
+<p>
+<h4>Artefactos complejos</h4>
+<p>
+Los artefactos que hemos visto hasta el momento son simples porque
+la plataforma sabe como dibujarlos y qué tamaño deben ocupar.  Es
+decir la aplicación no necesita especificar tamaño ni forma.
+<p>
+El canvas es un artefacto complicado porque AWT no conoce en absoluto
+el aspecto que debe tener en la ventana.  Por lo tanto es la aplicación
+la que se debe preocupar de especificar qué tamaño debe tener y cómo se
+dibuja.
+
+Lo anterior se logra creando una nueva clase derivada a partir de Canvas.
+En ella se redefinen algunos métodos que realizan las funciones
+que un canvas normal no sabe hacer:
+
+<blockquote><pre>
+class MyCanvas extends Canvas
+{
+    public void paint(Graphics g) {
+        int w = size().width;
+        int h = size().height;
+        g.drawLine(10,10, 100,100);
+    }
+
+    public Dimension minimumSize() {
+        return new Dimension(150,130);
+    }
+
+    public Dimension preferredSize() {
+        return minimumSize();
+    }
+}
+</pre></blockquote>
+
+El principio es que todas las componentes tienen un método paint que
+AWT invoca cada vez que la componente se descubre y por lo tanto hay
+que redibujarla.  La mayoría de las componentes (como botones,
+listas, etc.) saben dibujarse porque en la clase respectiva se redefinió
+el método paint con el código apropiado para mostrar su aspecto.
+<p>
+Sin embargo el aspecto de un canvas es absolutamente dependiente de
+la aplicación. Por lo tanto es la aplicación la que redefine paint con
+sus propias instrucciones para dibujar el artefacto.  Si este
+método no se redefine, el canvas no será dibujado cuando la ventana
+sea descubierta.  El método paint recibe un argumento g que acepta
+primitivas gráficas como drawLine.
+<p>
+Del mismo modo, AWT invoca los métodos minimunSize y preferredSize
+para conocer el tamaño mínimo y preferido de una componente.  Botones,
+listas, barras de deslizamiento, etc. han redefinido estos métodos.
+<p>
+Entonces en el nuevo canvas también se redefinen estos métodos para
+indicar el tamaño apropiado.  Si estos no se redefinen el canvas
+podría quedar reducido a un tamaño 0.  El nuevos canvas puede determinar
+su tamaño real en la ventana consultando su propio método
+<strong>size</strong>.
+<p>
+<hr>
+<h4>Organizando los artefactos en un contenedor</h4>
+<p>
+Los contenedores usan organizadores (<em>layout manager</em>) para distribuir
+los artefactos en la superficie de despliegue de la mejor forma.
+Cada tipo de contenedor tiene su propio organizador.  Por ejemplo
+los paneles usan FlowLayout que coloca los artefactos de izquierda
+a derecha.
+<p>
+Para el contenedor de la raiz (Gui) definimos explícitamente
+un organizador por medio de:
+<blockquote><pre>
+public class Gui extends Frame {
+  Gui() {
+    setLayout(new BorderLayout());
+    ...
+  }
+</pre></blockquote>
+Observe que como no se especifica objeto en la invocación, el método
+se aplica al objeto principal, que en este caso es la raíz (un frame).
+<p>
+Para crear el panel y colocar en su interior
+los artefactos se usa:
+
+<blockquote><pre>
+// Crear panel
+Panel bottomPanel = new Panel();
+
+// Crear artefactos
+texto= new TextField("TextField");
+boton= new Button("Button");
+check= new Checkbox("Checkbox");
+
+// Agregarlos al panel
+bottomPanel.add(texto);
+bottomPanel.add(boton);
+bottomPanel.add(check);
+</pre></blockquote>
+
+Para colocar los artefactos en el frame (es decir en un objeto
+de la clase Gui) se usa el método add, pero con un argumento adicional
+que dice si cada artefacto se agrega a la izquierda, arriba, etc.
+Esto es específico del organizador BorderLayout.
+
+<blockquote><pre>
+// Define el organizador
+setLayout(new BorderLayout());
+
+// Crear artefactos
+...
+
+// Agregar artefactos
+add("Center", canvas);
+add("North", etiqueta);
+add("West", areaTexto);
+add("East", lista);
+
+// Agregar el panel
+add("South", bottomPanel);
+</pre></blockquote>
+
+Cuando se invoca <strong>pack</strong> en el frame se invoca el
+organizador que asigna un rectángulo a cada artefacto.  A estas
+alturas todavía no se muestra en la pantalla la ventana.
+Para realizar esto se invoca el método <strong>show</strong> del frame.
+
+<p>
+<hr>
+</body>
+</html>

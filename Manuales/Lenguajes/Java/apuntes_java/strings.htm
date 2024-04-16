@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>El Lenguaje Java</title>
+</head>
+<body>
+
+<center><h3>Strings</h3></center>
+
+Los strings son secuencias de caracteres inmodificables.
+A continuación presentamos las operaciones más frecuentes
+con strings:
+
+<ul>
+<p><li>Declaración de un string:
+<pre>
+String s= "Hola, ";  // Declaración con asignación
+String r= "esto es un string";
+String t;            // Declaración sin asignación
+</pre>
+
+<p><li>Despliegue de un string:
+<pre>
+System.out.println(s);
+System.out.println(t); // Error t no tiene valor
+</pre>
+
+<p><li>Asignación de strings:
+<pre>
+t= "Chao";
+</pre>
+
+<p><li>Concatenación de strings:
+<pre>
+s + r  // "Hola, esto es un string"
+</pre>
+
+El resultado de esta expresión es de tipo string.  Ejemplo:
+<pre>
+t= s + "que tal"; // "Hola, que tal"
+</pre>
+
+<p><li>Tamaño de un string:
+<pre>
+s.length()     // 6
+(s+r).length() // s.length()+r.length()
+</pre>
+
+El resultado de esta expresión es de tipo int.
+
+<p><li>Extracción de un caracter:
+<pre>
+s.charAt(0)  // 'H'
+s.charAt(4)  // ','
+</pre>
+
+El resultado de esta expresión es de tipo char.
+
+<p><li>Extracción de subsecuencias:
+<pre>
+s.substring(2,3)  // "la,"
+</pre>
+
+El resultado de esta expresión es de tipo string.
+
+<p><li>Comparación de strings:
+<pre>
+s.equals("Hola, ")   // true
+s=="Hola, "          // false, compara punteros
+s.compareTo(r)       // <0, ==0 o >0
+</pre>
+
+Ejemplos:
+
+<pre>
+if (s.equals("Hola, ")) ...   // true
+if (s=="Hola, ") ...          // false, compara punteros
+t= r;
+if (s==r) ...                 // true
+if (s.compareTo(r)) ...       // <0, ==0 o >0
+if (s&lt;r) ...                  // error
+</pre>
+
+<p><li>Conversión a string:
+<pre>
+int n= 5;
+System.out.println("n= "+n);   // n= 5
+String t= "El numero n es "+n;
+</pre>
+
+Si uno de los operandos de + es de tipo string, el otro
+se convierte implícitamente a string.
+
+</ul>
+
+<h4>Operaciones prohibidas:</h4>
+
+<ul>
+<p><li>Modificación de un caracter:
+
+<pre>
+s[0]= 'h';        // error
+s.charAt(0)= 'h'; // error
+</pre>
+
+Los strings no se pueden modificar como en C.
+
+<p><li>Avanzar al siguiente caracter:
+
+<pre>
+s= s+1; // error
+</pre>
+
+Java no posee aritmética de punteros.
+</ul>
+
+<hr>
+</body>
+</html>
