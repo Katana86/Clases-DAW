@@ -1,0 +1,83 @@
+<HTML>
+<HEAD><TITLE>Nikki's Diner Example</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<PRE>
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Welcome to Nikki's Diner&lt;/TITLE&gt;
+
+&lt;STYLE TYPE="text/javascript"&gt;
+    tags.P.marginLeft = 50;
+    classes.plainPara.P.marginLeft=0;
+&lt;/STYLE&gt;
+
+
+&lt;/HEAD&gt;
+
+&lt;BODY BGCOLOR="#FFFFFF"&gt;
+&lt;HR&gt;
+&lt;H1 align = "center"&gt;Welcome to Nikki's Diner!&lt;/H1&gt;
+&lt;HR&gt;
+
+&lt;P  CLASS=plainPara&gt;Nikki's Diner is the best place for vegan food in Netscapeville.
+&lt;/P&gt;
+
+&lt;P CLASS=plainPara&gt;You can find us at the corner of Communicator Street and Navigator Way.
+We're open from 10 am to 6 pm every day.
+We don't take reservations, so just come on down.
+We guarantee that after you visit us once, you'll be back on a regular basis!
+&lt;/P&gt;
+
+&lt;P CLASS=plainPara&gt;We have an extensive regular menu of tasty meals in addition to our daily specials.
+&lt;/P&gt;
+
+&lt;P CLASS=plainPara &gt;You can use the following menu (no pun intended) to view the Specials for any day this week. Our specials change every week.
+&lt;/P&gt;
+
+&lt;!-- let the top of the form layer fall in the natural position--&gt;
+&lt;LAYER LEFT=50 &gt;
+&lt;P CLASS=plainPara&gt; Please select a day of the week:&lt;/P&gt;
+
+    &lt;FORM NAME=form1&gt;
+
+     &lt;SELECT name=menu1 onChange="showSpecials(this.selectedIndex); return false;"&gt;
+        &lt;OPTION &gt;Saturday
+        &lt;OPTION &gt;Sunday
+        &lt;OPTION &gt;Monday
+        &lt;OPTION &gt;Tuesday
+        &lt;OPTION &gt;Wednesday
+        &lt;OPTION &gt;Thursday
+        &lt;OPTION &gt;Friday
+     &lt;/SELECT&gt;
+   &lt;/FORM&gt;
+&lt;/LAYER&gt;
+
+&lt;LAYER NAME="menu" LEFT=50
+   TOP=&{"&"};{document.layers[0].top+document.layers[0].document.height;};
+   WIDTH=400
+   BGCOLOR="BBFFBB" src="Specials/sat.htm"&gt;
+
+&lt;/LAYER&gt;
+
+
+&lt;SCRIPT&gt;
+function showSpecials(n) {
+   var specials = document.layers["menu"];
+    if (n == 0) specials.src = "specials/sat.htm";
+    if (n == 1) specials.src = "specials/sun.htm";
+    if (n == 2) specials.src = "specials/mon.htm";
+    if (n == 3) specials.src = "specials/tues.htm";
+    if (n == 4) specials.src = "specials/wed.htm";
+    if (n == 5) specials.src = "specials/thurs.htm";
+    if (n == 6) specials.src = "specials/fri.htm";
+}
+
+&lt;/SCRIPT&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+</BODY>
+</HTML>
+
+

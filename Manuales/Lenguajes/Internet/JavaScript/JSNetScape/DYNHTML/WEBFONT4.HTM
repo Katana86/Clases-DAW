@@ -1,0 +1,165 @@
+<html><head>
+<title>Dynamic HTML in Netscape Communicator PR5</title>
+<LINK REL=STYLESHEET 
+ TYPE="text/css"
+href="cstyle1.htm">
+
+</head>
+<body bgcolor=#ffffff>
+<FONT SIZE=-1>
+
+<a href="content.htm">[Contents]</a> <a href="webfont3.htm">[Prev page]</a> </FONT>
+<FONT SIZE=-1 COLOR="#444444">
+[Next page]
+[Last page]
+</FONT>
+
+<HR NOSHADE SIZE=1>
+
+
+<a name="1032362">
+<CENTER>
+<H2>
+<FONT SIZE=+3>C</FONT>HAPTER 3.1<BR> 
+<FONT SIZE=+3>D</FONT>YNAMIC 
+<FONT SIZE=+3>F</FONT>ONTS
+</H2>
+</CENTER>
+
+<P><IMG SRC="images/bann02.gif" HEIGHT=6 WIDTH=640><!----------------------------------------------------------------------------->
+</P>
+</a><a name="1032342">
+<P>Font enhancements in Communicator include the ability to dynamically incorporate fonts into a document and send the font with the document, just like you can send an image with a document.</p>
+</a><a name="1032108">
+<P>When writing a document that uses dynamic fonts, you need to specify the source for the font definition at the top of the document. You can specify the source for a font definition either by using a style sheet or using the &lt;LINK&gt; tag.  </p>
+</a><a name="1032315">
+<P>Referencing a style sheet in CSS1 syntax would look like this:  </p>
+</a><a name="1032110">
+<PRE>&lt;STYLE TYPE="text/css"&gt;&lt;!-- 
+</PRE>
+</a><a name="1032111">
+<PRE>    @fontdef url(http://home.netscape.com/fonts/sample.pfr);  
+</PRE>
+</a><a name="1032112">
+<PRE>--&gt;&lt;/STYLE&gt;  
+</PRE>
+</a><a name="1032113">
+<P>Referencing a style sheet using a link would look like:</p>
+</a><a name="1032114">
+<PRE>&lt;LINK REL=fontdef SRC="http://www.netscape.com/fonts/sample.pfr"&gt; 
+</PRE>
+</a><a name="1032115">
+<P>where <code>sample.pfr</code> is the font definition file.  </p>
+</a><a name="1032116">
+<P>The font definition file may contain more than one font.</p>
+</a><a name="1032117">
+<P>After specifying the source for a font definition file, you can use fonts in that file for the value of the <code>FACE</code> attribute in the <code>&lt;FONT&gt;</code> tag.</p>
+</a><a name="1032470">
+<P>When a user reads a web page that uses linked fonts, the font is automatically downloaded to their system.</p>
+</a><a name="1032489">
+<P>For more information about dynamic fonts, and to download font definition files, see:</p>
+</a><a name="1032453">
+<A HREF="http://home.netscape.com/comprod/products/communicator/fonts/index.html" TARGET=_top>
+<PRE>http://home.netscape.com/comprod/products/communicator/fonts/index.html</PRE></A><p>
+</a><a name="1032535">
+<P>Another information resource is:</p>
+</a><a name="1032519">
+<A HREF="http://www.bitstream.com/world/" TARGET=_top>
+<PRE>http://www.bitstream.com/world/</PRE></A><p>
+</a><a name="1032126">
+<h1> HTML Tags and Attributes for Specifying Fonts</h1>
+</a><a name="1032127">
+<P>The <code>&lt;FONT&gt;</code> tag takes new <code>POINT-SIZE</code> and <code>WEIGHT</code> attributes, in addition to the other attributes it already supports.</p>
+</a><a name="1032128">
+<P>The <code>POINT-SIZE</code> attribute indicates the point size of the font. For example:</p>
+</a><a name="1032129">
+<PRE>&lt;P&gt; <br>
+&lt;FONT FACE="Monospace" POINT-SIZE=18&gt; 
+</PRE>
+</a><a name="1032232">
+<PRE>This text appears in 18 pt monspace font.&lt;/FONT&gt;<br>
+&lt;/P&gt;
+</PRE>
+</a><a name="1032130">
+<P>The <code>POINT_SIZE</code> attribute lets you set exact point sizes. (The existing <code>SIZE</code> attribute lets you set the font size relative to the existing size, for example, "+2" or "-2".)</p>
+</a><a name="1032131">
+<P>The <code>WEIGHT</code> attribute indicates the weight, or "boldness" of the font. The value is from 100 to 900 inclusive (in steps of 100), where 100 indicates the least bold value, and 900 indicates the boldest value. </p>
+</a><a name="1032132">
+<P>If you use the <code>&lt;B&gt;</code> tag to indicate a bold weight, the maximum boldness is always used. The <code>WEIGHT</code> attribute allows you to specify degrees of boldness, rather than just "bold" or "not bold,"</p>
+</a><a name="1032133">
+<P>For example:</p>
+</a><a name="1032134">
+<PRE>&lt;P&gt;
+</PRE>
+</a><a name="1032135">
+<PRE>&lt;FONT FACE="MONOSPACE" POINT_SIZE=18 WEIGHT=600&gt; 
+</PRE>
+</a><a name="1032233">
+<PRE>This text appears in 18 pt monospace font.It is fairly bold, but it 
+could be even bolder if it really wanted to be.&lt;/FONT&gt;
+</PRE>
+</a><a name="1032136">
+<PRE>&lt;/P&gt;
+</PRE>
+</a><a name="1032137">
+<h1> Linking to Fonts</h1>
+</a><a name="1032138">
+<P>If you use a system font in your web page, you do not need to link the font definition file into your web page. </p>
+</a><a name="1032139">
+<P>However, if you use a non-system font, you need to link the font definition file that defines the font into your web page using the &lt;LINK&gt; tag. </p>
+</a><a name="1032140">
+<PRE>&lt;LINK REL="fontdef" SRC=URL&gt; 
+</PRE>
+</a><a name="1032141">
+<P>For example, suppose you have font definition files called <code>bootsfont.pfr</code> and <code>nikkifont.pfr</code>, you can link them into your web page as follows:</p>
+</a><a name="1032142">
+<PRE>&lt;LINK REL="fontdef" SRC="http://toplevel/fonts/bootsfont.pfr"&gt;
+</PRE>
+</a><a name="1032143">
+<PRE>&lt;LINK REL="fontdef" SRC="http://toplevel/fonts/nikkifont.pfr"&gt;
+</PRE>
+</a><a name="1032144">
+<P>The source URL can be any valid URL. A font definition file can contain definitions for multiple font faces.</p>
+</a><a name="1032145">
+<P>When an HTML page with a <code>&lt;LINK&gt;</code> tag for a font definition file is displayed in a browser, the source URL for the font definition is automatically downloaded. The font definition file is loaded asynchronously so that the HTML page doesn't have to wait while the fonts are loading. The font definition file resides on the host web server with the HTML document. When the page is accessed by a browser, the font definition files is downloaded with the HTML file in the same way that a GIF or JPEG file would be. </p>
+</a><a name="1032146">
+<P>In the body of the page, you can use the &lt;FONT&gt;tag, and specify the FACE attribute as a font definition, for example:</p>
+</a><a name="1032147">
+<PRE>&lt;P&gt;&lt;FONT FACE="bootsfont"&gt;This paragraph is in Boots Font.&lt;/FONT&gt;&lt;/P&gt;
+</PRE>
+</a><a name="1032148">
+<PRE>&lt;P&gt;&lt;FONT FACE="nikkifont"&gt;This one is in Nikki Font.&lt;/FONT&gt;&lt;/P&gt;
+</PRE>
+</a>
+<HR NOSHADE SIZE=1><br>
+ 
+<FONT SIZE=-1>
+
+<a href="content.htm">[Contents]</a> <a href="webfont3.htm">[Prev page]</a> </FONT>
+<FONT SIZE=-1 COLOR="#444444">
+[Next page]
+[Last page]
+</FONT>
+
+<HR NOSHADE SIZE=1>
+<br>
+
+
+
+<P ALIGN=right>
+
+<SCRIPT>
+document.write("<FONT SIZE=-2><I>Last Updated: " + document.lastModified + " </I></FONT>")</SCRIPT>
+
+<HR SIZE=4>
+
+<P> <CENTER> Copyright &copy; 1997 <A
+HREF="http://home.netscape.com/misc/contact_info.html"
+ TARGET=_top>Netscape Communications Corporation</A></FONT>
+</CENTER>
+<P>
+<P>
+
+
+</body>
+</html>

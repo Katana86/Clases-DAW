@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<TITLE>Moving Fish Example 1</TITLE>
+</HEAD>
+<BODY BGCOLOR="FFFFFF">
+<PRE>
+
+
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Swimming Fish&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY BGCOLOR="#FFFFFF"&gt;
+
+	&lt;LAYER NAME="bluepole" LEFT=160 TOP=150&gt;
+	&lt;IMG SRC=images/bluepole.gif&gt;
+	&lt;/LAYER&gt;
+
+	&lt;LAYER NAME="greenpole" LEFT=360 TOP=150&gt;
+	&lt;IMG SRC=images/greenpol.gif&gt;
+	&lt;/LAYER&gt;
+
+	&lt;LAYER NAME="redpole" LEFT=260 TOP=150&gt;
+	&lt;IMG SRC=images/redpole.gif&gt;
+	&lt;/LAYER&gt;
+
+	&lt;LAYER NAME="fish" LEFT=40 TOP=170  ABOVE="redpole"&gt;
+	&lt;IMG SRC=images/fish1.gif &gt;
+	&lt;/LAYER&gt;
+
+	&lt;SCRIPT&gt;
+
+	&lt;!-- Simple move function --&gt;
+	function movefish() {
+		var fish = document.layers["fish"];
+		if (fish.left &lt; 400) {
+			fish.offset(5, 0);}
+		else {fish.left = 10;}
+		setTimeout("movefish()", 10);
+   		return;
+	}
+
+	&lt;/SCRIPT&gt;
+
+	&lt;H1&gt;Fish Example 1&lt;/H1&gt;
+	&lt;FORM&gt;
+	&lt;INPUT type=button value="Move the fish" OnClick="movefish(); return false;"&gt;
+	&lt;/FORM&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</PRE>
+</BODY>
+</HTML>
+
+

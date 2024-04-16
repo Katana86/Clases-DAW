@@ -1,0 +1,12 @@
+<DIV STYLE="position:absolute; layer-background-color:red;
+width:200px;
+height:100px;">
+<P>Layer content...</P>
+<SCRIPT>
+function onMouseOver() {changeColor("blue"); }
+function onMouseOut() {changeColor("red"); }
+function changeColor(newcol) {
+    bgColor=newcol;
+    return false;
+}
+</SCRIPT>

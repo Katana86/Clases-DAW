@@ -1,0 +1,173 @@
+<HTML>
+<HEAD><TITLE>Flower Farm Example</HEAD></TITLE>
+<BODY BGCOLOR="#ffffff">
+<PRE>
+
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Flowering Layers Example&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;HR&gt;
+&lt;H1 align="center"&gt;Welcome to Fancy Flowers Farm &lt;/H1&gt;
+&lt;HR&gt;
+
+&lt;P&gt;We sell bulbs, seeds, seedlings, and potted plants,
+in all shapes, sizes,colors, and varieties.
+This page presents information about our most popular varieties.
+&lt;/P&gt;
+
+&lt;!-- position the form layer --&gt;
+&lt;! -- let the top value default to the natural position --&gt;
+&lt;LAYER NAME="formlayer" LEFT=50 &gt;
+
+&lt;H3&gt;Please select a flower:&lt;/H3&gt;
+
+	&lt;FORM NAME=form1&gt;
+
+		&lt;SELECT name=menu1 onChange="changeFlower(this.selectedIndex); return false;"&gt;
+			&lt;OPTION &gt;Mona Lisa Tulip
+			&lt;OPTION &gt;Mixed Dutch Tulips
+		&lt;OPTION &gt;Bijou Violet
+		&lt;OPTION &gt;Punk Chrysanthemum
+		&lt;/SELECT&gt;
+	&lt;/FORM&gt;
+
+&lt;/LAYER&gt;
+
+&lt;!-- We have four different layers, each with different info about flowers --&gt;
+&lt;!-- position this layer below the form layer --&gt;
+
+&lt;LAYER name="flower0" LEFT=50 width=400
+          TOP=&{"&"};{document.layers[0].top+document.layers[0].document.height;};
+          BGCOLOR="#FFFFDD"&gt;
+	&lt;HR&gt;
+	&lt;H3 align="center"&gt;Mona Lisa Tulip&lt;/H3&gt;
+
+	&lt;IMG src="images/redtul.jpg"
+		align="LEFT" hspace=5 &gt;
+
+	&lt;P&gt;These tulips have been specially designed to
+	withstand late winter frost in areas with harsh winters.
+	They are a beautiful red color, and we guarantee that
+	they'll grow for at least four years in a row.
+	Don't wait to order them, they sell fast!
+	&lt;/P&gt;
+
+	&lt;BR CLEAR="ALL"&gt;
+
+	&lt;P&gt;Priced at only $1 a bulb, they are a bargain.&lt;/P&gt;
+	&lt;HR&gt;
+
+&lt;/LAYER&gt;
+
+
+&lt;LAYER name="flower1" LEFT=50 width=400
+		TOP=&{"&"};{document.layers[1].top;};
+		VISIBILITY="HIDE" BGCOLOR="#DDFFDD"&gt;
+	&lt;HR&gt;
+	&lt;H3 align = center&gt;Mixed Dutch Tulips&lt;/H3&gt;
+
+	&lt;IMG src="images/tulmulti.jpg"
+		align="LEFT"  hspace=5 &gt;
+
+	&lt;P&gt;These colorful tulips have been specially bred for
+	us by Dr. Hans Tulip in Amsterdam.
+	He has spent the last ten years perfecting the hybrid.
+	These tulips start blooming early, sometimes they beat
+	the crocuses out of the ground!
+	&lt;/P&gt;
+	&lt;BR CLEAR="ALL"&gt;
+
+	&lt;P&gt;They come in a variety of intense colors,
+	and they have a velvety, sweet-smelling bloom.
+	&lt;/P&gt;
+
+	&lt;P&gt;Priced at $5 for ten, these tulips are a cheap
+	way to bring color to your garden.
+	&lt;/P&gt;
+	&lt;HR&gt;
+&lt;/LAYER&gt;
+
+
+&lt;LAYER name="flower2" width=400 LEFT=50
+		TOP=&{"&"};{document.layers[1].top;};
+		VISIBILITY="HIDE" BGCOLOR="#DDDDFF"&gt;
+
+	&lt;HR&gt;
+
+	&lt;H3 align ="center"&gt;Bijou Violets&lt;/H3&gt;
+	&lt;IMG src="images/violets.jpg"
+		align="LEFT" hspace=5&gt;
+
+	&lt;P&gt;These pale purple African violets are much hardier
+	than most violets. You don't need green fingers to keep
+	these flowers thriving!
+	Just water them four times a day at regular intervals,
+	and they will thrive forever!
+	&lt;/P&gt;
+
+	&lt;P&gt;These flowers are VERY small, the picture has
+	been magnified so you can see their shape.
+	The plants usually grow to about an inch high.
+	Thus they make excellent indoor plants for tiny apartments.
+	&lt;/P&gt;
+
+	&lt;BR CLEAR="ALL"&gt;
+
+	&lt;P&gt;The price for these lovely lilac blooms is $4 for
+	a half inch pot, or $10 for four pots. &lt;/P&gt;
+	&lt;HR&gt;
+&lt;/LAYER&gt;
+
+&lt;LAYER name="flower3" LEFT=50 width=400
+		TOP=&{"&"};{document.layers[1].top;};
+		VISIBILITY="HIDE" BGCOLOR="#FFDDDD"&gt;
+	&lt;HR&gt;
+
+	&lt;H3 align="center"&gt;Punk Chrysanthemum&lt;/H3&gt;
+
+	&lt;IMG src="images/spikey.jpg"
+		align="LEFT" hspace=5 &gt;
+
+	&lt;P&gt;These modern chrysanthemums look delicate but are
+	very hardy. They come in a variety of colors,
+	and they can grow to 5 feet tall.
+	They start blooming in autumn, and will keep flowering
+	until the snow falls.
+	So if you live somewhere that never gets snow,
+	they'll never stop blooming!&lt;/P&gt;
+
+	&lt;BR CLEAR="ALL"&gt;
+
+	&lt;P&gt;These flowers sell for $6 for a 4 inch pot,
+	or $10 for 2 pots.&lt;/P&gt;
+	&lt;HR&gt;
+&lt;/LAYER&gt;
+
+&lt;SCRIPT&gt;
+
+// this function hides all the flower layers
+function hideAllflowerLayers() {
+	document.layers["flower0"].visibility = "hide";
+	document.layers["flower1"].visibility = "hide";
+	document.layers["flower2"].visibility = "hide";
+	document.layers["flower3"].visibility = "hide";
+	}
+
+// this function makes a single flower layer visible
+// we have cunningly named the flower layers so we
+// can tell which one to show based on the selectedIndex
+// of the menu
+
+function changeFlower(n) {
+	hideAllflowerLayers();
+	document.layers["flower" + n].visibility = "inherit";
+}
+&lt;/SCRIPT&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+</BODY>
+</HTML>
