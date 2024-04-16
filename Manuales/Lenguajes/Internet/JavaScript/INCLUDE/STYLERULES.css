@@ -1,0 +1,44 @@
+.ARGUMENT {BACKGROUND: #cccfff }/*indigo*/
+.ARGUMENTTEXT {COLOR: #cccfff } /*indigo*/
+
+.CLAUSE {BACKGROUND: #33ff66} /*green*/
+.CLAUSETEXT {COLOR: #33ff66} /*green*/ 
+.COLLECTION {BACKGROUND: #ffb5c3 } /*pink*/
+.COLLECTIONTEXT {COLOR: #ffb5c3 } /*pink*/
+.CONSTANT {BACKGROUND: #6666ff} /*blue*/
+.CONSTANTTEXT {COLOR: #6666ff} /*blue*/ 
+
+.DECLARATION {BACKGROUND: #cc66ff} /*violet*/
+.DECLARATIONTEXT {COLOR: #cc66ff}  /*violet*/
+
+.EVENT {BACKGROUND: #de4a42 } /*dark red*/
+.EVENTTEXT {COLOR: #de4a42 } /*dark red*/
+
+.FUNCTION {BACKGROUND: #ff9900} /*orange*/
+.FUNCTIONTEXT {COLOR:  #ff9900} /*orange*/
+
+.METHOD {BACKGROUND: #cc6600}/*umber*/
+.METHODTEXT {COLOR: #cc6600} /*umber*/
+
+.OBJECT {BACKGROUND: #cc66ff} /*violet*/
+.OBJECTTEXT {COLOR: #cc66ff}  /*violet*/
+.OPERATION {BACKGROUND: #6666ff} /*blue*/
+.OPERATIONTEXT {COLOR: #6666ff} /*blue*/ 
+.OPERATOR {BACKGROUND: #33ff66} /*green*/
+.OPERATORTEXT {COLOR: #33ff66} /*green*/ 
+
+.PROPERTY {BACKGROUND: #ffc080} /*flesh*/
+.PROPERTYTEXT {COLOR: #ffc080} /*flesh*/
+
+.STATEMENT {BACKGROUND: #ffff66} /*yellow*/
+.STATEMENTTEXT {COLOR: #ffff66} /*yellow*/
+
+.UNUSED {BACKGROUND: #ff3333} /*red*/
+.UNUSEDTEXT {COLOR: #ff3333} /*red*/
+
+.CODE {COLOR: blue}
+.OUTPUT {COLOR: green}
+
+	A:link {color:"#003399";}
+    A:visited {color:"#003399";}
+    A:hover {color:"red";}
