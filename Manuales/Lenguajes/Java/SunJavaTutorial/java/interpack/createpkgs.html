@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Creating a Package</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="packages.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#interpack" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="usepkgs.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Creating a Package
+</h2>
+<blockquote>
+To create a package, you simply put a class or interface in it. To do
+this, you put a <code>package</code> statement at the top of the source file in
+which the class or interface is defined. For example, the following
+code appears in the source file <code>Circle.java</code>
+and puts the </code>Circle</code> class
+in the <code>graphics</code> package:
+<blockquote><pre>
+package graphics;
+
+public class Circle extends Graphic implements Draggable {
+    . . .
+}
+</pre></blockquote>
+The <code>Circle</code> class is a public <em>member</em>
+of the <code>graphics</code> package.
+<p>
+You must include a <code>package</code> statement at the top of every
+source file that defines a class or interface that is to be a member of
+the <code>graphics</code> package.
+So you would also include the statement in
+<code>Rectangle.java</code> and so on:
+<blockquote><pre>
+package graphics;
+
+public class Rectangle extends Graphic implements Draggable {
+    . . .
+}
+</pre></blockquote>
+The scope of the package statement is the entire source file,
+so all classes and interfaces defined in <code>Circle.java</code>
+and <code>Rectangle.java</code> are
+also members of the <code>graphics</code> package.
+If you put multiple classes in a single source file,
+only one may be declared public and it must share the
+name of the source file's basename.
+Only public package members are accessible from outside
+the package.
+
+<blockquote><hr><strong>Note:</strong>&nbsp;Some compilers might allow more than one public file
+per <code>.java</code> file.
+However, we recommend that you use the
+one-public-class-per-file convention,
+since it makes public
+classes easier to find and works for all compilers. 
+<hr></blockquote>
+
+<p>
+If you do not use a <code>package</code> statement,
+your class or interface ends up in the <em>default package</em>,
+which is a package that has no name.
+Generally speaking, the default package is only for small
+or temporary applications or when you are just beginning development.
+Otherwise, classes and interfaces belong in named packages.
+
+</blockquote>
+<h3>Naming a Package</h3>
+<blockquote>
+With programmers all over the world writing Java classes and
+interfaces, it is conceivable and even likely that two programmers will
+use the same name for two different classes. In fact, the previous
+example does just that: It defines a <code>Rectangle</code> class when there is
+already a <code>Rectangle</code> class in the <code>java.awt</code> package.
+Yet, the compiler
+allows both classes to have the same name. Why? Because they are in
+different packages and the actual name of each class includes the
+package name. That is, the name of the <code>Rectangle</code> class
+in the <code>graphics</code>
+package is really <code>graphics.Rectangle</code>,
+and the name of the <code>Rectangle</code>
+class in the <code>java.awt</code> package
+is really <code>java.awt.Rectangle</code>.
+<p>
+This works just fine unless two independent programmers use the same
+name for their packages. What prevents this? Convention.
+<p>
+
+<blockquote><hr><strong>By Convention:</strong>&nbsp;
+Companies use their reversed Internet domain name in their package
+names, like this: <code>com.company.package</code>.
+Name collisions that occur
+within a single company need to be handled by convention within that
+company, perhaps by including the region or project name after the
+company name, for example, <code>com.company.region.package</code>.
+<hr></blockquote>
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="packages.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#interpack" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="usepkgs.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

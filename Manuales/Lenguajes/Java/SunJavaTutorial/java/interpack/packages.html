@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Creating and Using Packages</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="nogrow.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#interpack" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="createpkgs.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br>
+<b>Lesson</b>: Interfaces and Packages
+</font>
+
+<h2>
+Creating and Using Packages
+</h2>
+<blockquote>
+To make classes easier to find and use, to avoid naming conflicts, and
+to control access, programmers bundle groups of related classes into
+packages.
+<p>
+
+<blockquote><hr><strong>Definition:</strong>&nbsp;
+A package is a collection of related classes and interfaces that
+provides access protection and namespace management.
+<hr></blockquote>
+<p>
+The classes and interfaces that are part of the JDK are members of
+various packages that bundle classes by function: applet classes are in
+<code>java.applet</code>, I/O classes are in <code>java.io</code>,
+and the GUI widget classes are in <code>java.awt</code>.
+You can put your classes and interfaces in packages, too.
+<p>
+Let's look at a set of classes and examine why you might want to put
+them in a package. Suppose you write a group of classes that represent
+a collection of graphics objects such as circles, rectangles, lines,
+and points. You also write an interface <code>Draggable</code> that classes
+implement if they can be dragged with the mouse by the user.
+<blockquote><pre>
+<em>in the Graphics.java file</em>
+abstract class Graphic {
+    . . .
+}
+
+<em>in the Circle.java file</em>
+public class Circle extends Graphic implements Draggable {
+    . . .
+}
+
+<em>in the Rectangle.java file</em>
+public class Rectangle extends Graphic implements Draggable {
+    . . .
+}
+
+<em>in the Draggable.java file</em>
+public interface Draggable {
+    . . .
+}
+</pre></blockquote>
+
+You should bundle these classes and the interface together in a
+package, for several reasons:
+<ul>
+<li>
+You and other programmers can easily determine that these classes and
+interfaces are related.
+<li>
+You and other programmers know where to find classes and interfaces
+that provide graphics-related functions.
+<li>
+The names of your classes won't conflict with class names in other
+packages because the package creates a new namespace.
+<li>
+You can allow classes within the package to have unrestricted access to
+each other, yet still restrict access for classes outside the package.
+</ul>
+
+</blockquote>
+<h3><a href="createpkgs.html">Creating a Package</a></h3>
+<blockquote>
+You can easily create your own packages and put any number of class
+and interface definitions in them.
+</blockquote>
+
+<h3><a href="usepkgs.html">Using Package Members</a></h3>
+<blockquote>
+To use the classes and interfaces defined in one package from
+within another package, you need to <em>import</em> the package.
+The classes and interfaces that you import must be declared public.
+</blockquote>
+
+<h3><a href="managingfiles.html">Managing Source and Class Files</a></h3>
+<blockquote>
+This section shows you where to put your <code>java</code>
+and <code>.class</code> files so that the JDK tools can
+find your classes.
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="nogrow.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#interpack" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="createpkgs.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
