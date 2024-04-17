@@ -1,0 +1,261 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Use BorderLayout</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="generalRules.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="box.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Laying Out Components Within a Container
+</font>
+
+<h2>
+How to Use BorderLayout
+</h2>
+<blockquote>
+Here's an applet that shows a 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/BorderLayout.html"><font color="#8800bb"><code>BorderLayout</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/BorderLayout.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> in action.
+
+<p>
+
+<p><center><a href="BorderDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/layout/borderlayout.gif" WIDTH="460" HEIGHT="150" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+As the preceding applet shows, 
+a <code>BorderLayout</code> has five areas:
+north, south, east, west, and center.
+If you enlarge the window,
+the center area
+gets as much of the available space as possible.
+The other areas expand only as much as necessary
+to fill all available space.
+Often, a container uses only one or two of the 
+areas of the <code>BorderLayout</code> --
+just the center, 
+or center and south, for example.
+
+<p>
+
+The following code
+creates the <code>BorderLayout</code> and the components it manages.
+You can find the whole program in
+
+<a target="source" href="example-swing/BorderWindow.java"><font color="#bb000f"><code>BorderWindow.java</code></font></a><a href="example-swing/BorderWindow.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+The program runs either within an applet
+(with the help of
+
+<a target="source" href="example-swing/AppletButton.java"><font color="#bb000f"><code>AppletButton</code></font></a><a href="example-swing/AppletButton.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>)
+or as an application.
+
+<blockquote><pre>
+Container contentPane = getContentPane();
+//Use the content pane's default BorderLayout.
+//contentPane.setLayout(new BorderLayout()); //unnecessary
+   
+contentPane.add(new JButton("Button 1 (NORTH)"),
+                BorderLayout.NORTH);
+contentPane.add(new JButton("2 (CENTER)"),
+                BorderLayout.CENTER);
+contentPane.add(new JButton("Button 3 (WEST)"),
+                BorderLayout.WEST);
+contentPane.add(new JButton("Long-Named Button 4 (SOUTH)"),
+                BorderLayout.SOUTH);
+contentPane.add(new JButton("Button 5 (EAST)"),
+                BorderLayout.EAST);
+</pre></blockquote>
+<p>
+
+
+<blockquote><hr><strong>Important:</strong>&nbsp;
+When adding a component to a container that uses <code>BorderLayout</code>,
+specify the component's location
+as one of the arguments to the <code>add</code> method.
+Do not rely on the component
+being added to the center, by default.
+If you find that a component is missing
+from a container controlled by a <code>BorderLayout</code>,
+make sure that you specified the component's location
+and that you didn't put another component
+in the same location.
+<hr></blockquote>
+
+<p>
+
+All our examples that use <code>BorderLayout</code>
+specify the component as the first argument to the
+<code>add</code> method.
+For example:
+<blockquote><pre>
+add(component, BorderLayout.CENTER)  //preferred
+</pre></blockquote>
+
+However, you might see code in other programs
+that specifies the component second.
+For example, the following are alternate ways
+of writing the preceding code:
+
+<blockquote><pre>
+add(BorderLayout.CENTER, component)  //valid but old-fashioned
+    <em>or</em>
+add("Center", component)             //valid but error prone
+</pre></blockquote>
+
+</blockquote>
+<h3>
+<a name="api">The BorderLayout API</a>
+</h3>
+<blockquote>
+
+By default, a <code>BorderLayout</code>
+puts no gap between the components it manages.
+In the preceding applet, any apparent gaps are the result
+of the buttons
+reserving extra space around their apparent display area.
+You can specify gaps (in pixels) using the following constructor:
+
+<blockquote><pre>
+BorderLayout(int <em>horizontalGap</em>, int <em>verticalGap</em>)
+</pre></blockquote>
+
+You can also use the following methods to set
+the horizontal and vertical gaps, respectively:
+
+<blockquote><pre>
+void setHgap(int)
+void setVgap(int)
+</pre></blockquote>
+
+
+</blockquote>
+<h3>
+<a name="eg">Examples that Use BorderLayout</a>
+</h3>
+<blockquote>
+
+The following table lists some of the many
+examples that use <code>BorderLayout</code>.
+
+<p>
+
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#BorderWindow"><code>BorderWindow</code></a>
+</td>
+<td> This page
+</td>
+<td> Puts a component in each of the five possible locations.
+
+</td>
+</tr>
+<tr>
+<td> <a href="../components/example-swing/index.html#TabbedPaneDemo"><code>TabbedPaneDemo</code></a>
+</td>
+<td> 
+<a target="_top" href="../components/tabbedpane.html">How to Use Tabbed Panes</a><a target="_top" href="../components/tabbedpane.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> One of many examples that
+     puts a single component in the center
+     of a content pane,
+     so that the component is as large as possible.
+
+</td>
+</tr>
+<tr>
+<td> <a href="../components/example-swing/index.html#CheckBoxDemo"><code>CheckBoxDemo</code></a>
+</td>
+<td> 
+<a target="_top" href="../components/button.html#checkbox">How to Use Check Boxes</a><a target="_top" href="../components/button.html#checkbox"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Creates a <code>JPanel</code> that uses a <code>BorderLayout</code>.
+     Puts components into the west and center locations.
+
+
+</td>
+</tr>
+</table>
+
+</blockquote>
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="generalRules.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="box.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,270 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Use GridBagLayout: Specifying Constraints</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="gridbag.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="gridbagExample.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Laying Out Components Within a Container
+</font>
+
+<h2>
+How to Use GridBagLayout: Specifying Constraints
+</h2>
+<blockquote>
+The following code is typical of what goes
+in a container that uses a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/GridBagLayout.html"><font color="#8800bb"><code>GridBagLayout</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/GridBagLayout.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+You'll see a more detailed example
+in the next section.
+
+<blockquote><pre>
+GridBagLayout gridbag = new GridBagLayout();
+GridBagConstraints c = new GridBagConstraints();
+
+JPanel pane = new JPanel();
+pane.setLayout(gridbag);
+
+<em>//For each component to be added to this container:</em>
+<em>//...Create the component...</em>
+<em>//...Set instance variables in the GridBagConstraints instance...</em>
+gridbag.setConstraints(theComponent, c);
+pane.add(theComponent);
+</pre></blockquote>
+
+As you might have guessed from the above example,
+you can reuse the same <code>GridBagConstraints</code> instance
+for multiple components,
+even if the components have different constraints.
+The <code>GridBagLayout</code> extracts the constraint values
+and doesn't use the <code>GridBagConstraints</code> again.
+You must be careful, however,
+to reset the <code>GridBagConstraints</code> instance variables
+to their default values
+when necessary.
+
+<p>
+
+You can set the following 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/GridBagConstraints.html"><font color="#8800bb"><code>GridBagConstraints</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/GridBagConstraints.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> instance variables:
+<dl>
+<dt> <strong><code>gridx</code></strong>,
+     <strong><code>gridy</code></strong>
+<dd> Specify the row and column
+     at the upper left of the component.
+     The leftmost column has address
+     <code>gridx=0</code>
+     and the top row has address
+     <code>gridy=0</code>.
+     Use <code>GridBagConstraints.RELATIVE</code>
+     (the default value)
+     to specify that the component be placed
+     just to the right of (for <code>gridx</code>)
+     or just below (for <code>gridy</code>)
+     the component that was added to the container
+     just before this component was added.
+     We recommend specifying the <code>gridx</code>
+     and <code>gridy</code> values for each component;
+     this tends to result in more predictable layouts.
+<p>
+<dt> <strong><code>gridwidth</code></strong>,
+     <strong><code>gridheight</code></strong>
+<dd> Specify the number of columns
+     (for <code>gridwidth</code>)
+     or rows
+     (for <code>gridheight</code>)
+     in the component's display area.
+     These constraints specify the number of cells
+     the component uses,
+     <em>not</em> the number of pixels it uses.
+     The default value is 1.
+     Use <code>GridBagConstraints.REMAINDER</code> to specify 
+     that the component be the last one in its row
+     (for <code>gridwidth</code>)
+     or column
+     (for <code>gridheight</code>).
+     Use <code>GridBagConstraints.RELATIVE</code> to specify 
+     that the component be the next to last one
+     in its row
+     (for <code>gridwidth</code>)
+     or column
+     (for <code>gridheight</code>).
+<p>
+<strong>Note:</strong>
+<code>GridBagLayout</code> doesn't allow components 
+to span multiple rows unless the component
+is in the leftmost column or you've specified
+positive <code>gridx</code> and <code>gridy</code>
+values for the component.
+<p>
+<dt> <strong><code>fill</code></strong>
+<dd> Used when the component's display area
+     is larger than the component's requested size
+     to determine whether and how to resize the component.
+     Valid values (defined as <code>GridBagConstraints</code> constants)
+     are <code>NONE</code> (the default),
+     <code>HORIZONTAL</code>
+     (make the component wide enough to fill its display area
+     horizontally, but don't change its height),
+     <code>VERTICAL</code>
+     (make the component tall enough to fill its display area
+     vertically, but don't change its width),
+     and 
+     <code>BOTH</code>
+     (make the component fill its display area entirely).
+<p>
+<dt> <strong><code>ipadx</code></strong>,
+     <strong><code>ipady</code></strong>
+<dd> Specifies the internal padding: 
+     how much to add to the minimum size of the component.
+     The default value is zero.
+     The width of the component will be at least
+     its minimum width plus <code>ipadx*2</code> pixels,
+     since the padding applies to both sides of the component.
+     Similarly, the height of the component will be at least
+     its minimum height plus <code>ipady*2</code> pixels.
+<p>
+<dt> <strong><code>insets</code></strong>
+<dd> Specifies the external padding of the component --
+     the minimum amount of space between the component 
+     and the edges of its display area.
+     The value is specified as an 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Insets.html"><font color="#8800bb"><code>Insets</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Insets.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>     object.
+     By default, each component has no external padding.
+<p>
+<dt> <strong><code>anchor</code></strong>
+<dd> Used when the component is smaller than its display area
+     to determine where (within the area) to place the component.
+     Valid values (defined as <code>GridBagConstraints</code> constants)
+     are
+     <code>CENTER</code> (the default),
+     <code>NORTH</code>,
+     <code>NORTHEAST</code>,
+     <code>EAST</code>,
+     <code>SOUTHEAST</code>,
+     <code>SOUTH</code>,
+     <code>SOUTHWEST</code>,
+     <code>WEST</code>, and
+     <code>NORTHWEST</code>.
+<p>
+<dt> <strong><code>weightx</code></strong>,
+     <strong><code>weighty</code></strong>
+<dd> Specifying weights is an art 
+     that can have a significant impact
+     on the appearance of the components a <code>GridBagLayout</code> controls.
+     Weights are used to determine how to distribute space
+     among columns
+     (<code>weightx</code>)
+     and among rows
+     (<code>weighty</code>);
+     this is important for specifying resizing behavior.
+     <p>
+     Unless you specify at least one nonzero value
+     for <code>weightx</code>
+     or <code>weighty</code>,
+     all the components clump together in the center of
+     their container.
+     This is because when the weight is 0.0 (the default),
+     the <code>GridBagLayout</code> puts any extra space 
+     between its grid of cells and the edges of the container.
+     <p>
+     Generally weights are specified with 0.0 and 1.0 as the extremes:
+     the numbers in between are used as necessary.
+     Larger numbers indicate that the component's row or column
+     should get more space.
+     For each column, the weight is related to
+     the highest <code>weightx</code> specified 
+     for a component within that column,
+     with each multicolumn component's weight being split somehow
+     between the columns the component is in.
+     Similarly, each row's weight is related to
+     the highest <code>weighty</code> specified 
+     for a component within that row.
+     Extra space tends to go toward the rightmost column and bottom row.
+
+</dl>
+
+<p>
+
+The next section discusses constraints in depth,
+in the context of explaining
+how the example program works.
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="gridbag.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="gridbagExample.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

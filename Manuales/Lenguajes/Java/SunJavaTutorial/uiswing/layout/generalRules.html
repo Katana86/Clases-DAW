@@ -1,0 +1,322 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>General Rules for Using Layout Managers</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="using.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="border.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Laying Out Components Within a Container
+</font>
+
+<h2>
+General Rules for Using Layout Managers
+</h2>
+<blockquote>
+
+As a rule, the only time you have to think about layout managers
+is when you create a
+<a target="_top" href="../components/panel.html"><code>JPanel</code></a><a target="_top" href="../components/panel.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> or add components to a 
+<a target="_top" href="../components/toplevel.html#contentpane">content pane</a><a target="_top" href="../components/toplevel.html#contentpane"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+If you don't like the default layout manager that a panel or content pane
+uses,
+then you can change it to a different one.
+When you add components to a panel or content pane,
+the arguments you specify to the <code>add</code> method
+depend on the layout manager that the panel or content pane is using.
+
+<p>
+
+The other Swing containers are more specialized and tend 
+to hide the details
+of which layout manager (if any) they use.
+For example, a 
+<a target="_top" href="../components/scrollpane.html">scroll pane</a><a target="_top" href="../components/scrollpane.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> relies on a layout manager named <code>ScrollPaneLayout</code>,
+but you don't need to know that to use a scroll pane.
+Most Swing containers 
+provide API that you can use instead of the <code>add</code> method.
+For example, instead of adding a component
+directly to a scroll pane (or, actually, to its viewport),
+you either specify the component in the <code>JScrollPane</code> constructor
+or use <code>setViewportView</code>.
+For information about how to add components to a specific container,
+see the how-to page for the container.
+You can find the how-to pages using
+<a target="_top" href="../components/components.html">A Visual Index to the Swing Components</a><a target="_top" href="../components/components.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+
+</blockquote>
+<h3>
+<a name="choosing">
+How to Choose a Layout Manager
+</a>
+</h3>
+<blockquote>
+Layout managers 
+have different strengths and weaknesses.
+This section discusses some common layout scenarios
+and which layout managers might work for each scenario.
+If none of the layout managers we discuss is right for your situation, 
+feel free to use other layout managers
+that you write or find.
+
+<p>
+
+<dl>
+<dt><strong>Scenario:</strong>
+You need to display a component in as much space as it can get.
+<dd>
+Consider using
+<a href="border.html"><code>BorderLayout</code></a> or
+<a href="gridbag.html"><code>GridBagLayout</code></a>.
+If you use <code>BorderLayout</code>,
+you'll need to put the space-hungry component in the center.
+With <code>GridBagLayout</code>,
+you'll need to set the constraints for the component so that
+<code>fill=GridBagConstraints.BOTH</code>.
+Another possibility is to use 
+<a href="box.html"><code>BoxLayout</code></a>,
+making the space-hungry component
+specify very large preferred and maximum sizes.
+
+<p>
+
+<dt><strong>Scenario:</strong>
+You need to display a few components in a compact row
+at their natural size.
+<dd>
+Consider using a <code>JPanel</code> to group the components
+and using either the <code>JPanel</code>'s default
+<a href="flow.html"><code>FlowLayout</code></a> manager
+or the 
+<a href="box.html"><code>BoxLayout</code></a> manager.
+
+<p>
+
+<dt><strong>Scenario:</strong>
+You need to display a few components of the same size
+in rows and columns.
+<dd>
+<a href="grid.html"><code>GridLayout</code></a> is perfect for this.
+
+<p>
+
+<dt><strong>Scenario:</strong>
+You need to display a few components in a row or column,
+possibly with varying amounts of space between them,
+custom alignment, or custom component sizes.
+<dd>
+<a href="box.html"><code>BoxLayout</code></a>
+is perfect for this.
+
+<p>
+
+<dt><strong>Scenario:</strong>
+You have a complex layout with many components.
+<dd>
+Consider either using 
+<a href="gridbag.html"><code>GridBagLayout</code></a>
+or grouping the components into one or more <code>JPanel</code>s
+to simplify layout.
+Each <code>JPanel</code> might use a different layout manager.
+
+</dl>
+
+
+</blockquote>
+<h3>
+<a name="creating">
+How to Create a Layout Manager and Associate It with a Container
+</a>
+</h3>
+<blockquote>
+As mentioned in
+<a target="_top" href="../overview/layout.html">Layout Management</a><a target="_top" href="../overview/layout.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>, each container either has a layout manager
+or uses absolute positioning.
+All <code>JPanel</code> objects
+are initialized to use a <code>FlowLayout</code>.
+Content panes
+(the main containers in 
+<code>JApplet</code>,
+<code>JDialog</code>, and
+<code>JFrame</code> objects)
+use <code>BorderLayout</code>, by default.
+
+<p>
+
+If you want to use a container's default layout manager,
+you don't have to do a thing.
+The constructor for the container 
+creates a layout manager instance
+and initializes the container to use it.
+
+<p>
+
+To use a layout manager other than the default layout manager,
+you must create an instance of the desired layout manager class
+and tell the container to use it.
+The following statement creates a <code>BorderLayout</code> manager
+and sets it up as the layout manager for a panel.
+
+<blockquote><pre>
+aJPanel.setLayout(new BorderLayout());
+</pre></blockquote>
+
+Here is an example of making a <code>FlowLayout</code> object
+the layout manager for an applet's content pane:
+
+<blockquote><pre>
+//In a JApplet subclass:
+Container contentPane = getContentPane();
+contentPane.setLayout(new FlowLayout());
+</pre></blockquote>
+
+For examples of creating each layout manager,
+see the how-to section for the particular layout manager.
+
+
+</blockquote>
+<h3>
+<a name="using">
+When Is a Layout Manager Consulted?
+</a>
+</h3>
+<blockquote>
+
+A container's layout manager is automatically consulted each time
+the container might need to change its appearance.
+For example, the layout manager is consulted
+whenever the user adds a component to a container.
+Most layout managers don't require programs 
+to directly call their methods.
+
+<p>
+
+Only a few component methods result in a layout manager
+actually performing layout:
+the <code>JComponent</code>
+<code>revalidate</code> method,
+the <code>Window</code> <code>pack</code> method,
+and the <code>Window</code> <code>show</code> and <code>setVisible</code>
+methods.
+Other methods that result in calls to a container's layout manager
+(but don't trigger a new layout)
+include the <code>Container</code>
+<code>add</code>,
+<code>remove</code>,
+<code>removeAll</code>,
+<code>getAlignmentX</code>,
+<code>getAlignmentY</code>,
+<code>getPreferredSize</code>,
+<code>getMinimumSize</code>,
+and <code>getMaximumSize</code> methods.
+
+<p>
+
+If you change the size of a component,
+even indirectly by changing its font, for example, 
+the component should automatically resize and repaint itself.
+If that doesn't happen -- because
+you made the change to the component's data model
+instead of the component, for example --
+you should invoke the <code>revalidate</code> method on the component.
+
+<p>
+
+When you invoke <code>revalidate</code> on a component,
+a request is passed up the containment hierarchy 
+until it encounters a container,
+such as a scroll pane or top-level container,
+that shouldn't be affected by the component's resizing.
+(This is determined by calling the container's
+<code>isValidateRoot</code> method.)
+The container is then laid out,
+which has the effect of adjusting the revalidated component's
+size and the size of all affected components.
+
+<p>
+
+After calling <code>revalidate</code> on a component,
+you can invoke <code>repaint</code> on it
+to make the change appear onscreen.
+Both <code>revalidate</code> and <code>repaint</code>
+are 
+<a target="_top" href="../overview/threads.html">thread-safe</a><a target="_top" href="../overview/threads.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> --  you needn't invoke them from the event-dispatching thread.
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="using.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="border.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,341 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Use GridBagLayout: The Example Explained</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="gridbagConstraints.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="custom.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Laying Out Components Within a Container
+</font>
+
+<h2>
+How to Use GridBagLayout: The Example Explained
+</h2>
+<blockquote>
+Here, again, is the applet that shows a <code>GridBagLayout</code>
+in action.
+
+<p>
+
+<p><center><a href="GridbagDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/layout/gridbaglayout.gif" WIDTH="236" HEIGHT="154" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+
+The following code creates the <code>GridBagLayout</code>
+and the components it manages.
+You can find the entire source file in
+
+<a target="source" href="example-swing/GridBagWindow.java"><font color="#bb000f"><code>GridBagWindow.java</code></font></a><a href="example-swing/GridBagWindow.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+The program runs either within an applet
+(with the help of
+
+<a target="source" href="example-swing/AppletButton.java"><font color="#bb000f"><code>AppletButton</code></font></a><a href="example-swing/AppletButton.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>)
+or as an application.
+
+<blockquote><pre>
+JButton button;
+Container contentPane = getContentPane();
+GridBagLayout gridbag = new GridBagLayout();
+GridBagConstraints c = new GridBagConstraints();
+contentPane.setLayout(gridbag);
+c.fill = GridBagConstraints.HORIZONTAL; 
+   
+button = new JButton("Button 1");
+c.weightx = 0.5;
+c.gridx = 0;
+c.gridy = 0;
+gridbag.setConstraints(button, c);
+contentPane.add(button);
+
+button = new JButton("2");
+c.gridx = 1;
+c.gridy = 0;
+gridbag.setConstraints(button, c);
+contentPane.add(button);
+
+button = new JButton("Button 3");
+c.gridx = 2;
+c.gridy = 0;
+gridbag.setConstraints(button, c);
+contentPane.add(button);
+
+button = new JButton("Long-Named Button 4");
+c.ipady = 40;      //make this component tall
+c.weightx = 0.0;
+c.gridwidth = 3;
+c.gridx = 0;
+c.gridy = 1;
+gridbag.setConstraints(button, c);
+contentPane.add(button);
+
+button = new JButton("Button 5");
+c.ipady = 0;       //reset to default
+c.weighty = 1.0;   //request any extra vertical space
+c.anchor = GridBagConstraints.SOUTH; //bottom of space
+c.insets = new Insets(10,0,0,0);  //top padding
+c.gridx = 1;       //aligned with button 2
+c.gridwidth = 2;   //2 columns wide
+c.gridy = 2;       //third row
+gridbag.setConstraints(button, c);
+contentPane.add(button);
+</pre></blockquote>
+
+<p>
+
+This example uses one <code>GridBagConstraints</code> instance
+for all the components the <code>GridBagLayout</code> manages.
+Just before each component is added to the container,
+the code sets (or resets to default values)
+the appropriate instance variables
+in the <code>GridBagConstraints</code> object.
+It then uses the <code>setConstraints</code>
+method to record all the constraint values for that component.
+
+<p>
+
+For example,
+to make button 4 be extra tall,
+the example has this code:
+
+<blockquote><pre>
+c.ipady = 40;
+</pre></blockquote>
+
+And before setting the constraints of the next component, 
+the code resets the value of <code>ipady</code> 
+to the default:
+
+<blockquote><pre>
+c.ipady = 0;
+</pre></blockquote>
+
+For clarity, here's a table that shows all the constraints
+for each component the <code>GridBagLayout</code> handles.
+Values that aren't the default
+are marked in <b>bold font</b>.
+Values that are different from those in the previous table entry
+are marked in <i>italic font</i>.
+
+<table>
+<tr>
+<th align=left> Component
+</th>
+<th align=left> Constraints
+</th>
+</tr>
+<tr>
+<td>
+All components
+</td>
+<td>
+<pre>
+ipadx = 0
+<b>fill = GridBagConstraints.HORIZONTAL</b>
+
+</td>
+</tr>
+<tr>
+<td>
+Button 1
+</td>
+<td>
+<pre>
+ipady = 0
+<b>weightx = 0.5</b>
+weighty = 0.0
+gridwidth = 1
+anchor = GridBagConstraints.CENTER
+insets = new Insets(0,0,0,0)
+<b>gridx = 0</b>
+<b>gridy = 0</b>
+
+</td>
+</tr>
+<tr>
+<td>
+Button 2
+</td>
+<td>
+<pre>
+<b>weightx = 0.5</b>
+<i><b>gridx = 1</b></i>
+<b>gridy = 0</b>
+</pre>
+
+</td>
+</tr>
+<tr>
+<td>
+Button 3
+</td>
+<td>
+<pre>
+<b>weightx = 0.5</b>
+<i><b>gridx = 2</b></i>
+<b>gridy = 0</b>
+</pre>
+
+</td>
+</tr>
+<tr>
+<td>
+Button 4
+</td>
+<td>
+<pre>
+<i><b>ipady = 40</b></i>
+<i>weightx = 0.0</i>
+<i><b>gridwidth = 3</b></i>
+<i><b>gridx = 0</b></i>
+<i><b>gridy = 1</b></i>
+</pre>
+
+</td>
+</tr>
+<tr>
+<td>
+Button 5
+</td>
+<td>
+<pre>
+<i>ipady = 0</i>
+weightx = 0.0
+<i><b>weighty = 1.0</b></i>
+<i><b>anchor = GridBagConstraints.SOUTH</b></i>
+<i><b>insets = new Insets(10,0,0,0)</b></i>
+<i><b>gridwidth = 2</b></i>
+<i><b>gridx = 1</b></i>
+<i><b>gridy = 2</b></i>
+</pre>
+</td>
+</tr>
+</table>
+<p>
+
+All the components in this container 
+are as wide as possible,
+given the cells that they occupy.
+The program accomplishes 
+this by setting the <code>GridBagConstraints</code>
+<code>fill</code> instance variable
+to <code>GridBagConstraints.HORIZONTAL</code>,
+leaving it at that setting for all the components.
+If the program didn't specify the fill,
+the buttons would be at their natural width, like this:
+
+<p><center><IMG SRC="../../figures/uiswing/layout/gridbagnofill.gif" WIDTH="236" HEIGHT="154" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="GridBagLayout with default fill values."></center></p>
+<p>
+
+This program has two components 
+that span multiple columns
+(buttons 4 and 5).
+To make button 4 tall,
+we added internal padding (<code>ipady</code>) to it.
+To put space between buttons 4 and 5,
+we used insets to add a minimum of 10 pixels above button 5,
+and we made button 5 hug the south
+edge of its cell.
+
+<p>
+
+When you enlarge the window the program brings up,
+the columns grow proportionately.
+This is because
+each component in the first row,
+where each component is one column wide, 
+has <code>weightx = 1.0</code>.
+The actual value of these components' <code>weightx</code> is unimportant.
+What matters is that all the components,
+and consequently, all the columns,
+have an equal weight
+that is greater than 0.
+If no component managed by the <code>GridBagLayout</code>
+had <code>weightx</code> set, 
+then when the components' container was made wider,
+the components would stay clumped together in the center of the container,
+like this:
+<p><center><IMG SRC="../../figures/uiswing/layout/gridbagnoweightx.gif" WIDTH="315" HEIGHT="154" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="GridBagLayout with default weightx values and enlarged by the user."></center></p>
+<p>
+
+Note that if you enlarge the window,
+the last row is the only one that gets taller.
+This is because only button 5 has <code>weighty</code>
+greater than zero.
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="gridbagConstraints.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="custom.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

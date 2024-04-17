@@ -1,0 +1,261 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Creating a Custom Layout Manager</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="gridbagExample.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="none.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Laying Out Components Within a Container
+</font>
+
+<h2>
+Creating a Custom Layout Manager
+</h2>
+<blockquote>
+<blockquote><hr><strong>Note:</strong>&nbsp;
+Before you start creating a custom layout manager,
+make sure that no existing layout manager will work.
+In particular, 
+<a href=gridbag.html><code>GridBagLayout</code></a>
+and <a href=box.html><code>BoxLayout</code></a>
+are flexible enough to work in many cases.
+You can also find layout managers from other sources,
+such as from the Internet.
+Finally, you can simplify layout
+by grouping components into containers
+such as invisible 
+<a target="_top" href="../components/panel.html">panels</a><a target="_top" href="../components/panel.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+<hr></blockquote>
+<p>
+
+To create a custom layout manager,
+you must create a class that implements the
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/LayoutManager.html"><font color="#8800bb"><code>LayoutManager</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/LayoutManager.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> interface.
+You can either implement it directly,
+or implement its subinterface, 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/LayoutManager2.html"><font color="#8800bb"><code>LayoutManager2</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/LayoutManager2.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+
+<p>
+
+Every layout manager must implement at least
+the following five methods, 
+which are required by the <code>LayoutManager</code> interface:
+<p>
+
+<dl>
+<dt><strong><code>void addLayoutComponent(String, Component)</code></strong>
+<dd>Called by the <code>Container</code> <code>add</code> methods.
+    Layout managers that don't associate strings with their components 
+    generally do nothing in this method.
+
+    <p>
+
+<dt><strong><code>void removeLayoutComponent(Component)</code></strong>
+<dd>Called by the <code>Container</code> <code>remove</code> and
+    <code>removeAll</code> methods.
+    Many layout managers 
+    do nothing in this method,
+    relying instead on querying the container for its components,
+    using the <code>Container</code> <code>getComponents</code> method.
+
+    <p>
+
+<dt><strong><code>Dimension preferredLayoutSize(Container)</code></strong>
+<dd>Called by the <code>Container</code> <code>getPreferredSize</code> method,
+    which is itself called under a variety of circumstances.
+    This method should calculate and return the ideal size of the container,
+    assuming that the components it contains will be at or above
+    their preferred sizes.
+    This method must take into account the container's internal borders,
+    which are returned by the
+    <code>getInsets</code> method.
+
+    <p>
+
+<dt><strong><code>Dimension minimumLayoutSize(Container)</code></strong>
+<dd>Called by the <code>Container</code> <code>getMinimumSize</code> method,
+    which is itself called under a variety of circumstances.
+    This method should calculate and return the minimum size of the container,
+    assuming that the components it contains 
+    will be at or above their minimum sizes.
+    This method must take into account the container's internal borders,
+    which are returned by the 
+    <code>getInsets</code> method.
+
+    <p>
+
+<dt><strong><code>void layoutContainer(Container)</code></strong>
+<dd>Called when the container is first displayed,
+    and each time its size changes.
+    A layout manager's <code>layoutContainer</code> method
+    doesn't actually draw components.
+    It simply invokes each component's 
+    <code>resize</code>,
+    <code>move</code>,
+    and
+    <code>reshape</code>
+    methods to set the component's size and position.
+    This method must take into account the container's internal borders,
+    which are returned by the 
+    <code>getInsets</code> method.
+    You can't assume that the <code>preferredLayoutSize</code>
+    or <code>minimumLayoutSize</code> method will be called
+    before <code>layoutContainer</code> is called.
+
+</dl>
+
+<p>
+
+Besides implementing the preceding five methods,
+layout managers generally implement at least one public constructor
+and the 
+<code>toString</code>
+method.
+
+<p>
+
+If you wish to support component
+constraints, maximum sizes, or alignment,
+then your layout manager should implement the
+<code>LayoutManager2</code> interface.
+That interface adds five methods to those
+required by <code>LayoutManager</code>:
+
+<ul>
+<li> <code>addLayoutComponent(Component, Object)</code>
+<li> <code>getLayoutAlignmentX(Container)</code>
+<li> <code>getLayoutAlignmentY(Container)</code>
+<li> <code>invalidateLayout(Container)</code>
+<li> <code>maximumLayoutSize(Container)</code>
+</ul>
+
+For more information about these methods,
+see the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/LayoutManager2.html"><font color="#8800bb"><code>LayoutManager2</code> API documentation</font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/LayoutManager2.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+Also see the source code for <code>BoxLayout</code>,
+to see how it implements the <code>LayoutManager2</code> interface.
+
+<p>
+
+When implementing a layout manager,
+you might want to use 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/SizeRequirements.html"><font color="#8800bb"><code>SizeRequirements</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/SizeRequirements.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> objects to help you determine
+the size and position of components.
+See the source code for <code>BoxLayout</code>
+for an example of using <code>SizeRequirements</code>.
+
+<p>
+
+In 
+<a target="source" href="example-swing/DiagonalLayout.java"><font color="#bb000f"><code>DiagonalLayout.java</code></font></a><a href="example-swing/DiagonalLayout.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+you can find the source code
+for a custom layout manager.
+<code>DialogLayout</code> lays out components diagonally, 
+from left to right, 
+with one component per row.
+Here's an example of <code>DiagonalLayout</code> in action:
+<p>
+
+<p><center><a href="CustomDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/layout/13custom31.gif" WIDTH="325" HEIGHT="170" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+
+You can find another example of a custom layout manager in
+
+<a target="source" href="example-swing/GraphPaperLayout.java"><font color="#bb000f"><code>GraphPaperLayout.java</code></font></a><a href="example-swing/GraphPaperLayout.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+<code>GraphPaperLayout</code>,
+written by Michael Martak, 
+lays out components in a grid.
+Each component's size and location are specified,
+using grid units rather than absolute locations,
+when the component is added to its container.
+You can set the relative grid size,
+horizontal space between components, and
+vertical space between components
+when initializing the layout manager.
+You can also change component locations and the grid size dynamically.
+For an example of using <code>GraphPaperLayout</code>,
+see 
+<a target="source" href="example-swing/GraphPaperTest.java"><font color="#bb000f"><code>GraphPaperTest.java</code></font></a><a href="example-swing/GraphPaperTest.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+Here's a snapshot of <code>GraphPaperTest</code>
+that shows <code>GraphPaperLayout</code> in action:
+<p>
+
+<p><center><IMG SRC="../../figures/uiswing/layout/GraphPaperTest.gif" WIDTH="228" HEIGHT="161" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="GraphPaperTest"></center></p>
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="gridbagExample.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="none.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

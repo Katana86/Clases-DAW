@@ -1,0 +1,252 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Use CardLayout</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="box.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="flow.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Laying Out Components Within a Container
+</font>
+
+<h2>
+How to Use CardLayout
+</h2>
+<blockquote>
+Here's an applet that shows a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/CardLayout.html"><font color="#8800bb"><code>CardLayout</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/CardLayout.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> in action.
+
+<p>
+
+<p><center><a href="CardDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/layout/cardlayout.gif" WIDTH="306" HEIGHT="99 " ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+
+As the preceding applet shows,
+the <code>CardLayout</code> class helps you manage two or more components
+(usually <code>JPanel</code> instances)
+that share the same display space.
+Another way to accomplish the same thing is to use a
+<a target="_top" href="../components/tabbedpane.html">tabbed pane</a><a target="_top" href="../components/tabbedpane.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+Here's the tabbed pane version of the preceding applet:
+<p><center><a href="TabDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/layout/TabWindow.gif" WIDTH="416" HEIGHT="93" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+
+Because a tabbed pane provides a GUI,
+using a tabbed pane is simpler than using <code>CardLayout</code>.
+For example, reimplementing the preceding applet 
+to use a tabbed pane results in a program with 12 
+fewer lines of code.
+You can see the program's code in
+
+<a target="source" href="example-swing/TabWindow.java"><font color="#bb000f"><code>TabWindow.java</code></font></a><a href="example-swing/TabWindow.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+The <code>CardLayout</code> version of the program is in
+
+<a target="source" href="example-swing/CardWindow.java"><font color="#bb000f"><code>CardWindow.java</code></font></a><a href="example-swing/CardWindow.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+
+<p>
+
+Conceptually, each component a <code>CardLayout</code> manages
+is like a playing card or trading card in a stack,
+where only the top card is visible at any time.
+You can choose the card that's showing
+in any of the following ways:
+<ul>
+<li> By asking for either the first or last card,
+     in the order it was added to the container.
+<li> By flipping through the deck backwards or forwards.
+<li> By specifying a card with a specific name.
+     This is the scheme the example program uses.
+     Specifically, the user can choose a card (component)
+     by selecting it by name
+     from a pop-up list of choices.
+</ul>
+
+<p>
+
+The following code creates the <code>CardLayout</code>
+and the components it manages.
+The program runs either within an applet,
+with the help of
+
+<a target="source" href="example-swing/AppletButton.java"><font color="#bb000f"><code>AppletButton</code></font></a><a href="example-swing/AppletButton.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+or as an application.)
+
+<blockquote><pre>
+<em>//Where instance variables are declared:</em>
+JPanel cards;
+final static String BUTTONPANEL = "JPanel with JButtons";
+final static String TEXTPANEL = "JPanel with JTextField";
+
+<em>//Where the container is initialized:</em>
+cards = new JPanel();
+cards.setLayout(new CardLayout());
+   
+<em>...//Create a Panel named p1. Put buttons in it.</em>
+<em>...//Create a Panel named p2. Put a text field in it.</em>
+
+cards.add(p1, BUTTONPANEL);
+cards.add(p2, TEXTPANEL);
+</pre></blockquote>
+
+When you add a component to a
+container that a <code>CardLayout</code> manages,
+you must specify a string that identifies the component being added.
+For example, in this example, 
+the first panel has the string <code>"JPanel with JButtons"</code>,
+and the second panel has the string <code>"JPanel with JTextField"</code>.
+In this example,
+those strings are also used in the combo box.
+
+<p>
+
+To choose which component a <code>CardLayout</code> shows,
+you need some additional code.
+Here's how the example program does this:
+
+<blockquote><pre>
+<em>//Where the container is initialized:</em>
+...
+    //Put the JComboBox in a JPanel to get a nicer look.
+    String comboBoxItems[] = { BUTTONPANEL, TEXTPANEL };
+    JPanel cbp = new JPanel();
+    JComboBox c = new JComboBox(comboBoxItems);
+    c.setEditable(false);
+    c.addItemListener(this);
+    cbp.add(c);
+    contentPane.add(cbp, BorderLayout.NORTH);
+...
+    contentPane.add(cards, BorderLayout.CENTER);
+...
+
+public void itemStateChanged(ItemEvent evt) {
+    CardLayout cl = (CardLayout)(cards.getLayout());
+    cl.show(cards, (String)evt.getItem());
+}
+</pre></blockquote>
+
+This example shows that
+you can use the <code>CardLayout</code> <code>show</code>
+method to set the currently showing component. 
+The first argument to the <code>show</code> method
+is the container the <code>CardLayout</code> controls,
+that is, the container of the components the <code>CardLayout</code> manages.
+The second argument is the string
+that identifies the component to show.
+This string is the same as was used when
+adding the component to the container.
+
+</blockquote>
+<h3>
+<a name="api">The CardLayout API</a>
+</h3>
+<blockquote>
+
+The following <code>CardLayout</code> methods 
+let you choose a component.
+For each method, the first argument is the container
+for which the <code>CardLayout</code> is the layout manager
+(the container of the cards the <code>CardLayout</code> controls).
+
+<blockquote><pre>
+void first(Container)
+void next(Container)
+void previous(Container)
+void last(Container)
+void show(Container, String)
+</pre></blockquote>
+
+
+</blockquote>
+<h3>
+<a name="eg">Examples that Use CardLayout</a>
+</h3>
+<blockquote>
+
+
+Only one example in this 
+trail
+uses <code>CardLayout</code>:
+<a href="example-swing/index.html#CardWindow"><code>CardWindow</code></a>.
+Generally, our examples use 
+<a target="_top" href="../components/tabbedpane.html">tabbed panes</a><a target="_top" href="../components/tabbedpane.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> instead of <code>CardLayout</code>,
+since tabbed panes conveniently provide a 
+nice GUI for the same functionality.
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="box.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#layout" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="flow.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
