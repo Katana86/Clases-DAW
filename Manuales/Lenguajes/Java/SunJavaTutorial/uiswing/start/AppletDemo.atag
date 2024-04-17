@@ -1,0 +1,8 @@
+<applet code="AppletDemo.class"
+	codebase="example-swing"
+        archive="applets.jar"
+        width="570"
+        height="65"
+>
+</applet>
+

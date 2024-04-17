@@ -1,0 +1,626 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>About the JFC and Swing</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="swingStart.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Getting Started with Swing
+</font>
+
+<h2>
+About the JFC and Swing
+</h2>
+<blockquote>
+This section answers four questions:
+
+<ul>
+<li> <a href="#definition">What are the JFC and Swing?</a>
+<li> <a href="#releases">Which releases contain the Swing API?</a>
+<li> <a href="#packages">What Swing packages should I use?</a>
+<li> <a href="#awt">How are Swing components different from AWT components?</a>
+</ul>
+
+
+</blockquote>
+<h3>
+<a name="definition">What Are the JFC and Swing?</a>
+</h3>
+<blockquote>
+
+JFC is short for 
+Java<font size=-2><sup>TM</sup></font> Foundation Classes, 
+which encompass
+a group of features to help people build graphical user 
+interfaces (GUIs).
+The JFC was first announced at the 1997 JavaOne
+developer conference
+and is defined as containing the following features:
+
+<dl>
+<dt> <strong>The Swing Components</strong>
+<dd> Include everything from buttons to split panes to tables.
+     You can see mugshots of all the components in
+<a target="_top" href="../components/components.html">A Visual Index to the Swing Components</a><a target="_top" href="../components/components.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+<dt> <strong>Pluggable Look and Feel Support</strong>
+<dd> Gives any program that uses Swing components
+     a choice of looks and feels.
+     For example, the same program can 
+     use either the Java<font size=-2><sup>TM</sup></font> look and feel
+     or the Windows look and feel.
+     We expect many more look-and-feel packages --
+     including some that use sound instead of a visual "look" --
+     to become available from various sources.
+<dt> <strong>Accessibility API</strong>
+<dd> Enables assistive technologies
+     such as screen readers and Braille displays
+     to get information from the user interface.
+<dt> <strong>Java&nbsp;2D<font size=-2><sup>TM</sup></font> API (Java&nbsp;2 Platform only)</strong>
+<dd> Enables developers to easily incorporate
+     high-quality 2D graphics, text, and images
+     in applications and in applets.
+<dt> <strong>Drag and Drop Support (Java&nbsp;2 Platform only)</strong>
+<dd> Provides the ability to drag and drop 
+     between a Java application and a native application.
+</dl>
+
+<p>
+
+The first three JFC features
+were implemented without any native code,
+relying only on the API defined in JDK&nbsp;1.1.
+As a result, they could and did
+become available as an extension to JDK&nbsp;1.1.
+This extension was released as JFC&nbsp;1.1,
+which is sometimes called "the Swing release."
+The API in JFC&nbsp;1.1 is often called "the Swing API."
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;"Swing" was the codename of the project that developed
+the new components.
+Although it's an unofficial name, it's frequently used
+to refer to the new components and related API.
+It's immortalized in the package names for the Swing API,
+which begin with <code>javax.swing</code>.
+<hr></blockquote>
+
+<p>
+
+This 
+trail
+concentrates on the Swing components.
+We help you choose the appropriate ones for your GUI,
+tell you how to use them,
+and give you the background information you need 
+to use them effectively.
+We discuss the Pluggable look and feel
+and Accessibility support
+when they affect how you write programs that use Swing components.
+This 
+trail
+does not cover the JFC features that 
+appear only in the Java&nbsp;2 Platform.
+For information about those, 
+refer to 
+<a target="_top" href="../../2d/index.html">2D Graphics</a><a target="_top" href="../../2d/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> and to the 
+<a target="other" href="http://java.sun.com/products/jfc/index.html"><font color="#009bbb">JFC Home Page</font></a><a href="http://java.sun.com/products/jfc/index.html"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a>.
+<p>
+
+<a name="lnfs">
+The following snapshots show 
+</a>
+three views of a GUI that uses Swing components.
+Each picture shows the same program,
+but with a different look and feel.
+The program,
+called <code>Converter</code>,
+is discussed in detail at the end of the next lesson,
+<a target="_top" href="../overview/index.html">Swing Features and Concepts</a><a target="_top" href="../overview/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+<table>
+<tr>
+<th>
+Java look and feel
+</th>
+<th>
+CDE/Motif look and feel
+</th>
+</tr>
+
+<tr>
+<td valign="top">
+<IMG SRC="../../figures/uiswing/start/Converter-55.gif" WIDTH="168" HEIGHT="97" ALT="Converter with the Java look and feel"></td>
+<td valign="top">
+<IMG SRC="../../figures/uiswing/start/ConverterMotif.gif" WIDTH="165" HEIGHT="104" ALT="Converter with the CDE/Motif look and feel">
+</td>
+</tr>
+
+<tr>
+<th colspan="2">
+Windows look and feel
+</th>
+</tr>
+<tr>
+<td colspan="2" valign="top" align="center">
+<IMG SRC="../../figures/uiswing/start/ConverterWindows.gif" WIDTH="156" HEIGHT="111" ALT="Converter with the Windows look and feel"></td>
+</tr>
+</table>
+<p>
+
+
+</blockquote>
+<h3>
+<a name="releases">Which Releases Contain the Swing API?</a>
+</h3>
+<blockquote>
+
+The Swing API is available in two forms:
+
+<ul>
+<li> As a core part of the Java&nbsp;2 Platform
+    (standard edition of either v 1.2 or v 1.3)
+<li> JFC&nbsp;1.1 (for use with JDK&nbsp;1.1)
+</ul>
+
+<p>
+
+Which release you use depends
+on whether you need to use JDK&nbsp;1.1 or the Java&nbsp;2 Platform,
+and on whether you're willing to be a beta tester for SDK v 1.3.
+It's a bit simpler to use the Java&nbsp;2 Platform
+because the JFC is built into the Java&nbsp;2 Platform
+and you don't need to add libraries 
+to be able to use the Swing API.
+However, if you need to use JDK&nbsp;1.1, 
+then adding the Swing API
+(using JFC&nbsp;1.1)
+isn't difficult.
+Instructions for doing both are in
+<a href="swingStart.html">Compiling and Running Swing Programs</a>.
+
+<p>
+
+This 
+trail
+describes the Swing&nbsp;1.1 API,
+which is the version present in the Java 2 Platform v&nbsp;1.2
+and in the release called "JFC&nbsp;1.1 (with Swing&nbsp;1.1)."
+Except where noted, the code in this 
+trail
+works unchanged
+with either release
+and subsequent compatible releases,
+such as SDK v&nbsp;1.3 and JFC&nbsp;1.1 (with Swing&nbsp;1.1.1).
+
+<p>
+
+Sun has released many versions of JFC&nbsp;1.1,
+which are identified by the version of Swing API they contain.
+One previous version, for example,
+was called 
+"JFC&nbsp;1.1 (with Swing&nbsp;1.0.3)."
+The last JFC&nbsp;1.1 release was Swing version 1.1.1.
+It had the same API as Swing&nbsp;1.1,
+but added many bug fixes, some performance improvements,
+and a few new capabilities
+such as HTML text in labels
+that required no API changes.
+
+<p>
+
+The following table shows some of the important releases
+containing Swing API.
+Bold font
+indicates the releases
+typically used in shipping products.
+
+<p>
+
+<table border=1>
+<tr>
+<th>
+Swing API Version
+</th>
+<th>
+Corresponding
+<br>
+JFC&nbsp;1.1 
+Release
+</th>
+<th>
+Corresponding
+Java&nbsp;2 Platform Version (Standard Edition)
+</th>
+<th>
+Comments
+</th>
+</tr>
+
+
+
+</td>
+</tr>
+<tr>
+<td>
+Swing&nbsp;1.0.3
+</td>
+<td>
+<b>JFC&nbsp;1.1 
+<br>
+(with
+Swing&nbsp;1.0.3)</b>
+</td>
+<td>
+<em>none</em>
+</td>
+<td>
+The release of JFC&nbsp;1.1 
+included in <b>Java Plug-in<font size=-2><sup>TM</sup></font>&nbsp;1.1.1</b>.
+</td>
+</tr>
+
+
+
+<tr>
+<td>
+Swing&nbsp;1.1
+<p>
+<em><strong>Note:</strong>
+This is the API this
+trail
+covers.</em>
+</td>
+<td>
+<b>JFC&nbsp;1.1 
+<br>
+(with
+Swing&nbsp;1.1)</b>
+
+</td>
+<td>
+<b>v&nbsp;1.2</b>,
+<b>v&nbsp;1.2.1</b>
+</td>
+<td>
+The first releases
+containing the final Swing&nbsp;1.1 API 
+supported for use in shipping products.
+<b>Java Plug-in 1.1.2</b> and <b>Java Plug-in 1.2</b>
+provide applet support for
+JDK&nbsp;1.1 + Swing&nbsp;1.1
+and Java 2 Platform v&nbsp;1.2, respectively.
+</td>
+</tr>
+
+
+<tr>
+<td>
+Swing&nbsp;1.1.1
+<p>
+<em><strong>Note:</strong>
+This 
+trail
+includes notes about this API.</em>
+</td>
+<td>
+<b>JFC&nbsp;1.1 
+<br>
+(with
+Swing&nbsp;1.1.1)</b>
+<p>
+<em><strong>Note:</strong>
+This is the last release that supports JDK 1.1.</em>
+
+</td>
+<td>
+<b>v&nbsp;1.2.2</b>
+</td>
+<td>
+Adds performance enhancements,
+many bug fixes,
+and selected new functionality (requiring no API changes)
+to Swing&nbsp;1.1.
+<b>Java Plug-in 1.1.3</b> and <b>Java Plug-in 1.2.2</b>
+provide applet support for
+JDK&nbsp;1.1 + Swing&nbsp;1.1.1 and 
+Java 2 Platform v&nbsp;1.2.2, respectively.
+</td>
+</tr>
+
+<tr>
+<td>
+<em>no separate "Swing" version number</em>
+</td>
+<td>
+<em>none</em>
+</td>
+<td>
+v&nbsp;1.3 Beta
+</td>
+<td>
+Adds significant performance enhancements and
+bug fixes,
+along with some new features and API additions.
+For more information, see the
+<a target="other" href="http://java.sun.com/products/jdk/1.3/docs/"><font color="#009bbb">release documentation</font></a><a href="http://java.sun.com/products/jdk/1.3/docs/"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a>, especially
+<a target="other" href="http://java.sun.com/products/jdk/1.3/docs/guide/swing/SwingChanges.html"><font color="#009bbb">Swing Changes and New Features</font></a><a href="http://java.sun.com/products/jdk/1.3/docs/guide/swing/SwingChanges.html"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a>.
+Java Plug-in 1.3 Beta provides applet support for this release.
+</td>
+</tr>
+</table>
+
+<p>
+
+
+
+</blockquote>
+<h3>
+<a name="packages">What Swing Packages Should I Use?</a>
+</h3>
+<blockquote>
+
+The Swing API is powerful, flexible -- and immense.
+For example, the 1.1 version of the API has 15 public packages:
+<code>javax.accessibility</code>,
+<code>javax.swing</code>,
+<code>javax.swing.border</code>,
+<code>javax.swing.colorchooser</code>,
+<code>javax.swing.event</code>,
+<code>javax.swing.filechooser</code>,
+<code>javax.swing.plaf</code>,
+<code>javax.swing.plaf.basic</code>,
+<code>javax.swing.plaf.metal</code>,
+<code>javax.swing.plaf.multi</code>,
+<code>javax.swing.table</code>,
+<code>javax.swing.text</code>,
+<code>javax.swing.text.html</code>,
+<code>javax.swing.tree</code>, and
+<code>javax.swing.undo</code>.
+
+<p>
+
+Fortunately, most programs use only a small subset of the API.
+This
+trail
+sorts out the API for you,
+giving you examples of common code
+and pointing you to methods and classes
+you're likely to need.
+Most of the code in this 
+trail
+uses only one or two Swing packages:
+
+<ul>
+<li> <code>javax.swing</code>
+<li> <code>javax.swing.event</code> (not always required)
+</ul>
+
+
+</blockquote>
+<h3>
+<a name="awt">How Are Swing Components Different from AWT Components?</a>
+</h3>
+<blockquote>
+
+If you don't care about the AWT components,
+skip to the next section.
+You can
+get a more general introduction to the Swing components
+from
+<a href="swingTour.html">A Quick Tour of a Swing Application's Code</a>
+and
+from the
+<a target="_top" href="../overview/index.html">Swing Features and Concepts</a><a target="_top" href="../overview/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> lesson.
+
+<p>
+
+The AWT components are those provided
+by the JDK 1.0 and 1.1 platforms.
+Although the Java&nbsp;2 Platform still supports the AWT components,
+we strongly encourage you to use Swing components instead.
+You can identify Swing components
+because their names start with <code>J</code>.
+The AWT button class, for example, is named <code>Button</code>,
+while the Swing button class is named <code>JButton</code>.
+Additionally, the AWT components are in the <code>java.awt</code> package,
+while the Swing components are in the <code>javax.swing</code> package.
+
+<p>
+
+The biggest difference between the AWT components
+and Swing components is
+that the Swing components
+are implemented with absolutely no native code.
+Since Swing components aren't restricted to 
+the least common denominator -- the features that are
+present on every platform --
+they can have more functionality
+than AWT components.
+Because the Swing components have 
+no native code,
+they can be
+be shipped as an add-on to JDK&nbsp;1.1,
+in addition to being part of the Java&nbsp;2 Platform.
+
+<p>
+
+Even the simplest Swing components
+have capabilities far beyond what
+the AWT components offer:
+
+<ul>
+
+<li> Swing buttons and labels can display images
+     instead of, or in addition to, text.
+
+<li> You can easily add or change the borders drawn
+     around most Swing components.
+     For example, it's easy to put a box around the outside
+     of a container or label.
+
+<li> You can easily change the behavior or appearance
+     of a Swing component
+     by either invoking methods on it 
+     or creating a subclass of it.
+
+<li> Swing components don't have to be rectangular.
+     Buttons, for example, can be round.
+
+<li> Assistive technologies such as screen readers can easily
+     get information from Swing components.  For example, a tool
+     can easily get the text that's displayed on a button or
+     label.
+</ul>
+
+<p>
+
+     Swing lets you specify
+     which look and feel your program's GUI uses.
+     By contrast, AWT components 
+     always have the look and feel of the native platform.
+
+<p>
+     Another interesting feature is that
+     Swing components with state use models
+     to keep the state.
+     A <code>JSlider</code>, for instance,
+     uses a <code>BoundedRangeModel</code>
+     object to hold its current value and range of legal values.
+     Models are set up automatically,
+     so you don't have to deal with them 
+     unless you want to take advantage of the power
+     they can give you.  
+
+<p>
+  
+If you're used to using AWT components,
+you need to be aware of a few gotchas
+when using Swing components:
+
+<ul>
+<li> Programs should not, as a rule, use "heavyweight" components
+     alongside Swing components.
+     Heavyweight components include all the 
+     ready-to-use AWT components
+     (such as <code>Menu</code> and <code>ScrollPane</code>)
+     and all components that inherit from the AWT
+     <code>Canvas</code> and <code>Panel</code> classes.
+     This restriction exists because 
+     when Swing components (and all other "lightweight" components)
+     overlap with heavyweight components,
+     the heavyweight component is always painted on top.
+     For more information, see
+     <a href="http://java.sun.com/products/jfc/tsc/articles/mixing/index.html">
+     Mixing Heavy and Light Components</a>,
+     an article in The Swing Connection.
+
+
+<li> Swing components aren't thread safe.
+     If you modify a visible Swing component --
+     invoking its <code>setText</code> method, for example --
+     from anywhere but an event handler,
+     then you need to take special steps 
+     to make the modification execute on the event-dispatching thread.
+     This isn't an issue for many Swing programs,
+     since component-modifying code
+     is typically in event handlers.
+
+<li> The containment hierarchy for any window or applet that contains
+     Swing components must have a Swing top-level container 
+     at the root of the hierarchy.  For example, a main window should
+     be implemented as a <code>JFrame</code> instance rather than as a
+     <code>Frame</code> instance.
+
+<li> You don't add components directly to a top-level container such
+     as a <code>JFrame</code>. 
+     Instead, you add components to a container
+     (called the <em>content pane</em>)
+     that is itself contained by the <code>JFrame</code>.
+</ul>
+   
+<p>
+
+<a target="_top" href="../converting/index.html">Converting to Swing</a><a target="_top" href="../converting/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> tells you more about the differences
+between Swing components and AWT components.
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="swingStart.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

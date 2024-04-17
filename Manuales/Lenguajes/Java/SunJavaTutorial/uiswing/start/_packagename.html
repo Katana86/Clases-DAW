@@ -1,0 +1,367 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Swing Package Names</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="swingStart12.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+</td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Getting Started with Swing 
+</font>
+
+<h2>
+Swing Package Names
+</h2>
+<blockquote>
+The names of the Swing packages have varied over time.
+This trail uses the final Swing package names,
+which generally start with <code>javax.swing</code>.
+If you have code that uses earlier package names,
+such as <code>com.sun.java.swing</code>,
+then you will need to convert it.
+
+<p>
+
+This section has two parts:
+
+<ul>
+<li> <a href="#convert">How to Convert to the Final Package Names</a>
+<li> <a href="#history">The History of the Swing Package Names</a>
+</ul>
+
+</blockquote>
+<h3> <a name="convert">How to Convert to the Final Package Names</a></h3>
+<blockquote>
+Between the Beta&nbsp;2 and Beta&nbsp;3 releases of Swing&nbsp;1.1,
+the names of the Swing packages changed.
+In Swing&nbsp;1.1 Beta&nbsp;2, for example,
+the main Swing package was called 
+<code>com.sun.java.swing</code>,
+while in Swing&nbsp;1.1 Beta&nbsp;3,
+the name is <code>javax.swing</code>.
+The same changes occurred between the 
+Beta&nbsp;4 and RC1 releases of the Java 2 Platform, v&nbsp;1.2.
+
+<p>
+
+Converting the package names is easy,
+although it can be tedious to do by hand
+when many source files are involved.
+Fortunately, the Swing team provides a utility called
+<code>PackageRenamer</code>
+that converts programs to use the 
+final Swing package names.
+You can find the program at
+
+<a target="other" href="http://java.sun.com/products/jfc/PackageRenamer"><font color="#009bbb"><code>http://java.sun.com/products/jfc/PackageRenamer</code></font></a><a href="http://java.sun.com/products/jfc/PackageRenamer"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a> .
+<p>
+
+The following table shows how the names have changed:
+
+<p>
+
+<table border=1>
+<tr>
+<th align=left> Old Name
+		<br>
+		(Swing&nbsp;1.1 Beta&nbsp;2,
+		Java 2 Platform v&nbsp;1.2 Beta&nbsp;4)
+</th>
+<th align=left> New, Final Name 
+		<br>
+		(Swing&nbsp;1.1 [Beta&nbsp;3 and later],
+		Java 2 Platform v&nbsp;1.2 RC1)
+</th>
+</tr>
+<tr>
+<td> <code>com.sun.java.accessibility</code>
+</td>
+<td> <code>javax.accessibility</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing</code>
+</td>
+<td> <code>javax.swing</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.border</code>
+</td>
+<td> <code>javax.swing.border</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.colorchooser</code>
+</td>
+<td> <code>javax.swing.colorchooser</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.event</code>
+</td>
+<td> <code>javax.swing.event</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.filechooser</code>
+</td>
+<td> <code>javax.swing.filechooser</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.plaf</code>
+</td>
+<td> <code>javax.swing.plaf</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.plaf.basic</code>
+</td>
+<td> <code>javax.swing.plaf.basic</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.plaf.metal</code>
+</td>
+<td> <code>javax.swing.plaf.metal</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.plaf.motif</code>
+</td>
+<td> <code>com.sun.java.swing.plaf.motif</code>
+     (<em>no change)</em>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.plaf.multi</code>
+</td>
+<td> <code>javax.swing.plaf.multi</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.plaf.windows</code>
+</td>
+<td> <code>com.sun.java.swing.plaf.windows</code>
+     (<em>no change)</em>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.table</code>
+</td>
+<td> <code>javax.swing.table</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.text</code>
+</td>
+<td> <code>javax.swing.text</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.text.html</code>
+</td>
+<td> <code>javax.swing.text.html</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.tree</code>
+</td>
+<td> <code>javax.swing.tree</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.undo</code>
+</td>
+<td> <code>javax.swing.undo</code>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.swing.plaf.mac</code>
+</td>
+<td> <code>com.sun.java.swing.plaf.mac</code>
+     (<em>no change)</em>
+</td>
+</tr>
+<tr>
+<td> <code>com.sun.java.accessibility.util</code>
+</td>
+<td> <code>com.sun.java.accessibility.util</code>
+     (<em>no change)</em>
+</td>
+</tr>
+</table>
+
+<p>
+
+<blockquote><hr><strong>Note:</strong>&nbsp;The <code>com.sun.java.accessibility.util</code>
+package isn't part of the JFC 1.1 release or Java 2 Platform.
+It's distributed separately
+as part of the 
+<a target="other" href="http://java.sun.com/products/jfc/#download-access"><font color="#009bbb">Accessibility Utilities</font></a><a href="http://java.sun.com/products/jfc/#download-access"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a>.
+
+<p>
+
+The 
+<code>com.sun.java.swing.plaf.mac</code>
+package is distributed only in 
+the Macintosh download of 
+<a target="other" href="http://java.sun.com/products/jfc/#download-swing"><font color="#009bbb">JFC 1.1</font></a><a href="http://java.sun.com/products/jfc/#download-swing"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a> and the 
+<a target="other" href="http://www.apple.com/java/"><font color="#009bbb">Mac OS Runtime for Java</font></a><a href="http://www.apple.com/java/"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a>, also known as MRJ.
+<hr></blockquote>
+
+<p>
+
+</blockquote>
+<h3><a name="history">The History of the Swing Package Names</a></h3>
+<blockquote>
+
+<p>
+
+At various times, the Swing API has used the following package names:
+
+<ul>
+<li> <code>com.sun.java.swing</code>
+<li> <code>java.awt.swing</code>
+<li> <code>javax.swing</code>
+</ul>
+
+<p>
+
+In the end, the core Swing API 
+is under the <code>javax.swing</code> package,
+with some additional Sun-provided packages
+under <code>com.sun.java.swing</code>.
+The previous table gives details
+of the final package names.
+Now let's look at
+how the names have varied over time.
+
+<p>
+
+In all the JFC&nbsp;1.1 releases up through Swing&nbsp;1.1 Beta&nbsp;2,
+the name of the main Swing package was
+<code>com.sun.java.swing</code>.
+The JFC&nbsp;1.1 releases were meant to be used with JDK&nbsp;1.1.
+There was no built-in support for Swing 
+until the 1.2 Beta&nbsp;2 version of the Java&nbsp;2 Platform.
+
+<p>
+
+In the Beta&nbsp;2 and Beta&nbsp;3 releases 
+of the Java 2 Platform v&nbsp;1.2, 
+the Swing API was in a new package:
+<code>java.awt.swing</code>.
+However, some of our customers told us
+that they wanted the Swing package names 
+to be the same in JFC&nbsp;1.1 and the Java 2 Platform,
+so that they would be able to use the exact same code
+for both releases.
+
+<p>
+
+As a result, in v&nbsp;1.2 Beta&nbsp;4
+the Swing team moved the main Swing package to
+<code>com.sun.java.swing</code>.
+Unfortunately, many people
+didn't like this change.
+One of the reasons for the discontent
+was that having a core API in a package
+that didn't begin with "java"
+seemed to imply that Swing wasn't a core API.
+
+<p>
+
+The Swing team reacted by floating a 
+
+<a target="other" href="http://java.sun.com/products/jfc/package.html"><font color="#009bbb">proposal</font></a><a href="http://java.sun.com/products/jfc/package.html"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a> to move the Swing packages to 
+<code>javax.swing</code>
+in both JFC&nbsp;1.1 and the Java&nbsp;2 Platform.
+The proposal was favorably greeted by the user community, 
+and the new package names were introduced
+in Swing&nbsp;1.1 Beta&nbsp;3
+and the Java 2 SDK v&nbsp;1.2 RC1.
+The right column of the preceding <a href="#convert">table</a> shows
+the final package names.
+
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="swingStart12.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+</td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

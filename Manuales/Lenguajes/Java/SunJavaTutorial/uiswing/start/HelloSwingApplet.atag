@@ -1,0 +1,6 @@
+<applet code="HelloSwingApplet.class"
+	codebase="example-swing"
+	archive="applets.jar"
+	width=400
+	height=50>
+</applet>

@@ -1,0 +1,205 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Running Swing Applets</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="swingStart11.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="swingTour.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Getting Started with Swing
+</font>
+
+<h2>
+Running Swing Applets
+</h2>
+<blockquote>
+This section describes how to run applets
+that use Swing components.
+For information on <em>writing</em> Swing applets, 
+see
+<a target="_top" href="../components/applet.html">How to Make Applets</a><a target="_top" href="../components/applet.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+
+You can run Swing applets in any browser
+that has the appropriate version of
+
+<a target="other" href="http://java.sun.com/products/plugin/"><font color="#009bbb">Java Plug-in</font></a><a href="http://java.sun.com/products/plugin/"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a>  installed. Another option is 
+to use a 1.2-compliant browser.
+Currently, the only 1.2-compliant browser available
+is the Applet Viewer utility provided with 
+the Java 2 SDK.
+
+
+<p>
+
+To test whether your browser can run applets, 
+go to
+<a href="HelloSwingApplet.html"><code>HelloSwingApplet.html</code></a>.
+
+You should see a box that looks like the following:
+
+<p><center><a href="HelloSwingApplet.html" target="_blank"><IMG SRC="../../figures/uiswing/start/HelloSwingApplet.gif" WIDTH="400" HEIGHT="50" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+You can find the applet's source code in 
+
+<a target="source" href="example-swing/HelloSwingApplet.java"><font color="#bb000f"><code>HelloSwingApplet.java</code></font></a><a href="example-swing/HelloSwingApplet.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+and the HTML code for including the applet
+by viewing the HTML source for
+<a href="HelloSwingApplet.html"><code>HelloSwingApplet.html</code></a>.
+The bad news is that the HTML code for including the applet
+is rather convoluted.
+The good news is that you can generate the HTML code automatically
+from a simple <code>&lt;APPLET&gt;</code> tag.
+See the 
+
+<a target="other" href="http://java.sun.com/products/plugin/"><font color="#009bbb">Java Plug-in documentation</font></a><a href="http://java.sun.com/products/plugin/"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a> for details on downloading a free HTML converter.
+
+<p>
+
+Here is a more complex applet,
+which uses multiple class and image files.
+
+<p><center><a href="AppletDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/start/AppletDemo.gif" WIDTH="460" HEIGHT="52" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+
+The applet's source code is in 
+
+<a target="source" href="example-swing/AppletDemo.java"><font color="#bb000f"><code>AppletDemo.java</code></font></a><a href="example-swing/AppletDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+It uses the files 
+<a href="example-swing/images/right.gif"><code>images/right.gif</code></a>,
+<a href="example-swing/images/middle.gif"><code>images/middle.gif</code></a>,
+and
+<a href="example-swing/images/left.gif"><code>images/left.gif</code></a>
+as well.
+
+<p>
+
+
+<p>
+
+
+The rest of this section gives step-by-step instructions
+for running the preceding applets.
+For information on writing applets, 
+see
+<a target="_top" href="../components/applet.html">How to Make Applets</a><a target="_top" href="../components/applet.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+
+</blockquote>
+<h3>
+Step by Step: Running a Swing-Based Applet
+</h3>
+<blockquote>
+
+<ol>
+<li> Find a 1.1 or 1.2 browser 
+     or download Java Plug-in into a supported browser. 
+     Make sure you have the latest version of the browser and plug-in.
+     If nothing else, you can always use 
+     Applet Viewer
+     (<code>appletviewer</code>),
+     which is distributed in the 
+     
+<a target="other" href="http://java.sun.com/products/jdk/"><font color="#009bbb">JDK</font></a><a href="http://java.sun.com/products/jdk/"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a> .     Java Plug-in supports certain versions of Netscape Navigator
+     and Internet Explorer.
+     See the 
+<a target="other" href="http://java.sun.com/products/plugin/"><font color="#009bbb">Java Plug-in documentation</font></a><a href="http://java.sun.com/products/plugin/"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a>      for details.
+<p>
+<li> If you're using a 1.1 browser without Java Plug-in,
+     determine how to load the Swing JAR file into your browser.
+     See <a href="_classpath.html">Setting the Browser's Class Path</a>
+     for an example of putting the Swing JAR file into 
+     the Applet Viewer class path.
+     See
+<a href="http://java.sun.com/products/jfc/tsc/swingdoc-current/applets.html">Make
+     Your Browser Swing</a> in <em>The Swing Connection</em>
+     for examples of doing the same for Internet Navigator and Netscape
+     Navigator.
+<p>
+<li> Point the browser at
+     this page.
+     If you can see the first applet but not the second
+     (or the second without any images),
+     please send mail to 
+     <a href="mailto:tutorial@java.sun.com">tutorial@java.sun.com</a>
+     describing what you see in the applet area and in the Java
+     Console.
+</ol>
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="swingStart11.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="swingTour.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

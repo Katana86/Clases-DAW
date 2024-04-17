@@ -1,0 +1,498 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>A Quick Tour of a Swing Application's Code</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="swingApplet.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="../overview/index.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Getting Started with Swing
+</font>
+
+<h2>
+A Quick Tour of a Swing Application's Code
+</h2>
+<blockquote>
+This section takes you through the code for 
+the <code>SwingApplication</code> program.
+The next lesson, 
+<a target="_top" href="../overview/index.html">Swing Features and Concepts</a><a target="_top" href="../overview/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>, provides full explanations of the topics introduced in this section.
+It also provides a bigger, more realistic example
+that you can use to expand and test your Swing knowledge.
+
+<p>
+
+<code>SwingApplication</code> brings up a window that looks like this:
+
+<p><center><IMG SRC="../../figures/uiswing/start/SwingApplication.gif" WIDTH="268 " HEIGHT="119" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="SwingApplication"></center></p><p>
+
+Each time the user clicks the button,
+the label is updated.
+You can find the whole program in
+
+<a target="source" href="example-swing/SwingApplication.java"><font color="#bb000f"><code>SwingApplication.java</code></font></a><a href="example-swing/SwingApplication.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+
+<p>
+
+The code in <code>SwingApplication.java</code>
+accomplishes the following tasks:
+<ul>
+<li> <a href="#import">Importing Swing packages</a>
+<li> <a href="#plaf">Choosing the look and feel</a>
+<li> <a href="#jframe">Setting up the top-level container</a>
+<li> <a href="#components">Setting up buttons and labels</a>
+<li> <a href="#containers">Adding components to containers</a>
+<li> <a href="#borders">Adding borders around components</a>
+<li> <a href="#events">Handling events</a>
+<li> <a href="#threads">Dealing with thread issues</a>
+<li> <a href="#access">Supporting assistive technologies</a>
+</ul>
+
+
+</blockquote>
+<h3>
+<a name="import">
+Importing Swing Packages
+</a>
+</h3>
+<blockquote>
+The following line imports the main Swing package:
+
+<blockquote><pre>
+import javax.swing.*;
+</pre></blockquote>
+
+<p>
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+Early JFC 1.1 and Java 2 SDK v 1.2 beta releases
+used different names for the Swing packages.
+See <a href="_packagename.html">Swing Package Names</a> for details.
+<hr></blockquote>
+
+<p>
+Most Swing programs also need to import
+the two main AWT packages:
+<blockquote><pre>
+import java.awt.*;
+import java.awt.event.*;
+</pre></blockquote>
+
+<p>
+
+</blockquote>
+<h3>
+<a name="plaf">
+Choosing the Look and Feel
+</a>
+</h3>
+<blockquote>
+
+Swing allows you to specify
+which look and feel your program uses --
+Java look and feel, Windows look and feel, CDE/Motif look and feel, and so on.
+The bold code in the following snippet shows you how
+<code>SwingApplication</code> specifies the look and feel:
+
+<blockquote><pre>
+public static void main(String[] args) {
+    try {
+        <b>UIManager.setLookAndFeel(
+            UIManager.getCrossPlatformLookAndFeelClassName());</b>
+    } catch (Exception e) { }
+
+    <em>...//Create and show the GUI...</em>
+}
+</pre></blockquote>
+
+The preceding code essentially says, "I don't care whether
+the user has chosen a look and feel -- use the cross-platform
+look and feel (the Java look and feel)."  
+You already know what the Java look and feel looks like,
+since almost all of our screenshots show it.
+
+<p>
+
+For more information on specifying the look and feel, see 
+<a target="_top" href="../misc/plaf.html">How to Set the Look and Feel</a><a target="_top" href="../misc/plaf.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+</blockquote>
+<h3>
+<a name="jframe">
+Setting Up the Top-Level Container
+</a>
+</h3>
+<blockquote>
+Every program that presents a Swing GUI
+contains at least one top-level Swing container.
+For most programs, the top-level Swing containers
+are instances of <code>JFrame</code>,
+<code>JDialog</code>, or (for applets) <code>JApplet</code>.
+Each <code>JFrame</code> object implements
+a single main window,
+and each <code>JDialog</code> implements
+a secondary window.
+Each <code>JApplet</code> object implements
+an applet's display area within a browser window.
+A top-level Swing container provides
+the support that Swing components need
+to perform their painting and event handling.
+
+<p>
+
+The <code>SwingApplication</code> example has
+only one top-level container, a <code>JFrame</code>.
+When the user closes the frame,
+the application exits.
+Here is the code
+that sets up and shows the frame:
+
+<blockquote><pre>
+public class SwingApplication {
+    ...
+    public static void main(String[] args) {
+	...
+        JFrame frame = new JFrame("SwingApplication");
+        <em>//...create the components to go into the frame...</em>
+        <em>//...stick them in a container named contents...</em>
+        frame.getContentPane().add(contents, BorderLayout.CENTER);
+
+        //Finish setting up the frame, and show it.
+        frame.addWindowListener(...);
+        frame.pack();
+        frame.setVisible(true);
+    }
+}
+</pre></blockquote>
+
+<p>
+
+For more information about top-level containers,
+see 
+<a target="_top" href="../overview/hierarchy.html">Swing Components and the Containment Hierarchy</a><a target="_top" href="../overview/hierarchy.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+
+</blockquote>
+<h3>
+<a name="components">
+Setting Up Buttons and Labels
+</a>
+</h3>
+<blockquote>
+
+Like most GUIs,
+the <code>SwingApplication</code> GUI contains a button and a label.
+(Unlike most GUIs, that's about all that <code>SwingApplication</code> contains.)
+Here's the code that initializes the button:
+
+<blockquote><pre>
+JButton button = new JButton("I'm a Swing button!");
+button.setMnemonic(KeyEvent.VK_I);
+button.addActionListener(<em>...create an action listener...</em>);
+</pre></blockquote>
+
+The first line creates the button. 
+The second sets the I key as the mnemonic
+that the user can use 
+to simulate a click of the button.
+For example, in the Java look and feel, 
+typing Alt-i results in a button click.
+The third line registers an event handler for the button click.
+You'll see the event-handling code for this program in 
+<a href="#events">Handling Events</a>.
+
+<p>
+
+Here's the code that initializes and manipulates the label:
+
+<blockquote><pre>
+<em>...//where instance variables are declared:</em>
+private static String labelPrefix = "Number of button clicks: ";
+private int numClicks = 0;
+
+<em>...//in GUI initialization code:</em>
+final JLabel label = new JLabel(labelPrefix + "0    ");
+...
+label.setLabelFor(button);
+
+<em>...//in the event handler for button clicks:</em>
+label.setText(labelPrefix + numClicks);
+</pre></blockquote>
+
+The preceding code is pretty straightforward,
+except for the line that invokes the <code>setLabelFor</code> method.
+That code exists solely to hint to assistive technologies
+that the label describes the button.
+For more information, see
+<a href="#access">Supporting Assistive Technologies</a>.
+
+<p>
+
+For more information about Swing components
+such as
+buttons and
+labels,
+see
+<a target="_top" href="../components/index.html">Using Swing Components</a><a target="_top" href="../components/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+
+</blockquote>
+<h3>
+<a name="containers">
+Adding Components to Containers
+</a>
+</h3>
+<blockquote>
+
+<code>SwingApplication</code> groups the label and button in a container
+(a <code>JPanel</code>)
+before adding the components to the frame.
+Here's the code that initializes the panel:
+
+<blockquote><pre>
+JPanel pane = new JPanel();
+pane.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
+pane.setLayout(new GridLayout(0, 1));
+pane.add(button);
+pane.add(label);
+</pre></blockquote>
+
+The first line of code creates the panel.
+The second line adds a border to it.
+We'll discuss the border later.
+
+<p>
+
+The third line of code creates a layout manager
+that forces the panel's contents 
+to be displayed in a single column.
+The last lines 
+add the button and label to the panel.
+Adding the button and label to the panel
+means they are controlled by the panel's layout manager.
+Specifically, a container's layout manager determines the size and position
+of each component that's been added to the container.
+
+<p>
+
+Layout management concepts are discussed in
+<a target="_top" href="../overview/layout.html">Layout Management</a><a target="_top" href="../overview/layout.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+To learn how to use individual layout managers, see
+<a target="_top" href="../layout/index.html">Laying Out Components Within a Container</a><a target="_top" href="../layout/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+
+</blockquote>
+<h3>
+<a name="borders">
+Adding Borders Around Components
+</a>
+</h3>
+<blockquote>
+
+Here, again, is the code that adds a border
+to the panel:
+
+<blockquote><pre>
+pane.setBorder(BorderFactory.createEmptyBorder(
+                                30, //top
+                                30, //left
+                                10, //bottom
+                                30) //right
+                                );
+</pre></blockquote>
+
+This border simply provides some empty space
+around the panel's contents --
+30 extra pixels on the top, left, and right,
+and 10 extra pixels on the bottom.
+Borders are a feature that <code>JPanel</code>
+inherits from the <code>JComponent</code> class.
+
+<p>
+
+Border concepts are discussed in
+<a target="_top" href="../overview/layout.html">Layout Management</a><a target="_top" href="../overview/layout.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> and 
+<a target="_top" href="../overview/draw.html">Painting</a><a target="_top" href="../overview/draw.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+See
+<a target="_top" href="../misc/border.html">How to Use Borders</a><a target="_top" href="../misc/border.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for information about using the border API.
+
+
+
+</blockquote>
+<h3>
+<a name="events">
+Handling Events
+</a>
+</h3>
+<blockquote>
+
+The <code>SwingApplication</code> example contains two event handlers.
+One handles button clicks (action events);
+the other handles window closing (window events).
+Here is the event-handling code from <code>SwingApplication</code>:
+
+<blockquote><pre>
+button.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        numClicks++;
+        label.setText(labelPrefix + numClicks);
+    }
+});
+...
+frame.addWindowListener(new WindowAdapter() {
+    public void windowClosing(WindowEvent e) {
+	System.exit(0);
+    }
+});
+</pre></blockquote>
+
+You can read about Swing event handling in
+<a target="_top" href="../overview/event.html">Event Handling</a><a target="_top" href="../overview/event.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> and
+<a target="_top" href="../events/index.html">Writing Event Listeners</a><a target="_top" href="../events/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+
+</blockquote>
+<h3>
+<a name="threads">
+Dealing with Thread Issues
+</a>
+</h3>
+<blockquote>
+The <code>SwingApplication</code> program is thread safe.
+Once its GUI is visible,
+its only GUI manipulation 
+(updating the label)
+occurs in an event handler.
+Because the event handler runs in the same thread
+that performs all event handling and painting
+for the application,
+there's no possibility 
+that two threads will try to manipulate the GUI at once.
+
+<p>
+
+However, it can be all too easy to introduce thread problems into a program. 
+
+
+See 
+<a target="_top" href="../overview/threads.html">Threads and Swing</a><a target="_top" href="../overview/threads.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for information about thread safety in Swing.
+
+</blockquote>
+<h3>
+<a name="access">
+Supporting Assistive Technologies
+</a>
+</h3>
+<blockquote>
+
+Support for assistive technologies --
+devices such as screen readers that provide alternate ways 
+of accessing information in a GUI --
+is already included in every Swing component.
+The only code in <code>SwingApplication</code>
+that exists solely to support assistive technologies
+is this:
+
+<blockquote><pre>
+label.setLabelFor(button);
+</pre></blockquote>
+
+Assistive technologies 
+can get plenty of information from Swing components, 
+without any special code from you.
+For example, assistive technologies can automatically
+get the text information set by the following lines of code:
+
+<blockquote><pre>
+JButton button = new JButton("I'm a Swing button!");
+label = new JLabel(labelPrefix + "0    ");
+label.setText(labelPrefix + numClicks);
+JFrame frame = new JFrame("SwingApplication");
+</pre></blockquote>
+
+See 
+<a target="_top" href="../misc/access.html">How to Support Assistive Technologies</a><a target="_top" href="../misc/access.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for more information
+about how you can ensure 
+that your programs work well with tools
+that use the Accessibility API
+to query components.
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="swingApplet.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="../overview/index.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

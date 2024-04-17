@@ -1,0 +1,228 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Compiling and Running Swing Programs (Java 2 Platform)</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="swingStart.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="swingStart11.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Getting Started with Swing
+</font>
+
+<h2>
+Compiling and Running Swing Programs (Java 2 Platform)
+</h2>
+<blockquote>
+Here are the steps for compiling and running your first Swing program
+with the Java 2 SDK, v 1.2 or 1.3:
+
+<ol>
+<li> <a href="#jdk">Download the latest release of the
+     Java 2 Platform,
+     if you haven't already done so.
+<li> <a href="#save">Create a program that uses Swing components.</a>
+<li> <a href="#compile">Compile the program.</a>
+<li> <a href="#run">Run the program.</a>
+</ol>
+
+</blockquote>
+<h3>
+<a name="jdk">
+Download the Latest Release of the Java 2 Platform
+</a>
+</h3>
+<blockquote>
+Two versions of the Java 2 Platform are available,
+both for free.
+The first is the
+
+<a target="other" href="http://java.sun.com/products/jdk/1.2/"><font color="#009bbb">Java 2 SDK, Standard Edition, v 1.2</font></a><a href="http://java.sun.com/products/jdk/1.2/"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a>, which is sometimes called "v 1.2" for short
+(or, incorrectly, "JDK 1.2").
+The second, which is currently available only in pre-release form, is 
+
+<a target="other" href="http://java.sun.com/products/jdk/1.3/"><font color="#009bbb">Java 2 SDK, Standard Edition, v 1.3</font></a><a href="http://java.sun.com/products/jdk/1.3/"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a>, which is sometimes called simply "v 1.3".
+
+<p>
+
+Which version you choose depends
+on the features you need
+and your (or your company's) tolerance for not-quite-final software.
+For information about the differences between 1.2 and 1.3, see the
+
+<a target="other" href="http://java.sun.com/products/jdk/1.3/docs/"><font color="#009bbb">Java 2 SDK v 1.3 documentation</font></a><a href="http://java.sun.com/products/jdk/1.3/docs/"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a>.
+
+</blockquote>
+<h3>
+<a name="save">
+Create a Program That Uses Swing Components
+</a>
+</h3>
+<blockquote>
+
+You can use a simple program we provide,
+called <code>SwingApplication</code>.
+Please download and save this file:
+
+<a target="source" href="example-swing/SwingApplication.java"><font color="#bb000f"><code>SwingApplication.java</code></font></a><a href="example-swing/SwingApplication.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+The spelling and capitalization of the file's name must be exactly 
+"SwingApplication.java".
+
+
+</blockquote>
+<h3>
+<a name="compile">
+Compile a Program That Uses Swing Components
+</a>
+</h3>
+<blockquote>
+Your next step is to compile the program.
+Compiling a Swing program with one of the Java 2 SDKs is simple,
+since the Swing packages are part of
+the Standard Edition of the Java 2 Platform.
+Here is an example:
+
+<blockquote><pre>
+javac -deprecation SwingApplication.java
+</pre></blockquote>
+
+If you can't compile <code>SwingApplication.java</code>,
+it's probably either because you're 
+using a 
+<a href="swingStart11.html#compile">JDK&nbsp;1.1</a> compiler
+instead of a v 1.2 or 1.3 compiler,
+or because you're using a beta release of v 1.2.
+Once you update a more recent release of the Java&nbsp;2 Platform,
+you should be able to use the programs in this 
+trail
+without change.
+See <a href="_packagename.html">Swing Package Names</a>
+for information about the package names 
+that were used in the 1.2 beta releases.
+
+
+</blockquote>
+<h3>
+<a name="run">
+Run the Program
+</a>
+</h3>
+<blockquote>
+
+After you compile the program successfully,
+you can run it.
+This section tells you how to run an application.
+For instructions on running an applet, see 
+<a href="swingApplet.html">Running Swing Applets</a>.
+
+
+<p>
+
+Assuming that your program uses a standard look and feel --
+such as the Java look and feel, Windows look and feel, 
+or CDE/Motif look and feel --
+you can use the v 1.2 or 1.3 interpreter to run the program
+without adding anything to your class path.
+For example:
+
+<blockquote><pre>
+java SwingApplication
+</pre></blockquote>
+
+If you use a nonstandard look and feel,
+you must make sure that its package is
+included in the class path.  
+For example:
+
+<blockquote><pre>
+<em>Solaris:</em>
+    java -classpath .:/home/me/lnfdir/newlnf.jar SwingApplication
+<em>Win32:</em>
+    java -classpath .;C:\java\lnfdir\newlnf.jar SwingApplication
+</pre></blockquote>
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+Don't include the core classes
+in the class path.  
+The v 1.2 and 1.3 interpreters find them automatically.
+<hr></blockquote>
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="swingStart.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="swingStart11.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

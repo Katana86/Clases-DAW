@@ -1,0 +1,148 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Platform-Specific Details: Setting Environment Variables</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="swingStart11.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+</td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Getting Started with Swing 
+</font>
+
+<h2>
+Platform-Specific Details: Setting Environment Variables
+</h2>
+<blockquote>
+The directory paths used below assume
+that you have installed both the JDK and Swing releases
+under <code>/home/me</code> (for Solaris)
+or on drive C (for Windows).
+You should adjust the directory paths to reflect your installation.
+
+<p>
+
+<dl>
+<dt><strong>Solaris</strong>
+<dd>
+Set the environment variables with commands like the following:
+<blockquote><pre>
+setenv JAVA_HOME /home/me/jdk1.1.8
+setenv SWING_HOME /home/me/swing-1.1.1
+</pre></blockquote>
+
+<p>
+
+<dt><strong>Windows 95</strong>
+<dd>
+Open your favorite text editor
+and add the following 
+to your system's <code>AUTOEXEC.BAT</code> file:
+   
+<blockquote><pre>
+set JAVA_HOME=C:\JDK1.1.8
+set SWING_HOME=C:\swing-1.1.1
+set CLASSPATH=.;%JAVA_HOME%\lib\classes.zip;%SWING_HOME%\swing.jar
+set PATH=%PATH%;%JAVA_HOME%\bin
+</pre></blockquote>
+
+<p>
+
+<dt><strong>Windows NT</strong>
+<dd>
+Double-click the System icon inside the Control Panel.
+When the System Properties dialog box opens,
+choose the Environment tab and then
+place the following in the lower list box,
+which is labeled "User Variables":
+
+<blockquote><pre>
+JAVA_HOME     C:\JDK1.1.8
+SWING_HOME    C:\swing-1.1.1
+CLASSPATH     .;%JAVA_HOME%\lib\classes.zip;%SWING_HOME%\swing.jar
+PATH          %PATH%;%JAVA_HOME%\bin
+
+</pre></blockquote>
+   
+<strong>Note:</strong>
+Be careful not to change your system environment variables,
+which appear in the upper list box.
+
+</dl>
+   
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="swingStart11.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#start" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+</td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
