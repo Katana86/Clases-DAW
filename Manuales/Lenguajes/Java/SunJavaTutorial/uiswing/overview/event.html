@@ -1,0 +1,308 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Event Handling</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="layout.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#overview" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="draw.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Swing Features and Concepts
+</font>
+
+<h2>
+Event Handling
+</h2>
+<blockquote>
+Every time the user types a character
+or pushes a mouse button,
+an event occurs.
+Any object can be notified of the event.
+All it has to do is 
+implement the appropriate interface
+and be registered as an <em>event listener</em>
+on the appropriate <em>event source</em>.
+Swing components can generate many kinds of events.
+Here are a few examples:
+
+<blockquote>
+<table>
+<tr>
+<th align=left> Act that results in the event
+</th>
+<th align=left> Listener type
+</th>
+</tr>
+<tr>
+<td> User clicks a button,
+     presses Return while typing in a text field,
+     or chooses a menu item
+</td>
+<td> <code>ActionListener</code>
+</td>
+</tr>
+<tr>
+<td> User closes a frame (main window)
+</td>
+<td> <code>WindowListener</code>
+</td>
+</tr>
+<tr>
+<td> User presses a mouse button
+     while the cursor is over a component
+</td>
+<td> <code>MouseListener</code>
+</td>
+</tr>
+<tr>
+<td> User moves the mouse over a component
+</td>
+<td> <code>MouseMotionListener</code>
+</td>
+</tr>
+<tr>
+<td> Component becomes visible
+</td>
+<td> <code>ComponentListener</code>
+</td>
+</tr>
+<tr>
+<td> Component gets the keyboard focus
+</td>
+<td> <code>FocusListener</code>
+</td>
+</tr>
+<tr>
+<td> Table or list selection changes
+</td>
+<td> <code>ListSelectionListener</code>
+</td>
+</tr>
+</table>
+</blockquote>
+<p>
+
+Each event is represented by an object
+that gives information about the event
+and identifies the event source.
+Event sources are typically components,
+but other kinds of objects
+can also be event sources.
+As the following figure shows, each event source can
+have multiple listeners registered on it.
+Conversely, a single listener
+can register with multiple event sources.
+
+<p><center><IMG SRC="../../figures/uiswing/overview/2eventsource.gif" WIDTH="365" HEIGHT="85" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Event source with multiple listeners"></center></p>
+<blockquote><pre>
+Caption: <strong>Multiple listeners
+can register to be notified of events 
+of a particular type from a particular source.</strong>
+</pre></blockquote>
+
+Whenever you want to detect events from a particular component,
+first check the how-to section for that component.
+All of the component how-to sections can be found in
+the
+<a target="_top" href="../components/index.html">Using Swing Components</a><a target="_top" href="../components/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> lesson.
+The how-to sections give examples of handling the events
+that you're most likely to care about.
+In
+<a target="_top" href="../components/frame.html">How to Make Frames (Main Windows)</a><a target="_top" href="../components/frame.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>, for instance,
+ you'll find an example
+of writing a window listener
+that exits the application when the frame closes.
+
+
+</blockquote>
+<h3>
+<a name="code">How to Implement an Event Handler</a>
+</h3>
+<blockquote>
+
+Every event handler
+requires three bits of code:
+
+<ol>
+<li> In the declaration for the event handler class,
+     code that specifies that the class
+     either implements a listener interface
+     or extends a class that implements a listener interface.
+     For example:
+     <blockquote><pre>
+public class MyClass implements ActionListener {
+     </pre></blockquote>
+<p>
+<li> Code that registers an instance of the event handler class
+     as a listener upon one or more components.
+     For example:
+     <blockquote><pre>
+someComponent.addActionListener(instanceOfMyClass);
+     </pre></blockquote>
+<p>
+<li> Code that implements the methods in the listener interface.
+     For example:
+     <blockquote><pre>
+public void actionPerformed(ActionEvent e) {
+    <em>...//code that reacts to the action...</em>
+}
+     </pre></blockquote>
+</ol>
+
+<p>
+
+Let's investigate a typical event-handling scenario
+by looking at how buttons (<code>JButton</code>) handle mouse clicks.
+To detect when the user clicks an on-screen button
+(or does the keyboard equivalent),
+a program must have an object 
+that implements the <code>ActionListener</code> interface.
+The program must register this object
+as an action listener on the button
+(the event source),
+using the <code>addActionListener</code> method.
+When the user clicks the on-screen button,
+the button fires an action event.
+This results in the invocation of the action listener's
+<code>actionPerformed</code> method
+(the only method in the <code>ActionListener</code> interface).
+The single argument to the method is an <code>ActionEvent</code> object
+that gives information about the event and its source.
+
+<p><center><IMG SRC="../../figures/uiswing/overview/3eventlistener.gif" WIDTH="334" HEIGHT="43" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="action listener"></center></p>
+<blockquote><pre>                          
+Caption: <strong>When the user clicks a button, the button's action listeners
+are notified.</strong>
+</pre></blockquote>
+
+<p>
+
+Event handlers can be instances of any class.
+Often, an event handler that has only a few lines of code
+is implemented using an <em>anonymous inner class</em> --
+an unnamed class defined inside of another class.
+Anonymous inner classes can be somewhat confusing at first,
+but once you're used to them
+they make code clearer
+by keeping the implementation of an event handler
+close to where the event handler is registered.
+For information about using inner classes, 
+see 
+<a target="_top" href="../events/generalrules.html#innerclasses">Using Adapters and Inner Classes to Handle Events</a><a target="_top" href="../events/generalrules.html#innerclasses"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+
+For more information about implementing event handlers, see
+<a target="_top" href="../events/index.html">Writing Event Listeners</a><a target="_top" href="../events/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+</blockquote>
+<h3>
+<a name="thread">Threads and Event Handling</a>
+</h3>
+<blockquote>
+Event-handling code executes in a single thread, the
+<em>event-dispatching thread</em>.
+This ensures that each event handler
+will finish executing before the next one executes.
+For instance, the <code>actionPerformed</code> method
+in the preceding example executes in the event-dispatching thread.
+Painting code also executes in the event-dispatching thread.
+This means that while the <code>actionPerformed</code> 
+method is executing,
+the program's GUI is frozen --
+it won't repaint or respond to mouse clicks, for example.
+
+
+<blockquote><hr><strong>Important:</strong>&nbsp;
+The code in event handlers should execute very quickly!
+Otherwise, your program's perceived performance 
+will be poor.
+If you need to perform some lengthy operation as the result of
+an event,
+do it by starting up another thread
+(or somehow sending a request to another thread)
+to perform the operation.
+For help on using threads, see
+<a target="_top" href="../misc/threads.html">How to Use Threads</a><a target="_top" href="../misc/threads.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+<hr></blockquote>
+
+
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="layout.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#overview" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="draw.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
