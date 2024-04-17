@@ -1,0 +1,219 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Write a List Data Listener</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="keylistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="listselectionlistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Writing Event Listeners
+</font>
+
+<h2>
+How to Write a List Data Listener
+</h2>
+<blockquote>
+List data events 
+occur when the contents of a mutable
+<a target="_top" href="../components/list.html">list</a><a target="_top" href="../components/list.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> change.
+The list's model fires these events,
+the list does  not.
+So you have to register a list data listener with the list model.
+If you haven't explicitly created a list with a mutable list model,
+then your list is immutable, and its model will not fire these events.
+<p>
+The following applet demonstrates list data events on a mutable list:
+
+<p><center><a href="ListDataEventDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/events/ListDataEventDemo.gif" WIDTH="400" HEIGHT="300" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> Type in the name of your favorite ski resort and click the
+     <strong>Add</strong> button.
+<li> Select a few continguous items in the list and click the
+     <strong>Delete</strong> button.
+<li> Select one item and move it up or down in the list with the arrow buttons.
+</ol>
+<hr></blockquote>
+
+You can find the applet's code in
+
+<a target="source" href="example-swing/ListDataEventDemo.java"><font color="#bb000f"><code>ListDataEventDemo.java</code></font></a><a href="example-swing/ListDataEventDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+You will also need <a href="example-swing/index.html#ListDataEventDemo">
+two image files</a>.
+<p>
+Here's the code from the applet that registers
+a list data listener on the list model
+and implements the listener:
+<blockquote><pre>
+//<em>...where member variables are declared...</em>
+private DefaultListModel listModel;
+...
+//Create and populate the list model
+listModel = new DefaultListModel();
+...
+listModel.addListDataListener(new MyListDataListener());
+
+class MyListDataListener implements ListDataListener {
+    public void contentsChanged(ListDataEvent e) {
+        log.append("contentsChanged: " + e.getIndex0() +
+	           ", " + e.getIndex1() + newline);
+    }
+    public void intervalAdded(ListDataEvent e) {
+        log.append("intervalAdded: " + e.getIndex0() +
+	           ", " + e.getIndex1() + newline);
+    }
+    public void intervalRemoved(ListDataEvent e) {
+        log.append("intervalRemoved: " + e.getIndex0() +
+	           ", " + e.getIndex1() + newline);
+    }
+} 
+</pre></blockquote>
+
+</blockquote>
+<h3>
+<a name="api">The List Data Event API</a>
+</h3>
+<blockquote>
+The <code>ListDataListener</code> interface contains these
+three methods:
+<dl>
+<dt> <strong><code>void intervalAdded(ListDataEvent)</code></strong>
+<dd> Called when one or more items have been added to the list.
+<dt> <strong><code>void intervalRemoved(ListDataEvent)</code></strong>
+<dd> Called when one or more items have been removed from the list.
+<dt> <strong><code>void contentsChanged(ListDataEvent)</code></strong>
+<dd> Called when the contents of one
+     or more items in the list have changed.
+</dl>
+
+Each list selection event method has a single parameter: a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/ListDataEvent.html"><font color="#8800bb"><code>ListDataEvent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/ListDataEvent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> object.
+To get the source of a <code>ListDataEvent</code>,
+use the <code>getSource</code> method,
+which <code>ListDataEvent</code> inherits from
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/util/EventObject.html"><font color="#8800bb"><code>EventObject</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/util/EventObject.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+
+<p>
+
+The <code>ListDataEvent</code> class defines the following handy methods: 
+<dl>
+<dt><strong><code>int getIndex0()</code></strong>
+<dd> Returns the index of the first item
+     whose value has changed.
+
+<dt><strong><code>int getIndex1()</code></strong>
+<dd> Returns the index of the last item
+     whose value has changed.
+</dl>
+
+</blockquote>
+
+<a name="eg">
+<h3>Examples that Use List Data Listeners</h3>
+</a>
+<blockquote>
+The following table lists the
+examples that use list data listeners.
+ 
+<p>
+ 
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#ListDataEventDemo"><code>ListDataEventDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> Reports all list data events that occur on a list.
+
+</td>
+</tr>
+</table>
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="keylistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="listselectionlistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

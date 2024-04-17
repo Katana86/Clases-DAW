@@ -1,0 +1,295 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Write a Component Listener</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="changelistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="containerlistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Writing Event Listeners
+</font>
+
+<h2>
+How to Write a Component Listener
+</h2>
+<blockquote>
+One or more component events are fired
+by a <code>Component</code> object
+just after the component is hidden, made visible, moved, or resized.
+An example of a component listener
+might be in a GUI builder tool
+that's displaying information about the size 
+of the currently selected component,
+and that needs to know when the component's size changes.
+You shouldn't need to use component events
+to manage basic layout and rendering.
+
+<p>
+The component-hidden and component-shown events
+occur only as the result of calls to a <code>Component</code>'s
+<code>setVisible</code> method
+(or its deprecated equivalents,
+<code>show</code> and <code>hide</code>).
+For example, a window might be miniaturized into an icon (iconified)
+without a component-hidden event being fired.
+
+<p>
+
+The following applet demonstrates component events.
+The applet contains a button
+that brings up a window (<code>JFrame</code>).
+The window contains a panel
+that has a label and a checkbox.
+The checkbox controls whether the label is visible.
+When you leave the applet's page,
+the window disappears;
+it reappears when you return to the applet's page.
+A text area displays a message every time
+the window, panel, label, or checkbox
+fires a component event.
+
+<p>
+
+<p><center><a href="ComponentEventDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/events/ComponentEventDemo.gif" WIDTH="400" HEIGHT="200" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+
+
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> Click the button labeled "Start playing...".
+     <br>
+     The window comes up,
+     generating one or more component-shown and component-moved events.
+
+<li> Click the checkbox to hide the label.
+     <br>
+     The label fires a component-hidden event.
+
+<li> Click the checkbox again to show the label.
+     <br>
+     The label fires a component-shown event.
+
+<li> Iconify and then deiconify the window
+     that contains the label.
+     <br>
+     You do <em>not</em> get component-hidden or -shown events.
+     If you want to be notified of iconification events,
+     you should use a window listener.
+
+<li> Resize the window that contains the label.
+     <br>
+     You'll see component-resized
+     (and possibly component-moved) events
+     from all four components -- label, checkbox, panel, and window.
+     If the window and panel's layout manager didn't make every component
+     as wide as possible,
+     the panel, label, and checkbox wouldn't have been resized.
+</ol>
+<hr></blockquote>
+
+<p>
+
+You can find the applet's code in 
+
+<a target="source" href="example-swing/ComponentEventDemo.java"><font color="#bb000f"><code>ComponentEventDemo.java</code></font></a><a href="example-swing/ComponentEventDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+Here is just the code related to handling component events:
+
+<blockquote><pre>
+public class ComponentEventDemo ... implements ComponentListener {
+    ...
+    <em>//where initialization occurs:</em>
+        aFrame = new JFrame("A Frame");
+        ComponentPanel p = new ComponentPanel(this);
+        aFrame.addComponentListener(this);
+        p.addComponentListener(this);
+    ...
+
+    public void componentHidden(ComponentEvent e) {
+	displayMessage("componentHidden event from "
+		       + e.getComponent().getClass().getName());
+    }
+
+    public void componentMoved(ComponentEvent e) {
+	displayMessage("componentMoved event from "
+		       + e.getComponent().getClass().getName());
+    }
+
+    public void componentResized(ComponentEvent e) {
+	displayMessage("componentResized event from "
+		       + e.getComponent().getClass().getName());
+    }
+
+    public void componentShown(ComponentEvent e) {
+	displayMessage("componentShown event from "
+		       + e.getComponent().getClass().getName());
+    }
+}
+
+
+class ComponentPanel extends JPanel ... {
+    ...
+    ComponentPanel(ComponentEventDemo listener) {
+        <em>...//after creating the label and checkbox:</em>
+        label.addComponentListener(listener);
+        checkbox.addComponentListener(listener);
+    }
+    ...
+}
+</pre></blockquote>
+
+</blockquote>
+<h3>
+<a name="api">The Component Event API</a>
+</h3>
+<blockquote>
+The
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/ComponentListener.html"><font color="#8800bb"><code>ComponentListener</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/ComponentListener.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> interface 
+and its corresponding adapter class, 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/ComponentAdapter.html"><font color="#8800bb"><code>ComponentAdapter</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/ComponentAdapter.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, contain four methods:
+
+<dl>
+<dt> <strong><code>void componentHidden(ComponentEvent)</code></strong>
+<dd> Called
+     after the listened-to
+     component is hidden
+     as the result of the <code>setVisible</code> method being called.
+<p>
+<dt> <strong><code>void componentMoved(ComponentEvent)</code></strong>
+<dd> Called
+     after the listened-to component moves,
+     relative to its container.
+     For example, if a window is moved,
+     the window fires a component-moved event,
+     but the components it contains do not.
+<p>
+<dt> <strong><code>void componentResized(ComponentEvent)</code></strong>
+<dd> Called after the listened-to component's
+     size (rectangular bounds) changes.
+<p>
+<dt> <strong><code>void componentShown(ComponentEvent)</code></strong>
+<dd> Called
+     after the listened-to component
+     becomes visible
+     as the result of the <code>setVisible</code> method being called.
+</dl>
+
+Each component event method has a single parameter: a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/ComponentEvent.html"><font color="#8800bb"><code>ComponentEvent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/ComponentEvent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> object.
+The <code>ComponentEvent</code> class defines the following useful method:
+<dl>
+<dt> <strong><code>Component getComponent()</code></strong>
+<dd> Returns the component that fired the event.
+     You can use this instead of the <code>getSource</code> method.
+</dl>
+
+</blockquote>
+
+<a name="eg">
+<h3>Examples that Use Component Listeners</h3>
+</a>
+<blockquote>
+The following table lists the
+examples that use component listeners.
+ 
+<p>
+ 
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#ComponentEventDemo"><code>ComponentEventDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> Reports all component events that occur on several components
+     to demonstrate the circumstances under which component events are fired.
+
+</td>
+</tr>
+</table>
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="changelistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="containerlistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

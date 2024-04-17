@@ -1,0 +1,464 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Write a Mouse Listener</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="listselectionlistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="mousemotionlistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Writing Event Listeners
+</font>
+
+<h2>
+How to Write a Mouse Listener
+</h2>
+<blockquote>
+Mouse events tell you
+when the user uses the mouse
+(or similar input device)
+to interact with a component.
+Mouse events occur when 
+the cursor enters or exits a component's on-screen area
+and when the user presses or releases 
+the mouse button.
+Because tracking the cursor's motion
+involves significantly more system overhead
+than tracking other mouse events,
+mouse-motion events are separated 
+into a separate listener type 
+(see <a href="mousemotionlistener.html">How to Write a Mouse Motion Listener</a>).
+If your program needs to detect both mouse events
+and mouse-motion events,
+you can use Swing's convenient <code>MouseInputAdapter</code> class,
+which implements both <code>MouseListener</code> and
+<code>MouseMotionListener</code>.
+
+<p>
+
+The following applet contains a mouse listener.
+At the top of the applet
+is a blank area
+(implemented, strangely enough, 
+by a class named <code>BlankArea</code>).
+The mouse listener listens for events 
+both on the <code>BlankArea</code>
+and on its container,
+which is an instance of <code>MouseEventDemo</code>.
+Each time a mouse event occurs,
+a descriptive message is displayed 
+under the blank area.
+By moving the cursor on top of the blank area
+and occasionally pressing mouse buttons,
+you can fire mouse events.
+
+<p>
+
+<p><center><a href="MouseEventDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/events/MouseEventDemo.gif" WIDTH="450" HEIGHT="200" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+
+
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> Move the cursor into the yellow rectangle
+     at the top of the applet.
+     <br>
+     You'll see one or more mouse-entered events.
+<li> Press and hold the mouse button.
+     <br>
+     You'll see a mouse-pressed event.
+     You might see some extra mouse events,
+     such as mouse-exited and then mouse-entered.
+<li> Release the mouse button.
+     <br>
+     You'll see a mouse-released event.
+     If you didn't move the mouse,
+     a mouse-clicked event will follow.
+<li> Press and hold the mouse button,
+     and then drag the mouse so that the cursor ends up
+     outside the applet's area.
+     Release the mouse button.
+     <br>
+     You'll see a mouse-pressed event,
+     followed by a mouse-exited event,
+     followed by a mouse-released event.
+     You are <em>not</em> notified
+     of the cursor's motion.
+     To get mouse-motion events,
+     you need to implement a 
+     <a href="mousemotionlistener.html">mouse-motion listener.</a>
+</ol>
+<hr></blockquote>
+
+You can find the applet's code in
+
+<a target="source" href="example-swing/MouseEventDemo.java"><font color="#bb000f"><code>MouseEventDemo.java</code></font></a><a href="example-swing/MouseEventDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+and
+
+<a target="source" href="example-swing/BlankArea.java"><font color="#bb000f"><code>BlankArea.java</code></font></a><a href="example-swing/BlankArea.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+Here is the applet's mouse event handling code:
+
+<blockquote><pre>
+public class MouseEventDemo ... implements MouseListener {
+	<em>...//where initialization occurs:</em>
+        //Register for mouse events on blankArea and applet (panel).
+        blankArea.addMouseListener(this);
+        addMouseListener(this);
+    ...
+
+    public void mousePressed(MouseEvent e) {
+       saySomething("Mouse pressed; # of clicks: "
+                    + e.getClickCount(), e);
+    }
+
+    public void mouseReleased(MouseEvent e) {
+       saySomething("Mouse released; # of clicks: "
+                    + e.getClickCount(), e);
+    }
+
+    public void mouseEntered(MouseEvent e) {
+       saySomething("Mouse entered", e);
+    }
+
+    public void mouseExited(MouseEvent e) {
+       saySomething("Mouse exited", e);
+    }
+
+    public void mouseClicked(MouseEvent e) {
+       saySomething("Mouse clicked (# of clicks: "
+                    + e.getClickCount() + ")", e);
+    }
+
+    void saySomething(String eventDescription, MouseEvent e) {
+        textArea.append(eventDescription + " detected on "
+                        + e.getComponent().getClass().getName()
+                        + "." + newline);
+    }
+}
+</pre></blockquote>
+
+</blockquote>
+<h3>
+<a name="api">The Mouse Event API</a>
+</h3>
+<blockquote>
+
+The
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/MouseListener.html"><font color="#8800bb"><code>MouseListener</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/MouseListener.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> interface 
+and its corresponding adapter class, 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/MouseAdapter.html"><font color="#8800bb"><code>MouseAdapter</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/MouseAdapter.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, contain these methods:
+
+<dl>
+<dt> <strong><code>void mouseClicked(MouseEvent)</code></strong>
+<dd> Called
+     just after the user clicks the listened-to component.
+<dt> <strong><code>void mouseEntered(MouseEvent)</code></strong>
+<dd> Called
+     just after the cursor enters the bounds
+     of the listened-to component.
+<dt> <strong><code>void mouseExited(MouseEvent)</code></strong>
+<dd> Called
+     just after the cursor exits the bounds
+     of the listened-to component.
+<dt> <strong><code>void mousePressed(MouseEvent)</code></strong>
+<dd> Called
+     just after the user presses a mouse button
+     while the cursor is over the listened-to component.
+<dt> <strong><code>void mouseReleased(MouseEvent)</code></strong>
+<dd> Called
+     just after the user releases a mouse button
+     after a mouse press over the listened-to component.
+</dl>
+
+<p>
+
+One complication affects mouse-entered,
+mouse-exited, and mouse-released events.
+When the user drags 
+(presses and holds the mouse button and then moves the mouse),
+then the component that the cursor was over
+when the drag started
+is the one that receives all subsequent mouse and mouse-motion events
+up to and including the mouse button release.
+That means that no other component
+will receive a single mouse event --
+not even a mouse-released event --
+while the drag is occurring.
+
+
+<p>
+
+Each mouse event method has a single parameter: a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/MouseEvent.html"><font color="#8800bb"><code>MouseEvent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/MouseEvent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> object.
+The <code>MouseEvent</code> class defines
+the following useful methods:
+
+<p>
+<dl>
+<dt><strong><code>int getClickCount()</code></strong>
+<dd>Returns the number of quick, consecutive clicks the user has made
+    (including this event).
+    For example, returns 2 for a double click.
+<p>
+<dt><strong><code>int getX()</code></strong>
+<dt><strong><code>int getY()</code></strong>
+<dt><strong><code>Point getPoint()</code></strong>
+<dd>Return the (x,y) position
+    at which the event occurred,
+    relative to the component that fired the event.
+<dt><strong><code>boolean isPopupTrigger()</code></strong>
+<dd>Returns <code>true</code> if the mouse event should cause a popup menu
+    to appear. Because popup triggers are platform dependent,
+    if your program uses popup menus,
+    you should call <code>isPopupTrigger</code>
+    for all mouse-pressed and mouse-released events
+    fired by components over which the popup can appear.
+    See <a href="../components/menu.html#popup">Bringing Up a Popup Menu</a>
+    for more information about popup menus.
+</dl>
+<p>
+
+The <code>MouseEvent</code> class inherits the following
+handy method from
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/ComponentEvent.html"><font color="#8800bb"><code>ComponentEvent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/ComponentEvent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+<dl>
+<dt><strong><code>Component getComponent</code></strong>
+<dd> Returns the component that fired the event.
+     You can use this method instead of the <code>getSource</code> method.
+</dl>
+<p>
+The <code>MouseEvent</code> class inherits many useful methods from
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/InputEvent.html"><font color="#8800bb"><code>InputEvent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/InputEvent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>:
+<p>
+<dl> 
+
+<dt><strong><code>int getWhen()</code></strong>
+<dd>Returns the timestamp of when this event occurred.
+    The higher the timestamp,
+    the more recently the event occurred.
+<p>
+<dt><strong><code>boolean isAltDown()</code></strong>
+<br><strong><code>boolean isControlDown()</code></strong>
+<br><strong><code>boolean isMetaDown()</code></strong>
+<br><strong><code>boolean isShiftDown()</code></strong>
+<dd>Returns the state of individual modifier keys
+    at the time the event was fired.
+<p>
+<dt><strong><code>int getModifiers()</code></strong>
+<dd>Returns the state of all the modifier keys and
+    mouse buttons
+    when the event was fired.
+    You can use this method to determine which
+    mouse button was pressed (or newly released) when a
+    mouse event was fired.
+    The <code>InputEvent</code> class defines these constants
+    for use with the <code>getModifiers</code> method:
+    <code>ALT_MASK</code>,
+    <code>BUTTON1_MASK</code>,
+    <code>BUTTON2__MASK</code>,
+    <code>BUTTON3_MASK</code>,
+    <code>CTRL_MASK</code>,
+    <code>META_MASK</code>, and
+    <code>SHIFT_MASK</code>.
+    For example, the following expression is true
+    if the right button was pressed:
+<blockquote><pre>
+(mouseEvent.getModifiers() & InputEvent.BUTTON3_MASK)
+== InputEvent.BUTTON3_MASK
+</pre></blockquote>
+
+   The 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/SwingUtilities.html"><font color="#8800bb"><code>SwingUtilities</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/SwingUtilities.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>   class 
+   contains convenience methods for determining whether 
+   a particular mouse button has been pressed:
+
+   <dl>
+   <dt><code>static boolean isLeftMouseButton(MouseEvent)</code>
+   <br><code>static boolean isMiddleMouseButton(MouseEvent)</code>
+   <br><code>static boolean isRightMouseButton(MouseEvent)</code>
+   </dl>
+</dl>
+
+</blockquote>
+
+<a name="eg">
+<h3>Examples that Use Mouse Listeners</h3>
+</a>
+<blockquote>
+The following table lists the
+examples that use mouse listeners.
+ 
+<p>
+ 
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+ 
+</th>
+</tr>
+<tr>
+<td><a href="example-swing/index.html#MouseEventDemo"><code>MouseEventDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> Reports all mouse events that occur within a blank panel
+     to demonstrate the circumstances under which mouse events are fired.
+
+</td>
+</tr>
+<tr>
+<td><a href="../painting/example-swing/index.html#CoordinatesDemo"><code>CoordinatesDemo</code></a>
+</td>
+<td>
+<a target="_top" href="../painting/overview.html">Overview of Custom Painting</a><a target="_top" href="../painting/overview.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> An applet that draws a small circle where the user clicks the mouse.
+     The applet also reports the x, y location of the mouse click.
+ 
+</td>
+</tr>
+<tr>
+<td><a href="../painting/example-swing/index.html#SelectionDemo"><code>SelectionDemo</code></a>
+</td>
+<td>
+<a target="_top" href="../painting/overview.html">Overview of Custom Painting</a><a target="_top" href="../painting/overview.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> An applet that lets the user drag a rectangle to select a portion
+     of an image. Uses a subclass of <code>MouseInputAdapter</code>
+     to listen to both mouse events and mouse-motion events.
+ 
+</td>
+</tr>
+<tr>
+<td><a href="../components/example-swing/index.html#GlassPaneDemo"><code>GlassPaneDemo</code></a>
+</td>
+<td>
+<a target="_top" href="../components/rootpane.html">How to Use Root Panes</a><a target="_top" href="../components/rootpane.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Uses a subclass of <code>MouseInputAdapter</code> to
+     listen to mouse events and mouse-motion events
+     on the root pane's glass pane.
+     Redispatches the events to underlying components.
+
+</td>
+</tr>
+<tr>
+<td><a href="../components/example-swing/index.html#TableSorter"><code>TableSorter</code></a>
+</td>
+<td>
+<a target="_top" href="../components/table.html">How to Use Tables</a><a target="_top" href="../components/table.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Listens to mouse events on a table header.
+     Sorts data in the selected column.
+
+</td>
+</tr>
+<tr>
+<td><a href="../painting/example-swing/index.html#MovingLabels"><code>MovingLabels</code></a>
+</td>
+<td>
+<a target="_top" href="../painting/movingImage.html">Moving an Image Across the Screen</a><a target="_top" href="../painting/movingImage.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Stops and starts an animation in response to mouse clicks.
+
+</td>
+</tr>
+<tr>
+<td><a href="../components/example-swing/index.html#PopupMenuDemo"><code>PopupMenuDemo</code></a>
+</td>
+<td> 
+<a target="_top" href="../components/menu.html">How to Use Menus</a><a target="_top" href="../components/menu.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Displays a popup menu in response to mouse clicks.
+
+</td>
+</tr>
+<tr>
+<td><a href="../components/example-swing/index.html#ListDemo"><code>ListDemo</code></a>
+</td>
+<td>
+<a target="_top" href="../components/list.html">How to Use Lists</a><a target="_top" href="../components/list.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Listens for double mouse clicks on a list.
+     Double clicks act as an accelerator
+     for selecting an item in the list
+     and pressing a button.
+
+</td>
+</tr>
+</table>
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="listselectionlistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="mousemotionlistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

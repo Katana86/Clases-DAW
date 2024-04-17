@@ -1,0 +1,204 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Write a Caret Listener</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="actionlistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="changelistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Writing Event Listeners
+</font>
+
+<h2>
+How to Write a Caret Listener
+</h2>
+<blockquote>
+Caret events occur when the caret in a text component moves
+or when the selection in a text component changes.
+You can attach a caret listener to an instance of any
+<code>JTextComponent</code> subclass with the
+<code>addCaretListener</code> method.
+<p>
+If your program has a custom caret,
+you might find it more convenient
+to attach a listener to the caret object rather than to the
+text component for which it is a caret.
+A caret fires change events rather than caret events,
+so you would need to write a change listener rather than
+a caret listener.
+<p>
+Here is the caret event handling code from an application
+called <code>TextComponentDemo</code>.
+
+<blockquote><pre>
+...
+<em>//where initialization occurs</em>
+CaretListenerLabel caretListenerLabel =
+    new CaretListenerLabel("Caret Status");
+...
+textPane.addActionListener(caretListenerLabel);
+...
+protected class CaretListenerLabel extends JLabel
+                                   implements CaretListener
+{
+    ...
+    public void caretUpdate(CaretEvent e) {
+        //Get the location in the text
+        int dot = e.getDot();
+        int mark = e.getMark();
+	...
+    }
+}
+</pre></blockquote>
+You can find the full source code for the program
+and instructions for compiling and running it in
+<a target="_top" href="../components/generaltext.html">General Rules for Using Text Components</a><a target="_top" href="../components/generaltext.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+For a discussion about the caret listener aspect
+of the program see
+<a target="_top" href="../components/generaltext.html#caret">Listening for Caret and Selection Changes</a><a target="_top" href="../components/generaltext.html#caret"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+</blockquote>
+<h3>
+<a name="api">The Caret Event API</a>
+</h3>
+<blockquote>
+The <code>CaretListener</code> interface has just one method,
+so it has no corresponding adapter class.
+Here's the method:
+<dl>
+<dt> <strong><code>void caretUpdate(CaretEvent)</code></strong>
+<dd> Called when the caret in the listened-to component moves
+	or when the selection in the listened-to component changes.
+</dl>
+
+The <code>caretUpdate</code> method has a single parameter: a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/CaretEvent.html"><font color="#8800bb"><code>CaretEvent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/CaretEvent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> object.
+To get the text component that fired the event,
+use the <code>getSource</code> method
+which <code>CaretEvent</code> inherits from
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/util/EventObject.html"><font color="#8800bb"><code>EventObject</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/util/EventObject.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+
+<p>
+The <code>CaretEvent</code> class defines two useful methods:
+<dl>
+<dt><strong><code>int getDot()</code></strong>
+<dd>Returns the current location of the caret.
+    If text is selected, the caret marks one end of the selection.
+
+<dt><strong><code>int getMark()</code></strong>
+<dd>Returns the other end of the selection.
+    If nothing is selected,
+    the value returned by this method is equal to the
+    value returned by <code>getDot</code>.
+    Note that the dot is not guaranteed to be less than the mark.
+</dl>
+</blockquote>
+
+<a name="eg">
+<h3>Examples that Use Caret Listeners</h3>
+</a>
+<blockquote>
+The following table lists the
+examples that use caret listeners.
+<p>
+
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="../components/example-swing/index.html#TextComponentDemo"><code>TextComponentDemo</code></a>
+</td>
+<td>
+<a target="_top" href="../components/generaltext.html#caret">Listening for Caret and Selection Changes</a><a target="_top" href="../components/generaltext.html#caret"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Uses a "listener label" to display caret and selection status.
+
+</td>
+</tr>
+</table>
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="actionlistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="changelistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

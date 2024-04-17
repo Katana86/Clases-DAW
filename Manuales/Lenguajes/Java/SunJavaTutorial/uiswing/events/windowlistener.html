@@ -1,0 +1,444 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Write a Window Listener</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="undoableeditlistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="api.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Writing Event Listeners
+</font>
+
+<h2>
+How to Write a Window Listener
+</h2>
+<blockquote>
+Window events are fired
+by a window 
+(such as a 
+<a target="_top" href="../components/frame.html">frame</a><a target="_top" href="../components/frame.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>
+ or
+<a target="_top" href="../components/dialog.html">dialog</a><a target="_top" href="../components/dialog.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>) just after the window is opened, closed,
+iconified, deiconified,
+activated, or deactivated.
+<em>Opening</em> a window means
+showing it for the first time;
+<em>closing</em> it means removing the window from the screen.
+<em>Iconifying</em> it means substituting
+a small icon on the desktop for the window;
+<em>deiconifying</em> means the opposite.
+A window is <em>activated</em> 
+if it or a component it contains
+has the keyboard focus;
+<em>deactivation</em> occurs
+when the window and all of its contents
+lose the keyboard focus.
+If you want to be notified when a window
+is made visible or hidden,
+then you should register a
+<a href="componentlistener.html">component listener</a>
+on the window.
+
+
+<p>
+
+The most common use of window listeners is
+implementing custom window-closing behavior.
+For example, you might use a window listener
+to save data before closing the window,
+or to exit the program when the last window closes.
+
+<p>
+
+You don't necessarily need to implement a window listener
+to specify what a window should do when the user closes it.
+By default, when the user closes a window the window
+becomes invisible.
+You can specify different behavior --
+disposing of the window, for example --
+using the 
+<code>JFrame</code> or <code>JDialog</code>
+<code>setDefaultCloseOperation</code> method.
+If you decide to implement a window-closing handler,
+then you might want to use
+<code>setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE)</code>
+to specify that your window listener
+takes care of all window-closing duties.
+
+<p>
+
+See
+<a target="_top" href="../components/frame.html">How to Make Frames (Main Windows)</a><a target="_top" href="../components/frame.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for an example of a handler for window-closing events.
+Within that section,
+<a target="_top" href="../components/frame.html#windowevents">Responding to Window-Closing Events</a><a target="_top" href="../components/frame.html#windowevents"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> has details on how to use <code>setDefaultCloseOperation</code>.
+
+<p>
+
+Another common use of window listeners
+is to stop threads and release resources
+when a window is iconified,
+and to start up again when the window is deiconified.
+This way, you can avoid unnecessarily
+using the processor or other resources.
+For example,
+when a window that contains animation is iconified,
+it should stop its animation thread
+and free any large buffers.
+When the window is deiconified,
+it can start the thread again
+and recreate the buffers.
+
+<p>
+The following applet demonstrates window events.
+By clicking the top button in the applet,
+you can bring up a small window.
+The controlling class listens for window events from the window,
+displaying a message whenever it detects a window event.
+You can find the applet's code 
+in 
+<a target="source" href="example-swing/WindowEventDemo.java"><font color="#bb000f"><code>WindowEventDemo.java</code></font></a><a href="example-swing/WindowEventDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+
+<p>
+
+<p><center><a href="WindowEventDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/events/WindowEventDemo.gif" WIDTH="400" HEIGHT="200" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+
+
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> Bring up the Window Demo Window
+     by clicking the applet's top button.
+     <br>
+     The first time you click this button,
+     you'll see a "Window opened" message
+     in the applet's display area.
+<li> Click the window if it doesn't already have the focus.
+     <br>
+     Do you see a "Window activated" message
+     in the applet's display area?
+<li> Iconify the window, using the window controls.
+     <br>
+     You'll see a "Window iconified" message
+     in the applet's display area.
+<li> Deiconify the window.
+     <br>
+     You'll see a "Window deiconified" message in the applet's display area.
+<li> Close the window, using the window controls.
+     <br>
+     You'll see "Window closing"
+     in the applet's display area.
+     Because the window-closing event handler
+     invokes <code>setVisible(false)</code>
+     instead of <code>dispose()</code>,
+     you won't see "Window closed".
+</ol>
+<hr></blockquote>
+
+<p>
+
+Here is the applet's window event handling code:
+
+<blockquote><pre>
+public class WindowEventDemo ... implements WindowListener {
+     <em>...//where initialization occurs:</em>
+        //Create but don't show window.
+        window = new JFrame("Window Event Window");
+        window.addWindowListener(this);
+        window.getContentPane().add(
+	    new JLabel("The applet listens to this window "
+                       + "for window events."),
+	    BorderLayout.CENTER);
+        window.pack();
+    }
+
+    public void windowClosing(WindowEvent e) {
+        window.setVisible(false);
+        displayMessage("Window closing", e);
+    }
+
+    public void windowClosed(WindowEvent e) {
+        displayMessage("Window closed", e);
+    }
+
+    public void windowOpened(WindowEvent e) {
+        displayMessage("Window opened", e);
+    }
+
+    public void windowIconified(WindowEvent e) {
+        displayMessage("Window iconified", e);
+    }
+
+    public void windowDeiconified(WindowEvent e) {
+        displayMessage("Window deiconified", e);
+    }
+
+    public void windowActivated(WindowEvent e) {
+        displayMessage("Window activated", e);
+    }
+
+    public void windowDeactivated(WindowEvent e) {
+        displayMessage("Window deactivated", e);
+    }
+
+    void displayMessage(String prefix, WindowEvent e) {
+        display.append(prefix
+                       + ": "
+                       + e.getWindow()
+                       + newline); 
+    }
+    ...
+}
+</pre></blockquote>
+
+</blockquote>
+<h3>
+<a name="api">The Window Event API</a>
+</h3>
+<blockquote>
+
+The
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/WindowListener.html"><font color="#8800bb"><code>WindowListener</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/WindowListener.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> interface 
+and its corresponding adapter class, 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/WindowAdapter.html"><font color="#8800bb"><code>WindowAdapter</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/WindowAdapter.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, contain these methods:
+
+<p>
+<dl>
+<dt> <strong><code>void windowOpened(WindowEvent)</code></strong>
+<dd> Called
+     just after the listened-to window has been shown for the first time.
+
+<p>
+<dt> <strong><code>void windowClosing(WindowEvent)</code></strong>
+<dd> Called
+     in response to a user request that the listened-to window be closed.
+     To actually close the window, 
+     the listener should invoke
+     the window's <code>dispose</code> or 
+     <code>setVisible(false)</code> method.
+
+<p>
+<dt> <strong><code>void windowClosed(WindowEvent)</code></strong>
+<dd> Called
+     just after the listened-to window has closed.
+
+<p>
+<dt> <strong><code>void windowIconified(WindowEvent)</code></strong>
+     <br>
+     <strong><code>void windowDeiconified(WindowEvent)</code></strong>
+<dd> Called
+     just after the listened-to window
+     is iconified or deiconified, respectively.
+
+<p>
+<dt> <strong><code>void windowActivated(WindowEvent)</code></strong>
+     <br>
+     <strong><code>void windowDeactivated(WindowEvent)</code></strong>
+<dd> Called
+     just after the listened-to window
+     is activated or deactivated, respectively.
+</dl>
+
+Each window event method has a single parameter: a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/WindowEvent.html"><font color="#8800bb"><code>WindowEvent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/event/WindowEvent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> object.
+<dl>
+<dt><strong><code>Window getWindow()</code></strong>
+<dd>Returns the window that fired the event.
+    You can use this instead of the <code>getSource</code> method.
+</dl>
+
+</blockquote>
+
+<a name="eg">
+<h3>Examples that Use Window Listeners</h3>
+</a>
+<blockquote>
+The following table lists the
+examples that use window listeners.
+ 
+<p>
+ 
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#WindowEventDemo"><code>WindowEventDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> Reports all window events that occur on one window
+     to demonstrate the circumstances
+     under which window events are fired.
+
+</td>
+</tr>
+<tr>
+<td> <a href="../components/example-swing/index.html#FrameDemo">
+     <code>FrameDemo</code></a>
+</td>
+<td>
+<a target="_top" href="../components/frame.html">How to Make Frames (Main Windows)</a><a target="_top" href="../components/frame.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> One of many examples that listens for
+     window closing events,
+     so that the application can exit when its only window is closed.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#ComponentEventDemo">
+     <code>ComponentEventDemo</code></a>
+</td>
+<td> <a href="componentlistener.html">How to Write a Component Listener</a>
+</td>
+<td> Listens for window-closing events on a frame displayed by an applet.
+     This way, the applet knows whether to re-open the window when the
+     user leaves and returns to the applet's page.
+
+</td>
+</tr>
+<tr>
+<td> <a href="../layout/example-swing/index.html#FlowWindow">
+     <code>FlowWindow</code></a>
+</td>
+<td>
+<a target="_top" href="../layout/flow.html">How to Use FlowLayout</a><a target="_top" href="../layout/flow.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Disposes a frame displayed by an applet when the user closes the frame.
+
+</td>
+</tr>
+<tr>
+<td> <a href="../components/example-swing/index.html#SliderDemo">
+     <code>SliderDemo</code></a>
+</td>
+<td>
+<a target="_top" href="../components/slider.html">How to Use Sliders</a><a target="_top" href="../components/slider.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Listens for window iconify and deiconify events,
+     so that it can stop the animation when the window isn't visible.
+ 
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#InternalFrameEventDemo"><code>InternalFrameEventDemo</code></a>
+</td>
+<td> <a href="internalframelistener.html">
+     How to Write an Internal Frame Listener</a>
+</td>
+<td> Reports all internal frame events that occur on one internal frame
+     to demonstrate the circumstances
+     under which internal frame events are fired.
+     Internal frame events are similar to window events.
+
+</td>
+</tr>
+<tr>
+<td> <a href="../components/example-swing/index.html#TextComponentDemo">
+     <code>TextComponentDemo</code></a>
+</td>
+<td>
+<a target="_top" href="../components/generaltext.html">General Rules for Using Text Components</a><a target="_top" href="../components/generaltext.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Contains a text pane that requests the keyboard focus
+     in response to window-activated events.
+
+</td>
+</tr>
+<tr>
+<td> <a href="../components/example-swing/index.html#DialogDemo">
+     <code>DialogDemo</code></a> and
+     <br>
+     
+<a target="source" href="../components/example-swing/CustomDialog.java"><font color="#bb000f"><code>CustomDialog.java</code></font></a><a href="../components/example-swing/CustomDialog.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+</td>
+<td>
+<a target="_top" href="../components/generaltext.html">General Rules for Using Text Components</a><a target="_top" href="../components/generaltext.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Uses <code>setDefaultCloseOperation</code> instead
+     of a window listener to determine what action to take
+     when the user closes the window.
+
+</td>
+</tr>
+</table>
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="undoableeditlistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="api.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

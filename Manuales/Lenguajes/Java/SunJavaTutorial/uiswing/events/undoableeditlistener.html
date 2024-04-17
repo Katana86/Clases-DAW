@@ -1,0 +1,192 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Write an Undoable Edit Listener</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="treewillexpandlistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="windowlistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Writing Event Listeners
+</font>
+
+<h2>
+How to Write an Undoable Edit Listener
+</h2>
+<blockquote>
+Undoable edit events occur when an operation that can be undone
+occurs on a component.
+Currently, only text components fire undoable edit events,
+and then only indirectly.
+The text component's document fires the events.
+For text components,
+undoable operations include inserting characters,
+deleting characters,
+and modifying the style of text.
+Programs typically listen to undoable edit events to
+assist in the implementation of undo and redo commands.
+<p>
+Here is the undoable edit event handling code from an application
+called <code>TextComponentDemo</code>.
+
+<blockquote><pre>
+...
+<em>//where initialization occurs</em>
+<em>document</em>.addUndoableEditListener(new MyUndoableEditListener());
+...
+protected class MyUndoableEditListener implements UndoableEditListener {
+    public void undoableEditHappened(UndoableEditEvent e) {
+        //Remember the edit and update the menus
+        undo.addEdit(e.getEdit());
+        undoAction.updateUndoState();
+        redoAction.updateRedoState();
+    }
+}  
+</pre></blockquote>
+You can find the full source code for the program
+and instructions for compiling and running it in
+<a target="_top" href="../components/generaltext.html">General Rules for Using Text Components</a><a target="_top" href="../components/generaltext.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+For a discussion about the undoable edit listener aspect
+of the program see
+<a target="_top" href="../components/generaltext.html#undo">Implementing Undo and Redo</a><a target="_top" href="../components/generaltext.html#undo"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>
+</blockquote>
+<h3>
+<a name="api">The Undoable Edit Event API</a>
+</h3>
+<blockquote>
+The <code>UndoableEditListener</code> interface has just one method,
+so it has no corresponding adapter class.
+Here's the method:
+<dl>
+<dt> <strong><code>void undoableEditHappened(UndoableEditEvent)</code></strong>
+<dd> Called when an undoable event occurs on the listened-to component.
+</dl>
+
+The <code>undoableEditHappened</code> method has a single parameter: a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/UndoableEditEvent.html"><font color="#8800bb"><code>UndoableEditEvent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/UndoableEditEvent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> object.
+To get the document that fired the event,
+use the <code>getSource</code> method
+which <code>UndoableEditEvent</code> inherits from <code>EventObject</code>.
+<p>
+The <code>UndoableEditEvent</code> class defines one
+method which returns an
+object that contains detailed information about the edit that occurred.
+<dl>
+<dt><strong><code>UndoableEdit getEdit()</code></strong>
+<dd>Returns an
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/undo/UndoableEdit.html"><font color="#8800bb"><code>UndoableEdit</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/undo/UndoableEdit.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> object that represents the edit
+that occurred and contains information about and commands
+for undoing or redoing the edit.
+</dl>
+</blockquote>
+
+<a name="eg">
+<h3>Examples that Use Undoable Edit Listeners</h3>
+</a>
+<blockquote>
+The following table lists the
+examples that use undoable edit listeners.
+ 
+<p>
+ 
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="../components/example-swing/index.html#TextComponentDemo">
+     <code>TextComponentDemo</code></a>
+</td>
+<td>
+<a target="_top" href="../components/generaltext.html#undo">Implementing Undo and Redo</a><a target="_top" href="../components/generaltext.html#undo"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Implements undo and redo on a text pane with help from
+     an undoable edit listener.
+
+</td>
+</tr>
+</table>
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="treewillexpandlistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="windowlistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

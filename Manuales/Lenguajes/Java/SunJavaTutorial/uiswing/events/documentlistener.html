@@ -1,0 +1,312 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Write a Document Listener</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="containerlistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="focuslistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Writing Event Listeners
+</font>
+
+<h2>
+How to Write a Document Listener
+</h2>
+<blockquote>
+A Swing text component uses a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/text/Document.html"><font color="#8800bb"><code>Document</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/text/Document.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> to hold and edit its text.
+Document events occur when the content of a document changes in any way.
+You attach a document listener to a text component's document,
+rather than to the text component itself.
+
+<p>
+The following applet demonstrates document events on
+two plain text components.
+
+<p><center><a href="DocumentEventDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/events/DocumentEventDemo.gif" WIDTH="400" HEIGHT="200" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+
+
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> Type in the text field at the upper left of the applet
+     or the text area beneath the text field.
+     <br>
+     One document event is fired for each character typed.
+<li> Delete text with the backspace key.
+     <br>
+     One document event is fired for each backspace key typed.
+<li> Select text and then delete it by typing backspace
+     or by using a keyboard command such as <code>CTRL-X</code> (cut).
+     <br>
+     One document event is fired for the entire deletion.
+<li> Copy text from one text component into the other
+     using keyboard commands such as <code>CTRL-C</code> (copy) and
+     <code>CTRL-V</code> (paste).
+     <br>
+     One document event is fired for the entire paste
+     operation regardless
+     of the length of the text pasted.
+     If text is selected in the target text component
+     before the paste command is issued,
+     an additional document event is fired
+     because the selected text is deleted first.
+</ol>
+<hr></blockquote>
+
+<p>
+
+You can find the applet's code in
+
+<a target="source" href="example-swing/DocumentEventDemo.java"><font color="#bb000f"><code>DocumentEventDemo.java</code></font></a><a href="example-swing/DocumentEventDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+Here is the applet's document event handling code:
+
+<blockquote><pre>
+public class DocumentEventDemo ... {
+    <em>...//where initialization occurs:</em>
+    textField = new JTextField(20);
+    textField.addActionListener(new MyTextActionListener());
+    textField.getDocument().addDocumentListener(new MyDocumentListener());
+    textField.getDocument().putProperty("name", "Text Field");
+
+    textArea = new JTextArea();
+    textArea.getDocument().addDocumentListener(new MyDocumentListener());
+    textArea.getDocument().putProperty("name", "Text Area");
+    ...
+
+class MyDocumentListener implements DocumentListener {
+    String newline = "\n";
+ 
+    public void insertUpdate(DocumentEvent e) {
+        updateLog(e, "inserted into");
+    }
+    public void removeUpdate(DocumentEvent e) {
+        updateLog(e, "removed from");
+    }
+    public void changedUpdate(DocumentEvent e) {
+        //Plain text components don't fire these events
+    }
+
+    public void updateLog(DocumentEvent e, String action) {
+        Document doc = (Document)e.getDocument();
+        int changeLength = e.getLength();
+        displayArea.append(
+            changeLength + " character" +
+            ((changeLength == 1) ? " " : "s ") +
+            action + doc.getProperty("name") + "." + newline +
+            "  Text length = " + doc.getLength() + newline);
+    }
+}
+</pre></blockquote>
+
+Document listeners shouldn't modify the contents of the document;
+The change is already complete
+by the time the listener is notified of the change.
+Instead, write a custom document that overrides the
+<code>insertString</code> or <code>remove</code> methods, or both.
+See
+<a target="_top" href="../components/generaltext.html#doclisteners">Listening for Changes on a Document</a><a target="_top" href="../components/generaltext.html#doclisteners"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for details.
+
+</blockquote>
+<h3>
+<a name="api">The Document Event API</a>
+</h3>
+<blockquote>
+The <code>DocumentListener</code> interface contains these three methods:
+<dl>
+<dt> <strong><code>void changedUpdate(DocumentEvent)</code></strong>
+<dd> Called when the style of some of the text in the
+     listened-to document changes.
+     This sort of event is fired only from a <code>StyledDocument</code> --
+     a <code>PlainDocument</code> does not fire these events.
+<p>
+<dt> <strong><code>void insertUpdate(DocumentEvent)</code></strong>
+<dd> Called when text is inserted into the listened-to document.
+<p>
+<dt> <strong><code>void removeUpdate(DocumentEvent)</code></strong>
+<dd> Called when text is removed from the listened-to document.
+</dl>
+
+Each document event method has a single parameter:
+an instance of a class that implements the
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/DocumentEvent.html"><font color="#8800bb"><code>DocumentEvent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/DocumentEvent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> interface.
+Typically, the object passed into this method
+will be an instance of
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/text/AbstractDocument.DefaultDocumentEvent.html"><font color="#8800bb"><code>DefaultDocumentEvent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/text/AbstractDocument.DefaultDocumentEvent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> which is defined in <code>AbstractDocument</code>.
+
+<p>
+
+To get the document that fired the event, you can use
+<code>DocumentEvent</code>'s <code>getDocument</code>
+method. Note that as an interface, <code>DocumentEvent</code> does
+not inherit from <code>EventObject</code>.
+Thus, it does not
+inherit the <code>getSource</code> method.
+
+<p>
+In addition to <code>getDocument</code>,
+the <code>DocumentEvent</code> interface requires these methods:
+<dl>
+<dt><strong><code>int getLength()</code></strong>
+<dd>Returns the length of the change.
+
+<dt><strong><code>int getOffset()</code></strong>
+<dd>Returns the location within the document
+    of the first character changed.
+
+<dt><strong><code>ElementChange getChange(Element)</code></strong>
+<dd>Returns details about what elements in the document have
+    changed and how.
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/DocumentEvent.ElementChange.html"><font color="#8800bb"><code>ElementChange</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/DocumentEvent.ElementChange.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> is an interface defined
+within the <code>DocumentEvent</code> interface.
+
+<dt><strong><code>EventType getType()</code></strong>
+<dd>Returns the type of change that occurred.
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/DocumentEvent.EventType.html"><font color="#8800bb"><code>EventType</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/event/DocumentEvent.EventType.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>    is a class defined
+    within the <code>DocumentEvent</code> interface
+    that enumerates the possible
+    changes that can occur on a document:
+    insert text, remove text, and change text style.
+</dl>
+
+</blockquote>
+
+<a name="eg">
+<h3>Examples that Use Document Listeners</h3>
+</a>
+<blockquote>
+The following table lists the
+examples that use document listeners.
+
+<p>
+
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#DocumentEventDemo">
+     <code>DocumentEventDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> Reports all document events that occur on the documents for
+     both a text field and a text area.
+     One listener listens to both text components and uses
+     a client property on the document to determine which component
+     fired the event.
+
+</td>
+</tr>
+<tr>
+<td> <a href="../components/example-swing/index.html#TextComponentDemo">
+     <code>TextComponentDemo</code></a>
+</td>
+<td>
+<a target="_top" href="../components/generaltext.html#doclisteners">Listening for Changes on a Document</a><a target="_top" href="../components/generaltext.html#doclisteners"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Updates a change log every time text in the listened-to document changes.
+     The document in this example supports styled text,
+     so <code>changedUpdate</code> gets called in this example.
+     Requires this additional source file:
+     <a href="../components/example-swing/index.html#LimitedStyledDocument">
+     <code>LimitedStyledDocument</code></a>
+
+</td>
+</tr>
+<tr>
+<td> <a href="../components/example-swing/index.html#TextFieldDemo"><code>TextFieldDemo</code></a>
+</td>
+<td>
+<a target="_top" href="../components/textfield.html#documentlistener">Listening for Changes on a Document</a><a target="_top" href="../components/textfield.html#documentlistener"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Registers one document listener on three text fields.
+     The listener computes a numeric value based on 
+     numeric values entered into the three text fields by the user.
+</td>
+</tr>
+</table>
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="containerlistener.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#events" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="focuslistener.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
