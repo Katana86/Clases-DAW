@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Why Two String Classes?</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="strings.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="creating.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>
+Why Two String Classes?
+</h2>
+<blockquote>
+The Java development environment provides two classes
+that store and manipulate character data:
+<em><code>String</code></em>, for constant strings, and <em><code>StringBuffer</code></em>,
+for strings that can change.
+
+<p>
+You use <code>String</code>s when you don't want the value of the string to change.
+For example, if you write a method that requires string data and
+the method is not going to modify the string in any way, 
+use a <code>String</code> object. Typically, you'll want to use <code>String</code>s to pass
+character data into methods and return character data from methods
+The <code>reverseIt</code> method takes a <code>String</code> argument
+and returns a <code>String</code> value.
+
+<blockquote><pre>
+class ReverseString {
+    public static <strong>String</strong> reverseIt(<strong>String</strong> source) {
+        int i, len = source.length();
+        <strong>StringBuffer</strong> dest = new StringBuffer(len);
+
+        for (i = (len - 1); i &gt;= 0; i--) {
+            dest.append(source.charAt(i));
+        }
+        return dest.toString();
+    }
+}
+</pre></blockquote>
+<p>
+The <code>StringBuffer</code> class provides for strings that will be modified; you use
+<code>StringBuffer</code>s when you know that the value of the character data will change.
+You typically use <code>StringBuffer</code>s for constructing character data, as
+in the <code>reverseIt</code> method.
+
+<p>
+Because they are constants, <code>String</code>s are typically cheaper than
+<code>StringBuffer</code>s and they can be shared. So it's important to use <code>String</code>s
+when they're appropriate.
+ 
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="strings.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="creating.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

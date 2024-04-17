@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Strings and the Java Compiler</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="andback.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="stringsummary.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>
+Strings and the Java Compiler
+</h2>
+<blockquote>
+
+The Java compiler uses the <code>String</code> and <code>StringBuffer</code> classes behind
+the scenes to handle literal strings and concatenation.
+
+</blockquote>
+<h3>Literal Strings</h3>
+<blockquote>
+In Java, you specify <em>literal strings</em> between double quotes:
+<blockquote><pre>
+"Hello World!"
+</pre></blockquote>
+You can use literal strings anywhere you would use a <code>String</code> object.
+For example, <code>System.out.println</code> accepts a <code>String</code> argument, so you
+could use a literal string in place of a <code>String</code> there.
+<blockquote><pre>
+System.out.println("Might I add that you look lovely today.");
+</pre></blockquote>
+You can also use <code>String</code> methods directly from a literal string.
+<blockquote><pre>
+int len = "Goodbye Cruel World".length();
+</pre></blockquote>
+Because the compiler automatically creates a new <code>String</code> object for
+every literal string it encounters, you can use a literal string
+to initialize a <code>String</code>.
+<blockquote><pre>
+String s = "Hola Mundo";
+</pre></blockquote>
+The above construct is equivalent to, but more efficient than, this one,
+which ends up creating two <code>String</code>s instead of one:
+<blockquote><pre>
+String s = new String("Hola Mundo");
+</pre></blockquote>
+The compiler creates the first string when it encounters
+the literal string <strong>"Hola Mundo!"</strong>, and the
+second one when it encounters <code>new String</code>.
+</blockquote>
+
+<h3>Concatenation and the + Operator</h3>
+<blockquote>
+In Java, you can use <code>+</code> to concatenate <code>String</code>s together:
+<blockquote><pre>
+String cat = "cat";
+System.out.println("con" + cat + "enation");
+</pre></blockquote>
+This is a little deceptive because, as you know, <code>String</code>s 
+can't be changed. However, behind the scenes the compiler
+uses <code>StringBuffer</code>s to implement concatenation. The above example
+compiles to:
+<blockquote><pre>
+String cat = "cat";
+System.out.println(new StringBuffer().append("con").
+                       append(cat).append("enation").toString());
+</pre></blockquote>
+You can also use the <code>+</code> operator to append values to
+a <code>String</code> that are not themselves <code>String</code>s:
+<blockquote><pre>
+System.out.println("Java's Number " + 1);
+</pre></blockquote>
+The compiler converts the non-<code>String</code> value (the integer <code>1</code>
+in the example) to a <code>String</code> object before performing the concatenation
+operation.
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="andback.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="stringsummary.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

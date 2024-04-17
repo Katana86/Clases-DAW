@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Characters and Strings</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="QandE/questions_objects.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="whytwo.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>
+Characters and Strings
+</h2>
+<blockquote>
+The <code>java.lang</code> package contains two string classes: 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/lang/String.html"><font color="#8800bb">String</font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/lang/String.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> and 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/lang/StringBuffer.html"><font color="#8800bb">StringBuffer</font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/lang/StringBuffer.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+You've already seen the <code>String</code> class on several occasions in this tutorial.
+You use the <code>String</code> class when you are working with strings that cannot change.
+<code>StringBuffer</code>, on the other hand,
+is used when you want to manipulate the contents
+of the string on the fly.
+<p>
+The <code>reverseIt</code> method in the following code uses both
+the <code>String</code> and <code>StringBuffer</code> classes to reverse the characters
+of a string. If you have a list of words, you can use this method in
+conjunction with a sort program to create a list of rhyming words (a
+list of words sorted by ending syllables). Just
+reverse all the strings in the list, sort the list, and reverse
+the strings again. You can see the <code>reverseIt</code> method
+producing rhyming words in the example in
+<a target="_top" href="../../essential/io/pipedstreams.html">How to Use Pipe Streams</a><a target="_top" href="../../essential/io/pipedstreams.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Learning the Java Language trail)"></a> that shows you how to use piped streams.
+<blockquote><pre>
+public class ReverseString {
+    public static String reverseIt(String source) {
+        int i, len = source.length();
+        StringBuffer dest = new StringBuffer(len);
+
+        for (i = (len - 1); i &gt;= 0; i--)
+            dest.append(source.charAt(i));
+        return dest.toString();
+    }
+}
+</pre></blockquote>
+The <code>reverseIt</code> method accepts an argument of type <code>String</code>
+called <code>source</code> that contains the string data to be reversed.
+The method creates a <code>StringBuffer</code>, <code>dest</code>, the same size as
+<code>source</code>. It then loops backwards over all the
+characters in <code>source</code> and appends them to <code>dest</code>,
+thereby reversing the string.
+Finally, the method converts <code>dest</code>, a <code>StringBuffer</code>, to a <code>String</code>.
+<p>
+In addition to highlighting the differences between <code>String</code>s and <code>StringBuffer</code>s,
+this section illustrates several features of the <code>String</code> and <code>StringBuffer</code> classes:
+creating <code>String</code>s and <code>StringBuffer</code>s, using accessor methods to get information
+about a <code>String</code> or <code>StringBuffer</code>, modifying a <code>StringBuffer</code>, and converting one
+type of string to another.
+<p>
+
+<blockquote><hr><strong>Note to C and C++ Programmers:</strong>&nbsp;
+<a href="cStrings.html">Java strings are first-class objects</a>,
+unlike C and C++ strings,
+which are simply null-terminated arrays
+of 8-bit characters.
+<hr></blockquote>
+
+
+This section covers these string-related topics:
+
+<ul>
+<li>
+<a target="_top" href="whytwo.html">Why Two String Classes?</a><a target="_top" href="whytwo.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Learning the Java Language trail)"></a><li>
+<a target="_top" href="creating.html">Creating Strings and StringBuffers</a><a target="_top" href="creating.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Learning the Java Language trail)"></a><li>
+<a target="_top" href="accessors.html">Accessor Methods</a><a target="_top" href="accessors.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Learning the Java Language trail)"></a><li>
+<a target="_top" href="modifying.html">Modifying StringBuffers</a><a target="_top" href="modifying.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Learning the Java Language trail)"></a><li>
+<a target="_top" href="conversion.html">Converting Objects to Strings</a><a target="_top" href="conversion.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Learning the Java Language trail)"></a><li>
+<a target="_top" href="andback.html">Converting Strings to Numbers</a><a target="_top" href="andback.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Learning the Java Language trail)"></a><li>
+<a target="_top" href="stringsAndJavac.html">Strings and the Java Compiler</a><a target="_top" href="stringsAndJavac.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Learning the Java Language trail)"></a></ul>
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="QandE/questions_objects.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="whytwo.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

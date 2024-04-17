@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Cleaning Up Unused Objects</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="usingobject.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="objectsummary.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>
+Cleaning Up Unused Objects
+</h2>
+<blockquote>
+Many other object-oriented languages require
+that you keep track of all of the objects
+you create and that you explicitly destroy
+them when they are no longer needed.
+This technique of managing memory
+is tedious and often error-prone.
+Java allows you to create as many objects as you want
+(limited, of course, by what your system can handle),
+and you never have to worry about destroying them.
+The Java runtime environment deletes objects
+when it determines that they are no longer being used.
+This process is called <em>garbage collection</em>.
+<p>
+An object is eligible for garbage collection
+when there are no more references to that object.
+References that are held in a variable
+are naturally dropped when the variable goes out of scope.
+Or you can explicitly drop an object reference
+by setting the variable to null. 
+
+</blockquote>
+<h3>The Garbage Collector</h3>
+<blockquote>
+The Java platform has a garbage collector
+that periodically frees the memory used
+by objects that are no longer needed.
+The Java garbage collector
+is a mark-sweep garbage collector.
+A mark-sweep garbage collector
+scans dynamic memory areas
+for objects and marks those that are referenced.
+After all possible paths to objects are investigated,
+unmarked objects (unreferenced objects)
+are known to be garbage and are collected.
+(A more complete description
+of Java's garbage collection algorithm
+might be "a compacting, mark-sweep collector
+with some conservative scanning.") 
+<p>
+The garbage collector runs in a low-priority thread
+and runs either <em>synchronously</em> or <em>asynchronously</em>
+depending on the situation and the system on which Java is running.
+It runs synchronously when the system runs out of memory
+or in response to a request from a Java program. 
+<p>
+The Java garbage collector runs <em>asynchronously</em>
+when the system is idle,
+but it does so only on systems,
+such as Windows 95/NT,
+that allow the Java runtime environment
+to note when a thread has begun and to interrupt another thread.
+As soon as another thread becomes active,
+the garbage collector is asked to get to a consistent state and terminate.
+</blockquote>
+
+<h3>Finalization</h3>
+<blockquote>
+Before an object gets garbage-collected,
+the garbage collector gives the object
+an opportunity to clean up after itself
+through a call to the object's <code>finalize</code> method.
+This process is known as <em>finalization</em>. 
+<p>
+Most programmers don't have to worry about
+implementing <code>finalize</code>.
+In rare cases, however,
+a programmer might have to implement a <code>finalize</code>
+method to release resources, such as native peers,
+that aren't under the control of the garbage collector. 
+
+<p>
+The <code>finalize</code> method is a member
+of the <code>Object</code> class,
+which is the top
+of Java's class hierarchy and the parent of everything.
+A class can override the <code>finalize</code> method
+to perform any finalization necessary for objects of that type.
+If you override <code>finalize</code>,
+then your implementation of the method
+should call <code>super.finalize</code> as the last thing it does.
+<a target="_top" href="../javaOO/override.html">Overriding Methods</a><a target="_top" href="../javaOO/override.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Learning the Java Language trail)"></a> talks more about how to override methods.
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="usingobject.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="objectsummary.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

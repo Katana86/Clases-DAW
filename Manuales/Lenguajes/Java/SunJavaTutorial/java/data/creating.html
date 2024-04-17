@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Creating Strings and StringBuffers</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="whytwo.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="accessors.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>
+Creating Strings and StringBuffers
+</h2>
+<blockquote>
+The bold line in the <code>reverseIt</code> method 
+creates a <code>StringBuffer</code> named <code>dest</code> whose initial
+length is the same as <code>source</code>.
+
+<blockquote><pre>
+class ReverseString {
+    public static String reverseIt(String source) {
+        int i, len = source.length();
+        <strong>StringBuffer dest = new StringBuffer(len);</strong>
+
+        for (i = (len - 1); i &gt;= 0; i--) {
+            dest.append(source.charAt(i));
+        }
+        return dest.toString();
+    }
+}
+</pre></blockquote>
+
+
+The code <code>StringBuffer dest</code> declares to the compiler that <code>dest</code>
+will be used to refer to an object whose type is <code>StringBuffer</code>,
+the <code>new</code> operator allocates memory for a new object,
+and <code>StringBuffer(len)</code> initializes the object.
+These three steps--declaration, instantiation, and initialization--are
+described in
+<a target="_top" href="objectcreation.html">Creating Objects</a><a target="_top" href="objectcreation.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Learning the Java Language trail)"></a>.
+
+</blockquote>
+<h3>Creating a <code>String</code></h3>
+<blockquote>
+Many <code>String</code>s are created from string literals. When the compiler
+encounters a series of characers enclosed in double quotes,
+it creates a <code>String</code> object whose value is the text that appeared
+between the quotes. When the compiler encounters the following string
+literal, it creates a <code>String</code> object whose value is <code>Gobbledygook.</code>
+<blockquote><pre>
+"Gobbledygook."
+</pre></blockquote>
+You can also create <code>String</code> objects as you would any other Java
+object: using the <code>new</code> keyword.
+<blockquote><pre>
+new String("Gobbledygook.");
+</pre></blockquote>
+</blockquote>
+
+<h3>Creating a <code>StringBuffer</code></h3>
+<blockquote>
+The constructor method used by <code>reverseIt</code>
+to initialize the <code>dest</code> requires an 
+integer argument indicating the initial size of the new <code>StringBuffer</code>.
+<blockquote><pre>
+StringBuffer(int length)
+</pre></blockquote>
+<code>reverseIt</code> could have used <code>StringBuffer</code>'s
+default constructor that leaves the buffer's length undetermined
+until a later time. However, it's more efficient to specify the length of
+the buffer if you know it, instead of allocating more memory every
+time you append a character to the buffer.
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="whytwo.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="accessors.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

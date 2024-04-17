@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Accessor Methods</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="creating.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="moreaccessors.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>
+Accessor Methods
+</h2>
+<blockquote>
+An object's instance variables are encapsulated within the object,
+hidden inside, safe from inspection or manipulation by other objects. With certain
+well-defined exceptions, the object's methods are the only means
+by which other objects can inspect or alter an object's instance variables.
+Encapsulation of an object's data protects the object from
+corruption by other objects and conceals an object's implementation
+details from outsiders.
+This encapsulation of data behind an object's methods is one of the
+cornerstones of object-oriented programming.
+<p>
+Methods used to obtain information about an object are known as
+<em>accessor methods</em>.
+The <code>reverseIt</code> method uses two of <code>String</code>'s
+accessor methods to obtain information about the <code>source</code> string.
+<p>
+<blockquote><pre>
+class ReverseString {
+    public static String reverseIt(String source) {
+        int i, len = <strong>source.length()</strong>;
+        StringBuffer dest = new StringBuffer(len);
+
+        for (i = (len - 1); i &gt;= 0; i--) {
+            dest.append(<strong>source.charAt(i)</strong>);
+        }
+        return dest.toString();
+    }
+}
+</pre></blockquote>
+<p>
+First, <code>reverseIt</code> uses <code>String</code>'s
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java.lang.String.html"><font color="#8800bb"><code>length</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java.lang.String.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> accessor method to obtain the length of the <code>String</code> <code>source</code>.
+<blockquote><pre>
+int len = source.length();
+</pre></blockquote>
+Note that <code>reverseIt</code> doesn't care if <code>String</code> maintains its
+length attribute as an integer, as a floating point number, or even if <code>String</code>
+computes its length on the fly. <code>reverseIt</code> simply relies on the
+public interface of the <code>length</code> method, which returns the length
+of the <code>String</code> as an integer. That's all <code>reverseIt</code> needs
+to know.
+<p>
+Second, <code>reverseIt</code> uses the
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java.lang.String.html"><font color="#8800bb"><code>charAt</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java.lang.String.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> accessor, which returns the character
+at the position specified in the parameter.
+<blockquote><pre>
+source.charAt(i)
+</pre></blockquote>
+The character returned by <code>charAt</code> is then appended to the
+<code>StringBuffer</code> <code>dest</code>. Since the loop variable <code>i</code>
+begins at the end of <code>source</code> and proceeds backwards over
+the string, the characters are appended in reverse order to the <code>StringBuffer</code>,
+thereby reversing the string.
+
+</blockquote>
+<h3><a href=moreaccessors.html>More Accessor Methods</a>
+</h3>
+<blockquote>
+In addition to <code>length</code> and <code>charAt</code>, <code>String</code>
+supports a number of other accessor methods that provide access
+to substrings and the indices of specific characters in the <code>String</code>. 
+<code>StringBuffer</code> has its own set of similar accessor methods.
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="creating.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="moreaccessors.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

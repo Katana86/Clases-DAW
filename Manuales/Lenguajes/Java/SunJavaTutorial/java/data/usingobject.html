@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Using Objects</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="objectcreation.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="garbagecollection.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Learning the Java Language
+<br>
+<b>Lesson</b>: Object Basics and Simple Data Objects
+</font>
+
+<h2>
+Using Objects
+</h2>
+<blockquote>
+Once you've created an object,
+you probably want to use it for something.
+You may need information from it,
+want to change its state,
+or have it perform some action.
+<p>
+Objects give you two ways to do these things:
+<ol>
+<li> Manipulate or inspect its variables.
+<li> Call its methods.
+</ol>
+
+<a name=variables>
+</blockquote>
+<h3>Referencing an Object's Variables</h3>
+</a>
+<blockquote>
+The <code>CreateObjectDemo</code> program creates
+a rectangle named <code>rect_two</code>.
+The constructor used to create that rectangle initializes the
+rectangle's origin to 0, 0.
+Later the program changes the rectangle's origin
+with this statement:
+<blockquote><pre>
+rect_two.origin = origin_one;
+</pre></blockquote>
+This statement moves the rectangle
+by setting its point of origin to a new position.
+<code>rect_two.origin</code> is the name of <code>rect_two</code>'s
+<code>origin</code> variable.
+You can use these kinds of object variable names
+in the same manner as you use other variables names.
+Thus, as in the previous example code,
+you can use the <code>=</code> operator
+to assign a value to <code>rect_two.origin</code>.
+<p>
+The <code>Rectangle</code> class has two other variables--
+<code>width</code> and <code>height</code>--
+that are accessible to objects outside of the class.
+The program displays them with this code:
+<blockquote><pre>
+System.out.println("Width of rect_one: " + <strong>rect_one.width</strong>);
+System.out.println("Height of rect_one: " + <strong>rect_one.height</strong>);
+</pre></blockquote>
+In general, to refer to an object's variables,
+append the name of the variable
+to an object reference with an intervening period (.):
+<blockquote><pre>
+<em>objectReference</em>.<em>variable</em>
+</pre></blockquote>
+The first part of the variable's name,
+<code><em>objectReference</em></code>,
+must be a reference to an object.
+You can use an object name here
+just as was done in the previous examples with <code>rect</code>.
+You also can use any expression
+that returns an object reference.
+Recall that the <code>new</code> operator
+returns a reference to an object.
+So you could use the value returned from
+<code>new</code> to access a new object's variables: 
+<blockquote><pre>
+height = new Rectangle().height;
+</pre></blockquote>
+This statement creates a new <code>Rectangle</code> object
+and immediately gets its height.
+Effectively, the statement calculates
+the default height of a <code>Rectangle</code>.
+Note that after this statement has been executed,
+the program no longer has a reference
+to the <code>Rectangle</code> that was created
+because the program never stored the reference in a variable.
+Thus the object becomes eligible for garbage collection.
+<P>
+Here's a final word about accessing an object's variables
+to clear up a point of some confusion
+that beginning Java programmers often have.
+All objects of the same type have the same variables.
+All <code>Rectangle</code> objects have <code>origin</code>,
+<code>width</code>, and <code>height</code> variables
+that they got from the <code>Rectangle</code> class.
+When you access a variable through an object reference,
+you reference that particular object's variables.
+Suppose that <code>bob</code> is also a rectangle
+in your drawing program
+and it has a different height and width than <code>rect</code>.
+The following instruction calculates the area
+of the rectangle named <code>bob</code>,
+which differs from the previous instruction
+that calculated the area of <code>rect</code>:
+<blockquote><pre>
+area = bob.height * bob.width;
+</pre></blockquote>
+</blockquote>
+
+<a name=methods>
+<h3>Calling an Object's Methods</h3>
+</a>
+<blockquote>
+To move <code>rect</code> to a new location
+using its <code>move</code> method, you write this:
+<blockquote><pre>
+rect.move(15, 37);
+</pre></blockquote>
+This Java statement calls <code>rect</code>'s <code>move</code> method
+with two integer parameters, 15 and 37.
+It moves the <code>rect</code> object
+because the <code>rect</code> method
+assigns new values to <code>origin.x</code> and <code>origin.y</code>
+and is equivalent to the assignment statement used previously: 
+<blockquote><pre>
+rect.origin = new Point(15, 37);
+</pre></blockquote>
+The notation used to call an object's method
+is similar to that used when referring to its variables:
+You append the method name to an object reference
+with an intervening period (.).
+Also, you provide any arguments
+to the method within enclosing parentheses.
+If the method does not require any arguments,
+use empty parentheses. 
+<blockquote><pre>
+<em>objectReference</em>.<em>methodName</em>(<em>argumentList</em>);
+   or
+<em>objectReference</em>.<em>methodName</em>();
+</pre></blockquote>
+As stated previously in this lesson,
+<code><em>objectReference</em></code>
+must be a reference to an object.
+You can use a variable name here,
+but you also can use any expression
+that returns an object reference.
+The <code>new</code> operator returns an object reference,
+so you can use the value returned from <code>new</code>
+to call a new object's methods: 
+<blockquote><pre>
+new Rectangle(100, 50).area()
+</pre></blockquote>
+The expression <code>new Rectangle(100, 50)</code>
+returns an object reference
+that refers to a <code>Rectangle</code> object.
+As shown, you can use the dot notation
+to call the new <code>Rectangle</code>'s <code>area</code> method
+to compute the area of the new rectangle. 
+<p>
+Some methods, like <code>area</code>, return a value.
+For methods that return a value,
+you can use the method call in expressions.
+You can assign the return value to a variable,
+use it to make decisions, or control a loop.
+This code assigns the value returned by area to a variable: 
+<blockquote><pre>
+int areaOfRectangle = new Rectangle(100, 50).area();
+</pre></blockquote>
+Remember, invoking a method on a particular object
+is the same as sending a message to that object.
+In this case, the object is the rectangle returned by the constructor.
+</blockquote>
+
+<h3>A Word About Variable Access</h3>
+<blockquote>
+Ideal object-oriented programming discourages
+the direct manipulation of an object's variables
+because it would be possible to set the variables
+to values that don't make sense.
+For example, consider the <code>Rectangle</code>
+class from the previous section.
+Using that class,
+you can create a rectangle whose width and height
+are negative, which, for some applications, doesn't make sense.
+<p>
+Instead of allowing direct manipulation of an its variables,
+an ideal class provides methods through
+which you can inspect or change its variables.
+These methods ensure that the values of the variables
+make sense for objects of that type.
+So, the <code>Rectangle</code> class would provide
+methods for setting and getting the <code>width</code>
+and the <code>height</code>.
+The methods for setting the variables would report an error,
+if the caller tried to set the width or height to a negative number.
+<p>
+However, in practical situations,
+it sometimes makes sense to allow direct access to
+an object's variables.
+For example,
+both the <code>Point</code> class
+and the <code>Rectangle</code> class
+allow free access to their member variables.
+This keeps these classes small and simple.
+Also, it keeps them generally useful.
+Some applications might allow rectangles
+with negative widths and heights.
+<p>
+Java provides an access control mechanism
+whereby classes can determine which other
+classes can have direct access
+to its variables and methods.
+A class should protect variables
+against direct manipulation by other objects
+if those manipulations could result in values
+that don't make sense objects of that type.
+State changes should then be affected
+and therefore controlled by method calls.
+If an object grants access to its variables,
+you can assume that you can inspect
+and change them without adverse effects.
+To learn more about Java's access control mechanism,
+refer to
+<a target="_top" href="../javaOO/accesscontrol.html">Controlling Access to Members of a Class</a><a target="_top" href="../javaOO/accesscontrol.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Learning the Java Language trail)"></a>.
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="objectcreation.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#data" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="garbagecollection.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
