@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Displaying Images</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="loadingImages.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="animation.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Working with Graphics
+</font>
+
+<h2>
+Displaying Images
+</h2>
+<blockquote>
+Here is a code example that displays an image
+at its normal size
+in the upper left corner of the component area (0, 0):
+<blockquote><pre>
+g.drawImage(image, 0, 0, this);
+</pre></blockquote>
+
+Here is a code example that displays an image
+scaled to be 300 pixels wide and 62 pixels tall,
+starting at the coordinates (90, 0):
+<blockquote><pre>
+g.drawImage(myImage, 90, 0, 300, 62, this);
+</pre></blockquote>
+
+The following snapshot shows an applet that 
+loads a single image
+and displays it twice,
+using both code snippets that you see above.
+You can find the program's full code in
+
+<a target="source" href="example-swing/ImageDisplayer.java"><font color="#bb000f"><code>ImageDisplayer.java</code></font></a><a href="example-swing/ImageDisplayer.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+
+
+<p><center><a href="ImageDisplayer.html" target="_blank"><IMG SRC="../../figures/uiswing/painting/imageDisp.gif" WIDTH="460" HEIGHT="83" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+
+The <code>Graphics</code> class declares the following
+<code>drawImage</code> methods.
+They all return a boolean value,
+although this value is rarely used.
+The return value is <code>true</code>
+if the image has been completely loaded
+and thus completely painted;
+otherwise, it's <code>false</code>.
+
+<ul>
+<li> <code>boolean drawImage(Image img, int x, int y,
+     ImageObserver observer)</code>
+<li> <code>boolean drawImage(Image img, int x, int y,
+     int width, int height, ImageObserver observer)</code>
+<li> <code>boolean drawImage(Image img, int x, int y,
+     Color bgcolor, ImageObserver observer)</code>
+<li> <code>boolean drawImage(Image img, int x, int y,
+     int width, int height, Color bgcolor, ImageObserver observer)</code>
+</ul>
+
+The <code>drawImage</code> methods have the following arguments:
+
+<dl>
+<dt><code>Image img</code>
+<dd>The image to paint.
+<dt><code>int x, int y</code>
+<dd>The coordinates of the upper left corner of the image.
+<dt><code>int width, int height</code>
+<dd>The width and height (in pixels) of the image.
+<dt><code>Color bgcolor</code>
+<dd>The color to paint underneath the image.
+    This can be useful if the image contains transparent pixels
+    and you know that the image will be displayed against
+    a solid background of the indicated color.
+<dt><code>ImageObserver observer</code>
+<dd>An object that implements the <code>ImageObserver</code> interface.
+    This registers the object as the image observer
+    so that it's notified
+    whenever new information about the image becomes available.
+    Most components can simply specify <code>this</code>.
+</dl>
+
+The reason why components can specify <code>this</code>
+as the image observer
+is that the <code>Component</code> class
+implements the <code>ImageObserver</code> interface.
+Its implementation invokes the <code>repaint</code> method 
+as the image data is loaded,
+which is usually what you want to happen.
+
+<p>
+
+The <code>drawImage</code> method returns 
+after displaying the image data
+that has been loaded, so far.
+If you want to make sure that <code>drawImage</code>
+paints only complete images,
+then you must track image loading.
+See the
+<a href=loadingImages.html>previous page</a>
+for information on tracking image loading.
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="loadingImages.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="animation.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

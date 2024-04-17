@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Performing Animation</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="drawingImages.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="animLoop.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Working with Graphics
+</font>
+
+<h2>
+Performing Animation
+</h2>
+<blockquote>
+What all forms of animation have in common
+is that they create some kind of perceived motion 
+by showing successive frames at a relatively high speed.
+Computer animation usually shows 10-20 frames per second.
+By comparison, traditional hand-drawn animation uses anywhere from
+8 frames per second (for poor quality animation)
+to 12 frames per second (for standard animation)
+to 24 frames per second
+(for short bursts of smooth, realistic motion).
+The next few pages tell you everything you need to know
+to write a Java program that performs animation.
+
+<p>
+
+
+<blockquote><hr><strong>Before you start:</strong>&nbsp;
+Check out existing animation tools and applets, such as
+
+<a target="other" href="http://java.sun.com/applets/jdk/1.0/demo/Animator"><font color="#009bbb">Animator</font></a><a href="http://java.sun.com/applets/jdk/1.0/demo/Animator"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a>, to see whether you can use one of them
+instead of writing your own program.
+<hr></blockquote>
+
+
+</blockquote>
+<h3><a href=animLoop.html>Creating an Animation Loop with Timer</a></h3>
+<blockquote>
+The most important step in creating a program that animates
+is to set up the framework correctly.
+Except for animation performed only
+in direct response to external events
+(such as the user dragging an onscreen object),
+a program that performs animation needs an animation loop.
+
+<p>
+
+The animation loop is responsible for
+keeping track of the current frame
+and for requesting periodic screen updates.
+For applets and many applications,
+you need a separate thread to run the animation loop.
+This section contains an example applet and an example application
+that both use a <code>Timer</code> object
+to implement the animation loop.
+You can use these examples as templates for your own animation.
+</blockquote>
+
+<h3><a href=movingImage.html>Moving an Image Across the Screen</a></h3>
+<blockquote>
+The simplest form of image animation involves
+moving an unchanging image across the screen.
+In the traditional animation world,
+this is known as <em>cutout animation</em>,
+since it's generally accomplished by cutting a shape out of paper
+and moving the shape in front of the camera.
+</blockquote>
+
+<h3><a href=imageSequence.html>Displaying a Sequence of Images</a></h3>
+<blockquote>
+This section tells you how to perform classic, cartoon-style animation,
+given a sequence of images.
+</blockquote>
+
+<h3><a href=improvingImageAnim.html>Improving the Appearance and Performance
+of Image Animation</a></h3>
+<blockquote>
+This section tells you how to use the <code>MediaTracker</code>
+so that you can delay displaying an animation 
+until all its images are loaded.
+You'll also get some hints on improving
+applet animation performance by combining image files
+and by using a compression scheme.
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="drawingImages.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="animLoop.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,228 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Moving an Image Across the Screen</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="animLoop.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="imageSequence.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Working with Graphics
+</font>
+
+<h2>
+Moving an Image Across the Screen
+</h2>
+<blockquote>
+This page features an example applet 
+that moves one image (a rocketship)
+in front of a background image (a field of stars).
+You could implement this in one of two ways --
+either using one label per image,
+or using one custom component that paints both images.
+Because this lesson features painting,
+this section features the custom component approach,
+as implemented in
+
+<a target="source" href="example-swing/MovingImageTimer.java"><font color="#bb000f"><code>MovingImageTimer.java</code></font></a><a href="example-swing/MovingImageTimer.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+You can also see an alternate implementation,
+which uses labels and a layered pane.
+You can find it in 
+
+<a target="source" href="example-swing/MovingLabels.java"><font color="#bb000f"><code>MovingLabels.java</code></font></a><a href="example-swing/MovingLabels.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+which you can run by visiting
+<a href="MovingLabels.html"><code>MovingLabels.html</code></a>.
+<hr></blockquote>
+
+<p>
+
+Below are the two images this applet uses.
+
+<p>
+
+rocketship.gif:
+
+<p><center><IMG SRC="../../figures/uiswing/painting/rocketship.gif" WIDTH="85" HEIGHT="62" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Duke flying the S.S. Java."></center></p>
+<p>
+starfield.gif:
+
+<p><center><IMG SRC="../../figures/uiswing/painting/starfield.gif" WIDTH="500" HEIGHT="100" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Oh starry night!"></center></p>
+<p>
+
+Here's a picture of the applet's GUI.
+Remember that you can click on the applet
+to stop or start the animation.
+
+<p><center><a href="MovingImageTimer.html" target="_blank"><IMG SRC="../../figures/uiswing/painting/MovingImage.gif" WIDTH="499" HEIGHT="99" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+The rocketship image has a transparent background.
+The transparent background makes
+the rocketship image appear to have a rocketship shape,
+no matter what color background it's painted on top of.
+If the rocketship background weren't transparent,
+then instead of the illusion of a rocketship moving through space,
+you'd see a rocketship on top of a rectangle 
+moving through space.
+<hr></blockquote>
+
+<p>
+
+<p>
+
+The code for performing this animation isn't complex.
+Essentially, it's a copy of the animation template
+that, instead of using a label to perform animation,
+uses a custom component.
+The custom component is a <code>JPanel</code> subclass
+that paints two images,
+one of which has a position that depends
+on the current frame number.
+Here is the code that paints the custom component:
+
+<blockquote><pre>
+<em>...//Where the images are initialized:</em>
+Image background = getImage(getCodeBase(),
+                            "images/rocketship.gif");
+Image foreground = getImage(getCodeBase(),
+                            "images/starfield.gif");
+...
+public void paintComponent(Graphics g) {
+    super.paintComponent(g); //paint any space not covered
+                             //by the background image
+    int compWidth = getWidth();
+    int compHeight = getHeight();
+
+    //If we have a valid width and height for the
+    //background image, paint it.
+    imageWidth = background.getWidth(this);
+    imageHeight = background.getHeight(this);
+    if ((imageWidth > 0) && (imageHeight > 0)) {
+        g.drawImage(background,
+                    (compWidth - imageWidth)/2,
+                    (compHeight - imageHeight)/2, this);
+    }
+
+    //If we have a valid width and height for the
+    //foreground image, paint it.
+    imageWidth = foreground.getWidth(this);
+    imageHeight = foreground.getHeight(this);
+    if ((imageWidth > 0) && (imageHeight > 0)) {
+        g.drawImage(foreground,
+                    ((frameNumber*5)
+                      % (imageWidth + compWidth))
+                      - imageWidth,
+                    (compHeight - imageHeight)/2,
+                    this);
+    }
+}
+</pre></blockquote>
+
+You might think that this program
+doesn't need to clear the background,
+since it uses a background image.
+However, clearing the background is still necessary.
+One reason is that the applet usually starts painting before 
+the images are fully loaded.
+If the rocketship image loaded before the background image,
+you would see parts of multiple rocketship 
+until the background image loaded.
+Another reason is that
+if the applet painting area were wider than the background image,
+for some reason,
+then you'd see multiple rocketships to either side of the background image.
+
+<p>
+
+You could solve the first problem
+by delaying all painting until both images are fully loaded.
+The second problem could be solved 
+by scaling the background image to fit the entire applet area.
+You'll learn how to wait for images to be fully loaded in
+<a href=improvingImageAnim.html>Improving
+the Appearance and Performance of Image Animation</a>,
+later in this lesson.
+Scaling is described in
+<a href=drawingImages.html>Displaying Images</a>.
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="animLoop.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="imageSequence.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

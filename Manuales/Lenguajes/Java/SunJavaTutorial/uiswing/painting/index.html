@@ -1,0 +1,181 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Working with Graphics</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="../events/index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="overview.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+<br><a href="example-swing/index.html" target="_top">Examples Index</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+
+<br>
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+</font>
+
+<h2>
+Lesson: Working with Graphics
+</h2>
+<blockquote>
+You might not need to read this lesson at all.
+Many programs get by with no custom graphics.
+If they display images, 
+they do so using 
+<a target="_top" href="../misc/icon.html">icons</a><a target="_top" href="../misc/icon.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> in standard Swing components such as 
+<a target="_top" href="../components/label.html">labels</a><a target="_top" href="../components/label.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> and
+<a target="_top" href="../components/button.html">buttons</a><a target="_top" href="../components/button.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+To display styled text,
+perhaps with embedded images and components,
+they use 
+<a target="_top" href="../components/text.html">text components</a><a target="_top" href="../components/text.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+To customize the edges of components,
+they use 
+<a target="_top" href="../misc/border.html">borders</a><a target="_top" href="../misc/border.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+
+If you can't find a component 
+that paints what you need onscreen,
+then read on.
+This lesson teaches you how to display
+text,
+simple shapes,
+and images,
+using API that works in both JDK 1.1 and 1.2.
+Our examples create custom components,
+but you might also use this API when creating a custom border
+or icon implementation.
+This lesson finishes with information about animation.
+
+<p>
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+If you're using only Java 2 (JDK 1.2, and not JDK 1.1)
+then in addition to reading the relevant pages in this lesson,
+you should read the
+<a target="_top" href="../../2d/index.html">2D Graphics</a><a target="_top" href="../../2d/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> trail.
+That trail describes the
+Java<sup><font size=-2>TM</font></sup> 2D Graphics API,
+which provides much more functionality
+than the graphics primitives described in this lesson.
+<hr></blockquote>
+
+
+</blockquote>
+<h3>
+<a href=overview.html>Overview of Custom Painting</a>
+</h3>
+<blockquote>
+This section gives you the information you need
+to start implementing custom painting in components.
+</blockquote>
+
+<h3>
+<a href=usingPrimitives.html>Using Graphics Primitives</a>
+</h3>
+<blockquote>
+This section teaches you how to paint simple shapes
+and display text effectively.
+It includes examples of using the
+<code>Graphics</code>, <code>Font</code>, and <code>FontMetrics</code> classes.
+</blockquote>
+
+<h3>
+<a href=usingImages.html>Using Images</a>
+</h3>
+<blockquote>
+This section discusses how the Java platform supports images
+and tells you how to load and display images.
+</blockquote>
+
+<h3>
+<a href=animation.html>Performing Animation</a>
+</h3>
+<blockquote>
+Many programs perform animation,
+whether it's the classic, cartoon-style animation of Duke waving
+or simply moving static images across the screen.
+This section tells you how to perform animation,
+using a <code>Timer</code> object
+to implement an animation loop.
+
+</blockquote>
+
+<h3>
+<a href=problems.html>Solving Common Graphics Problems</a>
+</h3>
+<blockquote>
+This section describes some common problems of graphics programs,
+along with possible solutions to these problems.
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="../events/index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="overview.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+<br><a href="example-swing/index.html" target="_top">Examples Index</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

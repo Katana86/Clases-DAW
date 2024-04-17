@@ -1,0 +1,353 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Painting Shapes</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="usingPrimitives.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="drawingText.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Working with Graphics
+</font>
+
+<h2>
+Painting Shapes
+</h2>
+<blockquote>
+The 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Graphics.html"><font color="#8800bb"><code>Graphics</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Graphics.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> class defines methods for painting
+the following kinds of shapes:
+
+<ul>
+<li> Lines (<code>drawLine</code>)
+<li> Rectangles (<code>drawRect</code> and <code>fillRect</code>)
+<li> Raised or lowered rectangles
+     (<code>draw3DRect</code> and <code>fill3DRect</code>)
+<li> Round-edged rectangles
+     (<code>drawRoundRect</code> and <code>fillRoundRect</code>)
+<li> Ovals
+     (<code>drawOval</code> and <code>fillOval</code>)
+<li> Arcs
+     (<code>drawArc</code> and <code>fillArc</code>)
+<li> Polygons
+     (<code>drawPolygon</code>, <code>drawPolyline</code>, and <code>fillPolygon</code>)
+</ul>
+
+Here is an example of painting the outline of a rectangle:
+
+<blockquote><pre>
+g.drawRect(x, y, rectWidth - 1, rectHeight - 1);
+</pre></blockquote>
+
+Here is an example of painting a filled rectangle of the same size.
+
+<blockquote><pre>
+g.fillRect(x, y, rectWidth, rectHeight);
+</pre></blockquote>
+
+Note that for the <code>drawRect</code> method,
+you must specify one pixel less than the desired width and height.
+This is because the painting system draws lines
+just below the specified rectangle,
+instead of within the specified rectangle.
+The same rule 
+of specifying one less than the desired width
+applies to other <code>draw<em>Xxx</em></code> methods,
+such as <code>draw3DRect</code>.
+For the <code>fill<em>Xxx</em></code> methods,
+on the other hand,
+you specify exactly the desired width and height in pixels.
+
+<p>
+
+
+<blockquote><hr><strong>Java<sup><font size=-2>TM</font></sup> 2 Note:</strong>&nbsp;
+If you are using Java 2 (JDK<sup><font size=-2>TM</font></sup> 1.2),
+you can use
+the new Java<sup><font size=-2>TM</font></sup> 2D API,
+which allows you to create
+virtually any kind of geometric shape
+and to specify line styles, line sizes, and fancy fill patterns.
+To learn how to take advantage of
+this new functionality, see the
+<a target="_top" href="../../2d/index.html">2D Graphics</a><a target="_top" href="../../2d/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> trail.
+In particular, see the
+<a target="_top" href="../../2d/display/strokeandfill.html">Stroking and Filling Graphics Primitives</a><a target="_top" href="../../2d/display/strokeandfill.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> and 
+<a target="_top" href="../../2d/overview/shapes.html">Shapes</a><a target="_top" href="../../2d/overview/shapes.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> lessons, which present a Java 2D 
+implementation of the program presented in 
+<a href="#eg2">Example 2: A Shape Sampler</a>.
+<hr></blockquote>
+
+<p>
+
+
+</blockquote>
+<h3>
+<a name="eg1">Example 1: Simple Rectangle Painting</a>
+</h3>
+<blockquote>
+
+Here's a picture of a program
+that's almost the same as the <code>CoordinatesDemo</code> program
+shown in 
+<a href="overview.html#coord">The Coordinate System</a>.
+Like <code>CoordinatesDemo</code>,
+this program paints a rectangle wherever the user clicks.
+However, this program's rectangle is larger
+and has a yellow fill.
+Here is a picture of its GUI:
+
+<p><center><a href="RectangleDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/painting/RectangleDemo.gif" WIDTH="399" HEIGHT="147" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+The program features two components. 
+The largest is a custom component
+implemented by a class named <code>RectangleArea</code>.
+It paints the beveled border and everything inside it,
+including the yellow rectangle.
+The other component is a label
+that appears at the bottom of the GUI,
+under the custom component.
+The label describes the program's current state.
+
+<p>
+
+You can find the program's code in
+
+<a target="source" href="example-swing/RectangleDemo.java"><font color="#bb000f"><code>RectangleDemo.java</code></font></a><a href="example-swing/RectangleDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+Here is the painting-related code for
+the custom component:
+
+<blockquote><pre>
+class RectangleArea extends JPanel {
+    ...
+    int rectWidth = 50;
+    int rectHeight = 50;
+    ...
+    public RectangleArea(...) {
+        ...
+        Border raisedBevel = BorderFactory.createRaisedBevelBorder();
+        Border loweredBevel = BorderFactory.createLoweredBevelBorder();
+        Border compound = BorderFactory.createCompoundBorder
+                              (raisedBevel, loweredBevel);
+        setBorder(compound);
+        ...
+    }
+    ...
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);  //paint background
+
+        //Paint a filled rectangle at user's chosen point.
+        if (point != null) {
+            g.drawRect(point.x, point.y,
+                       rectWidth - 1, rectHeight - 1);
+            g.setColor(Color.yellow);
+            g.fillRect(point.x + 1, point.y + 1,
+                       rectWidth - 2, rectHeight - 2);
+
+            controller.updateLabel(point);
+        }
+    }
+}
+</pre></blockquote>
+
+The component's implementation of <code>paintComponent</code> 
+uses the <code>fillRect</code> method
+to paint a 50-by-50-pixel rectangle outline,
+filled with a 48-by-48-pixel yellow rectangle.
+Note the differences in the arguments specified 
+to <code>drawRect</code> and <code>fillRect</code>.
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+It's perfectly legal to specify x, y, height, or width values
+that are negative or cause a result larger than the painting area.
+Values outside the painting area don't matter too much
+because they're clipped to the painting area.
+You just won't see part of the shape.
+Negative height or width results
+in the shape not being painted at all.
+<hr></blockquote>
+
+For a little more information about this example,
+see <a href="overview.html#coord">The Coordinate System</a>,
+which features the <code>CoordinatesDemo</code> example
+on which <code>RectangleDemo</code> is based.
+
+
+</blockquote>
+<h3>
+<a name="eg2">Example 2: A Shape Sampler</a>
+</h3>
+<blockquote>
+
+The <code>ShapesDemo</code> program demonstrates all the shapes
+you can draw and fill,
+using API supported with both JDK 1.1 and Java 2.  
+Here is a picture of its GUI:
+
+<p><center><a href="ShapesDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/painting/ShapesDemo.gif" WIDTH="547" HEIGHT="97" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+Unless the default font is very small,
+some of the strings displayed by ShapesDemo
+overlap with other strings.
+A fix for this problem is demonstrated in 
+<a href="drawingText.html#fontMetrics">Getting
+Information About a Font: FontMetrics</a>.
+<hr></blockquote>
+
+<p>
+
+You can find the code for the entire program in
+
+<a target="source" href="example-swing/ShapesDemo.java"><font color="#bb000f"><code>ShapesDemo.java</code></font></a><a href="example-swing/ShapesDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+The following snippet is just the code that paints the geometric shapes,
+where the bold lines are the actual invocations of painting methods.
+The <code>rectHeight</code>
+and <code>rectWidth</code> variables
+specify the size in pixels of the rectangle
+that contains the shape to be drawn.
+The <code>x</code>
+and <code>y</code> variables
+are changed for every shape,
+so that the shapes aren't painted
+on top of each other.
+The <code>bg</code> and <code>fg</code> variables are
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Color.html"><font color="#8800bb"><code>Color</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Color.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> objects that specify the component's background and foreground colors,
+respectively.
+
+<blockquote><pre>
+Color fg3D = Color.lightGray;
+...
+// drawLine(x1, y1, x2, y2) 
+<b>g.drawLine(x, y+rectHeight-1, x + rectWidth, y);</b>
+...
+// drawRect(x, y, w, h) 
+<b>g.drawRect(x, y, rectWidth, rectHeight);</b>
+...
+// draw3DRect(x, y, w, h, raised) 
+g.setColor(fg3D);
+<b>g.draw3DRect(x, y, rectWidth, rectHeight, true);</b>
+g.setColor(fg);
+...
+// drawRoundRect(x, y, w, h, arcw, arch) 
+<b>g.drawRoundRect(x, y, rectWidth, rectHeight, 10, 10);</b>
+...
+// drawOval(x, y, w, h) 
+<b>g.drawOval(x, y, rectWidth, rectHeight);</b>
+...
+// drawArc(x, y, w, h, startAngle, arcAngle) 
+<b>g.drawArc(x, y, rectWidth, rectHeight, 90, 135);</b>
+...
+// drawPolygon(xPoints, yPoints, numPoints) 
+int x1Points[] = {x, x+rectWidth, x, x+rectWidth};
+int y1Points[] = {y, y+rectHeight, y+rectHeight, y};
+<b>g.drawPolygon(x1Points, y1Points, x1Points.length); </b>
+...
+// drawPolyline(xPoints, yPoints, numPoints) 
+// Note: drawPolygon would close the polygon.
+int x2Points[] = {x, x+rectWidth, x, x+rectWidth};
+int y2Points[] = {y, y+rectHeight, y+rectHeight, y};
+<b>g.drawPolyline(x2Points, y2Points, x2Points.length); </b>
+...
+// fillRect(x, y, w, h)
+<b>g.fillRect(x, y, rectWidth, rectHeight);</b>
+...
+// fill3DRect(x, y, w, h, raised) 
+g.setColor(fg3D);
+<b>g.fill3DRect(x, y, rectWidth, rectHeight, true);</b>
+g.setColor(fg);
+...
+// fillRoundRect(x, y, w, h, arcw, arch)
+<b>g.fillRoundRect(x, y, rectWidth, rectHeight, 10, 10);</b>
+...
+// fillOval(x, y, w, h)
+<b>g.fillOval(x, y, rectWidth, rectHeight);</b>
+...
+// fillArc(x, y, w, h, startAngle, arcAngle) 
+<b>g.fillArc(x, y, rectWidth, rectHeight, 90, 135);</b>
+...
+// fillPolygon(xPoints, yPoints, numPoints) 
+int x3Points[] = {x, x+rectWidth, x, x+rectWidth};
+int y3Points[] = {y, y+rectHeight, y+rectHeight, y};
+<b>g.fillPolygon(x3Points, y3Points, x3Points.length); </b>
+...
+</pre></blockquote>
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="usingPrimitives.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="drawingText.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

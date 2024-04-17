@@ -1,0 +1,205 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Solving Common Graphics Problems</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="improvingImageAnim.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="../converting/index.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Working with Graphics
+</font>
+
+<h2>
+Solving Common Graphics Problems
+</h2>
+<blockquote>
+<strong>Problem:</strong>
+I don't know where to put my painting code.
+
+<ul>
+<li>Painting code belongs in the <code>paintComponent</code> method
+    of any component descended from <code>JComponent</code>.
+    See 
+    <a href="overview.html">Overview of Custom Painting</a>
+    for details.
+
+</ul>
+
+<strong>Problem:</strong>
+The stuff I paint doesn't show up.
+
+<ul>
+<li>Check whether your component is showing up at all.
+<a target="_top" href="../components/problems.html">Solving Common Component Problems</a><a target="_top" href="../components/problems.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>    should help you with this.
+</ul>
+
+<strong>Problem:</strong>
+The background of my applet shows up, but the foreground stuff
+doesn't show up.
+
+<ul>
+<li>
+Did you make the mistake of performing painting
+directly in a <code>JApplet</code> subclass?
+If so, then your contents will be covered by the content pane 
+that is automatically created for every <code>JApplet</code> instance.
+Instead, 
+create another class that performs the painting and then add that class 
+to the <code>JApplet</code>'s content pane.  See 
+<a target="_top" href="../overview/draw.html">Painting</a><a target="_top" href="../overview/draw.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for more information on how painting in Swing works.
+</ul>
+
+<strong>Problem:</strong>
+My component's foreground shows up,
+but its background is invisible.
+The result is that
+one or more components directly behind my component are 
+unexpectedly visible.
+
+<ul>
+<li>
+Make sure your component is opaque.
+<code>JPanel</code>s, for example, are opaque by default.
+To make other components such as <code>JLabel</code>s opaque,
+you must invoke <code>setOpaque(true)</code> on them.
+<li>
+If your custom component extends <code>JPanel</code>
+or a more specialized <code>JComponent</code> descendant,
+then you can paint the background by invoking
+<code>super.paintComponent</code> 
+before painting the contents of your component. 
+<li>
+You can paint
+the background yourself 
+using this code at the top of a custom component's
+<code>paintComponent</code> method:
+<blockquote><pre>
+g.setColor(getBackground());
+g.fillRect(0, 0, getWidth(), getHeight());
+g.setColor(getForeground());
+</pre></blockquote>
+</ul>
+
+<p>
+<strong>Problem:</strong>
+I used <code>setBackground</code>
+to set my component's background color,
+but it seemed to have no effect.
+<ul>
+<li> Most likely, your component isn't painting its background,
+     either because it's not opaque 
+     or your custom painting code doesn't paint the background.
+     If you set the background color for a <code>JLabel</code>,
+     for example,
+     you must also invoke <code>setOpaque(true)</code>
+     on the label to make the label's background be painted.
+     For more help,
+     see the preceding problem.
+</ul>
+<p>
+<strong>Problem:</strong>
+I'm using the exact same code as a tutorial example,
+but it doesn't work.
+Why?
+
+<ul>
+<li> Is the code executed in the exact same method as the tutorial example?
+     For example, if the tutorial example has the code in the example's
+     <code>paintComponent</code> method, then this method might be the 
+     only place where the code is guaranteed to work.
+</ul>
+
+
+<strong>Problem:</strong>
+How do I paint thick lines? patterns?
+
+<ul>
+<li> The Java<sup><font size=-2>TM</font></sup> 2D API
+     provides extensive support for implementing line
+     widths and styles, as well as patterns for use in filling and
+     stroking shapes.
+     See the 
+<a target="_top" href="../../2d/index.html">2D Graphics</a><a target="_top" href="../../2d/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> trail for more information on using the Java 2D API.
+</ul>
+
+If you don't see your problem in this list, see
+<a target="_top" href="../components/problems.html">Solving Common Component Problems</a><a target="_top" href="../components/problems.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> and
+<a target="_top" href="../layout/problems.html">Solving Common Layout Problems</a><a target="_top" href="../layout/problems.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="improvingImageAnim.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#painting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="../converting/index.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
