@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Starting the Server (JSDK2.1)</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="properties.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#servletrunner" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="srun-start.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Servlets
+<br>
+<b>Lesson</b>: The servletrunner Utility
+</font>
+
+<h2>
+Starting the Server (JSDK2.1)
+</h2>
+<blockquote>
+<p>Like the <code>servletrunner</code> utility from the JSDK2.0, the server
+included with the JSDK2.1 is a small, multithreaded process that can run
+one or more servlets.
+
+<p>Unlike some web servers, the JSDK server does not automatically reload
+updated servlets.  However you can stop and restart the server with very
+little overhead to run a new version of a servlet.
+
+<p>This section shows you how to
+<ul>
+<li><a href="#config">Prepare to start the JSDK server</a>
+<li><a href="#start">Start the JSDK server</a>
+<li><a href="#stop">Stop the JSDK server</a>
+</ul>
+
+</blockquote>
+
+<h2><a name="config">Preparing to Start the JSDK Server</a></h2>
+<blockquote>
+
+<p>Before you run the JSDK server, you must have a compliant JDK:
+<ul>
+<li>On Sparc Solaris 2.6, the JSDK has been tested with JDK 1.1.7 & Java2
+SDK 1.2 </li>
+<li>On Windows98/NT, the JSDK has been tested with JDK 1.1.7 & Java2 SDK
+1.2
+</ul>
+
+<p><a name="options">It is also possible</a> for you to configure various
+properties of the JSDK server before you start it.  These properties
+include the server's port, which defaults to <code>8080</code>, the
+hostname of the server, which defaults to <code>localhost</code>, and the
+document root, which defaults to the <code>webpages</code> subdirectory of
+the JSDK installation.  To see or update these configuration values, edit
+the <code>default.cfg</code> file in the JSDK installation directory.
+
+<p>Finally, note that the servlets directory is located at:
+
+<pre>
+    <i>doc_root</i>/WEB-INF/servlets
+</pre>
+
+</blockquote>
+<h2><a name="start">Starting the JSDK Server</a></h2>
+<blockquote>
+
+<p>To start the server, use the Unix-based Korn-shell script or the
+Windows-based batch file that the JSDK provides in the installation
+directory of the JSDK.
+
+<p>The following command starts the server on Unix:
+
+<pre>
+     % startserver
+</pre>
+
+<p>And the following command starts the server on Windows:
+
+<pre>
+     C:\jsdk\> startserver
+</pre>
+
+<p>Once the JSDK server is executing, you can use it to <a
+href="../call-servlets/index.html">test your servlets</a>.
+
+</blockquote>
+<h2><a name="stop">Stopping the JSDK Server</a></h2>
+<blockquote>
+
+<p>To stop the server, the JSDK provides shut-down commands in the same
+directory as the start-up commands (the installation directory of the
+JSDK).  
+
+<p>The following command stops the server on Unix:
+
+<pre>
+     % stopserver
+</pre>
+
+<p>And the following command stops the server on Windows:
+
+<pre>
+     C:\jsdk\> stopserver
+</pre>
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="properties.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#servletrunner" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="srun-start.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
