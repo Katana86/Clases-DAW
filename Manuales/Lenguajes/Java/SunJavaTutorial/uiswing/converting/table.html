@@ -1,0 +1,370 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Swing Replacements for AWT Components</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="resources.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#converting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="generaltips.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Converting to Swing
+</font>
+
+<h2>
+Swing Replacements for AWT Components
+</h2>
+<blockquote>
+Use the following table
+as a guide for choosing a Swing
+replacement for each AWT component used
+in your program. 
+<p>
+<table border=1>
+<tr>
+<th>AWT Component</th>
+</th>
+<th>Closest Swing Equivalent</th><th>Notes</th>
+
+</th>
+</tr>
+<tr>
+<td><code>java.applet.Applet</code></td>
+</td>
+<td><a href="../components/applet.html"><code>JApplet</code></a></td>
+</td>
+<td>AWT applets and Swing applets differ in several ways.
+    See <a href="tips.html#applet">Converting Applets</a>.
+    </td>
+
+</td>
+</tr>
+<tr>
+<td><code>Button</code></td>
+</td>
+<td><a href="../components/button.html"><code>JButton</code></a></td>
+</td>
+<td>A Swing button can include an image and/or text.</td>
+
+</td>
+</tr>
+<tr>
+<td><code>Canvas</code></td>
+</td>
+<td><a href="../components/panel.html"><code>JPanel</code></a>,
+    <a href="../components/label.html"><code>JLabel</code></a>,
+    <em>or another appropriate Swing component</em><br>
+</td>
+</td>
+<td>Your choice depends on what the program uses the canvas for.
+    See <a href="tips.html#canvas">Converting Canvases</a> for
+    a discussion of your conversion options.
+</td>
+
+</td>
+</tr>
+<tr>
+<td><code>Checkbox</code></td>
+</td>
+<td><a href="../components/button.html#checkbox"><code>JCheckBox</code></a>
+    <em>or</em><br>
+    <a href="../components/button.html#radiobutton"><code>JRadioButton</code></a>
+</td>
+</td>
+<td>Note the `B' is capitalized in the Swing class name but not
+    in the AWT class name.</td>
+
+</td>
+</tr>
+<tr>
+<td><code>CheckboxMenuItem</code></td>
+</td>
+<td><a href="../components/menu.html"><code>JCheckBoxMenuItem</code></a></td>
+</td>
+<td>Note the `B' is capitalized in the Swing class name but not
+    in the AWT class name.
+    Also, note that Swing menu components are true components.</td>
+
+</td>
+</tr>
+<tr>
+<td><code>Choice</code></td>
+</td>
+<td><a href="../components/combobox.html"><code>JComboBox</code></a></td>
+</td>
+<td>Replace a <code>Choice</code> with
+    an uneditable (the default) <code>JComboBox</code>.
+    You might have to re-write code that handles item events.
+    Refer to <a href="tips.html#choice">Converting Choices</a>.
+
+</td>
+</tr>
+<tr>
+<td><code>Dialog</code></td>
+</td>
+<td><a href="../components/dialog.html"><code>JDialog</code></a>
+    <em>or</em><br>
+    <a href="../components/dialog.html"><code>JOptionPane</code></a>
+    </td>
+</td>
+<td>AWT-based programs add components directly to a dialog
+    and directly set its layout manager.
+    In contrast, Swing-based programs add components to
+    and set the layout manager on a
+    <code>JDialog</code>'s <em>content pane</em>.
+    </td>
+
+</td>
+</tr>
+<tr>
+<td><code>FileDialog</code></td>
+</td>
+<td><a href="../components/filechooser.html"><code>JFileChooser</code></a></td>
+</td>
+<td><code>FileDialog</code> is a dialog,
+     while <code>JFileChooser</code> is a component that you
+     can place in any top-level container.
+     For convenience,
+     <code>JFileChooser</code> provides methods that make it easy
+     to display a file chooser in a dialog.</td>
+
+</td>
+</tr>
+<tr>
+<td><code>Frame</code></td>
+</td>
+<td><a href="../components/frame.html"><code>JFrame</code></a></td>
+</td>
+<td>AWT-based programs add components directly to a frame
+    and directly set its layout manager.
+    In contrast, Swing-based programs add components to
+    and set the layout manager on a
+    <code>JFrame</code>'s <em>content pane</em>.
+    </td>
+
+</td>
+</tr>
+<tr>
+<td><code>Label</code></td>
+</td>
+<td><a href="../components/label.html"><code>JLabel</code></a></td>
+</td>
+<td>A Swing label can include an image and/or text.
+    To support accessibility, 
+    use <code>setLabelFor</code> to associate each label
+    with the component it describes (if any).
+    </td>
+
+</td>
+</tr>
+<tr>
+<td><code>List</code></td>
+</td>
+<td><a href="../components/list.html"><code>JList</code></a></td>
+</td>
+<td>AWT lists and Swing lists differ in many ways.
+    See <a href="tips.html#list">Converting Lists</a>
+    for information and examples.
+    If you'd like your list to display
+    multiple columns of information,
+    consider upgrading to a 
+    <a href="../components/table.html">table</a>.
+    If the list contains hierarchical informaiton,
+    consider using a 
+    <a href="../components/tree.html">tree</a>.
+    </td>
+
+</td>
+</tr>
+<tr>
+<td><code>Menu</code></td>
+</td>
+<td><a href="../components/menu.html"><code>JMenu</code></a></td>
+</td>
+<td>Swing menu components are true components.</td>
+
+</td>
+</tr>
+<tr>
+<td><code>MenuBar</code></td>
+</td>
+<td><a href="../components/menu.html"><code>JMenuBar</code></a></td>
+</td>
+<td>Swing menu components are true components.</td>
+
+</td>
+</tr>
+<tr>
+<td><code>MenuItem</code></td>
+</td>
+<td><a href="../components/menu.html"><code>JMenuItem</code></a></td>
+</td>
+<td>Swing menu components are true components.</td>
+
+</td>
+</tr>
+<tr>
+<td><code>Panel</code></td>
+</td>
+<td><a href="../components/panel.html"><code>JPanel</code></a></td>
+</td>
+<td>You can easily add borders to Swing panels.</td>
+
+</td>
+</tr>
+<tr>
+<td><code>PopupMenu</code></td>
+</td>
+<td><a href="../components/menu.html"><code>JPopupMenu</code></a></td>
+</td>
+<td>Swing menu components are true components.</td>
+
+</td>
+</tr>
+<tr>
+<td><code>Scrollbar</code></td>
+</td>
+<td><a href="../components/scrollpane.html"><code>JScrollPane</code></a>
+    <em>or</em><br>
+    <a href="../components/slider.html"><code>JSlider</code></a>
+    <em>or</em><br>
+    <a href="../components/progress.html"><code>JProgressBar</code></a></td>
+</td>
+<td>Although Swing has a <code>JScrollBar</code> class,
+    you don't usually use it directly.</td>
+
+</td>
+</tr>
+<tr>
+<td><code>ScrollPane</code></td>
+</td>
+<td><a href="../components/scrollpane.html"><code>JScrollPane</code></a></td>
+</td>
+<td>You can add custom decorations,
+    including row and column headers,
+    to Swing scroll panes. </td>
+
+</td>
+</tr>
+<tr>
+<td><code>TextArea</code></td>
+</td>
+<td><a href="../components/text.html"><code>JTextArea</code></a></td>
+</td>
+<td>Typically requires some re-coding to convert.
+    See <a href="tips.html#text">Converting Text Components</a>
+    for information and examples.</td>
+
+</td>
+</tr>
+<tr>
+<td><code>TextField</code></td>
+</td>
+<td><a href="../components/textfield.html"><code>JTextField</code></a></td>
+</td>
+<td>For simple uses, <code>JTextField</code> is source-compatible
+    with <code>TextField</code>.
+    If you use text listeners
+    you need to modify your code
+    to use a custom document or document listener instead.
+    If you need a password field,
+    use
+    <a href="../components/textfield.html#password">
+    <code>JPasswordField</code></a> instead.
+    See <a href="tips.html#text">Converting Text Components</a>
+    for information about non-trivial conversions and examples.</td>
+</td>
+
+</td>
+</tr>
+<tr>
+<td><code>Window</code></td>
+</td>
+<td><code>JWindow</code>
+    <em>or</em><br>
+    <a href="../components/tooltip.html"><code>JToolTip</code></a></td>
+</td>
+<td>You might be able to substitute a non-window component,
+    such as a <code>JLabel</code>,
+    and use a 
+    <a href="../components/layeredpane.html">layered pane</a>.
+    
+</td>
+</tr>
+</table>
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="resources.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#converting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="generaltips.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

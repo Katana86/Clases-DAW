@@ -1,0 +1,16 @@
+<applet code="TextEventDemo.class"
+        codebase="example-swing"
+        archive="textdemo.jar"
+        width="500" height="300">
+
+Since you can't run the applet,
+here's a picture of it:
+
+#usemacro UI_FIGURE (
+    NAME TextEventDemo.gif
+    W 500
+    H 300
+    ALT A snapshot of TextEventDemo, which demonstrates handling document events on text components.
+)
+
+</applet>

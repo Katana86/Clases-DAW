@@ -1,0 +1,430 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Component-Specific Conversion Tips</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="generaltips.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#converting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="examples.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Converting to Swing
+</font>
+
+<h2>
+Component-Specific Conversion Tips
+</h2>
+<blockquote>
+This section has tips for converting 
+AWT applet, canvas, choice, list, and text components
+to the Swing equivalents.
+
+<a name="applet">
+</blockquote>
+<h3>Converting Applets</h3>
+</a>
+<blockquote>
+As mentioned in
+<a href="how.html#step7">Step&nbsp;7</a>
+of the conversion instructions,
+AWT programs add components directly to the <code>Applet</code> object
+and directly set the applet's layout manager.
+Swing applets, on the other hand, add components to
+and set the layout manager on the 
+<code>JApplet</code>'s <em>content pane</em>.
+So to convert an applet, you must make the
+source code changes described in that section.
+<p>
+Furthermore,
+while <code>FlowLayout</code> is the default layout manager
+for AWT applets,
+<code>BorderLayout</code> is the default layout manager
+for Swing applets.
+This has two repercussions:
+<ol>
+<li> If you want to use a <code>FlowLayout</code>,
+     the Swing version of your program must use
+     <code>setLayout</code> on the content pane to specify it.
+<li> If you specified <code>BorderLayout</code> in your AWT applet,
+     you can remove the <code>setLayout</code> statement from
+     the Swing version.
+</ol>
+
+<p>
+
+As <a href="how.html#step8">Step&nbsp;8</a> says,
+don't paint directly in a <code>JApplet</code>
+because it will be covered by the applet's content pane.
+Instead of seeing your painting, 
+you'll just see a blank area.
+The solution is to have a custom component do the painting,
+and add it to the content pane.
+See the instructions for 
+<a href="#canvas">converting canvases</a>
+for tips on choosing a class for the custom component,
+and moving the paint code to the appropriate method.
+
+<p>
+Be very aware of thread issues
+when converting your applet.
+Because the <code>stop</code> and <code>start</code>
+methods aren't called from the event-dispatching thread,
+you should use <code>SwingUtilities.invokeLater</code>
+in those methods whenever you make a change that might
+result on a call upon a component.
+See 
+<a target="_top" href="../overview/threads.html">Threads and Swing</a><a target="_top" href="../overview/threads.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> and
+<a target="_top" href="../misc/threads.html">How to Use Threads</a><a target="_top" href="../misc/threads.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for more information.
+
+<p>
+Lastly,
+your applet's users will probably
+use Java Plug-in to run your applet.
+So you will need to convert the
+<code>&lt;APPLET&gt;</code>
+tag to an <code>OBJECT</code>/<code>EMBED</code> tag.
+An automatic HTML converter can be found at the
+
+<a target="other" href="http://java.sun.com/products/plugin/"><font color="#009bbb">Java Plug-in</font></a><a href="http://java.sun.com/products/plugin/"><img src="../../images/otherIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(outside of the tutorial)"></a> site.
+</blockquote>
+
+<a name="canvas">
+<h3>Converting Canvases (Custom Components)</h3>
+</a>
+<blockquote>
+Before converting a custom component,
+check whether you can use a standard Swing component.
+For example, if your custom component simply displays an image,
+perhaps with some text,
+then you can use a Swing
+<a target="_top" href="../components/label.html">label</a><a target="_top" href="../components/label.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+If your custom component implements a button with an image,
+you can use a Swing
+<a target="_top" href="../components/button.html">button</a><a target="_top" href="../components/button.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> instead.
+If you've implemented a tree or grid,
+consider using a Swing
+<a target="_top" href="../components/tree.html">tree</a><a target="_top" href="../components/tree.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> or
+<a target="_top" href="../components/table.html">table</a><a target="_top" href="../components/table.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+
+If no Swing component has the functionality you need,
+then we recommend that you change the superclass of your
+custom component from <code>Canvas</code>
+to <code>JPanel</code>.
+Then move the drawing code from <code>paint</code> or <code>update</code>
+to a method named 
+<code>paintComponent</code>.
+At the top of that method, you should insert
+<code>super.paintComponent(g)</code>.
+Remove all code related to double buffering,
+since Swing provides that automatically.
+For more information about implementing painting
+in custom Swing components,
+refer to
+<a target="_top" href="../painting/index.html">Working with Graphics</a><a target="_top" href="../painting/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+
+<code>JPanel</code> is not the only possible superclass
+for custom components.
+You can use a more specialized superclass,
+such as <code>JLabel</code> or
+<code>AbstractToggleButton</code>.
+Or you can use a less specialized superclass,
+such as
+<code>Component</code>, <code>Container</code>, or
+<a target="_top" href="../components/jcomponent.html"><code>JComponent</code></a><a target="_top" href="../components/jcomponent.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+Extending <code>JComponent</code> instead of
+<code>Component</code> or <code>Container</code> gives you
+automatic double buffering
+and access to Swing features such as borders. 
+Extending <code>JPanel</code> instead of <code>JComponent</code>
+buys you automatic background painting,
+which you can turn off if you like
+with <code>setOpaque(false)</code>.
+</blockquote>
+
+<a name="choice">
+<h3>Converting Choices</h3>
+</a>
+<blockquote>
+AWT choices are equivalent to uneditable Swing combo boxes.
+Although both choices and combo boxes fire item events,
+the conditions under which the events are fired differ.
+A choice fires one item event each time
+the user selects an item from its menu.
+The Swing combo box component fires one item event each
+time the state of an item changes.
+Thus a combo box
+fires two item events when the user chooses a new
+item from the combo box:
+one because the currently selected item's state changed to deselected
+and
+one because the chosen item's state changed to selected.
+Furthermore,
+although a choice fires an item event when the user
+chooses the already selected item,
+a combo box fires no events in this case.
+<p>
+You have a couple of options:
+<ul>
+<li> If you want to be notified 
+     when the user chooses an already selected item,
+     use an action listener instead of an item listener.
+     Although choices fire only item events,
+     combo boxes fire action events as well.
+<li> If you're interested in item events,
+     but only care about one per selection,
+     use the event object's <code>getStateChanged</code> method
+     to determine whether you're interested in a particular event.
+</ul>
+
+
+</blockquote>
+<a name="list">
+<h3>Converting Lists</h3>
+</a>
+<blockquote>
+AWT lists and Swing lists differ in many ways:
+<ul>
+<li>
+Populating a Swing list is different than
+populating an AWT list because
+a standard Swing list is immutable--you cannot
+add or remove items from it.
+To populate a Swing list,
+create a vector, array, or data model
+with the initial items in it.
+<p>
+<table border=1 cellpadding=5>
+<tr>
+<th>AWT Code</th><th>Swing Code</th>
+</th>
+</tr>
+</tr>
+<tr>
+<td>
+<pre>
+List spanish = new List();
+spanish.addItem("uno");
+spanish.addItem("dos");
+spanish.addItem("tres");
+spanish.addItem("cuatro"); </pre>
+</td>
+</td>
+<td>
+<pre>String[] listData = { "uno",
+		      "dos",
+		      "tres",
+		      "cuatro" };
+JList spanish = new JList(listData);</pre> </td> </td>
+</tr> </tr>
+</table>
+<p>
+If you want a mutable list, you need to
+provide the list with a custom
+<code>ListModel</code> that is mutable.
+Refer to
+<a target="_top" href="../components/list.html#mutable">Modifying a List</a><a target="_top" href="../components/list.html#mutable"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for details and an example.
+<p>
+<li>
+AWT lists provide scroll bars automatically.
+If you want scrolling capability for a Swing list,
+you need to put the list in a scroll pane.
+Remember to change the arguments to the <code>add</code> method
+so that it adds the scroll pane,
+rather than the actual list,
+to the container.
+If you are using a <code>GridBagLayout</code>,
+make sure that you then
+apply the constraints to the scroll pane rather than to
+the list.
+<p>
+<table border=1 cellpadding=5>
+<tr>
+<th>AWT Code</th><th>Swing Code</th>
+</th>
+</tr>
+</tr>
+<tr>
+<td>
+<code>
+List spanish = new List();
+<br>
+<em>somecontainer</em>.add(spanish); </code>
+</td>
+</td>
+<td>
+<code>
+JList spanish = new JList(listData);
+<br>
+JScrollPane scrollPane = new JScrollPane(spanish);
+<br>
+<em>somecontainer</em>.add(scrollPane); </code>
+</td>
+</td>
+</tr>
+</tr>
+</table>
+<p>
+
+<li>
+Although <code>List</code> generates action
+events, <code>JList</code> doesn't.
+To listen for changes to the selection on a <code>JList</code>
+use a <code>ListSelectionListener</code>.
+To listen for single, double, or triple clicks,
+use a mouse listener.
+
+<p>
+<li>
+A Swing list supports three selection modes, not two.
+</ul>
+
+For an example of converting a program that contains
+a list, refer to
+<a href="examples.html#list">Converting ListDemo</a>.
+
+</blockquote>
+
+<a name="text">
+<h3>Converting Text Components</h3>
+</a>
+<blockquote>
+The Swing text components have much richer functionality
+than the AWT text components.
+You can easily display styled text,
+such as HTML text,
+using a 
+<a target="_top" href="../components/editorpane.html">editor pane or text pane</a><a target="_top" href="../components/editorpane.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+For information on what Swing text components have to offer,
+see
+<a target="_top" href="../components/text.html">Using Text Components</a><a target="_top" href="../components/text.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+
+When converting a text area,
+be aware that Swing text areas aren't automatically
+placed in scroll panes.
+You normally should put the Swing text area in a scroll pane
+and set the scroll pane's preferred size.
+If you forget to set the preferred size of the scroll pane,
+then depending on the layout manager you use,
+the scroll pane might grow each time a line of text
+is added to the text area -- and the user won't see scroll bars.
+When you add a text area to a scroll pane,
+remember to make these other changes to
+your program:
+<ul>
+<li>
+Change the <code>add</code> call
+to add the scroll pane,
+instead of the text area,
+to the container.
+
+<li>
+If you are using a <code>GridBagLayout</code> make sure that you then
+apply the constraints to the scroll pane rather than to
+the text area.
+
+
+</ul>
+
+<p>
+Swing text components
+support different listeners than AWT text components.
+For example, Swing text components
+don't have an <code>addTextListener</code> method.
+Instead you should use a custom document
+or register a document listener.
+If you have a key event listener registered on an AWT text component,
+then you should probably replace it with a custom document.
+Documents and document listeners are discussed in
+<a target="_top" href="../components/textfield.html#validation">General Rules for Using Text Components</a><a target="_top" href="../components/textfield.html#validation"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>, and examples of implementing custom documents are in
+<a target="_top" href="../components/textfield.html#validation">Creating a Validated Text Field</a><a target="_top" href="../components/textfield.html#validation"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+
+For an example of converting an AWT text component to a
+Swing text component, including how to convert text listeners,
+refer to
+<a href="examples.html#texteventdemo">Converting TextEventDemo</a>.
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="generaltips.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#converting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="examples.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

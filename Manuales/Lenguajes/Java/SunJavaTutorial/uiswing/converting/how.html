@@ -1,0 +1,666 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Convert</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="why.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#converting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="resources.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Converting to Swing
+</font>
+
+<h2>
+How to Convert
+</h2>
+<blockquote>
+This section presents steps you can follow
+to convert a program to use the Swing components.
+Each step applies to all programs
+-- applications and applets, alike --
+unless noted otherwise.
+
+</blockquote>
+<h3>Step 1: Save a copy of the original program.</h3>
+<blockquote>
+Copy all of the program's files,
+including the <code>.java</code> files
+and the <code>.class</code> files.
+You will need this copy for several reasons:
+
+<ul>
+<li> You'll need to refer to the source during the conversion process.
+<li> After conversion, you should run both versions of your program
+     side by side to compare them.
+<li> After conversion, you can compare the source code of both versions
+     to apply what you learned to other programs you need to convert.
+<li> Some of your program's users might not 
+     be willing or able to immediately update their VM 
+     to a version that supports the Swing classes.
+     If you want to keep them as customers,
+     you'll need to keep providing the old AWT-based program
+     in the interim.
+</ul>
+
+</blockquote>
+
+<a name="step2">
+<h3>Step 2: Remove all references to the <code>java.awt</code> package.</h3>
+</a>
+<blockquote>
+This step puts the compiler to work for you.
+By removing all imports and other code that references
+the <code>java.awt</code> package,
+you make the compiler tell you each time
+you use a class from that package.
+It's OK to use some AWT classes --
+layout managers, for example --
+but your program should use no AWT components.
+Here are a couple of examples of what to delete:
+
+<blockquote><pre>
+//import java.awt.*;      //temporarily remove this import
+</pre>
+<em>or</em>
+<pre>
+//import java.awt.Button; //temporarily remove this import
+import java.awt.Color;    //it's OK to leave this in, since 
+                          //Color isn't a component
+...
+/*java.awt.*/Frame = new /*java.awt.*/Frame(...);
+</pre></blockquote>
+
+<p>
+
+Without the references to <code>java.awt</code>,
+the compiler generates a "not found" error 
+every place your program uses an AWT component.
+This makes it easier for you to find and replace
+AWT components with their Swing equivalents.
+In <a href="#step9">Step&nbsp;9</a>,
+you will add back 
+the imports for the AWT classes that you really need.
+
+
+</blockquote>
+<h3>
+<a name="step3">
+Step 3: If your program is an applet, remove
+     the <code>java.applet.*</code> import statement (if present)
+     and any references to <code>java.applet.Applet</code>.
+</a>
+</h3>
+<blockquote>
+You don't need to refer to the old <code>Applet</code> class
+because your Swing applet will be a subclass
+of Swing's <code>JApplet</code> class
+(which is itself a subclass of <code>Applet</code>).
+If your program uses <code>AppletContext</code>,
+<code>AppletStub</code>,
+or <code>AudioClip</code>, 
+then of course you'll need to import those classes
+from the <code>java.applet</code> package.
+Here's an example of what to do:
+<blockquote><pre>
+//import java.applet.*;      //temporarily remove this import
+import java.applet.AppletContext;     //add this if necessary
+</pre></blockquote>
+
+
+</blockquote>
+<h3>
+<a name="step4">
+Step 4: Import the main Swing package.
+</a>
+</h3>
+<blockquote>
+Add the following import statement to your program.
+<blockquote><pre>
+import <code>javax.swing.*</code>;
+</pre></blockquote>
+This imports all of the Swing components
+plus some of Swing's other classes.
+If you want, you can be more meticulous and add one
+import statement per Swing class you use.
+</blockquote>
+
+<h3>
+<a name="step5">
+Step 5: Be aware of thread-safety issues!
+</a>
+</h3>
+<blockquote>
+Before you go further,
+remind yourself of this important fact:
+<em>Although AWT is thread-safe, Swing is not.</em>
+You must take this into consideration when
+converting your programs.
+<p>
+Most programs modify components in
+event-handling methods and painting methods,
+which are called from the event-dispatching thread.
+Modifying a component in those methods is safe.
+However, if your program modifies a component anywhere else --
+such as in the main thread after the GUI is visible,
+or in code called by a thread you have created --
+you must take explicit action to make it thread-safe.
+<p>
+This tutorial contains two sections about Swing and threads.
+First,
+<a target="_top" href="../overview/threads.html">Threads and Swing</a><a target="_top" href="../overview/threads.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> provides conceptual coverage.
+Next,
+<a target="_top" href="../misc/threads.html">How to Use Threads</a><a target="_top" href="../misc/threads.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> contains practical information and examples.
+</blockquote>
+
+<h3>
+<a name="step6">
+Step 6: Change each AWT component to its
+     closest Swing equivalent.
+</a>
+</h3>
+<blockquote>
+The table provided in our resources section,
+<a href="table.html">Swing Replacements for AWT Components</a>,
+lists each AWT component
+and its closest Swing equivalent.
+Use it as a guide for choosing a replacement
+for each AWT component used in your program.
+<p>
+In the best case,
+the AWT component and its Swing replacement are source-compatible,
+and a simple name change is all that's required.
+For example,
+to convert from an AWT button to a Swing button,
+you just change all occurrences of
+<code>Button</code> to <code>JButton</code> in your program.
+Here's an example:
+<p>
+<table border=0 cellpadding=5>
+<tr>
+<th align=left>AWT Code:</th>
+</th>
+<td>
+<code><b>Button</b> button = new <b>Button</b>("A Button");
+<br>
+button.addActionListener(this);</code>
+</td>
+</td>
+</tr>
+</tr>
+<tr>
+<th align=left>Swing Code:</th>
+</th>
+<td>
+<code>
+<b>JButton</b> button = new <b>JButton</b>("A Button");
+<br>
+button.addActionListener(this);
+</code>
+</td>
+</td>
+</tr>
+</tr>
+</table>
+<p>
+Some Swing components are not source-compatible with
+the AWT component they replace.
+So, for some AWT components,
+you have to rewrite some code
+when replacing them with Swing components.
+<a href="resources.html">Conversion Resources</a>
+has information to help you with
+conversions that require more than a simple name change.
+
+<p>
+
+While looking at the Conversion Resources section,
+take notes on changes that you might want to make later
+to take advantage of Swing features.
+For example, you might want to put images in your buttons,
+or to share data models between two components.
+Before making optional changes, though,
+we recommend that you make the minimal changes necessary
+to convert your program to Swing.
+Once you've successfully run the Swing version of your program,
+you'll be better able to judge 
+how optional changes might improve your program.
+
+
+</blockquote>
+<a name="step7">
+<h3>Step 7: Change calls to the <code>add</code> 
+    and <code>setLayout</code> methods.</h3>
+</a>
+<blockquote>
+In programs that use AWT components,
+you add components directly to
+frames, dialogs, and applets.
+Similarly, you set the layout manager directly on those containers.
+In contrast, when you use the Swing versions of those containers,
+you add components to (and set the layout manager on)
+something called a <em>content pane</em>.
+Here's an example of converting
+some simple, typical code:
+
+<p>
+
+<table border=0 cellpadding=5>
+<tr>
+<th align=left>AWT Code:</th>
+</th>
+<td>
+<code>
+frame.add(panel, BorderLayout.CENTER);
+</code>
+</td>
+</td>
+</tr>
+</tr>
+<tr>
+<th align=left>Swing Code:</th>
+</th>
+<td>
+<code>
+frame.<b>getContentPane().</b>add(panel, BorderLayout.CENTER);
+</code>
+</td>
+</td>
+</tr>
+</tr>
+</table>
+
+<p>
+Here is a slightly more complex example:
+<p>
+
+<table border=0 cellpadding=5>
+<tr>
+<th align=left>AWT Code:</th>
+</th>
+<td>
+<code>
+frame.setLayout(new FlowLayout());
+<br>
+frame.add(button);
+<br>
+frame.add(label);
+<br>
+frame.add(textField);
+</code>
+</td>
+</td>
+</tr>
+</tr>
+<tr>
+<th align=left>Swing Code:</th>
+</th>
+<td>
+<code>
+<b>Container contentPane = frame.getContentPane();</b>
+<br>
+<b>contentPane</b>.setLayout(new FlowLayout());
+<br>
+<b>contentPane</b>.add(button);
+<br>
+<b>contentPane</b>.add(label);
+<br>
+<b>contentPane</b>.add(textField);</code>
+</td>
+</td>
+</tr>
+</tr>
+</table>
+
+<p>
+
+Here is an example of converting an applet.
+Note that the default layout manager for a content pane
+is <code>BorderLayout</code> --
+not the <code>FlowLayout</code> used by <code>Applet</code>.
+
+<p>
+
+<table border=0 cellpadding=5>
+<tr>
+<th align=left>AWT Code:</th>
+</th>
+<td>
+<code>
+setLayout(new BorderLayout());
+<br>
+add(button, BorderLayout.NORTH);
+<br>
+add(panel, BorderLayout.CENTER);
+</code>
+</td>
+</td>
+</tr>
+</tr>
+<tr>
+<th align=left>Swing Code:</th>
+</th>
+<td>
+<code>
+<b>Container contentPane = getContentPane();</b>
+<br>
+<b>contentPane.</b>add(button, BorderLayout.NORTH);
+<br>
+<b>contentPane.</b>add(panel, BorderLayout.CENTER);
+</code>
+</td>
+</td>
+</tr>
+</tr>
+</table>
+
+<p>
+
+For more information about content panes, see
+<a target="_top" href="../overview/hierarchy.html">Swing Components and the Containment Hierarchy</a><a target="_top" href="../overview/hierarchy.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+For more information about converting applets, refer to
+<a href="tips.html#applet">Converting Applets</a>.
+
+
+</blockquote>
+<a name="step8">
+<h3>Step 8: Move painting code out of the <code>paint</code> and
+<code>update</code> methods.</h3>
+</a>
+<blockquote>
+For Swing components,
+custom painting code goes in the <code>paintComponent</code> method.
+Other ways to paint are using 
+standard or custom
+<a href="../misc/icon.html">icons</a> 
+(which generally are used to display pictures)
+and
+<a href="../misc/border.html">borders</a>.
+If your component has painting code that draws the component's edge,
+you might well be able to replace that code
+with a border.
+
+<p>
+
+If your program has a <code>Frame</code>, <code>Dialog</code>,
+or <code>Applet</code> subclass
+that implements <code>update</code> or <code>paint</code>,
+then you need to move the painting code
+into another component, entirely.
+The reason is that each of these containers
+is covered by a content pane,
+which hides any painting the container might do.
+Exactly which component the painting code should move to
+depends on the type of painting.
+If the container's painting can be performed by an icon,
+than the component can be a standard 
+<a href="../components/label.html">label</a> with an icon.
+Otherwise, the component should generally be
+a <code>JPanel</code> subclass
+that either performs the painting
+in its <code>paintComponent</code> method
+or uses a border to do the painting.
+You then add the component to the
+frame, dialog, or applet's content pane,
+as described in 
+<a href="#step7">Step&nbsp;7</a>.
+
+
+<p>
+
+See
+<a target="_top" href="../painting/index.html">Working with Graphics</a><a target="_top" href="../painting/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for details about painting.
+
+</blockquote>
+<a name="step9">
+<h3>Step 9: Use the compiler to find any other needed changes.</h3>
+</a>
+<blockquote>
+After you've modified the source code as indicated
+in the prevous steps,
+use the compiler to <em>try</em> to compile your program.
+You can find instructions in
+<a target="_top" href="../start/swingStart.html">Compiling and Running Swing Programs</a><a target="_top" href="../start/swingStart.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+During this step,
+you are basically getting the compiler to help you
+identify any conversions you might have overlooked.
+Don't expect your program to compile the first time!
+<p>
+The compiler can help you do the following:
+<ul>
+<li> Find each AWT component that you forgot
+     to convert to its Swing equivalent.
+     If you removed all of the <code>java.awt</code> import
+     statements from your program as suggested in
+     <a href="#step2">step 2</a>, the compiler 
+     displays an error message like this for each
+     AWT component remaining in your program:
+<blockquote><pre>
+TextEventDemo.java:23: Class Button not found
+in type declaration.
+        Button button = new Button("Clear");
+        ^
+</pre></blockquote>
+
+<li> Identify which AWT classes your program still needs.
+     If you removed all of the <code>java.awt</code> import
+     statements from your program,
+     the compiler 
+     displays an error message like this for
+     AWT classes you still need:
+  
+<blockquote><pre>
+TextEventDemo.java:17: Class BorderLayout not found
+in type declaration.
+        BorderLayout layout = new BorderLayout();
+        ^
+</pre></blockquote>
+     The AWT classes you might still need in a Swing program
+     are layout managers, graphics-related objects
+     such as <code>Color</code> and <code>Point</code>,
+     and other non-component classes.
+     You can import them using one import statement each.
+     Or, if you're sure that you've replaced all the AWT components
+     with Swing components, import the entire
+     <code>java.awt</code> package again.
+<p>
+
+<li> Locate any source incompatibilities between the
+     AWT component and its Swing replacement.
+     These typically show up as compiler errors about undefined methods.
+     For example, although AWT text components have an
+     <code>addTextListener</code> method,
+     Swing text components don't.
+     The compiler generates an error message like the following one
+     indicating that <code>JTextField</code> doesn't have such a method.
+<blockquote><pre>
+TextEventDemo.java:22: Method addTextListener(
+TextEventDemo.MyTextListener) not found in class
+javax.swing.JTextField.
+    textField.addTextListener(new MyTextListener("Text Field"));
+                             ^
+</pre></blockquote>
+  
+<li> Remove uses of deprecated API.
+     If the compiler issues a deprecation warning,
+     recompile with the <code>-deprecation</code> flag
+     to get details.
+     You can find information about what deprecation means,
+     as well as a list of alternatives to 
+     API deprecated in JDK 1.1,
+     in
+<a target="_top" href="../../post1.0/converting/index.html">Migrating to 1.1</a><a target="_top" href="../../post1.0/converting/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+     Also, the API documentation for the deprecated class or method
+     should have information about what to use instead.
+</ul>
+
+Fix all problems reported by the compiler
+until the program compiles.
+</blockquote>
+
+<h3>
+<a name="step10">
+Step 10: Run the Swing program.
+</a>
+</h3>
+<blockquote>
+Run the program, as described in
+<a target="_top" href="../start/swingStart.html">Compiling and Running Swing Programs</a><a target="_top" href="../start/swingStart.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+If you forgot to modify any
+calls to <code>add</code> or <code>setLayout</code>,
+the runtime system displays a message like this:
+
+<blockquote><pre>
+java.lang.Error: Do not use javax.swing.JFrame.add() use
+ javax.swing.JFrame.getContentPane().add() instead
+        at javax.swing.JFrame.createRootPaneException(JFrame.java:333)
+        at javax.swing.JFrame.addImpl(JFrame.java:355)
+        at java.awt.Container.add(Container.java:212)
+        at AppletDemo.main(AppletDemo.java:121)
+</pre></blockquote>
+Go back to the source,
+fix the offending occurrence of <code>add</code> or <code>setLayout</code>,
+then compile and run again.
+
+</blockquote>
+
+<h3>
+<a name="step11">
+Step 11: Compare the Swing version to the AWT version,
+and make any improvements that Swing enables.
+</a>
+</h3>
+<blockquote>
+Although you might want the AWT and Swing 
+versions of your program to be similar,
+be open to improvements offered by Swing.
+One difference you'll probably notice is that,
+unless your copy of the JDK
+has a <code>swing.properties</code> file that specifies otherwise,
+your converted program uses a new look and feel:
+the Java Look & Feel.
+You can specify another look and feel if you like.
+For more information, see 
+<a target="_top" href="../start/swingTour.html#plaf">Choosing the Look and Feel</a><a target="_top" href="../start/swingTour.html#plaf"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+
+You might be able to 
+improve your program's GUI
+by using features available only to Swing components
+or by using the Swing components that have no AWT equivalents.
+Components completely new to Swing include
+<a href="../components/colorchooser.html">color choosers</a>,
+<a href="../components/combobox.html">editable combo boxes</a>,
+<a href="../components/progress.html">progress bars</a>,
+<a href="../components/splitpane.html">split panes</a>,
+<a href="../components/tabbedpane.html">tabbed panes</a>,
+<a href="../components/table.html">tables</a>,
+<a href="../components/tooltip.html">tool tips</a>, and
+<a href="../components/tree.html">trees</a>.
+Features available only to Swing components
+include
+<a href="../misc/border.html">borders</a>,
+which are especially useful for panels,
+and <a href="../misc/icon.html">icons</a>,
+which you can add to many components such as labels and buttons.
+You might also be able to replace a component you wrote yourself
+with a standard or customized Swing component.
+
+
+</blockquote>
+
+<h3>
+<a name="step12">
+Step 12: Clean up!
+</a>
+</h3>
+<blockquote>
+Now is the time to clean up your code.
+If you hacked any code together to get around some of AWT's
+deficiencies or bugs, clean it up now!
+Go through the tutorial sections and examples 
+that are relevant to your program,
+and make sure that you use Swing features correctly.
+Review your program's
+<a href="../misc/access.html">accessibility</a>
+to make sure that your program does all it can
+to support assistive technologies.
+
+</blockquote>
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="why.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#converting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="resources.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

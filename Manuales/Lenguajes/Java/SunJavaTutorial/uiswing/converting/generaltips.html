@@ -1,0 +1,201 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>General Conversion Tips</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="table.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#converting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="tips.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Converting to Swing
+</font>
+
+<h2>
+General Conversion Tips
+</h2>
+<blockquote>
+This section gives you conversion tips for dealing with
+empty space,
+painting, and
+images.
+
+
+</blockquote>
+<h3>Empty Space</h3>
+<blockquote>
+If you use the Java Look & Feel,
+your Swing program might have 
+less space between components
+than the previous version.
+If you want to add more space,
+you can do it using any combination of
+layout managers,
+empty borders,
+and invisible spacer components.
+See 
+<a target="_top" href="../overview/layout.html#space">Putting Space Between Components</a><a target="_top" href="../overview/layout.html#space"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for more information.
+You can also use the <code>setMargin</code> method
+for text components.
+
+
+</blockquote>
+<h3>Converting Painting Code</h3>
+<blockquote>
+AWT components perform painting in the <code>paint</code>
+and <code>update</code> methods.
+Swing components use
+the <code>paintComponent</code> method instead.
+To take advantage of automatic background painting,
+your implementation of <code>paintComponent</code> should
+call <code>super.paintComponent</code>, first thing.
+See
+<a target="_top" href="../painting/overview.html">Overview of Custom Painting</a><a target="_top" href="../painting/overview.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for details.
+
+<p>
+Note that Swing components automatically
+use double buffering to make their painting smooth.
+If the program that you're converting
+implements double buffering explicitly,
+this is a unique opportunity to delete some code!
+For example the AWT-based animation program
+
+<a target="source" href="example-1dot1/ImageSequence.java"><font color="#bb000f"><code>ImageSequence.java</code></font></a><a href="example-1dot1/ImageSequence.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+paints to an off-screen image
+and then paints the image to the screen all at once.
+Its Swing counterpart,
+
+<a target="source" href="../painting/example-swing/ImageSequenceTimer.java"><font color="#bb000f"><code>ImageSequenceTimer.java</code></font></a><a href="../painting/example-swing/ImageSequenceTimer.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+simply puts its paint code in the custom component's
+<code>paintComponent</code> method,
+and double buffering is handled automatically.
+During the conversion process, we removed
+<code>offImage</code>, <code>offGraphics</code>,
+and all code that referred to them.
+
+<p>
+
+If your painting code puts a title or
+edges around the component,
+consider replacing it with a 
+<a target="_top" href="../misc/border.html">border</a><a target="_top" href="../misc/border.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+For example,
+you can easily create a box around a group of components
+by adding the components to a <code>JPanel</code>
+and making the panel have a border.
+The AWT-based program
+
+<a target="source" href="example-1dot1/CoordinatesDemo.java"><font color="#bb000f"><code>CoordinatesDemo</code></font></a><a href="example-1dot1/CoordinatesDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+uses a class called <code>FramedArea</code> that exists
+solely to put a frame around the coordinate area.
+The Swing version of
+this program,
+
+<a target="source" href="../painting/example-swing/CoordinatesDemo.java"><font color="#bb000f"><code>CoordinatesDemo</code></font></a><a href="../painting/example-swing/CoordinatesDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+uses a border instead and deletes the <code>FramedArea</code> class.
+</blockquote>
+
+<h3>Converting Images</h3>
+<blockquote>
+Although you can use <code>Image</code> objects
+in Swing programs,
+you might want to convert some or all of them into 
+<code>Icon</code> objects.
+The main reason is Swing components that can display images --
+labels, buttons, cell renderers in tables and trees and lists, 
+tabbed panes, menus, and so on --
+do so using <code>Icon</code> objects.
+Another reason is that <code>Icon</code> objects
+have accessibility support built in.
+
+<p>
+
+You can convert an <code>Image</code> into an icon
+in one of two ways.
+The first way is to use <code>new ImageIcon(anImage)</code>.
+The second is to
+create an <code>ImageIcon</code>
+using the same data source that you used to create
+the <code>Image</code>.
+When you use the second way,
+the constructor automatically loads the image data,
+returning when the image is ready to use.
+
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="table.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#converting" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="tips.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<applet code="ButtonDemoApplet.class"
+        codebase="example-swing"
+        archive="buttondemo.jar"
+        width="570" height="65">
+
+Since you can't run the applet,
+here's a picture of it:
+
+#usemacro UI_FIGURE (
+    NAME ButtonDemoApplet.gif
+    W 570
+    H 65 
+    ALT A snapshot of ButtonDemoApplet.
+)
+
+</applet>
