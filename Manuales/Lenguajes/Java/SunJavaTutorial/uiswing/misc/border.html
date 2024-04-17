@@ -1,0 +1,620 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Use Borders</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="access.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#misc" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="icon.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Other Swing Features
+</font>
+
+<h2>
+How to Use Borders
+</h2>
+<blockquote>
+Every <code>JComponent</code>
+can have one or more borders.
+Borders are incredibly useful objects
+that, while not themselves components,
+know how to draw
+the edges of Swing components.
+Borders are useful not only for drawing lines and fancy edges,
+but also for providing titles and empty space around components.
+
+<p>
+
+To put a border around a <code>JComponent</code>,
+you use its
+<code>setBorder</code> method.
+You can use the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/BorderFactory.html"><font color="#8800bb"><code>BorderFactory</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/BorderFactory.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> class to create most of the borders that Swing provides.
+
+Here is an example of code that creates a bordered container:
+
+<p>
+<blockquote><pre>
+JPanel pane = new JPanel();
+pane.setBorder(BorderFactory.createLineBorder(Color.black));
+</pre></blockquote>
+<p>
+
+Here's a picture of the container,
+which contains a label component.
+The black line drawn by the border
+marks the edge of the container.
+
+<p><center><IMG SRC="../../figures/uiswing/misc/BorderDemo-line.gif" WIDTH="385" HEIGHT="53" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="A line border"></center></p>
+The rest of this page discusses the following topics:
+
+<ul>
+<li> <a href="#demo">The BorderDemo Example</a>
+<li> <a href="#code">Using the Borders Provided by Swing</a>
+<li> <a href="#custom">Creating Custom Borders</a>
+<li> <a href="#add">Adding a Border to a Bordered Swing Component</a>
+<li> <a href="#api">The Border API</a>
+<li> <a href="#eg">Examples of Using Borders</a>
+</ul>
+
+</blockquote>
+<h3>
+<a name="demo">The BorderDemo example</a>
+</h3>
+<blockquote>
+
+The following pictures show an application
+called <code>BorderDemo</code> that
+displays the borders Swing provides.
+We show the code for creating these borders
+a little later,
+in <a href="#code">Using the Borders Provided by Swing</a>.
+
+<p><center><IMG SRC="../../figures/uiswing/misc/BorderDemo-0.gif" WIDTH="404" HEIGHT="293" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="BorderDemo: Simple Borders"></center></p>
+The next picture shows some matte borders.
+When creating a matte border,
+you specify how many pixels it occupies
+at the top, left, bottom, and right of a component.
+You then specify either a color or an icon
+for the matte border to draw.
+You need to be careful when choosing the icon
+and determining your component's size;
+otherwise, the icon might
+get chopped off or have mismatch at the component's corners.
+
+<p><center><IMG SRC="../../figures/uiswing/misc/BorderDemo-0.5.gif" WIDTH="404" HEIGHT="259" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="BorderDemo: Matte Borders"></center></p>
+The next picture shows titled borders.
+Using a titled border,
+you can convert any border into
+one that displays a text description.
+If you don't specify a border,
+then a look-and-feel-specific border is used.
+For example, the default titled border 
+in the Java look and feel uses a gray line,
+and the default titled border in the Windows look and feel
+uses an etched border.
+By default, the title straddles the upper left
+of the border,
+as shown at the top of the following figure.
+
+<p><center><IMG SRC="../../figures/uiswing/misc/BorderDemo-1.gif" WIDTH="404" HEIGHT="292" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="BorderDemo: Titled Borders"></center></p>
+The next picture shows compound borders.
+With compound borders, you can combine any two borders,
+which can themselves be compound borders.
+
+<p><center><IMG SRC="../../figures/uiswing/misc/BorderDemo-2.gif" WIDTH="409" HEIGHT="235" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="BorderDemo: Compound Borders"></center></p>
+</blockquote>
+<h3>
+<a name="code">Using the Borders Provided by Swing</a>
+</h3>
+<blockquote>
+
+The code that follows shows how to create and set the borders
+you saw in the preceding figures.
+You can find the program's code in
+
+<a target="source" href="example-swing/BorderDemo.java"><font color="#bb000f"><code>BorderDemo.java</code></font></a><a href="example-swing/BorderDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+To run the program,
+you will also need to put an image file
+in a directory named <code>images</code>: 
+<a href="example-swing/images/left.gif"><code>left.gif</code></a>.
+
+<p>
+<blockquote><pre>
+//Keep references to the next few borders, for use in titles
+//and compound borders.
+Border blackline, etched, raisedbevel, loweredbevel, empty;
+
+blackline = BorderFactory.createLineBorder(Color.black);
+etched = BorderFactory.createEtchedBorder();
+raisedbevel = BorderFactory.createRaisedBevelBorder();
+loweredbevel = BorderFactory.createLoweredBevelBorder();
+empty = BorderFactory.createEmptyBorder();
+
+//Simple borders
+jComp2.setBorder(blackline);
+jComp3.setBorder(raisedbevel);
+jComp4.setBorder(loweredbevel);
+jComp5.setBorder(empty);
+
+//Matte borders
+ImageIcon icon = new ImageIcon("images/left.gif"); //20x22
+jComp6.setBorder(BorderFactory.createMatteBorder(
+                                   -1, -1, -1, -1, icon));
+jComp7.setBorder(BorderFactory.createMatteBorder(
+                                    1, 5, 1, 1, Color.red));
+jComp8.setBorder(BorderFactory.createMatteBorder(
+                                    0, 20, 0, 0, icon));
+
+//Titled borders
+TitledBorder title1, title2, title3, title4, title5;
+title1 = BorderFactory.createTitledBorder("title");
+jComp9.setBorder(title1);
+
+title2 = BorderFactory.createTitledBorder(
+		       blackline, "title");
+title2.setTitleJustification(TitledBorder.CENTER);
+jComp10.setBorder(title2);
+
+title3 = BorderFactory.createTitledBorder(
+		       etched, "title");
+title3.setTitleJustification(TitledBorder.RIGHT);
+jComp11.setBorder(title3);
+
+title4 = BorderFactory.createTitledBorder(
+		       loweredbevel, "title");
+title4.setTitlePosition(TitledBorder.ABOVE_TOP);
+jComp12.setBorder(title4);
+
+title5 = BorderFactory.createTitledBorder(
+		       empty, "title");
+title5.setTitlePosition(TitledBorder.BOTTOM);
+jComp13.setBorder(title5);
+
+//Compound borders
+Border compound1, compound2, compound3;
+Border redline = BorderFactory.createLineBorder(Color.red);
+
+//This creates a nice frame.
+compound1 = BorderFactory.createCompoundBorder(
+			  raisedbevel, loweredbevel);
+jComp14.setBorder(compound1);
+
+//Add a red outline to the frame.
+compound2 = BorderFactory.createCompoundBorder(
+			  redline, compound1);
+jComp15.setBorder(compound2);
+
+//Add a title to the red-outlined frame.
+compound3 = BorderFactory.createTitledBorder(
+			  compound2, "title",
+			  TitledBorder.CENTER,
+			  TitledBorder.BELOW_BOTTOM);
+jComp16.setBorder(compound3);
+</pre></blockquote>
+
+As you probably noticed,
+the code uses the <code>BorderFactory</code> class
+to create each border.
+The <code>BorderFactory</code> class,
+which is in the <code>javax.swing</code> package,
+returns objects that implement the
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/Border.html"><font color="#8800bb"><code>Border</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/Border.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> interface.
+
+<p>
+
+The <code>Border</code> interface,
+as well as its Swing-provided implementations,
+is in the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/package-summary.html"><font color="#8800bb"><code>javax.swing.border</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/package-summary.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> package.
+You often don't need to directly use anything in the border package,
+except when specifying constants that are specific 
+to a particular border class or when referring to 
+the <code>Border</code> type.
+
+</blockquote>
+<h3>
+<a name="custom">Creating Custom Borders</a>
+</h3>
+<blockquote>
+
+If <code>BorderFactory</code> doesn't offer you enough control
+over a border's form,
+then you might need to directly use the API in the border package --
+or even define your own border.
+In addition to containing the <code>Border</code> interface,
+the border package
+contains the classes that implement the
+borders you've already seen:
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/LineBorder.html"><font color="#8800bb"><code>LineBorder</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/LineBorder.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>,
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/EtchedBorder.html"><font color="#8800bb"><code>EtchedBorder</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/EtchedBorder.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>,
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/BevelBorder.html"><font color="#8800bb"><code>BevelBorder</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/BevelBorder.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>,
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/EmptyBorder.html"><font color="#8800bb"><code>EmptyBorder</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/EmptyBorder.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/MatteBorder.html"><font color="#8800bb"><code>MatteBorder</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/MatteBorder.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/TitledBorder.html"><font color="#8800bb"><code>TitledBorder</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/TitledBorder.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, and
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/CompoundBorder.html"><font color="#8800bb"><code>CompoundBorder</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/CompoundBorder.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+The border package also contains a class named 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/SoftBevelBorder.html"><font color="#8800bb"><code>SoftBevelBorder</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/SoftBevelBorder.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, which produces a result similar to <code>BevelBorder</code>,
+but with softer edges.
+
+<p>
+
+If none of the Swing borders
+is suitable, you can implement your own border.
+Generally, you do this by creating a subclass
+of the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/AbstractBorder.html"><font color="#8800bb"><code>AbstractBorder</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/AbstractBorder.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> class.
+In your subclass, you must implement at least one constructor
+and the following two methods:
+
+<ul>
+<li> <code>paintBorder</code>, 
+     which contains the drawing code 
+     that a <code>JComponent</code> executes
+     to draw the border.
+<li> <code>getBorderInsets</code>,
+     which specifies the amount of space the border needs
+     to draw itself.
+</ul>
+
+In addition, if your border is opaque,
+you might be able to decrease component drawing time by overriding 
+the border's <code>isBorderOpaque</code> method
+so that it returns <code>true</code>.
+For examples of implementing borders,
+see the source code for the classes in the 
+<code>javax.swing.border</code> package.
+
+</blockquote>
+<h3>
+<a name="add">Adding a Border to a Bordered Swing Component</a>
+</h3>
+<blockquote>
+
+
+<p>
+
+Many of the ready-to-use Swing components
+use borders to draw the outline of the component.
+If you want to draw an additional border
+around an already bordered component --
+to provide some extra space above a scroll pane, for example --
+then you need to add the new border to the existing border.
+Be sure to test the component
+to make sure that it works well with your extra border;
+components that change their border depending on their state
+probably aren't good candidates for additional borders.
+Here's an example 
+of adding to an existing border:
+
+<blockquote><pre>
+aJComponent.setBorder(
+    BorderFactory.createCompoundBorder(
+                    BorderFactory.createEmptyBorder(20,0,0,0),
+                    aJComponent.getBorder())
+);
+</pre></blockquote>
+
+<p>
+
+The new border returned by <code>createEmptyBorder</code>
+adds 20 pixels of empty space above any component that uses it.
+The code uses the <code>createCompoundBorder</code> method
+to combine the new border with the existing border,
+which is returned by <code>getBorder</code>.
+
+</blockquote>
+<h3>
+<a name="api">The Border API</a>
+</h3>
+<blockquote>
+The following tables list the commonly used
+border methods.
+The API for using borders falls into two categories:
+
+<ul>
+<li><a href="#createapi">Creating a Border with BorderFactory</a>
+<li><a href="#setgetapi">Setting or Getting a Component's Border</a>
+</ul>
+
+<p>
+<table border=1> 
+<caption><a name="createapi">Creating a Border with BorderFactory</a></caption>
+<tr>
+<th align=left>Method</th>
+<th align=left>Purpose</th>
+</tr>
+ 
+<tr>
+<td><font size=2><code>Border createLineBorder(Color)
+    <br>
+    Border createLineBorder(Color, int)</code></font></td>
+<td>Create a line border.
+    The first argument is a
+    <code>java.awt.Color</code> object
+    that specifies the color of the line.
+    The optional second argument 
+    specifies the width in pixels of the line.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>Border createEtchedBorder()
+    <br>
+    Border createEtchedBorder(Color, Color)</code></font></td>
+<td>Create an etched border.
+    The optional arguments specify the highlight and shadow
+    colors to be used.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>Border createLoweredBevelBorder()</code></font></td>
+<td>Create a border that gives the illusion of the component 
+    being lower than the surrounding area.</td>
+</tr>
+
+<tr>
+<tr>
+<td><font size=2><code>Border createRaisedBevelBorder()</code></font></td>
+<td>Create a border that gives the illusion of the component 
+    being higher than the surrounding area.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>
+    Border createBevelBorder(int, Color, Color)
+    <br>
+    Border createBevelBorder(int, Color, Color, Color, Color)</code></font></td>
+<td>Create a raised or lowered beveled border,
+    specifying the colors to use.
+    The integer argument can be either 
+    <code>RAISED</code> or <code>LOWERED</code>
+    (constants defined in 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/BevelBorder.html"><font color="#8800bb"><code>BevelBorder</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/BevelBorder.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>).
+    With the three-argument constructor, 
+    you specify the highlight and shadow colors,
+    With the five-argument constructor,
+    you specify the outer highlight, inner highlight, outer shadow,
+    and inner shadow colors, in that order.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>Border createEmptyBorder()
+    <br>
+    Border createEmptyBorder(int, int, int, int)</code></font></td>
+<td>Create an invisible border.
+    If you specify no arguments, then the border takes no space,
+    which is useful when creating a titled border with no visible boundary.
+    The optional arguments specify the number of pixels that the 
+    border occupies at the top, left, bottom, and right 
+    (in that order) of whatever component uses it.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>MatteBorder createMatteBorder(int, int, int, int, Color)
+    <br>
+    MatteBorder createMatteBorder(int, int, int, int, Icon)</code></font></td>
+<td>Create a matte border.
+    The integer arguments specify the number of pixels that the 
+    border occupies at the top, left, bottom, and right 
+    (in that order) of whatever component uses it.
+    The Color argument specifies the color
+    which with the border should fill its area.
+    The Icon argument specifies the icon
+    which with the border should tile its area.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>TitledBorder createTitledBorder(String)
+    <br>
+    TitledBorder createTitledBorder(Border)
+    <br>
+    TitledBorder createTitledBorder(Border, String)
+    <br>
+    TitledBorder createTitledBorder(Border, String, int, int)
+    <br>
+    TitledBorder createTitledBorder(Border, String, int, int, Font)
+    <br>
+    TitledBorder createTitledBorder(Border, String, int, int, Font, Color)</code></font></td>
+<td>Create a titled border.
+    The string argument specifies the title to be displayed.
+    The optional font and color arguments specify 
+    the font and color to be used for the title's text.
+    The border argument specifies the border 
+    that should be displayed along with the title.
+    If no border is specified, then a look-and-feel-specific
+    default border is used.
+
+    <p>
+
+    By default, the title straddles 
+    the top of its companion border
+    and is left-justified.
+    The optional integer arguments 
+    specify the title's position and justification,
+    in that order.
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/TitledBorder.html"><font color="#8800bb"><code>TitledBorder</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/border/TitledBorder.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>    defines these possible positions:
+    <code>ABOVE_TOP</code>,
+    <code>TOP</code> (the default),
+    <code>BELOW_TOP</code>,
+    <code>ABOVE_BOTTOM</code>,
+    <code>BOTTOM</code>, and
+    <code>BELOW_BOTTOM</code>.
+    You can specify the justification as
+    <code>LEFT</code> (the default),
+    <code>CENTER</code>, or
+    <code>RIGHT</code>.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>
+    CompoundBorder createCompoundBorder(Border, Border)</code></font></td>
+<td>Combine two borders into one.
+    The first argument specifies the outer border;
+    the second, the inner border.</td>
+</tr>
+
+</table>
+
+<p>
+
+<table border=1> 
+<caption><a name="setgetapi">Setting or Getting a Component's Border</a></caption>
+<tr>
+<th align=left>Method</th>
+<th align=left>Purpose</th>
+</tr>
+
+<tr>
+<td><font size=2><code>void setBorder(Border)
+    <br>
+    Border getBorder()</code></font></td>
+<td>Set or get the border of the receiving <code>JComponent</code>.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>void setBorderPainted(boolean)
+    <br>
+    boolean isBorderPainted()</code></font>
+    <br>
+    <em>(in
+    <code>AbstractButton</code>,
+    <code>JMenuBar</code>,
+    <code>JPopupMenu</code>,
+    <code>JProgressBar</code>, and
+    <code>JToolBar</code>)</td>
+<td>Set or get whether the border of the component
+    should be painted.</td>
+</tr>
+
+</table>
+
+</blockquote>
+
+<h3>
+<a name="eg">Examples that Use Borders</a>
+</h3>
+<blockquote>
+Many examples in this lesson use borders.
+The following table lists 
+a few interesting cases.
+<p>
+<table>
+<tr>
+<th align=left> Example</th>
+<th align=left> Where Described</th>
+<th align=left> Notes</th>
+</tr>
+
+<tr>
+<td> <a href="example-swing/index.html#BorderDemo"><code>BorderDemo</code></a></td>
+<td> This section</td>
+<td> Shows an example of each type of border
+     that <code>BorderFactory</code>
+     can create.
+     Also uses an empty border to add breathing space
+     between each pane and its contents.</td>
+</tr>
+
+<tr>
+<td> <a href="../layout/example-swing/index.html#AlignmentDemo"><code>AlignmentDemo</code></a></td>
+<td> <a href="../layout/box.html">How to Use BoxLayout</a></td>
+<td> Uses titled borders.</td>
+</tr>
+
+<tr>
+<td> <a href="../layout/example-swing/index.html#BoxLayoutDemo"><code>BoxLayoutDemo</code></a></td>
+<td> <a href="../layout/box.html">How to Use BoxLayout</a></td>
+<td> Uses a red line 
+     to show where the edge of a container is,
+     so that you can see how the extra space in a box layout
+     is distributed.</td>
+</tr>
+
+<tr>
+<td> <a href="../components/example-swing/index.html#ComboBoxDemo2"><code>ComboBoxDemo2</code></a></td>
+<td> <a href="../components/combobox.html">How to Use Combo Boxes</a></td>
+<td> Uses a compound border to combine a line border 
+     with an empty border.
+     The empty border provides space between
+     the line and the component's innards.</td>
+</tr>
+</table>
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="access.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#misc" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="icon.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

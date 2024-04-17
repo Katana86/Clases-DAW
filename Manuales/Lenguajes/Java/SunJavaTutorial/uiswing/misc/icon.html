@@ -1,0 +1,887 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Use Icons</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="border.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#misc" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="plaf.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Other Swing Features
+</font>
+
+<h2>
+How to Use Icons
+</h2>
+<blockquote>
+Some Swing components,
+such as <code>JLabel</code> and <code>JButton</code>,
+can be decorated with an <em>icon</em> --
+a fixed-sized picture.
+An icon is an object that adheres to the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/Icon.html"><font color="#8800bb"><code>Icon</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/Icon.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> interface.
+Swing provides a particularly useful implementation of
+the <code>Icon</code> interface:
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/ImageIcon.html"><font color="#8800bb"><code>ImageIcon</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/ImageIcon.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, which paints an icon from a GIF or JPEG image.
+
+<p>
+Here's a snapshot of an application that
+decorates two labels with an icon:
+
+<p><center><IMG SRC="../../figures/uiswing/components/LabelDemo.gif" WIDTH="235" HEIGHT="143" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="An example of using image icons to decorate labels."></center></p>
+The program uses one image icon
+to contain and paint the yellow splat.
+One statement creates the image icon
+and two more statements include the image icon
+on each of the two labels:
+<blockquote><pre>
+ImageIcon icon = new ImageIcon("images/middle.gif",
+                               "a pretty but meaningless splat");
+...
+label1 = new JLabel("Image and Text", icon, JLabel.CENTER);
+...
+label3 = new JLabel(icon);
+</pre></blockquote>
+
+The first argument to the <code>ImageIcon</code> constructor
+specifies the file to load, 
+relative to the directory containing the application's
+class file.
+The second argument provides a description of the icon,
+to be used by <a href="access.html">assistive technologies</a>.
+This description might be used,
+for example,
+to help a visually impaired user
+understand what information the icon conveys.
+
+<p>
+
+Applets generally load image data
+from the computer that served up the applet.
+There are two reasons for this. 
+First, untrusted applets can't read from the file system
+on which they're running.
+Second, it just makes sense to put an applet's
+class and data files together on the server.
+To load image data from the server,
+an applet uses a URL as shown in the following example:
+
+
+<blockquote><pre>
+public class <em>SomeClass</em> extends JApplet ... {
+    protected String leftButtonFilename = "images/left.gif";
+    ...
+    public void init() {
+        ...
+        URL leftButtonURL = getURL(leftButtonFilename);
+        ...
+        leftButtonIcon = new ImageIcon(leftButtonURL,
+                                       "an arrow pointing left");
+        ...
+    }
+    ...
+    protected URL getURL(String filename) {
+        URL codeBase = getCodeBase();
+        URL url = null;
+
+        try {
+            url = new URL(codeBase, filename);
+        } catch (java.net.MalformedURLException e) {
+            System.err.println("Couldn't create image: " +
+                               "badly specified URL");
+            return null;
+        }
+    
+        return url;
+    }
+    ...
+}
+</pre></blockquote>
+
+If you're writing an applet, 
+you might want to copy the <code>getURL</code> method
+for use in your applet.
+For more information on specifying the source of image data,
+see <a href="#specifying">Specifying the Image Source</a>.
+
+<p>
+
+
+<p>
+
+When you specify a filename or URL to an <code>ImageIcon</code> constructor,
+the constructor returns only after the image data is completely loaded.
+Thus, you can be sure that the image icon is usable
+following the call to the constructor.
+If you want more information while the image is loading,
+you can register an observer
+on an image icon by calling its <code>setImageObserver</code> method.
+
+<p>
+
+Under the covers,
+each image icon uses an
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Image.html"><font color="#8800bb"><code>Image</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Image.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> object to hold the image data
+and a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/MediaTracker.html"><font color="#8800bb"><code>MediaTracker</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/MediaTracker.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> object,
+which is shared by all image icons in the same program,
+to keep track of the image's loading status.
+If you're curious about <code>Image</code> objects,
+image observers,
+media trackers,
+and other image topics,
+see 
+<a target="_top" href="../painting/usingImages.html">Using Images</a><a target="_top" href="../painting/usingImages.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+The rest of this section covers the following topics:
+<ul>
+<li><a href="#example">A More Complex Image Icon Example</a>
+<li><a href="#specifying">Specifying the Image Source</a>
+<li><a href="#efficiency">Improving Perceived Performance When Loading Image Icons</a>
+<li><a href="#custom">Creating a Custom Icon Implementation</a>
+<li><a href="#api">The Image Icon API</a>
+<li><a href="#eg">Examples that Use Icons</a>
+</ul>
+
+<a name="example">
+</blockquote>
+<h3>A More Complex Image Icon Example</h3>
+<blockquote>
+Here's an applet that uses eight image icons.
+In the snapshot, you can see three of them:
+one displays the photograph
+and two decorate the buttons
+at the bottom of the applet window
+with small arrows.
+
+<p><center><a href="IconDemoApplet.html" target="_blank"><IMG SRC="../../figures/uiswing/misc/IconDemoApplet.gif" WIDTH="410" HEIGHT="441" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+
+
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> Run the applet.
+     For information on running applets, see
+     <a href="../start/swingApplet.html">Running Swing Applets</a>.
+     <br>
+     The main source code for the program is
+     
+<a target="source" href="example-swing/IconDemoApplet.java"><font color="#bb000f"><code>IconDemoApplet.java</code></font></a><a href="example-swing/IconDemoApplet.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+     You will also need a few other source files and several image files.
+See the <a href="example-swing/index.html#IconDemoApplet" target="_top">examples index</a> for links to all the files required by this example.
+<li> Click the 
+<strong>Previous Picture</strong>
+and 
+<strong>Next Picture</strong> 
+     buttons
+     to view the photographs.
+<li> Hold the mouse over a photograph.
+     A tool tip appears that indicates
+     the filename of the current photograph
+     and its width and height.
+<li> To view your own photographs,
+     modify the applet parameters.
+     Here's the applet tag used for the applet running above:
+<pre>
+&lt;applet code="IconDemoApplet.class"
+        codebase="example-swing/"
+        archive="icon.jar"
+        width="400" height="360"&gt;
+    &lt;param NAME="IMAGEDIR" VALUE="images"&gt;
+
+    &lt;param NAME="IMAGE0" VALUE="stickerface.gif"&gt;
+    &lt;param NAME="CAPTION0" VALUE="Sticker Face"&gt;
+    &lt;param NAME="WIDTH0" VALUE="230"&gt;
+    &lt;param NAME="HEIGHT0" VALUE="238"&gt;
+    ...
+&lt;applet&gt;
+</pre>
+     The <code>IMAGEDIR</code> parameter indicates
+     that the image files should be in a directory named <code>images</code>
+     relative to the applet's codebase.
+     Four parameters are required for each photograph
+     and the applet uses four photographs.
+     The tag shown above shows the parameters for only the first photograph.
+</ol>
+<hr></blockquote>
+
+</blockquote>
+<a name="specifying">
+<h3>Specifying the Image Source</h3>
+</a>
+<blockquote>
+<p>
+Most often, an image icon's data comes from an image file.
+You can specify the location of the file 
+with either a filename or a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/net/URL.html"><font color="#8800bb"><code>URL</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/net/URL.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> object.
+For applications, the filename or URL is generally
+relative either to the directory containing the application's class files,
+or to the class path.
+Applets generally use a URL that is constructed
+relative to the applet's code base
+(the directory containing the applet's class files).
+
+<p>
+
+You've already seen how to specify a filename relative 
+to the directory containing the application's class files.
+To specify a URL relative to an application's class path,
+you can use the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/lang/ClassLoader.html"><font color="#8800bb"><code>ClassLoader</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/lang/ClassLoader.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> <code>getSystemResource</code> method.
+Here is an example:
+
+<blockquote><pre>
+ImageIcon icon = null;
+URL iconURL = ClassLoader.getSystemResource("images/middle.gif");
+if (iconURL != null) {
+    icon = new ImageIcon(iconURL,
+                         "a beautiful yet meaningless icon");
+}
+</pre></blockquote>
+
+The <code>getSystemResource</code> method
+looks through the directories and JAR files in the program's class path,
+returning a URL as soon as it finds the desired file.
+For example, assume that you put a JAR file
+named <code>icons.jar</code> in your program's class path.
+If the JAR file contains 
+<code>images/middle.gif</code>,
+then the class loader will definitely return a URL for
+<code>images/middle.gif</code>.
+However,
+the URL might not be relative to <code>icons.jar</code>,
+if another JAR file or directory in the class path contains
+<code>images/middle.gif</code>.
+The URL will point to the <em>first</em> JAR file or directory
+in the class path that contains <code>images/middle.gif</code>.
+
+<p>
+
+The <code>IconDemoApplet</code> program initializes
+each of its image icons from GIF files
+whose locations are specified with URLs.
+Because <code>IconDemoApplet</code> is designed to be
+an untrusted applet,
+we must place the image files under the applet's
+code base.
+The following figure shows the locations of
+files for <code>IconDemoApplet</code>.
+
+<p><center><IMG SRC="../../figures/uiswing/misc/setup.gif" WIDTH="413" HEIGHT="173" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT=""></center></p>
+<blockquote><hr><strong>Note:</strong>&nbsp;
+Applets are supposed to be able to load images from JAR files.
+Currently, however, some browsers can't read images
+from a JAR file,
+although they do successfully get classes
+from a JAR file.
+With our applets,
+we currently hedge our bets by both putting the 
+image files in the applet's archive file 
+(the JAR file containing the applet's class files)
+and by putting the image files
+in the file system on the server.
+The figure above depicts our setup.
+<hr></blockquote>
+<p>
+
+
+</blockquote>
+<a name="efficiency">
+<h3>Improving Perceived Performance When Loading Image Icons</h3>
+</a>
+<blockquote>
+Because the photograph images are large
+and because the applet uses multiple images,
+<code>IconDemoApplet</code> uses several techniques to improve the
+performance of the program as perceived by the user.
+
+<ul>
+<li> <strong>Providing dimmed icons</strong>
+--   The applet provides dimmed versions of the arrows
+     for the buttons:
+<blockquote><pre>
+imagedir = getParameter("IMAGEDIR");
+if (imagedir != null)
+    imagedir = imagedir + "/";
+...
+ImageIcon dimmedNextIcon = new ImageIcon(
+    getURL(imagedir + "dimmedRight.gif"));
+ImageIcon dimmedPreviousIcon = new ImageIcon(
+    getURL(imagedir + "dimmedLeft.gif"));
+...
+nextButton.setDisabledIcon(dimmedNextIcon);
+...
+previousButton.setDisabledIcon(dimmedPreviousIcon);
+</pre></blockquote>
+Without this code,
+the dimmed versions of the arrows would be computed,
+which causes a slight delay the first time each button is dimmed.
+Basically, this technique trades
+a noticeable delay when the user clicks the buttons
+for
+a smaller, less noticeable delay in the <code>init</code> method.
+<p>
+This applet uses four separate image files
+just to display arrows on two buttons.
+The performance impact of these little images can add up,
+especially if the browser in which the applet is running
+uses a separate HTTP connection to load each one.
+A better alternative is to implement a
+custom <code>Icon</code> that paints the arrows.
+See
+<a href="#custom">Creating a Custom Icon Implementation</a>
+for an example.
+<p>
+        
+<li> <strong>Lazy image loading</strong>
+--   The applet's initialization code loads only the first photograph.
+Each other photograph gets loaded when the user
+first requests to see it.
+By loading images if and when needed,
+the applet avoids a long initialization.
+The downside is that the user has to wait
+to see each photograph.
+We try to make this wait less noticeable
+by providing feedback about the image loading
+and allowing the user to use the GUI
+while the image is loading.
+<p>
+Not all programs can benefit from lazy loading.
+For example, the
+
+<a target="source" href="../components/example-swing/TumbleItem.java"><font color="#bb000f"><code>TumbleItem.java</code></font></a><a href="../components/example-swing/TumbleItem.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a> applet
+performs an animation, so all of the images are needed up-front.
+That applet's initialization code
+causes the images to be loaded in a background thread,
+so that the applet can present a GUI 
+(a "Loading Images..." label)
+before the images have loaded.
+
+<p>
+
+<li> <strong>Background image loading</strong>
+--   The applet uses a
+<a href="threads.html#SwingWorker"><code>SwingWorker</code></a>
+to load each photograph image in a background thread.
+Because the image is loaded in a separate thread, 
+the user can still click the buttons and otherwise interact
+with the applet while the image is loading.
+<p>
+Here's the code to load each image:
+<blockquote><pre>
+private void loadImage(final String imagePath,
+                       final int index) {
+    final SwingWorker worker = new SwingWorker() {
+        ImageIcon icon = null;
+
+        public Object construct() {
+            icon = new ImageIcon(getURL(imagePath));
+            return icon;
+        }
+
+        public void finished() {
+            Photo pic = (Photo)pictures.elementAt(index);
+            pic.setIcon(icon);
+            if (index == current)
+                updatePhotograph(index, pic);
+        }
+    };
+    worker.start();
+}
+</pre></blockquote>
+The <code>construct</code> method,
+which creates the image icon for the photograph,
+is invoked by the thread that's created 
+by the <code>SwingWorker</code> constructor
+and started by the <code>start</code> method.
+After the image icon is fully loaded,
+the <code>finished</code> method is called.
+The <code>finished</code> method
+is guaranteed to execute on the event-dispatching thread,
+so it can safely update the GUI to display the photograph.
+<p>
+
+<li> <strong>Status updates</strong>
+--   While the image is loading in
+the background,
+the applet displays a status message:
+<blockquote><pre>
+photographLabel.setIcon(null);
+photographLabel.setText("Loading image...");
+</pre></blockquote>
+This lets the user know that the program is doing something.
+After the image is loaded,
+the applet displays the photograph in the viewing area.
+<p>
+
+<li> <strong>Caching</strong>
+--   After each photograph is viewed for the first
+time, the applet caches the image icon for later use. 
+Thus if the user revisits a photograph,
+the program can use the same image icon and
+display the photograph quickly.
+<p>
+If you write a program without caching image icons,
+it may appear that some implicit image caching
+is going on within the Java platform.
+However, this is a side effect of the implementation
+and is not guaranteed.
+If your program uses one image many times,
+you can create the image icon once
+and use the same instance multiple times.
+
+</ul>
+
+As with all performance-related issues,
+these techniques work in some situations and not others.
+These are not general recommendations for all programs,
+but some techniques you can try to improve the user's experience.
+Furthermore,
+the techniques described here
+are designed to improve
+the program's perceived performance,
+but don't necessarily impact its real performance.
+</blockquote>
+
+<h3>
+<a name="custom">Creating a Custom Icon Implementation</a>
+</h3>
+<blockquote>
+
+If you use a simple image repeatedly,
+consider implementing a custom <code>Icon</code> class
+to paint the image.
+The really nice thing about a custom icon
+is that you can easily change the icon's appearance
+to reflect its host component's state.
+
+<p>
+
+Look-and-feel implementations often 
+use custom icons.
+For example, the Metal Look & Feel uses a single
+<code>MetalCheckBoxIcon</code> object
+to paint all of the check boxes in the GUI.
+The <code>MetalCheckBoxIcon</code>
+paints itself differently
+depending on whether its host component
+is enabled, pressed, or selected.
+
+<p>
+
+In this section, we'll
+convert a program called <code>ButtonDemo</code>
+so that it uses a custom icon to paint 
+these two arrows:
+
+<blockquote>
+<IMG SRC="../../figures/uiswing/misc/left.gif" WIDTH="20" HEIGHT="22" ALT="A simple left arrow">
+<IMG SRC="../../figures/uiswing/misc/right.gif" WIDTH="20" HEIGHT="22" ALT="A simple right arrow"></blockquote>
+
+You can see a picture of <code>ButtonDemo</code> in
+<a target="_top" href="../components/button.html#abstractbutton">How to Use the Common Button API</a><a target="_top" href="../components/button.html#abstractbutton"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+Its source code is in
+
+<a target="source" href="../components/example-swing/ButtonDemo.java"><font color="#bb000f"><code>ButtonDemo.java</code></font></a><a href="../components/example-swing/ButtonDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+<code>ButtonDemo</code> uses the following code
+to load the arrows from GIF files
+and put the arrows into buttons:
+
+<blockquote><pre>
+ImageIcon leftButtonIcon = new ImageIcon("images/right.gif");
+...
+ImageIcon rightButtonIcon = new ImageIcon("images/left.gif");
+
+b1 = new JButton("Disable middle button", leftButtonIcon);
+...
+b3 = new JButton("Enable middle button", rightButtonIcon);
+</pre></blockquote>
+
+Here is the new code,
+which uses a custom icon class named <code>ArrowIcon</code>.
+Only the bold lines have changed.
+You can find the entire program in
+
+<a target="source" href="example-swing/CustomIconDemo.java"><font color="#bb000f"><code>CustomIconDemo.java</code></font></a><a href="example-swing/CustomIconDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+
+<blockquote><pre>
+<b>Icon leftButtonIcon = new ArrowIcon(SwingConstants.RIGHT);</b>
+...
+<b>Icon rightButtonIcon = new ArrowIcon(SwingConstants.LEFT);</b>
+
+b1 = new JButton("Disable middle button", leftButtonIcon);
+...
+b3 = new JButton("Enable middle button", rightButtonIcon);
+</pre></blockquote>
+
+You can find the implementation of the custom icon class in
+
+<a target="source" href="example-swing/ArrowIcon.java"><font color="#bb000f"><code>ArrowIcon.java</code></font></a><a href="example-swing/ArrowIcon.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+Here are the interesting parts of its code:
+
+<blockquote><pre>
+class ArrowIcon implements Icon, SwingConstants {
+    ...
+    public void paintIcon(Component c, Graphics g,
+                          int x, int y) {
+        int length = xPoints.length;
+        int adjustedXPoints[] = new int[length];
+        int adjustedYPoints[] = new int[length];
+
+        for (int i = 0; i < length; i++) {
+            adjustedXPoints[i] = xPoints[i] + x;
+            adjustedYPoints[i] = yPoints[i] + y;
+        }
+
+        if (c.isEnabled()) {
+            g.setColor(Color.black);
+        } else {
+            g.setColor(Color.gray);
+        }
+
+        g.fillPolygon(adjustedXPoints, adjustedYPoints,
+                      length);
+    }
+}
+</pre></blockquote>
+
+Note that the icon sets the current color.
+If you don't do this, 
+then the icon's painting might not be visible.
+For more information about performing custom painting, see
+<a target="_top" href="../painting/index.html">Working with Graphics</a><a target="_top" href="../painting/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+The <code>fillPolygon</code> method is discussed in
+<a target="_top" href="../painting/drawingShapes.html">Painting Shapes</a><a target="_top" href="../painting/drawingShapes.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+
+Using a custom icon to paint the arrows has a few implications:
+
+<ul>
+<li> Because the icon's appearance is determined dynamically,
+     the icon painting code can use any information --
+     component and application state, for example --
+     to determine what to paint.
+
+<li> Because we specified a non-<code>ImageIcon</code> icon for a button,
+     the button doesn't bother to calculate 
+     the dimmed (disabled) version of the icon.
+     Instead, the button lets the icon paint its disabled self.
+     This can reduce computation time and
+     save space that would otherwise be used to hold the dimmed image.
+
+<li> Depending on the platform, we might
+     get a performance boost with custom icons,
+     since painting polygons is often faster than painting images.
+
+<li> Instead of loading all the GIF files for the arrows
+     (left and right, and perhaps dimmed left and dimmed right),
+     we load a single class file
+     (<code>ArrowIcon</code>).
+     The performance implications of this
+     depend on factors such as the platform,
+     the size of the files,
+     and the overhead for loading each type of file.
+     
+</ul>
+
+
+</blockquote>
+<h3>
+<a name="api">The Image Icon API</a>
+</h3>
+<blockquote>
+The following tables list the commonly used
+<code>ImageIcon</code> constructors and methods.
+Note that <code>ImageIcon</code> is not a descendent
+of <code>JComponent</code>
+or even of <code>Component</code>.
+<p>
+The API for using image icons falls into these categories:
+
+<ul>
+<li><a href="#contents">Setting, Getting, and Painting the Image Icon's Image</a>
+<li><a href="#info">Setting or Getting Information about the Image Icon</a>
+<li><a href="#loadstatus">Watching the Image Icon's Image Load</a>
+</ul>
+
+<table border=1>
+<caption><a name="contents">Setting, Getting, and Painting the Image Icon's Image</a></caption>
+<tr>
+<th>Method or Constructor</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td><font size=2><code>ImageIcon()
+    <br>
+    ImageIcon(byte[])
+    <br>
+    ImageIcon(byte[], String)
+    <br>
+    ImageIcon(Image)
+    <br>
+    ImageIcon(Image, String)
+    <br>
+    ImageIcon(String)
+    <br>
+    ImageIcon(String, String)
+    <br>
+    ImageIcon(URL)
+    <br>
+    ImageIcon(URL, String) </code></td>
+
+<td>Create a <code>ImageIcon</code> instance,
+    initializing it to contain the specified image.
+    The first argument indicates the source --
+    image, byte array, filename, or URL --
+    from which the image icon's image should be loaded.
+    The source must be in a format supported
+    by the <code>java.awt.Image</code> class: namely GIF or JPEG.
+    The second argument, when present,
+    provides a description for the image.
+    The description is a short textual description of the
+    image that could be used in a variety of ways,
+    such as alternate text for the image.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>void setImage(Image)
+    <br>
+    Image getImage()</code></font></td>
+<td>Set or get the image displayed by the image icon.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>void paintIcon(Component, Graphics, int, int)</code></font></td>
+<td>Paint the image icon's image
+    in the specified graphics context.
+    You would do this only if you're implementing a custom component
+    that performs its own painting.
+    The <code>Component</code> object is used as an image observer.
+    You can rely on the default behavior
+    provided by <code>Component</code> class and pass in any component.
+    The two <code>int</code> argments specify
+    the x and y coordinates, respectively.</td>
+</tr>
+
+</table>
+
+<p>
+<table border=1>
+<caption><a name="info">Setting or Getting Information about the Image Icon</a></caption>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td><font size=2><code>void setDescription(String)
+    <br>
+    String getDescription()</code></font></td>
+<td>Set or get a description of the image.
+    This description is intended for use by assistive technologies.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>int getIconWidth()
+    <br>
+    int getIconHeight()</code></font></td>
+<td>Get the width or height of the image icon in pixels.</td>
+</tr>
+
+</table>
+<p>
+<table border=1>
+<caption><a name="loadstatus">Watching the Image Icon's Image Load</a></caption>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td><font size=2><code>void setImageObserver(ImageObserver)
+    <br>
+    ImageObserver getImageObserver()</code></font></td>
+<td>Set or get an image observer for the image icon.</td>
+</tr>
+
+<tr>
+<td><font size=2><code>int getImageLoadStatus()</code></font></td>
+<td>Get the loading status of the image icon's image.
+    The set of values returned by this method
+    are defined by <code>MediaTracker</code>.</td>
+</tr>
+</table>
+
+</blockquote>
+
+<h3>
+<a name="eg">Examples that Use Icons</a>
+</h3>
+<blockquote>
+The following table lists
+just a few of the many examples 
+that use <code>ImageIcon</code>.
+<p>
+<table>
+<tr>
+<th align=left> Example</th>
+<th align=left> Where Described</th>
+<th align=left> Notes</th>
+</tr>
+
+<tr>
+<td> <a href="../components/example-swing/index.html#LabelDemo"><code>LabelDemo</code></a></td>
+<td> This section and<br>
+     <a href="../components/label.html">How to Use Labels</a></td>
+<td> Demonstrates using icons in an application's label,
+     with and without accompanying text.</td>
+</tr>
+
+<tr>
+<td> <a href="example-swing/index.html#IconDemoApplet">
+     <code>IconDemoApplet</code></a></td>
+<td> This section</td>
+<td> An applet.  
+     Uses a label to show large images;
+     uses buttons that have both images and text.</td>
+</tr>
+
+<tr>
+<td> <a href="example-swing/index.html#CustomIconDemo">
+     <code>CustomIconDemo</code></a></td>
+<td> This section</td>
+<td> Uses a custom icon class implemented by
+     
+<a target="source" href="example-swing/ArrowIcon.java"><font color="#bb000f"><code>ArrowIcon.java</code></font></a><a href="example-swing/ArrowIcon.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.</td>
+</tr>
+
+<tr>
+<td> <a href="../components/example-swing/index.html#TumbleItem">
+     <code>TumbleItem</code></a></td>
+<td> <a href="../components/applet.html">How to Make Applets</a></td>
+<td> Uses image icons in an animation.
+     Shows how to use <code>ImageIcon</code>'s <code>paintIcon</code> method.</td>
+</tr>
+
+<tr>
+<td> <a href="../components/example-swing/index.html#ButtonDemo"><code>ButtonDemo</code></a></td>
+<td> <a href="../components/button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a></td>
+<td> Shows how to use icons in an application's buttons.</td>
+</tr>
+
+<tr>
+<td> <a href="../components/example-swing/index.html#CheckBoxDemo"><code>CheckBoxDemo</code></a></td>
+<td> <a href="../components/button.html#checkbox">How to Use Check Boxes</a></td>
+<td> Uses multiple GIF images.</td>
+</tr>
+
+<tr>
+<td> <a href="../components/example-swing/index.html#TabbedPaneDemo"><code>TabbedPaneDemo</code></a></td>
+<td> <a href="../components/tabbedpane.html">How to Use Tabbed Panes</a></td>
+<td> Demonstrates adding icons to tabs in a tabbed pane.</td>
+</tr>
+
+<tr>
+<td> <a href="../components/example-swing/index.html#DialogDemo"><code>DialogDemo</code></a></td>
+<td> <a href="../components/dialog.html">How to Make Dialogs</a></td>
+<td> Shows how to use standard icons in dialogs.</td>
+</tr>
+
+<tr>
+<td> <a href="../components/example-swing/index.html#TreeIconDemo"><code>TreeIconDemo</code></a></td>
+<td> <a href="../components/tree.html">How to Use Trees</a></td>
+<td> Shows how to change the icons displayed by a tree's nodes.</td>
+</tr>
+
+<tr> 
+<td> <a href="../misc/example-swing/index.html#ActionDemo"><code>ActionDemo</code></a></td>
+<td> <a href="../misc/action.html">How to Use Actions</a></td>
+<td> Shows how to specify the icon in a tool-bar button or menu item
+     using an <code>Action</code>.</td>
+</tr>
+
+</table>
+
+</blockquote>
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="border.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#misc" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="plaf.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
