@@ -1,0 +1,319 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 4.1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 4.1:</h3>
+
+<h3>Objetos instancias de variables e Instancias de Métodos</h3>
+
+<hr width="50%">
+
+<p>LA PROGRAMACIÓN ORIENTADA A OBJETOS (OOP) es un intento de hacer programas mas
+cercanos al modelo de como las personas piensan sobre ellos, y como se comportan con el
+resto del mundo. En el centro de la programación estándar la idea es realizar un
+trabajo, y la programación consiste en encontrar una secuencia de instrucciones que
+realicen la tarea. En el centro de la programación orientada a objetos, hay objetos--
+entidades que tienen un comportamiento, que guardan información,&nbsp; y que interactuan
+con otros. La programación consiste en diseñar un conjunto de objetos que tengan
+relación con el problema. El conjunto de&nbsp; &quot;objetos programas&quot; pueden
+representar entidades abstractas o reales en el área de definición del problema. Esto
+supone el hacer un diseño del programa mucho mas natural, y por consiguiente, mas fácil
+de seguir y de entender.</p>
+
+<p>Lo mas importante de OOP es el cambio total del punto de vista. Cuando pensamos en
+objetos en la programación estándar, el término solo significa que vamos a unir unas
+cuantas variables con las rutinas necesarias para manejarlas. De hecho es posible el
+utilizar las técnicas de la programación orientada a objetos en cualquier lenguaje de
+programación. Sin embargo existe una gran diferencia entre un lenguaje que hace la OOP
+posible frente a otro que cuente con un soporte activo. En un lenguaje de programación
+orientada a objetos como Java, se incluyen muchas características que lo hacen totalmente
+distinto a un lenguaje estándar. Para poder emplear todas estas características
+adecuadamente, debe &quot;orientar&quot; su forma de pensar adecuadamente.</p>
+
+<p>Las clases en Java son plantillas para hacer objetos. Cada objeto pertenece a una sola
+clase. Se dice que un objeto es una <font color="#808000">instancia</font> de una clase.
+La clase de un objeto determina que tipo de datos contiene y cual es su comportamiento.Los
+datos de los objetos se guardan en un juego de variables que se llaman <font color="#808000">Instancias variables</font>. Es importante entender que la clase de un
+objeto determina que tipo de variables contiene el objeto, sin embargo, los datos reales
+están contenidos en objetos individuales, no en la clase, de esta forma, cada objeto
+posee sus propios datos.</p>
+
+<p>Por ejemplo,podría existir una clase llamada <tt>Student</tt>. La clase puede indicar
+que cada objeto del tipo <tt>Student</tt>&nbsp; incluye una instancia variable llamada <tt>name</tt>
+de tipo <tt>String.</tt>Puede haber cualquier número de objetos pertenecientes a la clase
+<tt>Student</tt>. Cada uno de esos objetos, por pertenecer a la clase <tt>Student</tt>
+deben tener un <tt>name</tt>. El hecho es que cada uno de los objetos <tt>Studen</tt>
+tendrán su propio nombre. De forma similar, si los objetos de la clase <tt>Student</tt>
+tienen una instancia variable que representa las notas de los exámenes, cada uno de los
+objetos <tt>Student</tt> tienen su propio juego de notas.</p>
+
+<p>Adicionalmente a los datos, los objetos también tienen comportamientos. Estos
+comportamientos son subrutinas que pertenecen al objeto. Generalmente estoy utilizando el
+termino de &quot;método&quot; para las subrutinas que pertenecen a un objeto y que
+representan como se comporta. Estos métodos son llamados <font color="#808000">instancias
+de métodos</font>, porque pertenecen a una instancia de la clase.</p>
+
+<p>Los objetos que pertenecen a una misma clase tienen los mismos métodos instanciables,
+esto es tienen el mismo comportamiento. Sin embargo, no debe olvidar que las instancias de
+los métodos pertenecen a los objetos individuales y no a la clase. Hay una sutil
+diferencia entre las instancias de un mismo método en dos objetos diferentes
+pertenecientes a la misma clase. El método perteneciente al objeto tiene un acceso
+directo a las instancias variables del objeto en particular.Por ejemplo, la clase <tt>Student</tt>
+puede especificar un método instanciable para calcular la nota global de un estudiante
+promediando las notas de sus exámenes. Cuando se llama al método para un objeto concreto
+de la clase <tt>Student</tt> usara usara las notas de <strong>ese estudiante</strong>
+tomándolas de las instancias variables del objeto. El mismo método llamado para un
+estudiante diferente, usara las notas de ese otro estudiante.</p>
+
+<hr width="50%">
+
+<p>Las clases en Java tienen un doble propósito. Uno de ellos, es justamente el que se
+describe: servir como plantilla para hacer objetos. El otro es uno que ya vimos en
+anteriores capítulos: mantener agrupadas todas las variables <tt>static</tt> relacionadas
+y todos los métodos <tt>static</tt>. La regla es que las variables y métodos <tt>static</tt>--
+esto es, que se declaran con el modificador <tt>static</tt>, pertenecen a la misma clase y
+no se crea objeto de esa clase. Las variables y los métodos <tt>non-static</tt> no
+pertenecen del todo a la clase!.En lugar de eso, hay que especificar que variables y
+métodos instanciables tendrá la clase. Todo esto es algo confuso, no hay duda sobre
+ello, y podemos afirmar que el diseño de Java en este aspecto, es defectuoso; hubiera
+sido mejor que asignaran a estas dos funciones distintas&nbsp; de las clases, dos
+características distintas del lenguaje.</p>
+
+<p>Las variables y los métodos<tt> static</tt> se llaman también <font color="#808000">variables
+de clase</font> y <font color="#808000">métodos de clase</font> dado que pertenecen a la
+clase, y no a la instancia de la clase.</p>
+
+<p>Déjeme mostrarle un ejemplo especifico para ver como trabaja todo esto. Considere esta
+versión simplificada de la clase <tt>Student</tt>:</p>
+
+<p>&nbsp;</p>
+
+<pre>        public class Student {
+        
+           public String name;  // Nombre del estudiante
+           public int ID;       // identificador del estudiante (unico)
+           public double test1, test2, test3;   // nota de tres exámenes
+           
+           public double getAverage() {  // Calcular el promedio de nota
+              return (test1 + test2 + test3) / 3;
+           }
+           
+           private static int nextUniqueID = 1;
+           
+           public static int getUniqueID() {  // devuelve identificador unico
+              int thisID = nextUniqueID;
+              nextUniqueID++;
+              return thisID;
+           }
+           
+        }  // Fin de la clase Student</pre>
+
+<p>Esta definición de clase dice que un objeto de la clase <tt>Student</tt> incluirá
+unas variables instanciables llamadas <tt>name, test1, test2, </tt>y <tt>test3</tt>, e
+incluirá un método instanciable llamado <tt>getAverage()</tt>. Los <em>names, IDs </em>y
+<em>tests</em> en los diferentes objetos tendrán, normalmente, valores diferentes. Cuando
+para un estudiante en particular se llame al método <tt>getAverage()</tt>calculará el
+promedio del estudiante, usando las notas de sus exámenes.</p>
+
+<p>Por otra parte, <tt>nextUniqueID y getUniqueID()</tt> son miembros <tt>static</tt> de
+la clase <tt>Student</tt>. Esto quiere decir que solo hay una copia de la variable <tt>nextUniqueID</tt>
+y pertenece a la clase. De forma similar, <tt>getUniqueID</tt> esta asociado a la clase, y
+no a una instancia particular. No tiene sentido, y puede ser un error de sintaxis, el que <tt>getUniqueID()</tt>
+se refiera a una variable instanciable como <tt>name</tt>. Un método <tt>static</tt> no
+forma parte del objeto y no tiene accedo directo a las variables instanciables que están
+dentro de un objeto.</p>
+
+<p>El método <tt>getUniqueID()</tt>puede ser llamado desde fuera de la clase usando el
+nombre &quot;<tt>Student.getUniqueID()</tt>&quot; indicando su pertenencia a la clase <font face="m">Student. Esto se puede hacer tanto si existan como si&nbsp; no existen instancias
+de la clase . El método instanciable <tt>getAverage()</tt>, por otra parte, solo puede
+ser llamado cuando existe algún objeto de la clase <tt>Student</tt>. Si <tt>std</tt> es
+tal objeto, entonces el método puede llamarse usando el nombre &quot;<tt>std.getAverage()</tt>&quot;
+indicando que el método pertenece al objeto <tt>std</tt> las variables instanciables de <tt>std</tt>
+pueden ser mencionadas como <tt>std.name, std.ID, std.test1, std.test2, y std.test3</tt>.</font></p>
+
+<p><font>(Con esto, es posible pensar que un método o una variable <tt>static</tt> en una
+clase se comparte por todas las instancias de la clase. Basado en ese razonamiento, Java
+le va a permitir referirse a los miembros <tt>static</tt> tanto a través de los objetos,
+como a través del propio nombre de clase. Esto es, si <tt>std</tt> es una instancia de la
+clase <tt>Student</tt> es correcto el referirse a <tt>std.getUniqueID()</tt> en lugar de <tt>Student.getUniqueID()</tt>.
+Sin embargo, pienso que esa sintaxis solo puede aumentar la confusión y les animo a que
+la ignoren.</font></p>
+
+<p>Creo que vale la pena hablar algo sobre la presencia de la variabl<font>e <tt>static
+nextUniqueID</tt>. </font>Dado que es una variable<font> <tt>static</tt> </font>solo
+existe una versión de esa variable y solo existe mientras el programa esta
+funcionando.(Las instancias de las variables, por otra parte, aparecen y desaparecen
+cuando los objetos se crean o se destruyen)<font>.</font></p>
+
+<p>Al empezar el programa, se almacena en la variable<font> <tt>Student.nextUniqueID </tt></font>el
+valor inicial 1. Cada vez que se llama al método <em>static</em> <font><tt>Student.getUniqueID</tt>
+se incrementa el valor de <tt>nextUniqueID</tt>. Ahora bien, dado que <tt>nextUniqueID</tt>
+como privado, es completamente inaccesible desde fuera de la clase <tt>Student</tt>.
+Podemos ver todo lo que se puede hacer con esa variable examinando la clase <tt>Student</tt>.
+Esto es la mejor garantía de que solo hay una manera de cambiar el valor de <tt>nextUniqueID</tt>
+y es llamando al método <tt>getUniqueID()</tt>. Podría ser interesante que otras
+variables como las instanciables <tt>test1, test2 y test3</tt> tuvieran una protección
+similar. Volveré al tema de controlar el acceso a las variables, mas tarde.</font></p>
+
+<hr width="50%">
+
+<p>Hasta ahora hemos hablado de que los objetos pueden ser creados usando las clases como
+plantilla, pero no hemos hablado de <strong>como</strong> crear los objetos en los
+programas. Si tiene una clase, como <tt>Student</tt>, puede declarar una variable de esa
+clase:</p>
+<div align="center"><center>
+
+<pre>Student std; //declarar variable std como de tipo Student    </pre>
+</center></div>
+
+<p align="left">Sin embargo, declarar una variable <strong>no</strong> crea un objeto.Esto
+es un punto muy importante, que queda definido con la siguiente Afirmación Muy Importante:
+</p>
+
+<p align="center"><strong>En Java, una variable no puede almacenar un objeto<br>
+La variable solo puede almacenar la referencia al objeto.</strong></p>
+
+<p align="left">Debe pensar que los objetos deben estar flotando independientes por la
+memoria del ordenador. (De hecho, los objetos viven en una parte de la memoria llamada <font color="#808000"><em>heap</em></font>.) En lugar del objeto en si mismo, lo que se guarda
+en la variable es la información necesaria para encontrar ese objeto en la memoria. Esta
+información se llama<font color="#808000"> referencia</font> o<font color="#808000">
+puntero</font> al objeto.En efecto, la referencia a un objeto es la dirección de la
+posición de la memoria donde se almacena el objeto. Cuando usa una variable tipo objeto,
+el ordenador emplea la referencia que esta en la variable para poder encontrar el objeto
+real.</p>
+
+<p align="left">Los objetos realmente se crean con un operador llamado <tt>new</tt>, que
+crea el objeto y devuelve la referencia al objeto. Por ejemplo, asumiendo que <tt>std</tt>
+es una variable del tipo <tt>Student</tt>,</p>
+<div align="center"><center>
+
+<pre>std = new Student();    </pre>
+</center></div>
+
+<p align="left">crearía un nuevo objeto del tipo <tt>Student</tt> y guardaría la
+referencia a este objeto en la variable <tt>std</tt>. Se puede acceder a las variables y
+métodos instanciables del objeto por medio de <tt>std</tt>,como &quot;<tt>std.test1&quot;</tt>.</p>
+
+<p align="left">Para una variable como <tt>std</tt> , cuyo tipo esta definido por una
+clase, el no referirse a ningún objeto. En ese caso se dice que <tt>std</tt> guarda una <font color="#808000">referencia nula</font>.En Java la referencia nula debe ser escrita como
+&quot;<tt>null</tt>&quot;. Puede asignar una referencia nula a la variable <tt>std</tt>
+diciendo:</p>
+<div align="center"><center>
+
+<pre>std = null;    </pre>
+</center></div>
+
+<p align="left">y puede comprobar si el valor de la variable es nulo</p>
+<div align="center"><center>
+
+<pre>if (std == null) .. ..     </pre>
+</center></div>
+
+<p align="left">Si el valor de la variable es nulo, como puede suponer, será ilegal el
+referirse a una instancia de variable o a una instancia de método-- dado que no existe el
+objeto, y por lo tanto no hay instancias variables a las que se pueda referir. Por
+ejemplo, si el valor de la variable <tt>std</tt> es nulo, entonces es ilegal el referirse
+a <tt>std.test1.</tt>Si su programa intenta usar una referencia nula, se producirá un
+error llamado &quot;<em>null pointer exception</em>&quot;.</p>
+
+<p align="left">A continuación, se muestra la secuencia correcta para trabajar con
+objetos:</p>
+
+<blockquote>
+  <blockquote>
+    <div align="left"><pre>Student std = new Student(); // Declara la variable std
+			     // y la inicializa con  la
+			     // referencia al nuevo objeto
+			     // creado de la clase Student
+Student std1 = new Student();// Declara std1 y la inicializa
+			     // con la referencia a otro
+			     // objeto nuevo.
+Student std2 = std1;	     //Declara std2 y la inicializa
+			     // por lo que se refiere al
+			     // MISMO objeto std1
+Studen std3;		     // Declara std3 y lo inicializa 
+			     // a nulo. (automaticamente)
+std.name= &quot;John Smith&quot;;
+std.ID = Student.getUniqueID();
+std1.name = &quot;Mary Jones&quot;;
+std1.ID = Student.getUniqueID();
+	// El resto de la variables instanciables
+	// tendran como valor cero</pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<p align="left">Cuando el ordenador ejecuta estas instrucciones, la situación es algo
+semejante a esto (asumiendo que las dos llamada a <tt>getUniqueID()</tt> fueron las dos
+primeras veces que se llamo a este método en el programa):</p>
+
+<p>&nbsp;</p>
+
+<p align="center"><img alt="(Objects and variables created by above code)" src="fig1-2.gif" tppabs="http://members.nbci.com/elcurso/Capitulo4/fig1.gif" WIDTH="472" HEIGHT="316"></p>
+
+<p align="left">Este dibujo presenta las variables en pequeñas cajas, etiquetadas con el
+nombre de las variables. Los objetos se presentan como cajas con los bordes redondeados.
+Cuando una variable contiene una referencia a un objeto,&nbsp; el valor de la variable se
+presenta como una flecha que apunta al objeto. Las flechas desde <tt>std1 y std2</tt>
+apuntan al mismo objeto. Esto ilustra el Muy Importante Punto:</p>
+
+<p align="center"><strong>Cuando una variable objeto se asigna<br>
+a otra, solo se copia la referencia.<br>
+El objeto referenciado no se copia.</strong></p>
+
+<p align="left">Esto es muy diferente a la semántica asociada a las instrucciones de
+asignación.(Donde los valores se referían a los tipos primitivos de Java, la asignación
+obedecía a la semántica esperada. Esto es: cuando se asignaba, se copiaba el valor entre
+los tipos primitivos.) Observe que en este ejemplo dado que a <tt>std1.</tt>names se le
+asignó el valor &quot;Mary Jones&quot;,&nbsp; también es cierto que <tt>std2.name</tt>
+tiene el valor &quot;Mary Jones&quot;. De hecho, <tt>std1.name y std2.name</tt> son dos
+maneras distintas de referirse <strong>exactamente</strong> a la misma cosa.</p>
+
+<p align="left">Puede utilizar los operadores == y != para comprobar la igualdad o
+desigualdad entre dos objetos, pero aquí otra ves la semántica es especial. Cuando hace
+la pregunta &quot;<tt>if (std1 == std2)</tt>&quot; esta comprobando que las referencias de
+<tt>std1 y std2</tt> apuntan exactamente a la misma dirección de memoria, no esta
+comprobando si los valores contenidos en los objetos son iguales.Puede ser posible tener
+dos objetos con el mismo valor en una variable instanciable. Sin embargo, los objetos no
+se consideraran iguales por el operador ==, porque están almacenados en distintas
+direcciones de memoria.</p>
+
+<p align="left">Hay una pequeña sorpresa en la ilustración superior. Ya sabíamos que en
+Java las <em>Strings</em> eran objetos. En particular, es posible que el valor de la <em>string</em>
+sea nulo. y, en todos los caso, la variable <tt>String</tt> solo almacena la referencia a
+la <tt>String</tt> no la <em>string </em>en si misma. Esto explica&nbsp; el porqué el
+operador == no funcionaba como se esperaba si se usaba sobre una <tt>String</tt> (se
+explicó en la <a href="Seccion2_8.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Seccion2_8.html">Sección 2.8</a>):Dos <em>strings</em>
+se consideran iguales por el operador == solo si ambas están almacenadas en la misma
+dirección de memoria, no siendo meramente casual, que ambas tengan los mismos caracteres.
+Esto es, si <tt>s1</tt> y <tt>s2</tt> son dos <em>strings,</em> es posible que <tt>s1==s2</tt>
+sea falso cuando ambas contienen los mismos caracteres!. Es por esto por lo que debe usar
+la comprobación <tt>s1.equals(s2)</tt> para comprobar si ambas son iguales.</p>
+
+<p align="left">Se habrá dado cuenta que hemos presentado la clase <tt>Student</tt>, como
+un objeto. En Java las clases se consideran técnicamente como objetos pertenecientes a
+una clase especial llamada, de forma bastante apropiada <tt>Class</tt>. Las
+&quot;instancias variables&quot; y las &quot;instancias métodos&quot; de a clase,
+considerada como objeto, son justamente los miembros <tt>static</tt> de cada clase.
+Quizás viéndolo de esa manera le ayude a comprender los miembros <tt>static y
+non-static.</tt></p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/indice4.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="tppmsgs/msgs0.htm#25" tppabs="http://dopc/elcurso/Capitulo4/seccion4_2.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

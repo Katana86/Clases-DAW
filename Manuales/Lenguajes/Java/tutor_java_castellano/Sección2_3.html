@@ -1,0 +1,422 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>DopC-Curso de Java.Seccion 2.3</title>
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<font FACE="Arial">
+
+<p><big>Sección 2.3: Bucles y desvíos</big></p>
+</font>
+
+<hr>
+<font size="3">
+
+<p ALIGN="JUSTIFY">LA HABILIDAD DEL ORDENADOR para ejecutar complejas tares, justamente,
+esta generada por la habilidad de combinar comandos sencillos dentro de estructuras de
+control. En Java, hay 6 de esas estructura &#150; y, de hecho, con tres de ellas nos
+bastaría para poder escribir programas que realizaran tareas. Las seis estructuras de
+control son: el block, el bucle while, el bucle do, el bucle for, la instrucción if, y la
+instrucción switch. Cada una de estas estructuras, se consideran instrucciones, pero de
+hecho, hay instrucciones de control que dentro de ellas contienen uno o mas de estas
+instrucciones.</p>
+
+<hr width="50%">
+
+<p ALIGN="JUSTIFY">El <font color="#808000">block</font> es el tipo de instrucción mas
+simple, su propósito es únicamente el agrupar varias instrucciones como si fuera una
+sola instrucción. El formato del block es:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <pre>{</pre>
+              <pre><font COLOR="#00ff00"><b>instrucciones</pre>
+              </b></font><pre>}</pre>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p ALIGN="JUSTIFY">Esto es: consiste en una secuencia de instrucciones encerradas entre
+dos llaves { y }.(De hecho, es posible que un bloque no contenga ninguna instrucción,
+entonces al bloque se le llamaría bloque vacío, y a veces resulta útil). La
+instrucción <i>block</i> aparece normalmente dentro de otras instrucciones, siendo su
+propósito el mantener juntas varias instrucciones como si fueran un unidad. De esta
+forma, el <i>block</i> puede emplearse allí donde se pueda utilizar una instrucción. Hay
+un sitio donde es obligatorio el empleo de <i>block</i> Ya habíamos hablado de ello, la
+definición de una subrutina.</p>
+
+<hr width="50%">
+
+<p ALIGN="JUSTIFY">Probablemente, debo explicar en este punto, porque Java ha sido llamado
+como el lenguaje de formato libre. No hay reglas de sintaxis sobre como se ha de
+distribuir el lenguaje en la pagina. Por ejemplo, puede llegar a escribir un bloque entero
+en una sola línea, si quiere. Pero es importante un buen estilo de programación,
+debería ordenar su programa en la pagina, de tal forma que su estructura fuera lo mas
+clara posible. En general, se acostumbra a escribir una instrucción por línea, empleando
+la identación para indicar las instrucciones incluidas en una estructura de control. Este
+es el formato que normalmente empleare en mis ejemplos.</p>
+
+<pre>Aquí hay dos ejemplos de bloques:</font><font size="2"></pre>
+
+<dir>
+  </font><pre><big>   </big>{
+   System.out.print(&quot;La respuesta es &quot;);
+   System.out.println(ans);
+   }</pre>
+  <blockquote>
+    <pre>{ // Este bloque intercambia valores entre x e y
+int temp = x;  // declara temp y almacena x 
+x = y;         // copia el valor de y a x
+y = temp;      // copia el valor de temp a y
+}</pre>
+  </blockquote>
+  <font size="3">
+</dir>
+
+<p ALIGN="JUSTIFY">En el segundo ejemplo, la variable <i>temp</i>, se define dentro del
+bloque. Esto ilustra una propiedad del bloque muy importante: las variables declaradas
+dentro del bloque son completamente invisibles e inaccesibles desde fuera de él. Se dice
+de la variable que es local del bloque. Esto es un concepto general llamado
+&quot;ámbito&quot; de un identificador. El <font color="#808000">ámbito </font>de un
+identificador, es la parte del programa en donde ese identificador es valido. Ya hemos
+visto que el ámbito de una variable esta limitado por el bloque en el que se la declara.
+El uso de variables locales, es sencillo por que evita confusión y ayuda a hacer mas
+legible el programa. Esto es un objetivo importante, y deberemos usar las variables
+locales allí donde hagan falta.</p>
+
+<hr width="50%">
+
+<p ALIGN="JUSTIFY">La instrucción <i>block</i> por si sola, no afecta al flujo del
+programa. Las cinco estructuras restantes, si lo hacen. Debemos dividirlas en dos tipos;
+instrucciones de bucle e instrucciones de salto o de desvío. Realmente, para poder tener
+un lenguaje de propósito general, es preciso disponer de una estructura de cada tipo. El
+tener mas, es conveniente. Hablare únicamente del bucle <i>while</i> y de la instrucción
+<i>if</i>. El resto de las instrucciones, lo veremos en la <a href="Sección2_7.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_7.html">Sección
+7</a></p>
+
+<p ALIGN="JUSTIFY">El bucle <font color="#808000">while</font> se emplea para repetir un
+conjunto de instrucciones una y otra vez,.Naturalmente, no es probable que quiera que se
+repitan por siempre. Eso seria un bucle infinito, y normalmente es un error. (Hay una
+vieja historia sobre la pionera de los ordenadores Grace Murray Hopper, que estaba leyendo
+en un bote de champú las siguientes instrucciones &quot;enjabonar, aclarar, repetir&quot;
+La historia cuenta que presento una demanda porque intento seguir las instrucciones, pero
+el champú dejo de salir.(En este caso, no se lo tome en serio, es una broma acerca de la
+forma tan descuidada en que un ordenador sigue las instrucciones.)</p>
+
+<p ALIGN="JUSTIFY">Para ser mas exacto, el bucle <i>while</i> repite las instrucciones una
+y otra vez, solo mientras sea cierta una condición especifica. El bucle <i>while</i>
+tiene el siguiente formato:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <pre>while (<font COLOR="#00ff00"><b>expresión boleana</b></font>)</pre>
+          <pre><font COLOR="#00ff00"><b>instrucción</pre>
+          </b></font>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p ALIGN="JUSTIFY">Aveces la instrucción puede ser, y usualmente es, un bloque; entonces
+el formato será:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <pre>while (<font COLOR="#00ff00"><b>expresión boleana</b></font>) {</pre>
+          <pre><font COLOR="#00ff00"><b>instrucciones</pre>
+          </b></font><pre>}</pre>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p ALIGN="JUSTIFY">La semántica de esta instrucción es la siguiente: Cuando el ordenador
+encuentra una instrucción <i>while</i>, evalúa la <font COLOR="#00ff00"><b>expresión
+boleana</b></font> que produce un resultado de cierto o falso (<i>true</i> o <i>false</i>).
+Si el valor es falso, el ordenador, salta el resto del bucle <i>while</i>, y continua con
+la siguiente instrucción en el programa. Si el valor de la instrucción es cierto, el
+ordenador ejecuta las <font COLOR="#00ff00"><b>instrucciones</b></font> que están dentro
+del bucle. A continuación, vuelve al principio del bucle para reiniciar el proceso. Esto
+es , volver a evaluar la <font COLOR="#00ff00"><b>expresión boleana</b></font>,
+finalizando el bucle cuando la expresión es falsa o continuando en él, mientras sea
+cierta. Esto continuara una y otra vez, hasta que el valor de la expresión sea falso, si
+no pasa nunca, entonces estaremos ante un bucle infinito.</p>
+
+<p ALIGN="JUSTIFY">Aquí hay un ejemplo muy sencillo que imprime los numero 1,2,3,4:</p>
+
+<dir>
+  </font><pre><big>	</big>	<font face="Arial Narrow">int number = 1;
+         		    		while ( number &lt; 5 ) {
+             		 			 System.out.println(number);
+               		  			number = number + 1;
+           		 		 }
+           		 		 System.out.println(&quot;Hecho!&quot;);</pre>
+  </font>
+</dir>
+<font size="3">
+
+<p ALIGN="JUSTIFY">La variable <i>number</i> se inicializa al valor 1, por lo que la
+primera vez que pasa por el bucle <i>while</i>, cuando el ordenador evalúa la expresión
+&quot;<i>number&lt;5</i>&quot; esta preguntando si 1 es menor que 5, lo que es cierto. El
+ordenador procede ha ejecutar las dos instrucciones que están dentro del bucle; la
+primera instrucción imprime &quot;1&quot;, la segunda instrucción, le suma 1 a <i>number</i>
+y vuelve a almacenar el resultado dentro de la variable <i>number</i>, por lo cual su
+valor cambia a 2. El ordenador encuentra el final del bucle , por lo que lo reinicia
+preguntando otra vez si <i>number</i> es menor de 5. Otra vez es cierto por lo que el
+ordenador ejecuta el bucle otra vez e imprime el numero 2 y a continuación cambia el
+valor de <i>number</i> dejando el numero 3. Y continua de esta forma, hasta que
+casualmente <i>number</i> sea igual a 5. En ese momento, la expresión &quot;<i>number&lt;5&quot;</i>
+se evalúa como falsa. Entonces el ordenador salta hasta pasar el final del bucle e
+imprime el mensaje &quot;Hecho!&quot;.</p>
+
+<p ALIGN="JUSTIFY">Por esto, puede recordar que nunca vera el bucle <i>while</i> como un
+programa real. Siempre deberá estar dentro de una subrutina que a su vez defina una
+clase. Como en el ejemplo que viene a continuación, donde el bucle while esta dentro de
+un programa completo. Aquí tenemos un pequeño programa que calcula el interés de una
+inversión durante varios años:</p>
+
+<blockquote>
+  <blockquote>
+    <pre><font size="3" FACE="Arial Narrow">public class Interest2
+      	 /*Esta clase implementa un programa que calcula
+              el importe del interés generado por una inversión
+	      de 17.000 dólares a un interés de 0,07 por 5 años
+	       se imprimirá el valor de la inversión al final 
+	       de cada año.
+          */
+         
+            public static void main(String[] args) {
+            
+                double principal = 17000;  // El valor de la inversión
+                double rate = 0.07;        // El porcentaje de interés anual
+                
+                int years = 0;  // cuenta el numero de años que han pasado
+                
+                while (years &lt; 5) {
+                   double interest = principal * rate;   // calcula intereses año
+                   principal = principal + interest;     //  lo suma al capital
+                   years = years + 1;    // cuenta el año
+                   System.out.print(&quot;El valor de la inversión después de &quot;);
+                   System.out.print(years);
+                   System.out.print(&quot; año es $&quot;);
+                   System.out.println(principal);
+                } // Final del bucle <i>while</i>                               
+            } // fin del bucle main()
+               
+         } // fin de la clase nterest2
+          </font>
+        </font></pre>
+  </blockquote>
+</blockquote>
+
+<p>Si quiere ser el resultado, puede ejecutar el <i>applet</i> equivalente que esta a
+continuación:</p>
+
+<p align="center">
+<applet code="Interest2Console.class" tppabs="http://members.nbci.com/elcurso/Capitulo2/Interest2Console.class" height="200" width="525">
+
+<p align="center"><font color="#E70000">Lo siento, pero su navegador<br>
+no tiene activado el soporte Java.</font></p>
+</applet>
+</p>
+
+<p><font size="3">Debe estudiar el programa y estar seguro de comprender como realiza el
+ordenador el bucle, siguiendo el programa paso a paso.</p>
+
+<hr width="50%">
+
+<p>La instrucción if, le dice al ordenador que tiene que tomar uno de los dos posibles
+cursos de acción, dependiendo de que el valor que tome la <font COLOR="#00ff00"><b>expresión
+boleana</b></font> sea cierto o falso.</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <pre>If (<font COLOR="#00ff00"><b>expresión boleana</b></font>)</pre>
+            <pre><font COLOR="#00ff00"><b>	instrucción</pre>
+            </b></font><pre>else</pre>
+            <pre><font COLOR="#00ff00"><b>	instrucción</pre>
+            </b></font>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Cuando el ordenador ejecuta la instrucción if, evalúa la expresión boleana. Si el
+valor es cierto (<i>true</i>) el ordenador ejecuta la primera instrucción y salta la
+instrucción que se encuentra a continuación del <i>else</i>. Si el valor de la
+expresión es falso, el ordenador salta la primera instrucción y ejecuta la segunda. Dese
+cuenta que en cualquier caso una y solo una de las dos instrucciones se ejecutara. Las dos
+instrucciones, representan cursos de acción alternativos; el ordenador decide entre los
+dos caminos, basándose en el valor de la expresión boleana.</p>
+
+<p>En según que casos, querrá que el ordenador escoja entre hacer algo y no hacerlo.
+Puede conseguirlo con una instrucción <i>if, </i>omitiendo la parte<i> else</i> .</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <pre>if (<font COLOR="#00ff00"><b>expresión boleana</b></font>)</pre>
+            <pre><font COLOR="#00ff00"><b>instrucción</pre>
+            </b></font>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p>Para ejecutar esta instrucción, el ordenador evalúa la expresión. Si el valor es
+cierto, el ordenador ejecuta la <font COLOR="#00ff00"><b>instrucción</b></font> contenida
+dentro del propio if; si el valor es falso, el ordenado salta la <font COLOR="#00ff00"><b>instrucción</b></font>.</p>
+
+<p>Como es normal, cada una de las instrucciones en una instrucción if, pueden ser un
+bloque, entonces una instrucción <i>if</i> tendrá a menudo esta apariencia: 
+
+<dir>
+  <dir>
+    <dir>
+      <dir>
+        <dir>
+          <dir>
+            <pre>if (<font COLOR="#00ff00"><b>expresión boleana</b></font>) {</pre>
+          </dir>
+        </dir>
+      </dir>
+    </dir>
+  </dir>
+</dir>
+
+<pre><font COLOR="#00ff00"><b>				     instrucciones</pre>
+</b></font>
+
+<pre>			       } else {</pre>
+
+<dir>
+  <dir>
+    <dir>
+      <dir>
+        <dir>
+          <dir>
+            <font COLOR="#00ff00"><b><pre>	instrucciones</pre>
+          </dir>
+        </dir>
+      </dir>
+    </dir>
+  </dir>
+</dir>
+
+<pre></b></font>			       }</pre>
+
+<p>o : 
+
+<dir>
+  <dir>
+    <dir>
+      <dir>
+        <dir>
+          <dir>
+            <p align="left">if&nbsp; (<font COLOR="#00ff00"><b>expresión boleana</b></font>) {</p>
+          </dir>
+        </dir>
+      </dir>
+    </dir>
+  </dir>
+</dir>
+
+<p align="left"><font COLOR="#00ff00"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+instrucciones</p>
+</b></font>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</p>
+
+<p>En el ejemplo, tenemos una instrucción if que intercambia los valores entre x e y ,
+pero solo si x es mayor que y al inicio. Después de que la instrucción <i>if</i> se
+ejecute, podemos estar totalmente seguro que el valor de x es definitivamente menor o
+igual que el valor de y:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>if (x&gt;y) { </pre>
+      <pre>	int temp = x;&nbsp; // declara temp y almacena x 
+	x = y;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // copia el valor de y a x
+	y = temp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // copia el valor de temp a y</pre>
+      <pre>}</pre>
+      </font>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>&nbsp;</p>
+<font size="3">
+
+<p>Finalmente, a continuación un ejemplo de instrucción <i>if</i> que incluye la parte <i>else</i>
+Vea si puede imaginarse que hace, y para que sirve: </font><font face="Arial Narrow"></p>
+
+<blockquote>
+  <blockquote>
+    <pre>if ( years &gt; 1 ) {  // rutina para el caso de 2 o mas años
+   System.out.print(&quot;El valor de la inversión después de  &quot;);
+    System.out.print(years);
+    System.out.print(&quot; años es $&quot;);
+}
+  else {  // rutina para el caso del primer año
+    System.out.print(&quot;El valor de la inversión después de un año es $&quot;);
+}  // fin de la instrucción if
+System.out.println(principal);  //esto se realizara siempre
+
+</font></pre>
+  </blockquote>
+</blockquote>
+
+<p>Seguiremos viendo mas cosas sobre la instrucción <i>if</i> mas adelante, en este mismo
+capítulo. Pero ya conoce lo esencial. Si quiere aprender algo mas sobre las estructuras
+de control, ya sabe bastante para realizar algún trabajo con el ordenador.</p>
+
+<hr>
+
+<table border="0" width="100%" height="62">
+  <tr>
+    <td width="33%" height="58"><a href="Sección2_2.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_2.html"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="70" HEIGHT="70"></a></td>
+    <td width="33%" height="58"><p align="center"><a href="indice2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo2/indice2.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" alt="Indice capítulo" border="0" WIDTH="74" HEIGHT="76"></a>
+    &nbsp;&nbsp;&nbsp;&nbsp; <a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" alt="Indice General" border="0" WIDTH="70" HEIGHT="72"></a></td>
+    <td width="34%" height="58"><a href="Sección2_4.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_4.html"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="72" HEIGHT="72"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

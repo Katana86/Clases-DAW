@@ -1,0 +1,153 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Practica 4</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+</head>
+
+<body>
+
+<h3>Practica 4: Subrutinas (Parte 2)</h3>
+
+<hr>
+
+<p>En esta ocasión, no vamos a tener gráficos divertidos. Como finalización de esta
+primera etapa nos concentraremos en las técnicas básicas de programación, especialmente
+en las subrutinas. En esta practica, en vez de utilizar subrutinas que ya están hechas,
+escribiremos nuevas subrutinas y las emplearemos en los programas.</p>
+
+<p>Para el segundo ejercicio, deberá utilizar cualquiera de los programas ya hechos como
+punto de partida.</p>
+
+<p>Como siempre al final de la practica hay unos ejercicios que deberán ser enviados a su
+tutor (únicamente las personas que hayan contratado <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">Seguimiento</a>).</p>
+
+<hr width="50%">
+
+<h3>Indice de la practica:</h3>
+
+<ul>
+  <li><a href="#SubrutinasSencillas">Algunas subrutinas sencillas</a></li>
+  <li><a href="#ProgramaCompleto">Un programa completo</a></li>
+  <li><a href="#Ejercicios">Ejercicios</a></li>
+</ul>
+
+<hr width="50%">
+
+<h3><a name="SubrutinasSencillas">Algunas subrutinas sencillas</a></h3>
+
+<p>Vamos ha empezar con un pequeño programa que puede abrir o bajarse desde <a
+href="tppmsgs/msgs0.htm#29" tppabs="http://members.nbci.com/elcurso/Practicas/prc4/ThreeNumberCalculator.java">aquí</a>. Por ejemplo, si el usuario teclea &quot;sum 4
+5.6 7.7 el ordenador contestará &quot;La suma de 4, 5.5 y 6.7 es 16.2&quot; . El calculo
+y la presentación se realiza en la subrutina:</p>
+
+<pre>           static void printSum(double x, double y, double z) {
+              double sum;
+              sum = x + y + z;
+              console.putln( &quot;La suma de &quot;  +  x
+                               +  &quot;, &quot;      +  y
+                               +  &quot;, y &quot;  +  z
+                               +  &quot; es &quot;    +  sum );
+           }</pre>
+
+<p>La cuestión es que el programa solo es capaz de realizar la operación de suma (sum).
+Su trabajo será añadirle otras capacidades implementando los siguientes comandos: 
+
+<ul>
+  <li><font color="#808000">mul:</font> Calcular y presentar el resultado del producto de tres
+    números x*y*z</li>
+  <li><font color="#808000">min:</font>Encontrar e imprimir el menor de los tres números</li>
+  <li><font color="#808000">max:</font> Encontrar e imprimir el mayor de los tres números</li>
+  <li><font color="#808000">mid:</font> Encontrar e imprimir el numero que no sea el mayor ni
+    el menos</li>
+</ul>
+
+<p>Escriba subrutinas diferentes para cada una de las operaciones, y llame a estas rutinas
+desde la rutina <tt>main()</tt>. Observe que las tres ultimas operaciones requieren algo
+de trabajo con las instrucciones if</p>
+
+<hr width="50%">
+
+<h3><a name="ProgramaCompleto">Un programa completo</a></h3>
+
+<p>Para el segundo ejercicio de esta practica, deberá escribir una subrutina que devuelva
+valores, y utilizarla en un programa completo.</p>
+
+<p>Si N es un numero entero positivo, puede tener un divisor D entero en el rango
+1&lt;=D&lt;=N. En la teórica, hemos buscado números primos, 0sea los que no tienen mas
+divisores que ellos mismos y el 1, Como puede buscar un numero con una gran cantidad de
+divisores?, Que numero entre el 1 y el 10.000 tiene mayor numero de divisores?, Cuantos
+divisores tiene?. Hay mas de un numero que tenga el mismo numero de divisores?. Su trabajo
+es escribir un programa que encuentre toda esta información.</p>
+
+<p>Deberá escribir primero una subrutina que cuente el numero de divisores que tiene un
+numero entero N. Para ello, N será un parámetro de la subrutina, y la respuesta se
+devolverá por medio del valor de retorno. La interface de la subrutina será:</p>
+<div align="center"><center>
+
+<pre>static int numberOfDivisors(int N)</pre>
+</center></div>
+
+<p align="left">Vaya revisando todos los números desde el 1 al 10000, y tomando el numero
+de divisores de cada uno. Controle cual es el mayor numero de divisores obtenidos, al
+final del proceso, imprima la respuesta.</p>
+
+<p align="left">A continuación, deberá dar el segundo paso imprimiendo también el
+numero (N) entre el 1 y el 10000 que tiene el mayor numero de divisores</p>
+
+<p align="left">Nota: Podrá realizar el programa en una cantidad de tiempo razonable si
+ataca el problema con las siguientes etapas:</p>
+
+<ul>
+  <li><p align="left">Primero escribir la subrutina <tt>numberOfDivisors</tt> y <strong>asegurarse
+    que esa rutina funciona bien</strong>. Para ello puede incluir de forma temporal una
+    instrucción para imprimir el resultado de todos los divisores de N y no únicamente de su
+    contador. Compruebe la rutina con un pequeño programa que únicamente llame a la rutina
+    con un valor pequeño de N (por ejemplo 60) y revise que el resultado sea correcto.</p>
+  </li>
+  <li><p align="left">Escriba el programa que busque números entre 1 y 10, en vez de entre 1
+    y 10000. Haga que el programa imprima el numero de divisores para cada numero, en vez de
+    únicamente el máximo. Asegúrese que todo funciona bien.</p>
+  </li>
+  <li><p align="left">Después de retirar las instrucciones de salida que hemos añadido para
+    las pruebas, compruebe que su programa funciona utilizando como valores máximos 100 y
+    1000.Parece tener sentido el resultado?. Entonces ejecute el programa para todos los
+    números de entre el 1 y el 10000. Observara el importante aumento de tiempo que se
+    produce cuando tiene que procesar todos los numero.</p>
+  </li>
+</ul>
+
+<hr width="50%">
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%"><h3><a name="Ejercicios">Ejercicios para entregar </a></h3>
+    </td>
+    <td width="50%">Esta parte solo la deben enviar aquellos alumnos que han contratado el
+    servicio de <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">seguimiento</a></td>
+  </tr>
+</table>
+
+<p><strong>Ejercicio 1</strong>. Debe enviar el fichero del programa de la calculadora de
+tres números que hemos descrito <a href="#SubrutinasSencillas">anteriormente</a>.
+Asegúrese que sigue las normas de estilo de programación, incluyendo la regla de que
+cada subrutina debe contener los comentarios que describen su contrato.</p>
+
+<p><strong>Ejercicio 2.</strong> Debe enviar el fichero con el programa contador de
+divisores descrito anteriormente. Asegúrese que el estilo de programación es correcto.
+Envíe también en el mismo correo las respuestas a Cual es el mayor numero de divisores
+que tiene un numero de entre el 1 y el 10000 y que numero o números lo producen.</p>
+
+<p><strong>Ejercicio 3. </strong>&quot;Las subrutinas son partes del programa que se
+pueden desarrollar, escribir y probar por separado&quot;. Escriba un pequeño ensayo
+comentando que significa esto, y porque es tan importante.Porque simplifica la
+programación, Que ejemplos ha visto en las practicas (si los ha visto).</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<p align="center"><a href="indice.htm#Practicas" tppabs="http://members.nbci.com/elcurso/indice.htm#Practicas">[Indice de practicas<sup>]</a> <a
+href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm">[Curso</sup>]</a></p>
+</body>
+</html>

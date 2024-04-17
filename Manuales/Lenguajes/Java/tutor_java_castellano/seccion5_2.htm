@@ -1,0 +1,365 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java. Seccion 5.2</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 5.2: El ciclo de vida de un applet</h3>
+
+<hr>
+
+<p>DURANTE EL TIEMPO QUE EXISTE UN APPLET, responde a una serie de eventos que le van
+llegando desde el exterior. Un applet no tiene un &quot;programa <em>main</em>&quot; y no
+puede realizar acciones, ya que no posee iniciativa (.Como veremos mas adelante, sin
+embargo un applet puede crear hebras independientes que pueden correr por separado, de una
+forma muy semejante a un programa). Entonces, el ciclo de vida de un applet esta
+determinado por los eventos que recibe y la forma en que responde a ellos. El sistema
+envía eventos al applet por medio de llamadas que realiza a los métodos del mismo.</p>
+
+<p>En esta sección, veremos algunos de estos eventos y los métodos que se utilizan para
+responder. Todos estos métodos están definidos en la clase <tt>Applet</tt> aunque en la
+versión de esa clase, no hacen nada. Para definir la respuesta de un applet a un evento,
+debe sobregrabar en su subclase&nbsp; el método correspondiente.</p>
+
+<hr width="50%">
+
+<h3>Inicialización y borrado inicial</h3>
+
+<p>Una clase applet para su inicialización, normalmente no emplea un constructor. En
+lugar de eso, justamente después de que se cree el objeto applet, el sistema llama al
+método <tt>init()</tt> del objeto, con el siguiente formato:</p>
+
+<p align="center"><tt>public void init() { . . . }</tt></p>
+
+<p>Este método realiza las tareas normalmente encargadas al constructor, esto es,
+inicializar las instancias de las variables del applet.El método <tt>init()</tt>es
+también el encargado de colocar en su lugar otros componentes como botones, que se le
+quieran añadir al applet. Es el complementario del método <tt>destroy()</tt> que es
+llamado por el sistema justamente antes de que se destruya el objeto applet. El formato de
+llamada es</p>
+
+<p align="center"><tt>public void destroy() { . . . }</tt></p>
+
+<p>Este método se llama para darle al applet la posibilidad de limpiar todas sus
+variables antes de dejar de existir. Dado que Java realiza una limpieza y reorganización
+automática de los restos de memoria, la mayor parte de la limpieza se puede hacer
+automáticamente. Sin embargo hay algunos casos donde puede ser útil el empleo de <tt>destroy()</tt>.
+Por ejemplo es posible que el applet haya creado en la pantalla una ventana independiente,
+entonces puede utilizar el método <tt>destroy()</tt> para cerrar esta ventana antes de
+que finalice el applet.</p>
+
+<p>Un applet también tiene unos métodos <tt>start() y stop()</tt> que tienen roles
+semejantes a los de <tt>init() y destroy()</tt>. La diferencia esta en que mientras que <tt>init()
+y destroy()</tt> son llamados únicamente una vez durante el ciclo de vida, <tt>start() y
+stop()</tt> pueden ser llamados muchas veces. El método <tt>start()</tt> es llamado una
+vez cuando el objeto es creado por primera vez, y justo a continuación de la llamada al
+método <tt>init()</tt>. El sistema puede decidir parar el applet con una llamada al
+método <tt>stop()</tt>, y volver a ponerlo en marcha mas tarde por medio de una llamada
+al método <tt>start()</tt>.Por ejemplo, normalmente un navegador detiene el applet cuando
+el usuario abandona la pagina en la que esta displayado el applet y lo vuelve a arrancar
+en caso de que el usuario vuelva a esa pagina. El método <tt>stop()</tt> será llamado
+como mínimo una ve, justamente antes de destruir el applet, y un applet que reciba la
+orden de parada, deberá quedar detenido ignorando cualquier evento hasta que no reciba
+una orden de continuar. Los métodos <tt>start() y stop()</tt> toman la forma </p>
+
+<p align="center"><tt>public void start() { . . . }</tt></p>
+
+<p>y</p>
+
+<p align="center"><tt>public void stop() { . . . }</tt></p>
+
+<p>No siempre será correcto que la limpieza y la carga inicial se deba realizar en el <tt>init()</tt>
+y no durante el <tt>start()</tt>.Las cosas que solo se deban realizar una ves, lo lógico
+es que se encuentren en el <tt>init()</tt>. Sin embargo, si el applet emplea una gran
+cantidad de recursos del ordenador como por ejemplo memoria, puede que sea razonable el
+asignar esos recurso en el método <tt>start()</tt> y liberarlos en el método <tt>stop(),
+</tt>a fin de que el applet no este bloqueando los recurso mientras que no este
+funcionando. Por otra parte, hay veces que es eso es imposible porque el applet necesita
+retener los recursos durante todo su ciclo de vida. Veremos algunos ejemplos del uso de <tt>start()
+y stop()</tt> en el siguiente capítulo.</p>
+
+<hr width="50%">
+
+<h3>Eventos de ratón</h3>
+
+<p>El usuario puede interactuar con el applet moviendo el ratón, pulsando los botones del
+ratón y pulsando teclas en el teclado. El applet recibe noticias de una gran cantidad de
+los eventos relacionados con las acciones del usuario hasta el punto que para el
+movimiento del ratón, el sistema llama a los siguientes métodos:</p>
+
+<p>&nbsp;</p>
+
+<pre>      public boolean mouseEnter(Event evt, int x, int y) {
+         . . . // respuesta cuando el ratón entra en el rectangulo
+         return true;
+      }
+      public boolean mouseExit(Event evt, int x, int y) {
+         . . . //respuesta si el ratón sale del rectangulo
+         return true;
+      }
+      public boolean mouseDown(Event evt, int x, int y) {
+         . . . // respuesta si el usuario ha pulsado un boton
+         return true;
+      }
+      public boolean mouseUp(Event evt, int x, int y) {
+         . . . // respuesta si el usuario ha soltado el boton
+         return true;
+      }
+      public boolean mouseDrag(Event evt, int x, int y) {
+         . . . // respuesta si el raton se ha movido mientras
+               //   el usuario mantenia pulsado el boton
+         return true;
+      }
+      public boolean mouseMove(Event evt, int x, int y) {
+         . . . // respuesta si el ratón se ha movido mientras
+               //   el usuario <strong>NO</strong> tenia pulsado el boton
+         return true;
+      }</pre>
+
+<p>Como puede ver, si simplemente mueve el ratón a través del applet, el sistema llama a
+<tt>mouseEnter()</tt> tan pronto como el ratón entre en el applet, Si el ratón se mueve,
+el sistema llamara a <tt>mouseMove()</tt> una y otra vez. Exactamente tan a menudo como el
+sistema pueda comprobar la posición del ratón para ver si se ha movido dependiendo de la
+implementacion de Java que tenga y de lo ocupado que este el sistema haciendo otras cosas,
+por lo que no puede estar seguro de cuantas veces se llamará a <tt>mouseMove()</tt>. (En
+particular, puede estar bastante seguro que no se llamara una vez por cada pixel que
+recorra).</p>
+
+<p>Si el usuario pulsa un botón del ratón en alguna parte del rectángulo ocupado por el
+applet, el sistema primero llamara al método <tt>mouseDown()</tt> cuando el usuario pulse
+el botón, y llamara al método <tt>mouseUp()</tt>cuando el usuario lo suelte. Si el
+usuario mueve el ratón mientras el botón estaba presionado, entonces el sistema llamara
+al método <tt>mouseDrag()</tt>una y otra vez mientras se este moviendo el ratón.</p>
+
+<p>En todos estos métodos, el parámetro <tt>x </tt>y el parámetro <tt>y</tt> definen la
+posición horizontal y vertical del ratón en las coordenadas apropiadas del applet. El
+parámetro <tt>x</tt> mide la distancia horizontal, en pixeles, desde el borde izquierdo
+del applet, mientras que el <tt>y</tt> mide la distancia vertical desde el borde superior.
+Puede usar esa información para saber donde ha pulsado el usuario y seguir el movimiento
+del ratón.</p>
+
+<p>El parámetro <tt>evt</tt> aporta toda la información acerca del evento que ha
+provocado la llamada al método.(Incluso contiene copias de <tt>x</tt> y de <tt>y</tt>,
+aunque se han dejado separadas para su mayor comodidad.) Por ejemplo, hay una instancia de
+una variable publica llamada <tt>clickcount</tt> que puede emplear en el método <tt>mouseDown()</tt>
+para comprobar el doble clic. Exactamente comprobando si (<tt>evt.clickcount == 2</tt>).</p>
+
+<p>También puede comprobar si el usuario tenia pulsada la tecla shift o la tecla control
+mientras se producía el evento. La clase <tt>Event</tt> incluye una instancia del método
+llamado <tt>shiftDown()</tt> y otro método llamado <tt>controlDown()</tt> que se pueden
+emplear para comprobar esas teclas. Estos métodos devuelven valores boleanos por lo que
+solo debe comprobar <tt>if (evt.shifDown())</tt> o <tt>if (evt.controlDown())</tt>.</p>
+
+<p>La tecla META (en Macintosh, la tecla de comando) trabaja de la misma forma. Puede
+emplear <tt>evt.metaDown()</tt> para comprobar si el usuario ha mantenido pulsada la tecla
+META. Sin embargo, en ordenadores en los que el ratón&nbsp; tiene dos o tres botones, el <tt>evt.metaDown()</tt>
+puede emplearse para diferenciar entre el botón derecho y el izquierdo del ratón en los
+métodos <tt>mouseDown()</tt>, <tt>mouseUp</tt> y <tt>mouseDrag()</tt>. El botón derecho
+genera un evento en el que <tt>metaDown()</tt> es <tt>true</tt> tanto si el usuario esta
+pulsando la tecla META como si no. Estas cosas son las que permiten que que un mismo
+programa pueda funcionar en distintas plataformas con diferentes tipos de ratones. (El
+botón central del ratón se simula usando la tecla ALT, pero por algunas razones, no
+existe un método <em>altDown()</em>. Para comprobar si la tecla ALT esta pulsada, tiene
+que decir &quot;<tt>if ((evt.modifiers &amp; Event.ALT_MASK) != 0)&quot; )</tt></p>
+
+<p>A continuación les presento un applet muy sencillo que presenta las coordenadas del
+ratón mientras lo vaya moviendo dentro del applet.</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>import java.awt.*;
+import java.applet.*;
+
+public class SimpleTrackMouse extends Applet {
+
+   int mouse_x, mouse_y;  // coordenadas del ratón
+   String modifierKeys = &quot;&quot;;  // teclas especiales que pueden 
+			     // estar pulsadas
+   Color displayColor = Color.black;
+   
+   public void init() {   // quiero el fondo blanco
+      setBackground(Color.white);
+   }
+   
+   public void paint(Graphics g) {
+      int w = size().width;  // Tomo la anchura del applet
+      int h = size().height; // tomo la altura del applet
+      g.setColor(Color.blue);
+      g.drawRect(0,0,w-1,h-1);  // dibujo un cuadro alrededor
+      g.setColor(Color.black);
+      g.drawString(modifierKeys, 4, 20);
+      g.setColor(displayColor);
+      g.drawString(&quot;(&quot; + mouse_x + &quot;,&quot; + mouse_y + &quot;)&quot;,
+           mouse_x, mouse_y);
+   }  // fin de paint()
+   
+   void setInfo(Event evt, int x, int y) {
+         // establezco la información a presentar
+      mouse_x = x;
+      mouse_y = y;
+      modifierKeys = &quot;&quot;;
+      if (evt.shiftDown())
+         modifierKeys += &quot;Shift &quot;;
+      if (evt.controlDown())
+         modifierKeys += &quot;Control &quot;;
+      if (evt.metaDown())
+         modifierKeys += &quot;META &quot;;
+      if ((evt.modifiers &amp; Event.ALT_MASK) != 0)
+         modifierKeys += &quot;ALT &quot;;
+   }
+   
+   public boolean mouseMove(Event evt, int x, int y) {
+      setInfo(evt, x, y);
+      displayColor = Color.black;
+      repaint();
+      return true;
+   }
+   
+   public boolean mouseDrag(Event evt, int x, int y) {
+      setInfo(evt, x, y);
+      displayColor = Color.red;  //rojo si el ratón esta pulsado
+      repaint();
+      return true;
+   }
+   
+}  //fin de la clase SimpleMouseTracker
+</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p align="left">Este applet presenta las coordenadas de la posición del ratón. Indica
+con un cambio de color cuando se mueve el ratón o se arrastra. Si el usuario pulsa una
+tecla especial, el hecho se informa en la esquina superior izquierda del applet. Pruebe de
+mover el ratón sobre el applet</p>
+
+<p align="center">
+<applet code="SimpleTrackMouse.class" tppabs="http://members.nbci.com/elcurso/Capitulo5/SimpleTrackMouse.class" height="199" width="349">
+
+<p><font color="#E70000">Lo siento pero su navegador<br>
+dno soporta Java</font></p>
+</applet>
+</p>
+
+<p align="left">&nbsp;</p>
+
+<hr width="50%">
+
+<h3>Eventos de teclado</h3>
+
+<p>Cada vez que el usuario pulsa una tecla del teclado, se generan dos eventos: uno cuando
+el usuario pulsa la tecla, otro cuando el usuario la libera. Un applet puede ser
+programado para responder a cada uno de esos eventos sobregrabando los métodos <tt>keyDown()</tt>
+y <tt>keyUp()</tt>. Sobregrabe el método <tt>keyDown()</tt> si quiere que el applet
+responda cuando el usuario teclee algo. Probablemente nunca necesitara sobregrabar el
+método <tt>keyUp()(</tt>Descubrirá de inmediato que controlar los eventos de teclado en
+un applet es extremadamente raro, dado que el control del teclado se realiza
+automáticamente en los componentes predefinidos como las cajas de texto).</p>
+
+<p>Los manejadores de eventos para el teclado son los siguientes: </p>
+
+<pre>       public void keyDown(Event evt, int key) {
+          . . . // respuesta cuando se pulsa una tecla
+          return true;
+       }
+       public void keyUp(Event evt, int key) {
+          . . . // respuesta cuando se libera una tecla
+          return true;
+       }</pre>
+
+<p>En estos métodos, el parámetro <tt>key</tt> indica que tecla ha pulsado el usuario.
+Puede que se sorprenderá al descubrir que este parámetro es del tipo <tt>int</tt> en vez
+de ser del tipo <tt>char</tt>. Esto es porque no son caracteres lo único que el usuario
+puede teclear. El usuario también puede pulsar teclas de acción como las flechas o las
+teclas de función F1, F2, ...</p>
+
+<p>SI el usuario teclea realmente un carácter, entonces el parámetro <tt>key</tt>
+contiene realmente el carácter tecleado. Dado que <tt>key</tt> es de tipo <tt>int</tt>
+deberá convertir el tipo para descubrir que carácter se ha pulsado:</p>
+
+<p align="center"><tt>char typedChar = (char)key;</tt></p>
+
+<p>Si el usuario pulsa una de las teclas de acción, entonces el valor del parámetro <tt>key</tt>
+será el de unas constantes que especifican que tecla se ha pulsado. El valor puede ser
+uno de los siguientes, predefinidos por constantes:<tt>Event.UP</tt>, <tt>Event.DOWN</tt>,
+<tt>Event.LEFT</tt>, <tt>Event.RIGHT</tt>, <tt>Event.HOME</tt>, <tt>Event.END</tt>, <tt>Event.PGUP</tt>,
+<tt>Event.PGDN</tt>, o <tt>Event.F1</tt> a&nbsp; <tt>Event.F12</tt>. Las primeras cuatro,
+que son las que probablemente usara mas, corresponden a flecha arriba, abajo, a izquierda
+y a derecha.</p>
+
+<p>Hay aun otro problema mas cuando trabajamos con eventos de teclado: Está la pregunta
+de quien debe procesar los eventos cuando están ocurriendo. Puede que en la misma pagina
+de navegador Web haya mas de un applet, por ejemplo. Cuando el usuario teclee, solo uno de
+los applet puede recibir los eventos de teclado ( y de hecho, los eventos de teclado
+también pueden ir dirigidos a la misma pagina Web). Decimos entonces, que el sistema
+enviará los eventos de teclado al objeto que tenga en ese momento el foco. Java
+proporciona tres métodos para trabajar con el control del foco. Un applet puede llamar al
+método <tt>requestFocus()</tt> si quiere conseguir tener el foco.(Esto no significa que
+lo consiga, el sistema puede rechazar la solicitud). El sistema puede llamar a los
+métodos del applet <tt>gotFocus() y lostFocus()</tt> para permitir que el applet conozca
+cuando esta y cuando pierde el foco, y pueda responder a estas situaciones.</p>
+
+<hr width="50%">
+
+<h3>Eventos de acción y otros eventos</h3>
+
+<p>Además de los eventos del teclado y del ratón, hay otros eventos que se generan
+cuando el usuario interactua con los componentes del interface gráfico como botones,
+menús y cajas de texto. (El usuario realmente provoca estos otros eventos con el teclado
+o con el ratón, sin embargo, el sistema los traslada a elementos mas comprensibles). Para
+muchos de estos eventos, el sistema llama al método <tt>action()</tt> con el siguiente
+formato</p>
+
+<pre>       public boolean action(Event evt, Object arg) {
+          . . . // responder a la acción del evento
+          return true;  // o responder falso si la acción no se maneja
+       }</pre>
+
+<p>Este método se llama cuando el usuario pulsa un botón, marca un <em>checkbox</em>,
+realiza una doble pulsación en un elemento de una lista, pulsa la tecla
+&quot;Retorno&quot; mientras esta tecleando un texto en un campo de entrada, o selecciona
+un elemento de un menú o de un menú&nbsp; <em>pop-up</em> (Botones, checkbox, y todo lo
+demás, son componentes de la interface gráfica del usuario y que son realmente objetos
+que pertenecen a las clases <tt>Button</tt>, <tt>Checkbox</tt>, <tt>List</tt>, <tt>TextField</tt>,
+<tt>Menú</tt>, o <tt>Choice</tt>.)</p>
+
+<p>Hay algunas cosas mas que decir acerca de los eventos de acción y que veremos en el
+siguiente capítulo cuando hablemos de varios componentes GUI.</p>
+
+<p>A pesar de eso, aun quedan mas eventos, y hay aun otro método que deberá sobregrabar
+si quiere tratarlos. Es el manejador de eventos mas general llamado <tt>handleEvent()</tt>
+y tiene la forma:</p>
+
+<pre>        public boolean handleEvent(Event evt) {
+           . . . // tratar el evento
+           return true;  // o devolver super.handleEvent(Evt), 
+                         //       si el evento no se trata
+        }</pre>
+
+<p>Tengo que ser honesto y decirle que cuando en esta sección&nbsp; digo que el sistema
+llama a métodos como <tt>mouseDown()</tt> y <tt>action()</tt> estoy mintiendo. De hecho
+el sistema únicamente llama&nbsp; a <tt>handleEvent()</tt> y es él el que va llamando al
+método apropiado&nbsp; de entre los&nbsp; métodos manejadores de eventos especializados
+según el evento ocurrido. Algunos eventos, como los que se relacionan con algunos
+componentes GUI, no tienen un manejador de eventos especializado. Si quiere responder a
+todos los eventos, deberá sobregrabar el método <tt>handleEvent()</tt> mismo. En el
+siguiente capitulo, presento algunos eventos de este tipo.</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="seccion5_1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_1.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice5.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/indice5.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion5_3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_3.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

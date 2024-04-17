@@ -1,0 +1,307 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 8.2</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<p>&nbsp;</p>
+
+<h3>Sección 8.2: Streams</h3>
+
+<hr width="50%">
+
+<p>SIN LA POSIBILIDAD DE INTERACTUAR CON EL RESTO DEL MUNDO, los programas serian
+inútiles. Esta interacción se refiere a los sistemas de entrada/salida o I/O.
+Históricamente, una de las partes mas duras en el diseño de un lenguaje de programación
+era ver como se podía hacer mas fácil el sistema de entrada/salida. A un ordenador se le
+pueden conectar una gran variedad de dispositivos de I/O. Si el lenguaje de programación
+se tiene que preocupar de tratar cada uno de estos dispositivos de una forma especial, la
+complejidad seria inmensa y las sentencias inacabables. Uno de los mayores éxitos en la
+historia de la programación fue el encontrar un buen sistema de abstracción para
+representar los dispositivos de I/O. En Java, la abstracción de la entrada/salida se
+llama <font color="#808000">streams</font>. Esta sección es una introducción a los <em>Streams,</em>
+pero debemos aclarar que no cubrimos completamente el tema. Vea la documentación oficial
+de Java para mas información (próximamente en castellano en esta misma web). También
+podrá observar que que algunos temas bastante importantes sobre los <em>Streams</em> de
+aplazan para ser tratados en las dos secciones siguientes de este mismo capítulo, en
+donde realmente se podrán emplear.</p>
+
+<p>Existen dos tipos de <em>Streams</em>, la de entrada y la de salida. En Java estas dos
+corrientes están representadas por las clases <tt>InputStream</tt> y <tt>OutputStream</tt>.
+Un programa puede leer datos desde <tt>Inputstream</tt>. Y puede grabar datos en <tt>OutputStream</tt>.
+Cada una de estas clases tienen varias subclases para facilitar las distintas formas de
+I/O. Las clases de <em>stream</em> están definidas en el paquete java.io. Si quiere
+utilizar estas clases en sus programas, primero las debe importar.</p>
+
+<p>Los <em>Streams</em> no se emplean en la interface gráfica del usuario de Java ya que
+tienen su formato de I/O propio. Sin embargo, son necesarios para trabajar con ficheros
+(usando las clases <tt>FileInputStream</tt> y <tt>FileOutputStream)</tt> y para realizar
+comunicaciones sobre redes. También se pueden usar para establecer comunicaciones entre
+dos hebras que están funcionando a la vez.</p>
+
+<p>En paquete estándar Java incluye&nbsp; una <em>stream de </em>entrada estándar y una <em>stream</em>
+de salida estándar, que son la forma básica de comunicación con el usuario. (De hecho,
+la definición apropiada de &quot;usuario&quot; es: <strong>Un dispositivo de
+entrada/salida particularmente lento e impredecible que esta conectado por defecto a los <em>Streams</em>
+estándares de entrada/salida</strong>) Estos <em>Streams</em> estándares son objetos
+pertenecientes a las clases <tt>InputStream</tt> y <tt>PrintStream</tt>. Esta ultima es
+una subclase de <tt>OutputStream.</tt> Los objetos <em>Streams</em> estándares se
+referencian mediante las variables <tt>static</tt> llamadas <tt>System.in</tt> y <tt>System.out</tt>
+de la clase <tt>java.lang.System</tt>. Ya hemos estado viendo métodos pertenecientes al
+objeto <tt>System.out</tt> cuando ha tenido que presentar información al usuario. De
+forma similar, <tt>System.in</tt> ha estado siendo utilizado para leer los caracteres
+tecleados por el usuario.</p>
+
+<p>La belleza de la abstracción <em>stream</em> es que es tan fácil escribir datos en un
+fichero o mandar datos por la red como imprimir información en la pantalla. De hecho,
+puede emplear los objetos <tt>PrintStream</tt> en los tres casos y usar un método tan
+simple como el <tt>println().</tt></p>
+
+<hr width="50%">
+
+<p>Las clases básicas <tt>InputStream</tt> y <tt>OutputStream</tt> facilitan solo las
+operaciones de I/o mas sencillas, que contemplan los datos como cadenas de bytes sin
+interpretar. <tt>InputStream</tt> incluye el método instanciable</p>
+
+<pre>                Public int read() throws IOException</pre>
+
+<p>para leer un byte de datos ( un numero en el rango de 0 a 255) desde el dispositivo de
+entrada. Si se encuentra el final del dispositivo de entrada, el método <tt>read()</tt>
+devuelve el valor -1. En el caso de que los datos que se están leyendo con caracteres de
+texto ASCII, el valor devuelto debe ser formateado a tipo <tt>char</tt> (como puede
+suponer, primero se deberá asegurar que el valor devuelto no es -1).<tt> InputStream</tt>
+no proporciona ningún método adecuado para leer otros tipos de datos. Observe que <tt>read()</tt>
+puede generar una <tt>IOException</tt> si encuentra algún error durante la operación de
+lectura. Dado que <tt>IOException</tt> es una de las clases de excepción que requiere
+tratamiento de errores obligatorio, significa que no puede usar este método a menos que
+lo haga dentro de una instrucción <tt>try</tt> o en una subrutina que se declare ella
+misma con la cláusula &quot;<tt>throws IOException&quot;</tt>.</p>
+
+<p>La salida primitiva facilitada por la clase <tt>OutputStream</tt> es </p>
+
+<pre>		public void write(int b) throws IOException</pre>
+
+<p>Este método envía un byte de datos al dispositivo de salida. El parámetro debe ser
+un entero en el rango de 0 a 255. ( Para ser mas exacto, no importa el valor de <tt>b</tt>,
+solo se envían a la salida los 8 bits últimos de los 32 bit que componen un <tt>int</tt>.)</p>
+
+<p>Probablemente solo empleara estos primitivos métodos de entrada/salida en contadas
+ocasiones (aunque el método <tt>read()</tt> vale la pena usarlo en bastantes casos). En
+realidad, no puede crear directamente instancias de las clases <tt>InputStream</tt> y <tt>OutputStream</tt>
+dado que son clases abstractas.</p>
+
+<p>Las subclases de las dos clases básicas disponen de métodos de I/O mucho mas útiles.
+Una de las cosas que tiene muy bien resueltas el paquete de I/O de Java es el permitir
+añadir capacidades de <em>stream</em>, enlazando con otro objeto que disponga de esas
+capacidades. El objeto enlazado de considera también un dispositivo <em>stream</em> por
+lo que se puede leer o escribir en el, pero lo podrá hacer de una forma mucho mas
+elegante y sencilla que la disponible en el dispositivo básico. Los objetos que pueden
+utilizarse para enlazarse de esta forma, pertenecen a las clases <tt>FilterInputStream</tt><font face="m"> </font>o<font face="m"> <tt>FilterOutputStream</tt></font>&nbsp; Para escribir
+nuevas subclases de esas clases, puede realizar sus propios filtros de I/O para conseguir
+un estilo de entrada/salida determinado.</p>
+
+<p>Por ejemplo, <tt>PrintStream</tt> es una subclase de <tt>FilterOutputStream</tt> que
+facilita los métodos adecuados para imprimir representaciones de texto ASCII de todos los
+tipos básicos de Java. Si tiene un objeto perteneciente a la clase <tt>OutputStream</tt>
+o a cualquiera de sus subclases, y quiere emplear los métodos de <tt>PrintStream</tt>
+para escribir en <tt>OutputStream</tt>, todo lo que tiene que hacer es enlazar <tt>OutputStream</tt>
+con el objeto<tt> PrintStream</tt>. Puede hacerlo construyendo un nuevo objeto <tt>PrintStream,
+</tt>utilizando<tt> OutputStream</tt> como entrada del constructor. Por ejemplo, si <tt>dataSink</tt>
+es del tipo <tt>OutputStream</tt> puede decir:</p>
+
+<pre>	PrintStream printableDataSink = new PrintStream(dataSink);</pre>
+
+<p>Cuando envíe datos a <tt>printableDataSink</tt> utilizando los métodos de salida de <tt>PrintStream</tt>
+, estos datos irán exactamente al mismo lugar que si se hubieran escrito directamente en <tt>dataSink</tt>.
+Lo que ha conseguido es mejorar la interface para el mismo dispositivo de salida.</p>
+
+<p>Como información, los métodos de salida de la clase <tt>PrintStream</tt> incluyen:</p>
+
+<pre>       public void print(String s)   // métodos para sacar
+       public void print(char c)     //    tipos de datos estándar
+       public void print(int i)      //    en el dispositivo
+       public void print(long l)
+       public void print(float f)
+       public void print(double d)
+       public void print(boolean b)
+       
+       public void println()   // manda un retorno de carro al dispositivo
+       
+       public void println(String s)    // estos métodos son idénticos
+       public void println(char c)      //    al juego anterior 
+       public void println(int i)       //    excepto que el valor de
+       public void println(long l)      //    salida es seguido por
+       public void println(float f)     //  un retorno de carro
+       public void println(double d
+       public void println(boolean b)</pre>
+
+<p>Observe que ninguno de estos métodos pueden generar <tt>IOException</tt>.&nbsp; EN su
+lugar, la clase <tt>PrintStream</tt> incluye el método</p>
+
+<pre>	public boolean checkError()</pre>
+
+<p>Que devuelve <tt>true</tt> si se encuentra cualquier error mientras esta escribiendo en
+el dispositivo. La clase <tt>PrintStream</tt> captura internamente todos los <tt>IOException</tt>
+y activa un flag interno de indicador de error cuando ocurre. El método <tt>checkError()</tt>
+puede usarse para comprobar el indicador de error. Esto permite emplear el método <tt>PrintStream</tt>
+sin tener que preocuparse acerca de capturar las excepciones.Por otra parte, para escribir
+un programa robusto,&nbsp; cada vez que se utilice un método de<tt> PrintStream </tt>debe
+llamarse a <tt>CheckError()</tt> para comprobar posibles errores.</p>
+
+<hr width="50%">
+
+<p>Quizás se pregunte el porque no se ha incluido en la clase <tt>OutputStream</tt> los
+métodos aportados por <tt>PrintStream</tt>. La razón es que <tt>PrintStream</tt> realiza
+una asunción muy grande: el dispositivo de salida es leíble por humanos. Los métodos de
+<tt>PrintStream</tt> convierten las representaciones internas de datos binarios, en
+representaciones de textos ASCII que son interpretables por lectores humanos. Sin embargo,
+si los datos de salida están pensados para ser leídos por el ordenador, el ordenador
+debe volver a convertir los datos a formato interno. Estas conversiones entre formato
+interno y ASCII son antieconómicas e ineficientes para datos que nunca van a ser leídos
+por humanos. De hecho, la mayoría de ficheros están escritos en formatos que no son
+legibles por humanos. Estos ficheros son verdaderos galimatías si los intenta leer
+interpretándolos como si fueran ASCII.. Dado que la mayoría de dispositivos no van a
+usar los datos en formato de texto ASCII, en las clases estándar de los dispositivos de
+I/O, no se han incluido los métodos que trabajan con estas representación.</p>
+
+<p>El paquete java.io incluye una clase, <tt>DataOutputStream</tt> que se puede emplear
+para escribir datos en formato interno sobre dispositivos. Proporciona los métodos para
+sacar todos los tipos básicos de Java en formato legible por maquinas. Así como <tt>PrintStream</tt>,
+puede enlazar cualquier <tt>OutputStream</tt> con un objeto <tt>DataOutputStream</tt>.
+Esto permite escribir en <tt>OutputStream, </tt>datos legibles por una maquina.</p>
+
+<p>Para las entradas de datos legibles por maquina, <tt>java.io</tt> dispone de la clase <tt>DataInputStream.</tt>Puede
+enlazar cualquier <tt>InputStream</tt> con un objeto <tt>DataInputStream</tt> para
+proporcionar una entrada de datos capaz de leer caracteres código maquina. Los sistemas
+garantizan que los datos grabados por <tt>DataOutputStream</tt> pueden ser leídos por <tt>DataInputStream</tt>
+y viceversa. Esto se cumple incluso si las cadenas de datos se crean en un tipo de
+ordenador y es leído en otro tipo distinto . La compatibilidad entre distintas
+plataformas es una de las mayores características de Java en su independencia de las
+plataformas.</p>
+
+<p>A pesar de todo, aun quedan muchas ocasiones en que la I/O se realiza en formato de
+texto ASCII. Viendo esto, es sorprendente que Java no proporcione una clase de dispositivo
+estándar que pueda leer datos en formato de texto ASCII sobre todo teniendo en cuenta que
+la capacidad de salida de ASCII esta solucionada por <tt>PrintStream</tt>.
+Afortunadamente, la naturaleza orientada a objetos de Java, hace posible escribir una
+clase que realice esa función y emplearla exactamente igual que si formara parte de la
+estructura estándar del lenguaje.</p>
+
+<p>He escrito una clase llamada <tt>AsciiInputStream</tt> que contienen todo lo necesario
+para permitir una entrada de texto en formato ASCII. El <a href="tppmsgs/msgs0.htm#83" tppabs="http://members.nbci.com/elcurso/fuentes/AsciiInputStream.java">código fuente</a> para esta clase esta disponible
+para su lectura. La clase <tt>AsciiInputStream</tt> es una subclase de <tt>FilterInputStream</tt>,
+lo que significa que puede utilizarla enlazada con cualquier otro dispositivo de entrada.
+El constructor</p>
+
+<pre>	public AsciiInputStream(InputStream dataSource)</pre>
+
+<p>Crea un objeto que puede ser usado para leer datos desde cualquier <tt>InputStream,dataSource</tt>
+empleando el conveniente método de entrada de la clase<tt> AsciiInputStream.</tt> Estos
+métodos incluyen::</p>
+
+<pre>       public char peek()     // Ver el siguiente carácter en la entrada,
+                              //     sin borrarlo del dispositivo.Si se han
+                              //     leído ya todos los caracteres 
+                              //     , entonces de devuelve  '\0'
+                              //     Si el siguiente carácter de la
+                              //     cadena es un retorno de carro, 
+                              //     entonces se devuelve '\n'
+                              
+       public void skipWhiteSpace() //Lee y descarta caracteres no validos
+                                    //   (espacios, retornos de carro, tab) 
+                                    //   Hasta encontrar un carácter valido  
+
+       public boolean eoln()  //Descarta espacios y tabs de la cadena,
+                              //    y comprueba si el siguiente carácter
+                              //     es el fin de línea (o el final
+                              //     de los datos del dispositivo).
+                              
+       public boolean eof()   // Descarta caracteres no validos, y
+                              //     devuelve true si se han leído
+                              //    todos los caracteres de la cadena
+
+       public char readChar()       // Estas rutinas leen valores
+       public byte readByte()       //   del tipo indicado,en cada caso
+       public short readShort()     //   se ignoraran los caracteres no
+       public int readInt()         //   validos antes de intentar leer
+       public long readLong()       //   el valor del tipo indicado.
+       public float readFloat()     //  Se considera error si no esta 
+       public double readDouble()   //   el valor del tipo correcto. Para
+       public String readWord()     // la rutina readWord(),se considera
+       public boolean readBoolean() //una palabra cualquier string de
+                                    //car.no-blancos.Para readBoolean(),
+                                    //la entrada puede ser:
+                                    // &quot;true&quot;, &quot;false&quot;, &quot;t&quot;, &quot;f&quot;, &quot;yes&quot;,
+                                    // &quot;no&quot;, &quot;y&quot;, &quot;n&quot;, &quot;1&quot;, or &quot;0&quot;, 
+				    // ignorando mayusculas y minúsculas.
+       
+       public String getln();       // Lee caracteres hasta el fin de
+                                    //   línea. Lee y descarta
+                                    //   el retorno de carro
+                                    //   Tenga en cuenta que esta
+                                    //   rutina no descarta blancos
+                                    //   y que puede devolver una
+                                    //   string vacía
+       
+       public char getlnChar();     // Estas rutinas se facilitan
+       public byte getlnByte();     // por comodidad.  Son equivalentes
+       public short getlnShort();   //  a las rutina anteriores
+       public int getlnInt();       //  pero después de leer el valor
+       public long getlnLong();     // solicitado, se continua descartando 
+       public float getlnFloat();   // todos los caracteres de la línea
+       public double getlnDouble(); // 
+       public String getlnString();
+       public boolean getlnBoolean();</pre>
+
+<p>Si quiere utilizar estos comandos don el dispositivo de entrada estándar, debe enlazar
+<tt>System.in</tt> y un objeto del tipo <tt>AsciiInputStream</tt> como este:</p>
+
+<pre>	AsciiInpuStream in = new AsciiInputStream(System.in);</pre>
+
+<p>Puede utilizar <tt>in.getInt()</tt> para leer un numero entero desde la entrada
+estándar, <tt>in.getBoolean()</tt> para leer un valor Booleano, y así sucesivamente. De
+forma similar, puede leer datos ASCII desde un fichero y desde conexiones de red enlazando
+el dispositivo de entrada de estos objetos con&nbsp; <tt>AsciiInputStream.</tt></p>
+
+<p>La pregunta que queda pendiente es ¿Que pasa cuando ocurre un error mientras están
+funcionando una de estas rutinas?. Por defecto la rutina puede generar una excepción
+perteneciente a la clase <tt>AsciiInputException</tt> que he creado con subclase de la
+clase <tt>RuntimeException</tt>. ( Recuerde que no debe utilizar <tt>try</tt> y <tt>catch</tt>
+para tratar <tt>RuntimeExcception</tt>, sin embargo, si ocurre un error y no se captura,
+el programa caerá.). Aunque también, puede desconectar ese comportamiento llamando al
+método </p>
+
+<pre>	public void checkIO(boolean throwExceptions)</pre>
+
+<p>son el parámetro establecido a <tt>false</tt>. En este caso, cuando durante las
+entradas ocurre un error, no se genera ninguna excepción. En su lugar, se activa un
+indicador de error interno y el programa continua. Si utiliza esa opción, es su
+responsabilidad el comprobar los errores después de cada operación. Lo puede hacer con
+el método:</p>
+
+<pre>	public boolean checkError()</pre>
+
+<p>Este método devuelve si la ultima operación realizada por<tt> AsciiInputStream</tt>
+detecto un error y devuelve <tt>false</tt> si la ultima operación se completo con éxito.
+Probablemente es mejor, y se puede conseguir un programa mucho mas robusto, si se captura
+y trata las excepciones que si estamos continuamente comprobando si se ha producido un
+error. Teniendo disponibles las dos opciones, puede experimentar cual de los dos estilos
+de tratamiento de error prefiere.</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="sección8_1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo8/secci%f3n8_1.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice8.htm" tppabs="http://members.nbci.com/elcurso/Capitulo8/indice8.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion8_3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo8/seccion8_3.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

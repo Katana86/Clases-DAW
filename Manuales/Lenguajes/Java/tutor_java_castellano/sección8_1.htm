@@ -1,0 +1,314 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java.Sección 8.1</title>
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 8.1: Excepciones, <tt>try</tt>, y <tt>catch</tt>.</h3>
+
+<hr width="50%">
+
+<p>NORMALMENTE ES MUY FACIL HACER PROGRAMAS robustos, si estos van a trabajar en
+circunstancias ideales. Definimos como programa robusto aquel que es capaz de sobrevivir a
+situaciones inusuales o &quot;excepcionales&quot; sin abortar. Por ejemplo, un programa
+que deba calcular la raíz cuadrada de un número, abortara si intenta calcular la de un
+numero negativo. Un programa robusto debe anticiparse a la posibilidad de que el numero
+sea negativo y protegerse ante ello. Esto se podría hacer con la siguiente instrucción <tt>if</tt>:</p>
+
+<pre>      if (disc &gt;= 0) {
+         r = Math.sqrt(disc);  // Dado que disc &gt;= 0, esto es correcto
+      }
+      else {
+         ...  // controlar y avisar que el valor es &lt; 0
+      }</pre>
+
+<p>Podemos decir que la instrucción <tt>&quot;r = Math.sqrt(disc);&quot;</tt> tiene como
+precondicion que <tt>disc &gt;=0</tt>. La precondicion es una condición es una condición
+que se debe cumplir en un determinado punto del programa para que el programa pueda
+continuar funcionando sin errores y entregue un resultado correcto. Una aproximación para
+escribir un programa robusto, es aplicar rigurosamente la regla &quot; Identifique para
+cada paso del programa una precondicion, y asegúrese que se cumple&quot; debiendo emplear
+la instrucción <tt>if</tt> para comprobar que es cierta, o verificando que la
+precondicion requerida es una consecuencia de algo que ya ha realizado el programa. Un
+ejemplo de esto ultimo se presenta en las siguientes instrucciones:</p>
+
+<pre>        x = Math.abs(x);
+           // En este punto, <strong>se</strong> que x &gt;= 0, porque el valor
+           // absoluto de un numero, por definición es &gt;= 0
+        y = Math.sqrt(x);  // Ya que x &gt;= 0,esto será correcto</pre>
+
+<p>Hay algunos problemas para seguir esta estrategia. Es difícil, y aveces imposible el
+anticiparse a todas las posibles causas de error. Además, intentar anticiparse a todos
+los problemas posibles, puede transformar un programa que hubiera podido ser sencillo y
+claro en una embrollada colección de instrucciones <tt>if</tt>.</p>
+
+<p>Java (Como su primo C++)&nbsp; proporciona unos métodos cuidadosamente estructurados
+para enfrentarse a los posibles errores en el momento en que ocurran. Estos métodos son
+conocidos como <font color="#808000">tratamiento de excepciones</font>. La palabra
+excepción, en este caso significa también &quot;error&quot; y viene a incluir cualquier
+circunstancia que aparezca mientras el programa esta funcionando y que genere una
+interrupción en el ciclo habitual del programa.Una excepción puede ser un error o puede
+ser un caso especial que ha querido ignorar para no estropear su elegante algoritmo.</p>
+
+<p>Cuando en la ejecución de un programa aparece una excepción, decimos que se ha
+generado una excepción. Cuando esto ocurre, el flujo normal del programa se interrumpe, y
+es posible que aborte. Sin embargo es posible evitar el error del programa si, de alguna
+manera, somos capaces de capturar y tratar&nbsp; la excepción .Una excepción se puede
+generar en una parte del programa y tratarla en otra totalmente distinta. Normalmente, la
+excepción que no se captura provoca un error de programa y el consecuente final anormal.</p>
+
+<p>A propósito, como los programas Java son interpretados, una caída de programa,
+significa únicamente que este terminara de forma anormal y prematura. No significa que el
+interprete de Java también tenga que caer. En efecto, el interprete recoge todas las
+interrupciones que no son capturadas por el programa, y responde haciendo finalizar el
+programa. En algunos otros lenguajes, una caída de un programa puede significar que caiga
+el sistema entero y sea necesario reiniciar el ordenador para poder recuperarlo. En Java,
+como es casi imposible tirar el sistema, si eso pasa, puede tener la satisfacción de
+culpar al sistema mismo antes que a su programa.</p>
+
+<hr width="50%">
+
+<p>Cuando ocurre una excepción, realmente se genera un objeto. Este objeto puede llevar
+la información (en sus variables instanciables) desde punto en donde se ha producido
+hasta el punto en donde se captura y se trata. Normalmente esta información incluye el
+mensaje de error en el que se indica la causa que ha generado la excepción, pero también
+puede incluir otro tipo de información. El objeto generado por una interrupción debe ser
+una instancia de la clase <tt>Throwable</tt> o de alguna de sus subclases. En general cada
+tipo diferente de excepción se representa por una subclase de <tt>Throwable</tt>. Esta,
+tiene dos subclases directas, <tt>Error</tt> y <tt>Exception. </tt>Estas dos subclases a
+su vez tienen algunas otras subclases predefinidas. Adicionalmente, un programador puede
+crear una nueva clase de excepción para representar un nuevo tipo de excepciones.</p>
+
+<p>La mayoría de las subclases de la clase <tt>Error</tt> representan errores graves en
+la maquina virtual Java que normalmente causan la finalización del programa porque no hay
+una forma razonable de tratarlos.No se debe intentar capturar y tratar esos errores. Un
+ejemplo, es el <tt>ClassFormatError</tt> que ocurre cuando la maquina virtual Java
+encuentra algún tipo de dato erróneo en un fichero que se supone contiene una clase Java
+compilada. Si suponemos que esa clase forma parte del programa, nos encontramos que no hay
+ninguna `posibilidad de continuar con el programa.</p>
+
+<p>Las subclases de <tt>Exception</tt> representan excepciones lo que significa que pueden
+ser capturadas. En algunos casos, estas excepciones realmente serán errores, pero son
+errores del programa o de la entrada de datos a los que el programador se puede anticipar
+y prever un respuesta razonable. (Puede que tenga la tentación de decir: &quot;Bien,
+entonces solo tengo que capturar todos los errores, y mi programa no abortara
+nunca!&quot;. Si no existe una forma lógica para responder a un error, normalmente lo
+mejor es finalizar el programa, porque intentar continuar con el, probablemente solo
+significara el que continúe con problemas que terminaran haciéndolo abortar, en el peor
+de los casos, el programa puede generar una respuesta incorrecta sin que haya nada que le
+indique que la respuesta es errónea!.)</p>
+
+<p>La clase <tt>Exception</tt> tiene su propia subclase, <tt>RuntimeExeption</tt>. Esta
+clase agrupa la mayoría de las excepciones mas comunes como puede ser <tt>ArithmeticException</tt>,
+que ocurre por ejemplo, cuando se intenta hacer una raíz cuadrada de un numero negativo,
+y <tt>NullPointerException,</tt> que ocurre cuando se intenta usar&nbsp; una referencia <tt>null</tt>
+en un contexto en donde sea necesaria la referencia a un objeto. <tt>RuntimeException </tt>y
+<tt>Errors</tt> comparten la propiedad de que el programa se puede limitar a ignorar la
+posibilidad de que esos hechos ocurran. (&quot;Ignorar&quot; aquí representa que esta
+dispuesto a permitir que su programa aborte si ocurren estas excepciones). Por ejemplo un
+programa puede arriesgarse a que le pase esto cada vez que utiliza <tt>Math.sqrt()</tt>
+sin prepararse a capturar la posible <tt>ArithmeticException.</tt>Para las restantes
+clases excluidas <tt>Error, RuntimeException</tt>, y sus subclases, el tratamiento de
+errores es &quot;obligatorio&quot; en el sentido que comentamos a continuación.</p>
+
+<p align="left">El siguiente diagrama es la representación jerárquica de la clase <tt>Throwable</tt>
+y algunas de sus subclases. Las clases que obligatoriamente requieren un tratamiento,
+están representadas en rojo.</p>
+
+<p align="center"><img alt="(Partial class hierarchy for Throwable objects)" src="fig1-5.gif" tppabs="http://members.nbci.com/elcurso/Capitulo8/fig1.gif" WIDTH="462" HEIGHT="256"></p>
+
+<p align="left">Para manejar excepciones en un programa Java, necesita la instrucción <tt>try</tt>.
+La idea es que le diga al ordenador que &quot;pruebe&quot; (<em>try</em>) de ejecutar un
+comando. Si lo consigue, todo va bien, pero si se genera una excepción durante la
+ejecución de ese comando, puede capturar la interrupción y manejarla. Por ejemplo:</p>
+
+<pre>         try {
+            d = Math.sqrt(b*b - 4*a*c);
+            r1 = (-b + d) / (2*a);
+            r2 = (-b - d) / (2*a);
+            console.putln(&quot;Las raices son &quot; + r1 + &quot; y &quot; + r2);
+         }
+         catch ( ArithmeticException e ) {
+            console.putln(&quot;No se puede calcular la raíz.&quot;);
+         }</pre>
+
+<p>El ordenador prueba de ejecutar el bloque de instrucciones que siguen a la palabra
+&quot;<tt>try</tt>&quot;. Si no ocurren excepciones durante la ejecución del bloque, la
+parte de la instrucción &quot;<tt>catch</tt>&quot; simplemente se ignora. Sin embargo, si
+aparece un <tt>ArithmeticException</tt>, el ordenador salta inmediatamente al bloque de
+instrucciones de la etiqueta &quot;<tt>catch (ArithmeticException e)</tt>&quot;. Este
+bloque de instrucciones es lo que se viene a llamar&nbsp; el manejador de excepciones para
+<tt>ArithmeticExceptions</tt>. Manejando las excepciones de esta forma, evita que el
+programa aborte.</p>
+
+<p>Puede haber observado que hay otras fuentes de posibles errores en la instrucción <tt>try</tt>.
+Por ejemplo, si el valor de la variable <tt>a&nbsp; </tt>es cero, estará esperando que la
+división por cero provoque un error. En realidad, le aguarda una pequeña sorpresa. Si
+los números que están siendo divididos son del tipo <tt>int</tt>, la división por cero
+ciertamente que generara una <tt>ArithmeticException,</tt> Pero ninguna operación
+aritmética con números de coma flotante puede producir nunca una excepción. En su
+lugar, el tipo <tt>double</tt> incluye un valor especial llamado <font color="#808000"><em>not-a-number</em></font>
+para representar el resultado de una operación ilegal. Cuando se imprime el valor, este
+aparece como &quot;NaN&quot; que es lo ultimo que querrá ver en una salida.</p>
+
+<p>Otro posible error del ejemplo es bastante mas sutil: Si el valor de la variable <tt>console</tt>
+es <tt>null</tt>,&nbsp; cuando se referencie esta variable en la ultima línea del bloque,
+se generara <tt>NullPointerException</tt>. Puede también capturar esta excepción
+añadiendo otra cláusula <tt>catch</tt> a la instrucción <tt>try</tt>:</p>
+
+<pre>         try {
+            d = Math.sqrt(b*b - 4*a*c);
+            r1 = (-b + d) / (2*a);
+            r2 = (-b - d) / (2*a);
+            console.putln(&quot;Las raices son &quot; + r1 + &quot; y &quot; + r2);
+         }
+         catch ( ArithmeticException e ) {
+            console.putln(&quot;No se puede calcular la raíz&quot;);
+         }
+         catch ( NullPointerException e ) {
+            System.out.println(&quot;Error de programa! &quot; + e.getMessage());
+         }</pre>
+
+<p>No he intentado usar <tt>console</tt> en el manejo de <tt>NullPointerExceptions</tt>,
+porque sea probablemente el valor de <tt>console</tt> el problema. De hecho, probablemente
+lo mejor para esta situación seria dejar que el programa abortara. Este es el típico
+caso en que una programación cuidadosa es mejor que un tratamiento de errores. Asegúrese
+que su programa asigna el valor correcto a <tt>console</tt> antes de usarla. Sin embargo
+este ejemplo nos permite ver como se pueden emplear varias cláusulas <tt>catch</tt> con
+un solo bloque <tt>try</tt>. Este ejemplo también presenta una pequeña &quot;e&quot;
+aparece en la cláusula <tt>catch</tt>. Realmente, <tt>e </tt>es el nombre de una
+variable. (Puede emplear el nombre que quiera). Recuerde que cuando se genera la
+excepción, lo que se genera realmente es un objeto. Antes de ejecuta una cláusula <tt>catch</tt>,
+el ordenador establece esta variable para que haga referencia al objeto que representa la
+excepción que estamos capturando. Este objeto contiene información sobre la excepción.
+En particular cada objeto de una excepción incluye el mensaje de error que se puede
+recuperar con el método <tt>getMessage()</tt> de este objeto tal y como se presenta en el
+ejemplo anterior.</p>
+
+<p>El ejemplo que he presentado, no es excesivamente realista. Supongo que preferirá
+emplear una instrucción <tt>if</tt> para asegurarse que los números son positivos, mas
+que un tratamiento de errores y esperar que se genere la excepción. Realmente, se podría
+quejar si los diseñadores de Java le obligaran a utilizar continuamente las instrucciones
+<tt>try ... catch</tt> cada vez que quisiera hacer una raíz cuadrada. Este es el motivo
+que no sea obligatorio el prevenir un posible <tt>RuntimeException</tt>. Hay demasiados
+sitios en donde cometer un error.( Esto también demuestra el porque los manejadores de
+errores no resuelven el problema de hacer programas robustos.En realidad existen
+herramientas que permiten resolver el problema de una forma mucho mas organizada)</p>
+
+<p>La sintaxis de la instrucción <tt>try</tt> es un poco mas complicada que la indicada
+anteriormente. La sintaxis se puede describir así</p>
+
+<pre>       try
+          <font color="#00b000"><b>instrucción</b></font>
+       <font color="#00b000"><b>cláusula-catch-opcional</b></font>
+       <font color="#00b000"><b>cláusula-finally-opcional</b></font></pre>
+
+<p>:Donde , normalmente ,<font color="#00b000"><b>instrucción, </b></font>puede ser un
+bloque de instrucciones encerrados entre {}. La instrucción <tt>try</tt> puede incluir
+cualquier numero de cláusulas <tt>catch</tt> (o ninguna), y opcionalmente, la cláusula <tt>finally</tt>
+( La instrucción debe incluir al menos una cláusula <tt>catch</tt> o una <tt>finally</tt>.)
+La sintaxis de la cláusula <tt>catch</tt> es </p>
+
+<pre>       catch ( <font color="#00b000"><b>Exception-clases-name nombre-variable</b></font> )
+          <font color="#00b000"><b>instrucción</b></font></pre>
+
+<p>y la sintaxis para la cláusula <tt>finally</tt> es</p>
+
+<pre>       finally
+          <font color="#00b000"><b>instrucción</b></font></pre>
+
+<p>La semántica de la cláusula <tt>finally</tt> es que garantiza la ejecución de la
+instrucción o el bloque de instrucciones como ultima etapa de la ejecución de la
+instrucción <tt>try</tt> se haya producido o no alguna excepción, y esta haya sido
+tratada o no. Esta cláusula se puede utilizar para realizar la limpieza que es esencial
+en cualquier circunstancia y no debe ser omitida por ningún motivo. Vera un ejemplo mas
+adelante en este mismo capitulo.</p>
+
+<hr width="50%">
+
+<p>Hay veces que es lógico que un programa deliberadamente genere una excepción. Es el
+caso del programa que detecta algún tipo especial de condición de error, pero no es
+conveniente el tratar el error en el punto en que es descubierto. El programa puede
+generar una excepción y esperar que en alguna otra parte del programa sea capturada y
+tratada.</p>
+
+<p>Para generar una excepción se emplea la instrucción <tt>trow</tt>. La sintaxis de
+esta instrucción es:</p>
+
+<pre>       throw <font color="#00b000"><b>objeto-</b></font>excepción ;</pre>
+
+<p>El <font color="#00b000"><b>objecto-</b></font>excepción debe ser un objeto
+perteneciente a una de las subclases de <tt>Throwable</tt>. Normalmente, será de una de
+las subclases de <tt>Exception</tt>. En muchos casos será un objeto nuevo, construido
+usando el operador <tt>new</tt>. Por ejemplo:</p>
+
+<pre>        throw new ArithmeticException(&quot;División por cero&quot;);</pre>
+
+<p>EL parámetro del constructor pasa a ser el mensaje de error en el objeto-excepción.</p>
+
+<p>Cuando una excepción se genera dentro de una subrutina y no se trata en la misma, la
+subrutina finaliza (después de ejecutar cualquier cláusula <tt>finally</tt> pendiente).
+La rutina que llamó a la subrutina tiene entonces la posibilidad de tratar la excepción.
+Si no lo hace así, también es finalizada, y la rutina que llamo a esta es el siguiente
+paso para la excepción. La excepción abortara el programa solo si va subiendo por toda
+la cadena de subrutina sin que en ninguna sea tratada.</p>
+
+<p>La subrutina que puede generar una excepción, puede anunciar este hecho añadiendo la
+frase &quot;<tt>throws <b><font color="#00b000">Exception-clases-name</font></tt>&quot; </b>en
+la especificación de la rutina. Por ejemplo:</p>
+
+<pre>       static double root(double A, double B, double C) 
+                                   throws ArithmeticException {
+              // devuelve la mayor de las dos raices de la
+              // ecuación A*x*x + B*x + C = 0
+           double d = Math.sqrt(b*b - 4*a*c);  // Puede generar excepción!
+           if (a == 0)
+              throw new ArithmeticException(&quot;División por cero.&quot;);
+           return  (-b + d) / (2*a);
+       }</pre>
+
+<p>En este caso, declarar que <tt>root()</tt> puede generar un <tt>ArithmeticException</tt>
+realmente, es una cortesía para los usuarios potenciales de esta rutina. Esto es así,
+porque el manejo de esta excepción no es obligatorio. Una rutina puede generar un <tt>ArithmeticException</tt>
+sin necesidad de anunciar esa posibilidad. Y el usuario de esa subrutina es libre de
+capturar o ignorar ese tipo de excepción.</p>
+
+<p>La situación es diferente para aquellas excepciones que requieren obligatoriamente un
+tratamiento.Si una rutina puede generar una excepción, esto debe ser anunciado por medio
+de la cláusula <tt>throws</tt> en la definición de la subrutina. No hacerlo, significa
+un error que será indicado por el compilador.</p>
+
+<p>Suponga que llama a una rutina que puede generar una excepción del tipo que requiere
+de forma obligatoria realizar un tratamiento. En ese caso, deberá tratar la excepción de
+una de las siguientes dos formas: Puede llamar a la rutina dentro de una instrucción <tt>try</tt>
+y emplear la cláusula <tt>catch</tt> para capturar la excepción en caso de que ocurra.
+Si no quiere hacer eso, puede llamar a esa extraña rutina pudiendo definir en la suya el
+que pueda generar la misma excepción; deberá añadir la cláusula <tt>throw</tt>
+correspondiente a su rutina. Si no trata la excepción de una forma o de otra, se
+considera error de sintaxis y el compilador no aceptara su programa. Esta forma de
+obligatoriedad en el tratamiento de errores es cierta para todas las excepciones que <strong>no</strong>
+pertenezcan a las subclases <tt>Error</tt> o <tt>RuntimeException.</tt></p>
+
+<p>Entre las excepciones que requieren un tratamiento obligatorio, hay varias que pueden
+ocurrir cuando se emplean las rutinas de Entrada/salida de Java.Esto significa que no
+puede utilizar estas rutina a menos que entienda un poco que son los tratamientos de
+excepciones. El resto del capítulo trata de forma extensiva del empleo y la construcción
+de los tratamientos de errores en las rutinas de entrada/salida.</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice8.htm" tppabs="http://members.nbci.com/elcurso/Capitulo8/indice8.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="sección8_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo8/secci%f3n8_2.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

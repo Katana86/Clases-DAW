@@ -1,0 +1,237 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java.Practica 9</title>
+</head>
+
+<body>
+
+<h3>Practica 9: Clasificación y manejadores de Layout</h3>
+
+<hr>
+
+<p>En la 9 practica del Curso de Programación en Java empezará a trabajar de una forma
+algo distinta. En vez de escribir su propio applet, trabajara sobre un applet existente
+que le ayudara a entender como funcionan los sistemas de clasificación. En la segunda
+parte de la practica, aprenderá mas sobre componentes GUI y como puede controlar su
+salida en un applet.</p>
+
+<p>Para esta practica, solo necesita una carpeta, &quot;<a
+href="tppmsgs/msgs0.htm#24" tppabs="http://members.nbci.com/elcurso/Proyectos/GUI%20Stats%20Starter.zip">GUI Stats Starter</a>&quot;, que se
+deberá bajar y descomprimir.</p>
+
+<p>Como siempre al final de la practica hay unos ejercicios que deberán ser enviados a su
+tutor (únicamente los alumnos que hayan contratado <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">Seguimiento</a>).</p>
+
+<hr width="50%">
+
+<h3>Indice de la practica</h3>
+
+<ul>
+  <li><a href="#Clasificaciones con xSortLab">Clasificaciones con xSortLab</a></li>
+  <li><a href="#Tiempos de clasificacion con xSortLab">Tiempos de clasificación con xSortLab</a></li>
+  <li><a href="#Simple Stat con GUI">Simple Stats con GUI</a></li>
+  <li><a href="practica9.htm#Ejercicios" tppabs="http://members.nbci.com/elcurso/Practicas/prc9/practica9.htm#Ejercicios">Ejercicios</a></li>
+</ul>
+
+<hr width="50%">
+
+<h3><a name="Clasificaciones con xSortLab">Clasificaciones con xSortLab</a></h3>
+
+<p>Para la primera parte de la practica, deberá utilizar un applet llamado <em>xSortLab</em>
+que escribí originalmente para utilizarlo en Ciencias de la computación 100. Es lo
+suficientemente gráfico como para ayudar al estudiante a entender varios algoritmos de
+sort. El applet esta definido en una pagina independiente, que también contiene bastante
+información detallada sobre lo que se tiene que saber para utilizar el applet. En la
+practica, deberá experimentar con diferentes métodos de clasificación. El experimento
+le persuadirá que los diferentes algoritmos pueden significar tiempos de ejecución
+bastante distintos, para conseguir un mismo objetivo.</p>
+
+<p>Cuando arranca el applet xSortLab, presenta una serie de 16 barras de distinta
+longitud. El applet puede clasificar esas barras utilizando uno de los 5 métodos. Los
+métodos disponibles aparecen listados en un menú emergente situado en la esquina
+superior derecha del applet, Utilice ese menú para seleccionar &quot;Insertion Sort&quot;
+que es uno de los métodos que hemos comentado. Pulse el botón se <em>Step</em>, y el
+applet realizara una pasada del sort. Si pulsa el botón <em>Go</em> el applet ira
+realizando todas las pasadas automáticamente hasta que lo pare o finalice la
+clasificación. En la parte inferior del applet se presenta una breve descripción de cada
+paso. (Si quiere tener tiempo de leerlo, pulse el botón <em>Step</em>.</p>
+
+<p>Aunque a lo largo del curso hemos hablado bastante de los métodos de sort, es mejor el
+poder verlo para entender como funcionan los distintos métodos. Ejecute la clasificación
+utilizando el botón <em>Step</em>. Su objetivo es entender el algoritmo de sort con todo
+detalle, y describir como funciona en una serie. También es buena idea el ver los
+procedimientos de clasificación funcionando automáticamente a toda velocidad. Asegúrese
+que emplea suficiente tiempo como para entender perfectamente como funciona la
+clasificación.</p>
+
+<hr width="50%">
+
+<h3><a name="Tiempos de clasificacion con xSortLab">Tiempos de clasificación con xSortLab</a></h3>
+
+<p>Adicionalmente a la clasificación &quot;visual&quot; de la serie de barras, el applet
+xSortLab también puede clasificar de forma invisible una serie de números enteros y ver
+cuanto tiempo le toma. Para trabajar de esa forma, seleccione &quot;Timed Sort&quot; desde
+el menú emergente en la parte superior del applet.</p>
+
+<p>Vera un menú emergente al pie del applet para seleccionar el método de clasificación.
+En la parte superior de la pantalla hay dos cajas de entrada de texto. La primera le
+permite especificar el tamaño de la serie, la segunda le permite indicar el numero de
+series que quiere clasificar. Esto es necesario si quiere clasificar una serie pequeña,
+ya que el tiempo de calculo es demasiado pequeño para medirlo. El truco esta en
+clasificar un montón de esas series y dividir el tiempo de clasificación total por el
+numero de series que haya indicado, y así obtener el tiempo necesario para una serie.</p>
+
+<p>Pruebe a clasificar una serie única de 10000 elementos utilizando los métodos de
+&quot;Insertion Sort&quot; y luego de &quot;Merge Sort&quot;. (Nota: si esta utilizando un
+ordenador lento, puede que le interese reducir el numero de elementos comentados aquí
+como en el resto de ejercicios.). Anote el tiempo que ha necesitado en cada método. Solo
+necesita el &quot;Aproximate Compute Time&quot;. Puede ignorar el resto de la información
+que presenta el applet.</p>
+
+<p>Ahora, pruebe a clasificar una serie de 1000 elementos con ambos métodos. Su objetivo
+es averiguar el tiempo que necesita para clasificar una serie de 1000 elementos por ambos
+métodos. Sin embargo, para hacerlo, deberá clasificar un montón de series (sobre 100) y
+dividir el tiempo total por el numero de series.</p>
+
+<p>Vaya probando también con series de otros tamaños. Puede recoger información para
+una serie de 5000. Puede probar el &quot;Merge Sort&quot; en series de 100.000 e incluso
+1.000.000 de elementos. Puede que tenga tiempo de probar el &quot;Insertion Sort&quot;
+sobre 100.000 elementos pero no lo intente sobre 1.000.000!.</p>
+
+<p>Deberá utilizar la información recogida para un ejercicio al final de la practica.</p>
+
+<hr width="50%">
+
+<h3><a name="Simple Stat con GUI">Simple Stat con GUI</a></h3>
+
+<p>En una practica anterior, trabajo con un programa que tomaba un conjunto de números
+entrados por el usuario y calculaba algunas estadísticas. Era un programa basado en la
+consola y con un estilo muy antiguo. En esta practica trabajara sobre un applet que
+prácticamente realiza la misma tarea, pero tiene un bonito GUI (Interface Gráfica del
+Usuario). En la carpeta que se ha debido bajar al inicio de la practica &quot;GUI Stats
+Starter&quot; se encuentra una versión incompleta de este applet. Esa versión, presenta
+el numero de elementos entrados por el usuario y su suma. La versión completa que debe
+escribir, presentara así mismo otras estadísticas. El applet tiene un botón <em>Clear</em>
+que debe permitirle borrar todos los números entrados en el conjunto. En la versión
+original, este botón nu funciona. En su versión deberá funcionar adecuadamente. El
+resultado final deberá ser esencialmente el mismo que el ejemplo que le indico en la <a
+href="StatsApplet.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc9/StatsApplet.html">pagina adjunta</a>. Como puede ver, tiene que añadir el promedio,
+la desviación estándar, y el mínimo y máximo.</p>
+
+<p>El fichero que tiene que modificar es StatsApplet.java. Deberá leerlo, incluir
+comentarios, y entender como funciona. (También lo puede leer <a
+href="tppmsgs/msgs0.htm#65" tppabs="http://members.nbci.com/elcurso/fuentes/GUI%20Stats%20Starter/StatsApplet.java">aquí</a>). Tendrá que
+añadir varias variables insaciables del tipo Label. Y tendrá que modificar los métodos <tt>init(),
+doEnterCommand, </tt>y<tt> doClearCommand()</tt>. Puede que quiera darle un vistazo al
+fichero StatCalc2.java (Puede verlo <a
+href="tppmsgs/msgs0.htm#66" tppabs="http://members.nbci.com/elcurso/fuentes/GUI%20Stats%20Starter/StatCalc2.java">aquí</a>). Contiene una
+versión ligeramente modificada de la clase StatCalc que uso en una practica previa.
+Necesitara realizar varias llamadas a los métodos de esa clase.</p>
+
+<p>En este ejercicio, trabajara de una forma mas directa que en los otros ejercicios con
+los componentes GUI, incluyendo cosas como botones, cajas de entrada de texto y menús
+emergentes.En Java, todo esto esta representado por objetos pertenecientes a las clases <font
+color="#808000">Button</font>, <font color="#808000">TextField</font> y <font
+color="#808000">Choice</font>.</p>
+
+<p>Java también tiene otras clases de componentes.<font color="#808000"> Label</font> se
+utiliza para presentar textos que deben ser leídos pero no editados por el usuario. <font
+color="#808000">Checkbox</font> es una caja etiquetada en la que el usuario puede poner y
+quitar una marca. <font color="#808000">Panel</font> es un componente que puede almacenar
+otros componentes. (Un applet es un tipo de panel, ya que la clase Applet es una subclase
+de la clase Panel)</p>
+
+<p>Los componentes se añaden al Applet o al Panel utilizando el método &quot;<tt>add()</tt>&quot;.Los
+componentes que se van añadiendo al applet o al panel, se van colocando según el <font
+color="#808000">LayoutManager</font>. El manejador de esquemas, implementa las normas
+según las cuales los componentes se van a ir dimensionando y posicionando. El método
+&quot;<tt>SetLayout()</tt>&quot; se utiliza para indicar que manejador vamos a utilizar.</p>
+
+<p>Cuando el usuario interactua con&nbsp; componentes, aparecen los eventos. La mayoría
+de los componentes estándares producen eventos de acción (action), que son manejados en
+el método <tt>action()</tt>del applet. Como programador, debe escribir los métodos <tt>action()</tt>
+que definan que es lo que se debe hacer cuando el usuario pulse botones, marque
+checkbox,...</p>
+
+<p>Todo esto esta comentado en el <a href="indice6.htm" tppabs="http://members.nbci.com/elcurso/Capitulo6/indice6.htm">Capitulo 6</a> de
+este texto, pero no necesita conocer perfectamente ese capitulo para realizar esta
+practica. Aquí tiene algunas de las cosas que va a necesitar
+
+<ul>
+  <li>Un objeto que pertenezca a la clase GridLayout es un manejador de esquemas que organiza
+    los componentes en una reja de filas y columnas iguales. Un objeto GridLayout puede
+    crearse con el constructor &quot;<tt>new GridLayout (R,C,VS,HS)</tt>&quot; donde R es el
+    numero de filas, C es el numero de columnas, VS es el espacio vertical insertado entre
+    filas, y HS es el espacio horizontal insertado entre columnas.</li>
+  <li>Si <tt>bttn</tt> es del tipo <tt>Button</tt> entonces <tt>bttn.disable()</tt>
+    desactivara el botón y el usuario no podrá pulsarlo. El método <tt>bttn.enable()</tt>
+    activara nuevamente el botón.</li>
+  <li>Si <tt>lab1</tt> es del tipo <tt>Label</tt>, y <tt>str</tt> es del tipo <tt>+String</tt>,
+    entonces <tt>lab1.setText(str)</tt> cambiara el texto presentado por la etiqueta dejando
+    el que contenga <tt>str</tt>.</li>
+  <li>Si <tt>txt</tt> es del tipo <tt>TextField</tt> entonces <tt>txt.getText()</tt> devuelve
+    una string conteniendo el texto que se encuentre en ese momento en la caja de entrada. El
+    contenido de la caja se puede establecer con una string <tt>str</tt>&nbsp; y la
+    instrucción <tt>txt.setText(str).</tt></li>
+</ul>
+
+<hr width="50%">
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%"><h3><a name="Ejercicios">Ejercicios para entregar </a></h3>
+    </td>
+    <td width="50%">Esta parte solo la deben enviar aquellos alumnos que han contratado el
+    servicio de <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">seguimiento</a></td>
+  </tr>
+</table>
+
+<p><strong>Ejercicio 1</strong>. Escriba como queda la siguiente lista después de cada
+paso de una clasificación por inserción &quot;Insertion Sort&quot;:</p>
+
+<p align="center">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 17
+14 34 26 38 7 28 32</p>
+
+<p align="left">(Una lista de longitud 8 tiene 7 fases. Después de cada fase, la parte
+clasificada de la lista en uno)</p>
+
+<p><strong>Ejercicio 2.</strong>&nbsp;Escriba cuales son las siguientes listas después de
+cada fase de un sort por combinación:</p>
+
+<p align="center">17 94 64 56 38 92 74 32 23 12 11 63 74 35 43 21</p>
+
+<p align="left">Para una lista de 16 elemento, debe haber 4 fases. Explique <strong>también</strong>
+como se ha realizado cada fase.</p>
+
+<p><strong>Ejercicio 3. </strong>Este ejercicio esta basado en los datos que ha recogido<a
+href="#Tiempos de clasificacion con xSortLab"> anteriormente</a> sobre los algoritmos de
+clasificación. Cuantas veces es mas rápido el &quot;Merge Sort&quot; que el
+&quot;Insertion Sort&quot; para una lista de longitud 1000?, ¿Para listas de 500
+elementos?,¿Para listas de 10000 elementos?, ¿Para otras longitudes que haya probado?.
+¿Cuanto tiempo cree que tardaría en clasificar 1.000.000 de elementos con un
+&quot;Insertion Sort&quot;?,¿Porqué? Intente explicar porque el &quot;Merge Sort&quot;
+es mas rápido que el &quot;Insertion Sort&quot; y porqué su ventaja va aumentando a
+medida que aumenta el numero de elementos a clasificar. (Pista: Observe el numero de fases
+en los dos métodos para listas de 16, 32, 64, .. elementos).</p>
+
+<p><strong>Ejercicio 4</strong>. Envíeme el fichero modificado StatsCalc.java sobre el
+que ha estado trabajando<a href="#Simple Stat con GUI"> anteriormente</a>. Ponga también
+el applet en su Web. Indique la URL( a menos que este seguro que no tendré problemas para
+encontrarla)</p>
+
+<p><strong>Ejercicio 5</strong>. El applet xSortLab utiliza bastantes componentes GUI,
+controlados por diferentes tipos de LayoutManagers. Intente imaginarse como esta
+construido el GUI de este applet. Que componentes y LayoutsManager piensa que se han
+utilizado. Seria una buena idea el ilustrar su respuesta con algunos dibujos.
+Probablemente no podrá contestar a esta pregunta a menos que lea cuidadosamente la <a
+href="seccion6_1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo6/seccion6_1.htm">Sección 6.1</a> de este texto.</p>
+
+<hr>
+
+<p align="center"><a href="indice.htm#Practicas" tppabs="http://members.nbci.com/elcurso/indice.htm#Practicas">[Indice de practicas<sup>]</a> <a
+href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm">[Curso</sup>]</a></p>
+</body>
+</html>

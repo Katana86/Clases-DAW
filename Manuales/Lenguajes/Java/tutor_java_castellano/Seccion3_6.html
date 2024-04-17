@@ -1,0 +1,283 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<title>DoPC-Curso de Java.Seccion 3.6</title>
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 3.6: Mas sobre diseño de programas</h3>
+
+<hr>
+
+<p>ENTENDER COMO SE PROGRAMAN TRABAJOS ES UNA COSA. Saber diseñar programas para que
+realicen una tarea, es algo muy distinto. En la <a href="Seccion2_5.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Seccion2_5.html">Sección
+2.5</a>, explicábamos los métodos que podíamos emplear para desarrollar un algoritmo y
+refinarlo paso a paso. Ahora que sabemos que son las subrutinas, las podemos incluir en el
+proceso.</p>
+
+<p>El perfeccionamiento paso a paso es inherente a un proceso <em>top-down</em>, pero el
+proceso también tiene un &quot;pie&quot;, un punto a partir del cual finaliza la
+posibilidad de detallar mas el algoritmo usando pseudocódigo, y empieza el proceso de
+trasladarlo directamente al lenguaje de programación. En ausencia de la subrutinas, el
+proceso no podría finalizar hasta que bajara al nivel de las instrucciones de asignación
+y las muy primitivas operaciones de entrada/salida. Pero si dispone de subrutinas que
+realicen mas o menos algunas tareas, puede parar de refinar el algoritmo tan pronto como
+lo haya podido expresar en términos&nbsp; de manejo de tareas.</p>
+
+<p>Esto le permite añadir al sistema de perfeccionamiento por aproximación <em>top-down</em>,
+un elemento que establece el &quot;pie&quot; o final, mas arriba.Para resolver un
+problema, puede empezar escribiendo algunas subrutinas que realicen tareas que sean
+importantes en el entorno del problema. Estas subrutinas se convierten en una caja de
+herramientas a la que puede echar mano cada vez que lo necesite, y así integrarlas en el
+algoritmo que esta desarrollando. (Alternativamente, puede ser interesante el buscar y
+comprar herramientas escritas por terceras personas y que puede emplear en su proyecto
+como cajas negras).</p>
+
+<p>Las subrutinas a menudo también pueden ayudarle incluso en una aproximación
+estrictamente por top-down. Cuando esta refinando su algoritmo, es libre de definir una
+subtarea en cualquier paso del algoritmo y establecer con ella una subrutina. Desarrollar
+esas subrutinas, se convierte entonces en un problema distinto, sobre el que puede
+trabajar separadamente, su algoritmo principal, solamente tendrá que llamar a la
+subrutina. Precisamente esta es la forma de partir el problema en hasta separarlo en
+pequeños problemas. Esta aproximación al problema todavía es la <em>top-down</em>,
+porque es el análisis <em>top-down</em> del problema el que nos indica las subrutinas que
+debemos escribir. En la aproximación <em>bottom-up</em>, empieza escribiendo u obteniendo
+las subrutinas mas importantes en el área del problema, y construye su solución al
+problema, hacia arriba, basándose en esas subrutinas.</p>
+
+<hr width="50%">
+
+<p>Vamos a trabajar sobre un ejemplo.Suponga que tengo la siguiente idea para una buena
+animación.Estoy pensando en una ventana llena de pequeños cuadrados de colores alineados
+en filas y columnas. El color de los cuadrados es aleatorio. Lo que hace la animación es
+cambiar aleatoriamente el color de los cuadrados. Esto puede significar varias cosas, pero
+después de pensar un rato, decido que quiero crear un gran &quot;alboroto&quot;,&nbsp; la
+animación paseara aleatoriamente por toda la ventana, cambiando el color de cada cuadro
+que se encuentre.</p>
+
+<p>En principio les debo decir que necesitamos obtener la clase <tt>MosaicWindow</tt>
+&nbsp; para poder trabajar con una ventana llena de pequeños cuadrados de colores. Si <tt>mosaic</tt>
+es una variable de tipo <tt>MosaicWindow</tt>, y R y C son enteros, la instrucción </p>
+
+<p align="center"><tt>mosaic= new MosaicWindow(R,C);</tt></p>
+
+<p align="left">creara un objeto ventana con R filas y C columnas de cuadrados y hará que
+la variable <tt>mosaic</tt> se refiera a la ventana. (&quot;<tt>new
+MosaicWindow(R,C)&quot;</tt> es una forma especial de función llamada <font color="#808000">constructor</font> -- una especie de factoría para crear objetos.Por
+ahora, debe aceptar este constructor junto con que el resto de la clase <tt>MosaicWindow</tt>,
+es una caja negra. Explicaremos los constructores en el siguiente capítulo.)</p>
+
+<p align="left">La clase <tt>MosaicWindow</tt> proporciona un cierto numero de subrutinas,
+pero solo necesitamos una para controlar el color de un pequeño cuadrado de la ventana.
+Esto se realiza con la instrucción:</p>
+
+<p align="center"><tt>mosaic.setColor(fila,columna,r,g,b);</tt></p>
+
+<p align="left">donde &quot;<tt>fila</tt>&quot; es un entero que define el numero de la
+fila de la que queremos cambiar el color. &quot;<tt>columna</tt>&quot; es un entero que
+define la columna, y &quot;r&quot;, &quot;g&quot;, y &quot;b&quot;&nbsp; son de tipo <tt>double</tt>
+y especifican los componentes de color&nbsp; rojo (<em>red</em>), azul (<em>blue</em>) y
+verde (<em>green</em>) que queremos emplear. Para usar este método correctamente necesita
+conocer algunas cosas: Si la ventana tiene R filas, las filas se numeran de arriba hacia
+abajo, desde 0 a R-1, por lo que el valor del parámetro <tt>fila</tt> debe estar entre 0
+y R-1. De forma similar, las columnas se numeran de izquierda a derecha desde 0 a C-1,
+siendo C el numero de columnas, con lo que el valor de <tt>columna</tt> debe encontrase
+entre 0 y C-1. Cada numero de r,g, y b deben estar en el rango de 0.0 a 1.0. Si r tienen
+el valor 0.0, el color no contiene componente rojo, si r tienen el valor 1.0 entonces
+contiene la cantidad máxima posible de rojo; los valores intermedios proporcionaran
+niveles intermedios de rojo. Los otros dos componentes de color trabajan de la misma
+manera. Todo esto forma parte del <font color="#808000">contrato</font> de la subrutina,
+esto es, la especificación de como se usa la subrutina y que es lo que hace.</p>
+
+<hr width="50%">
+
+<p>Teniendo en&nbsp; nuestras manos como base esta sencilla rutina&nbsp; para manejar la
+ventana, pasamos a especificar el problema a mano. Las líneas generales de nuestro
+programa serán:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><tt>Abrir la ventana;<br>
+      Llenar la ventana con colores aleatorios<br>
+      Moverse por allí, cambiando aleatoriamente los cuadrados.</tt></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Ya tenemos la subrutina para el primer paso. Llenar la ventana de colores aleatorios
+parece ser una tarea que pueda trabajar de forma independiente, por lo que podemos decidir
+el realizar una subrutina para hacerla. El tercer paso será necesario expandirlo en unos
+cuantos pasos mas: Empezar en medio de la ventana, Moverse a un nuevo cuadro, y Cambiar el
+color del cuadro. Ahora podemos refinar el algoritmo como:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><tt>Abrir la ventana;<br>
+      Llenar la ventana con colores aleatorios;<br>
+      Establecer la posición actual en el cuadro del medio de la ventana;<br>
+      Repetir por siempre:<br>
+      &nbsp;&nbsp;&nbsp; cambiar el color del cuadro aleatoriamente;<br>
+      &nbsp;&nbsp;&nbsp; Cambiar la posición actual arriba, abajo, derecha o izquierda
+      aleatoriamente;</tt></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Necesitamos representar la posición actual de alguna manera. Lo podemos hacer con dos
+variables <tt>int</tt> llamadas <tt>currentRow</tt> y <tt>currentColumn</tt>. Debemos
+saber cuantas filas y columnas hay para poder abrir la ventana. Vamos a definir estas
+cantidades con unas constantes llamadas <tt>FILAS</tt> y <tt>COLUMNAS</tt>. Definiremos
+los nombres de la rutinas que aun tenemos que escribir y usaremos &quot;<tt>while (true)</tt>&quot;
+para implementar un bucle infinito, con lo que nos queda:</p>
+
+<pre>       mosaic = new MosaicWindow(ROWS, COLUMNS);
+       fillWithRandomColors();
+       currentRow = ROWS / 2;  // fila central, 
+       currentColumn = COLUMNS / 2;   // columna central
+       while (true) {
+           changeToRandomColor(currentRow, currentColumn);
+           randomMove();      
+       }</pre>
+
+<p>Con la envoltura apropiada esta es la subrutina&nbsp; <tt>main()</tt>de nuestro
+programa. Aun tenemos que escribir la subrutina <tt>fillWithRandomColors()</tt>,<tt>changeToRandomColor(int,int)</tt>,
+y <tt>randomMove()</tt>. El pseudocódigo para <tt>fillWithRandomColors()</tt> se puede
+escribir como:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><tt>Para cada fila:</tt><br>
+      &nbsp;&nbsp; <tt>Para cada columna:</tt><br>
+      &nbsp;&nbsp; &nbsp;&nbsp; <tt>poner el cuadrado de la fila,columna en color aleatorio;</tt></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>&quot;Por cada fila&quot; y &quot;Por cada columna&quot; se pueden implementar como
+bucles <tt>for</tt>. Hemos planificado también, el escribir una subrutina <tt>changeToRandomColor</tt>
+que se puede utilizar para establecer el color. ( La posibilidad de emplear una subrutina
+en vario sitios en una de las mejores cosas que tienen!). Entonces, <tt>fillWithRandomColor()</tt>
+pude escribirse correctamente en Java como:</p>
+
+<pre>        for (row = 0; row &lt; ROWS; row++)
+           for (column = 0; column &lt; COLUMNS; column++)
+              changeToRandomColor(row,column);</pre>
+
+<p>Puedo seguir explicando las dos subrutinas que faltan, pero ya&nbsp; tengo la idea.
+Aquí esta el programa completo:</p>
+
+<pre>      public class RandomMosaicWalk {
+      
+         /*
+            El programa presenta una ventana llena de cuadros
+            de colores. Una &quot;perturbación&quot; se mueve aleatoriamente
+	    sobre la ventana, cambiando aleatoriamente cada
+	    cuadro que visita. El programa corre en un bucle
+	    infinito, y no acaba nunca
+         */
+      
+         final static int ROWS = 10;    // numero filas de cuadros
+             // (las filas se numeran de 0 a ROWS-1)
+         final static int COLUMNS = 20; // numero de columnas de cuadros
+             // (las columnas se numeran de 0 a COLUMNS-1)
+ 
+         static MosaicWindow mosaic;    // la ventana actual
+         static int currentRow; // fila en donde se encuentra la alteración
+         static int currentColumn; // columna de la alteración
+                 
+         public static void main(String[] args) {
+             // El programa principal crea la ventana, la llena
+             // de colores aleatorios y mueve la alteración
+             // aleatoriamente sobre la ventana.
+             MosaicWindow mosaic = new MosaicWindow(ROWS,COLUMNS);
+             fillWithRandomColors();
+             int currentRow = ROWS / 2;   // empieza en el centro
+             int currentColumn = COLUMNS / 2;
+             while (true) {
+                 changeToRandomColor(currentRow, currentColumn);
+                 randomMove();
+             }
+         }  // end of main()
+         
+         static void fillWithRandomColors() {
+              // llena todos los cuadros, cada columna, cada fila
+              // con un color aleatorio
+              for (row=0; row &lt; ROWS; row++) {
+                 for (column=0; column &lt; COLUMNS; column++) {
+                     changeToRandomColor(row, column);  
+                 }
+              }
+         }  // end of fillWithRandomColors()
+         
+         static void changeToRandomColor(int rowNum, int colNum) {
+              // cambia el cuadro de la fila rowNum y
+              // la columna colNum a un color aleatorio
+              double red = Math.random();    // escoger nivel aleatorio en el rango
+              double green = Math.random();  //     0.0 a 1.0 para rojo, verde, 
+              double blue = Math.random();   //     y azul
+              mosaic.setColor(rowNum,colNum,red,green,blue);  
+          }  // end of changeToRandomColor()
+          
+          static void randomMove() {
+              // mueve aleatoriamente la perturbación en uno de las
+              // 4 posibles direcciones: arriba, abajo, izquierda, o derecha;
+              // si se va fuera de la ventana, lo mueve al,
+              // borde opuesto de la ventana.
+              int directionNum = (int)(4*Math.random());
+                   // directionNum vale aleatoriamente 0, 1, 2, o 3
+              switch (directionNum) {
+                 case 0:  //mover hacia arriba
+                    currentRow--;
+                    if (currentRow &lt; 0)
+                       currentRow = ROWS - 1;
+                    break;
+                 case 1:  // mover a la derecha
+                    currentColumn++;
+                    if (currentColumn &gt;= COLUMNS)
+                       currentColumn = 0;
+                    break; 
+                 case 2:  // mover abajo
+                    currentRow ++;
+                    if (currentRow &gt;= ROWS)
+                       currentRow = 0;
+                    break;
+                 case 3:  
+                    currentColumn--;
+                    if (currentColumn &lt; 0)
+                       currentColumn = COLUMNS - 1;
+                    break; 
+              }
+          }  // end of randomMove()
+         
+      } // end of class RandomMosaicWalk</pre>
+<div align="center"><center>
+
+<pre>
+<applet code="RandomMosaicRandomWalk.class" tppabs="http://members.nbci.com/elcurso/Capitulo3/RandomMosaicRandomWalk.class" height="150" width="300"><param name="rows" value="10"><param name="columns" value="20"></applet>  </pre>
+</center></div>
+
+<p align="center">&nbsp;</p>
+
+<hr>
+
+<h3 align="center">Fin del Capítulo 3</h3>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="seccion3_5.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/seccion3_5.html"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo3/indice3.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="test3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo3/test3.htm"><img src="Diploma.jpg" tppabs="http://members.nbci.com/elcurso/images/Diploma.jpg" width="68" height="79" alt="Test1" border="0"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

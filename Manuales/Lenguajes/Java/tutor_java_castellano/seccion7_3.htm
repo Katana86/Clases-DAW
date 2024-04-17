@@ -1,0 +1,364 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java. Seccion 7.3</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 7.3. Búsqueda y Clasificación</h3>
+
+<hr>
+
+<p>HAY DOS TECNICAS DE TRATAMIENTO DE SERIES QUE SON particularmente importantes: la <font color="#808000">búsqueda</font> y la <font color="#808000">clasificación</font>. Aquí
+búsqueda significa el encontrar un elemento de la serie que cumpla con los criterios
+especificados. La clasificación se refiere a reordenar todos los elementos de una serie
+en orden creciente o decreciente (teniendo en cuenta que el concepto de creciente o
+decreciente puede depender del contexto).</p>
+
+<p>La clasificación y la búsqueda se explican a menudo, y de una forma abstracta,
+empleando como ejemplo una lista de números. En una situación práctica, sin embargo,
+los tipos de datos que pueden estar involucrados a menudo son mas interesantes. Por
+ejemplo, la serie puede ser una lista de direcciones de correos, y cada elemento de la
+serie puede ser un objeto que contiene nombre y dirección. Sabiendo el nombre de una
+persona, puede querer buscar su dirección. Esto es un ejemplo de búsqueda en donde
+quiere encontrar en la serie, un objeto que contenga el nombre definido. También es
+bastante normal el que se quiera ordenar una serie según varios criterios. Un ejemplo de
+clasificación de una serie es ordenar los elementos para que los nombres queden
+clasificados alfabéticamente. Otro ejemplo podría ser ordenar los elementos de la serie
+por código postal (Zip) antes de imprimir las etiquetas. (Este tipo de clasificación
+puede abaratarle la tarifa postal en caso de grandes envíos).</p>
+
+<p>Estos ejemplos se pueden generalizar a situaciones mas abstractas en las que tenemos
+una serie de objetos y los queremos ordenar o buscar basándonos en el valor de una de las
+variables instanciables de la serie. Podemos utilizar algo de la terminología empleada
+para trabajar con bases de datos, que son justamente un gran colección de datos
+organizada. Nos podemos referir a cada objeto de la serie como <font color="#808000">registro
+(<em>record</em>)</font>. Las variables instanciables del objeto las llamaremos <font color="#808000">campos (<em>fields</em>)</font> del registro.En la lista de direcciones de
+correos del ejemplo, cada registro puede contener un nombre y una dirección. Los campos
+del registro pueden ser: Nombre, apellidos, calle, ciudad, código postal, país. Para las
+búsquedas y clasificaciones, deberemos definir un campo como <font color="#808000">clave
+(<em>key</em>)</font>. Buscar significa encontrar un registro en la serie que contenga un
+valor determinado en el campo de clave. Y clasificar significa mover los registros dentro
+de la serie para conseguir que el campo de clave de todos los registros quede en orden
+ascendente o descendente.</p>
+
+<p>En esta sección, muchos de mis ejemplos siguen la tradición de emplear series de
+números. Pero también empleare ejemplos que utilicen registros y claves para recordarle
+que hay aplicaciones mas útiles.</p>
+
+<hr width="50%">
+
+<h3>Búsqueda</h3>
+
+<p>Aquí tenemos un algoritmo de búsqueda de elementos en una serie que es de lo mas
+obvio. Mirar cada elemento de la serie de forma consecutiva, y comprobar si el elemento es
+el que esta buscando.Si así es, la búsqueda termina. Si mira en todos los elementos de
+la serie sin encontrar el que buscaba, entonces ya puede decir que el elemento no esta en
+la serie. Es muy fácil escribir una subrutina para implementar este algoritmo. Vamos a
+decir que la serie en la que tienen que buscar en una serie de <tt>int</tt>s. Aquí
+tenemos un método que buscara un numero concreto en la serie. Si el número existe, el
+método devuelve el índice de la posición en la que se encuentra. Si el número no
+existe, el método devuelve el valor -1 como indicador de que no lo ha encontrado:</p>
+
+<pre>        static int find(int[] A, int N) {
+              // Búsqueda en la serie A para el numero  N.
+              
+           for (int index = 0; index &lt; A.length; index++) {
+              if ( A[index] == N ) 
+                 return index;  // se encontró N en este índice!
+           }
+           
+           // Si hemos llegado hasta aquí,  N no esta en ningún
+           // sitio de la serie.  devolver el valor de -1 para
+           // indicarlo.
+           
+           return -1;
+           
+        }</pre>
+
+<p>Este método de buscar en la serie comprobando cada elemento consecutivamente, se llama
+búsqueda lineal. Si no se conoce el orden de los elementos en la serie, esta es la única
+alternativa. Pero si los elementos de la serie están en orden creciente o decreciente,
+hay otro algoritmo de búsqueda mucho mas rápido. Naturalmente que la clasificación toma
+algo de trabajo, pero si la serie debe utilizarse continuamente para realizar búsquedas,
+el tiempo perdido con la clasificación se amortiza rápidamente.</p>
+
+<p>La <font color="#808000">búsqueda binaria </font>es un método para buscar un elemento
+en una serie <strong>ordenada</strong>. La idea es muy simple: Si esta buscando un
+elemento en una lista ordenada, examinando un único elemento es posible eliminar la
+comprobación de la mitad de los elementos. Por ejemplo, suponga que esta buscando el
+numero 42 en una serie ordenada de 100 números. Vamos a asumir que la serie esta ordenada
+de forma ascendente. Suponga que comprueba el elemento numero 500 de la serie y encuentra
+que es el 93. Dado que el 42 es menor que el 93, y que los elementos de la serie están en
+orden creciente, podemos afirmar que si el 42 esta en la serie, deberá encontrarse en
+algún sitio anterior a la posición 500. Todos los elementos situados en posiciones
+posteriores a la 500, no los deberemos comprobar.</p>
+
+<p>El siguiente paso es obvio, vamos a comprobar la posición 250. Si el numero de esa
+posición es,digamos, 21, entonces podemos eliminar los elementos anteriores al 250 y
+limitar la siguiente búsqueda la las posiciones entre la 251 y la 499. La siguiente
+comprobación limitara la búsqueda a 125 posiciones, y la siguiente a 62. Después de 10
+etapas, solo habrá una situación posible. Esta es la mejor manera de buscar elementos en
+una serie. Aunque tenga un millón de elementos, con este método de búsqueda solo
+necesitara 20 pasos! (Matemáticamente, el numero de pasos es el logaritmo en base 2 del
+numero de elementos de la serie).</p>
+
+<p>Para poder hacer una búsqueda binaria en una subrutina Java que busque en la serie A
+el elemento que contenga N, deberemos controlar el rango de las posiciones posibles para
+N. En cada etapa, como reducimos las posibilidades, reducimos el tamaño del rango.La
+operación básica es mirar el elemento del centro del rango, si es mayor que N, la
+segunda parte del rango se elimina. Si es menor que N, la primera parte del rango se
+elimina. (Si nos encontramos con que el numero que esta en el medio del rango es N,
+entonces podemos finalizar la búsqueda). Aquí tenemos la subrutina que devuelve la
+posición de N en una serie ordenada A. Si N no existe, se devuelve el valor -1:</p>
+
+<pre>        static int binarySearch(int[] A, int N) {
+              // Busca en la serie A el numero N.
+              // Asumimos que A esta ordenada ascendente.
+              
+            int lowestPossibleLoc = 0;
+            int highestPossibleLoc = A.length - 1;
+            
+            while (highestPossibleLoc &gt;= lowestPossibleLoc) {
+               int middle = (lowestPossibleLoc + highestPossibleLoc) / 2;
+               if (A[middle] == N)
+                  return middle;  // N esta aquí!
+               else if (A[middle] &gt; N)
+                 highestPossibleLoc = middle-1;//elimina posiciones&gt;= medio
+               else
+                 lowestPossibleLoc = middle+1; //elimina posiciones&lt;= medio
+            }
+            
+            // en este punto, highestPossibleLoc &lt; LowestPossibleLoc,
+            // que significa que N no esta en la serie.  devuelve -1
+            // para indicarlo
+         
+            return -1;
+
+        }</pre>
+
+<hr width="50%">
+
+<h3>Listas asociadas</h3>
+
+<p>Una aplicación muy común de las búsquedas es el tratamiento de listas asociadas. El
+ejemplo básico de listas asociadas es un diccionario. En un diccionario se asocia cada
+palabra con su definición. Dada una palabra, puede usar el diccionario para encontrar su
+definición. Podemos pensar en un diccionario como si fuera una lista de pares de la forma
+(p,d), donde <tt>p</tt> es la palabra y <tt>d</tt> su definición. En general una lista
+asociada o relacionada, es una lista de pares<tt> (k,v)</tt>, donde <tt>k</tt> es algún
+tipo de clave, y <tt>v</tt> es el valor asociado a esa clave. En general, queremos asumir
+que en la lista no hay dos parejas que tengan la misma clave. La operación básica con
+una lista asociada es: Dada la clave, <tt>k</tt>, encontrar el valor <tt>v</tt> asociado a
+dicha clave.</p>
+
+<p>En informática, el empleo de listas asociadas está muy extendido. Por ejemplo, el
+compilador tiene que controlar la situación en memoria donde se almacena cada variable.
+Para hacerlo puede emplear una lista asociada en donde la clave es el nombre de la
+variable y el valor asociado es la situación de la variable en la memoria. Otro empleo
+puede ser las lista para envío de correo, si pensamos que en la lista, a cada nombre hay
+asociada una dirección. Como ejemplo, podemos considerar un directorio telefónico en el
+que cada nombre tiene asociado un numero de teléfono. Los elementos de la lista
+pertenecen a la clase:</p>
+
+<pre>         class PhoneEntry {
+            String name;
+            String phoneNum;
+         }</pre>
+
+<p>El directorio telefónico puede ser una serie de objetos <tt>PhoneEntry.</tt> Para
+tener las cosas claras, el directorio telefónico debería ser una instancia de la clase<tt>:</tt>:</p>
+
+<pre>      class PhoneDirectory {
+         
+       PhoneEntry[] info = new PhoneEntry[100]; //espacio para 100 entradas
+       int entries = 0;  // numero actual de entradas
+            
+       void addEntry(String name, String phoneNum) {
+                   // añadir una entrada al final de la serie
+               info[entries] = new PhoneEntry();
+               info[entries].name = name;
+               info[entries].phoneNum = phoneNum;
+               entries++;
+       }
+            
+       String getNumber(String name) {
+                  // Devuelve el numero de teléfono asociado,
+                  // al nombre, nulo si el nombre no existe  
+                  // en la serie.
+               for (int index = 0; index &lt; entries; index++) {
+                  if (name.equals(info[index].name))  // Existe!
+                     return info[index].phoneNum;
+               }
+               return null;  // Nombre no existe
+       }
+            
+     }</pre>
+
+<p>Observe que el método de búsqueda ,<tt>getNumber</tt>, solo comprueba las posiciones
+de la serie que en este momento están ocupadas. Observe también que distintamente a la
+rutina vista con anterioridad, esta no devuelve la posición del elemento en la serie. En
+su lugar devuelve el valor encontrado asociado al la clave <tt>name</tt>. Esto pasa a
+menudo con las listas asociadas.</p>
+
+<p>Esta clase admite multitud de mejoras. Por una parte, sería bonito el emplear una
+búsqueda binaria en lugar de la sencilla búsqueda lineal implementada en el método <tt>getNumber</tt>.
+Sin embargo, esto solo lo podríamos hacer si <tt>PhoneEntries</tt> estuviera ordenado de
+forma alfabética con relación a name. Realmente no es tan duro como parece el mantener
+la lista de entradas ordenadas, como veremos en un momento.</p>
+
+<hr width="50%">
+
+<h3>Inserción ordenada</h3>
+
+<p>Hemos visto que hay muy buenas razones para mantener ordenadas las series. Hay muchos
+algoritmos disponibles para hacerlo. Uno de los mas sencillos de entender el el de la <font color="#808000">inserción ordenada</font>. Este método también se puede aplicar al
+problema de <strong>mantener</strong> clasificada una lista cuando añade un nuevo
+elemento. Vamos a ver primero este caso:</p>
+
+<p>Supongamos que tiene una lista ordenada y quiere añadir un elemento a esa lista. Si
+quiere estar seguro que la lista modificada sigue estando ordenada, deberá insertar el
+elemento en la posición correcta, con los elementos mas pequeños delante de el y los
+mayores detrás. Esto significa mover cada uno de los mayores un espacio para hacer sitio
+al nuevo elemento.</p>
+
+<pre>        static void insert(int[] A, int itemsInArray, int newItem) {
+              // suponemos que A tiene itemsInArray elementos ordenados
+              // ascendentes (A[0] &lt;= A[1] &lt;= ... &lt;= A[itemsInArray-1]).
+              // Esta rutina añade newItem a la serie en el lugar
+              // correcto.
+           int loc = itemsInArray - 1;
+           while (loc &gt;= 0 &amp;&amp; A[loc] &gt; newItem) {
+              A[loc + 1] = A[loc];  //sube elementos de A[loc] a loc + 1
+              loc = loc - 1;        //baja a la siguiente posición
+           }
+           A[loc + 1] = newItem;  // pone el nuevo elemento en el hueco
+        }</pre>
+
+<p>Conceptualmente, esto puede extenderse como método de ordenación si tomamos todos los
+elementos de una serie desordenada y los vamos insertando en una nueva serie de uno en
+uno, manteniendo la lista ordenada como queremos. Cada inserción la deberemos realizar
+utilizando la rutina <tt>insert</tt> definida anteriormente. En el algoritmo actual, no
+tomamos todos los elementos de la serie, debe recordar que parte de la misma ya estaba
+ordenada::</p>
+
+<pre>   static void insertionSort(int[] A) {
+         // clasifica la serie A en orden ascendente
+     int itemsSorted;  // numero de elementos clasificados hasta ahora
+     for (itemsSorted = 1; itemsSorted &lt; A.length; itemsSorted++) {
+           // asumimos que los elementos A[0], A[1], ... A[itemsSorted-1]
+           // ya están ordenados, e insertamos A[itemsSorted] en la lista.
+        int temp = A[itemsSorted];  // el item a insertar
+        int loc = itemsSorted - 1;
+        while (loc &gt;= 0 &amp;&amp; A[loc] &gt; temp) {
+           A[loc + 1] = A[loc];
+           loc = loc - 1;
+        }
+        A[loc + 1] = temp;
+     }
+   }</pre>
+
+<p>Lo siguiente es una ilustración de una de las etapas de una inserción ordenada.
+Presenta lo que pasa durante la ejecución del bucle <tt>for</tt> descrito anteriormente,
+cuando <tt>itemSorted</tt>es 5.</p>
+
+<p align="center"><img alt="(Illustration of Insertion Sort)" src="fig4-3.gif" tppabs="http://members.nbci.com/elcurso/Capitulo7/fig4.gif" WIDTH="326" HEIGHT="366"></p>
+
+<h3>Ordenación por selección</h3>
+
+<p>Otro método de clasificación típico se basa en la idea de encontrar el mayor
+elemento de la lista y moverlo al final que es el sitio que le pertenece si la lista se va
+a ordenar de forma ascendente. Una vez el elemento mayor esta en su sitio, aplica la misma
+idea al resto de los elementos. Esto es, busca el siguiente elemento mayor y lo mueve al
+la siguiente posición anterior al final, y así sucesivamente. Este algoritmo se llama
+ordenación por selección. Es fácil de escribir:</p>
+
+<pre>    static void selectionSort(int[] A) {
+          // ordena A en orden ascendente,usando
+	  // clasificación por selección
+       for (int lastPlace = A.length-1; lastPlace &gt; 0; lastPlace--) {
+             // Busca el mayor elemento de A[0], A[1], ... A[lastPlace],
+             // y lo mueve a lastPlace intercambiándolo con
+             // el numero que esta en lastPlace
+          int maxLoc = 0;  // localiza el mayor elemento del momento
+          for (int j = 1; j &lt;= lastPlace; j++) {
+             if (A[j] &gt; A[maxLoc])
+                maxLoc = j;  // Ahora, la posición  j
+                             // contiene el mayor elemento visto
+          }
+          int temp = A[maxLoc];   // intercambia el mayor 
+          A[maxLoc] = A[lastPlace];//  elemento encontrado con el de
+          A[lastPlace] = temp;     // A[lastPlace]
+       }
+    }</pre>
+
+<hr width="50%">
+
+<h3>Ordenación por combinación</h3>
+
+<p>Los dos métodos vistos anteriormente funcionan bien cuando las series son
+relativamente pequeñas. Sin embargo, para grandes series, ambos emplean una cantidad de
+tiempo irrazonable. Así como con las series grandes la búsqueda binaria es mucho mas
+rápida que la búsqueda lineal , hay algoritmos que pueden clasificar series grandes de
+una forma mucho mas rápida que los dos estudiados. Desgraciadamente, muchos de estos
+algoritmos son mucho mas complicados que lo que quiero explicar aquí. Uno de los métodos
+de clasificación rápidos. por combinación, es razonablemente fácil de explicar-- pero
+en la practica se emplea poco porque requiere una serie auxiliar para utilizarla como
+memoria de apoyo.</p>
+
+<p>La ordenación por combinación se basa en la idea de mezclar dos listas ordenadas para
+obtener otra lista ordenada mayor. Es sencillo de hacer comparando simplemente los
+elementos del principio de cada lista y moviendo el menor de ambas a la nueva
+lista.(Necesita una serie auxiliar para la nueva lista; no hay un truco sencillo para
+evitar este requerimiento, como lo hubo en la ordenación por inserción).</p>
+
+<p>Ahora imagínese empezar con una gran lista desordenada de elementos.Empareje los
+elementos y clasifique cada par en orden creciente. Cada par puede considerarse una lista
+de longitud dos.Las listas de longitud dos, pueden ser tomadas de dos en dos y cada par de
+listas pueden ser mezcladas en una lista ordenada de longitud cuatro.Las listas de
+longitud cuatro pueden ser mezcladas en listas de longitud 8, las listas de longitud 8 en
+listas de longitud 16, y así sucesivamente. En cada etapa la longitud de las listas
+clasificadas se dobla. En un plazo corto, todos los elementos estarán en una gran lista
+ordenada (Esto requiere un poco de imaginación cuando el numero de elementos no es
+potencia de dos, dado que en este caso cuando monta las listas de dos elementos puede
+encontrarse con una lista extra de un elemento)</p>
+
+<hr width="50%">
+
+<h3>Desordenar</h3>
+
+<p>No puedo resistirme a terminar esta sección sobre la ordenación comentando un
+problema que es mucho menos común pero un poco mas divertido. Se trata del problema para
+conseguir dejar los elementos de una serie con un desorden aleatorio. El caso típico para
+este problema es barajar un paquete de cartas. Un buen algoritmo para barajar es similar a
+la ordenación por selección, excepto que en lugar de mover al final de la serie al
+elemento mayor, se consigue un numero aleatorio y es ese elemento el que se mueve al
+final. Aquí tiene una rutina para barajar una serie de <tt>int</tt>s:</p>
+
+<pre>        static void shuffle(int[] A) {
+           for (int lastPlace = A.length-1; lastPlace &gt; 0; lastPlace++) {
+                 // obtener un random entre 0,1,...,lastPlace
+              int randLoc = (int)(Math.random()*(lastPlace+1));
+                 // intercambia las posiciones randLoc y lastPlace
+              int temp = A[randLoc];
+              A[randLoc] = A[lastPlace];
+              A[lastPlace] = temp;
+           }
+        }</pre>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="seccion7_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/seccion7_2.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice7.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/indice7.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion7_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/seccion7_4.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

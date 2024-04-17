@@ -1,0 +1,123 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Practica 5</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+</head>
+
+<body>
+
+<h3>Practica 5: Applets y Objetos</h3>
+
+<hr>
+
+<p>Para la practica 5,&nbsp; deberá trabajar con una clase que permita calcular
+estadísticas sencillas. Anteriormente ya ha estado trabajando con objetos ( del tipo
+Console y MosaicFrame), pero esta es la primera vez que le pregunto que busque dentro de
+la clase para ver que métodos que contiene. En la siguiente practica deberá escribir una
+clase empezando desde cero. La segunda parte de esta practica es sobre applets y veremos
+el ejercicio que se solicito en la <a href="practica3.htm" tppabs="http://members.nbci.com/elcurso/Practicas/prc3/practica3.htm">practica 3</a> y que en
+aquel momento no se podía resolver completamente. </p>
+
+<p>Para la realización de esta practica, necesita la carpeta &quot;<a
+href="tppmsgs/msgs0.htm#17" tppabs="http://members.nbci.com/elcurso/Proyectos/StatCalc%20Starter.zip">StatCalc Starter</a>&quot;. Copie y
+descomprima esta carpeta en su directorio de trabajo. Para el segundo ejercicio, deberá
+recuperar el programa que empezó anteriormente &quot;JumpingSquare Starter&quot; y que
+debe tener ya en su directorio</p>
+
+<p>Como siempre al final de la practica hay unos ejercicios que deberán ser enviados a su
+tutor (únicamente las personas que hayan contratado <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">Seguimiento</a>).</p>
+
+<hr width="50%">
+
+<h3>Indice de la practica:</h3>
+
+<ul>
+  <li><a href="#Algunas estados sencillas">Algunas estadísticas sencillas</a></li>
+  <li><a href="#JumpingSquares">Finalización de Jumping Squares Applet</a></li>
+  <li><a href="#Ejercicios">Ejercicios</a></li>
+</ul>
+
+<hr width="50%">
+
+<h3><a name="Algunas estados sencillas">Algunas estadísticas sencillas</a></h3>
+
+<p>Las estadísticas son números que resumen o abstraen algunas propiedades de un
+conjunto de números (potencialmente grandes). Por ejemplo, es una estadística la que
+representa la longitud media de un conjunto de números. La desviación estándar es una
+estadística que define de alguna manera cuan ampliamente dispersos están los números
+analizados. Dado que estas estadísticas, a menudo necesitan ser calculadas por programas,
+es lógico el explicar algo sobre como calcularlas por clases y poderlas usar una y otra
+vez.</p>
+
+<p>La carpeta &quot;StatCalc Starter&quot; contiene un programa principal que calcula
+algunas estadísticas para un conjunto de números entrados por el usuario. (Lo puede leer
+<a href="tppmsgs/msgs0.htm#38" tppabs="http://members.nbci.com/elcurso/Practicas/prc5/SimpleStats.java">aquí</a>). Los cálculos los realiza &quot;a mano&quot;. Debe
+leerse este programa para entender lo que hace y como lo hace (No necesita entender como
+trabaja la formula de la desviación estándar). Un detalle interesante es que todas las
+estadísticas se calculan sin mantener ningún control sobre todos los números entrados.
+Cada vez que se le un numero, se actualizan algunas variables, el programa solo necesita
+arrastrar la suma de los números entrados, y no los números en si.</p>
+
+<p>El el proyecto &quot;StatCalc Starter&quot;, también encontrará el fichero
+StatCalc.java, que define la clase llamada StatCalc ( lo puede ver <a
+href="tppmsgs/msgs0.htm#38" tppabs="http://members.nbci.com/elcurso/Practicas/prc5/SimpleStats.java">aquí</a>). Su trabajo, es reescribir el programa para utilizar
+objetos pertenecientes a la clase <tt>StatCalc</tt> toda ella dedicada a cálculos
+estadísticos. Añadir la variable <tt>stats</tt> de tipo <tt>StatCalc</tt> al programa.
+Leer la definición de la clase <tt>StatCalc</tt> para ver que métodos ofrece. Deberá
+llamar stats.enter(), stats.getCount(), stats.getStandardDeviation(), stats.getMaximum(),
+y stats.getMinimum().&nbsp; Emplee estos métodos para entrar los datos en el conjunto y
+para calcular las estadísticas del conjunto.</p>
+
+<p>Deberá borrar la mayoría de las variables y casi todo el código original del
+programa. La versión que escriba deberá ser bastante mas pequeña que la original.</p>
+
+<hr width="50%">
+
+<h3>El final de <a name="JumpingSquares">JumpingSquares </a>Applet</h3>
+
+<p>Para la segunda parte del ejercicio deberá acabar el trabajo solicitado en la practica
+3 y que en aquel momento le faltaba información para hacerlo. Tenga en cuenta que se
+espera un applet al que se le debe modificar el comportamiento cambiando algunos métodos.
+</p>
+
+<p>Las instrucciones para ese ejercicio no las vamos a repetir. Por favor acudan a la
+practica 3 y lea <a href="practica3.htm" tppabs="http://members.nbci.com/elcurso/Practicas/prc3/practica3.htm">Un applet en </a>acción</p>
+
+<hr width="50%">
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%"><h3><a name="Ejercicios">Ejercicios para entregar </a></h3>
+    </td>
+    <td width="50%">Esta parte solo la deben enviar aquellos alumnos que han contratado el
+    servicio de <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">seguimiento</a></td>
+  </tr>
+</table>
+
+<p><strong>Ejercicio 1</strong>. El primer ejercicio de esta practica es modificar el
+programa &quot;StatCalc Starter&quot; descrito anteriormente. Envíenos el programa fuente
+modificado. Asegúrese que sigue las normas de estilo de programación. Compruebe también
+que ha borrado todo lo que no necesite..</p>
+
+<p><strong>Ejercicio 2.</strong>&nbsp; Escriba un pequeño ensayo comparando la versión
+original del programa con la modificada. El nuevo programa ¿Es una mejora del
+antiguo?.¿Porqué o porqué no?.¿Porqué es mas fácil de leer.¿Es mas fácil escribir
+el programa original, o es fácil escribirlo en dos partes (la clase de estadísticas y el
+programa que utiliza la clase). ¿Es un trabajo extra?.¿Porqué o porqué no? (Piense
+sobre&nbsp; lo que pasara la <strong>próxima </strong>vez que tenga que escribir un
+programa que realice cálculos estadísticos)</p>
+
+<p><strong>Ejercicio 3. </strong>Para este ejercicio, devuelva la copia del fichero
+JumpingSquare.Java que ha modificado en la <a href="#JumpingSquares">segunda parte</a> de
+estas practicas. Por esta vez, no se preocupe de que los comentarios sean muy correctos.
+Añada el applet a su pagina y envíeme la dirección (URL) de su pagina.</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<p align="center"><a href="indice.htm#Practicas" tppabs="http://members.nbci.com/elcurso/indice.htm#Practicas">[Indice de practicas<sup>]</a> <a
+href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm">[Curso</sup>]</a></p>
+</body>
+</html>

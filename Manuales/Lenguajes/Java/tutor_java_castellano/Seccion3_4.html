@@ -1,0 +1,294 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 3.4</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 3.4:Devolución de valores</h3>
+
+<hr>
+
+<p>LA SUBRUTINA QUE DEVUELVE VALORES se llama <font color="#808000">funció</font>n. Una
+función determinada, solo puede devolver valores de un tipo concreto, denominado <font color="#808000">tipo de retorno (<em>return type</em>)</font> de la función. La llamada a
+una función, normalmente aparece en los lugares en que el ordenador esta esperando
+encontrarse un valor, como en la parte derecha de una instrucción de asignación, como
+parámetro en una llamada a subrutina, o en el medio de alguna expresión. Las funciones
+de valor boleano también pueden ser usadas como condiciones en las instrucciones <em>if,
+while</em> o <em>do</em>.</p>
+
+<p>(También es correcto el emplear una llamada a función en una instrucción como si
+fuera una subrutina normal. En esta caso, el ordenador ignorará el valor calculado por la
+subrutina. Esto a veces tiene sentido. Por ejemplo, la función <tt>console.getln()</tt>,
+que devuelve un tipo <tt>String</tt>, lee y devuelve la línea tecleada por el usuario.
+Normalmente esa línea devuelta, es asignada a una variable en una instrucción &quot;<tt>String
+name=console.getln();</tt>&quot;&nbsp; para que el programa la emplee mas tarde. Sin
+embargo, esta función también es útil emplearla como subrutina con la llamada &quot;<tt>console.getln();</tt>&quot;
+para que lea y descargue todo lo que se haya tecleado hasta el siguiente retorno de
+carro).</p>
+
+<p>Ya hemos visto y usado funciones como <tt>Math.sqrt()</tt> y <tt>console.getInt()</tt>.
+Lo que no hemos visto, es como escribirlas nosotros.La función, en principio tiene la
+misma forma que una subrutina, excepto que tiene que especificar el valor que se va a
+devolver. Esto se puede realizar con la instrucción<font color="#808000"> return</font>,
+que tiene esta forma:</p>
+<div align="center"><center>
+
+<pre>return expresión;      </pre>
+</center></div>
+
+<p align="left">Esta instrucción solo pueden aparecer en el interior de la definición de
+la función, y el tipo de la<font color="#808000"> expresión </font>debe ser el mismo que
+el que se ha especificado como tipo de&nbsp; retorno para esta función. Cuando el
+ordenador ejecuta la instrucción <font face="m"><tt>return</tt>, evalúa la expresión.
+finaliza la ejecución de la función y usa el valor de la expresión como valor de
+retorno de la función.</font></p>
+
+<p align="left"><font face="m">(Dentro de un método ordinario, que ha declarado como tipo
+de retorno &quot;<em>void&quot;</em> puede utilizar la instrucción <em>return</em> para
+finalizar la ejecución del método inmediatamente y devolver el control al punto del
+programa que lo invocó, pero esta instrucción<em> return </em>no puede emplear la
+expresión. Es una forma bastante usual de finalizar la ejecución de una subrutina, pero
+no es obligatorio. Por otra parte, en la función si que es obligatorio la instrucción <em>return</em>
+con la expresión).</font></p>
+
+<p align="left"><font face="m">Aquí tenemos una función que podemos emplear en el
+programa que calcula la secuencia 3N+1. Dado un termino de la secuencia, esta función
+calcula el siguiente:</font></p>
+
+<pre>        static int nextN(int currentN) {
+           if (currentN % 2 == 1)     // prueba si N es impar
+              return 3*currentN + 1;  // si lo es, devuelve esto
+           else
+              return currentN / 2;    // si no, devuelve esto
+        }</pre>
+
+<p>Muchos programadores, entre los que me encuentro, prefieren utilizar una instrucción <em>return</em>
+única, como final real de la función. Esto permite encontrar la instrucción <em>return</em>
+mas fácilmente. Podemos escoger el escribir la función de esa forma, en el siguiente
+ejemplo:</p>
+
+<pre>        static int nextN(int currentN) {
+           int answer;  // answer sera el valor de retorno
+           if (currentN % 2 == 1)    // prueba si N es impar
+              answer = 3*currentN+1; // si lo es, prepara esto
+           else
+              answer = currentN / 2; // si no, prepara esto
+           return answer;   // (Devuelve el valor !No lo olvide!)
+        }</pre>
+
+<p>Aquí esta la subrutina que emplea nuestra función nextN<tt>.</tt>En este caso, la
+mejora frente a la versión de la <a href="Seccion3_3.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/Seccion3_3.html">Sección 3</a>, no es muy
+grande, pero si <tt>nextN()</tt> fuera una función larga que realizara cálculos
+complejos, entonces si que habría tenido sentido el ocultar la complejidad dentro de la
+función:</p>
+
+<pre>         static void Print3NSequence(int startingValue) {
+         
+            // imprimir la secuencia 3N+1 en la consola usando
+            // startingValue como valor inicial de N
+            int N = startingValue;  // N es el termino de la secuencia
+            int count = 1;   // cuenta el numero de términos
+            
+            console.putln(&quot;La secuencia 3N+1 empieza en &quot; + N);
+            console.putln();
+            console.putln(N);  // imprimir el primer termino
+ 
+            while (N &gt; 1) {
+                N = nextN(N);  // calcula siguiente termino
+                count++;   // lo cuenta
+                console.putln(N);  // lo imprime
+            }
+            
+            console.putln();
+            console.putln(&quot;Aquí hay &quot; + count + &quot; términos en la secuencia.&quot;);
+         
+         }  // end of Print3NSequence()</pre>
+
+<hr width="50%">
+
+<p>Aquí tenemos algunos ejemplos mas sobre funciones. El primero calcula la letra que se
+ha de colocar según una escala de valores numéricos:</p>
+
+<pre>       static char letterGrade(int numGrade) {
+       
+          // devuelve la letra correspondiente
+          // a una escala numérica
+          
+          if (numGrade &gt;= 90)
+             return 'A';   // 90 o superior devuelve A
+          else if (numGrade &gt;= 80)
+             return 'B';   // 80 a 89 devuelve B
+          else if (numGrade &gt;= 65)
+             return 'C';   // 65 a 79 devuelve C
+          else if (numGrade &gt;= 50)
+             return 'D';   // 50 a 64 devuelve D
+          else
+             return 'F';   // cualquier otra cosa devuelve F
+          
+       }  // end of function letterGrade()</pre>
+
+<p>El tipo del valor de retorno de letterGrade() es <tt>char</tt>. Las funciones pueden
+devolver cualquier tipo de valor. Aquí tenemos una que devuelve un valor de tipo <tt>boolean</tt>:</p>
+
+<pre>       static boolean isPrime(int N) {
+          
+          // devuelve true si N es numero primo, esto es,
+          // si N es positivo y no es divisible por ningún
+          // numero positivo excepto por 1 y él mismo
+          
+          int maxToTry = (int)Math.sqrt(N);
+               // probaremos de dividir N por números entre
+               // 2 y maxToTry; si N no es divisible por
+               // ninguno de esos números, entonces N es primo.
+               // (observe que  Math.sqrt(N) devuelve un valor 
+               // de tipo double, el valor debe cambiarse a 
+               // tipo int antes de poder asignar 
+               // a maxToTry.)
+               
+           for (int divisor = 2; divisor &lt;= maxToTry; divisor++) {
+               if ( N % divisor == 0 )   // prueba si N es divisible
+                  return false;  // si lo es, no es primo
+           }
+           
+           // al llegar a este punto, N debe ser primo. De otra forma
+           // la función ya habría terminado al ejecutar
+           // la instrucción return en el bucle for.
+           
+           return true;  // si, N es primo
+
+        }  // end of function isPrime()</pre>
+
+<p>Finalizare esta sección con la versión completa de programa 3N+1.Esto nos permitirá
+el emplear la función <tt>nextN()</tt> en un programa completo. También tendremos la
+posibilidad de mejorar el programa definiendo la impresión de los términos de la
+secuencia en columna, con varios términos en cada línea. Así haremos la salida mas
+presentable. La idea es fácil. Tenemos que controlar cuantos términos se ha escrito en
+la línea actual, cuando el valor alcance un determinado numero, iniciaremos nueva línea.
+Para conseguir que los términos aparezcan alineados en columna, usaremos la versión de <tt>console.put()</tt>
+con firma <tt>put(int,int)</tt>. El segundo parámetro <tt>int</tt> indica la anchura de
+la columna.</p>
+
+<p>Para enseñar otra nueva idea, mi programa especifica el numero de columnas de salida y
+la anchura de cada columna como <font color="#808000">constante</font>. Una constante es
+como una variable excepto que su valor no puede cambiar nunca mientras el programa este
+funcionando. (para cambiar el valor, deberá editar el programa y recompilarlo). Las
+constantes se emplean en los programas porque es mas fácil recordar y entender un nombre
+que una constante literal.</p>
+
+<p>En Java, una constante se define utilizando en la declaración de la variable el
+modificador &quot;<tt>final</tt>&quot;. La palabra final, indica que la constante esta en
+su forma final-- que el valor asignado es el final y no puede ser cambiado. Mas adelante,
+veremos que el modificador <tt>final</tt> también puede ser usado en la definición de
+métodos.</p>
+
+<pre>      public class ThreeN {
+      
+         /*
+		Este programa calcula y presenta la secuencia 3N+1
+		Empieza la secuencia en donde el usuario indique
+		Los términos de la secuencia se imprimen en columnas
+		con varios términos en cada línea. Después de finalizar 
+		la secuencia, se informa del numero de términos
+         */
+       
+         final static int numberOfColumns = 5;  // constant indica el
+                                     // numero de términos en columna
+         
+         final static int columnWidth = 8;  // constant indica anchura
+                                            // en numero de caracteres en
+                                            // cada columna
+         
+         Console console;  // ventana para entrada/salida
+          
+
+         public static void main(String[] args) {
+
+            console = new Console();
+            
+            console.putln(&quot;Este programa imprime la secuencia 3N+1 &quot;);
+            console.putln(&quot;empezando en el valor que especifique.&quot;);
+            console.putln();
+            
+            int K = 0;
+            do {
+               console.putln(&quot;Indique valor inicial;&quot;);
+               console.put(&quot;para finalizar programa entre 0: &quot;);
+               K = console.getInt();  // lee valor inicial del usuario
+               if (K &gt; 0)   // imprime la secuencia si  K is &gt; 0
+                  Print3NSequence(K);
+            } while (K &gt; 0);   // continua solo si K &gt; 0
+            
+            console.close();
+
+         } // end main()
+
+
+         static void Print3NSequence(int startingValue) {
+
+            // imprime la secuencia 3N+1 en la consola usando
+            // startingValue como valor inicial de N
+
+            int N = startingValue;  // N representa el termino.
+            int count = 1;   // cuenta el numero de términos.
+            int onLine = 1;  // onLine cuenta términos en la línea actual.
+
+            console.putln(&quot;La secuencia 3N+1 empieza en &quot; + N);
+            console.putln();
+            console.put(N, columnWidth);  // imprime el primer termino
+
+            while (N &gt; 1) {
+                N = nextN(N);  // calcula siguiente
+                count++;   // cuenta el termino
+                if (onLine == numberOfColumns) { // si la línea esta llena
+                   console.putln();  //imprime retorno de carro
+                   onLine = 0;   // y borra contador de términos en línea
+                }
+                console.put(N, columnWidth);  // imprime el termino
+                onLine++;   // incrementa contador de términos en línea
+            }
+
+            console.putln();  // final de la línea actual
+            console.putln();  // añade línea en blanco
+            console.putln(&quot;Aquí hay &quot; + count + &quot; términos en la secuencia.&quot;);
+
+         }  // end of Print3NSequence()
+         
+         
+         static int nextN(int currentN) {
+             // calcula el siguiente termino de la secuencia 3N+1
+             if (currentN % 2 == 1)
+                return 3 * currentN + 1;
+             else
+                return currentN / 2;
+         }  // end of nextN()
+         
+      } // end of class ThreeN</pre>
+
+<p>Aquí esta la versión applet para que pueda probar el programa</p>
+
+<p>:</p>
+
+<p align="center">
+<applet code="ThreeN2Console.class" tppabs="http://members.nbci.com/elcurso/Capitulo3/ThreeN2Console.class" height="300" width="420">
+
+<p align="center"><font color="#E70000">Sorry, your browser doesn't<br>
+support Java.</font></applet>
+</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="Seccion3_3.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/Seccion3_3.html"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo3/indice3.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion3_5.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/seccion3_5.html"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="60" HEIGHT="60"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,384 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java.Seccion 5.3</title>
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3 align="left">Sección 5.3: HTML Básico</h3>
+
+<hr>
+
+<p>LOS APPLETS NORMALMENTE APARECEN EN PAGINAS en los navegadores Web. Esas paginas se
+escriben en lenguaje HTML (HyperText Markup Language). Un documento HTML describe el
+contenido de la pagina. El programa de navegación WEB interpreta el código HTML que le
+indica como se ha de presentar la pagina. Del código HTML depende en gran manera el
+aspecto de la página que se presenta en el navegador. El documento HTML contiene todo el
+texto que ha de aparecer en la página, pero además, este texto esta marcado con comandos
+que indican la estructura y la apariencia del texto, y determinan que aparecerá en la
+página además del texto.</p>
+
+<p>Los comandos HTML son llamados <font color="#808000">tags</font>. Un tag HTML tiene la
+siguiente forma</p>
+
+<p align="center">&lt;<font color="#009000"><b>nombre-tag modificadores-opcionales</b></font>&gt;</p>
+
+<p align="left">Donde <font color="#009000"><b>nombre-tag</b></font> es una palabra que
+especifica el comando y los&nbsp;&nbsp; <font color="#009000"><b>modificadores-opcionales</b></font>
+, si están presentes, se emplean para facilitar información adicional al comando.( muy
+semejante a los parámetros de una subrutina). Un modificador tiene la forma:</p>
+
+<p align="center"><font color="#009000"><b>nombre-modificador</b></font> = <font color="#009000"><b>valor</b></font></p>
+
+<p>Normalmente, el&nbsp; <font color="#009000"><b>valor</b></font> se encierra entre
+comillas, y si contiene mas de una palabra o caracteres especiales, es obligatorio el
+hacerlo así. El HTML no distingue entre mayúsculas y minúsculas, por lo que es
+indistinto que use mayúsculas y minúsculas.</p>
+
+<p>Un ejemplo sencillo de un tag es &lt;HR&gt;, que dibuja una línea, -- también llamada
+regla horizontal -- que atraviesa la pagina. El tag HR tiene varios modificadores posibles
+&nbsp; como WIDTH y ALIGN. Por ejemplo, la línea larga justo después del titulo de esta
+pagina se genera con el comando HTML :</p>
+
+<p align="center">&lt;HR&gt;</p>
+
+<p align="left">mientras que la que viene a continuación, se genera con</p>
+<p align="center">
+
+<font SIZE="1" COLOR="#000000"></font><font COLOR="#000000" size="4">&lt;</font><font COLOR="#800080" size="4">hr </font><font COLOR="#ff0000" size="4">width=&quot;</font><font COLOR="#0000ff" size="4">50%</font><font COLOR="#ff0000" size="4">&quot;</font><font COLOR="#000000" size="4">&gt;</font></p>
+
+<hr width="50%">
+
+<p>El WIDTH aquí especifica que ha de ser del 50% del espacio disponible. También
+habríamos podido emplear un numero fijo de pixeles. Los valores para ALIGN pueden ser
+CENTER, LEFT, o RIGTH. El alineamiento LEFT hace aparecer la línea en el borde izquierdo
+de la pagina, y el alineamiento RIGTH, la hace aparecer en el derecho. WIDTH y ALIGN son
+modificadores opcionales.Si no los indica, se emplearan <font color="#808000">valores por
+defecto</font>. El valor por defecto para WIDTH es 100%, mientras que para ALIGN es
+CENTER.</p>
+
+<p>La mayoría de tags requieren una pareja para cerrar el tag, con el formato</p>
+
+<p align="center">&lt;/<font color="#009000"><b>nombre-tag</b></font>&gt;</p>
+
+<p align="left">Por ejemplo el tag &lt;PRE&gt; debe tener mas adelante en el documento,
+siempre su pareja de cierre &lt;/PRE&gt;. El tag se aplica a todo lo que se encuentre
+entre el tag de inicio y el tag de fin. El tag PRE le indica al navegador web que displaye
+todo lo que hay entre &lt;PRE&gt; y &lt;/PRE&gt; exactamente como esta formateado en el
+documento HTML, incluyendo espacios y retornos de carro.(Pero los tags que puedan existir
+entre &lt;PRE&gt; y &lt;/PRE&gt; si son interpretados por el navegador). PRE se utiliza
+para texto formateado.</p>
+
+<p align="left">Es muy importante que entienda que cuando no utiliza PRE, el ordenador
+ignora completamente el formato que pueda tener el texto en el código fuente HTML. Solo
+presta atención a los tags Cinco líneas en blanco en el código fuente, no tienen mas
+efecto que una línea en blanco o incluso un espacio en blanco.Si quiere espaciado
+vertical extra en su pagina web, deberá emplear el comando &lt;BR&gt;. para realizar el
+salto de línea.</p>
+
+<p align="left">De forma similar, necesitará un tag para indicar como se agrupa el texto
+en párrafos. Esto se realiza con el tag &lt;P&gt; que se debe situar al inicio de cada
+párrafo. El tag &lt;P&gt; tiene su pareja &lt;/P&gt; que debe situarse al final de cada
+párrafo. (El cierre &lt;/P&gt; técnicamente es opcional aunque se considera una buena
+costumbre el emplearlo).</p>
+
+<p align="left">Entonces, si tags como pueden ser &lt;P&gt; y &lt;HR&gt; tienen un
+significado especial en HTML, puede que se este preguntando como puedo hacer que estén
+apareciendo en la página. Para conseguir que determinados caracteres aparezcan en la
+pagina, debe emplearse un <font color="#808000">nombre de entidad</font> en el código
+fuente HTML. Este nombre de entidad para &lt; es &amp;lt;, y el nombre de entidad para
+&gt; es &amp;gt;. Los nombres de entidad empiezan todos por &amp;, y también &amp; es un
+carácter especial y como tal tiene su nombre de entidad que es &amp;amp;. También hay
+nombres de entidad para todos los caracteres no estándares como las vocales acentuadas,
+por ejemplo la é tienen como nombre de entidad &amp;eacute;.</p>
+
+<p align="left">El resto de esta sección, explica varios tags básicos de HTML. Esto no
+significa que sea un curso completo de HTML, pero si se da la suficiente información para
+producir paginas interesantes mientras preparamos el curso de HTML dinámico.</p>
+
+<hr width="50%">
+
+<h3>Visión general de la estructura de un documento</h3>
+
+<p>Los documentos HTML tienen todos una estructura estándar. Empiezan con &lt;HTML&gt; y
+terminan con &lt;/HTML&gt;. Entre estos tags, hay dos secciones, la cabecera que se
+identifica con &lt;HEAD&gt; y &lt;/HEAD&gt; y el cuerpo que, estoy seguro que lo han
+adivinado, se identifica con &lt;BODY y &lt;/BODY&gt;. Normalmente la cabecera contienen
+únicamente un ítem que es el titulo del documento. Este titulo, puede ser presentado,
+por ejemplo en la barra de titulo de la ventana del navegador. El titulo no puede contener
+tags HTML. El contenido de la página esta realmente dentro del cuerpo, y es lo que el
+navegador presentara en pantalla. Después de esto, un documento HTML tiene esta forma: </p>
+
+<pre>       &lt;HTML&gt;
+       
+       &lt;HEAD&gt;
+       &lt;TITLE&gt;<font color="#009000"><b>titulo de la pagina</b></font>&lt;/TITLE&gt;
+       &lt;/HEAD&gt;
+       
+       &lt;BODY&gt;
+       
+       <font color="#009000"><b>contenido de la pagina</b></font>
+       
+       &lt;/BODY&gt;
+       
+       &lt;/HTML&gt;</pre>
+
+<p>El navegador no es demasiado exigente sobre la implementacion de esta estructura,
+probablemente puede no montarla completamente y todo le funcione, pero si piensa en las
+múltiples plataformas que pueden leer sus paginas y la colección de navegadores que hay,
+pienso que una buena costumbre pegarse lo mas posible a los estándares.</p>
+
+<p>El tag &lt;BODY&gt; tiene una gran cantidad de modificadores que afectan la apariencia
+de la pagina cuando se presenta. Por ejemplo, el modificador llamado BGCOLOR que se puede
+emplear para establecer el color de fondo de la ventana. (Busque mas información si esta
+interesado)</p>
+
+<hr width="50%">
+
+<h3>Cabeceras y estilo de letras</h3>
+
+<p>El HTML tiene numerosos tags que afectan al tamaño y al formato de las letras con las
+que se presenta el texto. Para una cabecera, que es una línea que ha de destacar de por
+si, el HTML ofrece los tags &lt;H1&gt;, &lt;H2&gt;,...&lt;H6&gt;. Estos tags, se deberán
+emplear siempre con su pareja de cierre &lt;/H1&gt;...&lt;/H6&gt;. El &lt;H1&gt; indica
+que es la cabecera mas importante y genera letras de gran tamaño, mientras que las
+&lt;H4&gt; hasta &lt;H6&gt; resultan demasiado pequeñas para ser útiles. Puede emplear
+el tag &lt;BR&gt; en las cabeceras si quiere que sena multilinea. También se pueden
+emplear enlaces a imágenes, como se describe mas abajo. El tag de cabecera puede tener el
+modificador ALIGN con los valores LEFT, RIGHT o CENTER. Por ejemplo la cabecera </p>
+
+<h1 align="center">Un Ejemplo de Cabecera</h1>
+
+<p align="left">esta escrita en código fuente HTML como &quot;&lt;H1 align=center&gt;Un
+Ejemplo de Cabecera&lt;/H1&gt;</p>
+
+<p align="left">Hay diferentes <font color="#808000">tags de estilo</font> que se pueden
+aplicar al texto. Por ejemplo, se puede obtener texto <strong>remarcado</strong>
+encerrando el texto entre &lt;B&gt; y &lt;/B&gt;. Puede utilizar &lt;I&gt; para
+&nbsp;&nbsp; <em>itálica</em>, &lt;U&gt; para <u>subrayado</u>, y &lt;TT&gt; para <tt>maquina
+de escribir</tt>.( Puede ser que algunos navegadores no presenten todos los estilos de
+forma correcta.). Muchos navegadores soportan &lt;SUB&gt; para texto <sub>subíndice</sub>
+y &lt;SUP&gt; para texto <sup>elevado</sup>.</p>
+
+<p align="left">Tenga en cuenta que HTML describe la estructura lógica del documento, mas
+que su apariencia exacta, es por esto que hay números tags que sirven para describir l<font color="#808000">a lógica </font>del texto. Por ejemplo, el tag &lt;EM&gt; significa <em>enfatizar</em>
+el texto encerrado entre &lt;EM&gt; y &lt;/EM&gt;, mientras que &lt;STRONG&gt; es para <strong>enfatizar
+fuertemente</strong>. Y el tag de estilo &lt;CITE&gt; se emplea para <cite>títulos de
+libros</cite>.</p>
+
+<hr width="50%">
+
+<h3>Listas</h3>
+
+<p>Hay varios tags para generar listas de elementos. Los empleados mas ampliamente son
+&lt;UL&gt; y &lt;OL&gt;. El tag &lt;OL&gt; se emplea para listas ordenadas en donde los
+elementos son numerados de forma consecutiva. El número de elemento lo proporciona el
+navegador. El tag &lt;UL&gt; define listas desordenadas, en donde los elementos se marcan
+con un mismo símbolo especial. En el código fuente HTML, cada elemento de identifica
+colocándole un tag &lt;LI&gt; al principio del elemento. El final de la lista viene
+marcado por el tag de cierre apropiado &lt;/OL&gt; o &lt;/UL&gt;. Por ejemplo el código
+fuente siguiente:</p>
+
+<pre>       &lt;UL&gt;
+       &lt;LI&gt;Isaac Asimov
+       &lt;LI&gt;Ursula Leguin
+       &lt;LI&gt;Kim Stanley Robinson
+       &lt;LI&gt;C. J. Cherryh
+       &lt;/UL&gt;</pre>
+
+<p>genera la lista: 
+
+<ul>
+  <li>Isaac Asimov </li>
+  <li>Ursula Leguin </li>
+  <li>Kim Stanley Robinson </li>
+  <li>C. J. Cherryh </li>
+</ul>
+
+<p>&nbsp;</p>
+
+<hr width="50%">
+
+<h3>Lnks (Enlaces)</h3>
+
+<p>La característica mas distintiva del HTML es que el documento puede contener enlaces
+hacia otros documentos. El usuario puede ir siguiendo enlaces de pagina a pagina y en el
+proceso visitar paginas sobre toda Internet.</p>
+
+<p>El tag que se emplea para crear un enlace es &lt;A&gt;. El texto entre &lt;A&gt; y su
+pareja &lt;/A&gt; aparece en la pagina.El usuario puede seguir el enlace (saltar a otro
+documento) haciendo,&nbsp; con el ratón, clic&nbsp; sobre este texto. El tag &lt;A&gt;
+emplea el modificador HREF para indicar con que documento está conectado. El valor de
+HREF debe ser un URL (Uniform Resource Locator). Un URL en un conjunto de instrucciones
+codificadas que permiten localizar un documento en Internet. Por ejemplo la URL de mi
+página principal es:</p>
+
+<p align="center">http://members.xoom.com/elcurso</p>
+
+<p align="left">Para realizar un link a esta pagina como <a href="tppmsgs/msgs0.htm#9" tppabs="http://members.xoom.com/elcurso">Pagina principal de Miguel</a>, he usado el código
+fuente HTML</p>
+<p align="center">
+
+<font SIZE="1" COLOR="#000000"></font><font COLOR="#000000" size="3">&lt;</font><font color="#800080" size="3">a </font><font COLOR="#ff0000" size="3">href=&quot;</font><font COLOR="#0000ff" size="3">http://members.xoom.com/elcurso</font><font COLOR="#ff0000" size="3">&quot;</font><font COLOR="#000000" size="3">&gt;Pagina principal de Miguel&lt;</font><font color="#800080" size="3">/a</font><font COLOR="#000000" size="3">&gt;</font></p>
+
+
+<p align="left">El mejor sitio para buscar direcciones URLs es en las paginas Web
+existentes. La mayoría de navegadores pueden presentar el URL de la pagina que esta
+visualizando, y también el URL del enlace cuando el puntero del ratos esta sobre el link.</p>
+
+<p align="left">Si ha escrito un documento HTML y quiere realizar un enlace a otro
+documento en el mismo directorio, puede utilizar un URL<font color="#808000"> relativo</font>.
+Un URL relativo consiste en este caso, seria únicamente el nombre del fichero. Por
+ejemplo, la pagina que esta viendo proviene de un directorio que también contiene otras
+secciones del capitulo. Para realizar un enlace a la <a href="seccion5_1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_1.htm">Sección 5.1</a>
+que esta en el fichero seccion5_1.htm, la dirección URL será únicamente seccion5_1.htm
+y el link completo tendrá esta forma</p>
+
+<p align="center">&lt;A HREF=&quot;seccion5_1&quot;&gt;Sección 5.1&lt;/A&gt;</p>
+
+<p align="left">También se pueden emplear direcciones relativas para enlazar ficheros que
+están en directorios &quot;cercanos&quot;. El empleo de direcciones URL relativas es una
+buena idea, porque si decide cambiar toda la colección de ficheros no necesitará cambiar
+los enlaces entre ellos (siempre que no cambie la dirección relativa de los mismos).</p>
+
+<hr width="50%">
+
+<h3>Imágenes</h3>
+
+<p>Se pueden añadir imágenes a la pagina web con el tag &lt;IMG&gt; (Este tag no tiene
+pareja de cierre). La imagen realmente debe ser archivada en un fichero separado del
+documento HTML. El tag &lt;IMG&gt; necesita un modificador llamado SRC que especifica la
+URL del fichero de imagen. Para la mayoría de navegadores, la imagen debe estar en
+formato GIF (con nombre de fichero acabado en &quot;.gif&quot;) o en JPEG (con nombre de
+fichero acabado en &quot;.jpeg&quot; o &quot;.jpg&quot;) En general, la imagen se guarda
+en el mismo sitio que el documento HTML por lo que solo es necesario especificar el URL
+relativo del fichero de imagen.</p>
+
+<p>El tag &lt;IMG&gt; también tiene varios modificadores opcionales. Es una buena idea el
+incluir siempre los modificadores HEIGHT y WIDTH, que especifican el tamaño de la imagen.
+Algunos navegadores, incluyendo Netscape,&nbsp; manejan mejor las imágenes si conocen de
+antemano que tamaño tendrán. Debería emplear el modificador ALT para dar un mensaje a
+los navegadores que no presentan las imágenes.</p>
+
+<p>El modificador ALIGN puede ser empleado para indicar la colocación de la imagen.
+&quot;ALIGN=RIGTH&quot; hará que la imagen se presente en el borde derecho de la pagina y
+el texto, pasara por el lado izquierdo de la imagen. &quot;ALIGN=LEFT&quot; trabaja de
+forma similar. (Desafortunadamente, &quot;ALIGN=CENTER&quot; no tiene el comportamiento
+que esta esperando. Los navegadores, tratan las imágenes como si fueran enormes
+caracteres. Las imágenes pueden estar dentro de párrafos, enlaces y cabeceras por
+ejemplo. Los valores de alineación CENTER, TOP y BOTTOM se utilizan para expresar como se
+sitúa la imagen en relación con la línea de texto. Debe ajustarse la línea base del
+texto, al centro, arriba o abajo de la imagen?. Los valores de alineación RIGHT y LEFT se
+añadieron al HTML mas tarde, sin embargo son los valores mas útiles.</p>
+
+<p>Por ejemplo, aquí tenemos el código HTML para colocar una imagen llamada figure1.gif
+en la pagina.<img src="fig1-3.gif" tppabs="http://members.nbci.com/elcurso/Capitulo5/fig1.gif" alt="fig1.gif (1920 bytes)" align="right" WIDTH="100" HEIGHT="150"></p>
+
+<pre>      &lt;IMG SRC=&quot;figure1.gif&quot; ALIGN=RIGHT HEIGHT=150
+                        WIDTH=100 ALT=&quot;Figure 1&quot;&gt;</pre>
+
+<p>La imagen tiene un ancho de 100 pixeles y un alto de 150 pixeles. Aparecerá en el lado
+derecho de la pagina, y si algún navegador no puede presentar la imagen, presenta el
+mensaje &quot;Figure 1&quot;.</p>
+
+<hr width="50%">
+
+<h3>El tag Applet y los parámetros Applet</h3>
+
+<p>El tag &lt;APPLET&gt; se emplea para añadir applets Java a una pagina Web. Este tag,
+debe tener su pareja &lt;/APPLET&gt;. Es obligatorio el modificador llamado CODE para
+definir el nombre de la clase que contiene el applet compilado. Los modificadores HEIGHT y
+WIDTH son necesarios para especificar el tamaño del applet. El tag &lt;APPLET&gt;
+también dispone del parámetro ALIGN que trabaja de forma semejante al de &lt;IMG&gt;.
+Entonces, el tag applet mínimo para incluir un applet llamado HelloWorldApplet&nbsp; en
+una pagina WEB debería ser así:</p>
+
+<pre>       &lt;APPLET CODE=&quot;HelloWorldApplet.class&quot; HEIGHT=50 WIDTH=150&gt;
+       &lt;/APPLET&gt;</pre>
+
+<p>Este ejemplo asume que el fichero HelloWorldApplet.class esta en el mismo directorio
+que el documento HTML. Si no fuera este el caso, Debería utilizar otro modificador,
+CODEBASE, para definir la URL del directorio que contiene el fichero de clases. (El valor
+de CODE es siempre el nombre del fichero de clase, no el URL).</p>
+
+<p>Los applets pueden necesitar parámetros para personalizar su funcionamiento. Los
+parámetros de un applet se especifican usando el tag &lt;PARAM&gt;, que solo pueden
+aparecer entre &lt;APPLET&gt; y el cierre &lt;/APPLET&gt;. El tag &lt;PARAM&gt; requiere
+modificadores llamados NAME y VALUE que tienen la forma</p>
+
+<p align="center"><tt>&lt;PARAM NAME=&quot;<font color="#009000"><b>nombre-param</b></font>&quot;
+VALUE=&quot;<font color="#009000"><b>valor-param</b></font>&quot;&gt;</tt></p>
+
+<p>El applet puede usar el método predefinido <tt>getParameter()</tt> para comprobar que
+parámetros se le han pasado en el tag PARAM. El método <tt>getParameter()</tt> tiene la
+siguiente Interface:</p>
+
+<p align="center"><tt>String getParameter(String paramName)</tt></p>
+
+<p>El parámetro <tt>paramName</tt> corresponde al <font color="#009000"><b><tt>nombre-param
+en el tag PARAM.</tt></b></font>Si el nombre especificado en <tt>paramName</tt> se había
+incluido en el tag PARAM, el método devuelve el valor asociado en <font color="#009000"><b><tt>valor-param.</tt></b></font>Si
+el parámetro especificado no se entró, entonces el método devuelve el valor <tt>null</tt>.
+(Los nombres de parámetros son sensibles a mayúsculas y minúsculas por lo que no puede
+definir el parámetro &quot;Tamaño&quot; y solicitar &quot;tamaño&quot;)</p>
+
+<p>(Por otra parte, si escribe cualquier cosa además del tag PARAM entre &lt;APPLET&gt; y
+&lt;/APPLET&gt;, los navegadores que soporten Java lo ignoraran, en cambio, todos los
+navegadores que no soporten Java, ignoraran los tags APPLET y PARAM. Esto significa que si
+escribe un mensaje como &quot;Su navegador no soporta Java&quot; entre &lt;APPLET&gt; y
+&lt;/APPLET&gt; aparecerá únicamente en aquellos navegadores que no soporten Java.</p>
+
+<p>Aquí tenemos un ejemplo de APPLET con PARAMs:</p>
+
+<pre>      &lt;APPLET code=&quot;ShowMessage.class&quot; WIDTH=200 HEIGHT=50&gt;
+         &lt;PARAM NAME=&quot;message&quot; VALUE=&quot;Goodby World!&quot;&gt;
+         &lt;PARAM NAME=&quot;font&quot; VALUE=&quot;TimesRoman&quot;&gt;
+         &lt;PARAM NAME=&quot;size&quot; VALUE=&quot;36&quot;&gt;
+         &lt;p align=center&gt;Sorry, but your browser&lt;br&gt;
+                         doesn't support Java!&lt;/p&gt;
+      &lt;/APPLET&gt;</pre>
+
+<p>El applet ShowMessage presumiblemente, leerá los parámetros en el método <tt>init()</tt>
+y puede ser algo semejante a esto:</p>
+
+<p>&nbsp;</p>
+
+<pre>        String display;  // instance variable: mensaje a displayard
+        String fontName; // instance variable: fuente a usar para el display
+        public void init() {
+            String value;
+            value = getParameter(&quot;message&quot;);
+            if (value == null)
+               display = &quot;Hello World!&quot;;  // valor por defecto
+            else
+               display = value;  // valor desde el tag PARAM 
+            value = getParameter(&quot;font&quot;);
+            if (value == null)
+               fontName = &quot;Helvetica&quot;
+            else
+               fontName = value;
+             .
+             .
+             .</pre>
+
+<p>Con relación al parámetro <tt>size</tt>, deberá trabajar un poco mas, ya que el
+valor del parámetro es siempre una String y el valor que necesitamos es un <tt>int</tt>.
+Esto significa que el valor <tt>String</tt> debe ser convertido de alguna manera a <tt>int</tt>.
+Bueno, no se preocupe, ya hablaremos sobre ello mas adelante.</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="seccion5_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_2.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice5.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/indice5.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion5_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_4.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

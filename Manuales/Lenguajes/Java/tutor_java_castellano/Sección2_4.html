@@ -1,0 +1,370 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java.Seccion 2.4</title>
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<font FACE="Arial">
+
+<h3>Sección 2.4: La clase Console</h3>
+</font>
+
+<hr>
+<font SIZE="2">
+
+<p></font><font size="3">POR ALGUN MOTIVO INDESCIFRABLE, Java parece carecer de alguna
+rutina razonablemente correcta&nbsp; para leer datos tecleados por el usuario. Ya ha
+podido ver que la salida puede ser presentada al usuario utilizando la subrutina <font FACE="Arial Narrow">System.out.print</font>. Esta subrutina forma parte de un objeto
+predefinido llamado <font FACE="Arial Narrow">System.out</font>. El propósito de este
+objeto, es precisamente este, el presentar la salida al usuario. Existe el correspondiente
+objeto llamado <font FACE="Arial Narrow">System.in</font> que sirve para leer datos de
+entrada desde el usuario, pero proporciona únicamente formas de entrada muy primitivas.(Y
+aun no ha sido implementado en ningún entorno de programación, como CodeWarrior 11 de
+Macintosh).</p>
+
+<p>Existe una excusa para esto, dado que Java esta pensado principalmente para escribir
+programas con Interface Gráfica de Usuario (GUI), y esos programas tienen su propio
+estilo de entrada/salida, cual se puede implementar en Java?. Sin embargo, es necesario un
+buen soporte de entrada/salida para los antiguos programas no-GUI. Afortunadamente, es
+posible <b>extender</b> Java creando nuevas clases que proporcionen subrutinas que
+inicialmente no están incluidas. Si su programa tiene acceso a clases creadas por usted o
+por cualquiera, puede usar las subrutinas definidas en esa clase, en su programa. No es
+necesario que entienda los detalles de como funcionan. Esto es, naturalmente, la idea
+principal sobre la que se basa la posibilidad de rehusar el trabajo previo.</p>
+
+<p>Como ejemplo, he escrito una clase llamada EasyInput que define algunas subrutinas para
+facilitar la lectura de datos entrados por el usuario. La subrutina implementada en esta
+clase, hace posible leer los datos desde el objeto de entrada estándar, <font FACE="Arial Narrow">System.in</font>, sin necesidad de conocer algunos aspectos avanzados
+de Java, que necesitaría conocer para usar directamente <font FACE="Arial Narrow">System.in</font>.</p>
+
+<p>Para usar la clase EasyInput, debe de estar seguro que la clase esta disponible para su
+proyecto. ( Si esta usando en el entorno de programación Visual J++, esto lo hará
+añadiendo el fichero fuente <a href="tppmsgs/msgs0.htm#70" tppabs="http://members.nbci.com/elcurso/fuentes/EasyInput.java">EasyInput.java</a> a su
+proyecto.). Consideraremos, que ha conseguido que EasyInput se accesible a su programa y
+que quiere usarla para leer un numero entero tecleado por el usuario. El valor que el
+usuario tecleara, será guardado en una variable llamada <font FACE="Arial Narrow">userInput</font>
+de tipo <font FACE="Arial Narrow">int</font>. Debería escribir la siguiente instrucción
+de asignación</font><font SIZE="2"></p>
+</font><font FACE="Arial Narrow" SIZE="2"><div align="center"><center>
+
+<pre></font><tt><font size="3">userInput=EasyInput.getIntr(</font><font SIZE="2">)</font></tt>          </pre>
+</center></div>
+
+<p ALIGN="JUSTIFY"><font size="3">Cuando el ordenador ejecuta esta instrucción, esperara
+a que el usuario teclee un valor entero, y entonces lo almacenara en la variable
+userInput.( Recuerde, de paso, que el nombre EasyInput.getInt implica que la subrutina
+getInt es parte de la clase EasyInput).. Aquí, por ejemplo, tienen un programa completo
+que imprime el cuadrado del numero tecleado por el usuario</font><font SIZE="2"></p>
+</font>
+
+<blockquote>
+  <blockquote>
+    <font FACE="Arial Narrow"><pre></font><tt>public class PrintSquare {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main(String[] args) {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // el programa calcula e imprime el cuadrado
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // del numero tecleado por el usuario
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int userInput;&nbsp; //&nbsp; el numero tecleado por el usuario
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int square;&nbsp;&nbsp;&nbsp;&nbsp; // el numero, multiplicado por si mismo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.print(&quot;Por favor. Teclee un numero: &quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; userInput = EasyInput.getInt();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; square = userInput * userInput;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;El cuadrado del numero es &quot; + square);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } // fin de main()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+} //fin de la class PrintSquare</tt><font FACE="Arial Narrow"></pre>
+    </font>
+  </blockquote>
+</blockquote>
+<font SIZE="2">
+
+<hr width="50%">
+
+<p ALIGN="JUSTIFY"></font><font size="3">Incluso con <font FACE="Arial Narrow">EasyInput</font>,
+no encuentro totalmente satisfactorio la entrada estándar de Java. He escrito otra clase
+llamada <font FACE="Arial Narrow">Console</font>, que permite al programa realizar una
+llamada de consola estilo Windows para usarlo en la interacción con el usuario. Es esta
+clase <font FACE="Arial Narrow">Console</font>, la que he utilizado en el resto del
+capítulo, y en el siguiente. El resto de la sección, discutirá la clase <font FACE="Arial Narrow">Console</font>.</p>
+
+<p ALIGN="JUSTIFY">Para usar la clase Console en su programa, debe de hacer dos cosas.
+Primero, debe de estar seguro que la clase <font FACE="Arial Narrow">Console</font>, es
+accesible por su programa. Por ejemplo, añadiendo el fichero <a href="tppmsgs/msgs0.htm#71" tppabs="http://members.nbci.com/elcurso/fuentes/Console.java">Console.java</a> a su proyecto . Segundo, debe añadir a su
+programa una instrucción para crear un objeto perteneciente a la clase<font FACE="Arial Narrow"> Console</font>. Esto se debe a que las subrutinas del estilo de mi <font FACE="Arial Narrow">Console</font> &#150; que deben ser llamados métodos en el contexto
+de orientación a objetos&#151;pertenecen al <b>objeto</b> mas que a la <b>clase</b>..
+Usted, no necesita entender mas detalles de como crea y usa los objetos <font FACE="Arial Narrow">Console</font> hasta que llegue al <a href="indice4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/indice4.htm">Capitulo
+4</a>. (Le acabamos de presentar aquí, una somera visión de la programación orientada a
+objetos) . Por ahora, crea que puede usar en su programa la entrada y salida por la
+consola de la siguiente manera:</font><font SIZE="2"></p>
+</font>
+
+<blockquote>
+  <blockquote>
+    <font FACE="Arial Narrow"><pre></font>public class <font COLOR="#00ff00"><b>nombre-programa</b></font> {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; public static void main(String[] args) { &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; Console console = new Console();&nbsp; // crea una ventana de consola
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; <font COLOR="#00ff00"><b>instrucciones
+</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; console.close(); &nbsp; //cierra la ventana de la consola
+&nbsp;&nbsp;&nbsp; } &nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}</pre>
+  </blockquote>
+</blockquote>
+<font SIZE="2">
+
+<p ALIGN="JUSTIFY"></font><font size="3">La subrutina main, empieza con una instrucción
+para crear un objeto Console que llama console. (Recuerde que Console y console son
+identificadores totalmente diferentes, dado que las mayúsculas y las minúsculas, se
+consideran diferentes en Java. El ordenador, no confundirá el objeto console, con la
+clase Console. Sin embargo, si le va a confundir esto, puede usar un nombre distinto para
+el objeto. Si quiere emplear una ventana de consola llamada fred, por ejemplo, debería
+escribir &quot;<font FACE="Arial Narrow">Console fred = new Console()&quot;.. </font>De
+acuerdo, fred particularmente no es un buen nombre para la consola).Cuando el ordenador
+ejecuta la primera instrucción del programa, abre una ventana el la pantalla. Puede usar
+la subrutina del objeto <font FACE="Arial Narrow">console</font>, para imprimir la salida
+en la ventana y leer los datos tecleados por el usuario. Al final de programa la
+instrucción &quot;<font FACE="Arial Narrow">console.close()&quot;</font> llama a la
+subrutina para borrar la ventana de la pantalla.</p>
+
+<p ALIGN="JUSTIFY">Todos los objetos del tipo <font FACE="Arial Narrow">Console</font>,
+tienen métodos llamados <font FACE="Arial Narrow">put</font> y <font FACE="Arial Narrow">putln</font>
+para presentar los datos en la pantalla. Dado que estos métodos forman parte del objeto,
+deberán ser llamados usando el nombre compuesto que incluye el nombre del objeto. Aquí
+tenemos algunos ejemplos:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <pre><tt>console.put(&quot;La respuesta es &quot;);
+console.putln(ans);</tt></pre>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p ALIGN="JUSTIFY">Tenga en cuenta que<font FACE="Arial Narrow"> console </font>es el
+nombre del objeto. Si ha usado un nombre diferente para el objeto<font FACE="Arial Narrow">,
+</font>deberá emplear dicho nombre. (Por ejemplo, si ha llamado fred al objeto, deberá
+emplear la instrucción<font FACE="Arial Narrow"> &quot;fred.putln(ans)&quot;.</font>Puede
+tener varios objetos tipo Console, con diferentes nombres. El nombre del objeto en la
+subrutina, le indicara al ordenador en que ventana quiere imprimir.</p>
+<font FACE="Arial Narrow">
+
+<p ALIGN="JUSTIFY">Puede utilizar &quot;console.put(x); &quot; o
+&quot;console.putln(x);&quot; </font>para cualquier expresión x que sea de tipo <font FACE="Arial Narrow">byte, int, long, float, double, char, boolean o String. </font>La
+expresión puede ser una constante una variable o algo un poco mas complicado como puede
+ser 2*x+y. La diferencia entre <font FACE="Arial Narrow">put</font> y <font FACE="Arial Narrow">putln</font> es que <font FACE="Arial Narrow">putln</font> añade un
+retorno de carro al final de la salida. Si usa <font FACE="Arial Narrow">put</font>, la
+salida continuara en la misma línea.</p>
+
+<p ALIGN="JUSTIFY">Si quiere imprimir un retorno de carro sin imprimir nada mas, puede
+decir<font FACE="Arial Narrow"> &quot;console.putln()&quot;</font> sin nada entre los
+paréntesis. Dese cuenta que &quot;<font FACE="Arial Narrow">console.putln(x)&quot;</font>
+es exactamente lo mismo que utilizar &quot;<font FACE="Arial Narrow">console.put(x);console.putln();&quot;.</p>
+</font>
+
+<p ALIGN="JUSTIFY">Finalmente, quiero destacar brevemente, que puede realizar la salida
+usando &quot;<font FACE="Arial Narrow">console.put(x,n)</font>;&quot; y &quot;<font FACE="Arial Narrow">console.putln(x,n);&quot;,</font> donde <u>n</u> s una expresión de
+valor entero. En esta expresión, <u>n</u> es el numero de caracteres que quiere
+presentarse. Si el numero de caracteres de <u>x</u> es inferior al valor de <u>n</u>, se
+le añadirán espacios por la izquierda, hasta conseguir el total indicado en <u>n</u>.(Si
+<u>x</u> ya tiene mas caracteres de los indicados en <u>n</u>, hay poco que el ordenador
+pueda hacer, se imprimirá mas caracteres de los que había solicitado.!). Esta
+característica es útil, por ejemplo, cuando intente escribir columnas de números bien
+alineados, y no sepa cuantos caracteres necesita en cada columna.</p>
+
+<hr width="50%">
+
+<p ALIGN="JUSTIFY">Realizando salidas, la clase Console es un poco mas versátil&nbsp; que
+la rutina System.out. Sin embargo es en las entradas donde realmente le será útil.</p>
+<font FACE="Arial Narrow">
+
+<p ALIGN="JUSTIFY"></font>Para las entradas, la clase Console emplea funciones. Una
+función es una subrutina que devuelve un valor. Una llamada a una función, puede ser
+empleado como parte de la expresión, a menudo, sin embargo, el valor es únicamente
+asignado a una variable. Aquí tiene algún ejemplo del uso de las funciones de entrada
+definida en el objeto de tipo Consola:</font><font FACE="Arial Narrow" SIZE="2"></p>
+</font>
+
+<blockquote>
+  <blockquote>
+    <pre><tt>    b = console.getByte();    	// lee un valor de byte
+    i = console.getShort();   	// lee un valor short
+    j = console.getInt();     	// lee un valor int
+    k = console.getLong(); 	 // lee un valor long
+    x = console.getFloat(); 	 // lee un valor float
+    y = console.getDouble(); 	 // lee un valor double
+    a = console.getBoolean();	 // lee un valor boolean
+    c = console.getChar();    	// lee un valor char
+    w = console.getWord();    	// lee un valor String
+    s = console.getln();      	// lee un valor String</tt><font FACE="Arial Narrow"></pre>
+    </font>
+  </blockquote>
+</blockquote>
+<font SIZE="2">
+
+<p ALIGN="JUSTIFY"></font><font size="3">Para que estas instrucciones sean correctas, la
+variable que se encuentra a la izquierda del igual, deberá ser del mismo tipo que el que
+va a devolver la función</p>
+
+<p ALIGN="JUSTIFY">Cuando llama a una de estas funciones, puede estar seguro que le
+devolverá un valor válido para el tipo esperado. Si el usuario intenta entrar un valor
+ilegal &#150; por ejemplo, si solicita un tipo <font FACE="Arial Narrow">byte</font>, y el
+usuario teclea un numero que esta fuera del rango autorizado de -128 a 127 &#150; entonces
+el ordenador pedirá que repita la entrada.</p>
+
+<p ALIGN="JUSTIFY">Se habrá dado cuenta que hay dos funciones que devuelven el valor <i>String</i>.
+La primera, <font FACE="Arial Narrow">getWord(),</font> devuelve una cadena que contiene
+caracteres distintos de espacio, únicamente. Cuando se le llama, retira cualquier
+carácter como espacios o retornos de carro. Lee caracteres distintos de blanco hasta que
+encuentra un nuevo espacio, o un retorno de carro, devolviendo los caracteres leídos en
+una cadena (String). La segunda función de entrada, getln(), simplemente devuelve una
+cadena consistente en todos los caracteres tecleados por el usuario, incluyendo espacios,
+hasta el siguiente retorno de carro. El retorno de carro, no se traspasa como parte de la
+cadena, pero se lee y se descarga del buffer de entrada. Dese cuenta que la cadena
+devuelta por esta función, puede ser una cadena nula &quot;&quot;, que no contenga
+ningún carácter.</p>
+</font>
+
+<p>La función para entrada de un carácter <font FACE="Arial Narrow">getChar()</font>
+únicamente lee y devuelve el siguiente carácter tecleado por el usuario. Este puede ser
+cualquier carácter, incluidos retornos de carro, o espacios. Si el usuario teclea un
+retorno de carro, el carácter devuelto por la rutina es el carácter especial de avance
+de línea '\n'.</p>
+
+<p>Todas las demás funciones --<font FACE="Arial Narrow">getByte(), getShort(), getInt(),
+getLong(), getFloat(), getDouble(), y getBoolean() </font>-- saltan e ignoran cualquier
+carácter blanco o de retorno de carro que el usuario teclee. Sin embargo, no esquivan
+otros caracteres. Si prueba de leer dos<font FACE="Arial Narrow"> ints</font> y el usuario
+teclea &quot;2,3&quot;, el ordenador leerá el primer numero correctamente, pero cuando
+intente leer el segundo numero, se encontrara con una coma. Eso se considerara como un
+error, y forzara al usuario a que repita la entrada del numero. Si quiere entrar varios
+números en una línea, debe estar seguro que el usuario sabe que los ha de separar con
+espacio y no con comas.</p>
+
+<p>&nbsp;</p>
+
+<p>La semántica de las ordenes de entrada, es mucho mas complicada que la de las ordenes
+de salida. La primera vez que el programa prueba a leer una entrada de usuario, el
+ordenador querrá esperar mientras el usuario teclea una línea entera. La consola
+almacena esa línea en un trozo de la memoria interna llamada <font color="#808000">buffer
+de entrada</font>.La entrada, realmente se lee desde ese buffer, y no directamente desde
+donde el usuario teclea. El usuario solo consigue escribir, cuando el buffer esta vacío.
+Esto permite que se puedan leer varios números desde una línea de entrada, pero si solo
+espera leer un numero, y el usuario ha tecleado mas cosas en esa línea, entonces, tendrá
+un problema. Para evitarle este problema, hay una versión de la función de entrada de
+consola, que lee los datos&nbsp; y descarga el resto de cosas que haya en la línea.</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre><tt>   b = console.getlnByte();    // value read is a byte
+   i = console.getlnShort();   // value read is a short
+   j = console.getlnInt();     // value read is an int
+   k = console.getlnLong();    // value read is an long
+   x = console.getlnFloat();   // value read is a float
+   y = console.getlnDouble();  // value read is a double
+   a = console.getlnBoolean(); // value read is a boolean
+   c = console.getlnChar();    // value read is a char
+   w = console.getlnWord();    // value read is a String</tt></pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Observe que una llamada a <small><tt>getlnByte()</tt></small>, por ejemplo, es
+equivalente a una primera llamada <small><tt>getByte()</tt></small> y una llamada <small><tt>getln()</tt></small>
+para recoger el resto de datos de la misma línea.</p>
+
+<hr width="50%">
+
+<p>Vamos a modificar nuestro programa que calcula el valor de la inversión, para que use
+Console para entrada y salida. Haremos que el usuario teclee el valor inicial de la
+inversión y el porcentaje de interés. El resultado, es un programa mucho mas útil--en
+nuestro primer ejemplo, no tenia sentido ejecutar el programa mas de una vez!.</p>
+
+<pre>            public class Interest3 {
+            
+            /*
+               Esta clase, implementa el programa que calcula		
+               el importe de los intereses generados por una 
+               inversión en el periodo de 5 años
+               El importe inicial de la inversión, y el 
+               porcentaje del interés, es entrado por el usuario.
+               Se presenta en valor del capital al final de 
+               cada año
+            */
+         
+            public static void main(String[] args) {
+                Console console = new Console();
+            
+                double principal;  // valor de la inversión
+                double rate;       // interés anual
+                
+                console.put(&quot;Indique la inversión inicial: &quot;);
+                principal = console.getlnDouble();
+                
+                console.put(&quot;Indique el interés anual: &quot;);
+                rate = console.getlnDouble();
+                
+                int years = 0;  // cuenta el numero de años que han pasado
+                
+                while (years &lt; 5) {
+                   double interest = principal * rate;   // calcula el interés de ese año
+                   principal = principal + interest;     // se lo suma al capital
+                   years = years + 1;    // añade el año actual.
+                   if (years &gt; 1) {
+                      console.put(&quot;El valor de la inversión después de  &quot;);
+                      console.put(years);
+                      console.put(&quot; años es $&quot;);
+                   }
+                   else {
+                      console.put(&quot;El valor de la inversión después de 1 año es $&quot;);
+                   }
+                   console.putln(principal);
+                } // end of while loop
+                
+                console.close();
+                               
+            } // end of main()
+               
+         } // end of class Interest3
+         </pre>
+
+<p>Pruebe la salida del applet equivalente</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p align="center">
+<applet code="Interest3Console.class" tppabs="http://members.nbci.com/elcurso/Capitulo2/Interest3Console.class" height="250" width="525">
+
+<p align="center"><font color="#E70000">Lo siento, pero su navegador<br>
+no tiene activo el soporte para Java</font></applet>
+</p>
+
+<hr>
+
+<table border="0" width="100%" height="62">
+  <tr>
+    <td width="30%" height="58"><a href="Sección2_3.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_3.html"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="70" HEIGHT="70"></a></td>
+    <td width="26%" height="58"><p align="center"><a href="indice2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo2/indice2.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" alt="Indice capítulo" border="0" WIDTH="74" HEIGHT="76"></a>
+    &nbsp;&nbsp;&nbsp;&nbsp; <a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" alt="Indice General" border="0" WIDTH="70" HEIGHT="72"></a></td>
+    <td width="44%" height="58"><a href="Seccion2_5.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Seccion2_5.html"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="72" HEIGHT="72"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

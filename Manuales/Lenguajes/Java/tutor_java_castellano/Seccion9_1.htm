@@ -1,0 +1,239 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de programacion Java. Seccion 9.1</title>
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 9.1: Fundamentos de la programación en C++</h3>
+
+<hr width="50%">
+
+<p>Cuando decidí plantear un curso de fundamentos de programación, en Jaca en lugar de
+hacerlo en C++, tuve en cuenta que con esos con0cimientos, los estudiantes podrían
+pasarse eventualmente al C++. Y que quizás lo hicieran debido a que C++ es el lenguaje
+mas importante en el mundo de la programación profesional.. Adicionalmente, hay muchas
+características que faltan en Java, y que el estudiante debería familiarizarse con
+ellas.. Sin embargo, considere que Java es un lenguaje mucho mejor para realizar un curso
+de introducción, y que en muchos casos se puede aprender prácticamente lo mismo
+utilizando cualquiera de los dos lenguajes. Además, espero que la transición a C++ no
+tenga demasiada dificultad.</p>
+
+<p>Pero antes de iniciar la explicación de C++, déjeme mencionar algunas de las cosas
+que no tiene. Primero de todo,no hay soporte GUI&nbsp; independiente de plataforma. Un
+primer curso en C++, no mencionara ventanas, gráficos o eventos. Adicionalmente, el C++
+estándar, no tiene soporte para hebras o programación asincrona. Ni tampoco tiene una
+interface estándar para programación en red.. Naturalmente que se pueden escribir clases
+que proporcionen esas características al C++. Pero dado que no esta estandarizado, estas
+clases tienden a ser dependientes de la plataforma por lo que aprende para un tipo de
+ordenador, no es aplicable automáticamente a cualquier otro tipo. También acostumbran a
+ser mas complicados que la versión disponible en Java, ya que, si empleamos este ultimo,
+tenemos incluidas las características mas importantes de los modernos entornos, de una
+forma natural.</p>
+
+<p>Bien, basta ya de propaganda sobre Java. El resto del capitulo es un breve
+presentación del C++</p>
+
+<hr width="50%">
+
+<h3>Estructura del programa.</h3>
+
+<p>Lo primero que tiene que saber sobre C++ es que puede escribir completamente un
+programa complejo sin necesidad de utilizar clases u objetos. Mientras que en Java, todo
+programa tenia una rutina <tt>main()</tt> que debía estar contenida en una clase, en C++
+dispone de mucha mas libertad a la hora de crear rutinas y declarar variables. en
+particular, la rutina <tt>main()</tt> no tiene por que ser miembro de ninguna clase.</p>
+
+<p>En C++ las variables y las subrutinas que están definidas fuera de una clase, son
+similares a las subrutinas y variables <tt>static</tt> de Java. Esto es, existen todo el
+tiempo que el programa esta corriendo. En C++, se dice que tales variables son globales o
+de ámbito global. Tenga en cuenta que el termino global se refiere a una subrutina y
+todos los métodos de la clase a la que pertenezca.</p>
+
+<p>Sin embargo, en un programa C++, no se pueden utilizar variables, clases o subrutinas a
+menos que hayan sido declaradas previamente en el mismo fichero. (Esto es diferente a
+Java, en que se pueden utilizar variables o rutinas que no se declaran en el programa
+hasta después, además, Java permite utilizar clases que sean definidas en otros ficheros
+y que los busca cuando los necesita. Estro podría significar que es necesario guardar
+todo el programa en un gran fichero con la rutina <tt>main()</tt> al final, pero no es
+así. Para evitarlo, C++ utiliza <font color="#808000">ficheros de cabecera</font>. Un
+fichero de cabecera contiene declaraciones de variables, subrutinas y clases que,
+realmente, están definidas en otros ficheros. C++ distingue muy cuidadosamente entre <font color="#808000">declaraciones</font> y <font color="#808000">definiciones</font>, La
+declaración de una subrutina, por ejemplo, establece el nombre, el tipo que retorna y la
+lista de parámetros. La definición de una subrutina, también incluye el código que la
+define. El fichero de cabecera, contendrá únicamente la declaración, que ya proporciona
+suficiente información al compilador para que pueda analizar si el empleo de la misma es
+correcto.</p>
+
+<p>Existen algunos fichero de cabecera estándar que declaran las subrutinas y clases mas
+usuales. Por ejemplo, el fichero de cabecera <tt>math.h</tt> define funciones matemáticas
+como <tt>sin(x)</tt> y <tt>sqrt(x)</tt>. (Por norma el nombre de un fichero de cabecera
+acaba siempre en &quot;.h&quot;).Otro fichero de cabecera estándar es el <tt>iostream.h</tt>
+que define las clases de dispositivos que se pueden utilizar para realizar la entrada
+salida. Para tener acceso a las declaraciones de un fichero de cabecera, el programa debe<font color="#808000"> incluirlo</font> Esto se hace utilizando una instrucción #include al
+inicio del programa. Por ejemplo un programa que empiece con estas instrucciones</p>
+
+<pre>              #include &quot;math.h&quot;
+              #include &quot;iostream.h&quot;</pre>
+
+<p>podrá utilizar las funciones matemáticas y las clases <em>stream</em> que se definen
+en esos ficheros. La instrucción <tt>#include</tt>&nbsp; es muy similar a la instrucción
+Java <tt>import</tt>. Concretamente, decir <tt>#include &quot;iostream.h&quot; </tt>en C++
+es similar a decir <tt>import java.io.*</tt> en Java (Pero en C++ también deberá incluir
+<tt>ifstream.h</tt> si quiere manejar ficheros de entrada, y <tt>ofstream.h</tt> si quiere
+manejar ficheros de salida). A menudo, es todo un trabajo el determinar que fichero de
+cabecera necesita usar en su programa.</p>
+
+<p>Cuando escribe en C++m un programa muy grande y lo quiere partir en trozos mas
+pequeños, generalmente deberá escribir dos ficheros para cada trozo. Uno que defina las
+subrutinas y las clases y el fichero de cabecera que declare las mismas subrutinas y
+clases. Los otros ficheros que necesiten a esas subrutinas y clases, deberán añadir una
+sentencia <tt>#include</tt> del fichero de cabecera, para tener acceso a ellos.</p>
+
+<hr width="50%">
+
+<h3>Tipos y Variables</h3>
+
+<p>C++ tiene como estándares los tipos <tt>short, int, long, float, double,</tt> y <tt>char</tt>que
+son similares a los tipos primitivos de Java con el mismo nombre. Sin embargo, en C++ el
+significado exacto de estos tipos no esta completamente estandarizado. No podemos hablar,
+por ejemplo, de un rango de valores validos para <tt>int</tt>s, ya que este rango será
+diferente en diferentes sistemas.No existe el tipo <tt>byte</tt>, pero el <tt>char</tt>
+puede cubrir ese hueco, ya que en C++ este tipo se considera como un entero de 8 bits.</p>
+
+<p>C++ no tiene un tipo <tt>String</tt> que equivalga al de Java, realmente&nbsp; tiene
+algún soporte para strings, pero es bastante complejo usarlas y requiere conocimientos de
+punteros y series. Lo comentaremos en la siguiente sección. En C++ es posible escribir
+una clase <tt>String</tt> que sea similar a la de Java, y muchos programadores
+probablemente desearan tener acceso a dicha clase por medio de un fichero de cabecera ( <tt>#include
+String.h</tt>). Sin embargo, al utilizarlo pasara a depender de una parte del lenguaje que
+no es estándar.</p>
+
+<p>En C++ no existe un tipo estándar <tt>boolean</tt>. En su lugar, se utilizan los
+enteros para representar valores boleanos. El valor <tt>false</tt> esta representado por
+cero, mientras que cualquier valor distinto de cero, se interpreta como <tt>true</tt>.
+Así, el valor de la expresión booleana &quot;<tt>(x&lt;0)&amp;&amp;(y&gt;0)&quot;</tt>
+realmente es un entero, y cualquier valor entero puede utilizarse como condición de una
+instrucción <tt>if</tt> o de un bucle <tt>while</tt>.</p>
+
+<p>Debe tener en cuenta que queda mucho por decir acerca de los tipos en C++ , dado que
+tiene varias formas diferentes de definir nuevos tipos. Como Java, C++ tiene tipos de
+clase y tipos de serie. Pero también tiene cosas llamadas tipos punteros, estructuras
+tipos ordinales y tipos función. Estos tres últimos, no los volveremos a mencionar.</p>
+
+<p>En C++, las variables se declaran e inicializan de la misma manera que en Java. C++
+tiene variables globales (declaradas fuera de la subrutina y las clases), variables
+instanciables( estáticas y no estáticas), y variables locales (declaradas dentro de las
+subrutinas o métodos). Las variables locales pueden ser declaradas en cualquier parte
+dentro de la rutina y son validas para el bloque en el que se declaran. Una grana
+diferencia es que en C++, las variables contienen realmente un objeto, y no una referencia
+al objeto. Lo comentaremos mas adelante en la <a href="tppmsgs/msgs0.htm#31" tppabs="http://miguel/elcurso/Capitulo9/Seccion9_3.htm">Sección 3</a>.</p>
+
+<hr width="50%">
+
+<h3>Estructuras de control, instrucciones de asignación, y Expresiones</h3>
+
+<p>Afortunadamente, hay muy poco que decir acerca de las estructuras de control en C++.
+Excepto por algunos pequeños detalles, y que probablemente, en la practica, nunca se los
+encontrara, son los mismos que en Java. Esto es, C++ tiene instrucciones <tt>if</tt>,
+instrucciones <tt>for</tt>, bucles <tt>while</tt> bucles <tt>do</tt> e instrucciones <tt>switch</tt>
+que funcionan de la misma manera que sus homónimos de Java. También se puede utilizar la
+instrucción <tt>break</tt> y la <tt>continue</tt> igual que en Java.</p>
+
+<p>Lo mismo se puede decir de las instrucciones de asignación y de las expresiones. Todos
+los operadores son los mismos: +,-,*,/,%,++,&amp;&amp;,||,=,+=, etc..Existe una diferencia
+que ya habrá observado anteriormente: las funciones matemáticas no están contenidas en
+una clase <tt>Math; </tt>esto significa que en vez de decir<tt> y=Math.sqrt(x)</tt>, puede
+decir simplemente <tt>y=sqrt(x)</tt>. (O de otra manera: si quiere utilizar la función <tt>sqrt()</tt>
+en su programa deberá tener un <tt>#include math.h</tt> al inicio de su programa.
+Mientras que la clase <tt>Math</tt> se importaba automáticamente en todos los programas
+Java, el fichero de cabecera <tt>math.h</tt> no se incluye automáticamente en todos los
+programas C++)</p>
+
+<hr width="50%">
+
+<h3>Entrada y Salida</h3>
+
+<p>Como en Java, C++ tiene un dispositivo estándar de entrada y de salida, para leer y
+escribir las entradas del usuario. Las versiones de C++, realmente están mucho mejor
+desarrolladas que las de Java, pero la sintaxis para&nbsp; utilizarlos difiere en muy
+poco.El dispositivo de entrada estándar se llama <tt>cin</tt> y el dispositivo de salida
+estándar se llama <tt>cout</tt> (La &quot;c&quot; en estos nombres corresponde a la
+inicial de &quot;console&quot;). Para utilizar estos dispositivos en un programa debe
+utilizar un <tt>#include</tt> para <tt>iostream.h</tt></p>
+
+<p>La sintaxis para leer valores desde la entrada estándar en una variable llamada <tt>x </tt>es:
+</p>
+
+<pre>		cin &gt;&gt; x;</pre>
+
+<p>(La operación doble-flecha se utiliza para indicar en que dirección fluye la
+información). La salida es similar, excepto que la dirección de las flechas es la
+inversa. Por ejemplo.</p>
+
+<pre>		cout &lt;&lt; x</pre>
+
+<p>lo utilizaríamos para presentar en consola el valor de la variable <tt>x</tt>, y </p>
+
+<pre>		cout &lt;&lt; &quot;Hola Mundo!\n&quot;;</pre>
+
+<p>para sacar el mensaje &quot;Hola Mundo!&quot;., &quot;\n&quot; genera un retorno de
+carro al final del mensaje. En una sola instrucción, puede presentar mas de un elemento,
+como aquí:</p>
+
+<pre>	cout &lt;&lt; &quot;La raíz cuadrada de &quot; &lt;&lt; x &lt;&lt; &quot; es &quot; &lt;&lt; sqrt(x);</pre>
+
+<p>Puede hacer lo mismo con <tt>cin</tt></p>
+
+<hr width="50%">
+
+<h3>Subrutinas</h3>
+
+<p>La definición de subrutinas tienen el mismo aspecto en C++ que en Java, excepto, como
+es natural, no es necesario que pertenezcan a alguna clase.Además, algunos de los
+modificadores de subrutinas Java como <tt>private</tt> y <tt>static</tt> no se usan, o
+tienen un significado distinto.. En la mayoría de los casos, en C++ las subrutinas se
+declaran sin modificadores.</p>
+
+<p>Las instrucciones de llamada a subrutina y las formas de invocar a una función son
+exactamente iguales en C++ y en Java.</p>
+
+<p>Cada programa debe tener exactamente una subrutina <tt>main</tt>, igual que en Java, el
+sistema ejecuta el programa por medio de una llamada a esa subrutina. La forma exacta de
+la rutina <tt>main()</tt> no esta totalmente estandarizada, y a menudo se acepta mas de
+una forma. En algunos casos, por ejemplo, la rutina <tt>main()</tt> tiene como tipo de
+retorno <tt>void</tt>, mientras que en otros casos tiene como tipo de retorno <tt>int</tt>
+(El <tt>int</tt> que devuelve la rutina <tt>main()</tt> se reenvia al sistema, que es
+quien llamo a la subrutina, como código de estado para indicar si el programa finalizo
+correctamente o con error). En algunos sistemas,pueden ser correctos ambos sistemas.</p>
+
+<hr width="50%">
+
+<h3>Tratamiento de errores</h3>
+
+<p>A pesar que el tratamiento de errores no es realmente &quot;programación
+fundamental&quot;, lo comento en esta sección porque es otra área en donde Java y C++
+son bastante similares. C++&nbsp; utiliza <tt>try, catch</tt>, y <tt>throw</tt> de la
+misma forma que Java, Sin embargo, C++ no tiene la cláusula <tt>finally</tt> en la
+instrucción <tt>try</tt> y no tiene el gran numero de excepciones predefinidas con que
+cuenta Java. Dado que el tratamiento de errores es una adición reciente, no se encuentra
+completamente integrado en el lenguaje. Algunas de las subrutinas estándar, por ejemplo
+fueron escritas antes que el tratamiento de errores que las activa, y solo pueden utilizar
+la forma antigua de tratar errores.</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

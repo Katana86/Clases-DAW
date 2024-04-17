@@ -1,0 +1,204 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java.Practica 7</title>
+</head>
+
+<body>
+
+<h3>Practica 7: Series</h3>
+
+<hr>
+
+<p>Para la practica numero 7, deberá trabajar con series de una dimensión. El primer
+ejercicio, para ir entrando en calor, es una aplicación sencilla basada en la consola. En
+el segundo, deberá emplear serie para controlar&nbsp; los datos de una animación con
+múltiples objetos moviéndose.</p>
+
+<p>Necesitará las carpetas llamadas &quot;<a
+href="tppmsgs/msgs0.htm#18" tppabs="http://members.nbci.com/elcurso/Proyectos/Histogram%20Starter.zip">Histograma Starter</a>&quot; y &quot;<a
+href="tppmsgs/msgs0.htm#19" tppabs="http://members.nbci.com/elcurso/Proyectos/Bouncing%20Balls%20Starter.zip">Bouncin Ball Starte</a>r&quot;.
+Cópielas y descomprímalas antes de empezar la practica.</p>
+
+<p>Como siempre al final de la practica hay unos ejercicios que deberán ser enviados a su
+tutor (únicamente las personas que hayan contratado <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">Seguimiento</a>).</p>
+
+<hr width="50%">
+
+<h3>Indice de la practica</h3>
+
+<ul>
+  <li><a href="#Presentar datos como histogramas">Presentar datos como histograma</a></li>
+  <li><a href="#Nota sobre el diseño de los Applets">Notas sobre los diseños de Applets</a></li>
+  <li><a href="#Series y pelotas rebotando">Series y pelotas rebotando</a></li>
+  <li><a href="practica7.htm#Ejercicios" tppabs="http://members.nbci.com/elcurso/Practicas/prc7/practica7.htm#Ejercicios">Ejercicios</a></li>
+</ul>
+
+<hr width="50%">
+
+<h3><a name="Presentar datos como histogramas">Presentar datos como histogramas</a></h3>
+
+<p>Un &quot;histograma, es una presentación visual de los datos. En un histograma, cada
+numero del conjunto de datos, se representa como una barra. La longitud de la barra es
+proporcional al numero representado. Esto permite ver fácilmente las relaciones que
+puedan existir entre los datos.</p>
+
+<p>En el programa en que trabajara, cada barra es una línea de asteriscos. Por ejemplo,
+en un histograma los números 5, 10, 15, 20, 30, 40, 50, 35, 20, 5 pueden representarse
+así:</p>
+
+<p>&nbsp;</p>
+
+<pre>          *****
+          **********
+          ***************
+          ********************
+          ******************************
+          ****************************************
+          **************************************************
+          ***********************************
+          ********************
+          *****</pre>
+
+<p>En el programa, los datos se solicitan al usuario. Dado que antes de empezar con el
+histograma es necesario tener todos los datos, cuando estos se soliciten, se deberán
+guardar en una serie. Después utilizaremos los números de esta serie para crear el
+histograma.</p>
+
+<p>La mayor parte del programa ya esta escrita el la carpeta &quot;Histograma
+Starter&quot;. (Puede también leer el programa <a
+href="tppmsgs/msgs0.htm#39" tppabs="http://members.nbci.com/elcurso/fuentes/Histogram%20Starter/Histogram.java">aquí</a>). Debe completar la
+parte del programa que llena la serie pidiéndole datos al usuario, y su uso posterior
+para crear el histograma. En la <a href="HistogramApplet.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc7/HistogramApplet.html">pagina adjunta</a> tiene un
+ejemplo de la solución escrita en formato de applet.</p>
+
+<hr width="50%">
+
+<h3><a name="Nota sobre el diseño de los Applets">Nota sobre el diseño de los Applets</a></h3>
+
+<p>Un applet puede contener una cantidad indeterminada de componentes de la interface
+gráfica del usuario como botones y barras de desplazamiento. Cuando utilizamos estos
+componentes, nos encontramos con el problema de como situarlos en el applet. La forma de
+enfocar este problema en Java es el empleo de<font color="#808000"> LayoutManager</font>.
+El LayoutManager es un objeto que permite indicar los componentes que se desean en el
+applet y como se van a distribuir. Existen distintas clases de LayoutManager y cada tipo
+tiene sus propias normas sobre como organizar los componentes.</p>
+
+<p>Toso esto se explica con mucho detalle en el <a href="indice6.htm" tppabs="http://members.nbci.com/elcurso/Capitulo6/indice6.htm">Capítulo
+6</a> del texto. Deberá leerse ese capítulo para poder realizar el ejercicio. Sin
+embargo, esta practica ilustra las técnicas básicas para trabajar con componentes y
+diseños. Puede leer el fichero BouncingBallsApplet.java en la carpeta &quot;BouncingBalss
+Starter&quot;. (También puede leer ese fichero <a
+href="tppmsgs/msgs0.htm#40" tppabs="http://members.nbci.com/elcurso/fuentes/Bouncing%20Balls%20Starter/BouncingBallsApplet.java">aquí</a>).
+Aunque no necesite aprender mas cosas sobre este tema, seguramente le ira bien dar un
+vistazo al texto. Puede que quiera hacer algo semejante a esto en su proyecto final de
+curso.</p>
+
+<hr width="50%">
+
+<h3><a name="Series y pelotas rebotando">Series y pelotas rebotando</a></h3>
+
+<p>Abra la carpeta&quot;Bouncing Balls Starter&quot;, cargue el fichero de proyecto y
+ejecute el applet. Podrá ver una pelota roja&nbsp; moviéndose en un rectángulo negro.
+Para el segundo ejercicio de la practica, deberá cambiar la pelota por un montón de
+pelotas moviéndose cada una de forma independiente. Un ejemplo de la solución,
+utilizando 25 pelotas esta disponible en la <a href="BouncingBalls.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc7/BouncingBalls.html">hoja adjunta</a>.
+(También hay una <a href="BouncingBallsEnhanced.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc7/BouncingBallsEnhanced.html">versión mejorada</a> que incorpora
+algunas ideas de como conseguir un resultado mejor, si quiere, aunque solo se le solicita
+que haga la versión básica)</p>
+
+<p>El rectángulo negro del applet es un objeto tipo Canvas. Canvas en un tipo de
+componente GUI. En este ejemplo, el áreas es realmente miembro de una subclase de Canvas
+llamada BBCanvas. Esta clase es parte del proyecto &quot;Bouncing Balls Starter&quot;.
+Esta definido en BBCanvas.java.(Puede leer el programa <a
+href="tppmsgs/msgs0.htm#41" tppabs="http://members.nbci.com/elcurso/fuentes/Bouncing%20Balls%20Starter/BBCanvas.java">aquí</a>). La mayor parte
+de la programación del applet esta ya escrita en esta clase. Esto es, esta clase
+&quot;sabe&quot; como presentar la animación del movimiento de la pelota, como hacer que
+la pelota se mueva mas o menos rápidamente, etcétera. En este ejercicio, deberá
+trabajar únicamente con la clase BBCanvas.java.</p>
+
+<p>(El applet que esta definido en el fichero <a
+href="tppmsgs/msgs0.htm#40" tppabs="http://members.nbci.com/elcurso/fuentes/Bouncing%20Balls%20Starter/BouncingBallsApplet.java">BouncingBallsApplet.java</a>,
+únicamente crea los componentes, los organiza en la pantalla, y responde a los eventos
+llamando a métodos de la clase BBCanvas. En este momento, no es demasiado importante que
+comprenda como trabaja exactamente.)</p>
+
+<hr width="50%">
+
+<p>En la versión original de BBCanvas, la posición de la pelota se define con dos
+variables, x e y. de tipo <tt>double</tt>. En cada imagen de la animación, los valores de
+<tt>x</tt> e <tt>y</tt> cambian un poco.Esto es lo que hace que se mueva la pelota. El
+valor en que se ha de incrementar <tt>x</tt> se especifica en otra variable<tt> dx,</tt>
+de tipo <tt>double</tt>. Si la pelota llega al borde derecho o izquierdo del area, se
+cambia el valor de <tt>dx</tt> para que retroceda hacia el centro del area. De forma
+similar, la variable <tt>dy</tt> especifica la cantidad en que debe ser cambiada <tt>y</tt>
+entre imágenes. Al empezar, la pelota se sitúa en el centro del area y se escogen los
+valores de <tt>dx</tt> y <tt>dy</tt> de forma aleatoria.</p>
+
+<p>Que significa el tener que hacer que las pelotas se muevan de forma independiente?. Por
+una parte, significa que necesita tener variables&nbsp; <tt>x, y, dx, </tt>y <tt>dy</tt>
+para cada una de ellas. En la practica, representa guardar los datos en series en vez de
+en variables únicas. Si <tt>x, y, dx, </tt>y <tt>dy</tt> son series, los datos de la
+pelota numero <tt>i</tt> estarán guardados en x[i], y[i], dx[i], y dy[i]. El tamaño de
+cada serie será en numero de pelotas. Podemos establecer&nbsp; que el numero de pelotas
+esta definido por <tt>ballCount.</tt> (Deberá declarar <tt>ballCount</tt> como <tt>una </tt>variable<tt>
+static final int</tt> en la clase BBCanvas y establecer el valor a 25. Emplee el valor de <tt>ballCount</tt>
+durante todo el programa, en lugar del numero, de esta manera será mas fácil cambiar el
+numero de pelotas cambiando únicamente una línea del programa)</p>
+
+<p>El primer cambio que debe hacer en BBCanvas.java es modificar las declaraciones de <tt>x,
+y, dx,</tt> y<tt> dy </tt>para transformar esta s variables en series con el tamaño
+adecuado. Por ejemplo, en vez de decir &quot;<tt>double x&quot;</tt>, deberá decir</p>
+
+<pre>              double[] x = new double[ballCount];</pre>
+
+<p>En el resto del programa, dondequiera que se utilicen las variables <tt>x, y, dx</tt> y
+<tt>dy,</tt> deberá cambiarlo para que se procesen toda la lista de&nbsp; pelotas. Esto
+representa el utilizar un bucle <tt>for</tt>. Por ejemplo, donde diga en el programa
+original:</p>
+
+<pre>              dx = 1.25 * dx;
+              dy = 1.25 * dy;</pre>
+
+<p>deberá cambiarlo a:</p>
+
+<pre>              for (int i = 0; i &lt; ballCount; i++) {
+                 dx[i] = 1.25 * dx[i];
+                 dy[i] = 1.25 * dy[i];
+              }</pre>
+
+<p>Deberá realizar esta modificaciones en la subrutina <tt>initialize()</tt>, <tt>doTimeStep()</tt>,
+y <tt>slower()</tt>. Una vez haya realizado los cambios que considere necesario, su applet
+estará listo y preparado para ponerlo en la World Wide Web</p>
+
+<hr width="50%">
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%"><h3><a name="Ejercicios">Ejercicios para entregar </a></h3>
+    </td>
+    <td width="50%">Esta parte solo la deben enviar aquellos alumnos que han contratado el
+    servicio de <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">seguimiento</a></td>
+  </tr>
+</table>
+
+<p><strong>Ejercicio 1</strong>. Envíe el fichero del programa fuente del histograma tal
+y como se describió <a href="#Presentar datos como histogramas">anteriormente</a>. </p>
+
+<p><strong>Ejercicio 2.</strong>&nbsp;Envíe el fichero con el fuente de BBCanvas.java
+&nbsp; tal y como se describió <a href="#Series y pelotas rebotando">anteriormente</a>.
+Con todos los cambios que ha hecho. También debe colocar su applet en WWW e indicarme su
+URL para que pueda ver su programa trabajando</p>
+
+<p><strong>Ejercicio 3. </strong> Escriba un corto ensayo explicando porque son necesarias
+las series, y lo que piensa que se puede hacer con las series y que seria imposible hacer
+sin ellas. Ponga algunos ejemplos, incluyendo ejemplos que no estén relacionados con
+estas practicas.</p>
+
+<hr>
+
+<p align="center"><a href="indice.htm#Practicas" tppabs="http://members.nbci.com/elcurso/indice.htm#Practicas">[Indice de practicas<sup>]</a> <a
+href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm">[Curso</sup>]</a></p>
+</body>
+</html>

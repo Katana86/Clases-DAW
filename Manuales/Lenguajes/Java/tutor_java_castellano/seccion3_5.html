@@ -1,0 +1,179 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 3.5</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 3.5: Cajas de herramientas, API's y Paquetes (<em>Packages</em>)</h3>
+
+<hr>
+
+<p>COMO LOS ORDENADORES Y LAS INTERFACES DE USUARIO deben ser sencillas de usar, se van
+haciendo mucho mas complejas para los programadores que tratan con ellas. Una sencilla
+interface como es la de consola, ha debido programarse utilizando bastantes subrutinas
+para escribir en la consola y para leer desde la misma lo que el usuario teclea. Una
+moderna interface gráfica de usuario con ventanas, botones, barras de scroll, menús,
+cajas de entrada de textos, etcétera, puede hacer al usuario las cosas muy sencillas.
+Pero obliga al programador a hacer frente a una enorme serie de posibilidades. Los
+programadores ven como se les incrementa la complejidad de sus programas en forma del gran
+numero de subrutinas que son necesarias para manejar la interface del usuario, tanto como
+para otros propósitos.</p>
+
+<p>Alguien que quiera programar en un ordenador Macintosh y hacer un programa que tenga el
+aspecto y el comportamiento que un usuario experto podría esperar de el,&nbsp; debe
+tratar con la caja de herramientas de Macintosh, una colección de cerca de un millar de
+subrutinas distintas. Hay subrutinas para abrir y cerrar ventanas, para dibujar figuras
+geométricas y textos en las ventanas, para añadir botones a las ventanas y para
+responder al clic del ratón en la ventana. Hay otras rutinas para crear menús, y para
+reaccionar a la selección del menú por parte del usuario. Aparte de la interface del
+usuario, hay rutinas para abrir ficheros y leer los datos, para comunicarse en la red,
+para enviar datos a la impresora, para manejar las comunicaciones entre los programas y en
+general para hacer todas las cosas que normalmente puede hacer un ordenador. Windows 95 y
+Windows 3.1 proporcionan un juego de subrutinas semejantes para que los programadores las
+usen.</p>
+
+<p>Es interesante conservar en mente la analogía con las cajas de herramientas, <em>&quot;toolbox&quot;</em>.
+Cada proyecto de programación, envuelve una mezcla de herramientas , algunas nuevas,
+otras usadas anteriormente. El programador es el que define el juego de herramientas con
+el que va ha trabajar, empezando con el juego de herramientas básicas que viene incluido
+en el lenguaje: cosas como variables, instrucciones de asignación, instrucciones <em>if</em>,
+y bucles. A estas el programador le puede añadir cajas de herramientas llenas de
+subrutinas que ya están escritas para realizar ciertas tareas. Estas herramientas, si
+están bien diseñadas, pueden emplearse como verdaderas cajas negras. Pueden llamarse
+para ejecutar alguna tarea, sin preocuparse en absoluto sobre qué pasos en concreto deben
+realizar para ejecutar la tarea encomendada. La parte innovadora de la programación, es
+el tomar todas estas herramientas, y aplicarlas de una forma personal para resolver el
+proyecto o problema (procesador de textos, seguimiento de cuentas bancarias,navegadores,
+juegos,...) A esto se le llama <font color="#808000">programación de aplicaciones</font>.</p>
+
+<p>Una caja de herramientas de programación presenta una interface concreta al
+programador. Esta interface es la especificación de qué rutinas hay en la caja, qué
+parámetros se deben usar, y qué tareas realizan. Esta información constituye el <font color="#808000">API o <em>Applications Programming Interface</em></font>, asociada con la
+caja. El API de Macintosh es la especificación de todas las rutinas disponibles en la
+caja de herramientas de Macintosh. Las compañías que fabrican algún dispositivo
+electrónico, --como las tarjetas que ce emplean para conectar los ordenadores a las redes
+-- pueden publicar el API para esos dispositivos consistente en la lista de subrutinas que
+el programador puede llamar para comunicarse y controlar los dispositivos. Hay
+científicos que escriben juegos de rutinas para realizar algún calculo de tipo complejo
+-- como resolver ecuaciones diferenciales, por ejemplo -- y que proveen un API para que
+los usuarios puedan emplear estas rutinas sin necesidad de entender con detalle como se
+realizan los cálculos.</p>
+
+<hr width="50%">
+
+<p>El lenguaje de programación Java se complementa con un amplio API estándar. Ya hemos
+visto parte de este API anteriormente, en la forma de las subrutinas Math como <tt>Math.sqrt()</tt>.
+el tipo de datos<tt> String</tt> y las rutinas asociadas presentadas en la <a href="Seccion2_8.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Seccion2_8.html">Sección 2.8</a>, y las rutinas <tt>System.out.print()</tt>.
+El API estándar de Java incluye rutinas para trabajar con interface gráfica de usuario,
+con comunicaciones de red, para leer y escribir ficheros y mas. Es sencillo pensar que
+esas rutinas vienen integradas en el lenguaje Java, pero técnicamente son subrutinas que
+han sido escritas, y que están&nbsp; disponibles para ser usadas en cualquier programa
+Java.</p>
+
+<p>Java es independiente de la plataforma, Esto quiere decir que el mismo programa puede
+correr en plataformas distintas como Macintosh, Windows, UNIX y otros. El mismo API Java
+debe trabajar en todas esas plataformas. Un sistema Java en un ordenador concreto incluye
+la implementacion de todas las rutinas estándares del API. Los programas Java incluyen
+únicamente llamadas a estas rutinas. Cuando el interprete de Java ejecuta un programa y
+encuentra una llamada a una rutina estándar, se detiene y ejecuta la implementacion de
+esa rutina que es la apropiada para la plataforma concreta en la que esta corriendo.Esto
+es una gran idea.</p>
+
+<hr width="50%">
+
+<p>De forma semejante a las subrutinas en Java, las rutinas del API estándar se agrupan
+en clases. Para facilitar una organización a gran escala, en Java las clases se agrupan
+en <em><font color="#808000">packages</font></em> (<font color="#808000">paquetes</font>)
+&nbsp; Con esto puede conseguir altos niveles de agrupación, dado que dentro de un
+paquete se puede guardar otro paquete. De hecho, la API estándar completa de Java está
+implementada en un enorme paquete llamado &quot;<tt>java</tt>&quot;. El paquete <tt>java</tt>,
+a su vez esta formado por varios paquetes y cada uno de estos paquetes contienen numerosas
+clases.</p>
+
+<p>Uno de los sub-paquetes de java por ejemplo, se llama &quot;awt&quot;. Dado que <tt>awt</tt>
+esta contenido en <tt>java</tt>, el nombre completo realmente es <tt>java.awt</tt> Este
+paquete contienen las clases relacionadas con la interface gráfica del usuario, como la
+clase <tt>button</tt>, que representa los pulsadores en la pantalla en los que el usuario
+puede hacer clic para activarlos y la clase <tt>Graphics</tt> que proporciona rutinas para
+dibujar en la pantalla. Puesto que esta clases están contenidas en el paquete <tt>java.awt</tt>,
+el nombre completo será <tt>java.awt.Button</tt> y <tt>java.awt.Graphics</tt>. ( Espero
+que ya comprenda como se crean estos nombres, y como trabajan en Java).</p>
+
+<p>El paquete <tt>java</tt> contiene bastantes otros subpaquetes, como <tt>java.net</tt>
+que permite manejar comunicaciones en la red, y <tt>java.applet</tt> que implementa las
+funciones básicas para los applets. El paquete mas elemental de todos se llama <tt>java.lang</tt>,
+e incluye las clases fundamentales como <tt>String</tt> y <tt>Math</tt>.</p>
+
+<p>Puede que le ayude a entenderlo una representación gráfica de los niveles de
+anidamiento dentro del paquete <tt>java</tt>, los sub-paquetes, las clases dentro de los
+subpaquetes, y las rutinas dentro de las clases:</p>
+
+<p>&nbsp;</p>
+
+<p align="center"><img alt="(Diagram of subroutine/class/package nesting)" src="fig1-1.gif" tppabs="http://members.nbci.com/elcurso/Capitulo3/fig1.gif" WIDTH="421" HEIGHT="277"></p>
+
+<p>Según esto, si queremos emplear la clase <tt>java.awt.Button</tt> en un programa que
+este escribiendo, Una forma de hacerlo, es emplear el nombre completo de la clase. Por
+ejemplo, podemos decir:</p>
+
+<p align="center"><tt>java.awt.Button stopBttn;</tt></p>
+
+<p align="left">para declarar una variable llamada <tt>stopBttn</tt>que es del tipo <tt>java.awt.Button.</tt>Naturalmente,
+escribir todo esto es bastante fastidioso. Si escribe:</p>
+
+<p align="center"><tt>import java.awt.Button;</tt></p>
+
+<p align="left">al inicio del programa, antes de empezar a escribir ninguna clase, podrá
+abreviar el nombre completo de <tt>java.awt.Button</tt> a únicamente el nombre de la
+clase,<tt>Button</tt>, Así podrá escribir:</p>
+
+<p align="center"><tt>Button stopBttn;</tt></p>
+
+<p align="left">para declarar la variable <tt>stopBttn</tt>. (El único efecto de la
+instrucción <tt>import</tt> es el permitir emplear únicamente el nombre de las clases en
+lugar del nombre completo &quot;paquete.clase&quot;; aunque todo esto no es realmente
+importante). Esto es una forma sencilla de importar todas las clases del paquete. Para
+importar todas las clases desde <tt>Java.awt</tt>, deberá decir:</p>
+
+<p align="center"><tt>import java.awt.*;</tt></p>
+
+<p align="left">De hecho muchos programas java empiezan con esta línea y puede que
+también incluyan líneas como &quot;<tt>import java.net.*</tt>&quot; o &quot;<tt>import
+java.io.*</tt>&quot;</p>
+
+<p align="left">Dado que el paquete <tt>java.lang</tt> es fundamental, todas las clases de
+este paquete son importadas <strong>automáticamente</strong> al programa. Es como si
+todos los programas empezaran con la instrucción &quot;<tt>import java.lang.*</tt>&quot;.
+Esto se hace para tener la posibilidad de utilizar el nombre de clase <tt>String</tt> en
+vez de <tt>java.lang.Sting</tt> y <tt>Math.sqrt()</tt> en lugar de <tt>java.lang.Math.sqrt()</tt>.
+Lo cual no significa , sin embargo, que no sea perfectamente legal el emplear la forma
+larga de los nombres.</p>
+
+<p align="left">Los programadores pueden crear nuevos paquetes. De hecho, cada clase es
+parte de un paquete. Si no se indica un paquete concreto, se sitúa en algo que se llama<font color="#808000"> paquete por defecto (<em>default package)</font> </em>que no tiene
+nombre. La clase <tt>Console</tt> que he estado usando en los ejemplos de estas notas,
+pertenece al paquete por defecto. En los proyectos en los que se define un número muy
+importante de clases, es interesante el organizar estas clases en uno o mas paquetes. Esto
+también tiene sentido para los programadores que crean nuevos paquetes tipo caja de
+herramientas, que proporcionan funcionalidades y API's para la venta y que cubren áreas
+no resueltas por el API estándar de Java. (y de hecho menudo tienen mas prestigio los
+programadores de herramientas, que los programadores de aplicaciones que utilizan esas
+herramientas.</p>
+
+<p>&nbsp;</p>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="Seccion3_4.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/Seccion3_4.html"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo3/indice3.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="Seccion3_6.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/Seccion3_6.html"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

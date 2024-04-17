@@ -1,0 +1,223 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 3.3</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 3.3: Parámetros</h3>
+
+<hr>
+
+<p>SI LA SUBRUTINA ES UNA CAJA NEGRA, los parámetros&nbsp; proporcionan el medio para
+traspasar información desde fuera al mundo interior de la caja. Los parámetros forman
+parte de la interface de la subrutina. Ellos permiten personalizar el comportamiento de la
+subrutina para adaptarla a situaciones particulares.</p>
+
+<p>Como analogía, considere un termostato -- una caja negra cuya tarea consiste en
+mantener su casa a una cierta temperatura. El termostato tiene un parámetro , que es el
+selector que emplea para indicar la temperatura deseada. El termostato siempre realiza la
+misma tarea: mantener constante la temperatura. Sin embargo, la tarea exacta que
+realiza--esto es, la temperatura que mantiene-- se personaliza indicándola en el
+selector.</p>
+
+<p>Veamos un ejemplo, retrocedamos al problema &quot;3N+1&quot; que se presento en la <a href="Seccion2_5.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Seccion2_5.html">Sección 2.5</a>. (Recuerde que 3N+1 es la secuencia
+calculada según la siguiente regla, &quot;Si N es impar, se multiplica por 3 y se le suma
+1; si N es par, se divide por 2; continuar hasta que N sea igual a 1.&quot; Por ejemplo
+empezando en 3, se obtiene la secuencia: 3,10,5,16,8,4,2,1). Supongamos que quiere
+escribir una subrutina para imprimir esta secuencia. La subrutina siempre hará el mismo
+trabajo: Imprimir la secuencia 3N+1. Pero la secuencia exacta que se imprima, dependerá
+del valor de N. Entonces el valor inicial de N puede ser un parámetro de la subrutina. La
+subrutina podría escribirse así:</p>
+
+<pre>         static void Print3NSequence(int startingValue) {
+         
+            // imprimir en consola la secuencia 3N+1 usando
+            // startingValue como valor inicial de N
+
+            int N = startingValue;  //para el elemento de la secuencia
+            int count = 1;   // cuenta el numero de elementos
+            
+            console.putln(&quot;La secuencia 3N+1 empieza en &quot; + N);
+            console.putln();
+            console.putln(N);  // imprimir el primer termino
+ 
+            while (N &gt; 1) {
+                if (N % 2 == 1)     // N es par?
+                   N = 3 * N + 1;
+                else
+                   N = N / 2;
+                count++;   // contar el elemento
+                console.putln(N);  // imprimir elemento
+            }
+            
+            console.putln();
+            console.putln(&quot;Hay &quot; + count + &quot; elementos en la secuencia.&quot;);
+         
+         }  // fin de  Print3NSequence()</pre>
+
+<p>Esta subrutina puede llamarse utilizando una instrucción como &quot;<tt>Print3NSequence(17);</tt>&quot;,que
+imprimirá la secuencia 3N+1 empezando en 17. Si <tt>k</tt> es una variable de tipo <tt>int</tt>,
+la instrucción &quot;<tt>Print3NSequence(k);</tt>&quot; imprimirá la secuencia 3N+1
+empezando en K, que es como podíamos esperar, el valor de <tt>k</tt> cuando se ejecuta la
+instrucción.</p>
+
+<p>Puedo usar la subrutina en un programa que permita al usuario el imprimir la secuencia
+empezando en diferentes valores:</p>
+
+<pre>         public static void main(String[] args) {
+            console = new Console();
+            console.putln(&quot;Este programa imprime la secuencia 3N+1&quot;);
+            console.putln(&quot;empezando en el valor que le indique.&quot;);
+            console.putln();
+            do {
+               console.putln(&quot;Indique valor inicial;&quot;)
+               console.put(&quot;Para finalizar el programa entre 0: &quot;);
+               int K = console.getInt();  // lee valor inicial
+               if (K &gt; 0)   // imprime secuencia se  K es &gt; 0
+                  Print3NSequence(K);
+            } while (K &gt; 0);   // continua solo si K &gt; 0
+         } // end main()</pre>
+
+<hr width="50%">
+
+<p><tt><br>
+</tt>En realidad existen dos tipos muy diferentes de parámetros: Los parámetros que se
+emplean en la definición de la subrutina, y los parámetros que se pasan cuando se llama
+a la subrutina. En la definición de la subrutina los parámetros se llaman<font color="#808000"> parámetros formales o falsos parámetros</font>. Los parámetros que se
+pasan a la subrutina cuando se llama se denominan <font color="#808000">parámetros reales</font>.</p>
+
+<p>Los parámetros formales pueden ser identificadores, oséa nombres. Un parámetro
+formal es mucho mas semejante a una variable y, como las variables, se le tiene que
+indicar el tipo como <tt>int</tt>, <tt>boolean</tt>, o <tt>String</tt> Un parámetro real
+es un <strong>valor</strong>, y como tal, puede estar representado por cualquier
+expresión, mientras que la expresión proporcione un valor del tipo adecuado. Cuando
+llama a una subrutina, debe proporcionar un parámetro real por cada uno de los
+parámetros formales que haya en la definición de la subrutina. El ordenador evalúa cada
+parámetro real e inicializa con ese valor el correspondiente parámetro formal. Considere
+por ejemplo la subrutina:</p>
+
+<pre>         static void doTask(int N, double x, boolean test) {
+             // aquí, las instrucciones
+         }</pre>
+
+<p>Esta subrutina puede ser llamada con la siguiente instrucción</p>
+
+<p align="center"><tt>doTask(17,Math.sqrt(z+1),z&gt;=10);</tt></p>
+
+<p align="left">Cuando el ordenador<tt> </tt>ejecuta esta instrucción, básicamente tiene
+el mismo efecto que el siguiente bloque:</p>
+
+<p>&nbsp;</p>
+
+<pre>      {
+        int N = 17; // declara un int llamado N con valor inicial 17
+        double x = Math.sqrt(z+1);  // calcula Math.sqrt(z+1), y 
+              // lo emplea para inicializar x de tipo double
+        boolean test = (z &gt;= 10); // evalúa &quot;z &gt;= 10&quot;
+              // y usa el resultado true/false para inicializar
+              // una nueva variable llamada test
+        // aquí las instrucciones
+      }</pre>
+
+<p>Existe alguna pequeña diferencia técnica entre esto y &quot;<tt>doTask(17,Math.sqrt(z+1),z&gt;=10);</tt>&quot;
+--aparte de la cantidad&nbsp; a escribir-- debido a temas como los ámbitos (scope) de las
+variables, y lo que puede pasar cuando varias variables o parámetros tienen el mismo
+nombre.)</p>
+
+<hr width="50%">
+
+<p>Como puede ver, para poder llamar correctamente a una rutina, necesita conocer su
+nombre, necesita conocer cuantos parámetros tiene y necesita conocer el tipo de cada
+parámetro. Esta información se llama <font color="#808000">firma (<em>signature</em>)</font>
+de la subrutina. La firma de la subrutina doTask se puede escribir como:
+doTask(int,double,boolean). Observe que en la firma no se incluyen los nombres de lo
+parámetros; de hecho, si quiere <strong>usar</strong> la subrutina, no necesita conocer
+los nombres para nada, ya que los nombres <strong>no</strong> son parte de la interface.
+Los nombres solo los ha empleado la persona que ha escrito la subrutina.</p>
+
+<p>Java es algo especial en el hecho de que permita que dos subrutinas dentro de una misma
+clase puedan tener el mismo nombre, mientras que sus firmas sean diferentes. (El lenguaje
+C++ el el que se basa Java también tiene esa característica). Decimos que el nombre de
+la subrutina puede ser <font color="#808000">sobrecargado (overloaded</font>) porque tiene
+diferentes propósitos. El ordenador consigue diferenciar las subrutinas. Puede decirle
+cual de ellas quiere llamar por el numero de parámetros y los tipos que proporciona en la
+instrucción de llamada. En la clase <em>Console</em> ya ha visto como se empleaban las
+sobrecargadas.En esa clase, por ejemplo, se incluyen muchos métodos diferentes llamados <tt>putln</tt>.
+Esos métodos tienen todos firmas distintas, como:</p>
+
+<pre>      putln(int)       putln(int,int)      putln(double)
+      putln(String)    putln(String,int)   putln(char)
+      putln(boolean)   putln(boolean,int)  putln()</pre>
+
+<p>Naturalmente que cada una de esas subrutinas están relacionadas semánticamente, esa
+es la razón para emplear el mismo nombre para todas ellas. Pero en lo que al ordenador
+concierne imprimir un <tt>int</tt> es muy diferente a imprimir una <tt>String</tt> que a
+su vez es muy diferente a imprimir un <tt>boolean</tt>, y así sucesivamente; y por eso
+cada una de estas operaciones requieren un método diferente.</p>
+
+<p>A propósito, observe que dentro de la firma <strong>no esta incluido</strong> el tipo
+de retorno de la subrutina. Es ilegal el que haya en una misma clase dos subrutinas que
+tengan la misma firma pero distinto tipo de retorno. Por ejemplo es un error de sintaxis
+que en una misma clase haya dos métodos definidos como:</p>
+
+<pre>        int    get() { ... }
+        double get() { ... }</pre>
+
+<p>Por eso, no debe sorprenderse que el la clase <em>Console</em> , los métodos que leen
+diferentes tipos, tengan nombres diferentes como <tt>getInt()</tt><font face="m">y <tt>getDouble().</tt></font></p>
+
+<hr width="50%">
+
+<p>Finalizaré esta sección sobre los parámetros, señalando que de momento tenemos tres
+tipos diferentes de variables que pueden emplearse dentro de las subrutinas: Las variables
+locales que se definen dentro de las subrutinas, los nombres de los parámetros formales,
+y las variables que se definen fuera de la subrutina pero que son miembros de la misma
+clase.</p>
+
+<p>Una variable local, no tiene conexión con el mundo exterior; únicamente forma parte
+del área de trabajo interna de la subrutina. Los parámetros se usan&nbsp; ciando se
+llama a la subrutina, para &quot;introducir&quot; valores, pero una vez se inicia la
+ejecución de la subrutina, los parámetros se parecen mucho a las variables locales. Los
+cambios que se realizan dentro de la subrutina a los parámetros formales, no tienen
+efecto en el resto del programa ( por lo menos si los parámetros son de uno de los tipos
+primitivos-- las cosas son bastante mas complicadas cuando se trata de objetos, como
+veremos mas adelante).</p>
+
+<p>Una tema diferente es cuando la subrutina emplea variables definidas fuera de la
+subrutina. Estas variables existen de forma independiente de la subrutina, y son
+accesibles desde otras partes del programa de la misma forma que desde la subrutina. Estas
+variables se conocen como <font color="#808000">globales</font>, por oposición a las
+variables locales de la subrutina. El ámbito de una variable global es toda la clase en
+la que esta definida. Los cambios realizados en una variable global, se extienden mas
+allá de la subrutina que los realiza. Esto no es necesariamente malo, pero debe
+considerar la variable global como una parte de la interface de la subrutina. La subrutina
+emplea las variables globales para comunicarse con el resto del programa. Es una especie
+de falsa comunicación realizada por la puerta trasera, que es mucho menos visible que la
+hecha a través de los parámetros y se corre el riesgo de violar la regla de la interface
+de una caja negra que habla de que debe ser directa y fácil de entender.</p>
+
+<p>No quiero decirle que deba estar en contra de emplear las variables globales dentro de
+los procedimientos. Hay al menos una buena razón para hacerlo: Si piensa que la clase es
+en principio, un tipo de caja negra, puede ser razonable hacer que las subrutinas que
+están dentro de esa caja, tengan alguna comunicación unas con otras, si eso hace que la
+clase se vea mucho mas sencilla desde el exterior.</p>
+
+<p>Sin embargo, debe definitivamente el evitar emplear las variables globales cuando los
+parámetros puedan ser mas apropiados. (Aunque ya se que es un tema bastante difícil de
+juzgar).</p>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="Seccion3_2.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/Seccion3_2.html"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo3/indice3.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="Seccion3_4.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/Seccion3_4.html"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="61" HEIGHT="61"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

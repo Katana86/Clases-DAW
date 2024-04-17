@@ -1,0 +1,379 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Practica 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+</head>
+
+<body>
+
+<h3>Practica 1: Introducción a Java, Visual J++ y el web</h3>
+
+<hr>
+
+<p>En esta primera entrega sirve para explicar distintos aspectos sobre los ordenadores.
+Le introducirá en el lenguaje de programación Java que es el objetivo principal del
+curso y presentara así mismo, las primeras explicaciones para usar Visual J++, que será
+el entorno de programación sobre el que realizaremos todas las practicas. Adicionalmente,
+irá conociendo cosas acerca de Internet y del World Wide Web.Pienso que aunque ya esté
+familiarizado con los Web, probablemente encontrara que hay algunas cosas que no conocía.</p>
+
+<p>Al final de la práctica, encontrara un juego de ejercicios. Si tiene contratado
+servicio de <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">seguimiento</a>, deberá enviar resueltos
+dichos ejercicios , utilizando el formulario del que dispone. Durante la semana siguiente,
+recibirá en su dirección de correo, los ejercicios corregidos, y en caso de que no
+fueran correcto, con las indicaciones apropiadas para que pueda repasar los temas que no
+le hayan quedado claro.</p>
+
+<hr width="50%">
+
+<h3>Indice de la practica:</h3>
+
+<ul>
+  <li><a href="practica1.htm#AntesDeEmpezar" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/practica1.htm#AntesDeEmpezar">Antes de empezar</a></li>
+  <li><a href="practica1.htm#JavayVisualJ++" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/practica1.htm#JavayVisualJ++">Java y Visual J++</a></li>
+  <li><a href="practica1.htm#UnPocoDeProgramacion" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/practica1.htm#UnPocoDeProgramacion">Un poco de programación</a></li>
+  <li><a href="practica1.htm#ElWeb" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/practica1.htm#ElWeb">El Web</a></li>
+  <li><a href="practica1.htm#AppletsyHTML" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/practica1.htm#AppletsyHTML">Applets y HTML</a></li>
+  <li><a href="practica1.htm#PublicandoEnElWeb" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/practica1.htm#PublicandoEnElWeb">Publicar en web</a></li>
+  <li><a href="practica1.htm#Ejercicios" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/practica1.htm#Ejercicios">Ejercicios a realizar</a></li>
+</ul>
+
+<hr width="50%">
+
+<h3><a name="AntesDeEmpezar">Antes de empezar</a></h3>
+
+<p>Si no esta muy familiarizado con la interface de Windows 95, quizás sea el momento
+para que se tome unos minutos para conocerla. Debe entender como funciona la barra de
+tareas que aparece al pie de la pantalla y que puede tener un aspecto semejante a este:</p>
+
+<p align="center"><img src="TaskBar.gif" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/TaskBar.gif" WIDTH="600" HEIGHT="28"></p>
+
+<p>En la esquina izquierda aparece el botón de Inicio (Start), que utilizamos para
+arrancar los programas, el resto de botones que aparecen, son las ventanas que tenemos
+activas en pantalla. Puede pasar de una ventana a otra pulsando con el ratos sobre la que
+le interese. (Si la ventana fuera visible, también podría pulsar con el ratón en ella,
+pero es mas normal utilizar la barra de tareas para cambiar de una a otra.)</p>
+
+<p>En la mayoría de ventanas, podrá ver en su esquina superior derecha tres botones <img align="ABSCENTER" src="WindowButtons.gif" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/WindowButtons.gif" WIDTH="52" HEIGHT="15"> pulsando en el de la izquierda que aparece
+marcado como X, cerrara la ventana. El botón de la izquierda se utiliza para ocultar la
+ventana, Quedando entonces en la barra de tareas y si quiere volver a hacer visible la
+ventana, deberá pulsar en la barra de tareas. El botón del medio nos sirve para aumentar
+la ventana hasta ocupar toda la pantalla y para volverla a reducir dejándola en el
+tamaño que tenia antes de que ocupara toda la pantalla. El botón del medio cambia cuando
+la ventana ocupa toda la pantalla. Cuando este trabajando con los programas de este curso,
+va a tener que emplear un entorno de programación bastante complejo, que le obligara a
+ampliar la ventana para trabajar ocupando toda la pantalla, y aun necesitara espacio.</p>
+
+<p>Para optimizar la cantidad de información que puede visualizar en su pantalla, puede
+comprobar cual es la resolución máxima que soporta su ordenador. La resolución de la
+pantalla se indica en el numero de pixeles de alto y de ancho. Cuantos mas pixeles, se
+podrán presentar mas cosa (el problema es que también se representan mas pequeñas. El
+limite se establece por lo que puede ver cómodamente) En un monitor de 14 pulgadas, no
+debe intentar visualizar mas de 800 x 600, ya que si no el tamaño de las cosas es tan
+pequeño que no será operativo, mientras que con un monitor de 17 pulgadas, puede llegar
+a 1024x768. Para cambiar la resolución de su monitor, debe seleccionar
+Inicio/Configuración/Panel de control, en esa pantalla deberá seleccionar el icono <img align="ABSCENTER" src="SmallMonitorIcon.gif" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/SmallMonitorIcon.gif" WIDTH="18" HEIGHT="18"> a continuación deberá señalar la pestaña
+de Configuración, y allí en el recuadro Area de escritorio, puede escoger la resolución
+a la que quiere trabajar, moviendo con su ratón, el cursor existente.</p>
+
+<p>Si esta empezando con Windows 95, puede revisar el sistema de ayuda por medio del
+botón de Inicio/Ayuda.</p>
+
+<hr width="50%">
+
+<h3><a name="JavayVisualJ++">Java y Visual J++</a></h3>
+
+<p>Los programas, se escriben en lenguajes de alto nivel como Java. A continuación, se
+deben traducir a lenguaje máquina antes de poderlos ejecutar. En el caso de Java, el
+programa se traduce a Java bytecode, que es una especie de lenguaje máquina pero
+independiente de la plataforma. Entonces el interprete ya puede ejecutar el programa en
+Java bytecode. (Para información acerca del lenguaje máquina, vea la <a href="seccion1_1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_1.htm">Sección 1.1</a> de este curso, Para ver algo mas
+sobre el Java bytecode, vea la <a href="seccion1_3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_3.htm">Sección 1.3</a>)</p>
+
+<p>La programación a menudo se realiza usando un <font color="#808000">Entorno de
+Desarrollo Integrado</font> (<font color="#808000">Integrated Development Environment</font>,
+o IDE). Un IDE es un programa que le permite realizar todos los pasos necesarios en la
+producción de un programa. Esto es , le permite escribir el programa, compilarlo, y
+ejecutar el programa resultante. En este curso, vamos a emplear el Visual J++ de <a href="tppmsgs/msgs0.htm#2" tppabs="http://www.microsoft.com/">Microsoft</a>. Visual J++, se instala como parte de
+Microsoft Developper Studio que también soporta C++ y otros lenguajes. Esperamos
+conseguir que Microsoft, nos ceda una copia de libre distribución de la versión 1.0 de
+Visual J++, mientras tanto, puede ser interesante la copia de 30 días que ofrece
+Microsoft en <a href="tppmsgs/msgs0.htm#3" tppabs="http://msdn.microsoft.com/visualj/">http://msdn.microsoft.com/visualj/</a>.
+(o una versión que se encuentra en el libro &quot;Desarrollo de aplicaciones WEB al
+descubierto&quot; de la Editorial Prentice Hall, ISBN:84-89660-80-8).</p>
+
+<p>A partir de este momento, supondremos que ha podido conseguir una copia de Visual J++.
+Hay dos formas de arrancar el entorno de programación: Puede arrancarlo desde el botón
+Inicio/Programas/Microsoft Visual J++, o bien haciendo doble clic en cualquier fichero con
+extensión &quot;.dsw&quot; (Developper Studio Workspace), o en ficheros con extensión
+.java. Hemos mencionado el fichero de proyecto (.dsw)., este fichero lo crea el entorno de
+programación, para guardar información relevante del proyecto. Cuando quiere abrir un
+proyecto, haciendo doble-clic en ese fichero, se abrirá el J++, y presentara todos los
+ficheros del proyecto. Sin embargo, puede empezar a trabajar con un programa y el entorno
+le generara el fichero de proyecto automáticamente. Si tiene que empezar con un proyecto
+nuevo, ahora veremos como hacerlo.</p>
+
+<p>A continuación,&nbsp; puede bajarse el fichero <a href="tppmsgs/msgs0.htm#4" tppabs="http://members.nbci.com/elcurso/Proyectos/practicas1.zip">practicas1</a> que contiene su primer proyecto en
+J++, seria buena idea que creara una carpeta en donde dejar todos estos programas que se
+va a bajar, o los que ira haciendo. Una vez haya descomprimido el fichero zip, puede hacer
+doble-clic en el fichero con extensión &quot;.dsw&quot; y se pondrá en marcha <em>Microsoft
+Developer Studio</em>, con el proyecto abierto. Vera que en el centro de la pantalla, le
+aparece el programa Java con las palabras &quot;public class FirstProgram&quot;. <font color="#0080FF">Pruebe de ejecutar el programa. Solo tiene que utilizar el comando Execute
+del menu Build. Después que se cierre la ventana de la consola, deberá cerrar
+manualmente&nbsp; la ventana negra que todavía estará abierta. El sistema le preguntara
+si realmente lo quiere cerrar, y finalizara. Si tiene algún problema, indíqueselo a su
+tutor.</font> (Puede ver el programa Java <a href="tppmsgs/msgs0.htm#30" tppabs="http://members.nbci.com/elcurso/fuentes/prFirstProgram/FirstProgram.java">aqu</a>í)</p>
+
+<p>Usando las carpetas de arranque, se ahorra pardea de la complejidad de la programación
+en Visual J++. No obstante en la siguiente practica, aprenderá como crear un proyecto
+desde el principio</p>
+
+<hr width="50%">
+
+<h3><a name="UnPocoDeProgramacion">Un poco de </a>programación</h3>
+
+<p>En realidad, todavía no sabe suficiente&nbsp; como para entender perfectamente el
+programa que hemos presentado en la primera parte es estas practicas. Pero es un programa
+lo suficientemente sencillo, como para que pueda imaginarse como funciona. Las líneas que
+realmente hacen &quot;algo&quot; -- preguntar el nombre e imprimir el saludo son:</p>
+
+<pre>           console.put(&quot;Por favor entre su nombre: &quot;);
+           name = console.getln();
+           console.putln(&quot;Hola &quot; + name + &quot;! Encantado de conocerle.&quot;);</pre>
+
+<p>Estas líneas emplean una ventana de entrada salida&nbsp; que llamo <em>console</em>.
+No es una parte estándar de Java, es algo que he escrito yo. Esta definido en el fichero
+Console.java que forma parte del proyecto de esta practica. Si el fichero no estuviera en
+el proyecto, el programa no podría realizar llamadas a la <em>console</em>. Puede leer
+mas acerca de todo esto en la <a href="Sección2_4.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_4.html">Sección 2.4</a>.</p>
+
+<p>Los comandos <tt>console.put</tt> y <tt>console.putln</tt>, presentas <em>string</em>
+en la ventana de salida. La diferencia entre las dos, reside en que <tt>console.putln</tt>
+añade un carácter de retorno de carro al final de la <em>string.</em> El comando <tt>console.getln</tt>
+lee la línea que el usuario a estado tecleando. En este programa, la línea entrada, se
+asigna a la variable <tt>name</tt> con la instrucción de asignación <tt>&quot;name=console.getln();&quot;</tt>.
+La variable es como una caja en donde guardaremos el valor. En la siguiente línea, cuando
+el ordenador encuentre la variable <tt>name</tt>, la sustituirá por el valor que hemos
+puesto dentro de la caja. Antes que una variable pueda ser usada, ha de ser declarada.. En
+este programa la variable <tt>name</tt> se declara con la instrucción <tt>&quot;String
+name;&quot;.</tt>La palabra &quot;<tt>String</tt>&quot; en la declaración, significa que
+el valor que vamos a guardar en la caja es una cadena (<em>string</em>) de caracteres.</p>
+
+<p><font color="#0080FF">Con las asignaciones, pruebe de expandir el programa haciéndole
+otras preguntas al usuario e imprimiendo varias respuestas. Puede declarar otras variables
+para guardar cada una de las respuestas del usuario. Debe imitar las ordenes que hemos
+utilizado en el programa original. Tiene que escribir todo correctamente, incluidas las
+comillas, y terminando las líneas con el punto y coma (;). Una vez haya realizado esos
+cambios, ejecute nuevamente el programa</font>. Cuando de la orden de <em>Execute</em>
+desde el menu <em>Build</em> el ordenador le avisara que tiene que volver a generar los
+ficheros. Esto se debe a que ha realizado cambios en el programa. Cuando haga clic sobre <em>yes</em>,
+el ordenador intentara <font color="#808000">compilar</font> su programa. Si encuentra
+errores, los presentara en la parte inferior de la pantalla. Deberá corregir los errores
+y volver a probar. Como siempre, si tiene algún problema, pregunte.</p>
+
+<p>Cuando consiga que su programa funcione, debe guardarlo con las modificaciones.
+Necesita el fichero modificado para enviarlo como parte del trabajo de practicas.</p>
+
+<hr width="50%">
+
+<h3><a name="ElWeb">Los Web</a>s</h3>
+
+<p>El World Wide Web, también llamado Web o WWW, consiste en millones de paginas de
+información pertenecientes a millones de ordenadores de todo el mundo, y que están
+entrelazadas por medio de los <em>links. </em>Ya se ha transformado en una fuente de
+información y de entretenimiento, y es algo que esta creciendo continuamente. Algo de la
+emoción de Java, es que fue creado como parte integrante de&nbsp; los <em>Web's</em>.
+Suponemos que conoce y sabe usar correctamente los <em>web's</em> dado que esta leyendo
+estas notas que han sido pensada y escritas en forma de paginas Web.</p>
+
+<p>Explorar los webs es algo muy entretenido. Una forma de realizarlo, es buscar una
+pagina de inicio, y luego ir siguiendo los enlaces (<em>links</em>) desde una pagina a
+otra. Un buen sitio para buscar las paginas de inicio, es <a href="tppmsgs/msgs0.htm#5" tppabs="http://www.yahoo.com/">Yahoo</a>,
+con una cantidad enorme de paginas agrupada s por temas. Otra forma de buscar
+información, es utilizando palabras y unas herramientas que se llaman buscadores. Estas
+herramientas, permiten indicarle una o mas palabras, y rastrean las paginas web
+devolviendo una lista con las que contiene las palabras indicadas. Un ejemplo de esto es
+el buscador <a href="tppmsgs/msgs0.htm#6" tppabs="http://www.altavista.digital.com/">Alta Vista</a> .(Después de
+seguir el <em>link, </em>marque<em> (clic) e</em>l área de entrada, escriba las palabras
+que desee buscar y pulse el botón &quot;<em>Search&quot;</em> Se presentara una lista de
+enlaces para que pueda ir probándolos. Hay un sistema de ayuda en la misma pagina de
+Altavista, para que pueda aprender un poco mas sobre ella. Existen otros buscadores mas
+orientados por zonas geográficas; por ejemplo en España tenemos <a href="tppmsgs/msgs0.htm#7" tppabs="http://www.ole.es/">www.ole.es</a>, <a href="tppmsgs/msgs0.htm#8" tppabs="http://www.ozu.es/">www.ozu.es</a> y
+otros muchos).</p>
+
+<p>Las paginas se identifican en la red por medio de un <font color="#808000">URL</font> o
+<font color="#808000">Uniform Resource Locator</font>. En Netscape y en Internet Explorer
+la dirección de la pagina aparece en el recuadro &quot;Dirección&quot; en la parte
+superior de la ventana. Si conoce la dirección de la pagina que quiere, solo tiene que
+teclearla en ese recuadro y pulsar <em>Enter</em>. Por ejemplo, la pagina principal de
+este curso, esta disponible en la red en la dirección </p>
+
+<p align="center"><a href="tppmsgs/msgs0.htm#9" tppabs="http://members.xoom.com/elcurso">http://members.xoom.com/elcurso</a></p>
+
+<p align="left">Esta pagina contiene los enlaces a todo el curso, y es a través de ella
+que vamos a poder ir comunicando las novedades que vayan apareciendo. Les aconsejamos que
+anoten esta pagina en Bookmarks (en Netscape) o en Favoritos (en Internet Explorer) para
+que les sea mas fácil volver en el futuro, y utilicen el servicio de marcas que facilita
+el curso, para poder continuar en el punto en que se encontraban.</p>
+
+<p align="left">Otro de los ejercicios de esta practica, es utilizar Altavista para buscar
+alguna pagina interesante (en castellano), y enviarnos la URL de esa pagina.</p>
+
+<hr width="50%">
+
+<h3><a name="AppletsyHTML">Applets y HTML</a></h3>
+
+<p>Java se diseñó para que pudiera integrarse perfectamente en Internet y en el World
+Wide Web. Una de las cosas que puede hacer con Java, es escribir <font color="#808000">applets</font>,
+que son esos programas que pueden funcionar dentro de las paginas Web, en los navegadores
+Web como Netscape o Internet Explorer. (La programación de applets se empieza a tratar a
+partir del <a href="indice5.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/indice5.htm">Capítulo 5</a> de este curso.) En este
+apartado de las practicas, nos limitaremos a realizar una primera exposición acerca de
+como trabajan los <em>applets</em> en Visual J++.</p>
+
+<p>Necesitara una copia de la carpeta del proyecto <a href="tppmsgs/msgs0.htm#10" tppabs="http://members.nbci.com/elcurso/Proyectos/Moire.zip">Moire</a>
+que se la puede baja e instala tal y como hemos comentado anteriormente; Una vez haya
+descomprimido el fichero bajado, se le habrá creado la carpeta prMoire, dentro se
+encuentra el fichero Moire1.dsw, haciendo doble-clic, se abrirá Visual J++. Vera que el
+proyecto tiene un único fichero, &quot;Moire1.java&quot;. Este es el programa que
+funciona en una pagina del navegador (esto quiere decir que es un applet). Cuando de la
+orden de <em>Execute</em> desde el menu <em>Build</em>, vera que se le abre el navegado y
+se crea una pagina de forma totalmente dinámica, en la que aparece nuestro divertido
+applet.</p>
+
+<p>Podríamos haber creado nosotros una pagina HTML que se llamara por ejemplo TestMoire,
+y haberla añadido al proyecto, con lo que tendría una forma semejante a esta:</p>
+
+<p align="center"><img src="FileList.gif" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/FileList.gif" width="229" height="305"></p>
+
+<p>Este panel sirve para organizar la información sobre su proyecto, y permitirle una
+forma sencilla de acceso. Tiene tres posibles vistas: Vista de clases (<em>ClassView)</em>,
+Vista de ficheros (<em>FileView</em>), o vista de ayuda (<em>InfoView</em>). Puede cambiar
+de una vista a otra pulsando con el ratón una de las etiquetas que aparecen en la parte
+inferior de la imagen. La <em>InfoView</em> contiene un completo manual en línea de
+Microsoft Developer Studio, Visual J++ y Java. La <em>FileView</em>, que es la que aparece
+en la figurar anterior, contiene una lista de los ficheros definidos para el proyecto. La <em>ClassView</em>
+le permite un fácil acceso a las partes del programa Java conocidas como
+&quot;métodos&quot; y &quot;clases&quot;</p>
+
+<p>En la vista de ficheros, puede ocultar y presentar la lista de ficheros haciendo
+doble-clic en el titulo &quot;Moire Project Files&quot; o&nbsp; pulsando con el ratón en
+pequeño cuadrado que se encuentra a la izquierda del titulo. Si hace doble-clic en el
+nombre de los ficheros, aparecerá en el panel derecho, el contenido del fichero
+correspondiente. Con este programa, puede mantener varias listas a la vez, por ejemplo,
+puede querer también pegar un vistazo a la documentación sobre Visual J++. Para
+encontrarla, de ir a <em>InfoView</em> y abrir la entrada correspondiente a
+&quot;Developer Products&quot;.</p>
+
+<p>Puede mirarse un poco el programa Moire.java, para hacerse una idea del aspecto que
+puede tener un programa Java medianamente sofisticado, Sin embargo lo que nos interesa en
+este momento es el fichero HTML, TestMoire.HTML.</p>
+
+<p>Un fichero HTML es algo semejante a un programa que se emplea para definir la pagina
+Web. Se escribe en un lenguaje que se llama HTML (HyperText Markup Language). En estos
+ficheros, se guarda todo el texto que aparece en una pagina web junto con etiquetas
+especiales (<font color="#808000">tags</font>), o comandos para indicarle al navegador
+cómo tiene que aparecer el texto en pantalla, con que tamaño, y mas. También en este
+fichero pueden aparecer etiquetas que le indiquen al navegador (browser) que debe incluir
+otras cosas tales como imágenes o applets. Por ejemplo: 
+
+<ul>
+  <li>La etiqueta &lt;hr&gt; le indica al navegador que dibuje una línea horizontal
+    (&quot;horizontal rule&quot;)</li>
+  <li>La pareja de etiquetas &lt;h2&gt; y &lt;/h2&gt; en &lt;h2&gt;Applet Moire&lt;/h2&gt; le
+    indican al navegador que las palabras &quot;Applet Moire deben ser tratadas como titulares
+    y deben aparecer en una línea de forma destacada. &lt;h1&gt; indicaría un titular mas
+    importante, ósea mas destacado, y &lt;h3&gt; uno menos importante.</li>
+  <li>Las etiquetas &lt;p&gt; y &lt;/p&gt; indican el principio y el final de un párrafo</li>
+  <li>La etiqueta &lt;applet&gt; y &lt;/applet&gt; se emplean para incluir un applet en la
+    pagina. La etiqueta applet incluye tres <font color="#808000">modificadores</font> -- <tt>code,
+    width</tt> y <tt>heigth</tt>-- que sirven para especificar el nombre del applet y el
+    tamaño de la zona de la pagina que va a ocupar.</li>
+</ul>
+
+<p>Pueden aparecer muchísimos mas <em>tags</em>. Considere también que la mayoría de
+personas que crean paginas web, no escriben ficheros HTML. En su lugar editan las paginas
+con alguna herramienta de creación de web como Netscape Composer, o Front Page. También
+hay muchos procesadores de texto, que son capaces de editar ficheros HTML. Sin embargo es
+necesario que conozcamos un poco sobre HTML para poder trabajar con applets.</p>
+
+<p>Cuando ejecute el proyecto Moire, se abrirá el navegador con el fichero HTML.<font color="#0080FF"> Pruebe de utilizar el comando <em>Execute</em> del menu <em>Build</em> o
+manteniendo pulsada la tecla &quot;Control&quot;(Ctrl) , pulse F5. Vera una pagina Web
+conteniendo el diseño animado llamado &quot;Moire Pattern&quot;. Este diseño lo crea el
+applet. Cuando lo haya visto, cierre la ventana del navegador.</font></p>
+
+<p>Una etiqueta <tt>&lt;applet&gt;</tt> puede contener <font color="#808000">parámetros</font>
+que se utilizan para definir el applet. La idea general de utilizar parámetros para
+personalizar el applet es una de las cosas mas importantes que aprenderá con este
+curso.Los parámetros para un <em>applet</em> se especifican en la etiqueta <tt>&lt;param&gt;</tt>.
+Cada parámetro tiene un nombre y un valor. En el fichero HTML de ejemplo, hay dos
+parámetros llamados &quot;lineColor&quot; y &quot;bgColor&quot;.&nbsp; Cambiando el valor
+de estos parámetros, puede cambiar la apariencia o el comportamiento del applet. En el
+ejemplo, puede cambiar los valores de <em>lineColor</em> y <em>bgColor</em> para
+personalizar los colores del dibujo. Los valores validos para el color son: <em>red,
+green, blue, cyan, magenta, yellow, black, white, gray, pink, y orange.</em></p>
+
+<p><font color="#0080FF">Puede probar diferentes valores para los parámetros de color.
+Además, el applet Moire tiene otros parámetros que pueden ser cambiados. En el fichero
+Moire.java, se encuentran documentados todos ellos, así como los valores por defecto que
+toman. Lea el código fuente, y pruebe algún otro parámetro al código HTML -- por
+ejemplo sleepTimer o border -- a la etiqueta applet en el fichero TestMoire.HTML.
+(Necesitara añadir una nueva etiqueta &lt;param&gt;).</font></p>
+
+<p>Observe que la etiqueta del applet se refiere al fichero de clases (.class) que es el
+que contiene el código compilado y no al fichero que contienen el código fuente (.java)</p>
+
+<hr width="50%">
+
+<h3><a name="PublicandoEnElWeb">Publicando en el web</a></h3>
+
+<p>Usted también puede tener su propia pagina en el web. Para ello, utilizaremos
+cualquiera de los servidores que nos ofrecen de forma gratuita espacio para nuestras
+paginas. Aunque también muchos proveedores de Internet dan a sus clientes la posibilidad
+de tener un web por el mismo costo de la conexión. Debido a que en cada servidor cambia
+la forma de cargar paginas, durante las próximas semanas, escogeremos uno, y procuraremos
+definir alguna forma sencilla y cómoda para que podáis publicar vuestras paginas, como
+ejemplo de lo que vais aprendiendo, Mientras tanto, si nos envías las paginas vía E-MAIL
+, os las publicaremos en un nuevo apartado de &quot;Paginas de alumnos&quot;</p>
+
+<p>&nbsp;</p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%"><h3><a name="Ejercicios">Ejercicios para entregar </a></h3>
+    </td>
+    <td width="50%">Esta parte solo la deben enviar aquellos alumnos que han contratado el
+    servicio de <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">seguimiento</a></td>
+  </tr>
+</table>
+
+<p><strong>Ejercicio 1</strong>. Envíe el fichero del programa Java FirstProgram que ha
+estado modificando <a href="practica1.htm#UnPocoDeProgramacion" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/practica1.htm#UnPocoDeProgramacion">anteriormente</a>.
+También un pequeño resumen acerca de las variables--que son, porque existen, como se han
+de usar en un programa...</p>
+
+<p><strong>Ejercicio 2</strong>. Cuando ha trabajado con el applet Moire en el proyecto<a href="practica1.htm#AppletsyHTML" tppabs="http://members.nbci.com/elcurso/Practicas/prc1/practica1.htm#AppletsyHTML"> anterior</a> ha podido ver que existían tres tipos de
+ficheros involucrados en el funcionamiento de un applet: ficheros .<font color="#808000">java</font>,
+ficheros .<font color="#808000">class</font>, y ficheros .<font color="#808000">HTML</font>.
+Escriba una pequeña explicación sobre la información que contiene cada tipo,&nbsp; y
+para que se utilizan. Al final de la practica, me debería enviar todo lo necesario para
+que pudiera publicar su pagina web. ¿Tiene que enviar el fichero .HTML? y el .class? y el
+.java? . Conteste a estas preguntas indicando el porqué.</p>
+
+<p><strong>Ejercicio 3</strong>. Envíe un E-MAIL (a <a href="mailto:mgyea@arrakis.es">mgyea@arrakis.es</a>)
+. En su E-mail, describa sus conocimientos anteriores sobre informática, y también un
+pequeño comentario de lo que espera del curso. Así mismo, necesitamos conocer si sabe lo
+que es FTP, si dispone de algún programa para enviar ficheros y si lo sabe hacer servir.
+Asegúrese de incluir su nombre, y su código de alumno. Nosotros responderemos al E-MAIL
+confirmándole la recepción.</p>
+
+<p><strong>Ejercicio 4</strong>.Use el buscador Altavista para buscar una pagina
+interesante sobre el tema que estamos tratando, y en castellano, indíqueme que palabras a
+utilizado para la búsqueda, y dígame la URL completa de la pagina. </p>
+
+<hr>
+
+<p align="center"><a href="indice.htm#Practicas" tppabs="http://members.nbci.com/elcurso/indice.htm#Practicas">[Indice de practicas<sup>]</sup></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"> <sup>[Curso</sup>]</a></p>
+</body>
+</html>

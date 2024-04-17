@@ -1,0 +1,326 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Practica 3</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+</head>
+
+<body>
+
+<h3>Practica 3: Subrutinas (Parte 1)</h3>
+
+<hr>
+
+<p>En estas terceras practicas empezara a trabajar con subrutinas que deberá diseñar y
+escribir. En el proceso, creara un <em>applet</em> y aprenderá mas acerca de como los <em>applets</em>
+responden a los eventos y como puede emplear la multitarea. También adquirirá mas
+experiencia en el uso de la instrucción while y de la instrucción if. En la próxima
+practica, podremos ya diseñar y escribir un programa completo, que incluya subrutinas que
+deberá codificar empezando desde cero.</p>
+
+<p>Va ha necesitar varias carpetas de proyectos. Debe bajarse las siguientes carpetas y
+guardarlas con el resto de programas Java que ha ido haciendo: &quot;<a
+href="tppmsgs/msgs0.htm#14" tppabs="http://members.nbci.com/elcurso/Proyectos/JumpingSquare.zip">Jumping Square Starte</a>r&quot;, &quot;<a
+href="tppmsgs/msgs0.htm#15" tppabs="http://members.nbci.com/elcurso/Proyectos/Mosaic%20Starter1.zip">Mosaic Starter#1</a>&quot;, y <a
+href="tppmsgs/msgs0.htm#16" tppabs="http://members.nbci.com/elcurso/Proyectos/Mosaic%20Starter2.zip">&quot;Mosaic Starter #2&quot;</a>. Cada uno
+es el punto de inicio de uno de los ejercicios del final de la practica.</p>
+
+<p>Dispone de ejemplos acerca de las soluciones en las paginas <a href="ex1.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc3/ex1.html">Ejercicio
+1</a>, <a href="ex2.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc3/ex2.html">Ejercicio 2</a>, y <a href="ex3.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc3/ex3.html">Ejercicio 3</a></p>
+
+<p>Como siempre al final de la practica hay unos ejercicios que deberán ser enviados a su
+tutor (únicamente las personas que hayan contratado <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">Seguimiento</a>).</p>
+
+<hr width="50%">
+
+<h3>Indice de la practica:</h3>
+
+<ul>
+  <li><a href="#MosaicFrame">Presentación de la clase <tt>MosaicFrame</tt></a></li>
+  <li><a href="#PaseoAleatorio">Un &quot;Paseo aleatorio&quot; mejorado</a></li>
+  <li><a href="#ExperienciaConversion">Experiencia de conversión</a></li>
+  <li><a href="#AppletAccion">Un <em>applet</em> con Acción</a></li>
+  <li><a href="#Ejercicios">Ejercicios</a></li>
+</ul>
+
+<hr width="50%">
+
+<h3><a name="MosaicFrame">Presentación de la clase <tt>MosaicFrame</tt></a></h3>
+
+<p>Una subrutina es un conjunto de instrucciones para realizar una tarea, escritas juntas
+dentro de una &quot;caja negra&quot;, y con un nombre que la define. El lenguaje de
+programación tiene también algunas subrutinas incorporadas, como <tt>Math.random()</tt>,
+que forman parte del lenguaje base, y están disponibles siempre. El programador también
+puede escribir nuevas subrutinas y las puede usar de la misma forma que emplea las
+integradas con el lenguaje.Naturalmente, un programador puede utilizar rutinas escritas
+por otro programador. Por ejemplo, ha estado usando la subrutina definida en la clase <tt>Console</tt>
+que no forma parte del estándar Java, pero que le hemos proporcionado para facilitar
+algunas tareas de entrada/salida.</p>
+
+<p>En los dos primeros ejercicios de la práctica, deberá volver a utilizar subrutinas
+que ya están escritas como métodos en las clases que le proporcionamos. La clase se
+llama <tt>MosaicFrame</tt>. Un objeto de esta clase representa una ventana conteniendo una
+rejilla de rectángulos coloreados. Inicialmente todos los rectángulos son negros, pero
+se facilitan métodos para cambiar el color del rectángulo, y para averiguar el color de
+cualquier rectángulo.</p>
+
+<p>Debe abrir la carpeta &quot;Mosaic Starter #1.&quot; , si no lo ha bajado o no lo ha
+descomprimido, hágalo ahora. Ejecute el programa. Vera un pequeño rectángulo rojo que
+vaga sobre una ventana negra. (Realmente la ilusión de movimiento se consigue cambiando
+el rectángulo de negro a rojo y volviéndolo a negro otra vez).Puede que quiera leer el
+fichero fuente <tt>MosaicApplication.Java </tt>dado que tendrá que modificar este fichero
+para poder realizar el ejercicio 1<tt>.</tt>Puede también mirar los comentarios en <tt>MosaicFrame.</tt>Java,
+dado que en este fichero donde se definen los métodos que utilizara para trabajar con la
+ventana. Aunque solo necesitara unos pocos métodos y están comentados a continuación.</p>
+
+<p>La ventana <tt>MosaicFrame</tt> se puede crear y abrir con&nbsp; la instrucción:</p>
+
+<p align="center"><tt>MosaicFrame mosaic = new MosaicFrame('',20,30);</tt></p>
+
+<p>La ventana creada tendrá 20 filas y 30 columnas de rectángulos. Cada rectángulo
+será de 10 x 10 pixels (esto es un cuadrado). El nombre de la ventana es <tt>mosaic</tt>
+y esta variable podrá ser usada para llamar a los métodos&nbsp; de comprobación y
+modificación de color;y como titulo no figurara ninguno. Si quiere, puede cambiar el
+nombre de la variable, añadirle un titulo a la ventana y cambiar el numero de filas y
+columnas. También puede especificar la anchura y la altura de los rectángulos.Lea el
+fichero de código fuente para ver los detalles.</p>
+
+<p>Si hay R filas en la ventana, se numeraran de 0 a R-1. De forma similar, si hay C
+columnas, se numeraran de 0 a C-1. Puede indicar un rectángulo concreto definiendo el
+numero de filas y el numero de columna. Si utiliza un numero de fila o de columna fuera de
+la ventana, el programa producirá un error. Sin embargo, incluso con el error puede que
+no consiga el efecto que quería. Podrá probar este tipo de error cuando finalice sus
+trabajos de práctica. Ahora debe intentar se cuidadoso y programar de forma inteligente.</p>
+
+<p>Para usar <tt>MosaicFrame</tt> debe tener una ligera idea acerca de como se indican los
+colores en el ordenador. Cada color que se presenta en el ordenador, se compone con una
+combinación de los colores primarios: rojo, verde y azul.En <tt>MosaicFrame</tt> el nivel
+de cada color primario se define como un numero <tt>int</tt> en el rango de 0 1 255. El
+color se especifica por tres números que definen los valores de rojo, verde y azul.
+Cuando indicamos los colores así, nos referimos a colores RGB. Un color con un componente
+rojo igual a 0, no contiene nada de rojo; un color con componente de rojo de 255 contiene
+el máximo rojo posible. El negro se define por la combinación de rojo, verde y azul
+igual a cero, mientras que el blanco se define con la combinación de los tres colores
+igual a 255. (En <tt>MosaicFrame</tt> si intenta utilizar un valor de color menor que 0,
+se convierte a cero, y si es mayor que 255, se convierte a 255).</p>
+
+<p>Aquí tiene alguno de los métodos que puede usar con la variable <tt>mosaic</tt> del
+tipo <tt>MosaicFrame:</tt> 
+
+<ul>
+  <li><b>mosaic.setColor(row, column, r, g, b)</b> establece el color de un rectángulo
+    especifico, donde r, g, y b son los componentes&nbsp; rojo,&nbsp; verde y&nbsp; azul del
+    color (en el rango de 0 a 255). </li>
+  <li><b>mosaic.fill(r, g, b)</b> rellena la ventana con un color uniforme poniendo todos los
+    cuadrados con el color indicado por los componentes r,g,y b de rojo, azul y verde </li>
+  <li><b>mosaic.fillRandomly()</b> rellena la ventana de rectángulos coloreados
+    aleatoriamente. </li>
+  <li><b>mosaic.delay(n)</b>,donde n es un entero, provoca que el programa espere, sin hacer
+    nada, durante&nbsp; n milisegundos. 1000 milisegundos es igual a un segundo. El tiempo no
+    es demasiado exacto. Puede emplearse únicamente para controlar la velocidad del programa
+    en ejecución.</li>
+</ul>
+
+<p>Finalmente, un método muy útil que nos indica continuamente si la ventana del mosaico
+esta abierta o ha sido cerrada por el usuario. El método devuelve un valor boleano. En el
+programa ejemplo &quot;Mosaic Starter#1&quot; se emplea este método en el bucle <tt>while</tt>
+para que permanezca en funcionamiento mientras este abierta la ventana. 
+
+<ul>
+  <li><strong>mosaic.stillOpen()</strong> devuelve un valor boleano que indica si la ventana <tt>MosaicFrame</tt>
+    esta abierta o la cerro el usuario. El valor que devuelve es <tt>true</tt> si la ventana
+    esta todavia abierta o <tt>false</tt> si la ventana esta cerrada.</li>
+</ul>
+
+<p>(Observe, de paso, que la ventana mosaico es similar a una que se describe en la <a
+href="Seccion3_6.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/Seccion3_6.html">Sección 3.6</a> del texto. Sin embargo, en el
+texto, los componentes de color se especifican como números reales entre el 0.0 y el 1.0
+en vez de estar entre el 0 y el 255. He decidido pasar a los enteros porque actualmente en
+los ordenadores los colores se representan con enteros. Aquí tienen el código fuente de <a
+href="tppmsgs/msgs0.htm#34" tppabs="http://members.nbci.com/elcurso/fuentes/MosaicFrame.java"><tt>MosaicFrame</tt></a> y de otra clase, <a
+href="tppmsgs/msgs0.htm#35" tppabs="http://members.nbci.com/elcurso/fuentes/MosaicCanvas.java"><tt>MosaicCanvas</tt></a> que lo emplea. No debe
+contar con poder entender el código fuente a estas alturas del curso.</p>
+
+<hr width="50%">
+
+<h3><a name="PaseoAleatorio">Un &quot;Paseo aleatorio&quot; mejorado</a></h3>
+
+<p>En su primer ejercicio, modificó el programa en &quot;Mosaic Starter#1&quot;
+consiguiendo que nuestro &quot;paseo aleatorio&quot; fuera mas interesante. El efecto que
+tendrá que lograr ahora se lo enseño con un applet <a href="ex1.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc3/ex1.html">aquí</a>. Puede
+mirar el ejemplo, y leer los comentarios en la pagina.</p>
+
+<p>Los cambios cambios que va a tener que hacer en <tt>MosaicAplication.</tt>Java son en
+realidad muy pequeños, pero no podrá hacerlos tan fácilmente a menos que comprenda como
+funciona realmente el programa original. Lea el código fuente, lea los comentarios, y
+asegúrese de entender lo que hace.(Puede también leer el código fuente <a
+href="tppmsgs/msgs0.htm#36" tppabs="http://members.nbci.com/elcurso/fuentes/MosaicApplication.java">aquí</a>).</p>
+
+<p>Necesita modificar el programa para hacer que la alteración vague por la pantalla. No
+hay mucha diferencia con el paseo del rectángulo rojo, excepto que la alteración en si
+misma será casi invisible. Cada vez que visite un cuadrado, deberá leer el nivel de
+verde del cuadrado, sumarle 10 a ese nivel (elevarlo hasta el limite de 255) y presentar
+el nuevo color del cuadrado.</p>
+
+<p>Puede hacer que la pausa (<em>delay</em>) del bucle sea un poco mas corta para mejorar
+el efecto. Yo he usado &quot;<tt>mosaic.delay(5)</tt>&quot; en mi applet..</p>
+
+<p>También puede probar este programa usando el rojo, el azul o el gris en vez del gris.
+(El color gris se genera con valores iguales para los tres componentes (rojo, azul y
+verde).</p>
+
+<hr width="50%">
+
+<h3><a name="ExperienciaConversion">Experiencia de </a>conversión</h3>
+
+<p>Para su segundo ejercicio, deberá usar la carpeta &quot;Mosaic Starter #2&quot;.
+descomprima el archivo que se ha bajado. Abra el proyecto que hay en esa carpeta y ejecute
+el programa. vera que le aparece una ventana llena de cuadrados de colores aleatorios.
+Esto se consigue con una única llamada a un método <tt>mosaic.fillRandomly()</tt>.
+(Puede ver el código fuente <a
+href="file:///C:/WEBSHARE/WWWROOT/elcurso/fuentes/ConversionExperience.java">aquí</a>).</p>
+
+<p>Su trabajo es añadirle un bucle <tt>while</tt> en la rutina <tt>main()</tt> para
+conseguir que el programa tenga un comportamiento semejante al del applet de ejemplo que
+les muestro <a href="ex2.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc3/ex2.html">aquí</a>.</p>
+
+<p>En su bucle debe ir escogiendo de forma aleatoria los cuadrados, por medio de escoger
+aleatoriamente la fila y la columna. A continuación seleccionar aleatoriamente uno de sus
+cuatro vecinos y convertir el color del cuadrado seleccionado antes, al que tenga el
+vecino seleccionado.</p>
+
+<p>(El modelo de este programa, presenta de manera vaga, lo que pasa en una población
+donde exista una tendencia a tener los mismos gustos que los vecinos, o a unirse formando
+coaliciones. Podemos decir que cada color representa un partido político. Inicialmente,
+cada uno pertenece a partidos diferentes. Sin embargo, la gente mira a su alrededor para
+ver que piensan sus vecinos, y hay una cierta tendencia a convertir a los vecinos a su
+opinión.¿Que pasa a la larga?.Recuerde que &quot;La muerte es eterna&quot;.Una de las
+cuatro esquinas se convierte de color , y el color se va para siempre.)</p>
+
+<p>El bucle <tt>while</tt> que debe escribir tiene muchas semejanzas con el bucle del
+ejercicio anterior. De hecho, puede copiar y pegar el bucle en el programa. Sin embargo,
+aquí el problema es significativamente diferente y no debe esperar que todo se resuelva
+tan fácilmente, Piense sobre lo que quiere hacer, y planee su bucle <tt>while</tt> antes
+de empezar a trabajar sobre el.</p>
+
+<hr width="50%">
+
+<h3><a name="AppletAccion">Un applet con acción</a></h3>
+
+<p>Para el tercer ejercicio de la practica, deberá trabajar con un applet. El punto de
+arranque es la carpeta &quot;Jumping Square&quot;. Descomprímala si no lo ha hecho, y
+ejecútela.( También puede leer el código <a href="tppmsgs/msgs0.htm#37" tppabs="http://members.nbci.com/elcurso/fuentes/JumpingSquare.java">aquí</a>).
+Este applet presenta un cuadrado rojo en una posición aleatoria. Cada vez que el usuario
+pulsa con el ratón encima del cuadrado, salta a una nueva posición. También vera
+aparecer el numero de segundos transcurridos desde que se arrancó el applet presentados
+en la esquina superior izquierda.(Observe que el applet puede destellear un poco cuando
+cambia el tiempo o cuando salta el cuadrado. Hay forma de solucionarlo, pero prefiero que
+trabaje de momento con algo sencillo. Volveremos a este problema durante el curso.)</p>
+
+<p>Su trabajo es transformar este pequeño applet&nbsp; en un duplicado de este otro
+incordiante applet que se presenta en la <a href="ex3.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc3/ex3.html">pagina adjunta</a>. La nueva
+versión es un juego. El cuadrado va saltando aleatoriamente. El usuario prueba de pulsar
+sobre el. El applet indica el tiempo transcurrido, cuantas veces el usuario ha acertado, y
+cuantas a pulsado fuera del applet. Esta información se va presentando continuamente.</p>
+
+<p>Hay dos cosas diferentes funcionando en este applet. La respuesta al evento que ocurre
+cuando el usuario pulsa el botón del ratón es una. Y también hay otro proceso o hebra (<em>thread</em>)
+que funciona continuamente, como si fuera un programa independiente. Es esta hebra la que
+controlara el tiempo. En la versión final del applet, la misma hebra también deberá
+mover el cuadrado aunque el usuario no haga clic sobre él.</p>
+
+<p>A continuación le indico como se trabaja. Primero de todo, la clase <tt>MosaicApplet</tt>
+tiene un método llamado <tt>&quot;mouseDown&quot;</tt> que toma esta forma:</p>
+
+<pre>         public boolean mouseDown(Event evt, int x, int y) {
+               .
+               . // comandos a ejecutar cuando se hace clic en el applet
+               .
+             return true;
+         }</pre>
+
+<p>Este método en un <font color="#808000">manejador de eventos</font>. Esto es: una
+rutina a la que llama el sistema operativo cuando el usuario pulsa el botón del
+ratón.Normalmente no se llama desde ningún sitio del programa. Su trabajo como
+programador es escribir dentro de la rutina <tt>mouseDown()</tt> las instrucciones
+necesarias para hacer lo que desee cuando el sistema la llame. Los parámetros x e y los
+entrega el sistema cuando llama a la rutina, le indica las coordenadas, vertical y
+horizontal, del punto del applet donde el usuario ha pulsado.</p>
+
+<p>El otro aspecto de este applet es la hebra separada que funciona independientemente de
+los eventos producidos por los usuarios. La clase <tt>MosaicApplet</tt> empieza con la
+línea</p>
+
+<p align="center"><tt>public class MosaicApplet extends Applet implements Runnable</tt></p>
+
+<p>El decir que una clase &quot;<tt>implements Runnable&quot;</tt> significa básicamente
+que contiene un método &quot;<tt>public void run()&quot;</tt> que puede hacer funcionar
+un programa en una hebra independiente.En este ejemplo, la hebra se crea en el método del
+applet <tt>start()</tt> al que llama el sistema cuando el applet empieza a funcionar. Tan
+pronto como la hebra arranca, se inicia la ejecución del método <tt>run</tt> del applet.
+El método <tt>run()</tt> esta creado para ser usado por esta hebra y no tiene sentido el
+llamarlo directamente. Para llenar el método <tt>run()</tt> deberá escribir un programa
+para la hebra. Cualquier clase que contenga un método <tt>run()</tt>, puede usarse para
+crear una hebra de la misma manera y en un programa, también es posible el crear varias
+hebras que se ejecuten a la vez( de forma adicional, a la hebra básica, la hebra original
+a la que me estoy refiriendo es la &quot;system&quot;)</p>
+
+<p>Su trabajo es hacer algunas modificaciones en la clase <tt>JumpingSquare:</tt>: 
+
+<ul>
+  <li>Añadir las variables para contar el numero de veces que el usuario acierta el cuadrado
+    y el numero de veces que falla. Dado que esas variables deberán ser usadas por varios
+    métodos, deberán ser declaradas fuera de cualquier método, justo al lado de la variable
+    ya existente <tt>elapsedTime.</tt></li>
+  <li>Modificar el método<tt> paint</tt> para añadirle la presentación del numero de
+    aciertos y del número de fallos.</li>
+  <li>Modificar el método <tt>mouseDown()</tt>para añadirle la comprobación de si el
+    usuario a pulsado el botón dentro del cuadrado, y también contar el numero de aciertos y
+    el numero de fallos.</li>
+  <li>Modificar el método <tt>run()</tt> para añadirle el seguimiento del tiempo
+    transcurrido y hacer saltar el cuadrado de forma aleatoria. Observe que el método <tt>doJump()</tt>
+    esta pensado para hacer saltar el cuadrado. Compruebe como funciona <tt>mouseDown()</tt>.
+    En mi applet, en el método <tt>run()</tt> , hago que el cuadrado salte con una
+    probabilidad de 0,1 cada vez que el bucle <em>while</em> es ejecutado.</li>
+</ul>
+
+<p>Después de que haya creado el applet, puede publicarlo en la web para presumir ante
+sus amigos. (y de paso ponerlos nerviosos con este irritante juego).</p>
+
+<hr width="50%">
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%"><h3><a name="Ejercicios">Ejercicios para entregar </a></h3>
+    </td>
+    <td width="50%">Esta parte solo la deben enviar aquellos alumnos que han contratado el
+    servicio de <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">seguimiento</a></td>
+  </tr>
+</table>
+
+<p><strong>Ejercicio 1</strong>. Debe enviar el fichero .Java del programa del &quot;paseo
+aleatorio&quot; modificado <a href="#PaseoAleatorio">anteriormente</a> . El trabajo lo ha
+debido realizar en el fichero <tt>MosaicApplication.</tt>Java y es el único fichero que
+debe mandar. Asegúrese que el estilo de programación es bueno. Debe borrar los
+comentarios originales y escribir los suyos.</p>
+
+<p><strong>Ejercicio 2.</strong> Debe enviar el fichero <tt>ConversionExperience.</tt>Java
+que debió modificar <a href="#ExperienciaConversion">anteriormente</a>. Asegúrese que el
+programa esta bien documentado, con los comentarios adecuados y un buen estilo de
+programación.</p>
+
+<p><strong>Ejercicio 3. </strong>Para este ejercicio, devuélvanos la copia del fichero <tt>JumpingSquare.Java
+</tt>que ha modificado <a href="#AppletAccion">anteriormente</a>. <strong>Por esta vez, no
+se preocupe de que los comentarios sean correctos.</strong> También debe publicar una
+pagina con el applet, y enviarnos la dirección de la pagina.</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<p align="center"><a href="indice.htm#Practicas" tppabs="http://members.nbci.com/elcurso/indice.htm#Practicas">[Indice de practicas<sup>]</a> <a
+href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm">[Curso</sup>]</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="practica4.htm" tppabs="http://members.nbci.com/elcurso/Practicas/prc4/practica4.htm">[ Parte II<sup>]</sup></a></p>
+</body>
+</html>

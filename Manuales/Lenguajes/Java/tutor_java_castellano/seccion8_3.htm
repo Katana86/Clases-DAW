@@ -1,0 +1,321 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java. Seccion 8.3</title>
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 8.3 : Ficheros</h3>
+
+<hr width="50%">
+
+<p>LOS DATOS Y LOS PROGRAMAS SOBREVIVEN POCO TIEMPO en la memoria principal de los
+ordenadores. Solo el tiempo en que están funcionando.Para poder guardarlos de una a otra
+vez que se necesiten el ordenador utiliza <font color="#808000">ficheros</font>, que son
+colecciones de datos almacenados en el disco duro del ordenador, en un floppy disk, en un
+CD-ROM, o en algún otro tipo de dispositivo de almacenamiento. Los ficheros se organizan
+en<font color="#808000"> directorios</font> (a menudo llamados &quot;carpetas&quot;). Un
+directorio puede guardar otros directorios, así como ficheros. Tanto los directorios como
+los ficheros tienen nombres que se utilizan para identificarlos.</p>
+
+<p>Los programas pueden leer datos desde los ficheros existentes. Pueden crear nuevos
+ficheros, y pueden grabar datos en los ficheros. En Java la entrada y la salida se realiza
+utilizando dispositivos (<em>streams)</em>. Para leer los datos de un fichero,
+utilizaremos un objeto perteneciente a la clase <tt>FileInputStream</tt>, que es una
+subclase de <tt>ImputStream</tt>. De forma semejante, para escribir información en un
+fichero utilizaremos un objeto de la clase <tt>FileOutputStream</tt>, subclase de <tt>OutputStream.</tt></p>
+
+<p>Desde el principio, he de hacer notar que un applet descargado en una conexión de red,
+normalmente no tiene posibilidad de acceder a ficheros. Es una condición de seguridad. Se
+puede descargar y ejecutar un applet únicamente visitando una pagina Web con su
+navegador. Si el applet que descarga tuviera acceso a los ficheros de su disco, seria muy
+fácil escribir un applet que destruyera todos los datos de cualquier ordenador que lo
+descargara. Para evitar estas posibilidades, hay una serie de cosas que un applet que se
+descargue por la red no puede hacer. Acceder a ficheros es una de esta cosas prohibidas.
+Sin embargo los programas autónomos escritos en Java, tienen el mismo acceso a sus
+ficheros que cualquier otro programa. Cuando escriba una aplicación Java autónoma, puede
+utilizar todas las operaciones descritas en esta sección.</p>
+
+<hr width="50%">
+
+<p>La clase <tt>FileInputStream</tt> tiene un constructor que utiliza como parámetro en
+nombre del fichero, y crea un dispositivo de entrada que se puede utilizar para leer desde
+este fichero. El constructor puede generar una excepción del tipo <tt>FileNotFoundException</tt>
+si el fichero no existe. Esta excepción requiere obligatoriamente un tratamiento de
+errores por lo que debe llamar al constructores una instrucción <tt>try</tt> ( o dentro
+de una rutina que declare que puede generar <tt>FileNotFoundException</tt>). Por ejemplo,
+suponga que tiene un fichero llamado &quot;<tt>data.txt</tt>&quot; y quiere que su
+programa lea datos de este fichero, Para crear un dispositivo de entrada con ese fichero
+deberá hacer lo siguiente:</p>
+
+<pre>	FileInputStream data;	// declara la variable antes de la
+				// instrucción try para que no sea
+				// local del bloque try
+	try {
+		data=new FileInputStream(&quot;data.txt&quot;); //crea el dispositivo
+	}
+	catch (FileNotFoundException e) {
+		... // realizar el tratamiento de errores, posiblemente
+		    // FINALIZAR EL PROGRAMA
+	}</pre>
+
+<p>Una vez se ha conseguido crear el <tt>FileStream</tt>, puede empezar a leer datos desde
+el. . Pero como <tt>FileInputStreams</tt> solo tiene los métodos de lectura elementales
+heredados de la clase <tt>InputStream</tt>, probablemente querrá enlazar su <tt>FileInputStream</tt>
+con algún objeto <tt>DataInputStream</tt> o <tt>AsciiInputStream</tt>. Puede utilizar la
+clase <tt>DataInputStream</tt> integrada en Java, si quiere leer información en formato
+binario. Emplee la clase <tt>AsciiInputStream</tt> que se describe en la sección anterior
+si los datos que contiene el fichero esta en formato legible por los humanos (ASCII)..
+Para crear un <tt>AsciiInputStream</tt> para leer el fichero, debería decir:</p>
+
+<pre>	AsciiInputStream data;
+	try {
+		data=new AsciiInputStream(new FileInputStream(&quot;data.txt&quot;));
+	}
+	catch (FileNotFoundException e) {
+		... // tratamiento de errores
+	}</pre>
+
+<p>Una vez tenga un <tt>AsciiInputStream</tt> llamado <tt>data</tt>. puede empezar a leer
+desde el, utilizando los métodos como <tt>data.getInt() </tt>y <tt>data.getWord()</tt>,
+exactamente igual que lo haría de cualquier otro <tt>AsciiInputStream</tt></p>
+
+<p>Trabajar con un fichero de salida, no es mucho mas problemático que esto. Simplemente,
+cree un objeto perteneciente a la clase <tt>FileOutputStream</tt>. Probablemente querrá
+enlazar este dispositivo de salida con un objeto del tipo<tt>DataOutputStream</tt> (para
+datos binarios)&nbsp; o <tt>PrintStream</tt> (para texto ASCII). Por ejemplo, suponga que
+quiere escribir datos en un fichero llamado &quot;<tt>result.dat</tt>&quot;. Puesto que el
+constructor para <tt>FileOutputStream</tt> puede generar una expresión del tipo <tt>IOException</tt>,
+deberá utilizar la instrucción <tt>try</tt>.</p>
+
+<pre>	PrintStream result;</pre>
+
+<pre>	try {
+		result = new PrintStream(new FileOutputStream(&quot;result.dat&quot;));
+	}
+	catch (IOException e) {
+		...// tratamiento de errores
+	}</pre>
+
+<p>Si no existe un fichero llamado &quot;<tt>resut.dat</tt>&quot;,&nbsp; se creara un
+fichero nuevo. Si el fichero ya existe, entonces se borrara el contenido actual y será
+reemplazado por los datos que escriba su programa. Una <tt>IOException</tt> puede ocurrir
+si, por ejemplo, intenta crear un fichero en un disco protegido contra escritura, para
+indicarle que no puede modificarse.</p>
+
+<p>Después de que haya finalizado de utilizar el fichero, es una buena idea el cerrarlo,
+para indicar al sistema operativo que ha terminado de utilizarlo. (Si se olvida de
+hacerlo, probablemente el fichero se cierre automáticamente cuando el programa finalice,
+o cuando el objeto del dispositivo del fichero se abandone, pero es mejor cerrar el
+fichero tan pronto como ¡sea posible.). Para cerrar el fichero, se puede llamar al
+método <tt>close()</tt>del dispositivo fichero correspondiente. Una vez se ha cerrado, no
+es posible seguir leyendo o grabando datos, a menos que lo vuelvas a abrir con un nuevo
+dispositivo (<em>stream</em>). (Tenga en cuenta que en muchas clases de <em>streams</em>
+el método <tt>close() </tt>puede generar una<tt> IOException</tt>, que deberá ser
+tratada, sin embargo, tanto <tt>PrintStream</tt> como <tt>AsciiInputStream</tt>
+sobregraban el método con lo que no genera excepción.)</p>
+
+<p>Como ejemplo completo, aquí tiene un programa que lee números desde un fichero
+llamado <tt>data.dat</tt> y después, escribe los mismos números en orden inverso en otro
+fichero llamado <tt>result.dat</tt>. Asumimos que <tt>data.dat</tt> contiene solo un
+numero en cada línea y que no hay mas de 1000 números en total. Utilizamos el
+tratamiento de errores para comprobar los problemas sobre estas definiciones. Al final del
+programa, encontrara un ejemplo del uso de la cláusula <tt>finally</tt> en una
+instrucción <tt>try</tt>. Cuando el ordenador ejecuta la instrucción <tt>try</tt>, esta
+asegurada la ejecución del comando contenido en la cláusula <tt>finally,</tt> pase lo
+que pase.</p>
+
+<pre>       import java.io.*;  
+       // suponemos que la clase AsciiInputStream esta disponible
+       
+       public class ReverseFile {
+       
+          public static void main(String[] args) {
+          
+             AsciiInputStream data;   // stream para leer datos
+             PrintStream result;      // stream para salida
+             
+             double[] number = new double[1000];  // serie para guardar
+                                                  //los números leídos
+             int numberCt;  // numero de elementos almacenados
+             
+             try {
+              data = new AsciiInputStream(new FileInputStream(&quot;data.dat&quot;));
+             }
+             catch (FileNotFoundException e) {
+                System.out.println(&quot;No existe el fichero data.dat!&quot;);
+                return;  // fin de programa volviendo desde main()
+             }
+ 
+             try {
+              result = new PrintStream(new FileOutputStream(&quot;result.dat&quot;));
+             }
+             catch (IOException e) {
+                System.out.println(&quot;No puedo abrir result.dat!&quot;);
+                System.out.println(e.toString());
+                data.close();  // cerrar fichero de entrada
+                return;  // fin de programa
+             }
+             
+             try {
+             
+                 // leer datos desde fichero de entrada,
+                 numberCt = 0;
+                 while (!data.eof()) {  // leer el end-of-file
+                    number[numberCt] = data.getlnDouble();
+                    numberCt++;
+                 }
+              
+                 // sacar los números en orden inverso
+                 for (int i = numberCt-1; i &gt;= 0; i--)
+                    result.println(number[i]);
+
+              }
+              catch (AsciiInputException e) {
+                 // problemas leyendo datos del fichero de entrada
+                 System.out.println(&quot;Error en entrada: &quot; + e.getMessage());
+              }
+              catch (IndexOutOfBoundsException e) {
+                 // Si ha puesto demasiados números en la serie
+                 System.out.println(&quot;Demasiados números en entrada.&quot;);
+                 System.out.println(&quot;Los restantes se ignoran.&quot;);
+              }
+              finally {
+                 // Termina cerrando los ficheros
+		 // independientemente de lo que pase
+                 data.close();
+                 result.close();
+              }
+                
+          }  // end of main()
+         
+       } // end of class</pre>
+
+<p>&nbsp;</p>
+
+<hr width="50%">
+
+<h3>Nombres de fichero, directorios, y dialogo de ficheros</h3>
+
+<p>El tema del nombre de fichero es realmente, mas complicado que como lo hemos tratado
+hasta el momento. Para indicar completamente un fichero,&nbsp; debe definir tanto el
+nombre del fichero como el nombre del directorio que lo contiene. Un nombre de fichero
+puede ser algo tan simple como &quot;data.dat&quot; o &quot;result.dat&quot; y dicho así,
+se refieren a que están ubicados en el directorio llamado <font color="#808000">directorio
+actual</font> ( o &quot;directorio por defecto&quot;, o &quot;directorio de
+trabajo&quot;). El directorio actual no es algo permanente. Puede ser cambiado por el
+usuario o por el programa. Los ficheros que no están en el directorio actual, se deben
+nombrar por el <em>path name</em> que incluye el nombre del fichero y la información
+acerca del directorio que lo contiene.</p>
+
+<p>Para complicar un poco mas las cosas, hay dos tipos de <em>path Names</em>, <font color="#808000">absolutos</font> y <font color="#808000">relativos</font>. Un <em>path
+name</em> absoluto identifica de forma unívoca un fichero entre todos los ficheros del
+ordenador. Contiene la información completa sobre el directorio en el que se encuentra el
+fichero, y como se llama. Un <em>path name</em> relativo, le dice al ordenador como
+localizar el fichero partiendo del directorio actual.</p>
+
+<p>Desgraciadamente, la sintaxis para los nombres de fichero y los <em>path</em> varia
+bastante de un tipo de ordenador a otro. Aquí tiene algunos ejemplos:: 
+
+<ul>
+  <li><tt>data.dat</tt> -- en cualquier ordenador, esto es un fichero llamado data.dat en el
+    directorio actual</li>
+  <li><tt>/home/mg/java/ejemplos/data.dat</tt> -- Esto es una dirección absoluta en un
+    sistema operativo UNIX . Define un fichero llamado data.daten un directorio llamado
+    ejemplos que a su vez esta dentro de uno llamado Java....</li>
+  <li><tt>C:\mg\java\ejemplos\data.dat</tt> -- Una dirección absoluta en un ordenador DOS o
+    WINDOWS</li>
+  <li><tt>Hard Drive:java:ejemplos:data.dat</tt> -- Suponiendo que &quot;Hard Drive&quot;es el
+    nombre de la unidad de discos, esto viene a ser una dirección completa en un ordenador
+    Macintosh.. </li>
+  <li><tt>ejemplos/data.dat</tt> -- es un path relativo en UNIX. &quot;ejemplos&quot; es el
+    nombre de un directorio contenido dentro del actual, y data.dates el fichero que esta en
+    ese directorio. Las direcciones relativas correspondientes a Windows y Macintosh podrían
+    ser <tt>ejemplos\data.dat</tt> y <tt>ejemplos:data.dat</tt>. </li>
+</ul>
+
+<p>De forma semejante, las reglas para determinar que directorio es el actual son
+diferentes para cada ordenador. Es razonablemente seguro decir, entonces, que si utiliza
+únicamente el nombre del fichero, y el fichero se guarda en el mismo directorio que el
+programa, todo ira bien.</p>
+
+<p>En algunos casos, querrá permitir que el usuario pueda escoger el fichero de entrada o
+salida. Si le deja teclear al usuario el nombre del fichero, tendrá que suponer que el
+usuario conoce como funcionan los ficheros y los directorios. Pero con una interface
+gráfica de usuario, el usuario espera poder elegir el fichero mediante cajas de dialogo
+de ficheros, que son una ventana que el programa puede abrir cuando quiere que el usuario
+pueda seleccionar un fichero para entrada/salida. Java facilita un método independiente
+de plataforma, para usar estos diálogos, con la clase <tt>FileDialog</tt> . Esta clase es
+parte del paquete java.awt.</p>
+
+<p>Actualmente existen dos tipos de ventanas de dialogo: una para seleccionar ficheros
+existentes para usarlos como entrada, y otra para especificar ficheros de salida. Puede
+indicar que tipo de dialogo quiere en el constructor del objeto <tt>FileDialog</tt>, de la
+siguiente forma</p>
+
+<pre>	public FileDialog(Frame parent, String title, int mode)</pre>
+
+<p>donde <tt>parent</tt> es el nombre de la ventana de la aplicación (pero que puede ser
+nulo, al menos en Macintosh), <tt>title</tt> es una cadena de caracteres que describe la
+caja de dialogo, y <tt>mode</tt> es una de las constantes <tt>FileDialaog.SAVE</tt>o <tt>FileDialog.LOAD</tt>.&nbsp;
+Use <tt>FileDialog.SAVE</tt> si quiere un fichero de salida y use <tt>FileDialog.LOAD</tt>
+si quiere un fichero de entrada. Si omite este parámetro, se supondrá <tt>FileDialog.LOAD.</tt></p>
+
+<p>Una vez tenga el<tt> FileDialog, </tt>puede utilizar el método<tt> show()</tt> para
+hacerlo aparecer en la pantalla. Permanecerá en la pantalla hasta que el usuario
+seleccione un fichero o cancele la petición. El método instanciable <tt>getFile()</tt>
+puede utilizarse para recuperar el nombre del fichero seleccionado por el usuario. Si el
+usuario ha cancelado el dialogo de ficheros, entonces la <tt>String</tt> devuelta por <tt>getFile</tt>
+será <tt>null</tt>. Puesto que el usuario puede seleccionar un fichero que no se
+encuentre en el directorio actual, también necesitara información acerca del directorio,
+que puede ser obtenida por el método <tt>getDirectory()</tt>. Por ejemplo, si quiere que
+el usuario seleccione un fichero de salida, y la ventana principal de su aplicación es <tt>maiWin</tt>,
+deberá decir::</p>
+
+<pre>       FileDialog fd = new FileDialog(mainWin,&quot;Seleccionar fichero salida&quot;,
+                                                      FileDialog.SAVE);
+       fd.show();
+       String fileName = fd.getFile();
+       String directory = fd.getDirectory();
+
+       if (fileName != null) {  // (Si no, el usuario ha cancelado
+
+          ...  // abrir fichero, salvar datos y cerrar fichero
+
+       }</pre>
+
+<p>Cuando tenga la información del nombre del fichero y del directorio, deberá
+combinarlo para obtener una especificación de fichero utilizable. La mejor manera de
+hacerlo es crear un objeto tipo <tt>File</tt>. El objeto fichero puede utilizarse como
+parámetro en los constructores de <tt>FileInputStream </tt>o <tt>FileOutputStream</tt>.
+Por ejemplo, el cuerpo de la instrucción <tt>if </tt>del ejemplo anterior podría
+contener:</p>
+
+<pre>	File fichero = new File(directory, fileName);
+	PrintStream out = new PrintStream(new FileOutputStream(fichero));
+	... // escribir datos en el dispositivo de salid, out
+	out.close();</pre>
+
+<p>Naturalmente, deberá hacer algo para tratar las posibles excepciones, en particular la
+<tt>IOException</tt> que puede generar el constructor de <tt>FileOutputStream</tt>. Pero
+por lo demás, <tt>FileDialogs</tt> y los dispositivos, proporcionan una interfaces
+razonablemente fácil para manejar ficheros en cualquier ordenador.</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="sección8_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo8/secci%f3n8_2.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice8.htm" tppabs="http://members.nbci.com/elcurso/Capitulo8/indice8.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion8_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo8/seccion8_4.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

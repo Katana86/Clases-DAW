@@ -1,0 +1,222 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java. Seccion 7.2</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 7.2. Proceso de series</h3>
+
+<hr>
+
+<p>LAS SERIES SON A LA VEZ LA ESTRUCTURA DE DATOS mas básica y mas importante, y las
+técnicas para procesar series serán una de las cosas mas importantes que va a aprender
+sobre programación. En&nbsp; la siguiente sección trataremos dos técnicas fundamentales
+para el tratamiento de series: la búsqueda y la clasificación. En esta sección
+presentare algunas ideas generales sobre el tratamiento de series.</p>
+
+<p>En muchos casos, procesar una serie significa aplicar la misma operación a cada
+elemento de la serie. Esto normalmente lo haremos con un bucle <tt>for</tt>. Un bucle para
+procesar todos los elementos de una serie tiene la forma:</p>
+
+<pre>             // inicializar elementos...
+             for (int i = 0; i &lt; A.length; i++) {
+                . . . // procesar A[i]
+             }</pre>
+
+<p>Suponga, por ejemplo, que A es una serie de tipo <tt>double[]</tt>. Suponga que el
+objetivo es sumar todos los números de la serie. El algoritmo informal para realizarlo
+sería:</p>
+
+<pre>            Empezar con 0;
+            Sumar A[0];   (procesar el primer elemento de A)
+            Sumar A[1];   (procesar el segundo elemento de A)
+              .
+              .
+              .
+            Sumar A[ A.length - 1 ];   (procesar el ultimo elemento de A)</pre>
+
+<p>Transformemos esta repetición tan obvia en un bucle y definamos sum para obtener esto:</p>
+
+<pre>            double sum = 0;  // arranca en 0
+            for (int i = 0; i &lt; A.length; i++)
+               sum += A[i];  // suma A[i] a sum, para
+                             //     i = 0, 1, ..., A.length - 1</pre>
+
+<p>Observe que la condición de continuación, &quot;i&lt;A.length&quot;, implica que el
+ultimo valor de i que realmente se procesara será <tt>A.length-1</tt> que es el índice
+del ultimo elemento de la serie. Es importante el emplear &quot;&lt;&quot; y no
+&quot;&lt;=&quot; ya que en el segundo caso se produciría un error por violación de
+limites.</p>
+
+<p>Actualmente, debería poder escribir bucles similares a este incluso durmiendo. Le
+muestro uno de los ejemplos mas simples. Aquí tenemos un bucle que cuenta el numero de
+elementos de una serie que son menores que cero::</p>
+
+<pre>              int count = 0;  // pone a 0 el contador de elementos
+              for (int i = 0; i &lt; A.length; i++) {
+                 if (A[i] &lt; 0.0)   //si este elemento es menor de cero...
+                    count++;          //     ...lo contamos
+              }
+              // En este punto, el valor del contador es el
+              //numero de elementos que han cumplido  &lt; 0</pre>
+
+<p>Cambie la comparación &quot;<tt>A[i] &lt; 0.0&quot;</tt>, si quiere contar el numero
+de elementos de la serie que satisfacen cualquier otra propiedad. Aquí tenemos una
+variación sobre el mismo tema. Suponga que quiere contar el numero de veces que un
+elemento de la serie es igual al elemento siguiente. El elemento que sigue a <tt>A[i] </tt>en
+la serie, es<tt> A[i+1],</tt> entonces la comprobación a realizar será &quot;<tt>A[i] ==
+A[i+1]&quot;</tt>. Pero aquí hay un problema: La prueba no se puede realizar cuando <tt>A[i]
+</tt>es el&nbsp; último elemento de la serie, ya que no existe <tt>A[i+1]</tt>. El
+resultado de intentar aplicar la prueba en este caso, significaría un error por
+violación de los limites de la serie. Esto significa que deberá detenerse un elemento
+antes del último elemento:</p>
+
+<pre>            int count = 0;
+            for (int i = 0; i &lt; A.length-1; i++) {
+               if (A[i] == A[i+1])
+                  count++;
+            }</pre>
+
+<p>Otro problema típico es buscar el numero mas grande de A. La estrategia a seguir es
+recorrerse toda la serie, controlando cual es el mayor numero hasta el momento. Iremos
+guardando el numero mas grande hasta el momento en una variable llamada <tt>max</tt>. A
+medida que vamos avanzando por la serie, dondequiera que encontremos un numero mayor que
+el valor actual de <tt>max</tt>, cambiaremos el valor de <tt>max</tt> por ese numero.
+Cuando finalicemos el tratamiento de toda la serie, <tt>max</tt> contendrá el numero mas
+grande que contenía la serie. La única pregunta que queda es: ¿Con que valor deberemos
+inicializar <tt>max</tt>?. Parece lógico que empecemos con <tt>max</tt> igual a <tt>A[0]</tt>,
+y buscaremos el numero mas grande en el resto de la serie, empezando en el elemento 1: </p>
+
+<pre>            double max = A[0];
+            for (int i = 1; i &lt; A.length; i++) {
+               if (A[i] &gt; max)
+                  max = A[i];
+            }
+            // en este punto, max es el valor mayor de A</pre>
+
+<p>(Nos queda un problema muy sutil. En Java es posible que una serie tenga longitud cero.
+En este caso, <tt>A[0]</tt> no existe y la referencia que se hace en la primera línea a
+&nbsp; <tt>A[0]</tt> provocaría un error de violación de limites. Sin embargo, las
+series de longitud cero son algo que debería evitar . De cualquier forma, que significado
+tiene preguntar por el elemento de mayor valor en una serie que no contienen elementos?).</p>
+
+<p>Como ejemplo final sobre operaciones básicas con series, considere el problema de
+copiar una serie en otra. Para conseguir una copia de la serie A <strong>no</strong> basta
+con decir:</p>
+
+<pre>           double[] B = A;</pre>
+
+<p>porque esto, no creara un nuevo objeto Array. Todo lo que hará será declarar una
+nueva variable array y hacer que se refiera al mismo objeto a que se refiere A.(Esto
+quiere decir, por ejemplo que si cambiamos <tt>A[i]</tt> automáticamente quedara
+cambiado&nbsp; <tt>B[i]</tt>). Para hacer que una serie nueva sea copia de A, es necesario
+crear un nuevo objeto array y copiar individualmente cada elemento de A en la nueva serie </p>
+
+<pre>           double[] B = new double[A.length]; // crear nuevo objeto array,
+                                              // del mismo tamaño que A
+           for (int i = 0; i &lt; A.length; i++)
+              B[i] = A[i];   // copiar cada elemento de A en B</pre>
+
+<h3>Series parcialmente llenas</h3>
+
+<p>Una vez se crea el objeto array, su tamaño queda fijo. A menudo, sin embargo, el
+numero de elementos que quiere guardar en una serie va cambiando mientras el programa esta
+funcionando. Dado que el tamaño real de la serie no se puede cambiar, para poder
+controlar cuantos elementos hemos usado, es necesario utilizar una variable independiente
+como contador . (Naturalmente, cada espacio de la serie contiene algo; la pregunta es
+¿cuantos elementos contienen algo útil o son validos?)</p>
+
+<p>Suponga, por ejemplo, que está programando un juego, y los jugadores pueden dejar el
+juego e incorporarse a él sobre la marcha. Como un buen programador con orientación a
+objetos tendrá, posiblemente, una clase llamada <tt>Player</tt> que representa de forma
+individualizada a cada jugador. La lista de todos los jugadores que están participando en
+este momento puede guardarse en una serie, <tt>playerList</tt> de tipo <tt>Player[]</tt>.
+Como el numero de jugadores puede cambiar, también necesitara una variable, <tt>playerCt</tt>
+para guardar el numero de jugadores actuales. Asumiendo que nunca van a participar mas de
+10 jugadores, podría declarar la variables como:</p>
+
+<pre>         Player[] playerList = new Player[10];  // max. 10 jugadores
+         int      playerCt = 0;  // al principio no hay jugadores</pre>
+
+<p>Podemos encontrarnos con un problema si intenta añadir mas de 10 jugadores. Es posible
+el permitir un numero ilimitado de jugadores si esta dispuesto a crear una nueva serie
+cada vez que se queda sin espacio:</p>
+
+<pre>      // añadir nuevo jugador, aunque este llena la serie
+      if (playerCt == playerList.length) {  // comprueba si esta llena
+         Player[] temp = new Player[playerCt + 10];  // crea una mas grande
+         for (int i = 0; i &lt; playerCt; i++)
+           temp[i] = playerList[i];  // copia la referencia a los objetos
+         playerList = temp;  // deja playerList que apunte a la nueva
+                             //La antigua, quedara como memoria libre
+      }
+      // En este punto, sabemos los que están jugando
+      playerList[playerCt] = newPlayer; // añadimos nuevo jugador
+      playerCt++;                       // y lo contamos</pre>
+
+<p>Quitar un jugador de la partida es un poco mas difícil, ya que no querrá dejar huecos
+en la serie. Suponga que quiere borrar el jugador que esta en el índice K de <tt>playerList</tt>.
+Si no tienen que preocuparse de mantener a los jugadores en un orden determinado, una
+forma de hacer esto es mover el jugador que esta en la ultima posición de la serie, a la
+posición k y decrementar. el valor de <tt>playerCt</tt>:</p>
+
+<pre>         playerList[k] = playerList[playerCt - 1];
+         playerCt--;</pre>
+
+<p>Es importante destacar que con el ejemplo de los jugadores,&nbsp; vemos como podemos
+tratar con series cualquier cosa basada en clases. Un elemento de la serie puede ser nulo
+o referenciar un objeto perteneciente a la clase <tt>Player</tt>. Los objetos <tt>Player</tt>
+no se guardan en la serie, pero debido a las reglas de asignación de Java, los objetos
+pertenecen realmente a una subclase de <tt>Player.</tt></p>
+
+<p>Otro ejemplo, suponga que la clase <tt>Shape</tt> representa la idea general de un
+dibujo en la pantalla, y tiene unas subclases que representan tipos concretos de figuras
+como líneas, rectángulos, rectángulos redondeados, elipses, elipses rellenas, y mas. (<tt>Shape</tt>
+en si misma, es una clase abstracta, como se explicó en la <a href="Seccion4_3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/Seccion4_3.htm">Sección 4.3</a>). Entonces, podemos declarar un array
+de tipo <tt>Shape[]</tt> y podemos guardar referencias a objetos pertenecientes a las
+subclases de <tt>Shape</tt>. Por ejemplo la situación creada por la instrucciones </p>
+
+<pre>       Shape[] shapes = new Shape[100]; // array para guardar 100 figuras
+       shapes[0] = new Rect();        // ponemos algunos objetos en la serie
+       shapes[1] = new Line();          //En un programa real, deberá
+       shapes[2] = new FilledOval();    //utilizar parametros.) 
+       int shapeCt = 3;  // controla el numero de objetos en la serie
+</pre>
+
+<p>podemos representarla como:</p>
+
+<p align="center"><img alt="(Array containing references to three objects)" src="fig3-3.gif" tppabs="http://members.nbci.com/elcurso/Capitulo7/fig3.gif" WIDTH="374" HEIGHT="167"></p>
+
+<p align="left">&nbsp;</p>
+
+<p>Como vemos, una serie puede ser muy útil en un programa de dibujo. La serie puede
+emplearse para guardar la lista de las figuras que tienen que presentarse. Si la clase <tt>Shape</tt>
+incluye el método <tt>redraw()</tt> para realizar los dibujos, entonces todas las figuras
+de la serie podrán ser dibujadas con un sencillo bucle:</p>
+
+<pre>            for (int i = 0; i &lt; shapeCt; i++)
+               shapes[i].redraw();</pre>
+
+<p>La instrucción &quot;<tt>shapes[i].redraw();</tt>&quot;&nbsp; llama al método <tt>redraw()</tt>
+perteneciente a la figura concreta indicada por i. Cada objeto sabe como se debe dibujar,
+por lo que la repetición de la instrucción puede crear una variedad de diferentes
+figuras en la pantalla. Todo esto es un bello ejemplo del poliformismo. y del proceso de
+las series.</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="sección7_1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/secci%f3n7_1.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice7.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/indice7.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion7_3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/seccion7_3.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

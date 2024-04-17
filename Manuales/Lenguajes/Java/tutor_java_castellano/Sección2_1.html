@@ -1,0 +1,218 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java.Seccion 2.1</title>
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<font FACE="Arial"><b><i>
+
+<h3></i>Sección 2.1:La aplicación Java básica.<i></h3>
+</i></b></font>
+
+<hr>
+<font SIZE="2">
+
+<p></font><font size="4">Un programa es una secuencia de instrucciones que ejecuta un
+ordenador</font><font size="3"> para realizar alguna tarea. Una idea bastante sencilla,
+pero para que un ordenador pueda hacerlo, deben estar escritas de tal forma que él &nbsp;
+pueda usarlas. La forma de conseguirlo, es que el programa este escrito en código
+máquina. Los lenguajes de programación difieren del lenguaje humano, porque no son en
+absoluto ambiguos, y son muy estrictos al definir que cosas se puede hacer en un programa
+y cuales no. Las reglas que determinan que es lo que esta permitido escribir, se llama
+sintaxis del lenguaje. Las reglas de sintaxis, especifican el vocabulario básico del
+lenguaje y como se puede escribir el programa usando cosas como lo bucles los desvíos y
+las subrutinas. Cuando el programa esta correcto sintácticamente, se puede compilar o
+interpretar; si el programa tiene errores de sintaxis, se rechaza.(Se producen unos
+mensajes de error, que muchas veces ayudan a solucionar los errores).</p>
+
+<p>Asi que para tener éxito programando, tiene que desarrollar un detallado conocimiento
+de la sintaxis del lenguaje de programación que este utilizando. De cualquier forma, la
+sintaxis, es solo una parte de la historia. No basta escribir un programa y conseguir que
+se ejecute. Usted querrá que el programa funcione y además, produzca un resultado
+correcto. Esto es, el programa ha de tener sentido. La semántica establece el sentido del
+programa. Una de las cosas que usted debe querer, es un programa semánticamente correcto.</p>
+
+<p>Cuando en estas notas, se define una nueva característica del lenguaje, se explicara
+tanto la sintaxis como la semántica de esa característica. Deberá memorizar la
+sintaxis, esa es la parte fácil. Luego deberá intentar entender la semántica, por medio
+de los ejemplos que se le facilitan, asegurándose de comprender perfectamente como
+funciona e incluso haciendo algún pequeño programa para comprobar que lo ha entendido.
+Tenga en cuenta que conseguir familiarizarse con las características individuales del
+lenguaje no le hará ser un programador. Tiene que aprender como construir programas
+complejos para resolver problemas particulares. Por lo tanto, va a necesitar conocimientos
+y experiencia. En estas notas, solo encontrara el inicio del aprendizaje del desarrollo de
+software.</p>
+
+<p>Empezaremos nuestra exploración de Java, con el problema que a menudo es el mas
+habitual para los principiantes: Escribir un programa que presente en pantalla el mensaje
+&quot;Hola Mundo&quot;. Esto puede parecer un problema trivial, pero conseguir que el
+ordenador lo haga, es realmente un paso importante en nuestro aprendizaje de un nuevo
+lenguaje de programación (especialmente si este es su primer lenguaje de
+programación).Será la forma de que entienda los procesos básicos para: 
+
+<ol>
+  <li>Introducir el texto del programa en el ordenador</li>
+  <li>compilar el programa, y</li>
+  <li>ejecutar el programa compilado.</li>
+</ol>
+
+<p>Durante esta primera vez, cada una de esas etapas, necesitaras repetirlas unas cuantas
+veces para que le salga bien. No le daremos detalles de como realizar estas etapas, ya que
+dependen del ordenador en concreto y del entorno de desarrollo Java que este utilizando.
+Pero en general, puede escribir el programa utilizando cualquier editor de textos y
+salvándolo en un fichero. Entonces, debera usar algun comando para probar de compilar el
+fichero. Con ello, puede conseguir mensajes indicando que el programa contiene errores de
+sintaxis, o una version del programa compilado. En el caso de Java, el programa se compila
+en <i>Java bytecode</i> , no en código maquina. Finalmente, puede ejecutar el programa
+compilado por medio de comando apropiado. Para Java, actualmente deberá utilizar un
+interprete que ejecute <i>Java bytecode</i>. (Su entorno de programacion, puede que
+realize automáticamente, y sin su intervencion, alguno de estos pasos, pero puede estar
+seguro que estos tres pasos se han realizado.)</p>
+
+<p>Aquí tenemos el programa Java que presentara el mensaje &quot;Hola Mundo&quot;. No
+cuente todavia con entender que es lo que va hacer&#151;algunas cosas, realmente no las
+entendera hasta dentro de algunos capítulos. 
+
+<dir>
+  <dir>
+    <dir>
+      <dir>
+        <pre>Public class HelloWorld {</pre>
+        <pre>    // El programa presenta el mensaje</pre>
+        <pre>    // &quot;Hola Mundo!&quot; en la salida estandar</pre>
+        <pre>	public static void main (String[] args) {</pre>
+        <pre>       		System.out.println(&quot;Hola Mundo!&quot;);</pre>
+        <pre>	}</pre>
+        <pre>} //fin de la clase HelloWorld</pre>
+      </dir>
+    </dir>
+  </dir>
+</dir>
+
+<p>La instrucción que realmente presenta el mensaje es:</p>
+<div align="center"><center>
+
+<pre>System.out.println(&quot;Hola Mundo!&quot;);      </pre>
+</center></div>
+
+<p>Esta instrucción, es un ejemplo de una orden de llamada a subrutina. Utiliza una
+subrutina interna llamada <code>System.out.println</code> para realizar el trabajo.
+Recuerde que una subrutina consiste en un conjunto de instrucciones escritas para realizar
+una tarea, que hemos puesto juntas y les hemos dado un nombre. El nombre podrá ser usado
+para llamar (<i>call)</i> a la subrutina cada vez que necesitemos que se realice la tarea.
+Las subrutinas internas son las que ya vienen definidas como parte del lenguaje de
+programación, y por consiguiente, están disponibles automáticamente para usarlas en
+cualquier programa.</p>
+
+<p>Cuando ejecute el programa , el mensaje &quot;Hola Mundo!&quot; (sin las comillas), se
+presentara en la salida estándar (<i>standard output)</i> . Por desgracia, no se
+exactamente en que forma! Java puede funcionar en muchas plataformas distintas y la salida
+estándar puede ser diferente en diferentes plataformas. Sin embargo, puede contar con que
+el mensaje se presente en algún sitio conveniente.</p>
+
+<p>Puede que sienta curiosidad acerca de otras cosas del programa arriba indicado. Una
+parte del mismo, consiste en comentarios. Los comentarios en los programas, son totalmente
+ignorados por el ordenador, y están únicamente para ser leídos por los humanos. Esto no
+los hace menos importante. Los programas, han de poder ser leídos por las personas tan
+bien como por la máquina, y sin los comentarios, un programa seria muy difícil de
+entender. En Java, hay dos tipos de lineas de comentarios. El primer tipo, usado en el
+programa de arriba, empieza con //, y continua hasta el final de la linea. El ordenador
+ignora // y todo lo que le siga en la misma línea. El otro tipo de lineas de comentario,
+permiten continuar con el comentario durante mas de una línea. El comentario empieza con
+/* y termina con */.</p>
+
+<p>Todo lo demas, lo requiere la sintaxis de Java. Cada programa debe definir una
+subrutina llamada <i>main</i>, esta definicion toma la forma :</p>
+<div align="center"><center>
+
+<pre>public static void main(String[] args) {</pre>
+</center></div><div align="center"><center>
+
+<pre>instrucciones</pre>
+</center></div><div align="center"><center>
+
+<pre>}      </pre>
+</center></div>
+
+<p>La palabra <i>public</i> aquí, permite que esta subrutina pueda ser llamada desde
+fuera del programa. Esto es esencial, porque el interprete de Java, ejecuta el programa
+precisamente llamando a la subrutina <i>main</i>. El resto de esta primera línea es duro
+de explicar en este momento; por ahora, pensemos que es una parte requerida por la
+sintaxis. La definición de una subrutina &#150; esto es, de las instrucciones que
+expresan lo que se quiere hacer&#151;consiste en una secuencia de instrucciones (<i>statements)</i>
+encerradas entre dos llaves, { y }. Hemos usado instrucciones en el lugar en donde
+realmente se han de escribir las instrucciones. Siempre usaremos ese formato: Cualquier
+cosa que vea en <b>negrita </b>(y <font COLOR="#00ff00">verde</font> si su navegador
+soporta texto coloreado,) sera el lugar en donde debera escribir las instrucciones reales
+de su programa.</p>
+
+<p>En Java, no existen las subrutinas de por si. Han de formar parte de una
+&quot;clase&quot;(<i>class</i>) . La subrutina <i>main</i>, debe formar parte de una clase
+publica con un aspecto semejante a este:</p>
+
+<pre>	public class <font COLOR="#00ff00"><b>nombre-programa</b></font> {</pre>
+
+<pre><font COLOR="#00ff00"><b>		opcionalmente:variables,declaraciones y subrutinas</pre>
+</b></font>
+
+<pre>		public static void main(String[] args) {</pre>
+
+<pre><font COLOR="#00ff00"><b>			instrucciones</pre>
+</b></font>
+
+<pre>		}</pre>
+
+<pre><font COLOR="#00ff00"><b>            	opcionalmente:variables,declaraciones y subrutinas</pre>
+</b></font>
+
+<pre>        }</pre>
+
+<p>Dese cuenta que el nombre que aparece en la primera línea, es el nombre del programa,
+o bien, el nombre de la clase. Entonces, el nombre del programa &quot;Hola Mundo!&quot;,
+es HelloWorld. Este programa, debe salvarse en un fichero llamado HelloWorld.java y cuando
+se compile, se generara el fichero HelloWorld.class. El fichero de clases resultante,
+contiene <i>Java bytecode</i> y puede ser ejecutado en el interprete de Java.</p>
+
+<p>Tenga en cuenta, que el programa puede contener otras subrutinas ademas de la <i>main</i>(),
+y tambien unas cosas llamadas &quot;declaracion de variables&quot;.Aprendera mas sobre
+ello mas adelante (empezamos con variables en la siguiente sección).</p>
+
+<p>Por otra parte, recuerde que una de las caracteristicas mas importantes de Java, era
+que podia ser usado para escribir <i>applets</i> que podian ejecutarse en las paginas en
+los navegadores. Los <i>applets</i> tienen muchas cosas diferentes a los programas, y no
+se escriben de la misma manera. La primera cosa, es que en un <i>applet</i> no debe
+existir la rutina <i>main()</i>. Podra empezar a aprender mas cosas acerca de como
+programar <i>applets</i>en el <a href="indice4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/indice4.htm">Capítulo 4</a>. Sin
+embargo, entretanto, iremos usando <i>applets</i> para simular programas.Realmente, no
+seran programas ya que deben funcionar en una pagina Web, pero tendran el mismo
+comportamiento que el programa que describiremos. Aquí, unicamente por diversion, hay un <i>applet</i>
+que simula el programa HelloWorld</p>
+</font>
+
+<p align="center">
+<applet code="ConsoleApplet.class" tppabs="http://members.nbci.com/elcurso/Capitulo2/ConsoleApplet.class" height="200" width="300">
+
+<p align="center"><font color="#E70000">Sorry, your browser doesn't<br>
+support Java.</font></applet>
+</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<table>
+  <tr>
+    <font><td WIDTH="245" VALIGN="MIDDLE"></font></td>
+    <td WIDTH="219" VALIGN="MIDDLE"><p ALIGN="CENTER"><a href="indice2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo2/indice2.htm"><img SRC="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" BORDER="0" ALT="wpe2.jpg (2690 bytes)" WIDTH="80" HEIGHT="82"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img SRC="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" ALT="Indice General" WIDTH="79" HEIGHT="81" border="0"></a></td>
+    <td WIDTH="295" VALIGN="MIDDLE"><a href="Sección2_2.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_2.html"><img SRC="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" BORDER="0" WIDTH="72" HEIGHT="72" ALT="Siguiente"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

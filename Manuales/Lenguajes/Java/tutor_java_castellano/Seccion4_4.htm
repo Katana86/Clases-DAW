@@ -1,0 +1,310 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 4.4</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>SecciÛn 4.4 : Interfaces, <tt>this</tt> y <tt>super</tt> y otros detalles</h3>
+
+<hr>
+
+<p align="left">ESTA SECCION CUBRE ALGUNOS ASPECTOS de las clases y objetos Java que no ha
+habido forma de hablar sobre ellos en las secciones previas de este capitulo. Esto no
+quiere decir que no sean importantes, sin embargo...</p>
+
+<hr width="50%">
+
+<h3 align="left">Interfaces</h3>
+
+<p align="left">En algunos lenguajes de programaciÛn orientada a objetos, como C++, las
+clases tienen la posibilidad de extender dos o mas&nbsp; superclases. Esto es lo que se
+llama <font color="#808000">herencia </font>m˙ltiple. El la ilustraciÛn que sigue, por
+ejemplo, la clase E se representa como proveniente directamente de las superclases A y B,
+mientras que la clase F tienen tres superclases.</p>
+
+<p align="center"><img src="fig7.gif" tppabs="http://members.nbci.com/elcurso/Capitulo4/fig7.gif" WIDTH="294" HEIGHT="188"></p>
+
+<p align="left">Esta caracterÌstica de herencia m˙ltiple no esta disponible en Java. Los
+diseÒadores de Java intentaron hacer el lenguaje razonablemente simple,&nbsp; y
+consideraron que los beneficios de la herencia m˙ltiple no compensaban el aumento de
+complejidad. Sin embargo, Java tiene otra caracterÌstica que puede ser usada para lograr
+algo semejante a la herencia m˙ltiple<font color="#808000">:la interface</font>.</p>
+
+<p align="left">Ya hemos encontrado el termino &quot;interface&quot; anteriormente, en
+relaciÛn con las cajas negras en general y las subrutinas en particular. Las interfaces
+de las subrutinas consisten en el nombre de la subrutina, el tipo que retornan, y el
+numero y tipo de los par·metros. Es la informaciÛn que necesita si quiere emplear la
+subrutina. La subrutina tambiÈn tiene una implementacion: el bloque de cÛdigo definido
+que se ejecuta cuando se llama a la subrutina.</p>
+
+<p align="left">En Java, <tt>interface</tt> es una palabra reservada que tienen un
+significado adicional. Una &quot;<tt>interface&quot;</tt> en Java consiste en un conjunto
+de interfaces de subrutinas, sin que tenga asociada ninguna implementacion. Una clase
+puede <font color="#808000">implementar</font> una interface, facilitando la
+implementacion de cada una de las subrutinas especificadas por la interface.(Una <tt>interface</tt>
+tambiÈn puede incluir definiciÛn de constantes, esto es, variables declaradas como <tt>final
+static</tt>. Las constantes pueden ser interesantes para facilitar nombres a determinadas
+cantidades.) A continuaciÛn tiene un ejemplo en una sencilla <tt>interface</tt> Java:</p>
+
+<pre>       public interface Drawable {
+          public void draw();
+       }</pre>
+
+<p align="left">Esto se parece mucho a la definiciÛn de una clase, excepto que la
+implementacion del mÈtodo <tt>draw()</tt> se ha omitido. La clase que implemente la <tt>interface
+Drawable </tt>tienen que proporcionar la implementacion para este mÈtodo. Naturalmente
+que puede incluir otros mÈtodos y variables. Por ejemplo:</p>
+
+<pre>        class Line implements Drawable {
+            public void draw() {
+                . . . // Alguna cosa, supongo que dibujar una linea
+            }
+            . . . // otros mÈtodos y variables
+         }</pre>
+
+<dl>
+  <dt>Mientras que una clase solo puede <strong>extender</strong> otra clase, en cambio puede <strong>implementar</strong>
+    cualquier numero de interfaces. De hecho, una clase puede extender otra clase e
+    implementar una o mas interfaces. Podemos hacer cosas como esta:</dt>
+</dl>
+
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; class FilledCircle extends Circle 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;implements Drawable, Fillable {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; . . ˙≠ä˚ãÑˇévˇx{ˇê{ˇ¢yˇõö˛¶ãˇÉÑˇÜÜˇá;&nbsp;&nbsp; }</pre>
+
+<p>La clave de todo esto, es que aunque las <tt>interfaces</tt> no son clases, son algo
+muy semejante.Una <tt>interface</tt> es muy semejante a una clase abstracta, esto es la
+clase que no puede emplearse para construir objetos, pero que puede ser empleada como base
+para construir otras clases. En una <tt>interface</tt> las subrutinas son como los
+mÈtodos abstractos que deben implementarse en cada una de las subclases de la clase
+abstracta. Y como clase abstracta,&nbsp; aunque no pueda construir objetos desde la <em>interface</em>
+puede declarar variables con el tipo definido por la <em>interface</em>. Por ejemplo, si <tt>Drawable</tt>
+es una interface, y si <tt>Line y FilledCircle</tt> son clases que implementan <tt>Drawable</tt>,
+puede decir:</p>
+
+<pre>       Drawable figure = new Line();  // variable tipo Drawable que se refiere
+                                      //  a un objeto de la clase Line
+       . . .    // algo relacionado con figuras
+       figure.draw();   // llama al metodo draw() de la clase Line
+       figure = new FilledCircle();   // ahora, figure referencia un objeto
+                                      //  de la clase FilledCircle
+       . . .
+       figure.draw();   // llama al metodo draw() de la clase FilledCircle</pre>
+
+<p>Una variable del tipo <tt>Drawable</tt> puede referirse a cualquier objeto de cualquier
+clase que implemente la interface <tt>Drawable</tt>. Una instrucciÛn como <tt>figure.draw()</tt>.vista
+anteriormente, es correcta para cualquier clase que implemente el mÈtodo <tt>draw().</tt></p>
+
+<p>Observe que el tipo es algo que podemos emplear para declarar variables. El tipo
+tambiÈn se puede usar para especificar el tipo de par·metros en las subrutinas, o el
+tipo de retorno de una funciÛn. En Java, el tipo puede ser cualquier clase, interface o
+uno de los ocho tipos primitivos internos. De todos estos, sin embargo, solo las clases
+pueden emplearse para construir nuevos objetos.</p>
+
+<p>Posiblemente, no necesite escribir su propia <em>interface</em> hasta que llegue el
+momento de escribir un programa bastante complejo. Sin embargo, hay algunas interfaces que
+se emplean en el <em>package</em> est·ndar de Java y que tienen bastante importancia, por
+lo que seria conveniente que supiera algo sobre ellas.</p>
+
+<hr width="50%">
+<tt>
+
+<h3>this</tt> y <tt>super</tt></h3>
+
+<p>Dentro de una clase, cuando quiere referirse a una variable o mÈtodo perteneciente a
+la misma clase, simplemente indica el nombre. Esto tambiÈn vale para las variables y
+mÈtodos heredades de la superclase de la clase. Para variables o mÈtodos de fuera de la
+clase, sin embargo, tiene que utilizar nombres compuestos para indicar a que objeto
+pertenecen (o, en el caso de variables o mÈtodos <tt>static</tt> a que clase pertenecen).
+Por ejemplo, puede referirse a la funciÛn raÌz cuadrada como <tt>Math.sqrt</tt> , porque
+pertenece a la clase <tt>Math</tt>. De forma similar, para llamar al mÈtodo <tt>getln()</tt>
+perteneciente al objeto llamado <tt>console</tt> de la clase<tt> Console</tt>, tendr· que
+referirse a Èl como console<tt>.getln()</tt>. Por otra parte, si esta escribiendo la
+clase <tt>Console</tt>, se podr· referir a Èl simplemente como <tt>getln()</tt>.</p>
+
+<p>Hay algunas circunstancias, sin embargo, en las que necesita emplear nombres compuestos
+aunque el miembro sea de la misma clase. Cuando se ejecuta la instancia de un mÈtodo,
+debido a que se ha emitido un mensaje desde otro objeto,&nbsp; el sistema prepara dos
+variables especiales para referirse al objeto que recibe el mensaje. Las variables se
+llaman <tt>this</tt> y <tt>super</tt>. Puede usar esas variables para definir cualquier
+instancia del mÈtodo.</p>
+
+<p>Use la variable llamada <tt>this</tt> cuando necesite un nombre para &quot;el objeto al
+que pertenece el mÈtodo&quot;. Puede necesitar el usar <tt>this</tt> si quiere asignar el
+objeto a una variable, o pasarle un par·metro. En realidad, esto es muy com˙n.
+Considere, por ejemplo, la clase que representa iconos en la pantalla del ordenador. Los
+iconos pueden &quot;seleccionarse&quot;, y querr· saber que icono esta actualmente
+seleccionado. PodrÌa decir:</p>
+
+<pre>      class Icon {
+         static Icon selectedIcon = null;  // icono seleccionado
+         void select() {  // metodo instanciable para seleccionar este icono
+            selectedIcon = this;  // guarda que este es el seleccionado
+            . . .  // mas cosas
+         }
+         . . .  // mas variables y mÈtodos
+      }</pre>
+
+<p>Otro uso de &quot;<tt>this</tt>&quot; es eliminar ambig¸edades cuando hay dos
+variables o par·metros o variables locales con el mismo nombre. Por ejemplo, considere</p>
+
+<pre>      class Shape {
+         Color color;  // el color de la forma
+         void setColor(Color color) {
+            // cambia forma a nuevo color
+            this.color = color;  // cambia el valor de la instancia de la variable
+            redraw();
+         }
+         . . . // mas cosas
+      }</pre>
+
+<p>Dentro del mÈtodo <tt>setColor()</tt>, hay dos cosas con el mismo nombre: El
+par·metro y la instancia de la variable se llaman ambos &quot;color&quot;. La norma para
+tales situaciones, es que el par·metro oculta la instancia de la variable, por lo tanto,
+cuando se emplea el nombre &quot;color&quot; por si mismo se esta refiriendo al
+par·metro. Afortunadamente, la instancia de la variable puede ser accedida utilizando el
+nombre compuesto &quot;<tt>this.color</tt>&quot;, que solo puede indicar&nbsp; que es la
+instancia de la variable del objeto <tt>this</tt>. (Se preguntara si es razonable usar el
+mismo nombre en la instancia de la variable y el el par·metro.Es probable; le ahorra el
+tener que inventar alg˙n nombre divertido para el par·metro como <tt>newColor</tt>).</p>
+
+<p>La variable llamada <tt>super</tt>es incluso mas importante que la variable <tt>this</tt>,
+pero tambiÈn mas sutil: <tt>super</tt> se refiere al mismo objeto que <tt>this</tt> pero
+se refiere a ese objeto <strong>tratado como si fuera miembro de la superclase de la clase
+que contiene el mÈtodo que est· escribiendo</strong>.Entonces, por ejemplo, <tt>super.x</tt>
+&nbsp; se refiere a la instancia de la variable <tt>x</tt> en la superclase de la clase
+actual. Esto puede ser ˙til por las siguientes razones: Si la clase contiene una
+instancia variable con el mismo nombre que una instancia variable en la superclase,
+entonces un objeto de esta clase contendr· dos variables con el mismo nombre: una
+definida como parte de la misma clase, y otra definida como parte de la superclase. La
+variable en la subclase no <strong>reemplaza</strong> la variable con el mismo nombre de
+la superclase; ˙nicamente la <strong>oculta</strong>. La variable de la superclase puede
+ser accedida utilizando <tt>super</tt>.(De nuevo, se puede preguntar si es razonable el
+llamar a las variables de esta forma. La respuesta es,probablemente no).</p>
+
+<p>De la misma manera, cuando escribe un mÈtodo en una subclase que tiene la misma firma
+que un mÈtodo de la superclase, el mÈtodo de esta, se oculta. Decimos que el mÈtodo de
+la subclase <font color="#808000">sustituye</font> el mÈtodo de la superclase. Otra vez,
+sin embargo, podemos emplear <tt>super</tt> para acceder al mÈtodo de la superclase.</p>
+
+<p>El mayor uso de <tt>super</tt> es para sustituir un mÈtodo con un nuevo mÈtodo que
+extiende el comportamiento del mÈtodo heredado, en lugar de cambiar totalmente el
+comportamiento. El nuevo mÈtodo puede usar <tt>super</tt> para llamar al mÈtodo heredado
+y puede incluir cÛdigo adicional para proporcionar un comportamiento adicional. Algo asÌ
+podemos ver con este tonto ejemplo,</p>
+
+<pre>       class FilledRectangle extends Rectangle {
+          void draw() {
+             super.draw();  // llamar al mÈtodo draw de la clase Rectangle
+             fill();   // y aÒadirle algo
+          }
+          .
+          .</pre>
+
+<p>Como un ejemplo mas real, suponga que la clase <tt>TextBox</tt> representa una caja en
+la pantalla donde el usuario puede teclear cualquier cosa. PermÌtame decirle que <tt>TextBox</tt>
+es una instancia de un mÈtodo llamado <tt>key</tt> que se llama cada vez que el usuario
+presiona una tecla en el teclado. El propÛsito del mÈtodo es aÒadir el car·cter que el
+usuario a tecleado a la caja de texto. Ahora, puedo querer una subclase,<tt>NumberBox</tt>,
+de <tt>TextBox</tt> que pueda emplear para teclear un numero. Puedo definir la clase <tt>NumberBox</tt>
+de la siguiente manera:</p>
+
+<pre>        class NumberBox extends TextBox {
+           void key(char ch) {
+                 // el usuario ha tecleado el car·cter ch; ponerlo en la
+                 // caja, solo si es un digito
+                 // entre el '0' y el '9'
+              if (ch &gt;= '0' &amp;&amp; ch &lt;= '9')
+                 super.key(ch);
+           }
+         }</pre>
+
+<hr width="50%">
+
+<h3>Constructores en Subclases</h3>
+
+<p>Los constructores existen ˙nicamente para asegurarse que los nuevos objetos empiezan
+con unos valores iniciales conocidos. Si un objeto es miembro de una subclase, parte de su
+estructura es heredada de su superclase, y esa parte debe ser inicializada llamando al
+constructor de la superclase.</p>
+
+<p>Si la superclase tiene el constructor por defecto, esto es, uno sin par·metros, &nbsp;
+el sistema puede llamarlo autom·ticamente. Esto tambiÈn pasa si en la superclase no se
+ha definido constructor, dado que entonces el sistema proporciona el constructor por
+defecto. Sin embargo, si todos los constructores de la superclase requieren par·metros,
+entonces cualquier constructor que escriba en la subclase, deber· llamar de forma
+explÌcita al constructor de la superclase. La sintaxis para hacerlo, emplea la variable
+especial <tt>super</tt>. AquÌ tenemos un ejemplo. Asuma que la clase <tt>TextBox</tt>
+tiene un constructor que especifica el numero m·ximo de caracteres que caben en la caja.
+Entonces, puede definir la subclase como:</p>
+
+<pre>        class TextBoxWithDefault extends TextBox {
+            TextBoxWithDefault(int maxChars, String defaultContents) {
+               super(maxChars);  // llama al constructor de la superclase
+               setContents(defaultContents);
+            }
+            . . . // mas cosas
+         }</pre>
+
+<p>Para un constructor, tambiÈn es posible llamar a otro de la misma clase. Esto lo
+podemos hacer empleando la variable <tt>this</tt> en lugar de la <tt>super</tt>. La clase <tt>TextBoxWithDefault</tt>,
+por ejemplo, puede tener un constructor</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <pre>TextBoxWithDefault() {
+	this(20,&quot;&quot;);
+}</pre>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Este constructor existe ˙nicamente para llamar a otro constructor mas complicado y
+proporcionarle par·metros con valores razonables.</p>
+
+<hr width="50%">
+
+<h3>Control de Acceso</h3>
+
+<p>Ya se habr· dado cuenta que tanto las clases como sus miembros pueden declararse como <tt>public</tt>
+o <tt>private</tt>.Estos modificadores, se usan para controlar los accesos. La clase,
+mÈtodo o variable que se declara como <tt>public</tt> puede ser accedida desde cualquier
+sitio. Los mÈtodos o variables que se declaran como <tt>private</tt> solo puede ser
+accedida dentro de la clase donde se define. ( Definir una clase como <tt>private</tt>, no
+tiene mucho sentido, no podrÌa usarse nunca!)</p>
+
+<p>TambiÈn hay un nivel de control de acceso intermedio llamado <tt>protected</tt> Un
+mÈtodo o variable que se declare asÌ, puede ser accedido dentro de la misma clase o por
+cualquier subclase de la clase.Debe utilizar el acceso protegido si quiere ocultar alg˙n
+detalle de la implementacion de la clase al &quot;mundo exterior&quot; pero quiere poder
+sustituir la implementacion en las subclases.</p>
+
+<p>En mis ejemplos, he tenido muy poco cuidado sobre las especificaciones del control de
+acceso. En la mayorÌa de casos, me he limitado a omitir el modificador de control de
+acceso totalmente. Recuerde que cuando no se especifica control de acceso, se permite el
+acceso desde todas las clases del mismo paquete (<em>package</em>). Y si no especifica
+paquete, entonces es todo lo que va en el paquete por defecto. En este caso, todo su
+programa es visible a todo el mundo. Esto no es tan terrible para los pequeÒos programas
+de demostraciÛn, pero para los programas importantes, el control de acceso es uno de los
+mejores sistemas de seguridad y muy ˙til para diseÒar herramientas.</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="tppmsgs/msgs0.htm#75" tppabs="http://members.nbci.com/elcurso/Capitulo4/seccion4_3.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/indice4.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+          <td width="34%" height="58"><a href="Seccion4_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/Seccion4_4.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

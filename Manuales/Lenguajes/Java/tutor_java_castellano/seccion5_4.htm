@@ -1,0 +1,448 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java. Seccion 5.4</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 5.4: Los Métodos Graphics y Paint</h3>
+
+<hr>
+
+<p>TODO LO QUE VE APARECER EN LA PANTALLA DE SU ORDENADOR se ha de dibujar, incluso el
+texto. El API de Java incluye una gran cantidad de clases y métodos que están dedicados
+a dibujar en la pantalla. En esta sección, podremos ver los mas importantes.(Observe que
+todas las clases mencionadas en esta sección están definidas en el paquete <tt>Java.</tt>awt
+y antes de usarse, debe ser importado.)</p>
+
+<p>Para poder dibujar con Java cualquier cosa, necesitara un <font color="#808000">contexto
+</font>gráfico. Un contexto gráfico es un objeto perteneciente a la clase <tt>Graphics</tt>.
+En esa clase se proporcionan instancias de métodos para dibuja figuras, textos, y
+dibujos. La clase <tt>Graphics</tt> es abstracta, esto significa que no puede crear un
+contexto gráfico directamente. Hay dos formas para definir el contexto gráfico: El
+sistema proporciona un contexto gráfico cuando llama al método <tt>paint()</tt>. Para
+dibujar fuera del método <tt>paint()</tt>, existe la función <tt>getGraphics()</tt> que
+devuelve un contexto gráfico.</p>
+
+<p>Hay dos tipos de contextos gráficos. Uno para dibujar con&nbsp; <tt>Component</tt> y
+otro para dibujar con <tt>Images</tt> en <em>off-screen</em>. La clase <tt>Component</tt>
+es una superclase de <tt>Applet</tt>. La mayoría de los métodos que ha visto en <em>applets</em>,
+incluido el <tt>paint()</tt> y todos los métodos de manejo de eventos, realmente, son
+heredados de <tt>Component</tt>. Un objeto de tipo <tt>Component</tt> representa un
+componente de la interface gráfica del usuario, esto es, algo que es visible en pantalla.
+El método instanciable <tt>getGraphics()</tt> esta definido en la clase <tt>Componet</tt>.
+Devuelve un contexto gráfico que puede usarse para dibujar un componente en particular.
+Esto es, si <tt>comp</tt> es un objeto del tipo Component y usted escribe</p>
+
+<p align="center"><tt>Graphics g = comp.getGraphics();</tt></p>
+
+<p align="left">entonces g podrá ser usado para dibujar en el área rectangular de la
+pantalla que representa el componente <tt>comp</tt>. Cuando llama <tt>getGraphics()</tt>
+en un applet, devuelve el contexto gráfico para dibujar en el applet (el cual, recuerde
+que es de tipo <tt>Component</tt>, dado que <tt>Applet</tt> es una subclase de<tt>
+Components</tt>).</p>
+
+<p align="left">El otro tipo de contexto gráfico es para dibujar con <tt>Images</tt>
+fuera de pantalla (<em>off-screen)</em>. Un contexto gráfico de ese tipo se obtiene
+llamando a la función <tt>getGraphics()</tt> definida en la clase <tt>Image</tt>. Las
+imágenes <em>off-screen</em> son realmente datos almacenados en la memoria y no son
+visible en la pantalla. Sin embargo, pueden ser copiados a la pantalla muy rápidamente,
+por lo que se usan generalmente para hacer mover las animaciones: en lugar de dibujar algo
+en la pantalla y hacer esperar al usuario, puede dibujar en <em>off-screen</em> y copiar
+el resultado a la pantalla de golpe. Hablaremos mas de esto al final de la sección. Por
+ahora, recuerde únicamente que podemos emplear los mismos comandos para dibujar en
+pantalla con <tt>Components</tt> que para dibujar <em>off-screen</em> con <tt>Images</tt>.</p>
+
+<p align="left">Si g es un contexto gráfico que ha obtenido con un método <tt>getGraphics()</tt>
+es una buena idea el llamar al método <tt>g.dispose()</tt>después que haya terminado de
+utilizarlo. Este método libera todos los recursos del sistema que haya usado en el
+contexto gráfico. Es una buena idea, porque en muchos sistemas estos recursos son
+limitados. (Pero <strong>nunca</strong> deberá llamar al método <tt>dispose()</tt> para
+contextos gráficos obtenidos en el método <tt>paint()).</tt></p>
+
+<hr width="50%">
+
+<h3 align="left">Paint, Repain y Update</h3>
+
+<p align="left">Muchos applets pueden hacer todas las operaciones de dibujo en el método <tt>paint()</tt>.
+Este método debe ser lo bastante astuto como para redibujar correctamente el applet
+continuamente, empleando los datos guardados en variables instanciables si fuera
+necesario. Si en mitad de cualquier otro método realiza alguna acción que deba hacer
+cambiar la apariencia del applet, deberá modificar la instancia de las variables que
+controlan el contenido, y volver a dibujar la pantalla llamando al método <tt>repaint()</tt>
+para decirle al sistema&nbsp; que debe redibujar el applet en cuanto tenga oportunidad
+(llamando al método <tt>paint()</tt>) Esto es únicamente una aproximación, que hemos
+estado utilizando hasta ahora, de como dibuja el applet. En la mayoría de casos es
+satisfactoria. Sin embargo, en algunos momentos, querrá ir mas lejos que este simple
+modelo, para crear algo de fantasía. Al llegar a este punto, necesitara conocer mejor
+como se dibujan realmente las cosas en la pantalla.</p>
+
+<p align="left">Primero de todo, no es exacto que un applet este obligado a tener un
+método <tt>paint()</tt>. Un applet puede contener otros componentes como botones y algo
+llamado &quot;canvasses&quot;, que es justamente un área rectangular para dibujar. Cada
+componente tiene su propio método <tt>paint()</tt> que es llamado por el sistema cuando
+el componente necesita ser redibujado.Así que los componentes son responsables de su
+propio redibujado. De esta manera, por ejemplo, si tiene que añadir un botón a un
+applet, no deberá preocuparse de redibujarlo, el solo lo hará. (o, si lo prefiere, el
+sistema dibujara el botón llamando a <strong>su</strong> método <tt>paint()</tt>. Si
+quiere utilizar un área de dibujo en un applet, deberá definir una subclase de la clase <tt>Canvas</tt>
+y para poder dibujar proporcionarle un método <tt>paint()</tt> en esa subclase . Así es
+como enseña a <em>Canvas</em> a dibujarse por el solo. El método <tt>paint()</tt> del
+applet , solo es responsable de los elementos que el directamente ha dibujado, no de todos
+los subcomponentes contenidos en el applet. Aprenderá mas acerca de los componentes en el
+<a href="indice6.htm" tppabs="http://members.nbci.com/elcurso/Capitulo6/indice6.htm">siguiente capítulo</a></p>
+
+<p align="left">Otra complicación proviene del hecho de que el sistema, realmente, no
+llama al método <tt>paint()</tt> de un applet o de un componente de forma directa. Es
+otro método llamado <tt>update()</tt> el que es llamado por el sistema. Este
+procedimiento integrado, lo primero que hace es borrar todo lo que hay dibujado por el
+applet y por los componentes. Entonces llama a los <tt>paint()</tt>para redibujar el
+contenido. Normalmente, el empezar borrando el contenido es algo correcto dado que los
+componentes contenidos pueden haber cambiado. Sin embargo, en algunos casos deseara
+saltarse ese paso. (Esto, por ejemplo, es normal si esta trabajando con imágenes <em>off-screen</em>).
+En ese caso, puede sobregrabar el método <tt>update()</tt>para hacerlo mas sencillo:</p>
+
+<pre>        public void update(Graphics g) {
+           paint(g); // just call paint, without erasing first
+        }</pre>
+
+<h3 align="left">Coordenadas</h3>
+
+<p align="left">La pantalla del ordenador es una rejilla de cuadrados muy pequeños
+llamados pixeles. El color de cada pixel se puede estableces de forma individual y podemos
+dibujar en la pantalla cambiando el color de ciertos pixeles.<img align="right" alt src="fig1-3.gif" tppabs="http://members.nbci.com/elcurso/Capitulo5/fig1.gif" WIDTH="292" HEIGHT="168"></p>
+
+<p>En un contexto gráfico, se dibuja en un rectángulo hecho de pixeles. La posición en
+el rectángulo se especifica por medio de dos enteros que son las coordenadas (x,y). La
+esquina superior izquierda es la coordenada (0,0). Para componentes, puede averiguar el
+tamaño del rectángulo llamando al método <tt>size()</tt>. La anchura del rectángulo es
+<tt>size().width</tt>pixels y la altura&nbsp; es <tt>size().heigth</tt> pixeles La figura
+de la derecha, presenta un componente de 12 por 8 pixeles (con pixeles muy grandes). Se
+presenta una línea pequeña, un rectángulo y una elipse que se han dibujado coloreando
+individualmente los pixeles.(Note que, hablando con propiedad, las coordenadas no
+pertenecen a los pixeles sino a las líneas que hay entre ellos.)</p>
+
+<p>Cuando está escribiendo un applet, no conoce el tamaño. El tamaño se especifica en
+el tag &lt;APPLET&gt; y no es demasiado correcto es depender que se especifique un tamaño
+concreto. También es cierto que los applets pueden redimensionarse mientras están
+funcionando. (Por el momento, esto no es cierto para los applets que están en las paginas
+web, pero en el futuro puede que cambie). Si quiere dibujarlo todo en el método <tt>paint()</tt>
+de su applet, deberá comprobar el tamaño y basar su dibujo en la altura y anchura actual
+del applet:</p>
+
+<pre>      public void paint(Graphics g) {
+         int width = size().width;     // tomar anchura real del applet
+         int height = size().height;   // tomar altura real
+         . . .   // dibujar el contenido
+      }</pre>
+
+<p>Pero si nunca ha tenido que hacer cálculos basados en el tamaño del applet, puede que
+quiera hacerlos de una forma semejante a esta:</p>
+
+<pre>        int width = -1;  //anchura del applet (inicialmente desconocida)
+        int height = -1; //altura del applet (inicialmente desconocida)
+            // el valor -1 fuerza a checkSize() a poner el valor 
+            // correcto la primera vez que se llama
+        
+        void checkSize() {  // Comprobar si ha cambiado el tamaño
+           int w = size().width;   // anchura actual
+           int h = size().height;  // altura actual
+           if ( w != width  ||  h != height ) {  // cambio el tamaño!
+              width = w;  // grabar nueva anchura
+              height = h; // grabar nueva altura
+              . . .  // recalcula todo lo dependiente del tamaño
+           }
+        }
+        
+        public void paint(Graphics g) {
+           checkSize();  // comprobar siempre antes de dibujar
+           . . .  // dibuja el contenido del applet
+        }</pre>
+
+<p>El método <tt>checkSize()</tt> también puede ser llamado desde otros métodos que
+dependan del tamaño del applet. Es una pequeña trampa, pero probablemente sea la manera
+mas fácil de controlar los cambios de tamaño de un applet.</p>
+
+<hr width="50%">
+
+<h3>Figuras</h3>
+
+<p>La clase <tt>Graphics</tt> proporciona una gran cantidad de métodos para dibujar
+distintas formas como líneas, rectángulos, y elipses. Las formas se deben indicar
+utilizando el sistema de&nbsp; coordenadas comentado anteriormente.&nbsp; El dibujo se
+realiza en el color establecido en cada momento para dibujar con el método <tt>setColor()</tt>.
+A continuación tiene una lista de los métodos mas importantes. Tenga en cuenta que todos
+estos métodos entran en la clase <tt>Graphics</tt> por lo que se deben llamar por medio
+de un objeto de tipo <tt>Graphics</tt> (Por ejemplo <tt>g.drawLine(0,0,w,h);)</tt> 
+
+<dl>
+  <dt><tt><b>drawLine(int x1, int y1, int x2, int y2)</b></tt> </dt>
+  <dd>Dibuja una línea desde el punto (x1,y1) al punto (x2,y2). </dd>
+  <dt><tt><b>drawRect(int x, int y, int width, int height)</b></tt> </dt>
+  <dd>Dibuja las líneas de un rectángulo. La esquina superior izquierda esta en (x,y), y se
+    especifica la anchura (width) y la altura (height). El ancho y el alto debe ser positivo o
+    no se dibuja nada.</dd>
+  <dt><tt><b>drawOval(int x, int y, int width, int height)</b></tt> </dt>
+  <dd>Dibuja las líneas de una elipse. La elipse es justo la que cabe en el rectángulo
+    especificado por x, y, width, y height. Si la anchura y la altura son iguales, se dibuja
+    la circunferencia.</dd>
+  <dt><tt><b>drawRoundRect(int x, int y, int width, int height, int xdiam, int ydiam)</b></tt>
+  </dt>
+  <dd>Dibuja un rectángulo con las esquinas redondeadas. El grado de redondez esta definido
+    por xdiam y ydiam. Las esquinas son arcos de una elipse con el diámetro horizontal xdiam
+    y el vertical ydiam. (Un valor razonable para xdiam y ydiam si 16.) </dd>
+  <dt><tt><b>draw3DRect(int x, int y, int width, int height, boolean raised)</b></tt> </dt>
+  <dd>Dibuja un rectángulo que se supone tiene efecto tridimensional, como si estuviera
+    sobresaliendo o empotrado en la ventana.</dd>
+  <dt><tt><b>fillRect(int x, int y, int width, int height)</b></tt> </dt>
+  <dd>Dibuja un rectángulo relleno</dd>
+  <dt><tt><b>fillOval(int x, int y, int width, int height)</b></tt> </dt>
+  <dd>Dibuja una elipse rellena</dd>
+  <dt><tt><b>fillRoundRect(int x, int y, int width, int height, int xdiam, int ydiam)</b></tt>
+  </dt>
+  <dd>Dibuja un rectángulo redondeado relleno</dd>
+  <dt><tt><b>fill3DRect(int x, int y, int width, int height, boolean raised)</b></tt> </dt>
+  <dd>Dibuja un rectángulo tridimensional relleno</dd>
+  <dt><tt><b>drawString(String str, int x, int y)</b></tt> </dt>
+  <dd>Dibuja la string str, empieza en el punto (x,y). x define la posición de la izquierda
+    de la String. y define la altura para la línea base, lo que es muy semejante a la línea
+    que escribe cobre una guía. (Hay mas cosas sobre dibujo de texto mas adelante en esta
+    misma sección.)</dd>
+  <dt><tt><b>drawImage(Image img, int x, int y, ImageObserver observer)</b></tt> </dt>
+  <dd>Dibuja la copia de una imagen. La esquina superior izquierda de la imagen se coloca en
+    &nbsp; (x,y). Los cuatro parámetros misteriosos, se ha de establecer misteriosamente a la
+    variable especial&nbsp; <tt>this</tt>. (Hay mas sobre imágenes mas adelante en esta misma
+    sección)<hr width="50%">
+  </dd>
+</dl>
+
+<h3>Colores</h3>
+
+<p>Java esta diseñado para trabajar con algo que se llama <font color="#808000">colores
+RGB</font>. Un color RGB se especifica por tres números que definen el nivel que tiene el
+color de rojo,verde y azul respectivamente. En Java el color es un objeto de la clase <tt>Color</tt>.
+Puede construir un color nuevo especificando los componentes de rojo, verde y azul. Por
+ejemplo. 
+
+<dl>
+  <div align="center"><center>
+  <dt><tt>Color miColor=new Color(r,g,b);</tt></dt>
+  </center></div>
+</dl>
+
+<p>Realmente, hay dos constructores a los que puede llamar para realizar esto. En uno r,g
+y b son enteros del rango 0 a 255; en otro esos números son del tipo <tt>float</tt> del
+rango 0.0 a 1.0. A menudo, puede evitar tener que construir colores completamente, dado
+que la clase <tt>Color</tt> define algunas constantes que representan los colores
+normales: Color.white, Color.black, Color.red, Color.green, Color.blue, Color.cyan,
+Color.magenta, Color.yellow, Color.pink, Color.orange, Color.lightGray, Color.gray, y
+Color.darkGray. </p>
+
+<p>Una de las variables instanciables del contexto gráfico, es el color para dibujar, que
+se emplea para todos los comando listados anteriormente (excepto <tt>drawImage</tt>). Si g
+es un contexto gráfico, puede cambiar el color actual de dibujo de g utilizando el
+método <tt>g.setColor(c)</tt>, donde c es un <tt>Color</tt>. Por ejemplo, si usted quiere
+dibujar en verde, puede decir <tt>g.setColor(Color.green)</tt>. El contexto gráfico
+continua usando el color hasta que se lo cambie de forma explícita. Si quiere saber cual
+es el color actual que se esta empleando para dibujar, puede llamar a la función <tt>g.getColor()</tt>que
+le devolverá un valor de tipo <tt>Color</tt>.</p>
+
+<p>Cada componente tiene asociado un <font color="#808000">color de pluma (foreground
+color)</font> y un <font color="#808000">color de fondo (background color)</font>. &nbsp;
+Cuando se borra un componente por el método <tt>Update()</tt>, se hace rellenándolo con
+el color de fondo. Cuando se crea un nuevo contexto gráfico para un componente, El color
+de dibujo es igual al color de pluma. Puede establecer los colores de pluma y de fondo
+para os componentes, llamando a los métodos</p>
+
+<p align="center"><tt>void setForeground(Color c)</tt></p>
+
+<p>y</p>
+
+<p align="center"><tt>void setBackground(Color c)</tt></p>
+
+<p align="left">Tenga en cuenta que estos métodos instanciables con de la clase <tt>Component</tt>
+y <strong>no</strong> de la clase <tt>Graphics.</tt> Entonces, en un applet, como es un
+tipo de componente, podrá decir simplemente <tt>setBackground(Color.white)</tt>, y no <tt>g.setbackground(Color.white).
+</tt>si quisiera establecer el color de fondo del applet en blanco.</p>
+
+<hr width="50%">
+
+<h3>Fuentes y FontMetrics</h3>
+
+<p>Un fuente representa un tipo de texto determinado. El mismo carácter puede aparecer
+distinto en diferentes fuentes.&nbsp; En Java los fuentes se caracterizan por un nombre,
+un estilo y un tamaño. La lista de nombres de fuentes disponibles, dependen del sistema,
+pero siempre puede usar los siguientes tres nombres: TimesRoman, Helvetica y Courier. El
+estilo del fuente es uno de los valores: 
+
+<ul>
+  <li>Font.PLAIN, </li>
+  <li>Font.ITALIC, </li>
+  <li>Font.BOLD, o </li>
+  <li>Font.BOLD + Font.ITALIC. </li>
+</ul>
+
+<p>El tamaño del fuente es un numero entero. El rango típico para tamaños esta entre 10
+y 36, sin embargo, también se pueden emplear tamaños mayores.El tamaño de un fuente,
+normalmente es el valor de la altura en pixeles del carácter mas grande, pero esto no es
+una regla segura.</p>
+
+<p>Java tiene una clase llamada <tt>Font</tt> para representar los fuentes. Puede
+construir un nuevo fuente especificando su nombre, estilo y tamaño.</p>
+
+<pre>         Font plainFont = new Font(&quot;TimesRoman&quot;,Font.PLAIN,12);
+         Font boldFont = new Font(&quot;Helvetica&quot;,Font.BOLD,12);</pre>
+
+<p>Un contexto gráfico tiene una fuente activa, que se usara en el método <tt>drawString()</tt>.
+Se puede establecer el fuente activo con el método <tt>setFont()</tt>. Por ejemplo, si g
+es un contexto gráfico y <tt>boldFont</tt> es un fuente, el comando <tt>g.setFont(boldFont)</tt>
+asignara como fuente activo para g <tt>boldFont</tt>. Por ejemplo, puede presentar un
+grande y destacado &quot;Hola Mundo&quot; diciendo:</p>
+
+<pre>         Font boldFont = new Font(&quot;Helvetica&quot;, Font.BOLD, 24);
+         g.setFont(boldFont);
+         g.drawString(&quot;Hola Mundo!&quot;, 20, 30);</pre>
+
+<p>Puede también averiguar el fuente que esta activo en un momento determinado con el
+método <tt>g.getFont()</tt>, que devuelve un objeto del tipo <tt>Font</tt>. Un contexto
+recién creado tiene establecido un fuente por defecto, que depende del sistema. Aveces,
+puede querer usar una versión modificada del mismo fuente. Hay métodos en la clase Font
+para hacerlo posible. Aquí tenemos un ejemplo:</p>
+
+<pre>          Font F = g.getFont();
+          Font boldFont = new Font(F.getName(), Font.BOLD, F.getSize());
+          Font bigFont = new Font(F.getName(), F.getStyle(), 2 * F.getSize());</pre>
+
+<p>Cuando dibuja una String, aveces necesita conocer cuanto espacio va a ocupar. Para
+hacer esto en Java, necesita un objeto de tipo <tt>FontMetrics</tt>, que contiene
+información acerca del tamaño que ocupara el texto dibujado con un fuente determinado.
+Si F es un fuente,&nbsp; puede definir un objeto <tt>FontMetrics</tt> para ese fuente
+realizando una llamada <tt>g.getFontMetrics(F). </tt>Cuando tenga el objeto <tt>FontMetrics,
+FM,</tt>puede llamar <tt>FM.stringWidth(str)</tt> para saber el ancho de la string <tt>str</tt>
+cuando se dibuje con el fuente activo, así mismo <tt>FM.getHeight()</tt> define la
+distancia estándar entre dos líneas bases de dos líneas consecutivas de texto.</p>
+
+<hr width="50%">
+
+<h3>Imágenes</h3>
+
+<p>En Java, un objeto tipo <tt>Images</tt> es una fotografía que puede ser copiada a un
+contexto gráfico usando el método<tt> drawImage()</tt>. Java esta pensado para poder
+trabajar con fotografías que pueden ser descargadas por la red cuando sea necesario. Para
+potenciar esa posibilidad, el método <tt>drawImage()</tt> es un poco extraño. No
+necesita dibujar la imagen de forma inmediata. Si la imagen no está disponible,--por
+ejemplo si no ha sido descargada correctamente-- el método <font face="m"><tt>drawImage()
+</tt></font>vuelve sin dibujarla y el sistema la dibujara mas tarde, cuando este
+disponible. Normalmente,solo tiene que llamar a <tt>drawImage()</tt> y dejar que el
+sistema haga el resto.</p>
+
+<p>En algunos casos, no me interesa descargar las imágenes así. Puedo estar interesado
+en imágenes <em>off-screen</em>, que son imágenes que han de ser dibujadas usando un
+contexto gráfico. Puede crear tal imagen con el método <tt>createImage()</tt>, que esta
+definido en la clase <tt>Component</tt> (y por consiguiente esta disponible, sobre todo en
+applets). Lo que si tendrá que especificar es la anchura y la altura que quiera para la
+imagen . Para ello puede decir:</p>
+<div align="center"><center>
+
+<pre>Image OSC = createImage(width,heigth);    </pre>
+</center></div>
+
+<p align="left">Una vez haya creado una imagen <em>off-screen</em>, <tt>OSC</tt>, puede
+llamar al método <tt>getGraphics()</tt> para establecer el contexto gráfico para dibujar
+la imagen:</p>
+<div align="center"><center>
+
+<pre>Graphics g = OSC.getGraphics();    </pre>
+</center></div>
+
+<p align="left">Y una vez tiene g, Puede dibujar lo que quiera. Puede usar <tt>drawImage</tt>
+para copiar la imagen que ha creado, en la pantalla o en cualquier otro contexto gráfico.</p>
+
+<p align="left">En la técnica de doble-buffer, se construye una copia entera del
+componente como una imagen <em>off-screen</em>, Todas las operaciones de dibujo se
+realizan sobre esa copia. El método paint unicamente copia la imagen a la pantalla. A
+continuación les presento las líneas generales de como podria trabajar esto:</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Image OSC = null;&nbsp; // el off-screen imagen
+para doble-buffering<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graphics OSC_g;&nbsp;&nbsp;&nbsp; //contexto gráfico
+para OSC<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void update(Graphics g) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // redefine la rutina para evita
+que borre el dibujo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; paint(g);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void paint(Graphics g) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (OSC != null) {&nbsp; // por
+seguridad,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+g.drawImage(OSC,0,0,this); &nbsp; // copia la imagen a pantalla<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void drawStuff() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (OSC == null) { // crea
+off-screen canvas, si no existe<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OSC =
+createImage(size().width, size().height());<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OSC_g =
+OSC.getGraphics();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+OSC_g.setColor(Color.white); &nbsp; // llena OSC con blanco<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+OSC_g.fillRect(0,0,size().width,size.height());<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; . . .&nbsp; // draw to OSC_g<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; repaint();&nbsp; // le indica al
+sistema que llame a paint<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+Para un applet, puede crear la imagen <em>off-screen</em> en el método <tt>init()</tt>.
+Otros componentes sin embargo, no los va a poder crear allí y tendrá que tener cuidado
+con crear la imagen <em>off-screen</em> antes de conocer el tamaño de los componentes.Y
+si quiere cambiar el tamaño de los componentes, entonces el trabajo será un poco mas
+duro.</p>
+
+<p>El doble-buffer puede ser usado para mover las animaciones.Consigue que los gráficos
+tengan un aspecto muy profesional. Sin embargo, debe tener en cuenta que hacer esto come
+cantidades importantes de memoria y además penaliza el rendimiento del equipo por el
+tiempo que emplea en copiar la imagen a la pantalla. Se requiere experiencia y habilidad
+para saber como emplear bien el doble-buffer y otras técnicas gráficas. El mejor aviso
+es la practica. Escriba un pequeño applet de ejemplo, y vea lo que pasa.</p>
+
+<hr width="50%">
+
+<p align="left">.</p>
+
+<hr>
+
+<p align="center">
+<applet code="TrackLines.class" tppabs="http://members.nbci.com/elcurso/Capitulo5/TrackLines.class" height="151" width="226">
+  <param name="rows" value="5">
+  <param name="columns" value="6">
+</applet>
+</p>
+
+<p align="left">&nbsp;</p>
+
+<hr>
+
+<p align="center"><strong>Fin del Capitulo 5</strong></p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="seccion5_3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_3.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice5.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/indice5.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="test5.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/test5.htm"><img src="Diploma.jpg" tppabs="http://members.nbci.com/elcurso/images/Diploma.jpg" width="68" height="79" alt="Test" border="0"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,357 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java.Seccion 2.2</title>
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+<font FACE="Arial">
+
+<h3>Sección 2.2: Variables y tipos básicos.</h3>
+</font>
+
+<hr>
+
+<p><font size="3">LOS NOMBRES SON FUNDAMENTALES EN LA PROGRAMACIÓN. En los programas, los
+nombres se utilizan para referirse a una gran cantidad de cosas distintas. Para poder
+utilizar todas esas cosas, el programador debe entender las reglas para asignar nombres y
+las reglas para usar el nombre y trabajar con el objeto al que el mismo se refiere. Esto
+es, el programador debe comprender la sintaxis y la semántica de los nombres.</p>
+
+<p>En Java, los nombres son secuencias de uno o mas caracteres. Deben comenzar con una
+letra, y únicamente pueden contener letras, números, el guión inferior &#146;_&#146;,y
+el signo de dólar &#145;$&#146;. Por ejemplo, los siguientes nombres son correctos:</p>
+<div align="center"><center>
+
+<pre><code>N n porciento x15 nombre_largo tiempo_es_$ HelloWorld</code>    </pre>
+</center></div>
+
+<p>Las letras mayúsculas y minúsculas, se consideran distintas, esto es: HelloWorld,
+helloworld, HELLOWORLD y hElloWorlD son nombres distintos. Existen una serie de nombres
+que están reservados para usos especiales en Java, y el programador no puede utilizarlas
+para otros propósitos. La lista de palabras reservadas, incluye: <em>class, public,
+static, if, else, while,</em> y varias docenas de otras palabras.</p>
+
+<p>Java, realmente es bastante liberal sobre lo que son letras o dígitos. Java utiliza el
+juego de caracteres Unicode, que incluye un millar de caracteres de gran numero de
+lenguajes diferentes y de diferentes alfabetos; y muchos de esos caracteres representan
+letras o dígitos. Todo eso nos permite trabajar sin problemas con nuestro teclado
+clásico, en la mayoría de lenguas .</p>
+
+<p>Finalmente, destacaremos que hay cosas a las que nos referiremos como &quot;nombres
+compuestos&quot;, que consisten en varios nombres normales separados por puntos. Ya ha
+visto un ejemplo: <code>System.out.println</code>. La idea es que en Java las cosas pueden
+contener otras cosas. Un nombre compuesto, es algo semejante a un camino que nos permita
+referirnos a un elemento que contienen uno o mas niveles de contenidos.</p>
+
+<p>El nombre <code>System.out.println</code> indica que algo llamado &quot;System&quot;
+contiene algo llamado &quot;out&quot; que a su vez contiene algo llamado
+&quot;println&quot;. Usaremos el termino &quot;identificador&quot; para referirnos a
+cualquier nombre &#150;sencillo o compuesto&#151;que se pueda usar para referirse a algo
+en Java.</p>
+
+<p>Los programas manipulan los datos que están almacenados en la memoria. En código
+maquina, los datos solo pueden ser referenciados por medio de las direcciones numéricas
+que representan los lugares de la memoria en donde están guardados. En los lenguajes de
+alto nivel como Java, para referirse a los datos, se acostumbra a utilizar nombres en
+lugar de números. Es un trabajo del ordenador, el saber en cada momento en que lugar de
+la memoria esta realmente almacenado. El nombre que se usa para esto &#150;referirse a un
+dato almacenado en la memoria&#151;es la variable.</p>
+
+<p>Las variables, son realmente algo sutil. Propiamente hablando, la variable es el nombre
+de un contenedor que tiene guardado los datos. Puede pensar en la variable como en una
+caja en donde almacena la información que va a necesitar mas tarde.A menudo, sin embargo,
+se piensa en la variable como en el nombre de los datos contenidos en la caja, mas que en
+la caja misma. Para entender esto, deberemos ver como vamos a usar las variables</p>
+
+<p>Una forma de introducir datos en la variable &#150; esto es dentro de la caja indicada
+por el nombre de la variable&#151;es la instrucción de asignación. Una instrucción de
+asignación tiene la siguiente forma:</p>
+<font COLOR="#00ff00"><b>
+
+<p ALIGN="CENTER">variable =expresión;</p>
+</b></font>
+
+<p ALIGN="JUSTIFY">donde <font COLOR="#00ff00"><b>expresión</b></font> representa
+cualquier cosa que pueda ser considerado por el ordenador un valor de datos. Cuando el
+ordenador se encuentra con una instrucción de asignación en el curso de ejecución de un
+programa, evalúa la expresión y coloca el valor resultante en la variable. Por ejemplo,
+considere esta sencilla instrucción de asignación:</p>
+
+<p ALIGN="CENTER"><code>porcentaje = 0,07</code>;</p>
+
+<p>la <font COLOR="#00ff00"><b>variable</b></font> en esta instrucción de asignación es <font face="Arial Narrow">porcentaje</font>, y la <font COLOR="#00ff00"><b>expresión</b></font>
+es el numero 0,07.</p>
+
+<p>El ordenador, ejecuta esta instrucción de asignación dejando el numero 0,07 en la
+variable<font face="Arial Narrow">porcentaje</font>, reemplazando cualquier valor que
+hubiera anteriormente. Ahora, considere la siguiente instrucción de asignación, que es
+un poco mas compleja, y que podría aparecer mas tarde en el mismo programa:</p>
+<font face="Arial Narrow">
+
+<p ALIGN="CENTER">Interés = porcentaje * principal</font>;</p>
+
+<p>Aquí, el valor de la expresión &quot;<font face="Arial Narrow">porcentaje * principal</font>&quot;
+será asignado a la variable <font face="Arial Narrow">interés</font>. En la expresión,
+el * es el operador de multiplicación, lo que significa que el ordenador multiplicará <font face="Arial Narrow">porcentaje</font> por <font face="Arial Narrow">principal</font>. Los
+nombre <font face="Arial Narrow">porcentaje</font> y <font face="Arial Narrow">principal</font>,
+son también variables y realmente lo que se va a multiplicar es el <b>valor</b>
+almacenado en esas variables. Vemos que cuando en una expresión empleamos variables, lo
+que verdaderamente nos importa es el valor almacenado, en este caso la variable parece
+referirse a los datos de la caja mas que a la caja en si misma. Cuando el ordenador
+ejecuta la instrucción de asignación, toma el <b>valor</b> de <font face="Arial Narrow">porcentaje</font>,
+lo multiplica por el<b> valor</b> de <font face="Arial Narrow">principal</font> y almacena
+la respuesta en la caja referenciada por <font face="Arial Narrow">interés</font>. </p>
+
+<p>Las variables en Java se definen para guardar únicamente un tipo de dato, solo es
+correcto almacenar un tipo de dato, y no cualquier otro. El ordenador considerara como
+error de sintaxis si se intenta violar esta regla. Decimos que Java es un lenguaje
+fuertemente clasificado, porque implementa esta regla.</p>
+
+<p>En Java hay ocho tipos que podríamos denominar primitivos. Estos tipos se llaman<font face="Arial Narrow">: byte, short, int, long, float, double, char</font>, y <font face="Arial Narrow">boolean</font>. Los primeros cuatro tipos, pueden guardar números
+enteros (números como el 17, -38477, y 0). Los cuatro tipos de enteros, se diferencian en
+el rango que pueden guardar. Los tipos <font face="Arial Narrow">float</font> y <font face="Arial Narrow">double</font> pueden guardar números reales (como 3,6 y -145,99).
+También los dos tipos de números reales se diferencian por el rango y la precisión. El
+tipo de variable <font face="Arial Narrow">char</font>, almacena un solo carácter del
+juego de caracteres Unicode. Y una variable de tipo <font face="Arial Narrow">bolean</font>
+solo puede guardar dos valores lógicos que son <font face="Arial Narrow">true</font> o <font face="Arial Narrow">false</font>.</p>
+
+<p ALIGN="JUSTIFY">Cualquier valor guardado en la memoria del ordenador puede ser
+representado por un número binario, esto es , como una cadena de ceros y unos. Cada uno
+de estos ceros y unos es llamado<font color="#808000"> <font face="Arial Narrow">bit</font></font>.
+Una cadena de 8 bits se denomina </font><font FACE="Arial Narrow" color="#808000" size="3">byte</font><font size="3">. La memoria normalmente se mide en numero de bytes. No es sorprendente entonces,
+que el tipo de dato <font face="Arial Narrow">byte</font> se refiera a un único byte de
+la memoria. Una variable de tipo <font face="Arial Narrow">byte</font> puede guardar una
+cadena de 8 bits, que pueden representar cualquier numero entero entre -128 y 127,
+inclusive. (hay 256 números enteros en el rango; con 8 bits se pueden representar 256
+números &#150;2 elevado a la octava potencia). La base es la misma para los otros tipos
+de numero entero,</p>
+
+<ul>
+  <font face="Arial Narrow">
+  <li>short</font> corresponde a 2 bytes (16 bits). Una variable tipo <font face="Arial Narrow">short</font> conserva valores entre -32768 y 32767</li>
+  <font face="Arial Narrow">
+  <li>int</font> corresponde a cuatro bytes (32 bits). La variable de tipo <font face="Arial Narrow">int</font> conserva valores entre -2147483648 y 2147483647.</li>
+  <font face="Arial Narrow">
+  <li>long</font> corresponde a 8 bytes (64 bits). La variable de tipo <font face="Arial Narrow">long</font>, conserva valores entre -9223372036854775808 y
+    9223372036854775807.</li>
+</ul>
+
+<p ALIGN="JUSTIFY">No es necesario que recuerde estos números, pero le deben de dar una
+idea acerca del tamaño de entero que va a necesitar para trabajar. Usualmente, utilizara
+el tipo <font face="Arial Narrow">int</font> porque es valido para la mayoría de
+aplicaciones.</p>
+
+<p ALIGN="JUSTIFY">El tipo de dato <font face="Arial Narrow">float</font>, utiliza 4 bytes
+de memoria, empleando el método estándar para codificar los números reales. El valor
+máximo para un <font face="Arial Narrow">float</font>, esta sobre 10 elevado a 38. Un <font face="Arial Narrow">float</font> puede tener sobre 7 dígitos significativos. (entonces
+32,3989231134 y 38,3989234399 deberán ser truncados a 32,398923 para poder ser almacenado
+en una variable tipo <font face="Arial Narrow">float. </font>La<font face="Arial Narrow">
+double, </font>emplea 8 bytes y el rango esta sobre 10 elevado a 308, pudiendo tener sobre
+unos 15 dígitos significativos. Normalmente, deberá emplear el tipo<font face="Arial Narrow"> double </font>para valores reales.</p>
+
+<p ALIGN="JUSTIFY">La variable de tipo <font face="Arial Narrow">char</font> ocupa dos
+bytes de la memoria. El valor de la variable <font face="Arial Narrow">char</font>, es un
+único carácter como A,*,x o el carácter espacio. El valor también puede ser un
+carácter especial como un tabulador (<i>tab</i>) un retorno de carro (<i>CR o carriage
+return</i>) o uno de los muchos caracteres Unicode que se utilizan en cualquier lengua.
+Cuando el carácter se escribe en el programa, debe ser encerrado entre comillas simples,
+por ejemplo: &#145;A&#146;, &#145;*&#146;, o &#145;x&#146;. Si no utilizáramos comillas,
+se reconocerían como identificadores, y el * como el operador multiplicación. Las
+comillas, no forman parte del valor, y no se almacenan en la variable; por eso hay reglas
+para nombrar a determinados caracteres constantes en el programa. El nombre para un valor
+constante es literal. &#145;A&#146; y &#145;*&#146; son literales del tipo <font face="Arial Narrow">char</font>. Ciertos caracteres especiales, tienen literales
+especiales que usan la barra inversa, \, . En particular el tabulador se representa como
+&#145;\t&#146;, el retorno de carro como &#145;\r&#146;, el avance de línea como
+&#145;\n&#146; , la comilla simple como &#145;\&#146;&#146;, y la barra invertida será
+&#145;\\&#146;.</p>
+
+<p ALIGN="JUSTIFY">Para el tipo <font face="Arial Narrow">bolean</font>, se precisan dos
+literales: <font face="Arial Narrow">true</font> y <font face="Arial Narrow">false</font>,
+Los valores boleanos, se emplean muy a menudo como valor de las expresiones de condición.
+Por ejemplo,</p>
+
+<p ALIGN="CENTER">porcentaje &gt; 0,05</p>
+
+<p ALIGN="JUSTIFY">es una expresión de valor boleano que dará como resultado <font face="Arial Narrow">true</font> si el valor de la variable porcentaje es mayor que 0,05 y <font face="Arial Narrow">false</font> si el valor de la variable es menor o igual a 0,05. Como
+podrá ver en la siguiente sección, las expresiones de valor boleano, se utilizan
+intensivamente en las estructuras de control.</p>
+
+<p ALIGN="JUSTIFY">Java tiene otros tipos adicionales a los tipos primitivos, pero estos
+otros tipos representan objetos mas que valores de datos. En gran parte, no nos vamos a
+preocupar de los objetos en esta primera etapa. Sin embargo, hay un tipo de objeto
+predefinido que es muy importante: el tipo <font face="Arial Narrow">String</font>. Este
+tipo es una secuencia de caracteres. Ya habíamos visto un literal <font face="Arial Narrow">string</font> . &quot;Hola Mundo!&quot;. Las dobles comillas, eran
+parte del literal ya que se había escrito junto al programa. Sin embargo no eran
+realmente parte del <font face="Arial Narrow">string</font> que consiste justamente en los
+caracteres contenidos entre las dos dobles comillas. Dentro de una string un carácter
+especial debe representarse usando la notación con la barra inversa. En ese contesto, la
+doble comilla es en si misma un carácter especial. Por ejemplo para representar la string
+</p>
+
+<p ALIGN="CENTER">Yo dije, &quot;escucharme!&quot;</p>
+
+<p ALIGN="JUSTIFY">con un avance de línea al final, debería escribir el literal:</p>
+
+<p ALIGN="CENTER">&quot;Yo dije,\&quot;escucharme!\&quot;\n&quot;</p>
+
+<p ALIGN="JUSTIFY">Dado que las strings son objetos, su comportamiento en el programa es
+especial en algunos aspectos (sobretodo para quien no haya usado objetos).Volveremos a
+hablar acerca de ellos al final del capítulo.</p>
+
+<p ALIGN="JUSTIFY">Una variable solo se puede usar en un programa si ha sido declarada.
+Una instrucción de declaración de variable se usa para crear una o mas variables y
+asignarles nombres. Cuando el ordenador ejecuta una declaración de variable, reserva
+memoria para la variable y asocia el nombre de la variable a esa memoria. Una declaración
+de variable tiene la siguiente forma:</p>
+<font COLOR="#00ff00"><b>
+
+<p ALIGN="CENTER">nombre-de-tipo nombre-de-variable;</p>
+</b></font>
+
+<p ALIGN="CENTER">o</p>
+<font COLOR="#00ff00"><b>
+
+<p ALIGN="CENTER">nombre-de-tipo nombre-de-variable = expresión;</p>
+</b></font>
+
+<p ALIGN="CENTER">&nbsp;</p>
+
+<p ALIGN="JUSTIFY">En el segundo formato, la expresión se emplea para darle el valor
+inicial a la nueva variable. El segundo formato, usualmente es preferible , porque
+garantiza que la variable se inicializa con un valor definido, con un valor conocido. A
+continuación, hay algunos ejemplos de declaración de variables, para crear una variable
+tipo <font FACE="Arial Narrow">int</font>, 2 variables tipo <font FACE="Arial Narrow">double</font>
+y una variable tipo <font FACE="Arial Narrow">char</font>:</p>
+
+<dir>
+  <dir>
+    <dir>
+      <dir>
+        <dir>
+          <dir>
+            <font FACE="Arial Narrow"><p ALIGN="JUSTIFY">int N;</p>
+            <p ALIGN="JUSTIFY">double x;</p>
+            <p ALIGN="JUSTIFY">double porcentaje = 0,07;</p>
+            <p ALIGN="JUSTIFY">char space = &#145; &#145;;</p>
+            </font>
+          </dir>
+        </dir>
+      </dir>
+    </dir>
+  </dir>
+</dir>
+
+<p ALIGN="JUSTIFY">Puede crear varias variables en la misma declaración, si las separa
+con comas. Por ejemplo:</p>
+
+<dir>
+  <dir>
+    <dir>
+      <dir>
+        <dir>
+          <dir>
+            <font FACE="Arial Narrow"><p ALIGN="JUSTIFY">double x,y;</p>
+            <p ALIGN="JUSTIFY">char first = &#145;D&#146;,</p>
+            <p ALIGN="JUSTIFY">middle = &#145;J&#146;,</p>
+            <p ALIGN="JUSTIFY">last=&#146;E&#146;;</p>
+            <p ALIGN="JUSTIFY">int i, j=17;</p>
+            </font>
+          </dir>
+        </dir>
+      </dir>
+    </dir>
+  </dir>
+</dir>
+
+<p ALIGN="JUSTIFY">En la ultima línea, la inicialización se aplica únicamente a j. El
+valor de i queda indefinido. (Para las variables definidas <b>fuera</b> de las subrutinas,
+Java proporcionara automáticamente un valor inicial (en este caso para i, seria 0). La
+variables definidas <b>dentro</b> de las subrutinas, deben de inicializarse
+explícitamente antes de poder ser usados en alguna expresión.)</p>
+
+<p ALIGN="JUSTIFY">En este capítulo, solo vamos a usar variables definidas dentro de la
+subrutina <font FACE="Arial Narrow">main()</font> del programa. Las variables que se
+definen dentro de las subrutinas, son llamadas variables locales de la subrutina. Estas
+variables tan solo existen dentro de la subrutina, mientras este funcionando, y son
+totalmente inaccesibles desde fuera. La declaración de la variable puede aparecer en
+cualquier lugar dentro de la subrutina, con tal que cada variable sea declarada antes de
+ser usada por cualquier expresión. Muchas personas, tiene la costumbre de declarar todas
+las variables al inicio de la subrutina. Otras esperan a declararla al momento en que la
+van a necesitar y ya conocen su valor. Mi preferencia:Declare las variables importantes al
+inicio de la subrutina y utilice comentarios para explicar el propósito de cada variable.
+Declare las variables de servicio, aquellas que no son cruciales para el funcionamiento de
+la subrutina, en el momento en que las necesite, cuando las vaya a emplear por primera
+vez. A continuación, les presentamos un sencillo programa que utiliza algunas variables y
+las instrucciones de asignación:</p>
+
+<blockquote>
+  <blockquote>
+    <font FACE="Arial Narrow" size="3"><pre>Public class Interés {</pre>
+    <pre> /*
+Esta clase, implementa un sencillo programa que realiza 
+el calculo de interés generado por 17.000 dólares invertidos
+ a un interés del 0,07% por un año.El interés y el valor de la
+ inversión después del año, se presenta en la salida estándar
+*/ </pre>
+    </font><font FACE="Arial Narrow"><div align="left"><pre>public static void main(String[] args) {</font></pre>
+    </div><blockquote>
+      <div align="left"><pre><font FACE="Arial Narrow">doubleprincipal = 17000;&nbsp; // Valor de la inversión;
+double rate = 0.07;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Interés anual;
+doubleinterest; //interés devengado en un año
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+interest = principal * rate;&nbsp;&nbsp; //calculo del interés
+
+principal = principal + interest;
+// calculo del valor de la inversión al final del año , con intereses
+// (Nota: El valor actual, reemplaza el valor original)
+
+System.out.print(&quot;El interés devengado es&nbsp; $&quot;);
+System.out.println(interest);
+System.out.print(&quot;El valor de la inversión después de un año es $&quot;);
+System.out.println(principal);</font></pre>
+      </div>
+    </blockquote>
+    <blockquote>
+      <div align="left"><pre><font FACE="Arial Narrow"> } // fin de &nbsp; main()</font></pre>
+      </div>
+    </blockquote>
+    <div align="left"><pre><font FACE="Arial Narrow"> } // fin de la clase&nbsp; Interest</font></pre>
+    </div>
+  </blockquote>
+</blockquote>
+
+<p>Y aquí un applet que simula el programa: </p>
+<div align="center"><center>
+
+<pre><big>
+
+</big><applet code="Interest1Console.class" tppabs="http://members.nbci.com/elcurso/Capitulo2/Interest1Console.class" height="250" width="520"></pre>
+<font SIZE="2"><p ALIGN="JUSTIFY"></p></dir>
+</font><!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>
+</applet></pre>
+</center></div>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<table border="0" width="100%" height="62">
+  <tr>
+    <td width="33%" height="58"><a href="Sección2_1.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_1.html"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="70" HEIGHT="70"></a></td>
+    <td width="33%" height="58"><p align="center"><a href="indice2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo2/indice2.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" alt="Indice capítulo" border="0" WIDTH="74" HEIGHT="76"></a>
+    &nbsp;&nbsp;&nbsp;&nbsp; <a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" alt="Indice General" border="0" WIDTH="70" HEIGHT="72"></a></td>
+    <td width="34%" height="58"><a href="Sección2_3.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_3.html"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="72" HEIGHT="72"></a></td>
+  </tr>
+</table>
+&nbsp;</font>
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

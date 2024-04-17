@@ -1,0 +1,354 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 4.3</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 4.3 : Herencia y Poliformismo</h3>
+
+<hr>
+
+<p>UNA CLASE REPRESENTA UN CONJUNTO DE OBJETOS que comparten la misma estructura y
+comportamiento. La clase determina la estructura del objeto al especificar las variables
+que existirán en cada instancia de la clase, y determina el comportamiento del objeto al
+proporcionarle los métodos que expresan el comportamiento de estas instancias.Esta es la
+idea en potencia. Sin embargo, algo como esto, se da en muchos otros lenguajes de
+programación. La novedad en la idea central de la programación orientada a objetos-- la
+idea que realmente la diferencia de la programación tradicional-- es el permitir a las
+clases que presentes semejanza entre objetos que comparten algo, pero no todo de la
+estructura y comportamiento. Estas semejanzas pueden expresarse como <font color="#808000">herencia</font>.</p>
+
+<p>El termino &quot;herencia&quot; se refiere a que una clase puede heredar parte o toda
+la estructura y comportamiento de otra clase. La clase que recibe la herencia se llama <font color="#808000">subclase</font> de la que la cede. Si la clase B es una subclase de A,
+entonces se puede decir que la clase a en una <font color="#808000">superclase</font> de
+B.(Aveces se emplean los términos de <font color="#808000">clase derivada</font> y <font color="#808000">clase base</font> en lugar <img align="right" src="fig2-1.gif" tppabs="http://members.nbci.com/elcurso/Capitulo4/fig2.gif" WIDTH="110" HEIGHT="156">de subclase y
+superclase) Una subclase puede&nbsp; no solo puede añadir a la estructura y
+comportamiento que hereda, si no que también puede reemplazar o modificar el
+comportamiento heredado (aunque no la estructura heredada).&nbsp; Las relaciones entre
+subclases y superclases se representa a veces por un diagrama en donde las subclases
+aparecen debajo y conectadas con las superclases.</p>
+
+<p>En Java, cuando crea una nueva clase, puede declarar que es una subclase de una clase
+existente. Si esta definiendo la clase llamada B y quiere que sea una subclase de la clase
+llamada A, deberá escribir:</p>
+
+<blockquote>
+  <blockquote>
+    <pre>class B extends A {
+	.
+	.// Adiciones a, y modificaciones de,
+	.// la herencia recibida de la clase A
+	.
+}</pre>
+  </blockquote>
+</blockquote>
+
+<p><img align="left" src="fig3-1.gif" tppabs="http://members.nbci.com/elcurso/Capitulo4/fig3.gif" WIDTH="253" HEIGHT="161">Es posible declarar varias subclases de una misma
+superclase. Las subclases, que entonces pueden considerarse &quot;<em>sibling classes</em>&quot;
+o hermanas, comparten la misma estructura y comportamiento, dado que todas ellas reciben
+la herencia de una misma superclase. La superclase puede verse entonces, como la
+expresión de todas las estructuras y comportamientos&nbsp; iguales de las subclases. En
+el diagrama de la izquierda, las clases B, C, y D son clases hermanas. La herencia se
+puede extender a través de varias &quot;generaciones&quot; de clases. Esto se representa
+en el diagrama donde la clase E es una subclase de la clase D que a su vez es una subclase
+de la clase A. En este caso, la clase E se considera como una subclase de A, aun cuando la
+herencia es indirecta.</p>
+
+<hr width="50%">
+
+<p><img align="right" src="fig4-1.gif" tppabs="http://members.nbci.com/elcurso/Capitulo4/fig4.gif" WIDTH="250" HEIGHT="100">Vamos a ver un ejemplo. Suponga un programa que trata
+vehículos de motor, incluyendo coche, camiones y motos (Puede ser un programa usado por
+el departamento de trafico de una empresa para controlar reparaciones). El programa emplea
+una clase llamada <tt>Vehicle</tt> que representa todos los tipos de vehículos. La clase <tt>Vehicle<font face="m"> puede incluir variables instanciables como el numero de matricula y el
+propietario, y métodos instanciables como transferOwnership()</tt>.<tt> </tt>Estas
+variables y métodos son comunes a todos los vehículos. Podemos usar tres subclases de <tt>Vehicle</tt>--
+coches, camiones y motos-- que pueden emplearse para guardar variables y métodos
+específicos de cada tipo de vehículo. La clase coches<tt>(Car</tt>) puede añadir una
+variable instanciable para el numero de puertas,<tt>numberOfDoors</tt>, La clase camión <tt>(Truck)</tt>
+puede tener una para el numero de ejes. <tt>numberOfAxles</tt>, y la <tt>clase motos
+(Motorcycle</tt>) puede tener una variable boleana <tt>hasSidecar</tt>. (Bien, en teoría <u>es
+posible</u>). La declaración de estas clases en un programa Java, en líneas generales
+tendría este aspecto:</font></p>
+
+<pre>     class Vehicle {
+        int registrationNumber;
+        Person owner;  // (asumimos que la clase Person esta definida)
+        void transferOwnership(Person newOwner) {
+            . . .
+        }
+        . . .
+     }
+     class Car extends Vehicle {
+        int numberOfDoors;
+        . . .
+     }
+     class Truck extends Vehicle {
+        int numberOfAxels;
+        . . .
+     }
+     class Motorcycle extends Vehicle {
+        boolean hasSidecar;
+        . . .
+     }</pre>
+
+<p><font face="m">Supongamos que <tt>myCar</tt> es una variable de tipo <tt>Car</tt> que
+se declara y se inicializa con la instrucción:</font></p>
+<div align="center"><center>
+
+<pre>Car myCar = new Car();      </pre>
+</center></div>
+
+<p align="left">Entonces será correcto referirse a <tt>myCar.numberOfDoors</tt> dado que <tt>numberOfDoors</tt>
+es una instancia de la variable de la clase <tt>Car</tt>. Pero como la clase <tt>Car</tt>
+extiende la clase <tt>Vehicle</tt>, también existirán <tt>myCar.registrationNumber,
+myCar.owner, y myCar.transferOwnership.</tt></p>
+
+<p align="left">Ahora, en el mundo real, coches, camiones y motos de hecho, son
+vehículos. Esto mismo, también es cierto en el programa. Un objeto tipo <tt>Car o Truck
+o Motorcycle</tt> es automáticamente un objeto tipo <tt>Vehicle.</tt> El efecto practico
+de esto es que a una variable tipo <tt>Vehicle</tt> se le puede asignar un objeto tipo <tt>Car</tt>.Ósea
+que es correcto decir:</p>
+<div align="center"><center>
+
+<pre>Vehicle myVehicle = myCar;      </pre>
+</center></div>
+
+<p align="left">o también</p>
+<div align="center"><center>
+
+<pre>Vehicle myVehicle = new Car();      </pre>
+</center></div>
+
+<p align="left">Después de esta instrucción, la variable <tt>myVehicle</tt> guarda la
+referencia a un objeto que casualmente es una instancia de la clase <tt>Car</tt>. El
+objeto &quot;recordará&quot; que realmente es <tt>Car</tt> y no exactamente <tt>Vehicle</tt>.
+La información acerca de la clase real, se almacena en el objeto como parte del mismo. O
+de otra manera, si <tt>myVehicle</tt> es una variable de tipo <tt>Vehicle</tt> la
+instrucción</p>
+<div align="center"><center>
+
+<pre>Car myCar = myVehicle;      </pre>
+</center></div>
+
+<p align="left">será errónea porque <tt>myVehicle</tt> potencialmente puede referirse a
+otro tipo de vehículo además de <tt>Car.</tt>Es un problema similar al que vimos
+previamente en la<a href="Seccion2_6.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Seccion2_6.html"> sección 2.6</a>: El ordenador no
+puede asignar a una variable tipo <tt>short</tt> otra de tipo <tt>int</tt> porque no todos
+los <tt>int</tt> son <tt>short</tt>. De forma semejante, no se puede asignar a una
+variable tipo <tt>Vehicle</tt> otra de tipo <tt>Car</tt> porque todos los vehículos son
+coches. Como en el caso de <tt>ints y shorts</tt>, la solucion esta en utilizar el tipo
+&nbsp; como forma <tt>(Car)myVehicle</tt> le dice al ordenador que trate <tt>myVehicle</tt>
+como si realmente fuera de tipo <tt>Car</tt>. Entonces, puede decir:</p>
+<div align="center"><center>
+
+<pre>Car myCar = (Car)myVehicle;      </pre>
+</center></div>
+
+<p align="left">y también puede referirse a <tt>((Car)myVehicle).numberOfDoors</tt> Tenga
+en cuenta que para los tipos de objeto, cuando el ordenador ejecuta el programa, comprueba
+si el tipo de forma es valida. Por ejemplo si <tt>myVehicle</tt> se refiere a un objeto de
+tipo <tt>Truck</tt>,&nbsp; entonces aplicar la forma <tt>(Car)myVehicle</tt> provocara un
+error.</p>
+
+<hr width="50%">
+
+<p>Otro ejemplo, considere un programa que se dedica a dibujar formas en la pantalla. Esto
+quiere decir que entre las formas incluye rectangulos, elipses y cajas redondas de varios
+colores.</p>
+
+<p align="center"><img alt="(illustration showing various shapes)" src="fig5-1.gif" tppabs="http://members.nbci.com/elcurso/Capitulo4/fig5.gif" WIDTH="331" HEIGHT="114"></p>
+
+<p>&nbsp;</p>
+
+<p>Para representar los tres tipos de formas, podemos emplear tres clases, <tt>Rectangle,
+Oval, y Roundrect</tt>. Estas tres clases pueden tener una superclase común, <tt>Shape,</tt>
+para representar las características que las tres clases tienen en común. La clase <tt>Shape</tt>
+puede incluir unas variables instanciables para representar el color, posición y tamaño
+del dibujo. También puede incluir un método&nbsp; instanciable para cambiar el color, la
+posición y el tamaño del dibujo. Cambiar el color, por ejemplo, significaría cambiar el
+valor de la instancia de la variable y redibujar el dibujo con el nuevo color:</p>
+
+<pre>       class Shape {
+       
+           Color color;   // color del dibujo.  observe que la clase Color
+                          // se define en el package java.awt. asuma
+                          // que hemos importado la clase.
+                          
+           void setColor(Color newColor) {
+                 // metodo para cambiar el color del dibujo
+              color = newColor; // cambiar el valor de la instancia de la variable
+              redraw(); // redibujar,con el nuevo color
+           }
+           
+           void redraw() {
+                 // metodo para redibujar el objeto
+              ? ? ?  // que comando ponemos?
+           }
+
+           . . .          // mas variables y métodos instanciables
+
+       } // end of class Shape</pre>
+
+<p>Ahora, puede ver el problema con el método <tt>redraw()</tt>. El problema es que cada
+tipo diferente de forma se dibuja diferente. El método <tt>setColor()</tt> puede ser
+llamado para cualquier tipo de forma. Como puede saber el ordenador que tipo de forma debe
+dibujar cuando ejecute <tt>redraw()</tt>?. Informalmente, podemos contestar a la pregunta
+de la siguiente forma: El ordenador ejecuta <font face="m"><tt>redraw()</tt> porque
+averigua por él mismo la forma que tiene que dibujar. Cada objeto dibujo, sabe como hacer
+para redibujarse.</font></p>
+
+<p><font face="m">En la practica, lo que quiere decir es que cada clase de dibujo tiene su
+propio metodo <tt>redraw()</tt>:</font></p>
+
+<pre>       class Rectangle extends Shape {
+          void redraw() {
+             . . .  // instrucciones para dibujar un rectangulo
+          }
+          . . . // mas métodos y variables
+       }
+       class Oval extends Shape {
+          void redraw() {
+             . . .  // instrucciones para dibujar la elipse
+          }
+          . . . // mas métodos y variables
+       }
+       class RoundRect extends Shape {
+          void redraw() {
+             . . .  // instrucciones para dibujar el rectangulo redondo
+          }
+          . . . // mas métodos y variables
+       }</pre>
+
+<p>Si <tt>oneShape</tt> es una variable de tipo <tt>Shape</tt>, puede referirse a
+cualquiera de los tipos <tt>Rectangle</tt>, <tt>Oval</tt>, o <tt>RoundRect</tt>. Cuando el
+programa se va ejecutando, el valor de <tt>oneShape</tt> cambia, pudiéndose referir a los
+distintos tipos de objetos, diferentes cada vez!. Entonces cuando se ejecute la
+instrucción </p>
+<div align="center"><center>
+
+<pre>oneShape.redraw();    </pre>
+</center></div>
+
+<p align="left">el metodo <tt>redraw</tt> que realmente se llamara, será el apropiado al
+tipo de objeto que esta siendo guardado en este momento en <tt>oneShape.</tt>Si de fija en
+el texto del programa <tt>p</tt>uede que no haya forma de decir&nbsp; que forma dibujara
+esta instrucción, dado que depende del valor que tenga <tt>oneShape</tt> cuando se
+ejecute el programa. Y hay mas cosas ciertas. Supongamos que la instrucción esta en un
+bucle que se ejecuta muchas veces. Si el valor de <tt>oneShape</tt>&nbsp; va cambiando
+mientras se ejecuta el bucle, es posible que la misma instrucción &quot;<tt>oneShape.redraw();</tt>&quot;
+llame a deferentes métodos y dibuje distintas formas a medida que se va ejecutando una y
+otra vez.. Decimos entonces que el método <tt>redraw()</tt> es <font color="#808000">polimórfico</font>.
+El polimorfismo es una de las características que mayormente diferencian la programación
+orientada a objetos.</p>
+
+<p align="left">Quizás todo esto seria mas fácil de entender si cambiamos un poco la
+terminología: En la programación orientada a objetos, el llamar a un metodo se le dice a
+menudo enviar un<font color="#808000"> mensaje</font> a un objeto. El objeto responde al
+mensaje ejecutando el método apropiado. La instrucción &quot;<tt>oneShape.redraw();&quot;</tt>
+es el mensaje al objeto referenciado por <tt>oneShape</tt>. Puesto que el objeto sabe que
+tipo de objeto es, también sabe como tienen que responder al mensaje. Desde este punto de
+vista, el ordenador siempre ejecuta&nbsp; &quot;<tt>oneShape.redraw()&quot; </tt>de la
+misma forma: enviando un mensaje<tt>.</tt> La respuesta al mensaje depende naturalmente de
+quien lo recibe. Visto así, los objetos son entes activos que envían y reciben mensajes
+y el Poliformismo es una parte de esta visión, natural e incluso necesario. Poliformismo
+es la posibilidad de que distintos objetos puedan responder al mismo mensaje de diferentes
+formas.<img align="right" src="fig6.gif" tppabs="http://members.nbci.com/elcurso/Capitulo4/fig6.gif" WIDTH="110" HEIGHT="129"></p>
+
+<p align="left">Una de las cosas mas bonitas del Poliformismo, es que permite que el
+código que escribió pueda hacer cosas que no se le habían ocurrido cuando lo escribió.
+Si por alguna razón decido que quiero añadir rectangulos biselados&nbsp; a los tipos de
+formas de mi programa, puedo escribir una nueva subclase, <tt>BeveledRect</tt>, de la
+clase <tt>Shape</tt> y definir en ella el método <tt>redraw()</tt>. Automáticamente, el
+código que había escrito previamente,&nbsp; tal como la instrucción <tt>oneShape.redraw()
+</tt>y la llamada a<tt> redraw() </tt>dentro del método <tt>setColor()</tt> pueden de
+pronto empezar a dibujar rectangulos biselados!.</p>
+
+<p>Volvamos a mirar la clase <tt>Shape</tt>. Incluye un método <tt>redraw()</tt>; Debe
+incluir ese método porque sino, la llamada que se realiza desde el método <tt>setColor()</tt>
+al método <tt>redraw()</tt> seria errónea. Pero, ¿Como podemos definirlo?. La respuesta
+puede sorprenderle: debe quedar en blanco!. De hecho, la clase <tt>Shape</tt> representa
+la idea abstracta de las formas, y no tiene manera de dibujar nada. Solo se pueden dibujar
+las figuras concretas. En realidad, si lo piensa, vera que no tiene ninguna razón para
+construir un objeto tipo <tt>Shape</tt>. Puede tener variables tipo <tt>Shape</tt> pero
+siempre se referirán a objetos pertenecientes a una de las subclases de <tt>Shape</tt>.
+Decimos entonces que <tt>Shape</tt> es una <font color="#808000">clase abstracta</font>.
+Una clase abstracta es aquella que no se usa para construir objetos y que solo sirve de
+base para construir subclases. Una clase abstracta existe <strong>únicamente</strong>
+para expresar las propiedades comunes a todas las subclases.</p>
+
+<p>De forma semejante, podemos decir que el método <tt>redraw()<font face="m"> en la
+clase </font>Shape</tt> es un <font color="#808000">método abstracto</font>, dado que no
+tienen ningún sentido llamarlo, no sirve para nada; cualquier dibujo se efectúa
+realmente por medio de uno de los métodos <tt>redraw()</tt> de alguna de las subclases de
+<tt>Shape</tt>. El método <tt>redraw()</tt> en <tt>Shape</tt> esta porque tiene que
+estar. Pero solo sirve para decirle al ordenador que todas las subclases <tt>Shapes</tt>
+entienden el mensaje <em>redraw</em>. Como método abstracto, existe meramente para
+especificar la interface común de todas las versiones concretas y reales del método <tt>redraw()</tt>
+en las subclases de <tt>Shape</tt>. Esta no es razón para que el método abstracto <tt>redraw()</tt>
+en la clase <tt>Shape</tt> tenga que contener código.</p>
+
+<p>Tanto <tt>Shape</tt> como el método <tt>redraw()</tt> son semánticamente abstractos.
+También puede indicarle, sintácticamente,&nbsp; al ordenador&nbsp; que son abstractos
+añadiendo el modificador &quot;<tt>abstract</tt>&quot; en sus definiciones:</p>
+
+<pre>       abstract class Shape {
+       
+           Color color;   // color de la figura. 
+                                     
+           void setColor(Color newColor) {
+                 // metodo para cambiar el color de la figura
+              color = newColor; //cambia el valor de la instancia
+              redraw(); // redibuja la figura con el nuevo color
+           }
+           
+           abstract void redraw();
+                 // metodo abstracto redefinido en
+                 // las subclases
+           . . .          // mas variables y métodos
+
+       } // end of class Shape</pre>
+
+<p>&nbsp;</p>
+
+<p>Una vez ha hecho esto,&nbsp; es erróneo intentar crear un objeto de tipo <tt>Shape</tt>
+y el ordenador le dará un error si lo hace.</p>
+
+<hr width="50%">
+
+<p>En Java cada clase que declara tiene una superclase. Si no especifica la superclase, se
+toma automáticamente <tt>Object</tt> que es una clase predefinida que forma parte del <em>package</em>
+<tt>java.lang</tt>. (La clase <tt>Object</tt> no tiene superclase). Entonces,</p>
+<div align="center"><center>
+
+<pre>class myClass {. . .  </pre>
+</center></div>
+
+<p align="left">es exactamente igual a </p>
+<div align="center"><center>
+
+<pre>class myClass extends Object { .  .  .  </pre>
+</center></div>
+
+<p align="left">Todas las demás clases son directa o indirectamente subclases de <tt>Object</tt>.
+Esto quiere decir que cualquier objeto que pertenezca a cualquier clase, puede ser
+asignado a una variable tipo <tt>Object</tt>. La clase <tt>Object</tt> representa las
+propiedades mas generales que comparten todos los objetos, de cualquier clase. <tt>Object</tt>
+es la clase mas abstracta de todas!</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="seccion4_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/seccion4_2.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/indice4.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="Seccion4_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/Seccion4_4.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

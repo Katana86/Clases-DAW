@@ -1,0 +1,515 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 2.6</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 2.6: Detalle de expresiones</h3>
+
+<hr>
+
+<p>EL RESTO DE ESTE CAPÍTULO DESCUBRE los detalles de ciertos aspectos de Java que ya se
+han presentado anteriormente. Esta sección se encarga de las expresiones. Recuerde que
+una expresión calcula un valor. El valor puede ser, por ejemplo, asignado a una variable,
+usado como valor de salida en una rutina de salida, o combinado con otros valores en una
+expresión mas compleja. Si el valor es boleano,&nbsp; entonces puede ser usado para
+probar condiciones en bucles <em>while</em> o en instrucciones <em>if</em>. (El valor. en
+algunos casos, puede ser ignorado, si eso es lo que quiere; y es mas normal de lo que
+pueda pensar.)</p>
+
+<p>Lo normal para construir bloques de expresiones, son los literales (como 674, 3,14,
+true, y 'X'), las variables y las llamadas funciones. Recuerde que una función es una
+subrutina que devuelve un valor. Ya ha visto algunos ejemplos de funciones: las rutinas de
+entrada de la clase <em>Console</em>. Java también tiene algunas funciones internas
+matemáticas, para calcular cosas como raíces cuadradas y logaritmos. Las funciones
+matemáticas forman parte de una clase llamada &quot;Math&quot;, por lo que tienen nombres
+compuestos que empiezan por &quot;Math&quot; como <tt>Math.sqrt</tt> para la función de
+raíz cuadrada. Por ejemplo para calcular la raíz cuadrada de x y asignar la respuesta a
+y debería escribir:</p>
+
+<p align="center"><tt>y=Math.sqrt(x);</tt></p>
+
+<p>Aquí hay una lista de las funciones matemáticas mas importantes definidas en la clase
+Math: 
+
+<ul>
+  <li><tt>Math.abs(x)</tt> calcula el valor absoluto de x.</li>
+  <li>Las funciones trigonométricas usuales, <tt>Math.sin(x), Math.cos(x), y Math.tan(x)</tt>.</li>
+  <li>Las funciones trigonométricas inversas arcoseno, arcocoseno y arcotangente que se
+    escriben como <tt>Math.asin(x), Math.acos(x),</tt> y<tt> Math.atan(x).</tt></li>
+  <li>La función exponencial <tt>Math.exp(x)</tt> para calcular el numero e elevado a x, y la
+    función de logaritmo natural <tt>Math.log(x)</tt> para calcular el logaritmo de x en la
+    base e</li>
+  <li><tt>Math.pow(x,y) </tt>para calcular el valor de x elevado a y.</li>
+  <li><tt>Math.round(x)</tt> que redondea x al valor entero mas cercano. (Por ejemplo <tt>Math.round(3.76)</tt>
+    es 4)</li>
+  <li><tt>Math.random()</tt>. Que devuelva un valor aleatorio <tt>double </tt>en el rango<tt>
+    0.0&lt;=Math.random()&lt;1.0.</tt><br>
+    (El ordenador realmente calcula números pseudoaleatorios, pero se pueden considerar
+    aleatorios para muchas aplicaciones)</li>
+</ul>
+
+<p align="left">Para estas funciones, el tipo del argumento -- el valor en el interior del
+paréntesis -- puede ser cualquier tipo numérico. Para muchas de esas funciones, el valor
+calculado por la funciones es de tipo <tt>double</tt> y no el mismo que el tipo del
+argumento. Sin embargo, para <tt>Math.abs(x)</tt> el valor devuelto debe ser entero, si x
+es entero.(esto significa que <tt>Math.sqrt(9)</tt> da el valor <tt>double 3.0</tt>, pero <tt>Math.abs(9)</tt>
+da el valor<tt> int 9</tt>.). Observe que <tt>Math.random() </tt>no tiene ningún
+argumento. Sin embargo, necesita poner los paréntesis aun cuando no haya nada entre
+ellos. Los paréntesis, le permiten al ordenador diferenciar entre subrutinas y variables.</p>
+
+<hr width="50%">
+
+<p align="left">Los literales, las variables y las llamadas a funciones, son expresiones
+simples. Las expresiones mas complejas deben ser generadas utilizando <font color="#808000">operadores</font> para combinar la expresiones simples,. El los operadores
+se incluyen + para sumar dos números, &lt; para comparar dos valores y así
+sucesivamente. Cuando en una expresión aparecen varios operadores, hay una cuestión de
+prioridad para determinar que operadores se agrupan para la evaluación. Por ejemplo, en
+la expresión &quot;A+B*C&quot;, &quot;B*C&quot; se calcula primero y el resultado se le
+añade a A. Decimos que la multiplicación (*) tienen mayor prioridad que la suma (+). Si
+la prioridad por defecto, no es lo que quiere, puede emplear los paréntesis para
+explicitar el orden en que lo quiere agrupar. Por ejemplo, puede usar &quot;(A+B)*C&quot;
+si quiere sumar A a B y multiplicar el resultado por C.</p>
+
+<p align="left">El resto de la seccion, define los detalles de los operadores en Java. El
+numero de operadores en Java, es bastante grande y aquí no voy a presentarlos todos. Los
+mas importantes, aparecerán aquí,&nbsp; otros pocos, se verán en capítulos posteriores
+cuando se conviertan en importantes.</p>
+
+<hr width="50%">
+
+<h3 align="left">Operadores aritméticos</h3>
+
+<p align="left">Los operadores aritméticos, incluyen sumar, restar, multiplicar, y
+dividir. Se indican con +, -, *, /. Estas operaciones, se pueden realizar con valores de
+tipo numérico:&nbsp; <tt>byte</tt>, <tt>short</tt>, <tt>int</tt>, <tt>long</tt>, <tt>float</tt>,
+o <tt>double.</tt> Cuando el ordenador realiza una de estas operaciones, los dos valores
+que combina ha de ser del mismo tipo. Si su programa le dice al ordenador que combine dos
+valores de diferente tipo, el ordenador convertirá uno de los valores al tipo del otro.
+Por ejemplo, para calcular 37.4+10, el ordenador convertirá el entero 10 en numero real
+10.0 y entonces calculara 37.4+10.0. (La representación interna del ordenador para 10 y
+10.0, es muy diferente aunque las personas piensen que representa el mismo
+numero).Normalmente, no se debe preocupar sobre la conversión de tipos, porque el
+ordenador lo realiza automáticamente.</p>
+
+<p align="left">Cuando dos valores numéricos se combinan (después de realizar la
+conversión de tipo si es necesaria), la respuesta será del mismo tipo. Si multiplica dos<tt>
+ints</tt>, obtendrá un <tt>int</tt>; si&nbsp; multiplica dos <tt>doubles</tt>, obtendrá
+un <tt>double</tt>. Esto es lo que espera, pero tiene que ser mas cuidadoso cuando emplee
+el operador división /. Cuando divide dos enteros, la respuesta siempre es otro entero.
+si en cociente tiene parte decimal, se descarta. Por ejemplo, el valor de 7/2 es 3, y no
+3.5. Si N es una variable entera (int), N/100 es entero y 1/N es siempre igual a cero!.
+Esto es normalmente una fuente de errores en programación. Puede forzar al
+ordenador&nbsp; a que trabaje con números reales en la respuesta, haciendo que uno de los
+operandos sea real. Para calcular 1.0/N, por ejemplo, el ordenador convierte a N a numero
+real para igualar el tipo al de 1.0, con lo que obtiene como respuesta un numero real.</p>
+
+<p align="left">Java también dispone de un operador para calcular el resto cuando un
+entero se divide por otro. Este operador se indica por %, Si A y B son enteros, entonces
+A%B representa el resto de la división A/B, Por ejemplo, 7%2 es 1, 34577%100 es 77 y 50%8
+es 2. En la sección anterior, empleamos N%2 para calcular el resto de N dividido por 2,
+El resto será 0 si N es par y será 1 si es impar.</p>
+
+<p align="left">Finalmente, puede necesitar el operador <font color="#808000">unitario
+menos</font>, que hace negativo a un numero.Por ejemplo, -X tiene el mismo valor que
+(-1)*X. Por integridad, Java también tiene el operador unitario mas, como +X, aunque
+realmente no hace nada.</p>
+
+<hr width="50%">
+
+<h3>Incremento y Decremento</h3>
+
+<p>Encontrara que añadir 1 a una variable es una operación extremadamente común en
+programación, Restar uno de una variable, es también algo bastante común. En el ejemplo
+de la sección anterior, vio las instrucciones:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <pre><tt>years = years + 1;
+counter = counter+1;</tt></pre>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p align="left">La operación para sumar 1 a una variable llamada x puede ser realizada
+escribiendo x++ ( o si o prefiere, ++x). Esto cambia el valor de x teniendo el mismo
+efecto que escribir &quot;x=x+1&quot;. Las dos instrucciones anteriores, pueden escribirse
+como</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <div align="left"><pre><tt>years++;
+counter++;</tt></pre>
+          </div>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p align="left">De forma similar, puede escribir x-- ( o --x) para restar 1 a x. Sumar 1 a
+una variables se llama <font color="#808000">incrementar </font>la variable, y restar 1 se
+llama <font color="#808000">decrementa</font>r. El operador ++ y -- son llamados operador
+incremento y decremento respectivamente.</p>
+
+<p align="left">Normalmente cuando usa ++ o -- escribe instrucciones como &quot;x++,&quot;
+o &quot;x--&quot;. Estas instrucciones son comandos para cambiar el valor de x, Sin
+embargo, es correcto también el usar x++, ++x, x-- o --x en expresiones, o como parte de
+expresiones mas grandes. Esto es, puede escribir algo semejante a :</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <div align="left"><pre><tt>y = x++;
+y = ++x;
+console.putln(--x);
+z=(++x) * (y--);</tt></pre>
+          </div>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p align="left">La instrucción &quot;y = x++&quot; asigna el valor de x a y, y después
+suma 1 al valor de x. El valor asignado a y es el valor de la expresión x++ que se define
+como el valor <strong>antiguo </strong>de x, antes de sumarle 1. Esto es, si el valor de x
+es 6, la instrucción &quot;y = x++&quot; cambia el valor de x a 7 y cambia el valor de y
+a 6. Por otra parte, el valor de ++x se define como el nuevo valor de x, después de sumar
+1. Esto es si x vale 6, la instrucción &quot;y = ++x&quot; cambia el valor de ambos, x e
+y a 7, El operador decremento, trabaja de forma semejante.</p>
+
+<p align="left">Esto puede ser confuso. Mi consejo es: No se confundan. Usen ++ y -- solo
+en operaciones sueltas, y no en expresiones.</p>
+
+<hr width="50%">
+
+<h3>Operadores relacionales</h3>
+
+<p>Java tiene variables boleanas y expresiones de valor boleano que pueden ser usadas para
+expresar condiciones que pueden ser verdaderas o falsas. Una manera de crear una
+expresión de valor boleano, es comparar dos valores usando un operador <font color="#808000">relacional</font>. Los operadores relacionales pueden ser usados para
+probar si dos valores son iguales, si uno es mayor que otro, etcétera. Los operadores
+operacionales en Java son: ==, !=, &lt;, &gt;, &lt;=, y&nbsp; &gt;=.&nbsp; EL significado
+de los operadores es:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <pre><tt>A==B	Es A &quot;igual a &quot; B?
+A!=B	Es A &quot;no igual a&quot; B?
+A&lt;B	Es A &quot;menor que &quot; B?
+A&gt;B	Es A &quot;mayor que &quot; B?
+A&lt;=B	Es A &quot;menor o igual a&quot; B?
+A&gt;=B	Es A &quot;mayor o igual a&quot; B?</tt></pre>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Estos operadores se pueden emplear para comparar valores numéricos de cualquier tipo.
+&nbsp; También pueden ser usados para comparar valores tipo char. Para caracteres, &lt; y
+&gt; se definen de acuerdo al valor numérico del carácter en Unicode. (Puede no ser
+siempre lo que quiere. El orden alfabético no es el mismo porque las mayúsculas van
+antes que todas las minúsculas.)</p>
+
+<p>Cuando usamos una expresión boleana, debe recordar&nbsp; que en lo que concierne al
+ordenador, los valores boleanos no son nada especial. Puede emplear valores boleanos en
+instrucciones <em>while</em> y en instrucciones <em>if</em>, naturalmente, pero también
+tendrá que asignar las variables boleanas igual que asigna valores numéricos a las
+variables numéricas. Las variables boleanas, pueden usarse también en expresiones
+boleanas. Por ejemplo</p>
+
+<blockquote>
+  <blockquote>
+    <pre>console.put(&quot;Entre un numero positivo: &quot;);
+int N = getInt();
+boolean badInput = (N &lt;= 0);
+while (badInput) {
+ console.put(&quot;He dicho un número POSITIVO: &quot;);
+ N = getInt();
+ badInput = (N &lt;= 0);
+ }</pre>
+  </blockquote>
+</blockquote>
+
+<p align="left">Usar aquí una variable boleana, es un poco tonto, pero si la condición
+que quiere probar es muy complicada, puede querer hacer sencillas comprobaciones e ir
+almacenando el resultado en variables boleanas.</p>
+
+<p align="left">A propósito, los operadores == y != pueden ser usados para comparar
+valores boleanos. Es ocasionalmente útil. Por ejemplo, puede imaginarse que hace esto?:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p align="left"><tt>boolean sameSign = ((x &gt; 0) == (y &gt; 0));</tt></p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<hr width="50%">
+
+<h3>Operadores Boleanos.</h3>
+
+<p>En castellano, las condiciones complejas se pueden formar usando las palabras
+&quot;y&quot;, &quot;o&quot;, y &quot;no&quot;. Por ejemplo, &quot; Si hay un examen y no
+estudia...&quot;. &quot;y&quot;,&quot;o&quot;, y &quot;no&quot; son operadores boleanos y
+en Java también existen.</p>
+
+<p>En Java el operador boleano &quot;y&quot; se representa como $$. El operador &amp;&amp;
+se emplea para combinar dos valores boleanos. El resultado es un valor boleano <tt>true</tt>
+si los dos valores que se combinan son <tt>true</tt>, y el resultado es <tt>false</tt> si
+cualquiera de ellos es<tt> false</tt>. Por ejemplo, &quot;(X==0)&amp;&amp;(y==0)&quot; es <tt>true</tt>
+si y solo si x es igual a cero e y es igual a cero.</p>
+
+<p>El operador boleano &quot;o&quot; se representa por ||.(Esto se supone que es dos
+caracteres de línea vertical). &quot;A||B&quot; es cierto si A es <tt>true</tt> o B es <tt>true</tt>,
+o si ambos son <tt>true</tt>. &quot;A||B&quot; es <tt>false</tt> solo si ambos,A y B son <tt>false</tt>.</p>
+
+<p>Los operadores &amp;&amp; y ||&nbsp; se dice que son versiones de &nbsp;
+&quot;corto-circuito&quot; de los operadores boleanos. Esto es porque el segundo operador
+de &amp;&amp; o || no se tiene que evaluar siempre. Considere la comprobación:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <tt><p>if ( (A != 0) &amp;&amp; (B/A &gt; 1) )</tt></p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Suponga que el valor de A es cero. En este caso, la división B/A es ilegal, dado que
+una división por cero no esta permitida. Sin embargo, el ordenador no llegara a realizar
+la división, dado que cuando el ordenador evalúa (A!=0) y encuentra el resultado <tt>false</tt>,
+ya sabe que (A!=0)&amp;&amp; y cualquier cosa, también será <tt>false</tt>. De esa
+manera no es necesario tomarse la molestia de evaluar el segundo operador, (B/A&gt;1). La
+evaluación se ha hecho en circuito-corto, y la división por cero se ha evitado. Sin el
+circuito corto, habría tenido un error de división por cero.( Esto puede parecer un
+tecnicismo, y lo es. Pero a veces&nbsp; puede hacer la vida del programador un poco mas
+fácil . Para ser aun un poco mas técnicos: Realmente hay una versión de &amp;&amp; y ||
+que no es de circuito corto, y se escribe como &amp; y | .No los use a menos que tenga una
+particular razón para hacerlo.)</p>
+
+<p>El operador boleano &quot;no&quot; en un operador unitario. En Java, se indica con ! y
+se escribe delante de un operando. Por ejemplo si test en una variable boleana, entonces</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <tt><p>test = !test;</tt></p>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>invertirá el valor de test, cambiandolo de <tt>true</tt> a <tt>false</tt> o de <tt>false</tt>
+a <tt>true</tt>. Lo puede usar</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <p><tt>if ( !( (A == 0) &amp;&amp; (B == 0) ) )</tt></p>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>para examinar si &quot;no ocurre que A sea igual a cero y B sea igual a cero&quot;</p>
+
+<hr width="50%">
+
+<h3>Operadores condicionales</h3>
+
+<p>Cualquier buen lenguaje de programación, tiene pequeñas características ingeniosas,
+que no son realmente necesarias pero que le hacen sentirse a uno tranquilo cuando las usa.
+Java tiene el operador condicional. Es un operador ternario, esto es, tiene tres operandos
+--y dividido en dos partes, ? y :, que deben emplearse conjuntamente. Esta es su forma</p>
+<font color="#009000"><b>
+
+<p align="center">expresion-boleana</b></font> ? <font color="#009000"><b>expresión-1</b></font>
+: <font color="#009000"><b>expresión-2</b></font></p>
+
+<p align="left">El ordenador evalúa la expresión boleana. Si el valor es true, evalúa
+la <font color="#009000"><b>expresión-1</b></font>, si no, evalúa la <font color="#009000"><b>expresión-2</b></font>. Por ejemplo</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <tt><p>N = (N % 2 == 0) ? (N/2) : (3*N+1);</tt></p>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p align="left">Tiene el mismo efecto que la instrucción if:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <p align="left">if (N % 2 == 0)<br>
+          &nbsp;&nbsp;&nbsp; N = N/2;<br>
+          else<br>
+          &nbsp;&nbsp;&nbsp; N = 3*N+1;</p>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<hr width="50%">
+
+<h3>Operadores de asignación</h3>
+
+<p>Esta bastante familiarizado con las instrucciones de asignación, que usan el &nbsp;
+operador = para asignar el valor de una expresión a una variable. De hecho, = es
+realmente un operador y una asignación, puede ser una expresión, o formar parte de otra
+expresión mas compleja. El valor de una asignación como A=B es lo mismo que el valor
+asignado a A, Entonces, si quiere asignar el valor de B a A y comprobar al mismo tiempo si
+el valor es cero, puede decir:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <tt><p>if ( (A=B) == 0 )</tt></p>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Usualmente le diré,<strong>no piense hacer algo </strong>así</p>
+
+<p>En general el tipo de la expresión que se encuentra a la derecha de la instrucción de
+asignación, debe ser el mismo tipo de la variable que se encuentra a la izquierda. Sin
+embargo, en algunos casos, el ordenador puede convertir automáticamente&nbsp; el tipo del
+valor calculado por la expresión para igualarlo al tipo de la variable. Considere la
+lista de los tipos numéricos:<tt>byte</tt>, <tt>short</tt>, <tt>int</tt>, <tt>long</tt>, <tt>float</tt>,
+<tt>double</tt>. El valor de un tipo que esta&nbsp; antes en la lista, puede ser
+convertido automáticamente a otro que este después. Por ejemplo:</p>
+
+<blockquote>
+  <blockquote>
+    <pre>
+int A = 17;
+double X = A;  // OK; A se convierte a double
+short B = A;   // error; no hay conversión
+              // automática de int a short
+</pre>
+  </blockquote>
+</blockquote>
+
+<p>La idea de la conversión es que solo se hace automáticamente cuando no es necesario
+cambiar la semántica del valor. Cualquier <tt>int</tt> puede ser convertido a<tt> double</tt>
+con el mismo valor numérico. Sin embargo, Hay valores<tt> int </tt>que están fuera del
+valor correcto de los <tt>short</tt>. Es sencillo, no hay forma de representar el valor
+100000 en un <tt>short</tt>.</p>
+
+<p>En algunos casos&nbsp; puede hacer&nbsp; conversiones, que no se hubieran hecho de
+forma automática. Para ello, deberá utilizar algo llamado <font color="#808000">tipo
+forma (type cast)</font>. Lo puede indicar poniendo el tipo entre paréntesis delante de
+la variable que quiere convertir. Por ejemplo,</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>int A = 17;
+short B = (short)A; // OK; se utiliza un tipo forma
+		    // para cambiar el valor 
+		    // de int a short</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Esto lo puede utilizar para cambiar cualquier tipo numérico en otro distinto. Pero sea
+consciente que el valor del numero puede cambiar al hacer estas conversiones.Por ejemplo
+en<tt> int</tt> 1000000, al pasarlo a <tt>short</tt>, queda como 34464. Este numero se
+obtiene de tomar los 4 bytes del <tt>int</tt> 100000 y despreciar 2 para obtener el <tt>short</tt>.
+(Como un <tt>short</tt> solo tiene 2 bytes, no queda mas remedio que perder esa
+información)</p>
+
+<p>También puede utilizar el tipo forma entre variables <tt>char</tt> y numéricas. El
+valor numérico de un <tt>char</tt>, es el valor del código en Unicode. Por ejemplo (<tt>char</tt>)97
+es 'a' y <tt>(int</tt>)'+' es 43</p>
+
+<p>Java tiene algunas variaciones de los operadores que sirven para evitar teclear. Por
+ejemplo &quot;A+=B&quot; es lo mismo que <tt>&quot;A=A+B&quot;</tt>. De igual forma
+funcionan los operadores <tt>-=,*=,/= y %=</tt></p>
+
+<h3>Reglas de prioridad</h3>
+
+<p>Si en una expresión emplea varios operadores, y no utiliza paréntesis para indicar el
+orden de evaluación, tendrá que tener en cuenta las prioridades entre las
+evaluaciones.(Es mucho mas sencillo y mas claro, el emplear con toda libertad los
+paréntesis)</p>
+
+<p>A continuación, presentamos la lista de los operadores explicados en esta sección,
+ordenador de mayor a menor prioridad.(se ejecutan primero los de mayor prioridad). </p>
+
+<pre>     Operadores unitarios:    	++, --, !,unitarios -  +,tipo forma
+     Multiplicación y división:	*,  /,  %
+     Suma y resta :	        +,  -
+     Operadores relacionales:   &lt;,  &gt;,  &lt;=,  &gt;=
+     Igual y desigual:		==,  !=
+     Boleano y:                 &amp;&amp;
+     Boleano o:                 ||
+     Operador condicional:      ?:
+     Operadores de asignación:  =  +=  -=  *=  /=  %=</pre>
+
+<p>&nbsp;</p>
+
+<p>Los operadores que aparecen en la misma línea, tienen la misma prioridad. Cuando
+aparecen juntos en la misma línea, los operadores unitarios y los de asignación se
+evalúan de derecha a izquierda, mientras que el resto, se evalúa de izquierda a derecha.
+Por ejemplo. A*B/C es lo mismo que (A*B)/C, y A=B=C es lo mismo que A=(B=C) (Se le ocurre
+para que podría emplearse la expresión A=B=C?)</p>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="Seccion2_5.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Seccion2_5.html"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo2/indice2.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="Sección2_7.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_7.html"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="65" HEIGHT="65"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,232 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 4.5</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 4.5: Programación orientada a objetos.</h3>
+
+<hr>
+
+<p>HAY VARIAS MANERAS en la que los conceptos de la programación dedicada a objetos
+pueden aplicarse al proceso de diseño y escritura del programa. La mayor parte de ellas
+son las técnicas de <font color="#808000">análisis y diseño orientados a objetos</font>
+que aplica metodológicas orientadas a objetos&nbsp; a lo largo de la fase inicial del
+diseño, para hacer mas fácil el desarrollo del programa. Para ayudar a escribir
+programas, OOP hace posible el producir componentes generalizados de software que se
+pueden emplear en multitud de programas y proyectos. Mas generalmente, la herencia hace
+mas fácil a los programadores el reutilizar antiguos trabajos para construir nuevas
+clases</p>
+
+<hr width="50%">
+
+<h3>Análisis y diseño orientado a objetos</h3>
+
+<p>Un gran proyecto de programación pasara por una gran cantidad de etapas, empezando con
+la <font color="#808000">especificación</font> del problema que ha de resolver, seguido
+por el <font color="#808000">análisis</font> del problema y el <font color="#808000">diseño</font>
+del programa que lo resolverá.Solo entonces llegara la <font color="#808000">codificación</font>,
+en donde el diseño del programa se expresara en algún lenguaje de programación real.
+Esto viene seguido por las <font color="#808000">pruebas</font> y la <font color="#808000">depuración</font>
+del programa. Posteriormente llega un largo periodo de <font color="#808000">mantenimiento</font>,
+donde se van resolviendo cualquier problema nuevo que pueda aparecer en el programa y
+modificándolo para irlo adaptando a nuevos requerimientos. Todas estas etapas forman
+parte de un conjunto que se ha dado en llamar <font color="#808000">ciclo de vida del
+programa</font>. ( En el mundo real esta secuencia ideal de etapas consecutivas, no es
+algo que se encuentre fácilmente. Durante la fase de análisis a menudo se descubre que
+las especificaciones están incompletas o son inconsistentes. Un problema que aparece
+durante la fase de pruebas puede requerir como mínimo un pequeño retorno a la etapa de
+codificación. Y si es lo bastante serio, puede enviarnos nuevamente a la de diseño.)</p>
+
+<p>Los grandes y complejos proyectos de programación, solo pueden tener éxito si se
+realiza una lenta y cuidadosa aproximación al problema durante todas las etapas de su
+ciclo de vida. La aproximación sistemática a la programación empleando las leyes
+aceptadas sobre diseño correcto, se llama ingeniería de software. La ingeniería de
+software intenta construir programas eficientes por medio de la verificación previa de
+las especificaciones, y haciendo mas fácil la modificación si fuera necesario. Existen
+un gran rango de metodológicas que pueden emplearse para ayudarle a sistematizar el
+diseño de programas. (La mayoría de esas metodológicas están relacionadas con el
+dibujar pequeñas cajas que representan componentes del programa, con flechas etiquetadas
+que representan relaciones con otras cajas.)</p>
+
+<p>Hasta ahora,&nbsp; hemos hablado de lo que es importante para el desarrollo del
+programa en la etapa de codificación, en un lenguaje de programación orientado a
+objetos. Pero también existe metodología orientada a objetos para el análisis y el
+diseño. La pregunta aquí es: ¿Como se puede descubrir o inventar la estructura global
+del programa?. Como ejemplo a la aproximación mas simple al análisis y diseño
+orientados a objeto, tenga en cuenta este consejo:Escriba la descripción del problema.
+Subraye todos los sustantivos que encuentre. Los sustantivos deben considerarse posibles
+candidatos para convertirse en clases en el diseño del programa.. De forma similar,
+subraye los verbos. Estos serán candidatos a métodos. Este es su punto de arranque.
+Posteriores análisis pueden convencerle de la necesidad de mas clases y métodos, y
+pueden revelarle como organizar las clases jerárquicamente para aprovechar las
+similitudes entre clases.</p>
+
+<p>Puede que lo haya expuesto de una forma un poco simple, pero la idea es clara. Analizar
+el problema para descubrir los conceptos implicados, y crear clases que representen estos
+conceptos. El diseño nace del propio problema, y puede finalizar con un programa en cuya
+estructura se refleja la estructura del problema en la vida real.</p>
+
+<hr width="50%">
+
+<h3>Componentes comunes de programas</h3>
+
+<p>Cada programador produce una cantidad importante de técnicas y experiencias expresadas
+como pequeños trozos de código que pueden reutilizarse en nuevos programas por el
+conocido método de cortar y pegar. El código antiguo se copia en el nuevo programa y
+puede ser editado y personalizado si fuera necesario. El problema es que esta edición es
+una posible fuente de errores y de consumo de tiempo y el conjunto de la aventura depende
+de la habilidad de un programador de encontrar el trozo de código apropiado que puede
+estar entre los proyectos desarrollados el ultimo año. (A nivel de empresa, se quiere
+ahorrar dinero por medio de no tener que reinventar la rueda en cada nuevo proyecto,
+precisamente el seguimiento de donde paran esas viejas ruedas es una de las mayores
+tareas.)</p>
+
+<p>Un diseño correcto de las clases permite que los componentes de programas puedan ser
+reutilizados sin necesidad de editarlos. Si necesita personalizar la clase, se puede crear
+una subclase haciendo en ella&nbsp; las adiciones o modificaciones necesarias sin
+necesidad de hacer ningún cambio en la clase original. Esto es lo que se tiene que hacer
+cuando el programador no tiene accedo al código fuente original de la clase y no sabe
+nada acerca de los detalles internos, de su implementacion oculta.</p>
+
+<p>Muchas clases están diseñadas específicamente como bases para construir subclases.
+&nbsp; Por ejemplo el paquete (<em>package</em>) <tt>java.awt</tt> incluye una clase
+llamada <tt>Frame</tt> Un objeto de esta clase representa una ventana de la pantalla con
+interface gráfica de usuario. Un objeto <tt>Frame</tt> tiene la mayoría de
+comportamientos asociados a Windows: Por ejemplo, puede ser redimensionado por
+arrastre.Pero esta totalmente vacío. Una ventana <tt>Frame</tt> está completamente en
+blanco. Es el programador que quiere la ventana, que debe crear una subclase de <tt>Frame</tt>
+y regrabar algunos métodos para poder darle contenido a la ventana.La mayoría del
+comportamiento de esta ventana se hereda de <tt>Frame</tt> y no necesita ser reprogramado.</p>
+
+<hr width="50%">
+
+<p><img align="right" src="fig8.gif" tppabs="http://members.nbci.com/elcurso/Capitulo4/fig8.gif" width="200" height="148" style="margin-top: 0px">Vamos
+a ver , con un trabajo previo, como podemos construir una clase. Suponga que quiero
+trabajar con un mosaico de cuadrados de colores, donde los colores están ordenados
+simétricamente como muestra la ilustración de la derecha. Cada vez que se colorea un
+cuadrado, el cuadrado correspondiente por reflexión vertical y horizontal respecto al
+centro del mosaico, se debe colorear de la misma forma. Los cuatro cuadrados rojos del
+dibujo, por ejemplo se crean como cuadrados simétricos, lo mismo ocurre con los púrpura
+y con los verdes.(El cuadrado azul esta en el centro del mosaico, por lo que su reflexión
+no puede producir otro ya que es el mismo.)</p>
+
+<p>¿Como puedo implementar una rejilla de cuadrados?. Lo podría hacer empezando desde
+cero, pero en la <a href="Seccion3_6.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/Seccion3_6.html">sección 3.6</a> explique la clase
+<tt>MosaicWindow</tt> que implementa una rejilla de cuadrados de colores aunque no
+necesariamente simétricos. Si esta clase está disponible, quizás pueda construir una
+clase llamada <tt>SymmetricMosaic</tt> que siempre presente&nbsp; patrones simétricos de
+cuadrados de colores. De hecho la idea es simple:<tt>SymmetricMosaic</tt> es exactamente
+igual a <tt>MosaicWindow</tt> excepto que siempre que se establece un cuadrado de color,
+establecemos automáticamente el color de los cuadrados situados en los lugares
+simétricos. Requerirá algo de matemática para calcular los lugares concretos de los
+cuadrados reflejos teniendo en cuenta que la filas se numeran de 0 a <tt>ROWS-1</tt> y las
+columnas desde 0 1 <tt>COLUMNS-1</tt>. (Si quiere puede verificar las formulas que empleo)</p>
+
+<p>Ahora, la clase <tt>MosaicWindow</tt> ya tiene un método llamado <tt>setColor()</tt>,
+para establecer el color de un cuadrado concreto. Deberemos regrabar este método con otro
+que ponga el mismo color también en los lugares simétricos. Para poner el color de cada
+cuadrado, necesitare llamar al método <tt>setColor()</tt> desde la superclase <tt>MosaicWindow</tt>.
+Para hacerlo, usare la variable especial <tt>super</tt> descrita en la <a href="Seccion4_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/Seccion4_4.htm">sección anterior</a>. Entonces, la clase <tt>SymetricMosaic</tt>
+puede quedar definida así:</p>
+
+<p>&nbsp;</p>
+
+<pre>        class SymmetricMosaic extends MosaicWindow {
+            void setColor(int R, int C, double r, double g, double b) {
+                  // establece el color del cuadrado en la fila R,
+		  // columna C al color con los componentes rojo, azul
+                  // y verde definidos por r,g,y b. También cambia 
+                  // los colores de los cuadrados obtenidos por 
+                  // la reflexión vertical y horizontal.
+                super.setColor(R, C, r, g, b);
+                super.setColor(R, COLUMNS - 1 - C, r, g, b);
+                super.setColor(ROWS - R - 1, C, r, g, b);
+                super.setColor(ROWS - R - 1, COLUMNS - 1 - C, r, g, b);
+            }
+        }</pre>
+
+<p>Esto deberia bastar. En <tt>SymmetricMosaic</tt> los cuadrados se colorean en grupo
+para conservar la simetría. Esto asumiendo, por cierto, que <tt>ROWS </tt>y <tt>COLUMNS</tt>
+son instancias de variables pertenecientes a <tt>MosaicWindow</tt> que definen el numero
+de filas y columnas del mosaico. Asumiendo también que tanto <tt>ROWS</tt> como <tt>COLUMNS</tt>
+no se declararon en <tt>MosaicWindow</tt> como <tt>private</tt> en cuyo caso no seria
+correcto su uso aquí. Mas probablemente debieron ser declaradas como <tt>protected</tt>
+para hacerlas accesibles a las subclases de <tt>MosaicWindow</tt>.</p>
+
+<p>Todo esto deberia ser así, pero vale la pena observar que cuando realmente lo quiero
+emplear, me doy cuenta que no puedo hacer ningún objeto del tipo <tt>SymmetricMosaic</tt>!.
+El problema es que <tt>MosaicWindow</tt> tiene un constructor,</p>
+<div align="center"><center>
+
+<pre>MosaicWindow(int ROWS, int COLUMNS)  </pre>
+</center></div>
+
+<p align="left">El constructor especifica el numero de filas y columnas que se desean para
+el mosaico. El problema esta en que cada constructor en la subclase <tt>SymmetricMosaic</tt>
+debe llamar al constructor de la superclase.&nbsp; Entonces voy a tener que hacer en la
+subclase un sencillo constructor que llame al constructor de la superclase. En la <a href="Seccion4_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/Seccion4_4.htm">sección anterior</a> vimos las explicaciones sobre constructores en
+las subclases.(Todo esto es un tecnicismo que se hubiera podido evitar si se hubiera
+diseñado Java un poco mejor en este aspecto) Aquí tenemos completa la versión correcta
+de la clase <tt>SymmetricMosaic</tt>:</p>
+
+<p>&nbsp;</p>
+
+<pre>        class SymmetricMosaic extends MosaicWindow {
+            SymmetricMosaic(int ROWS, int COLUMNS){  // constructor
+               super(ROWS, COLUMNS); // llama al constructor de la superclase
+            }
+            void setColor(int R, int C, double r, double g, double b) {
+                super.setColor(R, C, r, g, b);
+                super.setColor(R, COLUMNS - 1 - C, r, g, b);
+                super.setColor(ROWS - R - 1, C, r, g, b);
+                super.setColor(ROWS - R - 1, COLUMNS - 1 - C, r, g, b);
+            }
+        }</pre>
+
+<p>En la <a href="Seccion3_6.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/Seccion3_6.html">sección 3.6</a> usé la clase <tt>MosaicWindow
+</tt>en un programa que presentaba una &quot;alteración&quot; errante vagando de forma
+aleatoria sobre un mosaico, cambiando los colores por donde pasaba. Es importante observar
+que podemos modificar el programa para emplear el mosaico simétrico cambiando únicamente
+la línea</p>
+
+<p align="center"><tt>MosaicWindow mosaic = new MosaicWindow(ROWS,COLUMNS);</tt></p>
+
+<p align="left">por</p>
+
+<p align="center"><tt>MosaicWindow mosaic = new <b>SymmetricMosaic</b>(ROWS,COLUMNS);</tt></p>
+
+<p align="left">Todas las llamadas que se hacían a <tt>mosaic.setColor()</tt> &nbsp;
+cambiaran el color de forma simétrica a cuatro cuadrados. (De esta forma, después de ver
+el resultado,&nbsp; me doy cuenta que el ojo no es capaz de detectar la simetría
+basándose únicamente en el cambio de colores por lo que pienso que se vera mejor si
+empiezo sobre un fondo blanco, para que se vea como se va construyendo el mosaico con
+cuadrados simétricos:)</p>
+
+<p>&nbsp;</p>
+
+<p align="center">
+<applet code="SymmetricMosaicWalk.class" tppabs="http://members.nbci.com/elcurso/Capitulo4/SymmetricMosaicWalk.class" height="211" width="211">
+  <param name="columns" value="21">
+  <param name="steps" value="250">
+  <param name="rows" value="21">
+</applet>
+</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="tppmsgs/msgs0.htm#79" tppabs="http://members.nbci.com/elcurso/Capitulo4/seccion4_4.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/indice4.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="test4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo4/test4.htm"><img src="Diploma.jpg" tppabs="http://members.nbci.com/elcurso/images/Diploma.jpg" width="68" height="79" alt="Test" border="0"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

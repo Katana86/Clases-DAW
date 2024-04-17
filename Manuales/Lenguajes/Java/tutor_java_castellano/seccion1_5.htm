@@ -1,0 +1,170 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccon 1.5</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="keywords" content="formacion, Java, gratis, programacion, internet, curso">
+<meta name="description" content="Curso de programacion en lenguaje Java. Principios de los ordenadores, bases de la programacion, ideas generales sobre internet, protocolos de comunicacion, bases del lenguaje java, programacion avanzada en Java.">
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<meta name="distribution" content="global">
+<meta name="resource-type" content="document">
+<meta name="robots" content="all">
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 1.5:Objetos y programación orientada a objetos</h3>
+
+<hr>
+
+<p><big>Los programas deben ser diseñados</big>. No basta sentarse ante el ordenador y
+empezar a escribir un complejo programa. La disciplina llamada ingeniería del software
+esta relacionada con la correcta construcción, trabajo y claridad de los programas. El
+ingeniero de software, acostumbra a emplear probados métodos para analizar el problema a
+resolver y para diseñar el programa que resuelva el problema.</p>
+
+<p>Durante la década de 1970 y hasta bastante avanzados los 80,la ingeniería de
+software, estableció la <font color="#808000">programación estructurada</font>. La
+programación estructurada aprovecha un diseño de programa basado en el siguiente
+principio: Para resolver un gran problema, partir el problema en varias partes y trabajar
+con cada parte separadamente; para resolver cada parte, tratarla como si fuera un nuevo
+problema desmontándolo en pequeños problemas; al final, se encuentra la forma de
+resolver el problema directamente, sin necesitar mas descomposiciones.Esta metodología es
+llamada<font color="#808000"> programación top-down</font></p>
+
+<p>El principio de la programación Top-down, no es erróneo, y a menudo es muy útil como
+aproximación a la resolución del problema.Sin embargo, es incompleto.Por una cosa, se
+dedica casi por completo a la generación de las instrucciones necesarias para resolver el
+problema. Pero con el paso del tiempo, la gente se da cuenta que diseñar las estructura
+de datos para el programa, puede ser mas importante que el diseño de las subrutinas y de
+las estructuras de control. La programación Top-down, no toma adecuadamente en
+consideración, los datos que va a manipular el programa.</p>
+
+<p>Otro de los problemas de la aplicación estricta de la programación Top-down,&nbsp; es
+que hace muy difícil el reutilizar el trabajo hecho, en otro proyecto. Al empezar con un
+problema particular e irlo subdividiendo en las partes convenientes, la programación
+Top-down, tiende a producir diseños únicos para ese problema. Es muy difícil que pueda
+utilizar un trozo del programa para utilizarlo en un nuevo proyecto, por lo menos si un
+numero excesivo de modificaciones. Producir programas de gran calidad es caro y difícil,
+tanto el programador como la gente que lo emplea tiene que aspirar siempre a poder
+reutilizar el trabajo realizado.</p>
+
+<hr width="50%">
+
+<p>Así, en la practica, el diseño top-down se combina a menudo con el <font color="#808000">diseño botton-up</font>. Con el diseño botton-up el sistema es empezar
+por el final, sabiendo ya como resolver el problema (y que componentes reutilizables tiene
+ya a su disposición). Desde allí, puede ir trabajando hacia arriba, hasta la solución
+del problema principal.</p>
+
+<p>Los componentes reutilizables, deben de ser tan &quot;modulares&quot; como sea posible.
+Un modulo es un componente de un sistema mayor, que interactua con el resto del sistema de
+una forma simple, perfectamente definida, por medio de mensajes. La idea es que un modulo
+pueda ser conectado a un sistema. Los detalles de lo que hace internamente el modulo no es
+importante al conjunto del sistema, mientras que el modulo realice correctamente la labor
+asignada. Esto es lo que se llama <font color="#808000">información oculta</font> y es
+uno de los principios mas importantes de la ingeniería de software.</p>
+
+<p>Un formato habitual para los módulos de software, es que contengan los datos
+juntamente con las rutina necesarias para manejarlos. Por ejemplo, el modulo de
+lista-de-envíos, puede contener la lista de los nombres y direcciones juntamente con una
+subrutina para añadir nuevos nombres, otra subrutina para imprimir las etiquetas, y así
+sucesivamente.En este tipo de módulos, los datos acostumbran a estar ocultos dentro del
+modulo, el programa que usa el modulo, solo puede manejar los datos de una manera
+indirecta, por medio de las llamadas a las subrutinas proporcionadas por dicho modulo. De
+esta forma se protegen los datos ya que solo pueden ser manejados de una forma conocida y
+predefinido. Y logra facilitarle al programador el uso del modulo, ya que no debe
+preocuparse de como son representados los datos.</p>
+
+<p>Los módulos que podían soportar este tipo de información oculta, llegaron a ser
+comunes en los lenguajes de programación a principios de 1980. Desde entonces, la
+mayoría de avances se han realizado sobre este sistema .La ultima aproximación es la
+programación orientada a objetos, llamada abreviadamente OOP.</p>
+
+<p>El concepto central de la programación orientada a objetos, es el objeto, que es un
+tipo de módulo que contiene datos y subrutinas. Desde el punto de vista de la OOP
+(Programación orientada a objetos), el objeto es un tipo de entidad autosuficiente que
+tiene unas cualidades intrínsecas (los datos que contiene), y que responde a los mensajes
+(llamadas a las subrutinas). El objeto &quot;Lista de correos&quot;, por ejemplo, definía
+la consistencia de la lista de nombres y direcciones. Si se le enviaba un mensaje
+añadiendo un nombre, respondía modificando su estado para reflejar el cambio. Si se le
+enviaba un mensaje para que imprimiera, respondía imprimiendo la lista de nombres y
+direcciones.</p>
+
+<p>La OOP es un acercamiento de la ingeniería de software, para empezar a poder
+identificar los objetos involucrados en un problema, y los mensajes que pueden atender
+estos objetos. El programa es el resultado de un conjunto de objetos, que cada uno posee
+sus datos, y sus responsabilidades sobre ellos. Los objetos, interactuan enviándose
+mensajes. Esta estructura, no coincide demasiado con la forma de programar
+&quot;top-down&quot;, y las personas acostumbradas a la programación tradicional, les
+cuesta un duro esfuerzo usar la tecnología OOP. Por otra parte, la gente que utiliza la
+OOP, afirma que el sistema proporciona mejores modelos que se aproximan mas a la realidad,
+que son mucho mas fáciles de escribir, mas sencillos de entender, y mucho mas cómodos de
+corregir.</p>
+
+<hr width="50%">
+
+<p>Debe tener en cuenta que ha de saber como van a responder los objetos a los distintos
+mensajes. Diferentes objetos, pueden responder al mismo mensaje de distintas formas.. Por
+ejemplo el mensaje &quot;Print&quot;, puede producir diferentes resultados según al
+objeto al que se dirija. Esta propiedad de los objetos --diferentes objetos responden de
+distinta forma al mismo mensaje-- se denomina <font color="#808000">poliformismo</font>.</p>
+
+<p>Es común que existan objetos que mantengan algún tipo de relación con algún otro,
+alguna semejanza. Los objetos que contienen el mismo tipo de datos, y que responden al
+mismo mensaje de la misma manera, se dice que pertenecen a la misma <font color="#808000">clase</font>
+(<font color="#808000">class</font>).(En la forma de programar actualmente, la clase es lo
+primero que se define, tanto es así, que despues, la clase se utiliza como modelo para
+crear otros objetos.). Pero los objetos, no han de ser de la misma clase para que sean
+semejantes.</p>
+
+<p>Por ejemplo, considere un programa de dibujo que permita al usuario dibujar líneas,
+rectángulos, elipses, polígonos, y curvas en la pantalla. En el programa, cada objeto de
+la pantalla, representara un objeto. Tendremos cinco clases de objetos, una por cada tipo
+de objeto que podamos dibujar. Obviamente, las clases están relacionadas, todas ellas
+representan &quot;objetos posibles de dibujar&quot;. Posiblemente, todos podrían
+responder al mensaje &quot;Dibújate&quot;. En otro nivel, la agrupación es menos obvia,
+pero muy conveniente al programar. Podemos agrupar los polígonos y las curvas
+conjuntamente como &quot;objetos multipunto&quot;, mientras que las líneas, los
+rectángulos y las elipses como &quot;objetos de dos puntos&quot;. (La línea esta
+definida por sus dos puntos extremos, el rectángulo, por sus dos esquinas, y la elipse
+por las dos esquinas del rectángulo que la contiene.) El diagrama de estas relaciones,
+podría ser el siguiente:</p>
+
+<p>&nbsp;</p>
+
+<p align="center"><img src="fig4.gif" tppabs="http://members.nbci.com/elcurso/Capitulo1/fig4.gif" WIDTH="380" HEIGHT="160"></p>
+
+<p>ObjetoDibujable, ObjetoMultipunto y ObjetoDosPuntos, podrían ser clases en el
+programa. ObjetoMultipunto y ObjetoDosPuntos serian subclases de ObjetoDibujable. La clase
+Línea seria subclase de ObjetoDosPuntos e indirectamente de ObjetoDibujable. La subclase
+de una clase, como es natural, <font color="#808000">hereda</font> las propiedades de la
+clase. Las subclases, pueden añadir a la herencia, e incluso modificarla o eliminarla
+(definiendo diferentes respuestas para el mismo método). No obstante, Líneas y
+Rectángulos, son también objetos que se pueden dibujar, y la clase ObjetoDibujable
+define esta relación.</p>
+
+<p>La herencia, es un instrumento muy útil a la hora de organizar un programa. Esta
+también muy relacionado con la problemática de poder rehusar los componentes. La clase
+es el componente reusable mas pequeño. No solo se puede usar directamente, si dispone
+justamente de lo que su programa necesita, si no que puede definir una subclase para
+añadir o modificar la parte que le interese para adaptarla a su necesidades, teniendo
+presente que el resto de procedimientos, seguirán siendo iguales.</p>
+
+<p>Así que las herramientas de desarrollo de OOP son mejores y parcialmente son la
+solución al problema de rehusar el software. Objetos, clases y programación orientada a
+objeto, van a ser temas muy importantes a lo largo de estas notas.</p>
+
+<hr>
+
+<table border="0" width="100%" height="62">
+  <tr>
+    <td width="33%" height="58"><a href="seccion1_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_4.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="65" HEIGHT="65"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/indice1.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="69" height="71" alt="Indice del capítulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="70" height="72" alt="Indice general" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion1_6.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_6.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="66" HEIGHT="66"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

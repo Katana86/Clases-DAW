@@ -1,0 +1,205 @@
+<html>
+
+<head>
+<title>DoPC-Curso de java.Seccion 1.2</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="keywords" content="formacion, Java, gratis, programacion, internet, curso">
+<meta name="description" content="Curso de programacion en lenguaje Java. Principios de los ordenadores, bases de la programacion, ideas generales sobre internet, protocolos de comunicacion, bases del lenguaje java, programacion avanzada en Java.">
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<meta name="distribution" content="global">
+<meta name="resource-type" content="document">
+<meta name="robots" content="all">
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 1.2: Eventos asíncronos: Bucle de comprobación e interrupciones</h3>
+
+<hr>
+
+<p>La CPU emplea una muy pequeña parte del tiempo tomando instrucciones de memoria y
+ejecutándolas. Sin embargo, la CPU y la memoria principal, son solo dos componentes de
+Ordenador. El sistema completo, contiene también otros dispositivos como son: 
+
+<ul>
+  <li>Un disco duro para almacenar los programas y los ficheros de datos. (Tenga en cuenta,
+    que en la memoria solo se almacena una parte, comparativamente pequeña, del total de
+    información, y además, solo esta guardada a partir de que se enciende el ordenado. El
+    disco duro es necesario para almacenar&nbsp; permanentemente grandes volúmenes de
+    información, pero los programas tendrán de cargarse desde el disco a la memoria
+    principal para poder ser ejecutados).</li>
+  <li>Un <font color="#808000">teclado</font> y un <font color="#808000">ratón (Mouse)</font>
+    para interacción con el usuario (entrada de datos y ordenes)</li>
+  <li>Un <font color="#808000">monito</font>r y una <font color="#808000">impresora</font> que
+    pueden ser utilizados para presentar los resultados de salida del ordenador.</li>
+  <li>Una <font color="#808000">interface de red</font>, que permita al ordenador comunicarse
+    con otros ordenadores&nbsp; conectados en esa red.</li>
+  <li>Un <font color="#808000">escáner</font> que convierta imágenes en códigos numéricos
+    binarios para que puedan ser guardadas y/o manipuladas por el ordenador.</li>
+</ul>
+
+<p>La lista de dispositivos, esta totalmente abierta, y el ordenador, esta construido para
+que sea muy fácil seguir añadiendo nuevos dispositivos. De algún modo, la CPU debe de
+comunicarse y controlar todos estos periféricos. La CPU solo lo puede hacer ejecutando
+instrucciones en código maquina (que lo pueden hacer todo). Entonces, para cada
+dispositivo del sistema, existe un <font color="#808000">driver </font>del dispositivo,
+que consiste en un programa que la CPU ejecuta cuando tiene que negociar con el
+dispositivo. Instalar un nuevo dispositivo en el sistema, tiene normalmente dos etapas:
+Conectar físicamente el dispositivo al sistema, e instalar el programa driver. Sin el
+driver del dispositivo, no podríamos utilizar el dispositivo físico, porque la CPU no
+sabría como comunicarse con él.</p>
+
+<hr width="50%">
+
+<p>Un ordenador, consiste en un conjunto de dispositivos perfectamente organizados; estos
+dispositivos, están conectados uno con otros por medio de <font color="#808000">buses</font>.
+Un bus es un conjunto de cables que llevan distintos tipos de información entre los
+dispositivos conectados a esos cables. Los cables llevan datos, direcciones, y señales de
+control. Una dirección&nbsp; dirige los datos a un dispositivo en particular, quizás a
+un registro o dirección concreta dentro de dicho dispositivo. Las señales de control
+pueden ser usadas para que un dispositivo avise a otro que los datos que solicitó, ya
+están disponibles en el bus.Un ordenador medianamente simple, puede estar organizado de
+la siguiente manera:</p>
+
+<p align="center"><img src="fig2.gif" tppabs="http://members.nbci.com/elcurso/Capitulo1/fig2.gif" WIDTH="350" HEIGHT="235"></p>
+
+<p>(La ilustración ha sido tomada de <a href="tppmsgs/msgs0.htm#23" tppabs="http://math.hws.edu/TMCM.html">The Most
+Complex Machine</a>)</p>
+
+<p>Entonces, dispositivos tales como el teclado, el ratón, o la red pueden producir
+entradas que deben ser procesadas por la CPU. ¿Como se puede enterar la CPU que los datos
+están ahí? La idea mas simple, que no tiene porque ser la mejor, es que la CPU este
+comprobando&nbsp; una y otra vez si le han llegado datos. Cuando al fin los encuentre, los
+procesara. Este método es llamado <font color="#808000">polling</font>, puesto que la CPU
+esta comprobando el dispositivo continuamente para ver si tiene información de algún
+dato. Desgraciadamente, aunque el polling es muy simple, es también muy poco eficiente.
+La CPU esta desaprovechando horriblemente su tiempo en espera de que le llegue la entrada.</p>
+
+<p>Para mejorar la eficacia, a menudo se emplean las <font color="#808000">interrupciones</font>
+&nbsp; en lugar del polling. Una interrupción es una señal que se envía desde un
+dispositivo a la CPU. La CPU responde a la señal de interrupcion dejando a un lado
+cualquier cosa que este haciendo para atender a la interrupción. Una vez ha terminado de
+manejar (handled) la interrupción, continua con lo que estaba haciendo antes de ser
+interrumpida. Por ejemplo, cuando pulsa una tecla en su ordenador, el teclado envía una
+interrupción a la CPU, la CPU responde a esta señal, interrumpiendo lo que estuviera
+haciendo, leyendo la tecla pulsada, procesándola, y continuando con la tarea que estaba
+realizando antes de que pulsara la tecla.</p>
+
+<p>De nuevo, debe recordar que es un proceso puramente mecánico: La señal de
+interrupción del dispositivo, simplemente pone en ON un cable. La CPU esta construida
+para que cuando ese cable se ponga on, salve la informacion que esta manejando en ese
+momento, y pueda volver a ese estado mas tarde. Esa información consiste en el&nbsp;
+contenido de los registros internos importante como pueda ser el contador de instrucciones
+(PC). La CPU salta a una dirección de memoria predeterminada y ejecuta las instrucciones
+allí almacenadas. Estas instrucciones, forma el manejador de interrupciones y definen el
+proceso necesario a realizar para responder a la interrupción. (El manejador de
+interrupciones, es parte del driver del dispositivo que ha activado la interrupción.). Al
+final del manejador de interrupciones, hay una instrucción que hace que la CPU realice un
+salto hasta donde estaba antes, restaurando previamente los datos salvados.</p>
+
+<p>Las interrupciones permiten a la CPU el trabajar con <font color="#808000">eventos </font>asíncronos.
+Durante el ciclo regular de leer-y-ejecutar, las cosas ocurren en un orden predeterminado,
+todo lo que pasa, esta sincronizado con todo lo demás. Las interrupciones hacen posible
+que la CPU pueda tratar eficientemente las cosas que pasan de manera asíncrona, esto es ,
+en momentos impredecibles.</p>
+
+<p>Otro ejemplo de como son usadas las interrupciones, considere que pasa cuando la CPU
+necesita acceder a datos almacenados en el disco duro. La CPU solo puede acceder
+directamente a los datos si están almacenados en la memoria principal. Los datos del
+disco, han de ser trasladados a memoria antes de que puedan ser accedidos.
+Desafortunadamente, en la escala de velocidades en las que opera la CPU, el disco es
+extremadamente lento. Cuando la CPU necesita datos desde el disco, envía una señal para
+indicarle al driver del disco donde esta la información, y que esta preparada para
+recibirla.(Esta señal, en enviada sincronizada, bajo el control de un programa normal).
+Entonces, en vez de quedarse esperando una importante e impredecible cantidad de tiempo a
+que el disco lo haga, la CPU se dedica a alguna otra tarea. Cuando el driver del disco
+tenga los datos disponibles, enviara una señal de interrupción a la CPU y el manejador
+de interrupciones, leerá los datos solicitados.</p>
+
+<hr width="50%">
+
+<p>Todo esto solo tiene sentido si la CPU tiene varias tareas por realizar. Si no es así,
+si no tiene nada mas que hacer, puede ser mejor que gaste su tiempo viendo si ha llegado
+alguna entrada (polling), o esperando que finalice la operación del disco.Los modernos
+ordenadores, usan la <font color="#808000">multitarea</font> para realizar varios trabajos
+a la vez. Algunos ordenadores, pueden ser usados por varias personas al mismo tiempo.
+Desde que las CPU son tan rápidas, les es posible ir prestando&nbsp; atención a varios
+usuarios, a base de realizar unas pocas instrucciones para cada uno y pasar el control a
+otro en fracciones de segundo. Esta aplicación de la multitarea, es llamada <font color="#808000">timessharing </font>(tiempo compartido). Pero hasta los modernos
+ordenadores personales con un solo usuario, utilizan la multitarea. Por ejemplo, el
+usuario puede estar escribiendo un documento, mientras el reloj esta presentando la hora,
+un fichero esta siendo transferido por la red, y se esta imprimiendo algún otro
+documento.</p>
+
+<p>Cada una de las tareas individuales en las que la CPU trabaja, es llamada <font color="#808000">thread (hebra)</font> (o <font color="#808000">proceso; </font>existen
+diferencias técnicas entre hebras y procesos, pero no tienen importancia en este
+momento).En cualquier momento de tiempo, solamente una hebra puede ser ejecutada en la
+CPU. La CPU seguirá procesando la misma hebra hasta que ocurra una o varias de las
+siguientes cosas: 
+
+<ul>
+  <li>La hebra puede voluntariamente<font color="#808000"> ceder(yield)</font> el control,
+    para permitir que otra hebra pueda ser procesada.</li>
+  <li>La hebra puede tener que esperar para que ocurra algún evento asíncrono. Por ejemplo,
+    la hebra debe solicitar datos al disco, o debe esperar a que un usuario pulse una tecla.
+    Mientras espera, se dice que la hebra esta bloqueada, y otra hebra toma el control y se
+    pone en marcha.Cuando el evento esperado ocurre, la interrupción despierta la hebra y
+    puede continuar su proceso.</li>
+  <li>La hebra puede estar activa todo el tiempo que le corresponde, y entonces la CPU
+    entregara el control a otra hebra.</li>
+  <li>No todos los ordenadores pueden forzar la suspensión de la hebra de esta manera, hay
+    otros que realizan lo que se ha dado en llamas <font color="#808000">preemptive
+    multitasking</font>. Para utilizar el sistema de&nbsp; multitarea preferente, el ordenador
+    necesita un timer especial, que genera interrupciones a intervalos regulares, del orden de
+    &nbsp; 100 veces por segundo. Cuando esta interrupción sucede la CPU tiene la oportunidad
+    de entregar el control de una hebra a otra, tanto si a la que esta activa en ese momento
+    le gusta como si no.</li>
+</ul>
+
+<p>Los usuarios normales, y también la mayoria de programadores, no necesitan tratar con
+interrupciones, o manejadores de interrupciones. Se pueden concentrar en las diferentes
+tareas o hebras que quieren que el ordenador realice; los detalles de como maneja el
+ordenador las distintas tareas no es importante para ellos. Realmente, muchos usuarios y
+bastantes programadores, llegan a ignorar totalmente todo el sistema de hebras y
+multitareas. De hecho, las hebras&nbsp; están aumentando su importancia&nbsp; a medida
+que los ordenadores se van haciendo mas potentes, y va aumentando el numero de las cosas
+que hacen en multitarea. Hemos de destacar que&nbsp; las hebras son tratadas dentro del
+lenguaje de programación Java, como un concepto fundamental de la programación</p>
+
+<p>Precisamente, lo mas importante en Java, y en la moderna programación en general, es
+el concepto básico de eventos asíncronos. Aunque el programador no trabaja directamente
+con interrupciones, a menudo, deben escribir manejadores de eventos, semejantes a
+manejadores de interrupciones, y que son llamadas de forma asíncrona cuando ocurre un
+evento. Semejante <em>&quot;Programa orientado a eventos&quot;</em> tiene un aspecto muy
+diferente al modelo tradicional de programa síncrono. Vamos a empezar con el tipo de
+programación tradicional, que es utilizado para programar tareas individuales, pero
+volveremos al tema de hebras y eventos.</p>
+
+<p>&nbsp;</p>
+
+<hr width="50%">
+
+<p>Por cierto, el software que se encarga de manejar las interrupciones y las
+comunicaciones entre los dispositivos hardware se denomina <font color="#808000">sistema
+operativo</font>. El sistema operativo es básico. en esencia, sin él, ningún ordenador
+podría funcionar. El resto de programas, tales como procesadores de texto o navegadores
+WWW, dependen del sistema operativo. Los sistemas operativos mas comunes incluyen UNIX,
+DOS,&nbsp; Windows 95, y Macintosh OS.</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<table border="0" width="100%" height="62">
+  <tr>
+    <td width="33%" height="58"><a href="seccion1_1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_1.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="70" HEIGHT="70"></a></td>
+    <td width="33%" height="58"><p align="center"><a href="indice1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/indice1.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" alt="Indice capítulo" border="0" WIDTH="74" HEIGHT="76"></a>
+    &nbsp;&nbsp;&nbsp;&nbsp; <a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" alt="Indice General" border="0" WIDTH="70" HEIGHT="72"></a></td>
+    <td width="34%" height="58"><a href="seccion1_3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_3.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="72" HEIGHT="72"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

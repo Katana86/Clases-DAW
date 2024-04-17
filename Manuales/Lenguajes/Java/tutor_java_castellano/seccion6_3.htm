@@ -1,0 +1,547 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 6.3</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 6.3. Eventos de Component</h3>
+
+<hr>
+
+<p>CUANDO EL USUARIO interactua con los componentes de la interface gráfica, el programa
+debe responder de forma apropiada. El programa recibe una notificación de que se ha
+producido una acción por parte del usuario por medio de un <font color="#808000">evento</font>.
+Los eventos se envían al programa por medio de llamadas a determinados métodos. Como
+programador, deberá indicar como responderá su programa a estos eventos definiendo los
+métodos apropiados.</p>
+
+<p>Una interface GUI utiliza muchos componentes gráficos como botones, checkBoxes, cajas
+de entrada de texto, .... Las clases Java que implementan estos componentes se han
+explicado en la <a href="seccion6_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo6/seccion6_2.htm">Sección 2</a>. Como se comentó en la <a href="seccion6_1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo6/seccion6_1.htm">Sección 1</a>, los componentes pueden estar dentro de contenedores,
+que a su vez son componentes y como tales, pueden estar dentro de otros contenedores. Con
+una estructura tan compleja como puede llegar a ser una interface gráfica, es necesario
+comprender perfectamente como funcionan los eventos, y como se pueden manejar.</p>
+
+<p>Cada componente--esto es, cada objeto perteneciente a alguna subclase de la clase <tt>Component</tt>--
+tiene un método llamado <tt>handleEvent</tt>. Los eventos se envían a los componentes
+llamando al método <tt>handleEvent()</tt>. Este método puede reenviar algunos eventos
+para que sean tratados por métodos adecuados como puedan ser <tt>mouseMove() y action()</tt>.
+Estos métodos se comentaron en la <a href="seccion5_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_2.htm">Sección 5.2</a>.
+Para un programa que utilice múltiples niveles de anidamiento de componentes, aparecen
+dos preguntas: Cuando ocurre un evento ¿Que componente lo enviará? y si el evento lo
+envía un componente para el que no se ha programado manejador, ¿Qué pasa con ese
+evento?.</p>
+
+<hr width="50%">
+
+<p>La segunda pregunta, es fácil de contestar: Si un componente genera un evento, y dicho
+componente no tiene manejador para ese evento, el evento se envía al contenedor en el que
+se encuentra el componente o, si el componente no se encuentra en ningún contenedor,
+entonces, el evento es ignorado. Entonces, si quiere definir una respuesta para un evento,
+puede programar la respuesta&nbsp; en el componente que recibe el evento, o en cualquiera
+de los componentes que lo contengan en los sucesivos niveles de anidamiento.</p>
+
+<p>Vamos a ver esto con mas detalle en un ejemplo. Considere un <tt>Button,bttn,</tt> que
+esta contenido en un <tt>Panel,pnl</tt> él que a su vez esta contenido en un <tt>Applet,aplt</tt>.
+Cuando se pulsa el botón <tt>bttn</tt> se genera un evento de acción que normalmente
+será manejado por el método <tt>action()</tt> del propio componente. El evento es
+enviado inicialmente al mismo <tt>bttn</tt>. Si <tt>bttn</tt> no tiene un manejador para
+el evento, caso normal, será enviado al panel <tt>pnl</tt>. Y si este tampoco tiene un
+manejador de evento, será enviado al applet <tt>aplt</tt>. Finalmente, si <tt>aplt</tt>
+no tiene tampoco un manejador para el evento, el sistema abandona y el evento es,
+simplemente, ignorado.</p>
+
+<p>Ahora, por defecto, <tt>Buttons, Panels y Applets</tt> ignoran todos los eventos de
+acción. Si quiere que el botón tenga algún servicio, deberá programar en algún sitio,
+<tt>bttn, pnl, o aplt</tt>, la acción que desee realizar ante el evento generado por el
+botón. Para ello, deberá definir en la subclase <tt>Button, Panel o Applet</tt> un
+método <tt>action()</tt> para sobregrabar el existente en la subclase que deba manejar el
+evento generado por el botón. Si quiere que el botón maneje el evento , deberá
+sobregrabar la clase <tt>Button</tt> y definir <tt>bttn</tt> como un objeto de esa
+subclase. De forma similar,&nbsp; puede definir<tt> pnl</tt> como miembro de una subclase
+de <tt>Panel</tt>, y puede programar que esa subclase maneje los eventos de acción.
+Finalmente, puede hacer que sea el propio applet el que maneje los eventos de acción
+generados por el botón.</p>
+
+<p>Naturalmente, para <tt>aplt</tt> todo es mas fácil ya que él ya es miembro de una
+subclase de <tt>Applet</tt> mas que un <tt>Applet</tt>. Por eso es muy tentador el dejar
+que sea el applet el que maneje los eventos de acción generados por sus componentes. Para
+applets sencillos, la solución no es mala, pero cuando se empiezan a complicar, se
+convierten en poco manejables porque hay demasiados componentes y demasiados posibles
+eventos. Deberá pensar en termino de cajas negras: Si un panel tiene ciertas funciones, y
+si el botón es una parte interna de la implementacion de estas funciones, entonces los
+eventos de acción del botón deberán ser resueltos dentro del panel. El applet no
+debería saber nada de todo ello. Esta es la situación mas normal. (Por otra parte, es
+extraño el querer un botón que tenga un comportamiento independiente del componente que
+contiene el botón. Por eso es raro el sobregrabar la clase <tt>Button</tt>).</p>
+
+<hr width="50%">
+
+<p>La pregunta de a donde se envían pos eventos en primer lugar es un poco mas difícil
+de contestar de lo que debería ser. (Esto es parte del problema por el que la
+documentación de Java 1.0 no es tan clara como hubiera debido ser). El problema en Java
+1.0 es que ciertos componentes no reciben ciertos eventos.Por ejemplo, <tt>Labels</tt> no
+recibe ningún evento. No es un problema demasiado grave, pero hace imposible , por
+ejemplo, escribir una subclase de Label que responda al clic del ratón. Aun peor es que <tt>TextComponents</tt>
+en Java 1.0&nbsp; no recibe ningún evento de teclado. Esto hace que sea imposible
+programar componentes de texto que reaccionen de forma especial ante determinados
+caracteres.</p>
+
+<p>Aquí tiene como funcionan las cosas: 
+
+<ul>
+  <li><strong>Eventos de acción,</strong> que se generan por componentes como botones y
+    checkboxes, se envían en primer lugar al componente que genera el evento. (Normalmente,
+    sin embargo, el componente lo ignora y es manejado por el contenedor como un panel, una
+    ventana o un applet tal y como hemos comentado anteriormente.)</li>
+  <li><strong>MouseEnter, mouseMove, y mouseExit</strong>, estos eventos se envían a
+    cualquiera de los componentes sobre los que el ratón se esta moviendo, siempre que no se
+    pulse ningún botón del ratón. ( En Java 1.0 esto es cierto para la mayoría de los
+    componentes pero no para todos.) Un evento de ratón normalmente deberá ser manejado por
+    el componente en el que se generó.</li>
+  <li>En evento <strong>mouseDown</strong> se envía al componente sobre el que el usuario
+    hace el clic. Si el usuario mueve el ratón con el botón pulsado, una serie de eventos <strong>mouseDrag</strong>
+    se envían al mismo componente, incluso si el ratón se mueve fuera del componente. Cuando
+    el usuario libera el botón,&nbsp; se envía al mismo componente un evento <strong>mouseUp</strong>
+    aunque el ratón haya abandonado el área del componente. (Existen problemas con algunas
+    implementaciones de de Java para seguir estas normas. Por ejemplo, en la versión de Java
+    facilitada con Netscape 3.0, el evento <em>mouseUp</em> no se envía necesariamente al
+    mismo componente que recibió el evento <em>mouseDown</em>. Esto hace que un componente se
+    quede esperando indefinidamente un evento que nunca le llegará.)</li>
+  <li>Los eventos <strong>Keyboard</strong> se envían al componente que en ese momento tenga
+    el foco de entrada. Un componente puede recibir foco llamando al método <tt>requestFocus()</tt>.
+    A menudo, esto se hace cuando el usuario hace clic sobre él. (En Java 1.0, no todos los
+    componentes pueden recibir el foco, y los componentes de texto no reciben eventos de
+    teclado incluso cuando tienen foco.)</li>
+</ul>
+
+<p>Aunque desgraciadamente en Java 1.0 los manejadores de eventos no están bien
+definidos, normalmente no debería tener problemas a menos que se le ocurra crear una
+subclase de <tt>Label o TextField</tt> con algún manejador de eventos especial.</p>
+
+<p>He notado que en la versión 1.1 de Java se ha realizado un cambio bastante importante
+en el modelo del manejador de eventos. Sin embargo, el modelo antiguo, que describo en
+estas notas, esta todavía soportado (al menos por algún tiempo). Para los programas y
+applets sencillos, el modelo de eventos original, probablemente&nbsp; es superior. El
+nuevo modelo de eventos es mas útil en proyectos grandes y complejos.</p>
+
+<p>He explicado los eventos de ratón y teclado en la <a href="seccion5_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_2.htm">Sección 5.2</a>. En el resto de esta sección,
+explicare los eventos generados por algunos otros componentes de la interface del usuario.</p>
+
+<hr width="50%">
+
+<h3>Eventos de acción</h3>
+
+<p>Los eventos de acción se generan por varios tipos distintos de componentes: <tt>Button</tt>,
+<tt>Checkbox</tt>, <tt>Choice</tt>, <tt>List</tt>, y <tt>TextField.</tt> Estos eventos son
+manejados por el método <tt>action()</tt> que tiene el siguiente formato:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>public boolean action (Event evt, Object arg) {
+	// manejo del evento
+}</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Este método debe retornar un valor boleano <tt>true</tt> si procesa el evento. Si no
+lo procesa, normalmente debe volver a <tt>super.action(evt,arg)</tt>. Esto da a la
+superclase la posibilidad de procesar el evento.</p>
+
+<p>Para manejar los eventos de acción, debe definir el método <tt>action()</tt> en la
+subclase <tt>Applet, Panel o Window</tt>. Cuando escribe el método <tt>action()</tt>,
+generalmente debe conocer exactamente los componentes que pueden generar este evento para
+poder escribir las instrucciones concretas para ellos.</p>
+
+<p>El segundo parámetro del método <tt>action()</tt>, <tt>arg</tt>, contiene
+información relevante del evento. El tipo de información que contiene <tt>arg</tt>
+depende del tipo de objeto que haya generado el evento. El primer parámetro, <tt>evt</tt>
+es una instancia de la variable <tt>evt.target</tt>, que nos dice que componente ha sido
+el primero en recibir el evento. Para cualquier evento de acción, este será también el
+componente que ha generado el evento en primer lugar. Por todo esto, el método <tt>action()</tt>
+a menudo tienen un aspecto semejante a este:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>public boolean action(Event evt, Object arg) {
+	if (evt.target == button1) {
+		//manejar click de button1
+		return true;
+	}
+	else if (evt.target == button2) {
+		//manejar click en button2
+		return true;
+	}
+	else if (evt.target == OpcionColor) {
+		// manejar seleccion desde Choice
+		return true;
+	}
+	.
+	. // seguir manejando otros eventos
+	.
+	else
+		return super.action(evt,arg);
+}</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>(En algunos casos,&nbsp; puede considerar interesante el utilizar el operador <tt>instanceof</tt>
+de <tt>evt.target</tt> para asegurarse de que tipo de objeto ha generado el evento. En los
+casos sencillos, cuando hay solo unos pocos de componentes para preocuparse de ellos,
+puede incluso que no tenga que comprobar <tt>evt.target</tt>; el segundo parámetro, <tt>arg</tt>
+puede que contenga toda la información que necesita.)</p>
+
+<p>Aquí tiene los detalles acerca los eventos de acción que pueden ser generados por
+varios tipos de componentes: 
+
+<ul>
+  <li>El <strong>Button</strong> genera un evento de acción cuando el usuario pulsa el
+    botón. El parámetro <tt>arg</tt> es una string que es igual a la etiqueta del botón.
+    (Si quiere utilizar este parámetro, debe cambiar el tipo a <tt>String</tt>).</li>
+  <li>El <strong>Choice</strong> genera un evento de acción cuando el usuario selecciona uno
+    de los elementos en el menú pop-up. El parámetro <tt>arg</tt> es el texto del elemento
+    que el usuario a seleccionado.</li>
+  <li>El <strong>List</strong> genera un evento de acción cuando el usuario hace un doble
+    clic en un elemento de la lista. El parámetro <tt>arg</tt> es una string que contiene el
+    texto del elemento.</li>
+  <li>El <strong>TextField</strong> genera un un evento de acción cuando el usuario pulsa la
+    tecla &quot;Return&quot; mientras esta tecleando en la caja de entrada. El parámetro arg
+    es una string que contiene el texto existente en la caja de entrada.</li>
+  <li>El <strong>Checkbox</strong> genera un evento de acción cuando el usuario hace clic
+    sobre el. El <tt>arg</tt> es un objeto de tipo <tt>Boolean</tt> que indica cual es el
+    nuevo estado de la caja. (Un objeto tipo <tt>Boolean</tt> contiene un valor perteneciente
+    al tipo primitivo <tt>boolean</tt> . Un valor <tt>booleano</tt> no es un objeto. La
+    envoltura que define el objeto <tt>Boolean</tt> hace posible en tratarlo como un objeto.
+    Para tomar el valor <tt>booleano</tt> contenido en <tt>arg </tt>debe decir<tt>
+    &quot;boolean newState = ((Boolean)arg).booleanValue();&quot;</tt>. Admito que es bastante
+    complicado. Es mucho mas fácil el usar el método de Checkbox <tt>getState()</tt> para
+    averiguar cual es el estado.)<hr width="50%">
+  </li>
+</ul>
+
+<p>&nbsp;</p>
+
+<h3>Eventos de Scrollbar</h3>
+
+<p>Una barra de scroll genera un evento siempre que el valor de la barra cambia. Sin
+embargo, estos eventos no son de acción. De hecho para manejar los eventos de una barra
+de scroll, debe sobregrabar el método <tt>handleEvent()</tt>. El método tiene la
+siguiente forma:</p>
+<div align="center"><center>
+
+<pre>public boolean handleEvent(Event evt) {....}  </pre>
+</center></div>
+
+<p align="left">La instancia de la variable <tt>evt.target</tt> nos dice que componente ha
+sido el primero en recibir el evento. Para los eventos de barra de scroll, es la misma
+barra. Otra variable instanciada, <tt>event.id</tt> indica que tipo de evento es. La barra
+de scroll produce cinco tipos diferentes de eventos, dependiendo de en que parte de la
+barra haya pulsado el usuario: SCROLL_LINE_UP, SCROLL_LINE_DOWN, SCROLL_PAGE_UP,
+SCROLL_PAGE_DOWN, y SCROLL_ABSOLUTE. (El ultimo de estos, se genera cuando el usuario
+arrastra el tab de la barra) Y <tt>evt.arg</tt> contiene otras informaciones relativas al
+evento. Para los eventos de barra de scroll, <tt>event.arg</tt> es un objeto del tipo <tt>integer</tt>
+que contiene el nuevo valor de la barra. (Un objeto <tt>Integer</tt> es un envoltorio para
+el valor del tipo primitivo <tt>int</tt>. Para tomar el valor actual <tt>int</tt> deberá
+usar <tt>((Integer)(evt.arg)).intValue()</tt> Pero también puede tomar el valor de una
+forma mas sencilla, llamando al método <tt>getValue()</tt> de la barra.)</p>
+
+<p align="left">Si quiere sobregrabar <tt>handleEvent()</tt> para manejar los eventos de
+una barra de scroll, debería hacer algo semejante a esto (Asumimos que ha escrito el
+método <tt>doScroll()</tt>, para manejar los eventos de la barra)</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <div align="left"><pre>public boolean handleEvent(Event evt) {
+	if (evt.id == Event.SCROLL_LINE_UP ||
+	    evt.id == Event.SCROLL_LINE_DOWN ||
+	    evt.id == Event.SCROLL_PAGE_UP ||
+	    evt.id == Event.SCROLL_PAGE_DOWN ||
+	    evt.id == Event.SCROLL_ABSOLUTE ) {
+		doScroll(evt.target);
+		return true;  // el evento ha sido procesado
+	}
+	else if .... //puede tratar otros eventos
+	else
+	     return super.handleEvent(evt);
+}</pre>
+      </div>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p align="left">En el caso en que <tt>handleEvent()</tt> no procesa el evento, es esencial
+el pasar el control a <tt>super.handleEvent(evt)</tt>. que es una llamada a esta rutina en
+la superclase de donde proviene esta subclase que ha creado. El método de la superclase
+debe ser llamado para procesar cualquier evento que no se procese en la subclase.</p>
+
+<hr width="50%">
+
+<h3>Otros eventos</h3>
+
+<p>Hay algunos otros tipos de eventos que pueden aparecer en el método <tt>handleEvent()</tt>.
+No los voy a explicar aquí en detalle, pero los dejare enunciados: 
+
+<ul>
+  <li>El objeto <tt>List</tt> genera un evento con <tt>evt.id = LIST_SELECT</tt> cuando el
+    usuario marca un elemento haciendo un clic sobre el. Cuando el elemento se desmarca, se
+    genera otro evento <tt>LIST_DESELECT</tt></li>
+  <li>El objeto tipo <tt>Frame</tt> puede tener barra de menú. Los elementos de estos menús
+    pueden generar eventos de acción (aunque los elementos de menú no sean componentes).</li>
+  <li>Los objetos de tipo <tt>Window</tt>, incluyendo <tt>Trames y Dialog</tt> pueden recibir
+    eventos con <tt>id </tt>igual a WINDOW_DESTROY, WINDOW_ICONIFY, WINDOW_DEICONIFY y
+    WINDOW_MOVED</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<hr width="50%">
+
+<h3>Un ejemplo de manejador de eventos</h3>
+
+<p>Para completar esta sección, voy a escribir un applet completo que usa componentes
+anidados y maneja algunos eventos. Primero, aquí esta el applet:</p>
+
+<p>&nbsp;</p>
+
+<p align="center">
+<applet code="EventDemo.class" tppabs="http://members.nbci.com/elcurso/Capitulo6/EventDemo.class" height="250" width="350">
+
+<p><font color="#E70000">Su navegador no soporta Java;<br>
+aqui es donde podria ver el applet:</font></p>
+
+<hr width="33%" align="center">
+
+<p><img height="250" width="350" src="fig5-2.gif" tppabs="http://members.nbci.com/elcurso/Capitulo6/fig5.gif"></p>
+</applet>
+</p>
+
+<p align="left">Este applet puede mostrar como manejar los diferentes colores para el
+texto y el dibujo. La barra horizontal controla el color del fondo (background), mientras
+que la vertical controla el color de los dibujos y de los textos (foreground). Varios
+controles en la parte inferior determinan que dibujo y texto se muestra, así como si se
+utilizan colores brillantes o no. (Para cambiar el texto en la pantalla, debe teclear el
+nuevo texto en la caja, y pulsar &quot;Intro&quot;.)</p>
+
+<p align="left">Primero, vamos a definir la clase que representa el área de pantalla del
+applet. Dado que lo usaremos para dibujar, deberá ser una subclase de canvas. Esta
+definición asume que las clases del paquete <tt>java.awt</tt> se han importado.</p>
+<div align="left">
+
+<pre>class ColorCanvas extends Canvas {
+       
+      // presenta el dibujo y el texto.
+      // Los metodos setForeground() and setBackground()
+      // deben llamarse para indicar los colores que
+      // se usaran para dibujar
+       
+   public String text; // text a presentar
+   public int shp;   // codigo del dibujo a presentar;
+       
+   public final static int RECT = 0;  // codigo para rectangulo
+   public final static int OVAL = 1;  // codigo para elipse
+   public final static int ROUNDED = 2; // codigo paraa esquinas redondas
+
+   public ColorCanvas() {
+       text = &quot;Hola Mundo&quot;;  // texto por defecto
+       shp = RECT;  // dibujo por defecto
+   }
+       
+   public void paint(Graphics g) {
+       int width = size().width;   // tomar tamaño del area
+       int height = size().height;
+       int shp_left = width / 9;  // calcula posicion y tamaño del dibujo
+       int shp_top = height / 3;
+       int shp_width = (7*width / 9);
+       int shp_height = (5*height / 9);
+       switch (shp) {   // realiza el dibujo
+          case RECT:
+             g.fillRect(shp_left,shp_top,shp_width,shp_height);
+             break;
+          case OVAL:
+             g.fillOval(shp_left,shp_top,shp_width,shp_height);
+             break;
+          case ROUNDED:
+             g.fillRoundRect(shp_left,shp_top,shp_width,shp_height,16,16);
+             break;
+       }
+       g.drawString(text,width/9,2*height/9);  // dibuja el texto
+   }
+       
+ }  // fin de la clase ColorCanvas
+  </pre>
+</div>
+
+<p align="left">Ahora podeos definir el applet. La estructura del applet se establecce en
+el método INIT(). Los eventos se manejan en el método <tt>Action()</tt> y en el método <tt>handleEvent()</tt></p>
+
+<blockquote>
+  <div align="left"><pre>
+import java.awt.*;
+import java.applet.*;
+
+public class EventDemo extends Applet {
+
+	/*
+	El applet presenta un dibujo y algo de texto. El color 
+	del texto y del dibujo, se controla con la barra vertical
+	mientras que el color del fondo es controlado por la barra
+	horizontal. El texto que se quiera presentar, puede entrarse
+	en la caja de texto(TextField) que hay al pie. El dibujo a 
+	presentar, se puede escoger del componente Choice.
+	Los colores brillantes o no, se seleccionan utilizando
+	el checkbox
+    El area de dibujo se implementa en ColorCanvas; esta clase esta
+	esta definida despues, en este mismo fichero
+	*/
+	
+      
+   ColorCanvas display;  // area de display
+   Choice shpChoice;   // para seleccionar el dibujo a presentar
+   Checkbox brightColors;// para seleccionar colores brillantes
+   TextField text;       // El texto a presentar
+   Scrollbar hScroll;    // horizontal scroll bar
+   Scrollbar vScroll;    // vertical scroll bar
+      
+   public void init() {  // establecer el contenido del applet
+             
+       Panel topPanel = new Panel(); // para guardar 
+                         //el area de display y las scroll bars
+       topPanel.setLayout(new BorderLayout());
+       display = new ColorCanvas();
+       topPanel.add(&quot;Center&quot;, display);
+       hScroll = new Scrollbar(Scrollbar.HORIZONTAL,0,1,0,100);
+       topPanel.add(&quot;South&quot;, hScroll);
+       vScroll = new Scrollbar(Scrollbar.VERTICAL,50,1,0,100);
+       topPanel.add(&quot;East&quot;, vScroll);
+             
+       Panel bottomPanel = new Panel();  // para los controles
+       bottomPanel.setLayout(new GridLayout(1,3,5,5));
+       shpChoice = new Choice();
+       shpChoice.addItem(&quot;Rectangulo&quot;);
+       shpChoice.addItem(&quot;Elipse&quot;);
+       shpChoice.addItem(&quot;Rectangulo redondeado&quot;);
+       bottomPanel.add(shpChoice);
+       brightColors = new Checkbox(&quot;Color brillante&quot;);
+       bottomPanel.add(brightColors);
+       text = new TextField(&quot;Hola Mundo&quot;);
+       bottomPanel.add(text);
+             
+       setLayout(new BorderLayout(5,5));  // lo aplica al mismo applet
+       add(&quot;Center&quot;, topPanel);
+       add(&quot;South&quot;, bottomPanel);
+             
+       setBackground(Color.darkGray);   // fondo para el applet
+       setDisplayColors();  // definido abajo
+             
+   } // final de init()
+         
+         
+   public boolean action(Event evt, Object arg) {
+      if (evt.target == shpChoice) {
+         // Si el usuario seleciona un dibujo, deja la
+         //variable en pantalla, y avisa al sistema para
+         // que redibuje la pantalla 
+         switch (shpChoice.getSelectedIndex()) {
+            case 0:
+               display.shp = ColorCanvas.RECT;
+               break;
+            case 1:
+               display.shp = ColorCanvas.OVAL;
+               break;
+            case 2:
+               display.shp = ColorCanvas.ROUNDED;
+               break;
+         }
+         display.repaint();
+      }
+      else if (evt.target == brightColors) {
+         // si el usuario ha cambiado el estado del checkbox;
+         // ajusta el color de la pantalla y,
+         // avisa al sistema para que redibuje
+         setDisplayColors();
+         display.repaint();
+      }
+      else if (evt.target == text) {
+         // el usuario ha entrado un nuevo texto en el area
+         // y ha pulsado return; establece la variable correspondiente
+         //en la pantalla y avisa al sistema para que redibuje.
+         display.text = text.getText();
+         display.repaint();
+      }
+      return true;
+   } // final de action()
+         
+   public boolean handleEvent(Event evt) {
+      if ( evt.id == Event.SCROLL_LINE_UP ||
+           evt.id == Event.SCROLL_LINE_DOWN ||
+           evt.id == Event.SCROLL_PAGE_UP ||
+           evt.id == Event.SCROLL_PAGE_DOWN ||
+           evt.id == Event.SCROLL_ABSOLUTE ) {
+         // el usuario ha cambiado el valor de una de las barras
+         // se debe ajustar los colores de pantalla y redibujarla
+         // (No tengo que comprobar que barra es porque
+         //  setDisplayColors()	siempre comprueba el valor de ambas)
+         
+         setDisplayColors();
+         Graphics g = display.getGraphics();
+         display.update(g); // llama update() para redibujar
+         g.dispose(); //inmediatamente, mientras 
+		      //el usuario mueve la barra
+         return true;
+      }               
+      else
+         return super.handleEvent(evt);
+   } // fin de  handleEvent()
+               
+   void setDisplayColors() {
+        // establece los colores de primer plano y de fondo para ,
+        // el area de dibujo, dependiendo de los valores de las barras
+        // y del estado del checkbox.  (Los colores se hacen
+        // utilizando Color.getHSBColor(float,float,float),
+        // que crea el color definiendo el matiz, la saturacion
+        // y el brillo  Los parametros deben estar entre 
+        // 0.0 and 1.0.)
+      float backgroundHue = hScroll.getValue() / 100.0F;
+      float foregroundHue = vScroll.getValue() / 100.0F;
+      float saturation = 1.0F;
+      float brightness;
+      if (brightColors.getState())
+         brightness = 1.0F;
+      else 
+         brightness = 0.6F;
+      Color backgroundColor = 
+             Color.getHSBColor(backgroundHue,saturation,brightness);
+      Color foregroundColor = 
+             Color.getHSBColor(foregroundHue,saturation,brightness);
+      display.setBackground(backgroundColor);
+      display.setForeground(foregroundColor);
+   } // fin de setDisplayColors()
+         
+} // fin de la clase Event Demo
+
+</pre>
+  </div>
+</blockquote>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="seccion6_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo6/seccion6_2.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice6.htm" tppabs="http://members.nbci.com/elcurso/Capitulo6/indice6.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion6_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo6/seccion6_4.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

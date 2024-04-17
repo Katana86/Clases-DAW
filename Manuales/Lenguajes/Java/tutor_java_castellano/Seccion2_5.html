@@ -1,0 +1,435 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 2.5</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 2.5: Desarrollo de Algoritmos</h3>
+
+<hr>
+
+<p>PROGRAMAR ES DIFICIL ( como muchas actividades que son útiles e importantes -- y como
+la mayoría de esas actividades, puede ser también muy divertido). Cuando escribe un
+programa, le tiene que decir al ordenador con todo detalle cada una de las cosas que debe
+hacer. Y tiene que conseguir ser totalmente exacto, dado que el ordenador seguirá
+ciegamente su programa tal y como lo haya escrito. Cómo, entonces, puede alguien escribir
+aunque sea el programa mas sencillo?. Realmente, no es un gran misterio. Es cuestión de
+aprender a pensar de la forma correcta.</p>
+
+<p>Un programa es la expresión de una idea. El programador empieza con una idea general
+acerca del trabajo que ha de hacer el ordenador. Presumiblemente, ya tiene una idea de
+como realizar el trabajo a mano, al menos en líneas generales. El problema es dar cuerpo
+a esas &quot;líneas generales&quot;. Es preciso que el proceso para realizar el trabajo
+sea completo y no ambiguo en cada uno de sus pasos. Tal procedimiento se llama
+&quot;algoritmo&quot; (técnicamente, un algoritmo es un procedimiento paso a paso,
+preciso, que termina después de un numero finito de pasos; no queremos tener en cuenta
+los procedimientos que continúan por siempre). Un algoritmo, no es lo mismo que un
+programa. Un programa esta escrito en algún lenguaje de programación determinado. Un
+algoritmo, es mas semejante&nbsp; a la idea que hay detrás del programa, con todos los
+detalles solucionados. Por ejemplo, un algoritmo puede ser expresado en castellano,
+siempre y cuando sea completo y preciso</p>
+
+<p>Entonces, de donde provienen los algoritmos?. Usualmente deben desarrollarse, a menudo
+con una gran cantidad de reflexión y trabajo duro. La habilidad para desarrollar
+algoritmos, es algo que se consigue con la practica, pero hay técnicas&nbsp; que le
+pueden ayudar.&nbsp; Aquí hablaremos de algunas técnicas&nbsp; mas importantes para la
+programación en detalle,&nbsp; y también volveremos a este tema varias veces, en los
+capítulos sucesivos.</p>
+
+<hr width="50%">
+
+<p>Cuando se codifica, tendrá algunos trabajos básicos con: variables, instrucciones de
+asignación, y rutinas de entrada-salida. También puede tener alguna subrutina, objetos,
+u otros bloques de instrucciones que estaban ya escritos por usted o por cualquier otro.
+(Las rutinas de entrada/salida, de momento están en esta categoría). Puede crear
+secuencias con esta instrucciones, y también las puede combinar con estructuras de
+control mas complejas como son los bucles <tt>while</tt> y las instrucciones <tt>if</tt>.
+Y tiene en mente como quiere que el ordenador realice la tarea.</p>
+
+<p>Una forma de proceder, es escribir la descripción de la tarea, y tomar la descripción
+como guía del algoritmo que quiere desarrollar. Puede ir perfeccionando y elaborando la
+descripción, gradualmente añadiendo pasos y detalles hasta que tenga el algoritmo
+completo que pueda trasladar directamente al lenguaje de programación. Este método se
+llama <font color="#808000">depuración paso a paso (<em>stepwise)</font>, </em>y es del
+tipo de diseño <em>top-down</em>. A medida que realiza las etapas de la depuración paso
+a paso, puede ir escribiendo la descripción de su algoritmo en<font color="#808000"> </font>pseudocódigo
+-- Instrucciones informales que imitan la estructura del lenguaje de programación, sin la
+necesidad de la perfecta y detallada sintaxis del verdadero código del programa.</p>
+
+<p>Como ejemplo, veamos como se puede desarrollar el programa de la sección anterior, que
+calculaba el valor de la inversión a 5 años. La tarea que quiere que el programa realice
+es: &quot;Calcula y presenta el valor de la inversión para cada uno de los 5 años
+siguientes.&quot; Puede, entonces escribir, o al menos pensar, que esto se puede expandir
+como:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p>Calcula el valor después de 1 año;<br>
+        Presenta el valor;<br>
+        Calcula el valor después de 2 año;<br>
+        Presenta el valor;<br>
+        Calcula el valor después de 3 año;<br>
+        Presenta el valor;<br>
+        Calcula el valor después de 4 año;<br>
+        Presenta el valor;<br>
+        Calcula el valor después de 5 año;<br>
+        Presenta el valor;</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Esto es correcto, pero bastante repetitivo. Y viendo las repeticiones,puede pensar en
+la posibilidad de utilizar un bucle. Un bucle nos hará escribir menos. Y mas importante,
+seria mas general: Esencialmente, el mismo bucle trabajaría con cualquier numero de años
+que quisiera procesar. Entonces, puede escribir la secuencia anterior con los pasos:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p>Mientras haya años por procesar:<br>
+        Calcular el valor después del nuevo año<br>
+        presentar el valor;<br>
+        </p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>En lo que se refiere a si quedan años por procesar, solo hay una manera de hacerlo que
+es contando nosotros mismos los años. Esta presentación tiene una estructura muy común.
+y debería intentar algo lo mas similar posible a los programas:Tenemos que empezar los
+años en cero, sumar uno cada vez que procesemos un año, y parar cuando se llegue al
+numero deseado de años:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <p>años=0; <br>
+          mientras años &lt; 5;<br>
+          &nbsp;&nbsp;&nbsp; años=años+1;<br>
+          &nbsp;&nbsp;&nbsp; calcular el interés;<br>
+          &nbsp;&nbsp;&nbsp; sumar el interés al capital;<br>
+          &nbsp;&nbsp;&nbsp; presentar el capital;</p>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Bien, esto esta mejor, pero hay un problema: No podemos calcular el interés, a menos
+que sepamos el porcentaje de interés, y no podemos calcular el valor de la inversión en
+los años siguientes, a menos que conozcamos el valor inicial. De donde viene esa
+información?.El porcentaje de interés, se ha de pedir o es un valor inicial fijo?.
+Podemos suponer que lo tecleara el usuario cuando el programa ya este funcionando?&nbsp;
+Mejor vuelve atrás, al jefe o al profesor,-- o lee su encargo mas cuidadosamente!.
+Supongamos que se deja el valor inicial de la inversión y el porcentaje para que lo entre
+el usuario del programa. Y supongamos también que el interés se calcula multiplicando el
+porcentaje de interés por el valor actual:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <p>solicitar el valor inicial del capital al usuario;<br>
+          solicitar el valor inicial del porcentaje de interés al usuario;<br>
+          años=0;<br>
+          mientras que años &lt; 5;<br>
+          &nbsp;&nbsp;&nbsp; años=años+1;<br>
+          &nbsp;&nbsp;&nbsp; calcula interés=capital*porcentaje de interés;<br>
+          &nbsp;&nbsp;&nbsp; sumar el interés al capital;<br>
+          &nbsp;&nbsp;&nbsp; presentar el capital;</p>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Finalmente, hemos llegado a un punto donde se puede trasladar bastante directamente
+hacia la sintaxis de un lenguaje de programación. Aun tenemos que escoger nombres para
+las variables, decidir exactamente que le queremos decir al usuario y así sucesivamente.
+Considerando que lo hemos hecho, podemos expresar el algoritmo en Java como:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <p>console.put(&quot;Indique la inversión inicial: &quot;);<br>
+          double principal=console.getlnDouble();<br>
+          console.put(&quot;Indique el porcentaje de interés: &quot;);<br>
+          double rate = console.getlnDouble();<br>
+          int years =0;<br>
+          while (years &lt; 5) {<br>
+          &nbsp;&nbsp;&nbsp; years=years + 1;<br>
+          &nbsp;&nbsp;&nbsp; double interest=principal*rate;<br>
+          &nbsp;&nbsp;&nbsp; principal=principal+interest;<br>
+          &nbsp;&nbsp;&nbsp; console.putln(principal);<br>
+          }</p>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Esto todavía necesita el envolverlo dentro de un programa completo, también le faltan
+comentarios, y realmente necesita imprimir mas información para el usuario. Pero
+esencialmente, es el mismo programa que vimos en la sección anterior.</p>
+
+<p>Una cosa que debería tener en cuenta aquí, es que la especificación del problema
+original-- &quot;Calcula y presenta el valor de la inversión para cada uno de los 5 años
+siguientes.&quot; -- estaba lejos de ser completa. Antes de poder empezar a escribir un
+programa, debe estar seguro que tiene todas las especificaciones de lo que se supone que
+tiene que hacer exactamente el programa. Particularmente, necesita conocer que
+información va a recibir&nbsp; y a entregar el programa y que cálculos debe realizar.
+Aquí tiene una especificación razonablemente completa del problema que ha visto en este
+ejemplo:</p>
+
+<blockquote>
+  <p>&quot;Escribir un programa que calcule y presente el valor de la inversión para cada
+  uno de los cinco años siguientes. Cada año, el interés se le añadirá al capital. El
+  interés se calculara multiplicando el capital por un porcentaje de interés fijo.Asuma
+  que el valor inicial del capital y el porcentaje del interés, lo entrara el usuario
+  cuando ejecute el programa&quot;</p>
+</blockquote>
+
+<hr width="50%">
+
+<p>Hagamos ahora otro ejemplo, trabajando esta vez con un programa que todavía no ha
+visto. La tarea es aquí un problema matemático abstracto que es uno de mis ejercicios de
+programación favoritos. Esta vez, vamos a empezar bien, con las especificaciones
+completas y apropiadas:</p>
+
+<blockquote>
+  <p>&quot;Dado un numero entero positivo, N, define la secuencia&nbsp; '3N+1' empezando en
+  N y continuando como: Si N es numero par, divide N por 2; pero si N es impar, multiplica N
+  por 3 y suma 1. Continuar generando números de esta forma hasta que N sea igual a 1. Por
+  ejemplo, empezando con N = 3, que es impar, lo multiplicamos por 3 y le sumamos 1,
+  resultando N=3*3+1=10, Entonces, como N es par, lo dividimos por 2 dando N=10/2=5, y
+  continuamos de esta manera, parándonos cuando alcanzamos el 1, la secuencia resultante
+  es: 3,10,5,16,8,4,2,1.</p>
+  <p>&quot;Escribir un programa que lea un numero positivo entero del usuario, e imprima la
+  secuencia 3N+1 empezando en dicho numero. El programa debe también contar e imprimir el
+  numero de términos que aparecen en dicha secuencia.&quot;</p>
+</blockquote>
+
+<p>En líneas generales, el algoritmo del programa que queremos es:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p>Tomar un numero N entero positivo del usuario;<br>
+        Calcular, imprimir y contar cada numero de la secuencia;<br>
+        imprimir el numero de elementos;</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>La parte principal del programa esta en la segunda etapa. Necesitaremos un bucle, dado
+que queremos calcular números hasta que llegue a 1. Podemos expandir nuestro algoritmo en
+pseudocódigo como:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p>Tomar un numero N entero positivo del usuario;<br>
+        mientras N no es 1:<br>
+        &nbsp;&nbsp;&nbsp; Calcula N = nuevo elemento;<br>
+        &nbsp;&nbsp;&nbsp; imprime N;<br>
+        &nbsp;&nbsp;&nbsp; Cuenta este elemento;<br>
+        imprime el numero de elementos;</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>En orden a calcular el nuevo elemento, el ordenador debe realizar diferentes acciones
+dependiendo que N sea par o impar. Necesitamos una instrucción IF para decidir entre
+ambos casos.</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p>Tomar un numero N entero positivo del usuario;<br>
+        mientras N no es 1:<br>
+        &nbsp;&nbsp;&nbsp; Si N es par:<br>
+        calcula N = N/2;<br>
+        &nbsp;&nbsp;&nbsp; si no<br>
+        calcula N = 3 * N + 1;<br>
+        &nbsp;&nbsp;&nbsp; imprime N;<br>
+        &nbsp;&nbsp;&nbsp; Cuenta este elemento;<br>
+        imprime el numero de elementos;</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Ya casi lo tenemos. El único problema esta en el contador. El contador, debe empezar
+en cero y cada vez que tenga que contar algo, deberá sumarse uno. Necesitamos una
+variable para que actúe de contador.(&nbsp; De nuevo, este es el patrón común que puede
+espera encontrarse una y otra vez). Con el añadido del contador, tendremos:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p>Tomar un numero N entero positivo del usuario;<br>
+        hacer contador=0<br>
+        mientras N no es 1:<br>
+        &nbsp;&nbsp;&nbsp; Si N es par:<br>
+        calcula N = N/2;<br>
+        &nbsp;&nbsp;&nbsp; si no<br>
+        calcula N = 3 * N + 1;<br>
+        &nbsp;&nbsp;&nbsp; imprime N;<br>
+        &nbsp;&nbsp;&nbsp; Suma 1 a contador;<br>
+        imprime el contador;</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Aun queda el preocuparse por el primerísimo paso. Cómo podemos leer un numero <strong>positivo</strong>
+del usuario?. Si leemos un numero, es posible para el usuario el teclear un numero
+negativo o cero. Si sigue el programa para ver que pasa cuando el numero sea negativo o
+cero, vera que el programa no termina nunca, dado que el valor de N nunca llega a ser
+igual a 1. Esto es un error. En este caso, el problema no es gran cosa, pero en general,
+debe intentar escribir programas a prueba de tontos. Una forma de solucionar esto, es
+mantenerse pidiendo números hasta que el usuario teclee un numero positivo:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p>Pedirle al usuario un numero positivo;<br>
+        dejar en N la respuesta del usuario;<br>
+        mientras N no sea positivo:<br>
+        &nbsp;&nbsp;&nbsp; imprimir mensaje de error;<br>
+        &nbsp;&nbsp;&nbsp; leer otro valor para N;<br>
+        hacer contador=0<br>
+        mientras N no es 1:<br>
+        &nbsp;&nbsp;&nbsp; Si N es par:<br>
+        calcula N = N/2;<br>
+        &nbsp;&nbsp;&nbsp; si no<br>
+        calcula N = 3 * N + 1;<br>
+        &nbsp;&nbsp;&nbsp; imprime N;<br>
+        &nbsp;&nbsp;&nbsp; Suma 1 a contador;<br>
+        imprime el contador;</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+      <p>Aquí esta el programa Java que implementa este algoritmo. Usa el operador &lt;= 
+        &nbsp; que significa &quot;es menor que o igual a&quot; y != que significa 
+        &quot;no es igual a&quot;. Para probar si N es par, se usa &quot;N%2=0&quot;. 
+        La expresión N%2, calcula el resto de dividir N por 2. Para saber que 
+        N es par, el resto deberá ser igual a 0. El operador == se emplea para 
+        comprobar si dos números sin iguales.&nbsp; Estudiaremos los operadores 
+        con mas detalle en la <a href="Seccion2_5.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Seccion2_5.html">siguiente </a>sección.</p>
+
+<blockquote>
+  <pre><tt>public class ThreeN {
+   /* este programa imprime la secuencia
+      3N+1 empezando en un numero entero positivo
+      especificado por el usuario. Y también cuenta
+      el numero de elementos de la secuencia e imprime dicho numero
+    */
+   public static void main(String[] args) {
+	 Console console = new Console(); // abrir la ventana de consola
+	 int N; // para calcular los elementos de la secuencia
+	 int counter; // para contar los elementos
+	 console.put(&quot;Punto de inicio de la secuencia &quot;);
+	 N = console.getlnInt();
+	 while (N &lt;= 0) {
+		 console.put(&quot;El valor inicial, ha de ser positivo, por favor reintente. &quot;);
+		 N = console.getlnInt();
+	 }
+	 // en este momento, sabemos que N &gt; 0
+	 counter = 0;
+	 while (N != 1) {
+		 if (N % 2 == 0)
+			N = N / 2;
+		 else 
+			N = 3 * N + 1;
+	 	 console.putln(N);
+		 counter = counter + 1;
+	 }
+	 console.putln();
+	 console.put(&quot;Aquí hay &quot;);
+	 console.put(counter);
+	 console.putln(&quot; elementos de la secuencia.&quot;);
+	 console.close(); //close the console window
+	 } // end of main()
+ } // end of class ThreeN</tt></pre>
+</blockquote>
+
+<p>Como es usual, puede probar la ejecucion del programa. Pruebe distintos valores para N,
+incluidos algunos valores negativos:</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p align="center">
+<applet code="ThreeN1Console.class" tppabs="http://members.nbci.com/elcurso/Capitulo2/ThreeN1Console.class" height="300" width="525">
+
+<p align="center"><font color="#E70000">Perdon, su navegador no tiene<br>
+activado el soporte Java.</font></applet>
+</p>
+
+<p align="left">Dos notas finales sobre este programa: Primero, se habrá dado cuenta que
+el primer termino de la secuencia -- el valor de N que ha entrado el usuario -- no se
+imprime ni se cuenta en este programa. Es un error?. Es difícil saberlo. Es suficiente
+las especificaciones del programa para decidirlo?. Este es el tipo de cosas que le pueden
+hacer volver al jefe/profesor para que se lo aclare. El problema, puede ser resuelto de
+forma bastante fácil. Solo tiene que sustituir la línea &quot;counter=0&quot; anterior
+al bucle while, por estas dos líneas:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <div align="left"><pre><tt>console.putln(N); // imprime el primer elemento
+counter = 1; // y lo cuenta</tt></pre>
+        </div>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p align="left">Segundo, este es el motivo que hace este programa tan interesante. Bien,
+es interesante para los matemáticos y los científicos de ordenadores porque hay una
+pregunta muy sencilla sobre el problema que no puede ser contestada. Porque el proceso de
+calculo de la secuencia 3N+1 finaliza después de un numero finito de pasos para todos los
+posibles valores de inicio de N ?. Aunque las secuencias individuales son fáciles de
+calcular, ninguna puede ser la respuesta a la pregunta general. (Para decirlo de otra
+manera, nadie sabe si el proceso de calculo 3N+1 puede llamarse propiamente algoritmo,
+dado que un algoritmo requiere terminar después de un numero finito de pasos!)</p>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="Sección2_4.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_4.html"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo2/indice2.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="Seccion2_6.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Seccion2_6.html"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="61" HEIGHT="61"></a></td>
+  </tr>
+</table>
+
+<p>&nbsp; 
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,173 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 1.7</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="keywords" content="formacion, Java, gratis, programacion, internet, curso">
+<meta name="description" content="Curso de programacion en lenguaje Java. Principios de los ordenadores, bases de la programacion, ideas generales sobre internet, protocolos de comunicacion, bases del lenguaje java, programacion avanzada en Java.">
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<meta name="distribution" content="global">
+<meta name="resource-type" content="document">
+<meta name="robots" content="all">
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 1.7: Internet y el World-Wide Web</h3>
+
+<hr>
+
+<p>Los ordenadores, se pueden conectar en <font color="#808000">redes</font>. Un ordenador
+conectado a una red, puede intercambiar ficheros y datos o enviar y recibir mensajes con
+cualquier otro ordenador que también este conectado a la red. Los ordenadores conectados
+en red, pueden trabajar conjuntamente para realizar grandes cálculos.</p>
+
+<p>Cada día, millones de ordenadores de todas partes del mundo, son conectados a una red
+gigante que se llama <font color="#808000">Internet</font>. Cada día se conectan mas
+ordenadores a Internet. Y de hecho los ordenadores, se pueden unir temporalmente a
+Internet usando un módem, estableciendo la comunicación por medio de las líneas
+telefónicas.</p>
+
+<p>Existen protocolos de comunicación creados para la comunicación en Internet. Un
+protocolo es, simplemente, un conjunto de especificaciones detalladas sobre el
+procedimiento a seguir para comunicarse. Para que dos ordenadores se puedan comunicar
+entre ello, deben estar utilizando el mismo protocolo. El protocolo mas básico es el <font color="#808000">Internet Protocol</font> (IP), que especifica como son transmitidos
+físicamente los datos de un&nbsp; ordenador a otro. y el <font color="#808000">Transmisión
+Control Protocol</font> (TCP), que asegura que los datos que se han emitido usando IP,
+serán recibidos por completo y sin ningún error.Estos dos protocolos, que normalmente se
+les menciona conjuntamente como TCP/IP, establecen la base para las comunicaciones.
+También&nbsp; otros protocolos usan TCP/IP para manejar otras informaciones especificas
+como la transmisión de ficheros y el correo electrónico.</p>
+
+<p>Las comunicaciones en Internet, son en forma de <font color="#808000">paquetes</font>.
+Un paquete consiste en una parte de datos unida a otra parte de información sobre la
+dirección, que indica a que punto de la red Internet se supone deben ir esos datos.
+Podemos pensar en los paquetes como en un sobre con la dirección fuera, y el mensaje
+dentro. Los paquetes también incluyen la dirección de devolución, esto es la dirección
+del emisor. Un paquete, solo puede almacenar una cantidad limitada de información; los
+mensajes largos, deben ser divididos en varios paquetes, que serán transmitidos
+individualmente, y en destino, se volverán a montar.</p>
+
+<p>Muchos ordenadores tienen una dirección IP en Internet, esto es, un numero que es
+único y que identifica inequívocamente el ordenador en la red. La dirección IP se
+utiliza para direccionar los paquetes, luego en Internet, un ordenador solo puede enviar
+datos a otro sí previamente conoce su dirección IP. Dado que las personas prefieren
+utilizar los nombres mas que los números,&nbsp; muchos ordenadores pueden ser
+identificados por un nombre , llamado <font color="#808000">nombre de dominio</font>. Por
+ejemplo, el ordenador principal de Hobart and William Smith Colleges tiene como nombre de
+dominio hws3.hws.edu. (Los nombres de dominio, se utilizan para nuestra comodidad; el
+ordenador va a necesitar conocer la dirección IP antes de iniciar la comunicación. Por
+eso existen ordenadores en Internet cuyo trabajo consiste en convertir los nombres de
+dominio en direcciones IP.Cuando usa un nombre de dominio, su ordenador envía un mensaje
+a un servidor de nombres para buscar la dirección IP que le corresponde).</p>
+
+<hr width="50%">
+
+<p>Internet proporciona una serie de servicios a los ordenadores conectados ( y como es
+natural a los usuarios de esos ordenadores). Estos servicios usan TCP/IP para enviar
+distintos tipos de datos sobre la red.Alguno de los mas populares servicios son Telnet,
+Correo electrónico (E-MAIL), FTP, gopher y el World-Wide Web.</p>
+
+<p><font color="#808000">Telnet</font> permite al usuario de un ordenador conectarse como
+usuario en otro ordenador. (Naturalmente, esta persona necesita conocer el código de
+usuario y la palabra de paso correspondiente a la cuenta del otro ordenador).
+Esencialmente, el primer ordenador actúa como terminal del segundo. Telnet, lo usa
+normalmente las personas que necesitan acceder al ordenador de su casa o de su oficina
+desde otras ubicaciones; en este caso lo pueden hacer con cualquier ordenador conectado a
+Internet , desde cualquier lugar del mundo.</p>
+
+<p><font color="#808000">Correo </font>electrónico o E-MAIL facilita una comunicación
+sobre Internet de persona a persona. Un mensaje e-mail se emite por un usuario concreto de
+un ordenador, para un usuario concreto de otro ordenador. Cada persona se identifica por
+una dirección e-mail única, que consiste en el nombre de dominio del ordenador en donde
+este usuario tiene su cuenta de correo, juntamente con el nombre del usuario. La
+dirección e-mail tiene la forma <a href="mailto:nombreUsuario@nombre.Dominio">&quot;nombreUsuario@nombre.Dominio&quot;</a>.
+Por ejemplo, mi dirección de correo electrónico es <a href="mailto:mgyea@arrakis.es">mgyea@arrakis.es</a>.
+El e-mail se transmite desde un ordenador a otro usando un protocolo llamado SMTP (Simple
+Mail Transfer Protocol). El correo electrónico es el servicio de Internet mas usado y mas
+importante.</p>
+
+<p><font color="#808000">FTP</font> (File Transport Protocol) esta diseñado para copiar
+ficheros entre dos ordenadores. Como en el caso de Telnet, el FTP requiere que el usuario
+conozca el nombre y el password para conectar con el otro ordenador. De todas maneras,
+muchos ordenadores disponen de una cuenta especial que permite acceder por medio de FTP
+con el nombre de usuario &quot;anonymous&quot; y cualquier password. Este sistema , que se
+llama FTP anónimo, se utiliza para publicar ficheros en Internet dejándolos al alcance
+de todo el mundo.</p>
+
+<p><font color="#808000">Gopher</font> se desarrolló como una simplificación del FTP,
+con una interface de usuario mucho mas sencilla. En el ordenador que quiere publicar la
+información utilizando este protocolo, funciona un programa llamado &quot;servidor
+Gopher&quot;. Cualquier persona, se puede conectar por medio de Internet, usando un
+programa llamado &quot;cliente Gopher&quot;. Cuando el cliente conecta con el servidor,
+&nbsp; el servidor le devuelve una lista de entradas&nbsp; que el cliente presenta al
+usuario. Cada entrada representa un fichero, o una lista de entradas de este o de otro
+ordenador. Cuando el usuario selecciona un fichero,&nbsp; el fichero se descarga desde el
+servidor y puede ser guardado y/o presentado en la pantalla del usuario. Cuando el usuario
+selecciona una entrada que representa otra lista, el cliente recibe la nueva lista y la
+presenta, pudiendo el usuario realizar otra selección. La parte excitante, es que esta
+nueva lista, puede provenir de un servidor Gopher en un ordenador diferente, en cualquier
+parte de Internet. El usuario Gopher, puede ir saltando de máquina a máquina,
+recuperando información de cualquier parte del mundo, sin tenerse que preocupar de
+direcciones IP, nombres de dominio, nombres de usuario, passwords o los misteriosos
+comandos que se usaban en los antiguos protocolos como FTP y Telnet.</p>
+
+<p>El <font color="#808000">World-Wide Web</font> (WWW) es algo semejante al Gopher
+llevada al extremo.Aunque el Gopher hacia que&nbsp; para el usuario&nbsp; Internet fuera
+fácil e incluso a veces divertida , solo permitía tratar ficheros y listas. El WWW esta
+basado en paginas que contienen distintos tipos de&nbsp; información y también<font color="#808000"> links</font> (enlaces) a otras paginas. El montaje, es mucho mas sencillo
+que en Gopher. Para publicar una información en WWW, el ordenador ejecuta un programa
+generalmente llamado Web server. El usuario accede al Web usando un programa cliente,
+normalmente llamado Web <font color="#808000">browser</font> o <font color="#808000">navegador</font>.El
+navegador contacta con el servidor para recuperar una pagina de información. Si el
+usuario selecciona un enlace (link) a otra pagina, el navegador sigue el enlace para
+recuperar y presentar la nueva información. La idea es simple, sin embargo el resultado
+es complejo: El usuario tiene acceso a una descomunal cantidad de información
+entrelazada, por la que puede ir navegando sin necesidad de conocer profundamente los
+ordenadores.El Web es la parte mas interesante de Internet, y es la que la esta
+conduciendo al fenomenal ritmo de crecimiento que experimenta. Si todas las premisas se
+cumplen, la Web se convertirá en una parte universalmente fundamental de la vida de cada
+día.</p>
+
+<p>Debe tener en cuenta que, aunque el FTP y el Gopher no han desaparecido todavía, han
+sido absorbidos dentro de World-Wide Web. El protocolo usado por los servidores Web se
+llama HTTP (HyperText Transfer Protocol), y los navegadores se comunican con los
+servidores empleando ese protocolo. Sin embargo, un navegador entiende varios protocolos,
+incluidos el FTP y el Gopher. Esto significa que un navegador puede comunicarse con
+servidores de FTP anónimos, y servidores Gopher con la misma facilidad que con servidores
+Web. La idea es que solo se necesite un programa con una interface para acceder a toda la
+información disponible en&nbsp; Internet. Cuando esta usando un navegador, no se entera
+si usa FTP, Gopher o HTTP. Así debe ser: Usted quiere una información, el navegador ha
+de saber como conseguirla.</p>
+
+<hr width="50%">
+
+<p>Justamente ahora, debe de estar pensando, ¿que tiene que ver todo esto con Java?.
+&nbsp; De hecho, Java esta íntimamente asociada con Internet y con el World-Wide Web. Tal
+y como vio en la sección anterior, existen unos programas especiales Java, llamados
+applets, que pueden ser transmitidos por Internet y presentados en las paginas Web. Un
+servidor Web transmite los applets de Java igual que puede transmitir cualquier otro tipo
+de información. Un navegador que entienda Java-- esto es que incluya un interprete para
+la maquina virtual Java-- puede ejecutar correctamente el applet en medio de la pagina
+Web. Puesto que los applets son programas, permiten crear interacciones complejas con el
+usuario.&nbsp; Con Java las paginas Web son mucho mas que una representación de
+información totalmente pasiva pudiendo llegar a convertirse en cualquier cosa que el
+programador pueda imaginar e implementar.</p>
+
+<p>Como verá en la próxima sección, Java no es el único lenguaje beneficiado de su
+asociación con el Web.Han sido muchos los lenguajes creados solo para ser rápidamente
+olvidados. Java ha tenido la buena suerte de conseguir incrementar su popularidad a la vez
+que crecían los Web's</p>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="seccion1_6.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_6.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="66" HEIGHT="66"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/indice1.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="69" height="71" alt="Indice Capítulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="68" height="70" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion1_8.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_8.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="65" HEIGHT="65"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

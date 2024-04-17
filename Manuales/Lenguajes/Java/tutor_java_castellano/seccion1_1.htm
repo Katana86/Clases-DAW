@@ -1,0 +1,135 @@
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java.Seccion 1.1</title>
+
+<meta name="keywords" content="formacion, Java, gratis, programacion, internet, curso">
+<meta name="description" content="Curso de programacion en lenguaje Java. Principios de los ordenadores, bases de la programacion, ideas generales sobre internet, protocolos de comunicacion, bases del lenguaje java, programacion avanzada en Java.">
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<meta name="distribution" content="global">
+<meta name="resource-type" content="document">
+<meta name="robots" content="all">
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 1.1 El Fetch y el Ciclo de Ejecución: El lenguaje maquina </h3>
+
+<hr>
+
+<p align="left"><big>Los ordenadores</big>, con complejos sistemas consistentes en gran
+cantidad de distintos componentes. Pero el corazón, o el cerebro si usted quiere, del
+ordenador, es un único componente que realiza el trabajo de cálculo (computación). Este
+componente es la Unidad Central de Proceso (<font COLOR="#ff0000">Central Processor Unit</font>,
+o CPU). En los modernos ordenadores, la CPU es un único &quot;chip&quot; cuadrado de unos
+6 centímetros de lado. (Con la llegada del Pentium II,&nbsp; han pasado a ser
+rectangulares de 6 por 12 cm). Es la CPU la que se encarga de ejecutar los programas.</p>
+
+<p align="left">Un <font COLOR="#808000">programa</font>, es una simple lista de
+instrucciones que indican, sin ningún tipo de ambigüedad, las acciones que ha de
+ejecutar la CPU. La CPU esta preparada para manejar unas instrucciones escritas en un tipo
+de lenguaje muy simple llamado <font COLOR="#808000">lenguaje maquina. </font><font>Cada
+modelo de CPU, posee su propio lenguaje maquina y puede ejecutar un programa, solo si esta
+escrito en ese lenguaje. (Para poder ejecutar programas escritos en otros lenguajes, es
+necesario primero, trasladarlos a lenguaje maquina).</p>
+
+<p align="left">Cuando la CPU ejecuta un programa, éste &nbsp; es almacenado en la </font><font COLOR="#808000">memoria principal</font> del ordenador(también llamada RAM o random
+access memory). Además del programa, en la memoria también se van a guardar datos que
+están siendo usados o procesados por el programa. La memoria principal, consiste en una
+secuencia de <font COLOR="#808000">lugares</font><font>. Estos lugares, están numerados y
+el numero secuencial de los lugares, es lo que conocemos como dirección de memoria
+(address). Las direcciones, proporcionan&nbsp; la forma de tomar una pieza concreta de
+información, de entre los millones de datos almacenados en la memoria. Cuando la CPU
+necesita acceder a una instrucción del programa o un dato en un lugar determinado, envía
+una señal a la memoria indicando la dirección de la información, y la memoria responde
+devolviendo el dato contenido en la dirección especificada. La CPU&nbsp; también puede
+almacenar información en la memoria, especificando la información que desea guardar, y
+la dirección en donde debe ser almacenada. </p>
+
+<hr WIDTH="50%">
+
+<p align="left">Al nivel de código maquina, las operaciones de la CPU son bastantes
+simples (aunque vistas en detalle, son terriblemente&nbsp; complicadas). La CPU, ejecuta
+un programa que esta almacenado como secuencias de código maquina, en la memoria
+principal. Esto hace que tenga repetidamente que leer&nbsp; (fetching) una instrucción
+sacándola de la memoria y ejecutándola. Este proceso -- Tomar instrucción, ejecutarla,
+tomar otra instrucción, ejecutarla, y así continuamente, -- es llamado </font><font COLOR="#808000">Ciclo de lectura y </font>ejecución. Con una excepción, que se vera en
+la <a HREF="seccion1_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_2.htm">próxima </a>sección, este el todo el trabajo que debe
+realizar la CPU.</p>
+
+<p align="left">Los detalles del ciclo de lectura y ejecución, no son terriblemente
+importantes, pero son una de las cosas básicas que debe conocer. La CPU contiene unos
+cuantos <font COLOR="#808000">registros</font> internos, que son unas pequeñas unidades
+de memoria, capaces de almacenar un numero, o una instrucción en lenguaje maquina. La CPU
+emplea uno de estos registros,-- el <font COLOR="#808000">contador de instrucciones o PC
+(Program counter</font><font>) -- para mantener la pista de donde se encuentra en la
+ejecución de un programa. El PC guarda la dirección de la siguiente instrucción que la
+CPU debe ejecutar. Al principio de cada ciclo de leer y ejecutar, la CPU comprueba el PC
+para saber que instrucción debe tomar. Durante el curso del ciclo de Leer-y-ejecutar, el
+numero guardado en PC, es actualizado para indicar la instrucción que se ha de ejecutar
+en el siguiente ciclo. (Normalmente, pero no siempre, es justamente la instrucción que
+sigue a la que se esta ejecutando actualmente.)</p>
+
+<p align="left">El ordenador ejecuta mecánicamente los programas en lenguaje maquina --
+esto es, sin entenderlos, o pensar sobre ellos -- simplemente porque es la única forma
+física de hacerlo. No es un concepto sencillo. Un ordenador, es una maquina que contiene
+millones de diminutos interruptores llamados </font><font COLOR="#808000">transistores</font><font>,
+que están conectados entre ellos por millares, y que pueden hacer que cuando uno de ellos
+se ponga OFF, otro se tenga que poner ON u OFF. El ordenador, realiza los cálculos por
+medio de estos interruptores que se van poniendo on y off, siguiendo un patrón
+determinado al ejecutar cada una de las instrucciones del programa.</p>
+
+<hr ALIGN="center" width="50%">
+
+<p align="left">Las instrucciones del&nbsp; lenguaje maquina, están expresadas con
+números binarios. Un numero binario, esta compuesto únicamente por dos dígitos, cero y
+uno. Luego, las instrucciones del lenguaje maquina, son exactamente eso: una secuencia de
+ceros y unos. Cada secuencia concreta, indica una instrucción determinada. Los datos que
+el ordenador manipula, están también traducidos a números binarios. El ordenador puede
+trabajar directamente con números binarios, porque el sistema de interruptores, esta
+preparado precisamente para esos números. Un interruptor on, representa un uno, mientras
+que si esta off, representa cero. Las instrucciones maquina, están almacenadas en la
+memoria como conjuntos de interruptores en on y en off. Cuando una instrucción maquina es
+cargada en la CPU, lo que ocurre, es que ciertos interruptores son puestos on u off,
+según la mascara que representa la instrucción actual. La CPU genera una respuesta a
+esta mascara, ejecutando la instrucción , lo cual es muy simple porque la CPU utiliza el
+mismo tipo de interruptores para combinarlos con los de la instrucción. </p>
+
+<p align="left">Ahora, debe de entender bastante acerca de como trabajan los ordenadores.
+La memoria principal, almacena los programas en lenguaje maquina, y los datos. Estos,
+están codificados como números binarios. La CPU, toma las instrucciones en lenguaje
+maquina desde la memoria, una después de la otra, y las va ejecutando. Todo es
+mecánico,&nbsp; sin pensar en ello, ni entender que es lo que hace -- y por lo tanto,
+para que un programa funcione correctamente, debe ser perfecto, completo en todos los
+detalles y sin ambigüedades porque la CPU solo puede ejecutar lo que esta escrito.</p>
+
+<p align="left">Esta es una visión esquemática de esta primera etapa de comprensión de
+los ordenadores:</p>
+</font>
+
+<p align="center"><img SRC="fig1.gif" tppabs="http://members.nbci.com/elcurso/Capitulo1/fig1.gif" style="margin-left: auto; margin-right: auto" WIDTH="352" HEIGHT="225"></p>
+<font>
+
+<p ALIGN="left">La figura, ha sido tomada de <a HREF="tppmsgs/msgs0.htm#23" tppabs="http://math.hws.edu/TMCM.html">The
+Most Complex Machine: A Survey of Computers and Computing</a>, el libro de texto que se
+utiliza para dar una visión general introductoria a campo de la ciencia de la
+computación. Si quiere conocer mas a fondo el funcionamiento básico de un ordenador, por
+favor, lea los capítulos 1 a 3 de este texto.</p>
+
+<hr>
+
+<table>
+  <tr>
+    <td WIDTH="245" VALIGN="MIDDLE"></td>
+    <td WIDTH="219" VALIGN="MIDDLE"><p ALIGN="CENTER"><a HREF="indice1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/indice1.htm"><img SRC="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" BORDER="0" ALT="wpe2.jpg (2690 bytes)" WIDTH="80" HEIGHT="82"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img SRC="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" ALT="Indice General" WIDTH="79" HEIGHT="81" border="0"></a></td>
+    <td WIDTH="295" VALIGN="MIDDLE"><a HREF="seccion1_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_2.htm"><img SRC="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" BORDER="0" WIDTH="72" HEIGHT="72" ALT="Siguiente"></a></td>
+  </tr>
+</table>
+
+<p>&nbsp;</font> 
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

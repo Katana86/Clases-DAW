@@ -1,0 +1,382 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Practica 2</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+</head>
+
+<body>
+
+<h3>Practica 2: Más programación y Visual J++</h3>
+
+<hr>
+
+<p>Para las segundas practicas del curso, vamos a escribir un pequeño programa usando
+Visual J++. También aprenderá como crear un proyecto de Visual J++, y algunas cosas mas
+sobre Visual J++ en general.</p>
+
+<p>Durante esta practica, usara variables, instrucciones de asignación, instrucciones <em>if</em>
+,&nbsp; e instrucciones <em>while</em>. También empleara algunos comandos básicos de
+&quot;consola&quot;. La historia completa sobre los elementos de estos programas, aparece
+en el <a href="indice2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo2/indice2.htm">Capítulo 2</a> del texto. Sin embargo, la
+mayor parte de lo que necesita conocer para esta practica, se revisa en este documento.</p>
+
+<p>Como siempre al final de la practica hay unos ejercicios que deberán ser enviados a su
+tutor (únicamente las personas que hayan contratado <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">Seguimiento</a>).</p>
+
+<hr width="50%">
+
+<h3>Indice de la practica:</h3>
+
+<ul>
+  <li><a href="#CreandoProyecto">Creación de un Proyecto en Visual J++</a></li>
+  <li><a href="#ProgramacionIf">Programación con IF y WHILE</a></li>
+  <li><a href="#ReglasDeEstilo">Algunas reglas de estilo para programar</a></li>
+  <li><a href="#ProgramaAdivina">El programa del juego de adivinar</a></li>
+  <li><a href="#EscribiendoConsoleApplet">Escribiendo un Applet de Console</a></li>
+  <li><a href="#Ejercicios">Ejercicios</a><hr width="50%">
+    <h3><a name="CreandoProyecto">Creación de un Proyecto en Visual J++</a></h3>
+    <p>En general, durante este curso empezara muchos proyectos copiando la carpeta de
+    arranque que le facilitamos. Sin embargo, también puede crear un proyecto de Visual J++
+    desde el principio. En esta parte de la practica, vamos a crear una aplicación autónoma
+    de consola desde el principio.</p>
+    <p>Para arrancar Microsoft Developer Studio deberá pulsar el botón de
+    Inicio/Programas/Microsoft Visual J++.</p>
+    <p align="left">Puesto que no ha abierto ningún proyecto existente, deberá empezar
+    creando su propio proyecto. Para hacerlo, escoja <font color="#808000">Nuevo</font> del
+    menú Archivo. En la caja de dialogo del comando Nuevo, vera que puede crear bastantes
+    cosas (dependerá de su implementacion de MDS). Queremos crea un proyecto Java:</p>
+    <p align="center"><img src="practi1.jpg" tppabs="http://members.nbci.com/elcurso/Practicas/prc2/practi1.jpg" alt="wpeBB.jpg (6593 bytes)" WIDTH="302" HEIGHT="167"></p>
+    <p>seleccionaremos &quot;Project Workspace&quot; y pulsaremos OK. A continuación, se nos
+    presenta una pantalla en la que le deberemos indicar el nombre del proyecto, el tipo y la
+    ubicación de los ficheros:</p>
+    <p align="center"><img src="practi2.jpg" tppabs="http://members.nbci.com/elcurso/Practicas/prc2/practi2.jpg" alt="wpeBC.jpg (12364 bytes)" WIDTH="489" HEIGHT="249"></p>
+    <p align="left">Utilizaremos Java Wokspace dado que vamos a realizar un programa
+    autónomo, si quisiéramos escribir un <em>applet</em>, seleccionaríamos la otra línea.
+    Deberemos rellenar la casilla de <em>Name</em> con el nombre que le queramos dar a nuestro
+    proyecto (por ejemplo &quot;Proyecto1&quot; y veremos que nos aparece también en <em>Location</em>,
+    comprobaremos que es el directorio en donde queremos dejar nuestro nuevo proyecto y
+    podemos pulsar &quot;Create&quot;</p>
+    <p align="left">A continuación, seleccionaremos New Java Class del menú Insert y en la
+    caja que nos aparece indicaremos en <em>Name </em>en nombre del módulo que puede ser
+    &quot;MyProgram&quot; y como modificadores (modifiers) seleccionaremos &quot;public&quot;
+    . Como es un ejemplo, entre el siguiente programa pero observe que la primera línea que
+    aparece &quot;<tt>public class MyProgram&quot;<font face="m"> ya la tiene en la pantalla
+    de trabajo, y la ultima llave </font></tt>también. Si esta leyendo estas notas en su
+    navegador, puede ahorrarse el escribir usando el cortar y pegar para copiar el programa
+    desde el navegador a Developer Studio. Observe que el nombre de la clase, MyProgram, debe
+    ser el mismo que el nombre del fichero java que contiene la clase.</p>
+    <pre>            public class MyProgram {
+              // Un sencillo programa que multiplica dos numeros
+              // entrados por el usuario, y presnta la respuesta
+              public static void main(String[] args) {
+                 Console console = new Console();
+                 double x,y;   // numeros a entrar por el usuario
+                 double ans;   // respuesta calculada por el programa
+                 console.put(&quot;Entre su primer numero: &quot;);
+                 x = console.getlnDouble();
+                 console.put(&quot;Entre su segundo numero: &quot;);
+                 y = console.getlnDouble();
+                 ans = x * y;
+                 console.putln();
+                 console.putln(&quot;El producto de sus numeros es &quot; + ans);
+                 console.close();
+              } // end of main()
+            } // end of class MyProgram</pre>
+    <p align="left">&nbsp;</p>
+    <p align="left">Una vez haya tecleado el programa, puede intentar ejecutarlo, pero vera
+    que tienen al menos un error. La clase <em>&quot;Console&quot;</em> no esta definida.
+    Recuerde que la clase Console no pertenece al estándar Java. Si la quiere usar &nbsp;
+    deberá añadir dos fichero al proyecto: <font color="#808000">Console.java</font>, que
+    define la clase <em>Console</em> y <font color="#808000">ConsoleCanvas.java</font>, que
+    define otra clase que se emplea en la clase <em>Console</em> internamente. Desde el primer
+    ejercicio, tiene una copia de estos archivos en la carpeta <a href="tppmsgs/msgs0.htm#11" tppabs="http://members.nbci.com/elcurso/Proyectos/prFirstProgram.zip">prFirstProgram</a>, deberá copiar estos
+    ficheros a su carpeta Proyecto1.</p>
+    <p align="left">Después de copiar ambos ficheros a la carpeta de su nuevo proyecto, debe
+    indicarle a <em>Developer Studio</em> que son parte del proyecto, para hacerlo seleccione
+    Files into Project&nbsp; y le aparecerá el dialogo clásico para seleccionar fichero,
+    indique los fichero Console.java y ConsoleCanvas.java y pulse &quot;Add&quot;.</p>
+    <p align="left">Después de añadir los ficheros a su proyecto,&nbsp; debería poder
+    compilar el programa ( a menos que haya otros errores introducidos por teclas erróneas).
+    Cuando consiga compilar su programa sin errores, aun queda un obstáculo. Le debe indicar
+    al ordenador que clase quiere ejecutar y si es un applet o un proyecto autónomo. Dado que
+    todavía no le ha dado la información, el ordenador le pedirá que la entre antes de
+    poder ejecutar el programa, y para eso presentara la siguiente ventana:</p>
+    <p align="center"><img src="practi4.jpg" tppabs="http://members.nbci.com/elcurso/Practicas/prc2/practi4.jpg" alt="wpeBE.jpg (12566 bytes)" WIDTH="401" HEIGHT="258"></p>
+    <p align="left">En <em>Class file name</em> deberá indicar el nombre de la clase
+    MyProgram, y deberá señalar el botón de <tt>Stand-alone interpreter</tt></p>
+  </li>
+</ul>
+
+<p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y ahora
+su programa ya debe funcionar. Felicidades! Ha creado completamente un área de trabajo de
+un proyecto de Visual J++. Afortunadamente, esto no es algo que necesite hacer con
+regularidad. La próxima vez que quiera escribir un programa, puede copiar la carpeta
+Proyecto1, abrir el fichero .dsw en la copia, y regrabar la clase MyProgram con algo
+nuevo. También puede utilizar la carpeta <a href="tppmsgs/msgs0.htm#12" tppabs="http://members.nbci.com/elcurso/Proyectos/AplicationStarted.zip">AplicationStarted</a>
+como punto de arranque de su programa.</p>
+
+<hr width="50%">
+
+<h3><a name="ProgramacionIf">Programación con IF y WHILE</a></h3>
+
+<p>El programa con el que ha trabajado en la sección precedente, no hace mas que
+multiplicar dos números, presentar el resultado y acabar. Los programas normalmente
+tienen que hacer cosas mas complicadas, tienen que poder repetir la misma tarea una y otra
+vez, y tomar decisiones para poder ir por caminos distintos. A continuación presentamos
+un programa mas complejo, aunque todavía muy simple, que puede sumar, restar multiplicar
+y dividir dos números que el usuario le diga. El programa <strong>decidirá</strong>
+entre estas alternativas en función de lo que el usuario le solicite. Posteriormente, el
+programa <strong>repite</strong> la petición de números a calcular una y otra vez
+mientras el usuario le diga que continúe. El programa es el que presentamos en esta
+página en su &nbsp; versión &quot;Console applet&quot;. Como ejercicio, deberá escribir
+el mismo programa como aplicación <em>stand-alone</em> (autónoma). Para eso, puede
+modificar el proyecto AplicationStarter.</p>
+
+<p align="center">
+<applet code="MyApplet.class" tppabs="http://members.nbci.com/elcurso/Practicas/prc2/MyApplet.class" height="300" width="520">
+</applet>
+</p>
+
+<p align="left">Lo primero que tiene que hacer, es modificar el programa de la sección
+anterior para hacer que imprima la lista de opciones, lea la opción indicada por el
+usuario y calcule la respuesta aplicando la operación solicitada por el usuario.
+Asumiendo que <font color="#808000">operación</font>&nbsp; la declaramos de tipo <font color="#808000">int</font>, para leer la opción tendremos:</p>
+<div align="center"><center>
+
+<pre>operación=getlnInt();</pre>
+</center></div>
+
+<p align="left">Y para realizar la operación que el usuario solicite podemos utilizar el<font color="#808000"> if </font>de la siguiente forma:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <div align="left"><pre>if (operación == 0)
+	respuesta=numero1+numero2;
+else if (operación == 1)
+	respuesta=numero1-numero2;
+else if (operación == 2)
+	respuesta=numero1*numero2;
+else if (operación == 3)
+	respuesta=numero1/numero2;
+else 
+	respuesta=0;</pre>
+          </div>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p align="left">Aquí, la condición &quot;<tt>operación == 0&quot;</tt> comprueba se la
+variable <tt>operación</tt> es 0. Si es así, se ejecuta la instrucción asociada &quot;<tt>respuesta
+= numero1+numero2&quot;</tt>. El resto de condiciones trabajan de la misma manera. La
+última instrucción <tt>respuesta=0</tt> se ejecutara en el caso de que no se cumpla
+ninguna de las opciones anteriores. Puede copiar estas instrucciones, tal y como aparecen,
+directamente en su programa, pero es importante que observe como se forma la instrucción
+i<em>if </em>ya que el trabajo de estas practicas trata de ello.</p>
+
+<p>Antes de continuar,&nbsp; debe asegurarse que el programa se compila sin errores, y
+funciona, si no es así, debe corregir los errores que le aparecen en la parte inferior de
+la pantalla. Si no supiera en que línea concreta tiene el error, haciendo un doble-clic
+sobre el mensaje de error, el sistema le indicara la línea. Ponga especial atención a
+los finales de instrucción en (;).</p>
+
+<p>Para terminar el programa, tiene que añadirle las instrucciones necesarias para que
+repita las peticiones. Una forma de hacerlo en Java, es empleando el bucle <font color="#808000">while</font>. La instrucción <font color="#808000">while</font> tiene
+este formato:</p>
+
+<pre>                        while (<font color="#009900">condición</font>) {
+                        
+                            <font color="#009900">instrucciones a repetir</font>
+                            
+                        }</pre>
+
+<p>La <tt><font color="#009900">condición</font></tt> puede reemplazarse por cualquier
+comprobación que pueda tener el valor de<tt> true</tt> o <tt>false</tt>. En&nbsp; este
+caso, se puede emplear un bucle semejante a este:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <pre>boolean continuar = true;
+while (continuar) {
+	.
+	. //instrucciones a repetir
+	.
+	console.putln(&quot;Quiere continuar? &quot;);
+	continuar = console.getlnBoolean();
+}</pre>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Aquí empezamos inicializando la variable boleana <font color="#808000">continuar</font>
+a <font color="#808000">true</font> con lo que conseguimos que el bucle <font color="#808000">whil</font>e se ejecute por lo menos una vez. Al final del bucle, &nbsp;
+leemos un nuevo valor de <font color="#808000">continuar</font>, desde el usuario. El
+comando &quot;<tt>console.getlnBoolean()</tt>&quot; le permite al usuario contestar si o
+no. Si el usuario contesta si, la variable continua siendo cierta (<em>true</em>), por lo
+que el bucle se repite. Si el usuario contesta no, el bucle finaliza.</p>
+
+<p>Para añadirle la repetición a su programa, deberá añadirle las instrucciones
+necesarias dentro del bucle while (entre { y }). Complete el programa ahora, y asegúrese
+que esta correcto y que funciona perfectamente.</p>
+
+<hr width="50%">
+
+<h3><a name="ReglasDeEstilo">Algunas reglas de estilo para programación</a></h3>
+
+<p>Los programas, están pensados para ser leídos por los ordenadores. Pero también
+tienen que poder ser leídos por las personas. Por esta razón, los programas se deben
+escribir de la forma mas clara posible para que cualquier programador lo pueda leer y
+entender.Un buen estilo de programación al escribir un programa, satisfará estos
+requerimientos. Aunque haya gustos para todo,&nbsp; existen algunas reglas muy concretas
+sobre el buen estilo de programación, y todos los programas que tengan que enviarme,
+deberán seguir esas reglas. Esto incluye el programa que tiene que realizar para esta
+practica. La evaluación del programa se hará no solo por su funcionamiento, sino
+también en base a que se haya escrito correctamente, empleando un buen estilo.</p>
+
+<p>Aquí hay algunas reglas que espero que sigan en todos los programas. 
+
+<ul>
+  <li>Al inicio de cada fichero, se debe incluir un comentario describiendo el programa o la
+    clase contenida en el fichero. También deberá incluir su nombre.</li>
+  <li>Escoja nombres de variables, clases y métodos que tengan <strong>sentido</strong> para
+    el lector.</li>
+  <li>Use la <strong>identacion</strong> para presentar la estructura del programa.</li>
+  <li>Use juiciosamente las líneas en blanco para separar partes distintas del programa.</li>
+  <li>Declare cada variable en una línea separada e incluya un comentario describiendo el uso
+    de la variable en el programa.</li>
+  <li>Incluya un comentario al principio de cada método explicando lo que hace.En el
+    comentario, deberá describir cada parámetro del método.</li>
+  <li>No es necesario que emplee comentarios para explicar como trabaja Java, como
+    &quot;declaro una variable de tipo <em>int</em>&quot;. Asuma que el lector conoce Java.</li>
+  <li>Cuando lo crea necesario, incluya un comentario explicando la lógica de su programa o
+    el propósito de la sección de código, si cree que para el lector puede que no sea
+    obvio. En general, este tipo de comentarios los debe usar con moderación.</li>
+</ul>
+
+<p>Probablemente, añadiremos otros requerimientos de estilo a lo largo del curso, cuando
+sean necesarios.</p>
+
+<hr width="50%">
+
+<h3><a name="ProgramaAdivina">El programa</a> del juego de adivinar</h3>
+
+<p>Un programa divertido y que pienso que mis estudiantes lo deben escribir antes o
+después, en su vida de programadores, es el juego de acertar un número, en donde el
+usuario debe adivinar el numero que el ordenador escogió.&nbsp; Este programa emplea
+bucles y desvíos. Puede probar cual es el aspecto del programa en este applet</p>
+
+<p>&nbsp;</p>
+
+<p align="center">
+<applet code="GuessingGameApplet.class" tppabs="http://members.nbci.com/elcurso/Practicas/prc2/GuessingGameApplet.class" height="300" width="525">
+</applet>
+</p>
+
+<p align="left">Uno de los ejercicios de esta practica es escribir este juego como una
+aplicación stand-alone. Como punto de inicio, puede utilizar alguno de los proyectos que
+hemos estado utilizando, y cambiarle el nombre, o bien, como ya sabe, también puede crear
+un nuevo proyecto. Una cosa que pienso ya debería saber, es como hacer que el programa
+consiga un numero aleatorio entre 0 y 100. Supongamos que tenemos una variable llamada <font color="#808000">numeroRandom</font> de tipo <font color="#808000">int</font>. La siguiente
+instrucción, le dice al ordenador que escoja aleatoriamente un numero entre 0 y 100, y lo
+almacene en <font color="#808000">numeroRandom</font> :</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <div align="left"><pre>numeroRamdom = (int)(100*Math.random())+1;</pre>
+      </div>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p align="left">Una vez ya tiene el numero aleatorio escogido, su programa puede leer la
+jugada del usuario y compararla con el <font color="#808000">numeroRandom</font> usando
+los operadores ==, &gt;, &lt;, y != (el operador != indica &quot;no igual a&quot;). La
+forma mas natural de escribir este programa es utilizando el bucle <font color="#808000">do</font>
+mas que el <font color="#808000">while</font>. El bucle <font color="#808000">do</font>
+tiene la forma:</p>
+
+<pre>                    do {
+                        .
+                        . 
+                        .
+                    } while (jugada != numeroRandom);</pre>
+
+<p>donde <font color="#808000">jugada</font> es el numero introducido por el usuario. Este
+bucle se repetirá hasta que <font color="#808000">jugada</font> sea igual a <font color="#808000">numeroRandom</font>.</p>
+
+<hr width="50%">
+
+<h3><a name="EscribiendoConsoleApplet">Escribiendo un applet de Console</a></h3>
+
+<p>En estas practicas hemos visto dos &quot;applets de consola&quot; que proporcionan una
+interacción tipo consola en un applet que esta funcionando en una pagina Web. Dado que
+deberá escribir bastantes applets estilo consola, puede que le interese saber como se
+escriben este tipo de applets y así publicar sus trabajos en WWW. Esta parte de las
+practicas le explicara como escribir estos applets. Y uno se sus trabajos del curso, será
+averiguar como puede convertir el programa de juego que acaba de realizar, en un programa
+del tipo applet, y publicarlo en su pagina Web.</p>
+
+<p>Para escribir un applet tipo consola, debe empezar copiando la carpeta &quot;<a href="tppmsgs/msgs0.htm#13" tppabs="http://members.nbci.com/elcurso/Proyectos/MiPrimerApplet.zip">Mi primer Applet</a>&quot; a continuación, lo
+puede descomprimir y pulsando sobre MiPrimerApplet, se le abrirá el editor y podrá crear
+su código.</p>
+
+<p>Solo necesita hacer dos cosas. Primero, cambiar el titulo del programa en el applet en
+el método <tt>init()</tt>. Segundo, copiar todo el código de la rutina <tt>main()</tt>
+de su programa excepto las líneas &quot;<tt>Console console=new Console()</tt>;&quot; y
+&quot;<tt>console.close();</tt>&quot;. Pegue ese código dentro del método program() del
+applet ; Ya esta. Cuando este applet se emplea en una pagina Web, su programa
+funcionara.Pruebe de ejecutar su programa para estar seguro de su trabajo.</p>
+
+<hr width="50%">
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%"><h3><a name="Ejercicios">Ejercicios para entregar </a></h3>
+    </td>
+    <td width="50%">Esta parte solo la deben enviar aquellos alumnos que han contratado el
+    servicio de <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">seguimiento</a></td>
+  </tr>
+</table>
+
+<p><strong>Ejercicio1</strong>. Complete el programa descrito anteriormente que suma,
+resta, multiplica y divide números entrados por el usuario. El programa se ha de
+comportar exactamente igual el el <a href="#ProgramacionIf">ejemplo presentado en applet</a>.
+El programa debe cumplir las reglas de estilo explicadas <a href="#ReglasDeEstilo">anteriormente</a>.
+Debe enviar el fichero java</p>
+
+<p><strong>Ejercicio 2.</strong> Escriba el programa de juego de &quot;adivine el
+numero&quot; descrito e ilustrado<a href="#ProgramaAdivina"> anteriormente</a>. Asegures
+que cuida el estilo, y cumple las reglas de estilo.Debe enviar el fichero java.</p>
+
+<p><strong>Ejercicio 3. </strong>Cree una versión de applet, del programa de juego,
+publíquela e indíqueme la dirección de su pagina (en la que se encuentra el applet.
+También puede intentar hacer mas interesante el programa. Debe enviar el fichero java.</p>
+
+<p><strong>Ejercicio 4.</strong>En la <a href="seccion3_5.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/seccion3_5.html">Sección 5</a>
+del texto, se explica el uso de los sucesivos pasos de perfeccionamiento del pseudocódigo
+para desarrollar algoritmos. Para este ultimo ejercicio,&nbsp; debe imaginarse que
+todavía no ha escrito el programa de juego. Lea la Sección 5 cuidadosamente y use el
+método indicado en esa sección para desarrollar el algoritmo correspondiente el programa
+de juego. Escriba una descripción del proceso de desarrollo. Puede imitar las
+explicaciones del texto. Su respuesta debe incluir al menos 5 bocetos del algoritmo. Cada
+boceto, debe ser mas detallado y mas completo que su predecesor. Debe también incluir
+alguna explicación entre las distintas etapas, como se hace en el texto. Este ejercicio,
+requiere ciertamente una pagina entera, y si se quiere hacer bien, mas de una. Deben
+enviarlo adjunto al mensaje de correo. Utilicen preferiblemente Word.</p>
+
+<hr>
+
+<p align="center"><a href="indice.htm#Practicas" tppabs="http://members.nbci.com/elcurso/indice.htm#Practicas">[Indice de practicas<sup>]</a> <a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm">[Curso</sup>]</a></p>
+</body>
+</html>

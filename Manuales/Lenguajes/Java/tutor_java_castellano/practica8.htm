@@ -1,0 +1,252 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java.Practica 8</title>
+</head>
+
+<body>
+
+<h3>Practica 8: Series de dos dimensiones ( y mas)</h3>
+
+<hr>
+
+<p>Para esta octava practica del<a href="index-1.htm" tppabs="http://members.nbci.com/elcurso/index.htm"> curso de Java</a>, deberemos
+trabajar un poco con series. En el primer ejercicio, utilizara series de dos dimensiones
+para almacenar un juego de cartas. En el tercer ejercicio, deberá revisar un programa que
+se supone busca números primos, pero que no acaba de funcionar. El segundo ejercicio, no
+esta relacionado con series, pero hace bonitos dibujos. El primer y segundo ejercicio son
+particularmente interesantes porque presentan las ideas y técnicas que puede ser que
+tenga que utilizar en su programa final de curso.</p>
+
+<p>Esta practica consiste en tres ejercicios que usan tres carpetas. &quot;<a
+href="tppmsgs/msgs0.htm#20" tppabs="http://members.nbci.com/elcurso/Proyectos/CardAppletStarter.zip">Cards Applet Starter</a>&quot;, &quot;<a
+href="tppmsgs/msgs0.htm#21" tppabs="http://members.nbci.com/elcurso/Proyectos/KaleidaSketch%20Starte.zip">KaleidaSketch Starter</a>&quot;, y
+&quot;<a href="tppmsgs/msgs0.htm#22" tppabs="http://members.nbci.com/elcurso/Proyectos/Buggy%20Prime%20Starter.zip">Buggy Prime Starter</a>&quot;,
+deberá copiárselos a su ordenador y descomprimirlos para poderlos emplear en esta
+practica.</p>
+
+<p>Como siempre al final de la practica hay unos ejercicios que deberán ser enviados a su
+tutor (únicamente las personas que hayan contratado <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">Seguimiento</a>).</p>
+
+<hr width="50%">
+
+<h3>Indice de la practica</h3>
+
+<ul>
+  <li><a href="#Series de dos dimensiones">Series de dos dimensiones</a></li>
+  <li><a href="#Dibujando con simetria">Dibujos con simetría</a></li>
+  <li><a href="#Depuracion">Depuración de programas</a></li>
+  <li><a href="practica8.htm#Ejercicios" tppabs="http://members.nbci.com/elcurso/Practicas/prc8/practica8.htm#Ejercicios">Ejercicios</a></li>
+</ul>
+
+<hr width="50%">
+
+<h3><a name="Series de dos dimensiones">Series de dos dimensiones</a></h3>
+
+<p>Aquí tiene un sencillo juego de solitario: Se van dando cartas del mazo, una cada vez.
+Usted tiene que decidir en que parte del tablero de juego la coloca. El tablero tiene
+espacio para 25 cartas, ordenadas en una reja de 5 filas por 5 columnas. Cuando juega una
+carta, no puede moverla y no puede cubrir con ella otra carta. El juego finaliza cuando ha
+llenado 25 espacios con 25 cartas. El objetivo es finalizar el juego formando póker en
+cada fila y cada columna (No se preocupe si no sabe jugar a póker, no es necesario
+entenderlo para realizar el ejercicio)</p>
+
+<p>Puede practicar con el juego en el Applet de la <a href="Cards1.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc8/Cards1.html">pagina adjunta</a>.
+(Pero no se distraiga demasiado en horas lectivas!) Observe que si intenta dejar la carta
+en un espacio ocupado, el Applet no se lo deja hacer. Pruebe de llenar los 25 huecos y vea
+que pasa. También puede probar de cubrir el Applet con otra ventana, y vera que al
+descubrirlo se redibuja de forma correcta.La &quot;Cards Applet Folder&quot; contiene una
+versión incompleta del Applet (También puede leerla <a
+href="tppmsgs/msgs0.htm#59" tppabs="http://members.nbci.com/elcurso/fuentes/CardsApplet.java">aquí</a> junto con los ficheros de soporte <a
+href="tppmsgs/msgs0.htm#60" tppabs="http://members.nbci.com/elcurso/fuentes/Card.java">Card.java</a> y <a href="tppmsgs/msgs0.htm#61" tppabs="http://members.nbci.com/elcurso/fuentes/Deck.java">Deck.java</a>).
+El juego funciona, encasilla, pero el usuario puede reemplazar una carta del tablero por
+otra; el Applet no redibuja correctamente la cartas sobre el tablero, y el juego no acaba
+cuando se han jugado las 25 cartas. Los dos primeros problemas se pueden solucionar
+utilizando una serie de dos dimensiones de Cards, para ir guardando las cartas que hay en
+el tablero. El tercero se soluciona añadiendo un contador que vaya contando el numero de
+cartas que se han jugado ya.Su trabajo es realizar en el Applet todos estos arreglos.
+También deberá declarar dos variables instanciables, y modificar los métodos <tt>startGame(),
+playCard(),</tt> y <tt>paint() </tt>(En este ultimo, solo necesita modificar unas pocas
+líneas del principio).</p>
+
+<p>Para declarar una serie de dos dimensiones, puede declarar la variable:</p>
+
+<pre>			<tt>Card[][] cardGrid = new Card[5][5];</tt></pre>
+
+<p>En el método<tt> startGame()</tt>, esta serie se debe completar con nulos para indicar
+que no hay ninguna carta jugada en el tablero. En el método <tt>playCard()</tt> cuando se
+añade una carta al tablero, se debe añadir también a la serie. En el método <tt>paint()</tt>,
+cuando se redibuja el tablero, el método <tt>putCard()</tt> debe ser llamado para
+presentar cada una de las cartas del tablero.</p>
+
+<p>El método utilizado en este applet para dibujar individualmente las cartas, emplea
+algunos trucos que deberán preguntar, en caso de que les interesen.</p>
+
+<p>De cualquier manera, nuestro agradecimiento a Zach Brusko, que ha facilitado las
+imágenes de las cartas que se emplean en este Applet.</p>
+
+<hr width="50%">
+
+<h3><a name="Dibujando con simetria">Dibujos con </a>simetría</h3>
+
+<p>Para empezar el segundo ejercicio, abra la carpeta &quot;<a
+href="tppmsgs/msgs0.htm#21" tppabs="http://members.nbci.com/elcurso/Proyectos/KaleidaSketch%20Starte.zip">KaleidaSketch Starte</a>r&quot; y vea el
+fichero <a href="tppmsgs/msgs0.htm#62" tppabs="http://members.nbci.com/elcurso/fuentes/KaleidaSketch%20Starte/KaleidaSketch.java">KaleidaSketch.java</a>,
+puede compilarlo y ejecutarlo.Se encontrara con un programa que actúa como una sencilla
+tableta de dibujo en donde el usuario puede dibujar arrastrando el ratón. También se
+pueden seleccionar los colores en un menú emergente y borrar el área de dibujo
+seleccionando un fondo negro o blanco. La mayor parte del trabajo de este Applet ya esta
+hecha, sin embargo falta una característica por implementar. Es el checkbox llamado
+&quot;caleidoscopio&quot;. Cuando se marca este checkbox, el usuario empezara a dibujar
+formas simétricas, figuras caleidoscópicas. Para ver algo semejante a como debe quedar
+el Applet al finalizar, puede jugar con el en la <a href="KaleidaSketch.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc8/KaleidaSketch.html">pagina
+adjunta</a>.</p>
+
+<p>En este ejercicio, su trabajo es implementar las características de dibujo. Es muy
+fácil, ya que casi esta hecho. Suponga que el usuario mueve el ratón desde el punto
+(x1,y1) al punto (x2,y2). Normalmente, el Applet dibujara una línea desde el punto
+(x1,y1) al (x2,y2). Para producir un efecto de caleidoscopio, deberá también, dibujar
+otras siete líneas que puede obtener desde la original por medio de los reflejos
+horizontal, vertical y diagonal. Solo se necesita un poco de matemática. Definamos la
+altura del área de dibujo como h y la anchura como w. Esta imagen muestra como se pueden
+obtener el resto de puntos por medio de las reflexiones del punto (a,b):</p>
+
+<p>&nbsp;</p>
+
+<p align="center"><img alt="Reflections of the point (a,b)" src="symmetry.gif" tppabs="http://members.nbci.com/elcurso/Practicas/prc8/symmetry.gif" WIDTH="318"
+HEIGHT="220"></p>
+
+<p>Las reflexiones horizontal y vertical están etiquetadas como (a,b). La reflexión
+diagonal esta marcada como (c,d). Si el área fuera cuadrada, (c,d) debería ser igual a
+(b,a). Sin embargo, dado que el área no tiene por que ser cuadrada, c y d se pueden
+definir como:</p>
+
+<pre>		c = (w*b) / h;
+		d = (h*a) / w;</pre>
+
+<p>Para obtener los tres puntos restantes, utilice las reflexiones verticales de (c,d).
+Observe que cada uno de los puntos extremos de línea (x1,y1), (x2,y2), deben ser
+reflejados de esta manera para que las líneas sean reflejos.</p>
+
+<p>Puede realizar todo su trabajo en un solo método del fichero KSCanvas.java. El
+siguiente método doDrawLine() normalmente solo dibuja una línea desde (x1,y1) a (x2,y2).
+Pero si la variable instanciable boleana, kaleidoscopic, es true. entonces, se supone que
+deberá dibujar las otras siete líneas. Concretamente deberá añadir alguna orden a este
+método&nbsp; para dibujar las otras siete líneas extras, cuando kaleidoscopic sea true.</p>
+
+<p>Es un ejercicio relativamente corto, pensado para que entienda como funcionan las
+coordenadas y como se pueden calcular. Pero deberá analizar el resto de los ficheros
+KSCanvas.java y KaleidaSketch.java. ( También los puede leer <a
+href="tppmsgs/msgs0.htm#63" tppabs="http://members.nbci.com/elcurso/fuentes/KaleidaSketch%20Starte/KSCanvas.java">aquí</a> y <a
+href="tppmsgs/msgs0.htm#62" tppabs="http://members.nbci.com/elcurso/fuentes/KaleidaSketch%20Starte/KaleidaSketch.java">aquí</a>). Estos ficheros
+enseñan varias técnicas que puede tenga que utilizar para su programa de final de curso:
+
+<ul>
+  <li>KaleidaSketch.java enseña como utilizar en un Applet, un menú emergente, y otros
+    componentes</li>
+  <li>KSCanvas.java utiliza el método mouseDrag() para controlar cuando el usuario pulsa el
+    botón del ratón y lo arrastra.</li>
+  <li>KSCanvas.java utiliza un off-screen Image para mantener una copia de&nbsp; tal y como
+    esta el tablero en la pantalla. Cada vez que se dibuja una línea, se dibuja en la
+    pantalla y en la off-screen. (Esta tarea la realiza el comando <tt>basicPutLine()</tt> que
+    se utiliza en el método <tt>doDrawMethod()</tt>.</li>
+</ul>
+
+<hr width="50%">
+
+<h3><a name="Depuracion">Depuración</a></h3>
+
+<p>Hemos comentado alguna vez, la posibilidad de utilizar una serie para obtener los
+números primos. La carpeta &quot;Buggy Prime Finder&quot; contiene una versión del
+programa comentado. Sin embargo, esa versión contiene algunos <em>bugs</em>. (Puede leer
+el programa <a href="tppmsgs/msgs0.htm#64" tppabs="http://members.nbci.com/elcurso/fuentes/Buggy%20Prime%20Starter/PrimeFinder.java">aquí</a>)</p>
+
+<p>Un <em>bug</em> es un error en el programa que provoca que éste aborte o de un
+resultado erróneo cuando funcione. Normalmente, un <em>bug</em> es un error semántico
+mas que sintáctico. Los errores sintácticos los detecta el ordenador durante la
+compilación. Un bug es mucho peor ya que el ordenador no puede ayudarle a encontrarlo.
+Debe depurar el programa por si mismo.</p>
+
+<p>Su trabajo para el tercer ejercicio es depurar el programa PrimeFinder.</p>
+
+<p>Si ejecuta el programa tal y como esta, puede esperar sentado a que se le llene la
+pantalla. El programa abortara o ejecutara un bucle infinito. (Esto es otra forma de
+demostrar la importancia de comprobar el programa con una cantidad pequeña de números
+primos. El programa esta definido para buscar los 20 primeros. Si directamente probara de
+buscar los primeros 1000000, probablemente pensaría que el programa todavía estaba
+calculándolos). Deberá buscar donde esta el error y corregirlo.Si posee una vista de
+lince, puede intentar encontrar el error leyendo el programa. O puede intentar ejecutarlo
+a mano para ver si de esta forma puede encontrar el problema. En este caso, le puedo pedir
+que no trabaje así, por lo que deberá realizar una depuración.</p>
+
+<p>Hay dos formas de depurar un programa.la primera, es el sistema tradicional: Añadir
+algunas instrucciones extras al programa para imprimir resultados intermedios u otras
+informaciones que le puedan ayudar a determinar que parte del programa esta causando
+problemas. Cualquier instrucción de salida dentro de un bucle detectara inmediatamente un
+bucle infinito. Una instrucción de salida al inicio de la subrutina, se puede utilizar
+para detectar que se ha llamado apropiadamente, con los parámetros previstos. Una
+instrucción de salida al final de una subrutina, le permitirá ver que ha realizado el
+trabajo de forma correcta.</p>
+
+<p>El segundo método de depuración, es utilizar el debugger incorporado a Developer
+Studio. El debugger le permite parar el programa en cualquier punto y comprobar el valor
+de las variables. También puede ir ejecutando el programa instrucción a instrucción.
+Desgraciadamente, el debugger es un programa complicado y difícil, que las primeras veces
+que se intenta utilizar, no es demasiado manejable . Aquí presentamos una forma de
+usarlo: Pulse con el ratón para dejar el cursor en la línea en la que deseamos que se
+nos pare el programa. A continuación, elija el menú &quot;Build&quot;,
+&quot;Debug&quot;, &quot;Run to cursor&quot;. El ordenador iniciara la ejecucion del
+programa y lo parara en la línea en la que se encuentra el cursor. ( Observara que el
+programa funciona mas lentamente con el debugger que sin él). Las variables del programa
+se presentaran en una ventana junto al mismo.Mientras esta activo el debugger, el menú
+Build, se sustituye por el menú &quot;Debug&quot; que contiene comandos que le permiten
+controlar la ejecucion del programa. Los mas útiles son &quot;Step Over&quot;, que
+ejecuta una línea del programa, &quot;Run to Cursor&quot; que continua la ejecucion hasta
+que el ordenador encuentra otra línea con el cursor parpadeante, y &quot;Restart&quot;
+que reinicia otra vez la ejecucion del programa desde el principio. Cuando utiliza el
+comando &quot;Step Over&quot; en una llamada a subrutina, la subrutina entera se ejecuta
+como un unico paso. Si quiere ver lo que pasa dentro de la subrutina, deberá utilizar en
+lugar de ese comando, el &quot;Step Into&quot;.</p>
+
+<p>Una vez que haya encontrado el error y consiga que el programa funcione, vera que
+existe otro problema que hace que genere resultados incorrectos. Deberá buscar y
+solucionar también este problema.</p>
+
+<hr width="50%">
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%"><h3><a name="Ejercicios">Ejercicios para entregar </a></h3>
+    </td>
+    <td width="50%">Esta parte solo la deben enviar aquellos alumnos que han contratado el
+    servicio de <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">seguimiento</a></td>
+  </tr>
+</table>
+
+<p><strong>Ejercicio 1</strong>. Envíe el fichero del programa fuente CardsApplet.java
+que ha debido modificar tal y como se indico&nbsp; <a href="#Series de dos dimensiones">anteriormente</a>.
+</p>
+
+<p><strong>Ejercicio 2.</strong>&nbsp;Envíe el fichero con el fuente de SketchCanvas.java
+&nbsp; tal y como se describió <a href="#Dibujando con simetria">anteriormente</a>. Con
+todos los cambios que ha hecho. (Mejor aun si me envía el nuevo método doDrawLine()
+después de modificarlo). También debe colocar su Applet en WWW e indicarme su URL para
+que pueda ver su programa trabajando.</p>
+
+<p>Si quiere conseguir créditos extras, intente añadir otro submenu para controlar el
+tipo de simetría que se quiere aplicar. Por ejemplo, puede facilitar opciones para
+realizar simetría horizontal, vertical y diagonal doble, cuádruple u óctuplo. Dibujar
+con los diferentes formatos de simetría&nbsp; es la mejor forma de decidir que líneas se
+han de dibujar.</p>
+
+<p><strong>Ejercicio 3. </strong>Escriba un corto ensayo explicando los errores existentes
+en el programa PrimeFinder, y explique <strong>como</strong> los ha encontrado. Utilice <strong>también</strong>
+el programa corregido para encontrar el numero primo 100.000 avo y dígame cual es.</p>
+
+<hr>
+
+<p align="center"><a href="indice.htm#Practicas" tppabs="http://members.nbci.com/elcurso/indice.htm#Practicas">[Indice de practicas<sup>]</a> <a
+href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm">[Curso</sup>]</a></p>
+</body>
+</html>

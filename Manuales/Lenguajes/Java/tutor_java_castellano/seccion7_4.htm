@@ -1,0 +1,243 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java. Seccion 7.4</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 7.4. Series de dos dimensiones</h3>
+
+<hr>
+
+<p>PODEMOS USAR CUALQUIER TIPO COMO TIPO BASE PARA UNA SERIE. Puede tener una serie de <tt>int</tt>s,
+una serie de <tt>String</tt>s, o una serie de <tt>Object</tt>s...Y dado que las series, en
+Java, son también un tipo, puede tener también una serie de series. Por ejemplo, una
+serie de <tt>int</tt>s decimos que tiene como tipo&nbsp; <tt>int[]</tt>. Esto significa
+que automáticamente hay otro tipo, <tt>int[][],</tt> que representa una &quot;serie de
+serie de<tt> int</tt>s&quot;. Una serie así, se dice que tiene dos dimensiones.
+(Naturalmente, una vez conseguido el tipo <tt>int[][]</tt>, no hay nada que le impida el
+formar el tipo <tt>int[][][]</tt>, que representa una serie de tres dimensiones, y así
+sucesivamente. Sin embargo, en estas notas no quiero aventurarme mas allá de la segunda
+dimensión).</p>
+
+<p>La instrucción &quot;<tt>int[][] A = new int[3][4]</tt>&quot; declara una variable , A
+de tipo <tt>int[][]</tt>,e inicializa la variable creando un nuevo objeto. Este objeto es
+una serie de serie de <tt>int</tt>s. La notación&nbsp; <tt>int[3][4]</tt> indica que en
+A, hay tres series de <tt>int</tt>s, y en cada una de estas series hay 4 <tt>int</tt>s.
+Sin embargo, el imaginarse esos temas puede ser un poco confuso, puede que ya se haya dado
+cuenta. Es por esos que se acostumbra a pensar en una serie de dos dimensiones como en una
+matriz de elementos. La notación <tt>int[3][4]</tt> puede servir para describir una
+rejilla o matriz de 3 filas y cuatro columnas. La siguiente imagen, puede que le ayude</p>
+
+<p align="center"><img alt="(Illustration of 3-by-4 array)" src="fig5-3.gif" tppabs="http://members.nbci.com/elcurso/Capitulo7/fig5.gif" WIDTH="393" HEIGHT="290"></p>
+
+<p>Para la mayor parte de casos, puede ignorar la realidad y mantener en la mente la
+imagen de la rejilla. Sin embargo, algunas veces, necesitara recordar que cada fila de la
+rejilla es, en si misma, una serie. Estas filas se pueden referenciar como <tt>A[0]</tt>, <tt>A[1]</tt>,
+y <tt>A[2]</tt>.Cada fila es en realidad una serie de tipo <tt>int</tt> <tt>[]</tt>.Puede
+, por ejemplo, pasarlo a una subrutina que espere parámetros de tipo int <tt>[]</tt>.</p>
+
+<p>Puede escoger un ítem concreto de una fila colocando otro índice. Por ejemplo, <tt>A[1][3]</tt>
+se refiere al elemento 3 en la fila 1.&nbsp; Naturalmente que no debe olvidar que , tanto
+filas como columnas, se numeran empezando por cero por lo que en el ejemplo anterior, <tt>A[1][3]</tt>
+es 5. De forma mas general,&nbsp; <tt>A[i][j]</tt> se refiere al <tt>int</tt> en la fila
+numero <tt>i</tt> y la columna numero <tt>j</tt>. Los 12 elementos de <tt>A</tt> tienen
+los siguientes nombres :</p>
+
+<pre>      A[0][0]    A[0][1]     A[0][2]     A[0][3]
+      A[1][0]    A[1][1]     A[1][2]     A[1][3]
+      A[2][0]    A[2][1]     A[2][2]     A[2][3]</pre>
+
+<p>Puede ser interesante destacar que <tt>A.length</tt> nos da el numero de filas de <tt>A</tt>.
+Para obtener el numero de columnas de <tt>A</tt> deberemos preguntar cuantos <tt>int</tt>s
+hay en cada fila, este numero nos vendrá definido por <tt>A[0].length</tt>, o sus
+equivalentes <tt>A[1].length</tt> o <tt>A[2].length.</tt>(Realmente no hay ninguna regla
+que nos diga que todas las filas de una serie han de tener la misma longitud, y en algunas
+aplicaciones avanzadas sobre series, utilizaremos filas de distinto tamaño. Pero si usa
+el operador <tt>new</tt> para crear la serie, tal y como hemos comentado antes, obtendrá
+una serie en la que todas las filas serán iguales.)</p>
+
+<hr width="50%">
+
+<p>Es posible el rellenar una serie de dos dimensiones especificando los elementos en el
+momento de crearla. Recuerde que cuando declarábamos una serie unidimensional podíamos
+asignar un &quot;inicializador de series&quot;, que era concretamente una lista de valores
+encerrados entre llaves { y }. De forma similar, una serie de dos dimensiones puede
+crearse con una lista de &quot;inicializadores de series&quot;, para cada una de las filas
+de la serie. Por ejemplo, la serie <tt>A</tt> presentada en la imagen anterior pudo ser
+creada como:</p>
+
+<pre>        int[][]  A  =  {  {  1,  0, 12, -1 },
+                          {  7, -3,  2,  5 },
+                          { -5, -2,  2,  9 }
+                       };</pre>
+
+<p>Si en una serie no se facilita inicializador cuando se crea, se rellenara
+automáticamente con el valor apropiado: cero para numéricas, <tt>false</tt> para
+boleanas, y <tt>null</tt> para objetos.</p>
+
+<hr width="50%">
+
+<p>Las series de dos dimensiones pueden emplearse en cualquier momento en que los datos
+que se tengan que manejar puedan ser organizados de forma natural, en filas y columnas. A
+menudo, la rejilla se genera con el problema. Por ejemplo, un juego de ajedrez es una
+rejilla de 8 filas por 8 columnas. Si existe una clase <tt>ChessPiece</tt> que pueda
+representar una pieza del ajedrez, el contenido del tablero de ajedrez puede ser
+representado como una serie de dos dimensiones</p>
+
+<pre>        ChessPiece[][]  tablero  =  new ChessPiece[8][8];</pre>
+
+<p>O considerando el &quot;mosaico&quot; de cuadrados coloreados empleado en el ejemplo de
+la <a href="Seccion3_6.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/Seccion3_6.html">Sección 3.6</a>. Los datos sobre los colores de
+cada cuadrado del mosaico se almacenan en una serie de tipo <tt>Color[][]</tt>.&nbsp; Si
+el mosaico tiene <tt>ROWS</tt> filas y COLUMNS columnas, entonces la serie de datos de
+color se puede crear con la instrucción</p>
+
+<pre>        Color[][]  colorGrid  =  new Color[ROWS][COLUMNS];</pre>
+
+<p>Cuando el color del cuadrado de la fila <tt>i</tt> y columna <tt>j</tt> cambie&nbsp; a
+un valor <tt>c</tt>, se redibujara el cuadrado en la pantalla, con el nuevo color, y
+podemos guardar este nuevo color en la serie con la asignación &quot;<tt>colorGrid[i][j]
+= c</tt>&quot;. La información de la serie <tt>colorGrid</tt> puede utilizarse para
+redibujar el mosaico entero cuando sea necesario. La información de la serie, también se
+puede utilizar cuando quiera saber que color en concreto hay en una posición del mosaico.
+La asignación &quot;<tt>c = colorGrid[i][j]</tt>&quot;&nbsp; obtiene el color del
+cuadrado situado en la fila <tt>i</tt>, columna <tt>j</tt>.</p>
+
+<p>En un programa, no siempre se vera tan clara la posibilidad de utilizar una matriz.
+Considere una compañía que tiene 25 almacenes, suponga que la compañía tiene datos
+sobre los beneficios mensuales de 1995. obtenidos en cada uno de sus almacenes. Si
+numeramos los almacenes de 0 a 24, y los doce meses de Enero 95 a Diciembre 95 los
+numeramos de 0 a 11, los datos sobre el beneficio se pueden almacenar en una serie <tt>profit</tt>
+construida como</p>
+
+<pre>        double[][]  profit  =  new double[25][12];</pre>
+<tt>
+
+<p>profit[3][2]</tt> contendrá el importe del beneficio generado por el almacén 3 en
+Marzo, y de forma mas general, <tt>profit[storeNum][monthNum]</tt> será el importe de los
+beneficios devengados por el almacén <tt>storeNum</tt> en el mes indicado en <tt>month</tt>.
+En este ejemplo, la serie de una dimensión <tt>profit[storeNum]</tt> tiene mucho sentido,
+es justamente el beneficio obtenido por un almacén concreto durante todo el año.</p>
+
+<hr width="50%">
+
+<p>Como en el caso de las series de una dimensión, las series de dos dimensiones a menudo
+se procesan usando la instrucción <tt>for</tt>. Para procesar todos los elementos de una
+serie de dos dimensiones, deberá utilizar una instrucción <tt>for</tt> anidada dentro de
+otra. Si la serie A se declara como:</p>
+
+<pre>          int[][]  A  =  new int[3][4];</pre>
+
+<p>&nbsp; Puede poner a cero cada posición con:</p>
+
+<pre>          for (int row = 0;  row &lt; 3;  row++) {
+             for (int column = 0;  row &lt; 4;  column++) {
+                A[row][column] = 0;
+             }
+          }</pre>
+
+<p>La primera vez que el bucle exterior se ejecuta (con <tt>row=0</tt>), el bucle interno
+realiza cuatro pasadas poniendo a cero los cuatro valores de la fila cero de <tt>A</tt>
+llamados <tt>A[0][0] = 0</tt>, <tt>A[0][1] = 0</tt>, <tt>A[0][2] = 0</tt>, y <tt>A[0][3] =
+0</tt>. La siguiente ejecución del bucle exterior rellena la segunda fila de <tt>A</tt> y
+la tercera y ultima ejecución del bucle exterior, rellena la ultima fila de <tt>A</tt>.</p>
+
+<p>De forma similar, puede sumar todos los elementos de <tt>A</tt> con:</p>
+
+<pre>          int sum = 0;
+          for (int i = 0; i &lt; 3; i++)
+             for (int j = 0; j &lt; 4; i++)
+                sum = sum + A[i][j];</pre>
+
+<p>Si hacemos esto mismo con la serie <tt>profit</tt> que hemos estado utilizando antes,
+puede ser que el ejemplo sea mas interesante. La suma seria el beneficio total obtenido
+por la compañía en el transcurso del año, en los 25 almacenes.</p>
+
+<p>El siguiente ejemplo de la serie <tt>profit</tt> demuestra que a veces es necesario
+procesar solamente una fila o una columna se la serie. Por ejemplo, para calcular el
+beneficio total obtenido por la compañía en el mes de Diciembre, esto es , en el mes 11,
+deberá utilizar el bucle:</p>
+
+<pre>          double decemberProfit = 0.0;
+          for (storeNum = 0; storeNum &lt; 25; storeNum++)
+             decemberProfit += profit[storeNum][11];</pre>
+
+<p>Podemos continuar con la idea para crear una serie de una dimensión que contenga el
+beneficio para cada mes del año:</p>
+
+<pre>          double[] monthlyProfit = new double[12];
+          
+          for (int month = 0; month &lt; 12; month++) {
+             // calcula el beneficio de todos los almacenes en un mes
+             monthlyProfit[month] = 0.0;
+             for (int store = 0; store &lt; 25; store++)
+                monthlyProfit[month] += profit[store][month];
+          }</pre>
+
+<p>Como ejemplo final del tratamiento de una serie de dos dimensiones, supongamos que
+quiere saber qué almacén ha generado mas beneficio a lo largo del año. Para
+conseguirlo, debe sumar los beneficios obtenidos por cada almacén . En términos de la
+serie, significa que debe obtener la suma de cada una de las filas de la serie, y una vez
+hecho esto, buscar cual de ellas produce un total mayor.</p>
+
+<pre>          double maxProfit; // beneficio maximo obtenido por un almacén
+          int bestStore;    // numero de almacén con el 
+                            //  beneficio maximo
+
+          double total = 0.0;    // beneficio total para un almacén;
+          
+          // primero calculo el beneficio para el almacén 0
+
+          for (int month = 0;  month &lt; 12; month++)
+             total += profit[0][month];
+          
+          bestStore = 0;      // empiezo asumiendo que es el mejor
+          maxProfit = total;  //     almacén, y guardo el numero 0
+          
+          //Ahora, voy pasando por los otros almacenes, y en cada uno
+          // compruebo si su total es mayor que maxProfit, modificando
+          // el supuesto inicial de que el 0 era bestStore y maxProfit
+          
+          for (store = 1; store &lt; 25; store++) {
+             total = 0.0;
+             for (month = 0; month &lt; 12; month++)
+                total += profit[store][month];
+             if (total &gt; maxProfit) {
+                maxProfit = total;    // mejor beneficio hasta ahora!
+                bestStore = store;    // y voy por este almacén
+             }
+          }
+          
+          // En este punto, maxProfit es el mejor beneficio del año
+          // de los 25 almacenes, y bestStore es el almacén que
+          // ha generado este beneficio.  (Observe que pueden haber
+          // mas almacenes que hayan generado el mismo beneficio.)</pre>
+
+<hr>
+
+<p align="center">
+<applet code="Maze.class" xcodbase="file:///C:/unzipped/JavaNotes98(1)/c7/" height="170" width="250">
+</applet>
+</p>
+
+<hr>
+
+<p align="center"><strong>Fin del capítulo 7</strong></p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="seccion7_3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/seccion7_3.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice7.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/indice7.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="test7.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/test7.htm"><img src="Diploma.jpg" tppabs="http://members.nbci.com/elcurso/images/Diploma.jpg" width="68" height="79" alt="Test" border="0"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

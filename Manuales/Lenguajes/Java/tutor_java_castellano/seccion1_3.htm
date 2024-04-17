@@ -1,0 +1,124 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 1.3</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="keywords" content="formacion, Java, gratis, programacion, internet, curso">
+<meta name="description" content="Curso de programacion en lenguaje Java. Principios de los ordenadores, bases de la programacion, ideas generales sobre internet, protocolos de comunicacion, bases del lenguaje java, programacion avanzada en Java.">
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<meta name="distribution" content="global">
+<meta name="resource-type" content="document">
+<meta name="robots" content="all">
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 1.3: La maquina virtual Java</h3>
+
+<hr>
+
+<p>El código maquina, consiste en un conjunto de instrucciones muy simples que son
+ejecutadas directamente por la CPU del ordenador. Casi todos los programas son escritos en
+l<font color="#808000">enguajes de alto nive</font>l como Java, Pascal, o C++. Un lenguaje
+de alto nivel, no puede ser ejecutado directamente por ningún ordenador. Primero es
+necesario trasladarlo a lenguaje maquina. Esta conversión, acostumbra a ser hecha por un
+programa llamado <font color="#808000">compilador</font>. El compilador, toma las
+instrucciones en lenguaje de alto nivel, y las transforma en instrucciones ejecutables en
+código maquina. Una vez hecha esta conversión, el programa puede funcionar cualquier
+numero de veces, pero como es natural, solo en un tipo concreto de ordenador (cada tipo de
+ordenador, tiene su propio lenguaje maquina). Si el programa se ha de ejecutar en otro
+tipo de ordenador, deberá volver a ser convertido, usando un compilador diferente, al
+código maquina apropiado.</p>
+
+<p>Existe una alternativa a este sistema de compilar el programa,. Se trata, de que en vez
+de utilizar un compilador que traduzca todo el programa de golpe, se utilice un<font color="#808000"> interprete</font>, que traduce instrucción por instrucción, a medida
+que va siendo necesario.Un interprete es un programa que trabaja de una forma muy
+semejante a la CPU, con una especie de ciclo de leer-y-ejecutar.Para poder ejecutar un
+programa, el interprete ejecuta un bucle en el que va leyendo las instrucciones una a una,
+decide si se han de ejecutar, y si es así, las convierte en el código maquina apropiado.</p>
+
+<p>Un interprete se utiliza para ejecutar programas de alto nivel. Por ejemplo, el
+lenguaje de programación Lisp, en lugar de compilarse, es normalmente ejecutado por un
+interprete.Sin embargo, los interpretes pueden ser empleados de otra manera: permitir el
+uso de un programa en código maquina de un ordenador, en otro tipo de ordenador
+completamente diferente . Por ejemplo el programa llamado &quot;Soft Windows&quot;
+funciona en los ordenadores Macintosh. Soft Windows, es un interprete&nbsp; que permite
+ejecutar programas escritos en código maquina de IBM-PC para ejecutarse bajo Windows
+3.1.Si ejecuta Soft Windows en un Macintos, puede ejecutar cualquier programa Windows
+3.1.(Desgraciadamente ira mucho mas lento que en un clonico IBM. El problema esta en que
+Soft Windows necesita emplear varias instrucciones maquina de Macintosh por cada
+instrucción PC que interpreta. Los programas compilados son normalmente mas rápidos que
+los interpretados).</p>
+
+<hr width="50%">
+
+<p>Los diseñadores de Java, escogieron una combinación de interprete y compilación. Los
+programas escritos en Java se compilan a lenguaje maquina, pero es un lenguaje maquina
+para un ordenador que en realidad no existe.Este ordenador virtual es lo que se llama <font color="#808000">maquina virtual Java</font>. El código maquina para la maquina virtual
+Java, es llamado <font color="#808000">Java bytecode</font>. Para ejecutar los programas
+en Java bytecode, se utiliza un interprete. Naturalmente, son precisos distintos
+interpretes para cata tipo de ordenador,pero todos los programas Java&nbsp; podrán
+funcionar en&nbsp; cualquier ordenador que tenga un interprete para Java bytecode. Y el
+mismo Java bytecode podrá ser usado en cualquiera de estos ordenadores, independiente del
+tipo que sean, solo porque dispongan del interprete. Esta es la principal característica
+de Java:el mismo programa compilado, puede ser utilizado en distintos tipos de
+ordenadores.</p>
+
+<p align="center"><img src="fig3.gif" tppabs="http://members.nbci.com/elcurso/Capitulo1/fig3.gif" WIDTH="416" HEIGHT="170"></p>
+
+<p>Entonces, se preguntara asombrado, porque usar el producto intermedio , el Java
+bytecode?. Porqué no distribuir el programa original Java y dejar que cada persona se lo
+compile a lenguaje maquina o deje que su ordenador lo ejecute como quiera?.Hay mucha
+razones. La primera de todas, un compilador ha&nbsp; de entender Java, un complejo
+lenguaje de alto nivel. El compilador en si mismo, es un programa complejo. Por otra
+parte, el interprete de Java, es un programa bastante pequeño y sencillo. Esto hace mas
+fácil el escribir un interprete de bytecode para cada nuevo tipo de ordenador, cuando sea
+necesario, permitiendo que esta nueva maquina pueda ejecutar cualquier programa Java,
+mientras que sería mucho mas duro escribir un nuevo compilador Java para esa misma
+máquina.</p>
+
+<p>Además, los programas Java han sido pensados para transmitir por la red. Este problema
+ya concierne a la seguridad. Usted no querrá cargar un programa que pueda afectar a su
+ordenador o sus ficheros. El interprete de bytecode, actúa como una capa aislante entre
+usted y el programa descargado. Lo que se esta ejecutando realmente es el interprete, y el
+es el que hace funcionar de forma indirecta el programa descargado. El interprete le puede
+proteger de cualquier acción peligrosa que pueda intentar realizar el programa cargado.</p>
+
+<p>Debemos destacar que la conexión entre Java y Java bytecode no tiene porque ser
+totalmente cerrada. Un programa escrito en Java, ciertamente puede ser compilado en
+código maquina de un ordenador real. Y programas escritos en otros lenguajes, podrían
+ser traducidos a Java bytecode. De todas maneras, es la combinación de Java y Java
+bytecode la que le permite programar&nbsp; en un lenguaje de alto nivel orientado a
+objetos, independiente de la plataforma, seguro, y totalmente compatible con las redes.</p>
+
+<p>&nbsp;</p>
+
+<hr width="50%">
+
+<p>Dos notas mas para concluir la sección: 
+
+<ul>
+  <li>Primero, Sun Microsystems -- el creador de Java -- esta trabajando en varios chips de
+    ordenador que utilizarían Java bytecode como su código maquina real. Esto es , este chip
+    seria una implementacion física de la maquina virtual Java. Esto haría que no fuera
+    necesario el interprete de bytecode ya que seria interpretado a nivel hardware y la
+    velocidad de ejecución mejoraría sustancialmente.</li>
+  <li>Segundo, debe tener en cuenta que la parte mas complicada de la independencia de
+    plataforma, esta solucionada&nbsp; por la interface gráfica &quot;Graphical User
+    Interface&quot; -- con ventanas, botones,... --por lo que es necesario disponer de ella en
+    cualquier plataforma que soporte Java. Conocerá mas sobre este problema en la <a href="seccion1_6.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_6.htm">Sección 6</a><hr>
+  </li>
+</ul>
+
+<table border="0" width="100%" height="62">
+  <tr>
+    <td width="33%" height="58"><a href="seccion1_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_2.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="71" HEIGHT="71"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice1.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/indice1.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="71" height="73" alt="Indice del capítulo" border="0"></a>&nbsp;&nbsp;&nbsp; <a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="68" height="70" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion1_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_4.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="65" HEIGHT="65"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

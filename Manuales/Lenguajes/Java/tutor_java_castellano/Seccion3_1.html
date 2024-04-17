@@ -1,0 +1,122 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 3.1</title>
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 3.1: Cajas negras</h3>
+
+<hr>
+
+<p>UNA SUBRUTINA CONSISTE EN UN GRUPO DE INSTRUCCIONES&nbsp; que desarrollan un trabajo y
+que han sido escritas juntas y se les ha dado un nombre. El fraccionar permite tratara
+tareas que pueden ser muy complicadas, de una forma relativamente sencilla. En vez de
+tener que preocuparse por los muchos y muchos pasos que el ordenador debe dar para
+realizar una tarea, solo necesita acordarse del nombre de la subrutina. Cuando quiere que
+el ordenador realice un trabajo, solo ha de llamar a la subrutina. Las subrutinas son una
+de las mejores herramientas para resolver problemas complejos.</p>
+
+<p>Aveces a la subrutina se la llama caja negra&quot; porque no se sabe lo que contiene
+(o, para ser mas precisos, normalmente no se quiere saber lo que contiene porque entonces,
+se encontraría con la complejidad que la subrutina esta ocultando). Naturalmente, una
+&quot;caja negra&quot; que no pueda interactuar con el resto del mundo, no sirve para
+nada. La &quot;caja negra&quot; necesita algún tipo de <font color="#808000">interface</font>
+con el resto del mundo, que permita interactuar con lo que hay dentro de la caja y
+aprovechar la salida. Una caja negra física, puede tener botones en el exterior, que se
+puedan pulsar, diales que se puedan mover y conectores que permitan pasar información
+hacia dentro y hacia fuera. Puesto que la idea es esconder la complejidad, y no crearla,
+tenemos la primera regla de las cajas negras:</p>
+
+<blockquote>
+  <p><strong>La interface con una caja negra, debe ser relativamente directa, bien definida,
+  y fácil de entender</strong></p>
+</blockquote>
+
+<p>¿Existe algún ejemplo de caja negra en la vida real?. Si; estamos rodeados por ellas.
+Su televisor, su coche, su vídeo, su nevera,...Puede encender y apagar el televisor,
+cambiar canales y ajustar el volumen usando los elementos de su&nbsp; interface --
+botones, mandos remotos, no se olvide del enchufe de corriente -- y todo eso lo puede
+hacer sin entender absolutamente nada acerca de como trabaja. Lo mismo ocurre con el
+vídeo, aunque si las historias acerca de las dificultades de las personas para ponerlo en
+hora son ciertas, quizás esté violando la regla de una interface sencilla.</p>
+
+<p>Ahora: la caja negra tiene cosas en su interior -- en la subrutina, el código para
+realizar una tarea, en el televisor, toda su electrónica--. Lo que hay dentro de una caja
+negra, se llama<font color="#808000"> implementacion</font>, y la segunda regla es:</p>
+
+<blockquote>
+  <p><strong>Para utilizar una caja negra, no es necesario conocer absolutamente nada de su
+  implementacion; solo es necesario conocer su interface.</strong></p>
+</blockquote>
+
+<p>De hecho, es perfectamente posible el<strong> cambiar </strong>la implementacion sin
+necesidad de cambiar el comportamiento de la caja ,de tal forma que desde fuera todo
+parezca igual. Por ejemplo, cuando se cambió el interior del televisor, que estaba
+construido con válvulas de vacío, y se utilizaron transistores, el usuario no necesitó
+conocer nada mas, nada cambió para él. De forma semejante, es posible el reescribir el
+interior de una rutina, para usar mas eficientemente el código, por ejemplo, sin que
+afecte en nada al programa que usa la subrutina.</p>
+
+<p>Naturalmente que para que existan las cajas negras, primeramente es necesario que
+alguien las diseñe y realice su implementacion. La idea de trabajar con cajas negras,
+aporta ventajas tanto al constructor de ellas, como a su usuario. Después de todo, la
+caja negra puede usarse en un numero ilimitado de situaciones distintas. El implementador
+(programador que la escribe), no necesita conocer nada sobre los sitios en donde se
+usaran. El implementador sólo necesita asegurarse que la caja realizará correctamente el
+trabajo que se le asigne y que la interface se relaciona correctamente con el resto del
+mundo. Esta es la tercera regla de las cajas negras:</p>
+
+<blockquote>
+  <p><strong>El implementador de la caja negra, no necesita conocer nada acerca del sistema
+  completo en donde se utilizará la caja.</strong></p>
+</blockquote>
+
+<p>De esta forma, la caja negra divide al mundo en dos partes: la interior(implementacion)
+y la exterior. La interface es la frontera que conecta ambas partes.</p>
+
+<hr width="50%">
+
+<p>A propósito de todo esto, no debe pensar que la interface es, unicamente, una
+conexión física entre la caja y el resto del mundo. La interface también incluye las <font color="#808000">especificaciones</font> sobre qué hace la caja y cómo se controla usando
+los elementos de la interface física. No basta con decir que la TV tiene un interruptor
+para ponerla en marcha, necesita especificar también, cual es el interruptor que sirve
+para encenderla y apagarla.</p>
+
+<p>Para poner todo esto en términos informáticos, la interface de una subrutina tiene un
+componente semántico y otro sintáctico. La parte sintáctica de la interface, le dice
+que tiene que escribir para poder llamar a la subrutina. El componente semántico,
+especifica exactamente que tarea realiza la subrutina. Para escribir correctamente un
+programa, necesita conocer las especificaciones sintácticas de la subrutina. Para
+entender el propósito de la subrutina y que su uso sea efectivo, necesita conocer las
+especificaciones semánticas de la subrutina. Para referirme a las dos partes de la
+interface -- sintáctica y semántica-- de forma conjunta, utilizare la palabra <font color="#808000">contrato </font>de la subrutina.</p>
+
+<p>El contrato de una subrutina dice esencialmente:&quot;Esto es lo que tiene que hacer
+para usarme, y esto es lo que puedo hacer por usted.Garantizado&quot;. Cuando escribe una
+subrutina, el comentario que escribe sobre ella, ha de conseguir que&nbsp; el contrato muy
+claro.(Debo admitir que en la practica, los contratos de las subrutinas a menudo son
+inadecuados, para desesperación de los programadores que las deben usar)</p>
+
+<p>El el resto del capítulo, pasare de las ideas generales sobre las cajas negras y las
+subrutinas en general, a las especificaciones para escribir subrutinas en Java. Pero
+conserve en mente la idea general y los principios. Hay razones para que existan las
+subrutinas, y hay normas para usarlas. Todo esto deberá estar especialmente claro en la
+ultima sección del capitulo, donde explicare el empleo de subrutinas para el desarrollo
+de un programa.</p>
+
+<hr width="50%">
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo3/indice3.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="Seccion3_2.html" tppabs="http://members.nbci.com/elcurso/Capitulo3/Seccion3_2.html"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="61" HEIGHT="61"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,288 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java.Seccion 6.1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 6.1: Componentes y diseño</h3>
+
+<hr>
+
+<p>LA CLASE PRINCIPAL DE AWT se llama <tt>Component</tt>. Las subclases de <tt>Component</tt>
+representan los elementos gráficos de la interface del usuario (excepto los menús que,
+inexplicablemente, descienden de otra clase <tt>MenuComponent</tt>). <tt>Component</tt> es
+una clase abstracta, esto es, que solo se pueden crear objetos pertenecientes a sus
+subclases y no al ella misma. Las subclases que representan los elementos comunes GUI
+son:: <tt>Button</tt>, <tt>Checkbox</tt>, <tt>Choice</tt>, <tt>Label</tt>, <tt>List</tt>, <tt>Scrollbar</tt>,
+<tt>TextArea</tt>, y <tt>TextField</tt>. Los objetos de estas clases tienen
+comportamientos predefinidos. En la mayor parte de ocasiones, todo lo que tiene que hacer
+es añadirlos a su programa y ellos se encargan de todo. Cuando el usuario interactua con
+uno de estos componentes y se requiere alguna acción,, los componentes generan eventos
+que el programa puede detectar y reaccionar convenientemente. Hay también una subclase <tt>Canvas</tt>
+que representa un área rectangular que puede ser usada para presentar imágenes.</p>
+
+<p>Estos componentes predefinidos se explican en la <a href="tppmsgs/msgs0.htm#27" tppabs="http://dopc/elcurso/Capitulo6/seccion6_2.htm">Sección 2</a>, y los eventos que
+generan están desarrollados en la <a href="tppmsgs/msgs0.htm#28" tppabs="http://dopc/elcurso/Capitulo6/seccion6_3.htm">Sección
+3</a>. En esta, quiero concentrarme en lo que significa &quot;añadir componentes a su
+programa&quot;. Por esto, necesita entender la clase <tt>Container</tt> y sus subclases.</p>
+
+<p>Un contenedor (<em>container</em>), en este contexto, es un componente que puede
+contener otros componentes. Observe que <tt>Container</tt> es una subclase de <tt>Component</tt>.
+La clase <tt>Container</tt> igual que la <tt>Component</tt> son clases abstractas. <tt>Container</tt>
+directamente tiene dos subclases, <tt>Window</tt> y <tt>Panel</tt>. <tt>Window</tt>
+representa una ventana independiente del nivel superior, y que no esta contenida en
+ningún otro componente, lo que no significa que se pueda usar directamente. Tiene dos
+subclases: Frame que representa la ventana normal que puede tener sus propias barras de
+menús, y <tt>Dialog</tt> que representa las cajas de dialogo que se pueden emplear para
+interactuar limitadamente con el usuario.</p>
+
+<p>El <tt>Panel</tt>, por otra parte, es un contenedor que no puede existir de forma
+independiente. La clase <tt>Applet</tt> es una subclase de <tt>Panel</tt>, y como ya hemos
+visto,&nbsp; un applet no existe por el mismo, sino que ha de ser displayado por un
+programa navegador. Todo panel, debe estar contenido dentro de algo: un <tt>Window</tt> ,
+otro <tt>Panel,</tt>o en el caso de los Applets, aun pagina de un navegador Web.<img align="right" alt="(Illustration of nested components)" src="fig1-4.gif" tppabs="http://members.nbci.com/elcurso/Capitulo6/fig1.gif" WIDTH="200" HEIGHT="212"></p>
+
+<p>El hecho de que un panel pueda contener otros paneles significa que puede tener muchos
+niveles de componentes que a su vez contienen otros componentes, como se representa en la
+ilustración de la derecha. Esto genera dos preguntas: ¿Como puedo añadir componentes a
+un contenedor?, ¿Como puedo controlar el tamaño y la posición?.</p>
+
+<p>El tamaño y la posición de los componentes en un contenedor, se controla por el
+manejador de diseño. Diferentes manejadores implementan distintas formas de organizar los
+componentes. Existen varios manejadores de diseño predefinidos en AWT: <tt>FlowLayout</tt>,
+<tt>GridLayout</tt>, <tt>BorderLayout</tt>, <tt>CardLayout</tt> y <tt>GridBagLayout</tt>.
+&nbsp; También se puede definir su propio manejador de fondos, si ninguno de los
+suministrados le gusta. Por defecto, cada contenedor tiene su propio manejador. Para los <tt>Panel</tt>s,
+incluyendo <tt>Applets</tt>, el manejador por defecto pertenece a la clase <tt>FlowLayout</tt>.
+Para <tt>Window</tt> el manejador de diseño por defecto es <tt>BorderLayout</tt>. Puede
+cambiar el manejador de diseño de cualquier contenedor utilizando el método <tt>setLayout(LayoutManager)</tt>.(
+Es posible establecer a nulo el <em>LayoutManager</em> de un contenedor. Esto le permite
+tener un completo control sobre la situación de los componentes en el contenedor. Sin
+embargo, aquí no estudiaremos esta posibilidad).</p>
+
+<p>En cuanto al tema de añadir componentes a un contenedor, es algo muy fácil. Puede
+usar uno&nbsp; de los métodos <tt>add()</tt> del contenedor. Hay dos métodos <tt>add()</tt>,
+con firmas <tt>add(Component)</tt> y <tt>add(String,Component)</tt>. (La segunda forma
+solo se puede usar con <tt>BorderLayout y CardLayout</tt>, y la comentaremos mas
+adelante). Por ejemplo, si quiere crear un <tt>Panel</tt> nuevo y añadirle tres <tt>Buttons</tt>
+nuevos, deberá decir:</p>
+
+<pre>          Panel panel = new Panel();
+          panel.add(new Button(&quot;Button 1&quot;);
+          panel.add(new Button(&quot;Button 2&quot;);
+          panel.add(new Button(&quot;Button 3&quot;);</pre>
+
+<p>&nbsp;</p>
+
+<p>Empleando el manejador por defecto <tt>FlowLayout</tt> que alineara los botones en la
+parte de arriba de derecha a izquierda.</p>
+
+<p>A menudo tengo muchas dificultades para conseguir en mis applets y ventanas el diseño
+que quiero.A continuación le comento brevemente como funciona cada manejador, pero
+usarlos correctamente requiere practica y experimentación.</p>
+
+<hr width="50%">
+
+<h3>BorderLayout<img align="right" alt="(BorderLayout)" src="fig2-2.gif" tppabs="http://members.nbci.com/elcurso/Capitulo6/fig2.gif" WIDTH="182" HEIGHT="168"></h3>
+
+<p>Este manejador coloca un componente en el centro del contenedor. El componente central
+es rodeado por hasta cuatro componentes situados en los bordes &quot;Norte&quot;,
+&quot;Sur&quot;, &quot;Este&quot;, y &quot;Oeste&quot; como se indica en el diagrama de la
+derecha. Cada uno de los cuatro componentes del borde es opcional. El LayoutManager
+reserva primero espacio para los componentes del borde. Todo el espacio restante es para
+el componente central.</p>
+
+<p>Si un contenedor emplea <tt>BorderLayout</tt>, los componentes deben ser añadidos al
+contenedor empleando el método <tt>add(string,Component)</tt>. El primer parámetro
+especifica donde se va a colocar el componente. Deberá ser una de las siguientes
+cadenas:&quot;Center&quot;, &quot;North&quot;, &quot;South&quot;, &quot;East&quot;, o
+&quot;West&quot;. (Estos nombres son sensibles a las mayúsculas/minúsculas por lo que si
+emplea por ejemplo &quot;east&quot; en lugar de &quot;East&quot;, puede encontrarse con la
+misteriosa desaparición de un componente. Por ejemplo, el siguiente código crea un panel
+en el que el componente central es <tt>drawArea</tt> y con barras de desplazamiento a la
+derecha y abajo::</p>
+
+<pre>       Panel panel = new Panel();
+       panel.setLayout(new BorderLayout());
+               // para usar BorderLayoutcon Panel, deberá
+               //   cambiar el manejador por defecto
+       panel.add(&quot;Center&quot;, drawArea);
+               // suponemos que drawArea ya existe
+       panel.add(&quot;South&quot;, hScroll);
+               // suponemos que hScroll es un componente que
+               //     ya existe y que es la barra horizontal
+       panel.add(&quot;East&quot;, vScroll);
+               // suponemos que vScroll es el componente de 
+               //    la barra vertical y que ya existe</pre>
+
+<p>Algunas veces quiere dejar espacio entre los componentes del contenedor. Puede
+especificar huecos horizontales y verticales en el constructor del objeto <tt>BorderLayout</tt>.
+Por ejemplo si dice: 
+
+<dl>
+  <dd><div align="center"><center><pre>panel.setLayout(new BorderLayout(5,7));</pre>
+    </center></div></dd>
+</dl>
+
+<p>hace que el manejador inserte un espacio horizontal de 5 pixeles y uno vertical de 7
+pixeles entre cada componente. (Los huecos horizontal se insertan entre el centro y los
+componentes &quot;East&quot; y &quot;West&quot;, mientras que los verticales se sitúan
+entre el centro y los componentes &quot;North&quot; y &quot;South&quot;)</p>
+
+<hr width="50%">
+
+<h3>GridLayout<img align="right" alt="(2-by-3 grid)" src="fig3-2.gif" tppabs="http://members.nbci.com/elcurso/Capitulo6/fig3.gif" WIDTH="109" HEIGHT="105"></h3>
+
+<p>El <tt>GridLayout</tt> sitúa los componentes en una rejilla de rectángulos del mismo
+tamaño. La imagen presenta como se organizan los componentes en una rejilla de tres filas
+por 2 columnas. Los componentes se añaden a la rejilla según el orden indicado, esto es
+primero se llenan las filas de izquierda a derecha y luego se pasa a la nueva fila. Cuando
+emplea <tt>GridLayout</tt>, debe asegurarse de ir añadiendo los componentes exactos para
+llenar la rejilla. Son muy comunes las rejillas con una sola fila horizontal o vertical.</p>
+
+<p>El constructor para <tt>GridLayout</tt>con R filas y C columnas tiene la forma de <tt>GridLayout(R,C)</tt>,
+Si quiere dejar huecos horizontales de H pixeles entre las columnas y verticales de V
+pixeles entre las filas, puede emplear <tt>GridLayout(R,C,H,V)</tt></p>
+
+<hr width="50%">
+
+<h3>FlowLayout</h3>
+
+<p>El <tt>FlowLayout</tt> va situando los componentes en una línea sin preocuparse
+demasiado. Cuando la línea tiene algunos ítems,&nbsp; encaja el conjunto en una fila del
+contenedor, y empieza otra. Al menos esto es lo que dice la documentación. Sin embargo a
+menudo se empiezan a añadir los componentes al container antes de conocer el tamaño que
+tendrá, y en este caso, puede que coloque todos los componentes en una línea, incluso
+cuando alguno de ellos quede fuera del contenedor y por lo tanto invisible. Es por esto
+que normalmente considero inaceptable este manejador, aunque sea el por defecto para <tt>Panel</tt>.</p>
+
+<p>Sin embargo, <tt>FlowLayout</tt> es útil al menos en una circunstancia. El botón que
+se debe expandir para llenar todo el espacio disponible. Si su &quot;paquete&quot; esta
+dentro de un <tt>Panel</tt> que emplea <tt>FlowLayout</tt>, no obstante querrá mantener ,
+como es natural, un tamaño por defecto. Por ejemplo considere:</p>
+
+<pre>         Panel mainPanel = new Panel();
+         mainPanel.setLayout(new BorderLayout());
+         mainPanel.add(&quot;Center&quot;, myCanvas);
+                // asumimos que myCanvas ya existe
+         Panel bttnPanel = new Panel();
+               // usa FlowLayout para bttnPanel
+         bttnPanel.add(new Button(&quot;Clear&quot;);
+         mainPanel.add(&quot;South&quot;, bttnPanel);</pre>
+
+<p>Esto hara que aparezca el botón Clear centrado debajo del área <em>Canvas</em>. Por
+otra parte,&nbsp; si hubiéramos añadido el botón directamente al <tt>mainPanel</tt>, se
+hubiera expandido para llenar completamente ese panel. Esto también funciona bien con
+varios botones. Puede añadir todos los botones al panel, y emplear el panel como un
+componente &quot;North&quot; o &quot;South&quot; de <tt>BorderLayout</tt>. Los botones se
+van alineando en la parte superior de la pantalla expandiéndose desde el centro del
+componente para ocupar todo el espacio disponible. (Si quiere que los botones se sitúen
+en el &quot;East&quot; o en el &quot;West&quot;, le sugiero que utilice <tt>GridLayout</tt>con
+una columna llena de botones.</p>
+
+<hr width="50%">
+
+<h3>GridBagLayout</h3>
+
+<p><tt>GridBagLayout</tt> es semejante a <tt>GridLayout</tt> en que el contenedor esta
+dividido en filas y columnas de rectángulos. Sin embargo <tt>GridBagLayout</tt> es mucho
+mas sofisticado porque no todas las filas han de tener la misma altura, así como las
+columnas tampoco han de tener todas la misma anchura, y los componentes pueden ocupar
+varias filas y varias columnas. Hay una clase independiente, <tt>GridBagConstraints</tt>,
+que se emplea para indicar la posición del componente y el numero de filas y columnas que
+ocupa.</p>
+
+<p>El empleo de <tt>GridBagLayout</tt> es bastante complejo y no lo vamos a estudiar
+aquí; si esta interesado, deberá consultar el manual de referencia Java</p>
+
+<hr width="50%">
+
+<h3>CardLayout</h3>
+
+<p>La diferencia principal de este manejador, es que el contenedor que lo usa, solo
+mantiene visible un componente en un momento determinado. Piense en los componentes como
+en un conjunto de cartas.En cada momento, solo se ve una carta, pero puede saltar de una
+carta a otra. <tt>CardLayout</tt>proporciona métodos para saltar desde la primera carta a
+la ultima, y a la siguiente carta del paquete. Se puede especificar un nombre para cada
+carta que se añada al contenedor y hay métodos para saltar directamente a la carta con
+un nombre determinado.(Por alguna razón, a cada uno de esos métodos se les ha de pasar
+el objeto contenedor como parámetro).</p>
+
+<p>Supongamos, por ejemplo, que quiere crear un <tt>Panel</tt> que muestre uno de los tres
+paneles: Panel1, Panel2, y Panel3. Supongamos que los tres ya están creados:</p>
+
+<pre>         cardPanel = new Panel();
+              // suponemos que cardPanel se declara como instancia
+              // variable dado que se va a utilizar en otros métodos
+         cards = new CardLayout();
+              // suponemos que cards se declara como instancia variable
+              // dado que se va a usar en otros métodos
+         cardPanel.setLayout(cards);
+         cardPanel.add(&quot;First&quot;, panel1);
+              // añade panel1 con el nombre &quot;First&quot;
+         cardPanel.add(&quot;Second&quot;, panel2);
+              // añade panel2 con el nombre &quot;Second&quot;
+         cardPanel.add(&quot;Third&quot;, panel3);
+              // añade panel3 con el nombre &quot;Third&quot;</pre>
+
+<p>Entonces puede mostrar el Panel1diciendo</p>
+
+<pre>         cards.show(cardPanel, &quot;First&quot;);</pre>
+
+<p>o</p>
+
+<pre>         cards.first(cardPanel);</pre>
+
+<p>Otros métodos que están disponibles son <tt>cards.last(cardPanel) y
+cards.next(cardPanel)</tt>. Observe que para poder emplear <tt>CardLayout</tt> de forma
+efectiva,&nbsp; debe guardar el manejador y el contenedor como instancias de variables, ya
+que se va a referir a ellas en mas de un método de su clase.</p>
+
+<hr width="50%">
+
+<h3>Components en Applets y Frames</h3>
+
+<p>Cuando esta escribiendo un <tt>Applet</tt> o un programa que utilice <tt>Frame</tt>
+debe recordar que los <tt>Applets</tt> y las <tt>Frames</tt> son en si contenedores. Esto
+significa que tienen el método <tt>add()</tt>y que puede usarse para añadir componentes,
+y el método <tt>setLayout</tt>() que puede usarse para modificar el manejador por
+defecto.</p>
+
+<p>En general, el diseño completo del applet debe establecerse en el método <tt>init()</tt>.
+Esto a menudo significa construir subpaneles y añadirlos al applet. Si escribe una
+subclase de <tt>Frame</tt>, deberá establecer el manejador de diseño en el constructor
+de la clase. Si hace directamente un objeto del tipo <tt>Frame</tt>, en vez de hacer una
+subclase, antes de hacerla visible, deberá montarla. (Un <tt>Frame</tt> es invisible por
+defecto, deberá hacerla visible llamando al método <tt>show()</tt>)</p>
+
+<p>Como punto final, debe tener en cuenta que con muchos manejadores de diseño puede
+especificar huecos entre componentes. Pero que pasa si quiere huecos entre los bordes de
+un applet o de un marco (frame) y los componentes?. Para ello, deberá sobregrabar el
+método <tt>insets()</tt> del applet o del marco. Normalmente este método es:</p>
+
+<pre>        public Insets insets() {
+           return new Insets(top,left,bottom,right);
+        }</pre>
+
+<p>donde <tt>top</tt>, <tt>left</tt>, <tt>bottom</tt>, y <tt>right</tt> indican el numero
+de pixeles tienen que insertarse como hueco antes de cada borde. Cada contenedor tiene un
+método <tt>insets()</tt>, y&nbsp; se puede sobregrabar desde cualquier subclase que
+defina de contenedores como <tt>Applet o Frame.</tt></p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice6.htm" tppabs="http://members.nbci.com/elcurso/Capitulo6/indice6.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion6_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo6/seccion6_2.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

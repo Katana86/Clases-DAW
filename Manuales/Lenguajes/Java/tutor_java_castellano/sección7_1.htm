@@ -1,0 +1,252 @@
+<html>
+
+<head>
+<title>DoPC-Curso de Java. Seccion 7.1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 7.1. Creando y empleando Arrays</h3>
+
+<hr>
+
+<p>CUANDO UN NÚMERO DE ELEMENTOS deben ser vistos juntos como una unidad, aparecen las
+estructuras de datos. Las estructuras de datos pueden ser bastantes complicadas, pero en
+la mayoría de los casos, consisten simplemente en una secuencia de elementos de datos. La
+estructura de datos correspondiente a esta variedad tan simple no puede ser otra que el <font color="#808000">array </font>o los <font color="#808000">registros</font>.</p>
+
+<p>En Java, no se emplea el termino &quot;registro&quot; .. Un registro es básicamente lo
+mismo que un objeto Java pero que solo tiene variables instanciables (y no tienen métodos
+instanciables). Hay otros lenguajes que no soportan objetos en general, y en cambio
+soportan registros. Los elementos de datos de un registro-- en Java es una variable
+instanciable-- se llaman <font color="#808000">campos</font> del registro. Cada elemento
+se referencia empleando un <font color="#808000">nombre de campo</font>. En Java los
+nombres de campo son realmente el nombre de las instancias de las variables. La
+característica mas distintiva de un registro es que los campos se referencian por nombre,
+y cada campo puede ser de un tipo distinto. Por ejemplo, si la clase <tt>Persona</tt> se
+define como:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>class Persona {
+   String nombre;
+   int numero_id;
+   Date cumpleaños;
+   int edad;
+}</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>podríamos considerar el objeto <tt>Persona</tt> como un registro con cuatro campos.
+Los nombres de los campos serian: <tt>nombre, numero_id, cumpleaños, y edad</tt>. Observe
+que los campos son de distintos tipos <tt>:String, int y Date</tt>.</p>
+
+<p>Dado que los registros son un tipo de objeto especial, no volveremos a hablar del tema.</p>
+
+<hr width="50%">
+
+<p>Las series se parecen a los registros en que son una secuencia de elementos, Sin
+embargo, mientras que los elementos de un registro se referencian por <strong>nombre</strong>,
+los elementos de una serie están numerados, para referirnos a un elemento concreto,
+utilizaremos su <strong>número de posición</strong>. Además, todos los elementos de una
+serie deben ser del mismo tipo. Visto esto, podemos definir una serie como una secuencia
+numerada de elementos que todos son del mismo tipo. El numero de elementos de una serie se
+llama <font color="#808000">longitud</font> de la serie. El numero de posición de un
+elemento de la serie se le llama <font color="#808000">índice</font> (<font color="#808000">índex</font>) del elemento.El tipo de un elemento individual se llama <font color="#808000">tipo base</font> de la serie.</p>
+
+<p>En Java, los elementos de una serie se empiezan a numerar en cero. Esto es, el índice
+del primer elemento de la serie es 0. Si la longitud de la serie es N, el índice del
+ultimo elemento de la serie será N-1. Una vez se crea la serie,no podemos cambiar su
+longitud.</p>
+
+<p>Las series en Java son <strong>objetos</strong>. Esto tiene algunas consecuencias. Las
+series se crean usando el operador <tt>new</tt>. Las variables no pueden<strong> almacenar</strong>
+series, solo pueden <strong>referirse</strong> a series. Cualquier variable que pueda
+referirse a una seria, puede contener el valor <tt>null</tt>, significando entonces que en
+ese momento no se refiere a nada. Como cualquier objeto, una serie pertenece a una clase y
+como la mayoría, es una subclase de la clase <tt>Object.</tt></p>
+
+<p>No obstante, aun cuando las series son objetos, hay diferencias entre las series y
+otros tipos de objetos, y hay un conjunto de características del lenguaje para crear y
+usar las series<tt>.</tt></p>
+
+<hr width="50%">
+
+<p>Suponga que A es una variable que se refiere a una serie. Entonces el elemento K de A
+se referenciara como <tt>A[K].</tt> El primer elemento es <tt>A[0]</tt>, el segundo es <tt>A[1]</tt>,
+y así sucesivamente. &quot;<tt>A[K]</tt> &quot; puede emplearse como si fuera una
+variable. Le puede asignar valores, puede usarlo en expresiones y puede pasarlo como
+parámetro a una subrutina. Todo esto lo veremos con mas detalle a continuación. Por
+ahora nos quedaremos con la sintaxis</p>
+
+<p align="center"><font color="#009000"><b>array-variable</b></font> [ <font color="#009000"><b>integer-expression</b></font> ]</p>
+
+<p>Para referirnos a un elemento de la serie.</p>
+
+<p>Aunque cada serie es miembro de alguna clase, la clase array nunca tiene que definirse.
+En cuanto un tipo existe, la correspondiente clase de Arrays existe de forma automática.
+Si el nombre del tipo es <tt>BaseType</tt>, el nombre asociado a la clase es <tt>BaseType[</tt>].
+Esto es, un objeto perteneciente a la clase <tt>BaseType[</tt>] es un a serie de elementos
+donde cada elemento es un valor de tipo <tt>BaseType</tt> . Los corchetes. &quot;[]&quot;,
+sirven para recordar la sintaxis para referirse a los elementos individuales de la serie.
+&quot;<tt>BaseType[</tt>]&quot; debe leerse como &quot;serie de <tt>BaseType&quot;.</tt></p>
+
+<p>El tipo base de una serie puede ser cualquier tipo legal de Java, esto significa que
+puede ser cualquier tipo primitivo, una interface o una clase. Del tipo <tt>int</tt> se
+deriva la serie de tipos <tt>int[</tt>]. Cada elemento en la serie de tipo <tt>int[</tt>]
+es un valor de tipo <tt>int</tt>. De la clase llamada <tt>Shape</tt> se deriva la serie
+tipo <tt>Shape[</tt>]. Cada elemento de una serie tipo <tt>Shape[</tt>] es un valor del
+tipo de la clase, que pueden ser nulos o referirse a un objeto de la clase <tt>Shape.(</tt>Puede
+que sea interesante mencionar en este momento que si <tt>ClassA</tt> es una subclase de <tt>ClassB</tt>,
+entonces <tt>ClassA[</tt>] es automáticamente una subclase de <tt>ClassB[</tt>])</p>
+
+<hr width="50%">
+
+<p>Vamos a intentar concretar un poco todo esto usando una serie de <tt>integers</tt> como
+ejemplo. Dado que <tt>int[</tt>] es una clase, podemos utilizarla para declarar variables.
+Por ejemplo:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>int[] list;</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>crea una variable llamada <tt>list </tt>de tipo <tt>int[</tt>]. Esta variable es capaz
+de referirse a una serie de <tt>ints</tt>. pero el valor inicial es <tt>null</tt>.
+Tendremos que emplear el operador <tt>new</tt> para crear un objeto nuevo array, que
+podremos asignar a <tt>list</tt>. La sintaxis para usar <tt>new</tt> con series, es
+diferente a la que ha aprendido previamente para otras clases. Veamos el ejemplo:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>list = new int[5];</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p align="left">crea una serie de cinco enteros. De forma mas general, &quot;<tt>new
+BaseType[N</tt>]&quot; crea una serie perteneciente a la clase <tt>BaseType[</tt>]. El
+valor N entre corchetes define la longitud de la serie, esto es, el numero de elementos
+que se pueden almacenar. Observe que la serie sabe la longitud que tiene. La longitud de
+la serie es algo semejante a una instancia de variable del objeto array, y de hecho, la
+longitud de la serie <tt>list</tt> puede referenciarse como <tt>list.length</tt> (Sin
+embargo, no esta permitido cambiar el valor de <tt>list.length</tt>. ósea que no es una
+instancia normal). La situación creada por la instrucción &quot;<tt>list = new int[5</tt>]<tt>;&quot;</tt>
+puede pintarse de una forma semejante a esto</p>
+
+<p align="center"><img alt="(Illustration of an array of ints)" src="fig2-3.gif" tppabs="http://members.nbci.com/elcurso/Capitulo7/fig2.gif" WIDTH="442" HEIGHT="134"></p>
+
+<p>Observe que la serie de enteros recién creada se llena automáticamente con ceros. En
+Java, la creación de una serie siempre provoca que se llenen todos sus elementos con el
+valor por defecto.</p>
+
+<p>Los elementos de <tt>list</tt> pueden referenciarse como <tt>list[0]</tt>, <tt>list[1]</tt>,
+<tt>list[2]</tt>, <tt>list[3]</tt>, y <tt>list[4]</tt>. (Observe que el índice del ultimo
+elemento es menor en una unidad a <tt>list.length</tt>). Sin embargo, existen formas mucho
+mas generales de indicar un elemento de una serie. Para indicar un elemento, los corchetes
+pueden contener cualquier expresión que como resultado genere un entero. Por ejemplo, si <tt>indx</tt>
+es una variable de tipo <tt>int</tt>, entonces&nbsp; <tt>list[indx]</tt> y <tt>list[2*indx+7]</tt>
+son referencias a elementos de una serie sintácticamente correctos. Y el bucle siguiente,
+imprime todos los enteros de la serie <tt>list</tt> en la salida estándar:</p>
+
+<pre>        for (int i = 0; i &lt; list.length; i++) {
+           System.out.println( list[i] );
+        }</pre>
+
+      <p>La primera vez que se pasa por el bucle, <tt>i</tt> es 0, y <tt>list[i]</tt> 
+        se refiere a <tt>list[0]</tt>. La segunda vez que pasa, <tt>i</tt> es 
+        1 y <tt>list[i]</tt> se refiere a&nbsp; <tt>list[1]</tt>. El bucle finaliza 
+        después de imprimir <tt>list[4]</tt>, cuando i vale 5 y la condición de 
+        continuación &quot;<tt>i&lt;list.length&quot;</tt> se deja de cumplir. 
+        Esto es un ejemplo típico del uso de los bucles para tratar series. Comentaré 
+        mas ejemplos de procesos de series en la <a href="seccion7_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/seccion7_2.htm">siguiente 
+        sección</a>. </p>
+
+<p>Si piensa por un momento que es lo que puede hacer el ordenador cuando encuentra una
+expresión como &quot;<tt>list[k]</tt>&quot; mientras ejecuta un programa, vera que hay
+dos cosas que pueden provocar un error. La expresión intenta acceder a un elemento
+especifico referenciado por la variable <tt>list</tt>. Pero suponga que el valor de <tt>list</tt>
+es nulo. En este caso, <tt>list</tt> no se refiere a ninguna serie,por lo que el uso
+de&nbsp; &quot;<tt>list[k]</tt>&quot; es erróneo. . Esto es un ejemplo de &quot;null
+pointer error&quot;. Incluso aunque <tt>list </tt>se refiera a una serie es posible que el
+valor de K este fuera del rango de índices correcto . Esto pasa si<tt> k&lt;0</tt> o si <tt>k&gt;=list.length</tt>
+En este caso, de nuevo, no es correcto el empleo de &quot;<tt>list[k]</tt>&quot;. Este
+error es &quot;array índex out of bounds&quot; . Cuando emplee en su programa series,
+deberá tener mucho cuidado de no cometer ninguno de estos dos errores.</p>
+
+<p>Para una serie variable, igual que para cualquier variable, puede declararla e
+inicializarla en una sola pasada. Por ejemplo, </p>
+<tt>
+
+<p align="center">int[] list = new int[5];</p></tt>
+
+<p>La nueva serie se llenara con el valor adecuado según el tipo base (cero para <tt>int</tt>
+y <tt>null</tt> para los tipos de clase, por ejemplo). Sin embargo, Java también facilita
+la manera de inicializar una serie con una&nbsp; lista de valores. Esto es una forma de
+inicializar una serie. Por ejemplo:</p>
+
+<p align="center"><tt>int[] list = { 1, 4, 9, 16, 25, 36, 49 };</tt></p>
+
+<p>crea una nueva serie que contiene siete valores 1, 4, 9, 16, 25, 36, y 49, y deja en <tt>list</tt>
+una referencia a la nueva serie. El valor de <tt>list[0]</tt> será 1, el valor de <tt>list[1]</tt>
+será&nbsp; 2, y así sucesivamente. La longitud de <tt>list</tt> es 7 dado que los
+valores facilitados al inicializador fueron 7.</p>
+
+<p>Una serie de inicialización toma la forma de una serie de valores, separados por comas
+y encerrados entre llaves. La longitud de la serie no es necesario especificarla, ya que
+viene implícita en el numero de elementos de la lista de valores. Los elementos
+inicializadores no tienen porque ser constantes. Pueden ser variables, o expresiones,
+siempre que generen los tipos apropiados. Por ejemplo, la siguiente declaración crea una
+serie de ocho<tt> Colors</tt>. Alguno de los colores se definen con expresiones de la
+forma &quot;<tt>new Color(r,g,b)&quot;</tt>: </p>
+
+<pre>        Color[] palette =
+                   {
+                     Color.black,
+                     Color.red,
+                     Color.pink,
+                     new Color(0,180,0),  // verde oscuro
+                     Color.green,
+                     Color.blue,
+                     new Color(180,180,255),  // azul brillante
+                     Color.white
+                   }</pre>
+
+<hr width="50%">
+
+<p>Una nota final: Por razones históricas, la declaración</p>
+
+<p align="center"><tt>int[] list;</tt></p>
+
+<p>puede ser escrita como</p>
+
+<p align="center"><tt>int list[];</tt></p>
+
+<p align="left">que es la sintaxis usada en los lenguajes C y C++. Sin embargo esta
+sintaxis alternativa no tiene mucho sentido en el contexto de Java y probablemente, lo
+mejor es olvidarla. Después de todo, se intenta declarar una variable de un cierto tipo,
+y el nombre del tipo es &quot;<tt>int[]</tt>&quot;. Es mas lógico seguir la sintaxis
+&quot;<font color="#009000"><b>nombre_tipo nombre_variable</b></font>;&quot;&nbsp; que es
+la habitual.</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice7.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/indice7.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion7_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo7/seccion7_2.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

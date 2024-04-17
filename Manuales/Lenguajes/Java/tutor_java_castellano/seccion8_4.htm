@@ -1,0 +1,408 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java. Seccion 8.4</title>
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 8.4: Trabajo en red</h3>
+
+<hr width="50%">
+
+<p>LA RED ES OTRA FUENTE DE ENTRADA/SALIDA DE DATOS desde el punto de vista de un
+programa. Quizás decir esto, sea simplificar demasiado, ya que trabajar con la red no es
+tan sencillo como trabajar con ficheros. Pero en Java, puede establecer comunicaciones por
+la red utilizando dispositivos de entrada y salida exactamente igual que si se comunicara
+con el usuario o como se graba y lee un fichero. Abrir una conexión de red entre dos
+ordenadores, es un pequeño truco, ya que hay dos ordenadores involucrados y tiene que ser
+ellos los que de algún modo estén de acuerdo en establecer la comunicación. Y cuando un
+ordenador envía datos al otro podemos tener el problema de sincronizar las
+comunicaciones. Pero fundamentalmente, es lo mismo que cualquier otra forma de entrada
+salida.</p>
+
+<p>Uno de los paquetes estándares de Java, se llama <tt>Java.net</tt>. Este paquete
+incluye varias clases que se pueden emplear para trabajar en red. Se soportan dos estilos
+distintos de I/O en red. Uno de ellos, que de de alto nivel, está basado en el World-Wide
+Web,&nbsp; y proporciona facilidades de todo tipo del estilo empleado por los navegadores
+cuando descargan paginas para su visualización. La clase principal para esa forma de
+trabajo en red se llama URL. Un objeto del tipo <tt>url</tt> es la representación
+abstracta del <font color="#808000">Universal Resource Locator</font>, que es la
+dirección de los documentos HTML y de otros recursos en el Web.</p>
+
+<p>El segundo estilo de I/O es de un nivel bastante mas bajo, y esta basado en la idea de
+los <font color="#808000">socket</font>. Un <em>socket</em> es lo que utiliza un programa
+para establecer contacto con otro programa por medio de una red. La comunicación implica
+dos <em>socket</em>, uno en cada ordenador. Java utiliza una clase llamada <tt>Socket</tt>
+para representar los sockets que se usan en las comunicaciones de red.. El termino &quot;<em>socket</em>&quot;
+(enchufe) proviene presumiblemente de la imagen física del establecimiento de las
+comunicaciones entre dos ordenadores por medio de la conexión de un cable (enchufarlos).,
+pero es importante entender que es un <em>socket</em>, en el entorno en que lo usamos
+aquí, y es simplemente un objeto perteneciente a la clase <tt>Socket</tt>. En general, un
+programa puede tener mas de un <em>socket</em> activo al mismo tiempo, cada uno conectado
+con otro programa que corre en otro ordenador en la red. Todas las conexiones podrán usar
+la misma red física.</p>
+
+<p>Esta sección realiza una breve introducción a las clases <tt>URL</tt> y <tt>Socket</tt>.
+y presenta como se pueden manejar las entradas y salidas, así como se pueden tratar las
+excepciones.</p>
+
+<hr width="50%">
+
+<h3>La clase URL</h3>
+
+<p>La clase <tt>URL</tt> se emplea para representar recursos en la World- Fide Web. Cada
+recurso tiene una dirección, que se identifica de forma unívoca y contiene toda la
+información necesaria para que el navegador pueda encontrar el recurso en la red, y
+recuperarlo. La dirección se llama &quot;url&quot; o &quot;universal resource
+locator&quot;. Ver la<a href="seccion5_3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_3.htm"> sección 5.3</a> para mas
+información.</p>
+
+<p>Un objeto perteneciente a la clase <tt>URL</tt> representa esta dirección. Si tiene un
+objeto <tt>URL</tt>, puede utilizarlo para abrir una conexión de red con el recurso de
+esa dirección. La clase <tt>URL</tt> y su clase asociada llamada <tt>URLConnection</tt>,
+proporcionan un gran numero de métodos para trabajar con estas direcciones, pero el
+método mas directo, y del único del que voy a hablar aquí, permite que un objeto del
+tipo <tt>InputStream</tt> pueda utilizarse para leer los datos contenidos en el recurso.
+Por ejemplo, si el recurso es una pagina Web estándar, en formato HTML, los datos que se
+podrán leer por medio de este objeto, será el código HTML que describe la pagina.</p>
+
+<p>Normalmente un url se especifica como una string con la forma <tt>&quot;http://arrakis.es/~mgyea/index.html&quot;.</tt>También
+existen url <font color="#808000">relativos</font>. Un url relativo indica la
+localización de un recurso relativa a la localización de otra url que se llama <font color="#808000">base</font> o <font color="#808000">contexto</font> de la url relativa.
+Por ejemplo, si el contexto esta definido por <tt>http://www.arrakis.es/~mgyea/</tt>, la
+dirección relativa &quot;<tt>índex.htm</tt>l&quot; se referirá realmente a <tt>&quot;http&amp;://arrakis.es/~mgyea/index.html&quot;.</tt></p>
+
+<p>Un objeto de la clase <tt>URL</tt> no es únicamente una string, pero se puede
+construir desde la representación en string de una url. Un objeto <tt>URL</tt> se puede
+construir con otro objeto <tt>URL</tt>, que represente el contexto, y una string que
+indique la dirección relativa a ese contexto.Los constructores tienen las formas</p>
+
+<pre>public URL(String NombreURL) throws MalformedURLException</pre>
+
+<p>y</p>
+
+<pre>public URL(URL contexto, String Nombrerelativo) throws MalformedURLException </pre>
+
+<p>Observe que estos constructores pueden generar una excepción del tipo <tt>MalformedURLException</tt>
+si la string indicada no representa una URL correcta. Esto no señala que es una buena
+idea el llamar al constructor dentro de una instrucción <tt>try</tt> y tratar la posible <tt>MaformedURLException</tt>
+en una cláusula <tt>catch.</tt></p>
+
+<p>Cuando escriba un<tt> applet, </tt>existen dos formas disponibles que proporcionan el
+URL&nbsp; del contexto. El método <tt>getDocumentBase()</tt>, definido en la clase <tt>Applet</tt>,
+devuelve un objeto del tipo <tt>URL</tt>. Esta <tt>URL</tt> representa la localización de
+la pagina HTML que contiene el applet que esta siendo descargado. Esto permite al applet
+volver atrás y descargar otros ficheros que se almacenaran en la misma localización que
+el documento. Por ejemplo:</p>
+
+<pre>	URl dirección = new URL (getDocumentBase(), &quot;data.txt&quot;);</pre>
+
+<p>forma una URL que apunta al fichero <tt>data.txt</tt> en el mismo ordenador y el mismo
+directorio que la pagina web que ha activado el applet. Otro método, <tt>getCodeBase()</tt>,
+devuelve la URL que define la localización del applet en si mismo (que no es
+necesariamente la misma localización que el documento).</p>
+
+<p>Una vez tenga un objeto URL valido, se puede utilizar el método <tt>openStream()</tt>
+de la clase <tt>URL</tt>&nbsp; para obtener un <tt>InputStream</tt> que puede usarse para
+leer&nbsp; datos desde el recurso al que apunta la <tt>URL</tt>. Por ejemplo, si <tt>dirección</tt>
+es un objeto de tipo <tt>URL</tt>, puede decir , simplemente</p>
+
+<pre>	InputStream in = dirección.open.Stream();</pre>
+
+<p>para definir el dispositivo de entrada. Este método realiza todo el trabajo de abrir
+una conexión de red, y cuando lea desde el dispositivo de entrada, realizara el duro
+trabajo de obtener datos sobre la conexión. Para hacer todo esto mas fácil,&nbsp;
+podemos enlazar el objeto <tt>InputStream</tt> con <tt>DataInputStream</tt> o <tt>AsciiInputStream</tt>
+y realizar la entrada a través de ellos.</p>
+
+<p>Hay varias excepciones que se pueden generar mientras se abre la conexión y se leen
+datos a través de ella, Muchas de estas son del tipo <tt>IOException</tt>, y son errores
+que deben ser capturados y tratados. Pero estas operaciones también pueden generar <font color="#808000">excepciones de seguridad</font>. Un objeto del tipo <tt>SecurityException</tt>
+se genera cuando el programa intenta realizar alguna operación que no esta permitida. Por
+ejemplo,&nbsp; un navegador normalmente esta configurado para que impedir que un applet
+realice una conexión con cualquier otro ordenador que no sea del que se ha bajado. Si el
+applet intenta conectar con un ordenador distinto, se genera una <tt>SecurityException</tt>.
+Un error de seguridad, debe ser capturado y tratado como cualquier otro error.</p>
+
+<p>Para aplicar todo esto, aquí tenemos una subrutina que puede utilizarse para que un
+applet lea un fichero por la red. El contenido de este fichero, que asumimos esta en un
+formato plano, se almacena en <tt>un StringBuffer</tt> a medida que se va leyendo. (Un <tt>StringBuffer</tt>
+es similar a un <tt>String</tt> excepto que va creciendo de tamaño a medida que se le van
+añadiendo caracteres. Esta versión esta un poco simplificada, y el tratamiento de
+errores &nbsp; realmente no esta demasiado bien montado como para tomárselo en serio:</p>
+
+<pre>   String loadURL(String urlName) {
+   
+        // Carga datos de la url indicada en urlName, relativa
+        // al documento base, y devuelve los datos como String.
+        // El tratamiento de errores se utiliza para detectar
+        // y responder a los errores con mensajes
+
+      try {
+      
+       URL url = new URL(getDocumentBase(), urlName);// Crea un stream
+       InputStream in = url.openStream();            // de entrada para 
+                                                     // leer de la url.
+
+       StringBuffer buffer = new StringBuffer(); //  guarda la entrada
+                                                // hasta terminar de leer
+                                                          
+       int input;  // lectura de un elemento desde la entrada
+       do {
+        input = in.read();  // sera -1, si todos los datos se han
+                            // leído, si no sera el código ASCII 
+                            // del carácter leído.
+        if (input &gt;= 0) {
+          char ch = (char)input;   //Convierte el código ASCII a carácter.
+          buffer.append(ch);       // Añade al buffer.
+        }
+      } while (input &gt;= 0);
+         
+      in.close();  // Cierra la entrada (y la conexión de red)
+         
+      return buffer.toString(); // devuelve los datos leídos
+
+      }
+      catch (MalformedURLException e) {  //generado en la creación deURL
+         return &quot;ERROR!  Nombre de URL sintácticamente incorrecto.&quot;;
+      }
+      catch (SecurityException e) {  // generado al establecer conexión
+         return &quot;Error de seguridad!  &quot; + e;
+      }
+      catch (IOException e) {  // generado mientras se lee
+          return &quot;Error de entrada!  &quot; + e;
+      }
+      
+   } // end of loadURL() method</pre>
+
+<p>.Dado que abrir una conexión en la red ocupa bastante tiempo, y lo mismo pasa con la
+lectura, es conveniente el crear una hebra <tt>(Thread</tt>) distinta para que trabaje
+asincronamente. Aquí hay un applet que utiliza esta técnica. Este applet esta
+configurado para que se cargue su propio código fuente cuando funciona. (Si tiene algún
+problema, y quiere ver igualmente el código fuente, aquí tienen un <a href="tppmsgs/msgs0.htm#91" tppabs="http://members.nbci.com/elcurso/fuentes/URLExampleApplet.java">enlace directo</a>)</p>
+
+<p>&nbsp;</p>
+
+<p align="center">
+<applet code="URLExampleApplet.class" tppabs="http://members.nbci.com/elcurso/Capitulo8/URLExampleApplet.class" height="250" width="500">
+  <param name="url" value="../fuentes/URLExampleApplet.java">
+<p><font color="#E70000">Lo siento, si navegador no soporta Java.</font><br>
+Pero si quiere ver el codigo fuente,<br>
+puede utilizar este <a HREF="tppmsgs/msgs0.htm#91" tppabs="http://members.nbci.com/elcurso/fuentes/URLExampleApplet.java">enlace</a>.</p>
+
+</applet>
+</p>
+
+<p align="left">También puede usar este applet para ver el código fuente HTML de esta
+pagina; para ello deberá indicar seccion8_4,htm en la caja de entrada de texto en la
+parte inferior de la ventana del applet y hacer clic en el botón de cargar. Sin embargo,
+según como tenga configurado su navegador, puede que se genere un error se seguridad. Si
+fuera así, lo vería aparecer en el área de texto del applet. Puede también
+experimentar provocando otros errores, como pedir un fichero que no exista en el
+directorio, por ejemplo &quot;Navidad.txt&quot;, y vera como aparece <tt>FileNotFoundException</tt>.
+Otra prueba puede ser pedir conectarse a http://www.whitehouse.gov.</p>
+
+<hr width="50%">
+
+<h3 align="left">Sockets, Clientes y servidores</h3>
+
+<p align="left">La comunicación sobre Internet, se basa en un par de protocolos llamados <font color="#808000">Internet Protocol </font>y <font color="#808000">Transmision Control
+Protocol</font>, que conjuntamente se les conoce como TCP/IP (De hecho, hay un tipo
+básico de comunicación que se puede realizar sin TCP, pero para esta sección,&nbsp; me
+referiré siempre al TCP/IP como la forma mas segura de establecer comunicaciones entre
+dos ordenadores conectados en red.)</p>
+
+<p align="left">Para que dos programas se comuniquen utilizando TCP/IP, cada programa debe
+crear un socket, como se explico anteriormente en esta sección, y ambos socket se deben
+conectar. Una vez se ha establecido la conexión, la comunicación se puede realizar
+utilizando dispositivos de entrada/salida.Cada programa debe tener su propio dispositivo
+de entrada y de salida. Los datos que un programa escribe en su dispositivo de salida, se
+transmiten al otro ordenador. Allí, en la otra punta de la red, entraran por el
+dispositivo de entrada.Cuando el programa lea los datos del dispositivo de entrada,
+recibirá los datos que se han transmitido por la red.</p>
+
+<p align="left">La parte difícil, es empezar realizando la conexión. Hay dos socket
+involucrados. Para poder empezar, un programa debe crear un socket que espere
+pacientemente hasta que se le solicite una conexión desde otro socket. El socket que esta
+esperando, se dice que esta escuchando para conexión. En alguna otra parte de la
+conexión, otro programa deberá crear un socket que envíe una solicitud de conexión al
+socket que esta escuchando. Cuando el socket que esta escuchando recibe esta petición,
+responde, y se establece la conexión. Una vez hecho esto, cada programa obtienen su
+propio dispositivo de entrada y de salida de la conexión. La comunicación queda
+establecida entre los dispositivos hasta que uno de los programas<font color="#808000">
+cierre </font>la conexión.</p>
+
+<p align="left">El programa que crea el socket que escucha, se le llama muchas veces <font color="#808000">servidor</font>, y el socket se le llama <font color="#808000">socket
+servidor</font>. El programa que se conecta al servidor, se le llama <font color="#808000">cliente</font>,
+y por extensión, al socket de dicho programa se le llama <font color="#808000">socket
+cliente</font>. La idea es que el servidor esta continuamente atento en la red esperando
+que algún cliente le solicite la conexión. El servidor puede ofrecer distintos tipos de
+servicios, y el cliente tiene acceso a esos servicios conectándose al servidor. A esto se
+le llama conexión en red modelo cliente/servidor. En muchas aplicaciones actuales, un
+programa servidor puede facilitar conexión a varios clientes al mismo tiempo. Cuando el
+cliente se conecta al socket del servidor que esta escuchando, el socket no detiene la
+escucha, en su lugar, continua escuchando para conexiones adicionales de otros cliente al
+mismo tiempo que se esta sirviendo al primer cliente.</p>
+
+<p align="left">El modelo cliente/servidor en el que un programa servidor soporta a
+múltiples clientes,es una aplicación perfecta para las hebras. Un programa servidor
+tiene una hebra principal que maneja el socket que escucha. Esta hebra funciona
+continuamente mientras el servidor este funcionando. Siempre que el socket servidor reciba
+una petición de conexión por parte de un cliente, la hebra principal, crea una nueva
+hebra para que maneje las comunicaciones con ese cliente en particular. Esta hebra,
+funcionara únicamente mientras el cliente este conectado. La hebra del servidor y todas
+las hebras de los clientes activos, funcionan simultáneamente de forma paralela. El
+programa cliente, por otra parte, tiende a simplificarse, teniendo únicamente una
+conexión de red y una única hebra ( a pesar de que no hay nada que impida a un programa
+el utilizar varios sockets clientes al mismo tiempo o incluso mezclar un socket cliente
+con un servidor)</p>
+
+<p align="left">La clase URL que se comento al principio de esta sección, emplea de forma
+oculta, un socket cliente para realizar todo el trabajo de comunicación.La otra parte de
+la conexión, es el programa cliente que acepta la petición de conexión desde el objeto
+URL, lee la petición del objeto sobre un fichero en particular del ordenador servidor, y
+responde transmitiendo el contenido de este fichero al objeto URL. Después de transmitir
+los datos, el servidor cierra la conexión.</p>
+
+<hr width="50%">
+
+<p>Para implementar la conexión TCP/IP, el paquete <tt>Java.net</tt> proporciona dos
+clases, <tt>ServerSocket </tt>y <tt>Socket</tt>. <tt>ServerSocket</tt> representa el
+socket que esta escuchando para esperar una petición de conexión de parte de un cliente.
+<tt>Socket</tt> representa el punto final de la conexión en red. Un <tt>Socket</tt> puede
+ser un socket cliente que envíe una solicitud de conexión al servidor. Pero un <tt>Socket</tt>
+también puede ser creado por el servidor para que maneje la conexión solicitada por el
+cliente. Esto permite al servidor el crear múltiples sockets y manejar múltiples
+conexiones. (Un <tt>serverSocket</tt> no participa como tal en la conexión; únicamente
+esta escuchando las peticiones de conexión y creando <tt>Socket</tt> que manejen
+realmente las conexiones.)</p>
+
+<p>Para utilizar <tt>Socket</tt> y <tt>ServerSockets</tt>, necesita conocer un poco el
+sistema de direcciones de Internet. Después de todo, el programa cliente tiene que tener
+alguna manera para indicar que ordenador, de entre todos los que están conectados, quiere
+establecer la comunicación. En Internet, cada ordenador tiene una dirección IP que le
+identifica de forma única entre todos los ordenadores de la red. Algunos ordenadores
+pueden ser referenciados por nombres de dominio como www.dopc.com o www.witehouse.gov. (ve<a href="seccion1_7.htm" tppabs="http://members.nbci.com/elcurso/Capitulo1/seccion1_7.htm">r Sección 1.7)</a>. Actualmente un ordenador puede
+tener varios programas que se quieran conectar a la red al mismo tiempo, o un programa que
+quiera conectarse con varios ordenadores a la vez. Para disponer de estas posibilidades, a
+la dirección de Internet, se le debe añadir el <font color="#808000">numero de puerto</font>.El
+numero de puerto es únicamente un numero entero de 16 bits. El servidor no esta
+simplemente escuchando para conexión, escucha para conexión en un puerto determinado. El
+potencial cliente debe conocer no solo la dirección de Internet del servidor donde corre
+el programa sino también el numero de puerto por el que escucha. Un servidor web, por
+ejemplo, normalmente escucha en el puerto 80, otros servicios estándares de Internet,
+también tienen su numero de puerto estándar. (Los números de puerto estándar son todos
+inferiores a 1024. Si crea su propio programa servidor, debe usar un numero de puerto
+mayor de 1024)</p>
+
+<p>Cuando construye un objeto <tt>ServerSocket</tt>, debe indicar el numero de puerto por
+al que debe escuchar. El prototipo del constructor es</p>
+
+<pre>	public ServerSocket(int puerto) throws IOException</pre>
+
+<p>Tan pronto se crea el <tt>ServerSocket</tt>, empieza a escuchar esperando peticiones de
+conexión. El método <tt>accept()</tt> de la clase <tt>ServerSocket</tt> acepta este tipo
+de peticiones, establece la comunicación con el cliente, y devuelve un <tt>Socket</tt>
+que puede ser utilizado para comunicarse con el cliente. El método <tt>accept()</tt>
+tiene esta forma:</p>
+
+<pre>	public Socket accept() throws IOException</pre>
+
+<p>Cuando llama al método <tt>accept(),</tt> este no retorna hasta que recibe la
+solicitud de conexión (o hasta que ocurre un error). Este método se dice que se bloquea
+hasta la conexión. Mientras el método esta bloqueado, la hebra que lo ha llamado, no
+puede hacer nada mas. Sin embargo, otras hebras del mismo programa pueden seguir
+funcionando. (Este es el motivo por el que el servidor necesita una hebra separada para
+esperar peticiones de conexión). El <tt>ServerSocket</tt> continuara escuchando hasta que
+se cierre utilizando el método <tt>close()</tt>, o hasta que ocurra un error.</p>
+
+<p>Suponga que quiere un servidor que escuche en el puerto 1728. Cada vez que el servidor
+reciba una petición de conexión, creara una nueva hebra para manejar la conexión con el
+cliente. Supongamos que ha escrito un método <tt>createServiceThread(Socket)</tt> que es
+capaz de crear esta hebra. La versión sencilla del método <tt>run()</tt> de esta hebra
+del servidor será:</p>
+
+<pre>        public run() {
+           try {
+              ServerSocket servidor = new ServerSocket(1728);
+              while (true) {
+                 Socket connection = servidor.accept();
+                 createServiceThread(connection);
+              }
+           }
+           catch (IOException e) {
+              System.out.println(&quot;Servidor abortado con error: &quot; + e);
+           }
+        }</pre>
+
+<p>En la parte cliente, el socket cliente se crea usando el constructor de la clase <tt>Socket</tt>.
+Para conectar con el servidor en un ordenador y puerto conocido, podría usar el
+constructor</p>
+
+<pre>	public Socket(String ordenador, int puerto) throws IOException</pre>
+
+<p>Este constructor se bloqueara hasta que se establezca la conexión o hasta que ocurra
+un error. (Esto significa que cuando escribe el programa cliente, puede utilizar una hebra
+separada para manejar la conexión, y permitir así que el programa siga respondiendo a
+las entradas del usuario mientras se establece la conexión.De otra forma, el programa se
+podría quedar &quot;congelado&quot; durante un periodo de tiempo indeterminado). Una vez
+se ha establecido la comunicación, puede utilizar los métodos <tt>getInputStream()</tt>
+y <tt>getOutputStream()</tt> para obtener los dispositivos que podrá emplear para
+comunicarse por medio de la conexión. Mantenga esto en mente: aquí tiene en líneas
+generales, el método para trabajar con una conexión cliente</p>
+
+<pre>            void doClientConnection(String computerName, int listeningPort) {
+                   // computerName es el nombre del ordenador donde
+                   // corre el servidor, como www.dopc.com
+                   // listeningPort es el puerto en el que esta escuchando
+                   // el servidor por ejemplo 1728.
+               Socket connection;
+               InputStream in;
+               OutputStream out;
+               try {
+                  connection = new Socket(computerName,listeningPort);
+                  in = connection.getInputStream();
+                  out = connection.getOutputStream();
+               }
+               catch (IOException e) {
+                  System.out.println(&quot;Intento de conexión erróneo:&quot; + e);
+                  return;
+               }
+                .
+                .  // use los streams, in and out, para comunicarse
+                .
+               connection.close();
+            }</pre>
+
+<p>.Todas estas comunicaciones por red, están presentadas mas sencillas de lo que son. (Y
+si piensa que son difíciles, tenga por seguro que lo son mucho mas). Si la red fuera
+completamente segura, todo seria tan fácil como he descrito. El problema es escribir un
+programa lo suficientemente robusto que pueda manejar los errores humanos y los de la red.
+No quiero entrar en detalles, particularmente porque en realidad no he hecho ningún
+programa serio en Java , sobre la red. Sin embargo, he querido plantear aquí las ideas
+básicas de la programación en red, y creo que es suficiente para aplicaciones de red
+sencillas. (Concretamente, no intento escribir el sustituto de Netscape).</p>
+
+<hr>
+
+<p align="center">
+<applet code="SimpleCA.class" tppabs="http://members.nbci.com/elcurso/Capitulo8/SimpleCA.class" height="150" width="200">
+</applet>
+</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="seccion8_3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo8/seccion8_3.htm"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice8.htm" tppabs="http://members.nbci.com/elcurso/Capitulo8/indice8.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="tppmsgs/msgs0.htm#93" tppabs="http://members.nbci.com/elcurso/Capitulo8/test8.htm"><img src="Diploma.jpg" tppabs="http://members.nbci.com/elcurso/images/Diploma.jpg" width="68" height="79" alt="Test" border="0"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

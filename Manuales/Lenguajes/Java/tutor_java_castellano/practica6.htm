@@ -1,0 +1,337 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java.Practica 6</title>
+</head>
+
+<body>
+
+<h3>Practica 6: Applets y Objetos II</h3>
+
+<hr>
+
+<p>En esta practica, la numero 6, escribiremos una clase partiendo desde cero, y crearemos
+un applet que sea capaz de procesar los eventos de teclado.</p>
+
+<p>Mientras que en el primer ejercicio empezaremos a ver lo que puede ser Java en gestión,
+en el segundo, nos divertiremos con un sencillo juego. Adelante y pasarlo bien!</p>
+
+<p>Como siempre al final de la practica hay unos ejercicios que deberán ser enviados a su
+tutor (únicamente las personas que hayan contratado <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">Seguimiento</a>).</p>
+
+<hr width="50%">
+
+<h3>Indice de la practica</h3>
+
+<ul>
+  <li><a href="#claseBajoPedido">Creación de una clase bajo pedido</a></li>
+  <li><a href="#El Pensamiento Asincrono">El pensamiento </a>asincrono.</li>
+  <li><a href="#Un applet con eventos de teclado">Un applet con eventos de teclado</a></li>
+  <li><a href="#Ejercicios">Ejercicios</a></li>
+</ul>
+
+<hr width="50%">
+
+<h3><a name="claseBajoPedido">Creación de una clase bajo pedido</a></h3>
+
+<p>En este primer ejercicio, deberá escribir la clase BankAccount para poderla emplear
+junto al programa BankMain que deberá bajarse para conocer su contenido y así determinar
+que debe hacer la clase que se le solicita. El fuente del programa lo tiene <a
+href="tppmsgs/msgs0.htm#42" tppabs="http://members.nbci.com/elcurso/Practicas/prc6/BankMain.java">aquí</a>. En este programa no debe realizar ninguna modificación;
+así mismo, no podrá ejecutar el programa hasta que no haya escrito la nueva clase.</p>
+
+<p>Para empezar a trabajar en su clase, deberá crear un fichero nuevo en donde guardar el
+código fuente. Para hacer esto:</p>
+
+<p><strong>Con Microsoft Developer Studio:</strong></p>
+
+<blockquote>
+  <p>Seleccione el comando &quot;New&quot; del menú &quot;File&quot; y en la caja de
+  dialogo que aparece seleccione &quot;Java Source File&quot; como tipo del fichero que
+  quiere crear. Teclee el nombre del fichero que deberá ser &quot;BankAccount.java&quot;.
+  Asegúrese que el checkbox etiquetado como &quot;Add to Project&quot; esta marcado. Pulse
+  ya el botón de OK. Se creara un fichero vacío y se añadirá a la lista de ficheros en
+  el proyecto.</p>
+</blockquote>
+
+<p>Su trabajo es escribir la clase BankAccount. El objeto de esta clase es mantener el
+saldo de la cuenta bancaria. También deberá conocer el porcentaje de interés de la
+cuenta ( Esto le indica que deberá disponer de variables instanciables). La clase debe
+definir los siguientes métodos: 
+
+<ul>
+  <li><font color="#009900">getBalance</font> -- Devuelve el valor actual del saldo. </li>
+  <li><font color="#009900">deposit</font> -- incrementa el saldo en un importe determinado.
+    El importe a incrementar se le pasara como parámetro. Este método no devuelve ningún
+    dato</li>
+  <li><font color="#009900">withdraw</font> -- Decrementa el saldo en un valor determinado,
+    este valor se le pasara como parámetro. El método no devuelve información. </li>
+  <li><font color="#009900">addMonthlyInterest</font> -- Incrementa el saldo con el valor de
+    los intereses de un mes multiplicando el saldo por (uno mas el porcentaje de interés).Este
+    método no tiene parámetros y no devuelve valores.</li>
+</ul>
+
+<p>La clase BankAccount también debe tener un constructor. Este recibirá dos parámetros.
+El saldo inicial en la apertura de la cuenta y el porcentaje de interés anula para la
+misma. ( El porcentaje de interés mensual se deberá obtener dividiendo el interés anual
+por 12)</p>
+
+<p>Una vez haya definido correctamente la clase BankAccount, debe poder compilar y
+ejecutar el programa BankMain. (Asegúrese que los cálculos realizados en su clase son
+semánticamente correctos)</p>
+
+<p>Observe que la clase que ha escrito para este ejercicio no es demasiado interesante o
+útil. Por ejemplo, no se ha debido preocupar por los posibles errores en el uso de la
+clase, como intentar hacer un ingreso de importe negativo. El propósito es únicamente el
+escribir una clase empezando en cero. Los métodos en su clase son muy cortos, solo una o
+dos líneas para cada uno.</p>
+
+<hr width="50%">
+
+<h3><a name="El Pensamiento Asincrono">El Pensamiento </a>Asincrono.</h3>
+
+<p>En el segundo ejercicio, debe escribir un applet que procese los eventos de teclado.
+Los eventos de teclado se generan cada vez que el usuario pulsa una tecla. Estos eventos
+ocurren de forma asincrona. Un applet&nbsp; maneja los eventos asincrono. preparando <font
+color="#808000">métodos manejadores de eventos</font> que el sistema llamará cuando
+necesite procesar un evento.</p>
+
+<p>Un applet puede tener manejadores para eventos de teclado, de ratón y de otros tipos
+de eventos como se comento en la <a href="seccion5_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_2.htm">Sección 5.2</a>
+del texto. El problema con estos eventos es que llegan en cualquier momento, mientras hay
+otras actividades en proceso. Los manejadores de eventos son llamados por la hebra de la
+interface del usuario que la crea y pone en marcha de forma automática el sistema. Sin
+embargo, el applet puede crear otras hebras que pueden correr a la vez y es importante que
+no se interfieran entre ellas.</p>
+
+<p>Los eventos de teclado presentan una complicación adicional, ya que para poder
+recibirlos, el objeto ha de tener el foco de entrada. En Java un objeto recibe una
+notificación cuando tiene entra o sale del foco de entrada. Cuando tiene foco, es
+conveniente iluminarlo o destacarlo de alguna manera, de tal forma que el usuario este
+seguro de adonde irán a parar las pulsaciones de teclas que realice.</p>
+
+<p>Todas estas complicaciones dificultan el tratamiento, por eso he preparado un fichero
+que os evitara el trabajo sucio. Deberá copiar <a href="tppmsgs/msgs0.htm#43" tppabs="http://members.nbci.com/elcurso/Practicas/prc6/KeyboardApplet.java">este fichero</a>
+en su directorio de fuentes java, a continuación lo puede abrir y leer los comentarios
+existentes. No es necesario, e incluso no es buena idea el leer nada anterior al método
+&quot;public void init()&quot;.</p>
+
+<p>En este applet la idea es tener un tablero que presente algo que de nueva (Mientras el
+applet tenga foco). Al mismo tiempo los eventos de teclado generados por el usuario pueden
+ir cambiando las imágenes que aparecen en el tablero. Para tener todo un poco controlado,
+en el método redrawBoard(). Este método se llama una y otra vez desde el método run()
+del applet. La información completa sobre el contenido del tablero se almacena en la
+variable instanciable del applet.Este método emplea estas variables para decidir que es
+lo que tiene que dibujar. El manejador de eventos de teclado, keyDown(), necesita
+únicamente cambiar el valor de la instancia de las variables que describe el el contenido
+del tablero. La siguiente vez que se dibuje, estos cambios aparecerán automáticamente en
+la pantalla.</p>
+
+<p>De esta manera, el tablero esta continuamente en el área <em>off-screen</em>. Se
+redibuja en la memoria y no en la pantalla, por lo que el proceso no es visible para el
+usuario. El tablero se copia rápidamente y de golpe a la pantalla. Esta es una técnica
+muy importante en el área de la animación gráfica ya que es mas rápida y reduce el
+parpadeo que se produce cuando se redibuja directamente la imagen en la pantalla.
+Vea&nbsp; la ultima parte de la <a href="seccion5_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_4.htm">Sección 5.4</a>.
+No tiene que entender como funciona el área <em>off-screen</em>, solo tiene que emplear
+la instancia de la variable &quot;osg&quot; para dibujar el tablero.</p>
+
+<p>Se habrá dado cuenta que la mayoría de los métodos de la clase KeyboardApplet están
+declarados como sincronizados.Esto es necesario para &quot;sincronizar&quot; las
+actividades de dos hebras, la de interface de usuario y la del applet. El efecto es
+detener una de las hebras que intentan acceder al mismo recurso al mismo tiempo. Por
+ejemplo, no nos interesa que el método paint() intente copiar el tablero a pantalla
+mientras el método redrawBoard() esta en mitad de su trabajo redibujandolo. La pantalla
+mostraría aun tablero incompleto!. Esta posibilidad se evita declarando el método
+paint() y el redrawBoard() como sincronizados. Esta es una de las complejidades que va a
+encontrar resuelta en el fuente que se ha bajado (<a href="tppmsgs/msgs0.htm#43" tppabs="http://members.nbci.com/elcurso/Practicas/prc6/KeyboardApplet.java">KeyboardApplet</a>)</p>
+
+<hr width="50%">
+
+<p>Sin embargo,&nbsp; aun se va a encontrar con una tarea medianamente compleja. Tiene que
+programar un applet en absoluto trivial, y tiene que maneja un entorno multi-hebra y
+asincrono. Para poder tener éxito, deberá adaptar un poco su mente a este entorno. La
+regla básica es la siguiente:<strong> Asegúrese que todos los métodos sincronizados
+cuando son llamados, tienen un tiempo de funcionamiento muy corto</strong>. De otra forma,
+puede quedarse esperando el final de una hebra que esta bloqueada porque necesita un
+recurso que esta usando otra hebra. Si la hebra de la interface del usuario se bloquea, el
+applet dejara de responder. Si la hebra run() del applet se bloquea, la acción en la
+pantalla se parará.</p>
+
+<p>Todo esto significa que en esta practica <strong>no debe escribir ningún bucle for o
+while</strong> por muchas tentaciones que tenga de hacerlo debido a la forma de pensar
+tradicional. En su lugar,<strong>deberá emplear las variables para controlar el estado
+del applet</strong>. Por ejemplo, para presentar una <a name="bola">bola</a> cayendo por
+la pantalla, puede sentirse tentado de escribir algo semejante a esto:</p>
+
+<pre>                 ballTop = 50;  // altura inicial de la bola
+                 while (ballTop &lt; board_height){
+                     ... // dibujar la bola a la altura de ballTop
+                     ... // y esperar un poco para no mover muy rapido
+                     ballTop += 10;
+                 }</pre>
+
+<p><strong>No lo haga!</strong>. Este bucle bloqueara el applet no permitiéndole hacer
+nada mas mientras que la bola va cayendo. En lugar de este bucle, puede tener una variable
+booleana instanciable llamada ballIsFalling. Cuando quiera que caiga la bola, por ejemplo
+porque el usuario a pulsado una tecla, puede decir:</p>
+
+<pre>                 ballIsFalling = true;
+                 ballTop = 50;</pre>
+
+<p>En el método redrawBoard() puede incluir algo semejante a esto:</p>
+
+<pre>                 if (ballIsFalling) {
+                    ... // dibujar la bola a la altura ballTop
+                    ballTop -= 10;
+                    if (ballTop &gt;= board_height)
+                        ballIsFalling = false;
+                 }</pre>
+
+<p>Como este método se llama una y otra vez la bola se ira moviendo gradualmente &nbsp;
+hacia abajo. Aquí no es necesario insertar una pausa porque el applet ya la inserta entre
+las llamadas a drawBoard(). Podemos actuar de forma semejante para el resto de cosas que
+pasan.</p>
+
+<hr width="50%">
+
+<h3><a name="Un applet con eventos de teclado">Un applet con eventos de teclado</a></h3>
+
+<p>El applet que debe escribir para el segundo ejercicio de esta practica en un juego de
+acción simplificado (aunque típicamente violento), en donde el usuario controla un barco
+que lanza cargas de profundidad para intentar destruir un submarino. El ejemplo completo
+del applet esta en una <a href="KeyboardApplet.html" tppabs="http://members.nbci.com/elcurso/Practicas/prc6/KeyboardApplet.html">pagina independiente</a>. Es libre de
+ser creativo con los detalle, pero su applet deberá tener las mismas funcionalidades que
+este.</p>
+
+<p>Observe que en todo momento solo hay un barco, una carga de profundidad y un submarino.
+Puede utilizar variables instanciables para almacenar las posiciones de estos objetos.</p>
+
+<p>Puesto que en este ejercicio los gráficos no son críticos, le sugiero que emplee
+formas para representar el barco y el resto de los objetos.Puede emplear estos métodos
+con la variable instanciable osg:
+
+<ul>
+  <li>osg.setColor(Color c) -- Establece el color del dibujo para las siguientes operaciones</li>
+  <li>osg.drawLine(int x1, int y1, int x2, int y2) -- dibuja línea desde (x1,y1) a (x2,y2). </li>
+  <li>osg.drawString(String str, int x, int y) -- dibuja la string str empezando en la
+    posición (x,y). </li>
+  <li>osg.drawRect(int x, int y, int w, int h) -- Dibuja las líneas del rectángulo con la
+    esquina superior izquierda en&nbsp; (x,y). la anchura del rectángulo es w, y la altura es
+    &nbsp; h. </li>
+  <li>osg.fillRect(int x, int y, int w, int h) -- Dibuja un rectángulo relleno. Los
+    parámetros tienen el mismo significado que para drawRect(). </li>
+  <li>osg.drawOval(int x, int y, int w, int h) -- Dibuja una elipse que entre en el
+    rectángulo con la esquina superior izquierda en (x,y), anchura w, y altura h. Si w == h,
+    la elipse se transforma en circulo. </li>
+  <li>osg.fillOval(int x, int y, int w, int h) -- Dibuja una elipse rellena</li>
+  <li>osg.drawRoundRect(int x, int y, int w, int h, int xradius, int yradius) -- Dibuja las
+    líneas de un rectángulo con las esquinas redondeadas. El valor del redondeo se
+    especifica por xradius e yradius. Es como si una parte del ovalo con los radios
+    especificados se situaran en la esquina del rectángulo. </li>
+  <li>osg.fillRoundRect(int x, int y, int w, int h, int xradius, int yradius) -- Rellena un
+    rectángulo de esquinas redondeadas. </li>
+</ul>
+
+<p> Deberá escribir el applet en etapas, probando cada etapa. Aquí tiene mis
+sugerencias:</p>
+
+<p>El Barco</p>
+
+<blockquote>
+  <p>El barco se mueve hacia adelante y hacia atrás cerca del borde superior del tablero.
+  Necesita una variable instanciable que le indique su posición horizontal. El valor de
+  esta variable cambia cuando el usuario pulsa las flechas derecha/izquierda pero tenga
+  cuidado de que el barco no se vaya mas allá de los bordes del tablero. Observe que el
+  barco es muy semejante a la rutina que esta actualmente en el método redrawBoard().</p>
+</blockquote>
+
+<p>La carga de profundidad:</p>
+
+<blockquote>
+  <p>La carga de profundidad es algo que esta enganchado en el fondo del barco, y otras
+  veces esta cayendo. Necesita una variable instanciable para distinguir entre estas dos
+  situaciones. (Vea el anterior comentario sobre la caída de la <a href="#bola">bola</a> )
+  La caída de la carga se inicia cuando el usuario pulsa la tecla de flecha abajo. Y
+  reaparece pegada al barco&nbsp; cuando alcanza la base del tablero. (Puede pensar que es
+  una nueva carga, pero el programa seguirá pensando que es la misma carga en distinta
+  posición=</p>
+</blockquote>
+
+<p>Aciertos y fallos:</p>
+
+<blockquote>
+  <p>Debe controlar y displayar en numero de aciertos y fallos que tiene el usuario en sus
+  intentos de destruir el submarino. Añada variables instanciables para guardar esta
+  información. Cada vez que en su caída, la bola alcance el borde del tablero, deberá
+  sumar uno a fallos y deberá hacerlo sobre&nbsp; aciertos si alcanza al submarino.</p>
+</blockquote>
+
+<p>El submarino:</p>
+
+<blockquote>
+  <p>Añada el submarino moviéndose adelante y atrás cerca del pie del tablero.
+  Necesitará una variable instanciable para mantener la posición horizontal y otra para
+  saber si se esta moviendo hacia la derecha o a la izquierda. En el momento que moviéndose
+  a la izquierda alcance el borde izquierdo, se deberá iniciar un movimiento a la derecha,
+  y los mismo cuando alcance el borde derecho. Para hacer mas interesante el juego deberá
+  añadir una pequeña probabilidad de cambiar espontáneamente de dirección. Recuerde que
+  cada vez que se llama a&nbsp; la rutina redrawBoard() solo mueve el submarino a una
+  pequeña distancia.</p>
+</blockquote>
+
+<p>Detección de aciertos:</p>
+
+<blockquote>
+  <p>La subrutina explota cuando la carga de profundidad alcanza al submarino. Deberá
+  diseñar alguna comprobación para esto. La prueba se realiza en el método redrawBoard().
+  Si el submarino explota, el numero de aciertos aumentara en uno, y la carga volverá a
+  aparecer pegada al barco</p>
+</blockquote>
+
+<p>Explosiones:</p>
+
+<blockquote>
+  <p>Puede querer añadir algún tipo de efecto visual cuando el submarino explota. La
+  explosión ocupa varias secuencias y varias llamadas a redrawBoard(). Necesitara una
+  variable boleana instanciable que le indique que la explosión esta en marcha. Necesita
+  otra variable para contar el numero de llamadas realizadas a redrawBoard() desde que se
+  inicio la explosión. Mientras la explosión esta en marcha, la carga de profundidad
+  probablemente <strong>no</strong> deberá estar enganchada al barco; incluso no debería
+  dibujarse. En mi applet, la explosión cambia la apariencia de forma progresiva. Puede no
+  querer hacer algo tan complicado.</p>
+</blockquote>
+
+<p>El paso final es publicar el applet completo en su Web</p>
+
+<hr width="50%">
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%"><h3><a name="Ejercicios">Ejercicios para entregar </a></h3>
+    </td>
+    <td width="50%">Esta parte solo la deben enviar aquellos alumnos que han contratado el
+    servicio de <a href="pseguimiento.htm" tppabs="http://members.nbci.com/elcurso/pseguimiento.htm">seguimiento</a></td>
+  </tr>
+</table>
+
+<p><strong>Ejercicio 1</strong>. Envíe el fichero del programa fuente de la clase
+BankAccount tal y como se describió <a href="#claseBajoPedido">anteriormente</a>. La
+clase deberá ser razonablemente corta, pero deberá incluir comentarios describiendo la
+clase y cada una de las variables y métodos</p>
+
+<p><strong>Ejercicio 2.</strong>&nbsp;Envíe el fichero con el fuente de KeyboarApplet tal
+y como se describió <a href="#Un applet con eventos de teclado">anteriormente</a>. No
+debe cambiar los comentarios existentes en el fichero original. Tiene que incluir
+comentarios para cada variable que declare. Si añade algún método, lo debe comentar, y
+puede que quiera comentar el código que escriba en el método redrawBoard().
+Adicionalmente, debe publicar el applet en su web y enviarme la dirección de donde lo
+publique</p>
+
+<hr>
+
+<p align="center"><a href="indice.htm#Practicas" tppabs="http://members.nbci.com/elcurso/indice.htm#Practicas">[Indice de practicas<sup>]</a> <a
+href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm">[Curso</sup>]</a></p>
+</body>
+</html>

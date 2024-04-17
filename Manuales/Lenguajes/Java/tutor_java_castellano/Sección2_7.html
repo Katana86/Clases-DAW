@@ -1,0 +1,534 @@
+<html>
+
+<head>
+<title>DoPC-CUrso de Java.Seccion 2.7</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 2.7: Detalle de las estructuras de control.</h3>
+
+<hr>
+
+<p>.JAVA TIENE TRES ESTRUCTURAS DE CONTROL para realizar bucles: la <strong>while</strong>,
+la <strong>do</strong> y la <strong>for.</strong> Y dos estructuras para realizar
+desvíos: La instrucción <strong>if</strong> y la instrucción <strong>switch</strong>.
+Esta sección, explica el funcionamiento de estas instrucciones.</p>
+
+<hr width="50%">
+
+<h3>El bucle do</h3>
+
+<p>Anteriormente, hemos visto la instrucción <em>while</em>, y como el ordenador
+comprueba la condición antes de empezar el bucle, para determinar si lo realiza o no.</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>while ( <font color="#009000"><b>expresión-boleana</b></font> )
+ <font color="#009000"><b>instrucción</b></font></pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>La diferencia entre el bucle while y el do, reside en que en este ultimo, la
+comprobación se realiza al final. El formato es el siguiente:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>do
+ <font color="#009000"><b>instrucción</b></font>
+while ( <font color="#009000"><b>expresión-boleana</b></font> );</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>o si como es normal la&nbsp; <font color="#009000"><b>instrucción</b></font> es un
+bloque (<em>block)</em>,</p>
+
+<pre>          do {
+              <font color="#009000"><b>instrucciones</b></font>
+          } while ( <font color="#009000"><b>expresión-boleana</b></font> );</pre>
+
+<p>(Observe el ';' final. Este ';' forma parte de la instrucción, es mas, el punto y coma
+que aparece al final de cada instrucción de asignación, o al final de una declaración,
+forma parte de la instrucción. Generalizando, debemos indicar que todas las instrucciones
+de Java terminan con ';' o con la llave derecha'}')</p>
+
+<p>Para ejecutar el bucle do&nbsp; el ordenador, en primer lugar, ejecuta el cuerpo del
+bucle -- nos referimos a la instrucción o instrucciones que están dentro del bucle -- y
+después, evalúa la expresión boleana. Si el valor de la expresión es <tt>true</tt>, el
+ordenador volverá al principio y repetirá el proceso, si el valor es<tt> false</tt>, el
+bucle finalizara y se continuara con la siguiente instrucción del programa </p>
+
+<p>Como hemos visto la principal diferencia, entre el bucle <em>do</em> y el <em>while</em>,
+es que en el <em>do</em> el cuerpo del bucle se ejecuta al menos una vez antes de evaluar
+la expresión boleana, mientras que en el <em>while,</em> al empezar evaluando la
+expresión, si esta es falsa, el cuerdo del bucle no se ejecuta ninguna vez.</p>
+
+<p>Por ejemplo, consideremos el siguiente pseudocódigo para un programa de juego.</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>do {
+	juegue;
+	preguntar al usuario si quiere seguir jugando;
+} while(el usuario conteste si);</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<hr width="50%">
+
+<h3>El bucle for</h3>
+
+<p>El bucle <em>for</em> existe como una simplificación del bucle <em>while. </em>Muchos
+bucles <em>while, </em>tienen un formato semejante a este:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <font color="#009000"><b><pre>inicialización</b></font>
+while ( <font color="#009000"><b>condición de </b></font>continuación ) {
+    <font color="#009000"><b>instrucciones</b></font>
+    <font color="#009000"><b>actualización</b></font>
+}</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Por ejemplo. considere</p>
+
+<pre>            int years = 0;  // <b>inicializar</b> la variable years
+            while ( years &lt; 5 ) {   // <b>condición</b> para continuar en el bucle
+                interest = principal * rate; // algunas instrucciones
+                principal += interest;
+                System.out.println(principal);
+                years++;   // <strong>Actualizar</strong> el valor de la variable years
+            }</pre>
+
+<p>Este bucle, se hubiera podido escribir así:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <pre>for ( int years = 0; years &lt; 5; years++ ) {
+   interest = principal * rate;
+   principal += interest;
+   System.out.println(principal);
+}</pre>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>La inicialización, la condición de continuación y la actualización, se combinan en
+la primera línea del bucle, lo que nos permite realizar todo el control en un solo sitio.
+Esto hace que sea mas fácil tanto de entender como de leer. En general, el bucle <em>for</em>
+toma esta forma:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>for (<b><font color="#009000">inicialización;condición de continuación; </font></b>actualización)
+	<b><font color="#009000">instrucción</font></b></pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>o empleando un bloque de instrucciones:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>for (<b><font color="#009000">inicialización;condición de continuación; </font></b>actualización){
+	<b><font color="#009000">instrucciones</font></b>
+}</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>La <font color="#009000"><b>condición de continuacion</b></font>es una expresión
+boleana, mientras que la <font color="#009000"><b>inicialización</b></font> y la <b><font color="#009000">actualización</font></b> pueden ser cualquier expresión. De las tres
+partes, ninguna puede quedar vacía. Normalmente, la inicialización es una asignación o
+declaración y la actualización es una asignación o una operación de&nbsp; decremento o
+incremento. La sintaxis oficial, permite que tanto la actualización como la
+inicialización, puedan ser varias instrucciones separadas por comas (,). Si declara la
+variable en la inicialización, el <strong>ámbito</strong> de la variable queda reducido
+a la instrucción <em>for</em>, esto es: cuando la instrucción <em>for</em> finaliza, la
+variable deja de existir.</p>
+
+<p>A continuación tiene algunos ejemplos de instrucción <em>for</em>:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>// imprimir el alfabeto en una línea
+for ( char ch='A'; ch &lt;= 'Z'; ch++ )
+   console.put(ch);
+console.putln();</pre>
+      <pre>// cuenta de 1 a 10 y de 10 a 1 a la vez
+for ( int i=0,j=10; i &lt; 10; i++,j-- ) {
+  console.put(i,5); // saca i una columna de 5 caracteres
+  console.putln(j,5);
+}</pre>
+      <pre>// calcular el numero 1 * 2 * 3 * ... * 20
+long factorial = 1;
+for (int num=2; num &lt;= 20; num++)
+  factorial *= num;
+System.out.println(&quot;20! = &quot; + factorial);</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<hr width="50%">
+
+<h3>La instrucción break</h3>
+
+<p>En los bucles <em>do</em>, <em>for</em>, y <em>while</em>,&nbsp; la comprobación para
+continuar con el bucle, se puede realizar al principio o al final, pero a veces puede
+necesitar realizar la comprobación en el medio del bucle, o hacer varias comprobaciones a
+lo largo del bucle. Para todo ello, Java provee una instrucción que puede romper la
+continuidad del bucle; esta es la instrucción <em>break, </em>que tiene el siguiente
+formato:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <pre>break;</pre>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Cuando el ordenador ejecuta una instrucción <em>break</em>, salta inmediatamente al
+final de bucle ( o de la estructura de control) que contiene el <em>break</em>. Pasando a
+ejecutar las instrucciones que estén a continuación del bucle. Considere el siguiente
+ejemplo:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>while (true) { // Atención, bucle infinito!
+   console.put(&quot;Entre un número positivo: &quot;);
+    N = console.getlnt();
+    if (N &gt; 0) // La entrada es correcta
+       break;
+    console.putln(&quot;El numero debe ser &gt; 0.&quot;);
+ }
+ // continuar aquí después del break</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>La instrucción break hace que finalice inmediatamente el bucle en el que se encuentra.
+Es posible anidar bucles, haciendo que dentro de un bucle haya otro; si la instrucción
+break se encuentra en el bucle interior, al ejecutarse, solo se romperá este bucle, pero
+se continuara ejecutando el bucle exterior. Existe también una instrucción llamada <em>labeled
+break</em> que permite especificar que bucle quiere romper. Aquí no vamos a verlo, si
+piensa que lo puede necesitar, ya lo buscara.</p>
+
+<hr width="50%">
+
+<h3>Mas sobre la instrucción if</h3>
+
+<p>En la <a href="Sección2_3.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_3.html">Sección 3</a> estuvimos hablando sobre la
+instrucción <em>if. </em>Tiene esta forma:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>if (<font color="#009000"><b>expresión-boleana</b></font>)
+    <font color="#009000"><b>instrucción-1</b></font>
+else
+    <font color="#009000"><b>instrucción-2</b></font></pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Lo normal es que dentro de una instrucción <em>if</em> se monte un bloque de
+instrucciones. Una instrucción <em>if</em>, representa un desvío de dos ramas. También
+es posible omitir la parte <em>else</em> --formada por la palabra <em>else</em> y su
+bloque de instrucciones--.</p>
+
+<p>Estamos hablando de la instrucción <em>if</em>, esto es , de una instrucción.
+Entonces vamos a poder incluirla en <font color="#009000"><b>instrucción-1</b></font> o
+en <font color="#009000"><b>instrucción-2</b></font>.(Nota: Si <font color="#009000"><b>instrucción-1</b></font>
+en una instrucción <em>if,</em> significa que que puede tener una parte <em>else</em>, y
+si no la tiene, cuando el ordenador encuentre la cláusula <em>else</em> de <em>if</em> de
+nivel superior, puede considerarla de este <em>if</em>. Para evitar este problema, lo mas
+sencillo es que forme un bloque con el nuevo<em> if</em>, esto es lo encierre entre
+llaves'{}' )</p>
+
+<p>Una instrucción <em>if</em> en donde la parte <em>else</em> sea otra instrucción <em>if</em>,
+podría quedar así(quizás sin la parte <em>else</em> final):</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <pre>if (<font color="#009000"><b>expresión-boleana-1</b></font>)
+   <font color="#009000"><b>instrucción-1</b></font>
+else
+   if (<font color="#009000"><b>expresión-boleana-2</b></font>)
+       <font color="#009000"><b>instrucción-2</b></font>
+   else
+       <font color="#009000"><b>instrucción-3</b></font></pre>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Ahora bien, ya que al ordenador no le preocupa como se presenta el programa sobre el
+papel, normalmente se escribirá así:</p>
+
+<pre>             if (<font color="#009000"><b>expresión-boleana-1</b></font>)
+                  <font color="#009000"><b>instrucción-1</b></font>
+             else if (<font color="#009000"><b>expresión-boleana-2</b></font>)
+                  <font color="#009000"><b>instrucción-2</b></font>
+             else
+                  <font color="#009000"><b>instrucción-3</b></font></pre>
+
+<p>Supongo que una sencilla instrucción, representa un desvío de tres vías. Cuando el
+ordenador ejecute esta instrucción, solo leerá una de las tres instrucciones: <font color="#009000"><b>instrucción-1</b></font>, <font color="#009000"><b>instrucción-2</b></font>
+&nbsp; y <font color="#009000"><b>instrucción-3</b></font> El ordenador evaluara<font color="#009000"><b> expresión-boleana-1</b></font> . Si es <tt>true</tt>, ejecutara <font color="#009000"><b>instrucción-1</b></font> y saltara al final de toda la instrucción <em>if</em>
+&nbsp; saltando las otras dos instrucciones. Si el resultado de la primera evaluación
+fuera <tt>false</tt>, entonces saltara&nbsp; <font color="#009000"><b>instrucción-1</b></font>
+y ejecutara la segunda instrucción <em>if</em>. Comprobara el valor de <font color="#009000"><b>expresión-boleana-2</b></font> y lo usara para decidir entre ejecutar <font color="#009000"><b>instrucción-2</b></font> o <font color="#009000"><b>instrucción-3</b></font>.</p>
+
+<p>Aquí tenemos un ejemplo de cómo presentar tres mensajes distintos en función del
+valor de una variable llamada <tt>temperature.</tt></p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>if (temperature &lt; 50)
+   System.out.println(&quot;Hace frío.&quot;);
+else if (temperature &lt; 80)
+    System.out.println(&quot;Se esta bien.&quot;);
+else System.out.println(&quot;Hace calor.&quot;);</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Si <tt>temperatura</tt> tiene un valor (vale) de 42, el ordenador imprimirá el mensaje
+&quot;Hace frío&quot; y saltara el resto de instrucciones, sin ni siquiera evaluarlas.</p>
+
+<p>Es posible ir enlazando cualquier numero de <em>if's</em> para conseguir desvíos de
+'n' vías:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>if (<font color="#009000"><b>expresión-boleana-1</b></font>)
+    <font color="#009000"><b>instrucción-1</b></font>
+else if (<font color="#009000"><b>expresión-boleana-2</b></font>)
+    <font color="#009000"><b>instrucción-2</b></font>
+else if (<font color="#009000"><b>expresión-boleana-3</b></font>)
+    <font color="#009000"><b>instrucción-3</b></font>
+.
+. // (more cases)
+.
+else if (<font color="#009000"><b>expresión-boleana-N</b></font>)
+    <font color="#009000"><b>instrucción-N</b></font>
+else
+    <font color="#009000"><b>instrucción-(N+1)</b></font></pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Recuerde que solo se ejecutara una instrucción, y que el ordenador solo ira
+comprobando hasta encontrar la primera expresión boleana que sea true. Recuerde también
+que puede omitir la parte <em>else</em> del ultimo <em>if</em>, y que cualquier
+instrucción, puede ser sustituida por un bloque de instrucciones encerradas entre llaves
+'{}' (Admita que todo esto es demasiada sintaxis para verla junta, estúdiela y practique
+un poco, después se sentirá mas cómodo)</p>
+
+<hr width="50%">
+
+<h3>La instrucción switch</h3>
+
+<p>Java también dispone de una instrucción que permite realizar multidesvio en un caso
+concreto: la instrucción <em>switch</em>. Esta instrucción, permite comprobar el valor
+de una expresión y en función del mismo saltar a un numero determinado de direcciones
+dentro de la instrucción <em>switch</em>. Las posiciones a las que se puede saltar se
+marcan con las <font color="#808000">etiquetas case</font> que tienen la forma: &quot;case
+<font color="#009000"><b>constante</b></font>&quot;. El funcionamiento de la instrucción
+es el siguiente: se evalúa la expresión, y con el valor obtenido, se busca una etiqueta <em>case</em>
+en donde se haya indicado ese valoren la <font color="#009000"><b>constante</b></font>. Al
+final de la instrucción, puede utilizar una etiqueta &quot;default&quot; que será
+seleccionada en caso de que no se cumpla ninguno de los casos previos( ósea que el valor
+de la expresión no aparezca en ninguna etiqueta <em>case</em>).</p>
+
+<p>Una instrucción <em>switch</em> tiene la siguiente forma:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <pre>switch (<font color="#009000"><b>expresión-int</b></font>) {
+   case <font color="#009000"><b>constante-int-1</b></font>:
+      <font color="#009000"><b>instrucción-1</b></font>
+<font color="#009000"><b>      </b></font>break;
+   case <font color="#009000"><b>constante-int-2</b></font>:
+      <font color="#009000"><b>instrucción-2</b></font>
+      break;
+   .
+   . // (mas <em>case's</em>)
+   .
+   case <font color="#009000"><b>constante-int-N</b></font>:
+      <font color="#009000"><b>instrucción-N</b></font>
+      break;
+   default: // opcional
+      <font color="#009000"><b>instrucción-(N+1)</b></font>
+} // final de la instrucción switch</pre>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Técnicamente, la instrucción <em>break</em>, es opcional. Su efecto, es hacer que el
+ordenador salte al final de la instrucción <em>case</em>,; si no lo pone, el ordenador
+ejecutara todas las instrucciones que están a continuación, falseando el resultado, ya
+que no es lo que normalmente querrá que haga. (Aquí&nbsp; vera, aunque no es fácil que
+lo entienda hasta que haya leído el siguiente capítulo, que dentro de una subrutina a
+veces se sustituye&nbsp; la instrucción <em>break</em> por la <em>return </em>)</p>
+
+<p>También puede ahorrarse un grupo completo de instrucciones, incluida <em>break</em>.
+Puede dejar varias etiquetas <em>case</em> una debajo de la otra, cada una son su
+constante. Esto hará que el ordenador salte al mismo sitio y realice las mismas acciones
+para todos esos valores.</p>
+
+<p>aquí tenemos un ejemplo de una instrucción switch. No es una aplicación habitual,
+pero le va a permitir entenderlo. Hemos alterado voluntariamente el orden de las
+constantes, para que vea que sigue siendo correcto, aunque para la legibilidad del
+programa, puede que no lo sea tanto.</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <pre>switch (N) {
+// suponga que N es una variable entera
+   case 1:
+      System.out.println(&quot;El número es 1.&quot;);
+      break;
+   case 2:
+   case 4: 
+   case 8:
+      System.out.println(&quot;El número es 2, 4, u 8.&quot;);
+      System.out.println(&quot;(Potencias de 2.)&quot;);
+      break;
+   case 3:
+   case 6:
+   case 9:
+     System.out.println(&quot;El número es 3, 6, o 9.&quot;);
+     System.out.println(&quot;(Múltiplo de  3.)&quot;);
+     break;
+   case 5:
+     System.out.println(&quot;El número es 5.&quot;);
+     break;
+   default:
+     System.out.println(&quot;El número es 7,&quot;);
+     System.out.println(&quot; o fuera de rango de 1 a 9.&quot;);
+ }</pre>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>La instrucción <em>switch</em> pertenece a las estructuras de control mas antiguas y,
+con su uso, es fácil cometer errores. Java tomó las estructuras de control directamente
+de los anteriores lenguajes de programación como C y C++. La instrucción <em>switch</em>,
+es uno de los sitios en donde los diseñadores de Java hubieran podido realizar alguna
+mejora.</p>
+
+<hr width="50%">
+
+<h3>La instrucción vacía</h3>
+
+<p>Hemos llegado al final de la sección y quiero mencionar una instrucción mas del
+lenguaje Java: la instrucción vacía. Esta instrucción consiste simplemente en un punto
+y coma (;).&nbsp; La existencia de esta instrucción, nos permite que aparezca un ;
+después de la llave de cierre, sin que el ordenador lo señale como error, ya que lo ve
+como una instrucción mas (vacía, pero instrucción).</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>if (x &lt; 0) {
+    x = -x;
+};</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>También puede necesitar la instrucción vacía cuando no quiera hacer nada dentro de
+un bucle. Aunque en esos casos&nbsp; prefiero utilizar un bloque vacío consistente en dos
+llaves {} sin nada entre ellas </p>
+
+<hr width="50%">
+
+<h3>Lista de los tipos de instrucciones Java</h3>
+
+<p>Hemos mencionado aquí la instrucción vacía para completar la lista.Hasta ahora
+conoce todos los tipos de instrucciones Java. Mas abajo tiene la lista completa como
+referencia.Las únicas instrucciones nuevas que aparecen en la lista son <tt>try...catch y
+synchronized</tt> que están relacionadas con aspectos avanzados de la programación Java
+como el manejo de las excepciones y la multitarea.</p>
+
+<p>Otra posible sorpresa es la aparición en la lista de &quot;instrucciones con
+expresiones&quot; que refleja el hecho de que cualquier expresión seguida por punto y
+coma (;) puede considerarse instrucción. Para ejecutar estas instrucciones, el ordenador
+se limita a evaluar la expresión e ignora el valor; esto solo tiene sentido cuando la
+evaluación tiene como efecto el modificar el valor de una variable o provocar algún
+cambio en la situación del ordenador. Un ejemplo de esto es la expresión &quot;x++&quot;
+que tiene como efecto secundario el sumar 1 al valor de x. Observe que las instrucciones
+de asignación y las llamadas a subrutinas se consideran también instrucciones de
+expresión.</p>
+
+<p><u>Tipos de instrucciones Java</u> 
+
+<ul>
+  <li>declarativas (instrucciones de declaración)</li>
+  <li>Instrucciones de asignación</li>
+  <li>Instrucciones de llamada a subrutina (incluyendo las rutinas de entrada/salida)</li>
+  <li>otras instrucciones de expresiones (como &quot;x++&quot;)</li>
+  <li>Instrucción vacía</li>
+  <li>Instrucción de bloque</li>
+  <li>instrucción while</li>
+  <li>instrucción do..while</li>
+  <li>instrucción if</li>
+  <li>instrucción for</li>
+  <li>instrucción switch</li>
+  <li>instrucción try...catch</li>
+  <li>instrucción synchronized</li>
+</ul>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"><a href="Seccion2_6.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Seccion2_6.html"><img src="atras.gif" tppabs="http://members.nbci.com/elcurso/images/atras.gif" alt="Anterior" border="0" align="right" style="margin-top: 0px; margin-bottom: 0px" WIDTH="62" HEIGHT="62"></a></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo2/indice2.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="Seccion2_8.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Seccion2_8.html"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="61" HEIGHT="61"></a></td>
+  </tr>
+</table>
+
+<p>&nbsp; 
+<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>

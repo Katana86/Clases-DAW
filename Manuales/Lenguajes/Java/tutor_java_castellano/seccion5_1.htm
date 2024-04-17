@@ -1,0 +1,309 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>DoPC-Curso de Java.Seccion 5.1</title>
+
+<meta name="Microsoft Border" content="b"></head>
+
+<body><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top">
+
+<h3>Sección 5.1: El applet mas básico</h3>
+
+<hr>
+
+<p>Los Applets Java son pequeños programas que pueden funcionar en los navegadores de
+paginas Web. La verdad es que hay muy pocas palabras acertadas en la definición que he
+dado. Un applet no es un programa completo. No tiene porqué ser pequeño. Y mientras que
+muchos applet se crean para ser usados en paginas Web, también hay otras formas de
+usarlos, y muy buenas razones para hacerlo. La definición correcta, debería ser que un
+applet es un objeto perteneciente a la clase <tt>Java.applet.Applet</tt> o a una de sus
+subclases.</p>
+
+<p>La clase <tt>Applet</tt>, definida en el <em>package</em> <tt>Java.applet</tt>, en
+realidad&nbsp; solo se emplea para hacer subclases. Un objeto tipo <tt>Applet</tt> tiene
+algunos comportamientos básicos, pero no son en absoluto aprovechables. Para crear un <tt>applet</tt>
+útil el programador debe definirlo como una subclase&nbsp; de la clase <tt>Applet</tt>.En
+el applet hay definidos un cierto número de métodos que no hacen nada. El programador,
+debe redefinir algunos de estos métodos para conseguir que hagan algo.</p>
+
+<p>Un <em>applet </em>es una parte intrínseca de la interface gráfica del usuario. Es un
+tipo de componente gráfico que puede ser presentado en una ventana (que puede pertenecer
+a un navegador Web o a otro programa cualquiera). Cuando presentamos en la ventana un
+applet, este es una figura rectangular que a su vez contienen otros componentes tales como
+botones y cajas de texto. Podemos presentar también otros elementos gráficos como
+imágenes, rectángulos o líneas. Y puede responder a ciertos eventos, como el generado
+cuando el usuario hace clic con el ratón en el área del applet. El comportamiento de
+todos los <em>applets</em> esta determinado por métodos; qué componentes &nbsp;
+contienen, qué gráficos se presentan, y a que eventos pueden responder. Estos métodos
+están incluidos en la clase <tt>Applet</tt> pero el programador debe redefinirlos en su
+subclase para conseguir un autentico applet con algún comportamiento interesante.</p>
+
+<p>Anteriormente, en la <a href="Sección2_1.html" tppabs="http://members.nbci.com/elcurso/Capitulo2/Secci%f3n2_1.html">Sección 2.1</a>, &nbsp;
+cuando estudiaba los programas Java, se encontraba continuamente con la rutina <tt>main()</tt>
+que nunca iba a ser llamada por el programador. La rutina <tt>main()</tt> la llamaba
+&quot;el sistema&quot; cuando quería ejecutar el programa. El programador escribía en la
+rutina <tt>main)</tt> lo que debía pasar cuando el sistema ejecutara el programa. Un <em>applet
+</em>no necesita rutina <tt>main()</tt> dado que no es un programa. Sin embargo, hay
+algunos métodos en un <em>applet</em> similares a la rutina <tt>main()</tt>en que
+también van a ser llamados por el sistema, y el trabajo del programador es decir que debe
+pasar como respuesta a esas llamadas del sistema.</p>
+
+<hr width="50%">
+
+<p>Uno de los métodos mas importantes del <em>applet</em> es el <tt>paint()</tt>. El
+trabajo de este método es dibujar los componentes gráficos que se presentan en el <em>applet</em>
+--recuerde que es, justamente, un área rectangular de la ventana. El la clase <tt>Applet</tt>
+el método <tt>paint()</tt> no dibuja absolutamente nada, por lo tanto, este será uno de
+los métodos que el programador deberá redefinir en la subclase. La definición de este
+método tiene la siguiente forma:</p>
+
+<pre>          public void paint(Graphics g) {
+              // dibujar alguna cosa
+          }</pre>
+
+<p>El método debe ser publico porque puede ser llamado desde fuera de la clase, por el
+sistema. El parámetro <tt>g</tt> del tipo <tt>Graphics</tt> lo facilita el sistema cuando
+realiza la llamada al método <tt>paint()</tt>. En Java, todo lo que se quiera dibujar en
+pantalla, debe realizarse con los métodos facilitados por el objeto <tt>Graphics</tt>.
+Hay una gran cantidad de estos métodos. Anteriormente hemos estado viendo algunos
+ejemplos de forma aislada, y presentaremos los gráficos con mucho mas detalle en la <a href="seccion5_4.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_4.htm">Sección 4</a></p>
+
+<p>Como ejemplo, tomemos el camino tradicional y veamos el applet que presenta la <em>string</em>
+&quot;Hola Mundo!&quot;. Deberá usar el método <tt>paint()</tt> para presentar la
+string:</p>
+
+<pre>         import java.awt.*;
+         import java.applet.*;
+         
+         public class HelloWorldApplet extends Applet {
+         
+            // Este applet presenta unicamente la string Hola Mundo!
+            
+            public void paint(Graphics g) {
+               g.drawString(&quot;Hola Mundo!&quot;, 10, 30);
+            }
+            
+         }  // fin de la clase HelloWorldApplet</pre>
+
+<p>El método <tt>drawString()</tt>, definido en la clase <tt>Graphics</tt>, es el que
+realmente realiza el dibujo. Los parámetros de este método especifican la string que se
+quiere presentar y la posición dentro del applet en donde se quiere poner. Mas adelante
+volveremos a ello. Dese cuenta que hemos importado el paquete <tt>java.applet</tt> que
+incluye la clase <tt>Applet</tt> y el <tt>java.awt</tt> que incluye la clase <tt>Graphics</tt>
+y algunas otras clases relacionadas con la interface gráfica del usuario. La mayoría de
+los <em>applets</em> emplean estos dos paquetes.</p>
+
+<p>Ahora bien: un <em>applet</em> es un objeto, no una clase. Hasta ahora, nosotros solo
+hemos definido clases. En que momento hacemos que el <em>applet</em> se transforme en
+objeto?. Naturalmente que es posible el crearlo como un objeto:</p>
+
+<p align="center"><tt>Applet hw = new HelloWorldApplet();</tt></p>
+
+<p>Estas posibilidades, se pueden emplear a menudo, cuando está escribiendo un programa y
+quiere añadir un applet a la ventana que ha creado.Normalmente, sin embargo, los objetos <tt>applet</tt>
+los crea el sistema. Por ejemplo, cuando aparece un applet en una pagina de su navegador
+Web, es porque el navegador ha creado el objeto <tt>applet</tt>. Es por esto que la
+subclase de <tt>Applet</tt> siempre debe estar declarada como publica. De otra manera, el
+sistema no podría tener acceso a la clase, y le seria imposible el poder crear un <em>applet</em>
+basado en esa clase.</p>
+
+<p>Para que un <em>applet</em> aparezca en una página Web, es necesario que el documento
+que se esta presentando en ese momento, especifique el nombre del <em>applet</em> y su
+tamaño. Esta especificación, como el resto del documento, esta escrito en lenguaje
+HTML.Discutiremos con mas detalle el HTML en la <a href="seccion5_3.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_3.htm">Sección 3</a>.
+Aquí tenemos algo de código HTML que podemos emplear para displayar el <em>applet</em>
+HelloWorld:</p>
+
+<pre>      &lt;center&gt;
+      &lt;applet code=&quot;HelloWorldApplet.class&quot; width=250 height=50&gt;
+         &lt;p&gt;&lt;font color=&quot;#E70000&quot;&gt;Lo siento, pero su navegador&lt;br&gt;
+            no soporta Java.&lt;/font&gt;&lt;/p&gt;
+      &lt;/applet&gt;
+      &lt;/center&gt;</pre>
+
+<p>Y aquí esta lo que presenta este código:</p>
+
+<p>&nbsp;</p>
+
+<p align="center">
+<applet code="HelloWorldApplet.class" tppabs="http://members.nbci.com/elcurso/Capitulo5/HelloWorldApplet.class" height="50" width="250">
+
+<p><font color="#E70000">Lo siento, pero su navegador<br>
+no soporta Java</font></p>
+</applet>
+</p>
+
+<p align="left">Si el navegador que esta utilizando no soporta Java, o si ha desconectado
+el soporte para Java, entonces vera el mensaje &quot;Lo siento, pero su navegador no
+soporta Java&quot;. De otra forma, deberá ver el mensaje &quot;Hola Mundo!&quot;. El
+mensaje se presenta en un rectángulo de 250 pixeles de ancho por 50 pixeles de alto.
+Puede que no consiga ver el rectángulo , pero el applet esta dentro del rectángulo.</p>
+
+<hr width="50%">
+
+<p>En este applet el&nbsp; sistema llama al método <tt>paint()</tt> en el momento en que
+&nbsp;&nbsp; se crea el <em>applet</em>. También puede ser llamado en otros momentos. De
+hecho se llama cada vez que el contenido del applet debe ser redibujado. Esto puede pasar
+cuando el <em>applet</em>&nbsp; se presenta después de que haya quedado oculto por otra
+ventana. También acostumbra a pasar cuando desplaza la ventana de su navegador y con él
+desplaza la ventana del <em>applet</em>. Esta forma de controlar el método <tt>paint()</tt>
+desde el exterior, le permite que dibujar algo con un <em>applet</em> sea tan sencillo
+como preparar las instrucciones de dibujo, y quedarse tranquilamente esperando que se
+llame a la rutina. Si el contenido de un <em>applet</em> puede cambiar, entonces deberá
+utilizar una instancia de la variable para controlar el contenido, y el método <tt>paint()</tt>
+deberá emplear la información de esa instancia para poder reconstruir adecuadamente el
+contenido. De otra manera, cuando el usuario desplaze el applet fuera de su visión y lo
+vuelva a visualizar, lo que dibuje, puede no ser lo que se espera.</p>
+
+<p>A continuación, tenemos un ejemplo muy sencillo, vamos a modificar el applet
+HelloWorld para que cada vez que el usuario pulse el botón de su ratón en el applet, el
+mensaje cambie de color. Puesto que queremos que el mensaje se vuelva a presentar con el
+color correcto cuando se vuelva a llamar al método <tt>paint()</tt>, necesitaremos una
+variable instanciable para controlar el color actual. Para hacer esto, solo deberemos usar
+una variable entera&nbsp; a la que llamaremos <tt>currentColor</tt> y que puede tomar los
+valores 0,1, 2, o 3 para indicar los colores negro, rojo, azul, y verde. El método <em>paint</em>
+puede quedar así:</p>
+
+<blockquote>
+  <blockquote>
+    <pre>
+public void paint(Graphics g) {
+    switch (currentColor) { //seleccionar el color correcto 
+			    //para el dibujo
+        case 0:
+            g.setColor(Color.black); // el color sera por defecto
+	    break; // si no se especifica el negro
+	case 1: 
+	    g.setColor(Color.red);
+	    break;
+        case 2:
+	    g.setColor(Color.blue);
+	    break;
+	case 3:
+            g.setColor(Color.green);
+	    break;
+    }
+    g.drawString(&quot;Hola Mundo!&quot;, 10, 30);
+}</pre>
+  </blockquote>
+</blockquote>
+
+<p><strong>Cada vez que </strong>se tenga que redibujar el <em>applet</em>, se llamara a
+este método y siempre dibujara la string en el color que este seleccionado en cada
+momento.</p>
+
+<p>Ahora, tenemos que conseguir que cambie el valor de <tt>currentColor</tt> cada vez que
+el usuario haga clic en el <em>applet</em>. Cuando pase esto, el sistema llamara a una
+rutina llamada <tt>mouseDown()</tt>. Esta es otra de esas rutinas que normalmente no hacen
+nada, pero que puede ser redefinida para que realice una respuesta especifica a la
+pulsación del botón del ratón. En este caso, necesitamos que cambie el valor de <tt>currentColor</tt>
+y ver como el mensaje se dibuja con el nuevo color. La forma correcta de hacer esto, es
+llamar al método <tt>repaint()</tt>. Este método, realmente no realiza un nuevo dibujo,
+sino que se limita a comunicar al sistema que el <em>applet</em> necesita ser repintado.
+El sistema llama entonces al método <tt>paint()</tt> que justamente lo que queríamos.
+Entonces, deberemos hacer:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre> public boolean mouseDown(Event evt, int x, int y) {
+      currentColor++;    // cambia el numero de color actual
+      if (currentColor &gt; 3)   // si es demasiado grande
+          currentColor = 0;    //    lo pone a cero
+      repaint();    // pide al sistema que redibuje la pantalla
+      return true;  // devuelve control al sistema después que 
+                   // el evento mouseDown ha sido procesado
+  }
+</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>De momento, puede ignorar los parámetros de <tt>mouseDown</tt>(), aportan información
+acerca de la pulsación del botón del ratón, pero ahora solo necesitamos saber que se ha
+producido el clic. El devolver un valor boleano <tt>true</tt> en típico de las subrutinas
+que procesan eventos. El devolver ese valor indica si el evento necesitara&nbsp; mas
+procesos o no. Como veremos mas adelante, para algunos objetos les es posible manejar con
+la misma rutina, varios eventos.</p>
+
+<p>Ahora ya podemos ver el nuevo applet de forma conjunta:</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <pre>
+// EL Applet basico : Hola Mundo
+
+import java.awt.*;
+import java.applet.*;
+
+public class HelloWorldApplet1 extends Applet {
+
+    // Un applet que solo presenta Hola Mundo!!
+    // y que cambia de color cada vez que se pulsa
+    // con el ratón
+   
+   private int currentColor = 1;   //inicializamos el valor
+				   // del color.
+   public void paint(Graphics g) {
+      switch (currentColor) {  //seleccionar el color
+                               // correcto para el dibujo
+	 case 0:
+	   g.setColor(Color.black);    // el color  por defecto
+           break;                      // si no se especifica 
+         case 1:  
+           g.setColor(Color.red);
+           break;
+	 case 2:
+           g.setColor(Color.blue);
+           break;
+         case 3:
+	   g.setColor(Color.green);
+           break;
+	}
+        g.drawString(&quot;Hola Mundo!&quot;, 10, 30);
+   }
+   public boolean mouseDown(Event evt, int x, int y) {
+        currentColor++;    // cambia el numero de color actual
+        if (currentColor &gt; 3)   // si es demasiado grande
+           currentColor = 0;    //    lo pone a cero
+        repaint();    // pide al sistema que redibuje la pantalla
+        return true;  // devuelve control al sistema después que 
+                     // el evento mouseDown ha sido procesado
+  }
+   
+}  // fin de la clase HelloWorldApplet
+</pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Y aquí lo tenemos. Pruebe de pulsar con el ratón sobre el <em>applet</em> para que
+cambie de color</p>
+
+<p>&nbsp;</p>
+
+<p align="center">
+<applet code="HelloWorldApplet1.class" tppabs="http://members.nbci.com/elcurso/Capitulo5/HelloWorldApplet1.class" height="50" width="250">
+
+<p><font color="#E70000">Lo siento, pero su navegador<br>
+dno soporta Java</font></p>
+</applet>
+</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<table border="0" width="100%" height="62" style="border-top: medium ridge">
+  <tr>
+    <td width="33%" height="58"></td>
+    <td width="33%" height="58"><p align="center">&nbsp;&nbsp;&nbsp;&nbsp; <a href="indice5.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/indice5.htm"><img src="bicap.jpg" tppabs="http://members.nbci.com/elcurso/images/bicap.jpg" width="67" height="69" alt="Indice del Capitulo" border="0"></a><a href="indice.htm" tppabs="http://members.nbci.com/elcurso/indice.htm"><img src="bigen.jpg" tppabs="http://members.nbci.com/elcurso/images/bigen.jpg" width="66" height="68" alt="Indice General" border="0"></a></td>
+    <td width="34%" height="58"><a href="seccion5_2.htm" tppabs="http://members.nbci.com/elcurso/Capitulo5/seccion5_2.htm"><img src="siguiente.gif" tppabs="http://members.nbci.com/elcurso/images/siguiente.gif" alt="Siguiente" align="left" border="0" WIDTH="57" HEIGHT="57"></a></td>
+  </tr>
+</table>
+&nbsp;<!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>
+
+</td></tr><!--msnavigation--></table></body>
+</html>
