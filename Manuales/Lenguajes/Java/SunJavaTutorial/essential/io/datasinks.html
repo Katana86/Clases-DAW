@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Using the Data Sink Streams</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="overview.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#io" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="filestreams.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Essential Java Classes
+<br>
+<b>Lesson</b>: Reading and Writing (but no 'rithmetic)
+</font>
+
+<h2>
+Using the Data Sink Streams
+</h2>
+<blockquote>
+Data sink streams read from or write to specialized data sinks such as
+strings, files, or pipes. Typically, for each reader or input stream
+intended to read from a specific kind of input source, java.io contains
+a parallel writer or output stream that can create it. The following
+table gives <code>java.io</code>'s data sink streams.
+<p>
+<table cellpadding=5 border=1>
+<tr>
+<th>Sink Type</th>
+<th>Character Streams</th>
+<th>Byte Streams</th>
+</tr>
+<tr>
+<td rowspan=2>Memory</td>
+<td><code>CharArrayReader</code>,<br>
+	<code>CharArrayWriter</code></td>
+<td><code>ByteArrayInputStream</code>,<br>
+	<code>ByteArrayOutputStream</code></td>
+</tr>
+<tr>
+<td><code>StringReader</code>,<br>
+	<code>StringWriter</code></td>
+<td><code>StringBufferInputStream</code></td>
+</tr>
+<tr>
+<td>Pipe</td>
+<td><code>PipedReader</code>,<br>
+	<code>PipedWriter</code></td>
+<td><code>PipedInputStream</code>,<br>
+	<code>PipedOutputStream</code></td>
+</tr>
+<tr>
+<td>File</td>
+<td><code>FileReader</code>,<br>
+	<code>FileWriter</code></td>
+<td><code>FileInputStream</code>,<br>
+	<code>FileOutputStream</code></td>
+</tr>
+</table>
+<p>
+
+Note that both the character stream group and the byte stream group
+contain parallel pairs of classes that operate on the same data sinks.
+These are described next:
+<dl>
+<dt>
+<strong><code>CharArrayReader</code> and <code>CharArrayWriter</code></strong><br>
+<strong><code>ByteArrayInputStream</code> and <code>ByteArrayOutputStream</code></strong>
+<dd>
+Use these streams to read from and write to memory. You create these
+streams on an existing array and then use the read and write methods to
+read from or write to the array.
+<dt>
+<strong><code>FileReader</code> and <code>FileWriter</code></strong><br>
+<strong><code>FileInputStream</code> and <code>FileOutputStream</code></strong>
+<dd>
+Collectively called file streams, these streams are used to read from
+or write to a file on the native file system.
+<a href="filestreams.html">How to Use File Streams</a>
+has an example that uses <code>FileReader</code> and
+<code>FileWriter</code> to copy the contents of one file into another.
+<dt>
+<strong><code>PipedReader</code> and <code>PipedWriter</code></strong><br>
+<strong><code>PipedInputStream</code> and <code>PipedOutputStream</strong></code>
+<dd>
+Implement the input and output components of a pipe.
+Pipes are used to channel the output from one program (or thread)
+into the input of another.
+See <code>PipedReader</code> and <code>PipedWriter</code>
+in action in <a href="pipedstreams.html">How to Use Pipe Streams</a>.
+<dt>
+<strong><code>StringReader</code> and <code>StringWriter</code></strong><br>
+<strong><code>StringBufferInputStream</code></strong>
+<dd>
+Use <code>StringReader</code> to read characters from a
+<code>String</code> as it lives in memory. Use
+<code>StringWriter</code> to write to a <code>String</code>.
+<code>StringWriter</code> collects the characters written to it in a
+<code>StringBuffer</code>, which can then be converted to a
+<code>String</code>. <code>StringBufferInputStream</code> is similar to
+<code>StringReader</code>, except that it reads bytes from a
+<code>StringBuffer</code>.
+</dl>
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="overview.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#io" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="filestreams.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

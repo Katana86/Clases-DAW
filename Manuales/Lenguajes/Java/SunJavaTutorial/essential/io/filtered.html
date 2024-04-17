@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Working with Filtered Streams</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="catstreams.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#io" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="dataIO.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Essential Java Classes
+<br>
+<b>Lesson</b>: Reading and Writing (but no 'rithmetic)
+</font>
+
+<h2>
+Working with Filtered Streams
+</h2>
+<blockquote>
+You attach a filtered stream to another stream to filter
+the data as it's read from or written to the original stream.
+The <code>java.io</code> package contains these filtered streams which
+are subclasses of either
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/io/FilterInputStream.html"><font color="#8800bb"><code>FilterInputStream</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/io/FilterInputStream.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> or
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/io/FilterOutputStream.html"><font color="#8800bb"><code>FilterOutputStream</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/io/FilterOutputStream.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>:
+<ul>
+<li>
+<code>DataInputStream</code> and <code>DataOutputStream</code>
+<li>
+<code>BufferedInputStream</code> and <code>BufferedOutputStream</code>
+<li>
+<code>LineNumberInputStream</code>
+<li>
+<code>PushbackInputStream</code>
+<li>
+<code>PrintStream</code> (this is an output stream)
+</ul>
+
+This section shows you how to use filtered streams through an example that
+uses a <code>DataInputStream</code> and a <code>DataOutputStream</code>. In addition, this section
+shows you how to write your own filtered streams.
+
+</blockquote>
+<h3>Using Filtered Streams</h3>
+<blockquote>
+[PENDING: readLine has been deprecated. UPdate this section as per book,
+and book in new psuedo-code here]
+<p>
+To use a filtered input or output stream, attach the filtered stream
+to another input or output stream. 
+For example, you can attach a <code>DataInputStream</code>
+to the standard input stream as in the following code:
+<blockquote><pre>
+DataInputStream dis = new DataInputStream(System.in);
+String input;
+
+while ((input = dis.readLine()) != null) {
+    . . . // <em>do something interesting here</em>
+}
+</pre></blockquote>
+You might do this so that you can use the more convenient
+<code>read<em>XXX</em></code> methods, such as <code>readLine</code>,
+implemented by <code>DataInputStream</code>.
+</blockquote>
+
+<h3><a href="dataIO.html">How to Use DataInputStream and DataOutputStream</a></h3>
+<blockquote>
+This page provides and explains an example of using <code>DataInputStream</code> and
+<code>DataOutputStream</code>, two filtered streams that can read and write primitive
+Java data types.
+</blockquote>
+
+<h3><a href="writingFiltered.html">Writing Your Own Filtered Streams</a></h3>
+<blockquote>
+Many programmers find that they need to implement their own streams
+that filter or process data as it is being written to or read from
+the stream. Sometimes the processing is independent of the format of the
+data, such as counting various items in the stream, and sometimes the
+processing is directly related to the data itself or the format of the
+data, such as reading and writing data that is contained in rows and
+columns. Often, these programmers subclass <code>FilterOutputStream</code> and
+<code>FilterInputStream</code> to achieve their goals.  This section
+describes an example of how to subclass <code>FileInputStream</code>
+and <code>FilterOutputStream</code> to create your own filtered streams.
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="catstreams.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#io" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="dataIO.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Writing Your Own Filtered Streams</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="dataIO.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#io" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="serialization.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Essential Java Classes
+<br>
+<b>Lesson</b>: Reading and Writing (but no 'rithmetic)
+</font>
+
+<h2>
+Writing Your Own Filtered Streams
+</h2>
+<blockquote>
+The following is a list of steps to take when writing your own filtered
+input and output streams:
+
+<ul>
+<li>
+Create a subclass of <code>FilterInputStream</code> and <code>FilterOutputStream</code>. Input
+and output streams often come in pairs, so it's likely that you will need
+to create both input and output versions of your filter stream.
+<li>
+Override the <code>read</code> and <code>write</code> methods.
+<li>
+Override any other methods that you might need.
+<li>
+Make sure the input and output streams work together.
+</ul>
+
+This section shows you how to implement your own filtered streams
+through an example that implements a matched pair of filtered input and
+output streams. Many thanks to David Connelly from the Java team
+for providing us with this example.
+<p>
+Both the input and the output stream use a checksum class
+to compute a checksum on the data written to or read from the stream.
+The checksum is used to determine whether the data read by the input
+stream matches that written by the output stream.
+<p>
+Four classes and one interface make up this example program:
+<ul>
+<li>
+The filtered input and output stream subclasses--<code>CheckedOutputStream</code> and <code>CheckedInputStream</code>.
+<li>
+The <code>Checksum</code> interface and the <code>Adler32</code> class compute a checksum for the streams.
+<li>
+The <code>CheckedIOTest</code> class defines the <code>main</code> method for the program.
+</ul>
+
+</blockquote>
+<h3>The <code>CheckedOutputStream</code> Class</h3>
+<blockquote>
+The 
+<a target="source" href="example/CheckedOutputStream.java"><font color="#bb000f"><code>CheckedOutputStream</code></font></a><a href="example/CheckedOutputStream.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+class is a subclass of <code>FilterOutputStream</code> that computes a checksum on
+data as it's being written to the stream. When creating a <code>CheckedOutputStream</code>,
+you must use its only constructor:
+<blockquote><pre>
+public CheckedOutputStream(OutputStream out, Checksum cksum) {
+    super(out);
+    this.cksum = cksum;
+}
+</pre></blockquote>
+This constructor takes an <code>OutputStream</code> argument and a <code>Checksum</code> argument.
+The <code>OutputStream</code> argument is the output stream that this <code>CheckedOutputStream</code>
+should filter. The <code>Checksum</code> argument is an object that can compute
+a checksum. <code>CheckedOutputStream</code> initializes itself by calling its superclass
+constructor and initializing a private variable, <code>cksum</code>, with
+the <code>Checksum</code> object. The <code>CheckedOutputStream</code> uses <code>cksum</code> to
+update the checksum each time data is written to the stream.
+
+<p>
+<code>CheckedOutputStream</code> needs to override <code>FilterOutputStream</code>'s <code>write</code>
+methods so that each time the <code>write</code> method is called, the checksum
+is updated. <code>FilterOutputStream</code> defines three versions of the <code>write</code>
+method:
+<ol>
+<li>
+<code>write(int <em>i</em>)</code>
+<li>
+<code>write(byte[] <em>b</em>)</code>
+<li>
+<code>write(byte[] <em>b</em>, int <em>offset</em>, int <em>length</em>)</code>
+</ol>
+<code>CheckedOutputStream</code> overrides all three of these methods:
+<blockquote><pre>
+public void write(int b) throws IOException {
+    out.write(b);
+    cksum.update(b);
+}
+
+public void write(byte[] b) throws IOException {
+    out.write(b, 0, b.length);
+    cksum.update(b, 0, b.length);
+}
+
+public void write(byte[] b, int off, int len) throws IOException {
+    out.write(b, off, len);
+    cksum.update(b, off, len);
+}
+</pre></blockquote>
+The implementations of these three <code>write</code> methods are
+straightforward: Write the data to the output stream that this filtered
+stream is attached to, then update the checksum.
+</blockquote>
+
+<h3>The <code>CheckedInputStream</code> Class</h3>
+<blockquote>
+The 
+<a target="source" href="example/CheckedInputStream.java"><font color="#bb000f"><code>CheckedInputStream</code></font></a><a href="example/CheckedInputStream.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+class is very similar to the <code>CheckedOutputStream</code> class.
+<code>CheckedInputStream</code> is a subclass of <code>FilterInputStream</code> that computes a checksum on
+data as it's being read from the stream. When creating a <code>CheckedInputStream</code>,
+you must use its only constructor:
+<blockquote><pre>
+public CheckedInputStream(InputStream in, Checksum cksum) {
+    super(in);
+    this.cksum = cksum;
+}
+</pre></blockquote>
+This constructor is similar to the constructor for <code>CheckedOutputStream</code>.
+
+<p>
+Just as <code>CheckedOutputStream</code> needed to override <code>FilterOutputStream</code>'s
+<code>write</code> methods, <code>CheckedInputStream</code> must override <code>FilterInputStream</code>'s
+<code>read</code> methods so that each time the <code>read</code> method is called,
+the checksum is updated. As with <code>FilterOutputStream</code>, <code>FilterInputStream</code> defines
+three versions of the <code>read</code> method and <code>CheckedInputStream</code>
+override all of them:
+<blockquote><pre>
+public int read() throws IOException {
+    int b = in.read();
+    if (b != -1) {
+        cksum.update(b);
+    }
+    return b;
+}
+
+public int read(byte[] b) throws IOException {
+    int len;
+    len = in.read(b, 0, b.length);
+    if (len != -1) {
+        cksum.update(b, 0, len);
+    }
+    return len;
+}
+
+public int read(byte[] b, int off, int len) throws IOException {
+    len = in.read(b, off, len);
+    if (len != -1) {
+        cksum.update(b, off, len);
+    }
+    return len;
+}
+</pre></blockquote>
+The implementations of these three <code>read</code> methods are
+straightforward: Read the data from the input stream that this filtered
+stream is attached to, then if any data was actually read, update the checksum.
+</blockquote>
+
+<h3>The <code>Checksum</code> Interface and the <code>Adler32</code> Class</h3>
+<blockquote>
+The 
+<a target="source" href="example/Checksum.java"><font color="#bb000f"><code>Checksum</code></font></a><a href="example/Checksum.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a> interface defines
+four methods for checksum objects to implement; these methods reset, update,
+and return the checksum value. You could write a <code>Checksum</code> class
+that computes a specific type of checksum such as the CRC-32 checksum.
+Note that inherent in the checksum is the notion of state. The
+checksum object doesn't just compute a checksum in one go. Rather,
+the checksum is updated each time information is read from or written
+to the stream for which this object computes a checksum. If you want
+to reuse a checksum object, you must reset it.
+<p>
+For this example, we implemented the 
+<a target="source" href="example/Adler32.java"><font color="#bb000f"><code>Adler32</code></font></a><a href="example/Adler32.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+checksum, which is almost as reliable as a CRC-32 checksum but can be
+computed much faster.
+</blockquote>
+
+<h3>A Program for Testing</h3>
+<blockquote>
+The last class in the example, 
+<a target="source" href="example/CheckedIOTest.java"><font color="#bb000f"><code>CheckedIOTest</code></font></a><a href="example/CheckedIOTest.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+contains the <code>main</code> method for the program.
+<blockquote><pre>
+import java.io.*;
+
+public class CheckedIOTest {
+    public static void main(String[] args) throws IOException {
+
+       Adler32 inChecker = new Adler32();
+       Adler32 outChecker = new Adler32();
+       CheckedInputStream in = null;
+       CheckedOutputStream out = null;
+
+       try {
+           in = new CheckedInputStream(
+			   new FileInputStream(&quot;farrago.txt&quot;),
+			   inChecker);
+           out = new CheckedOutputStream(
+			    new FileOutputStream(&quot;outagain.txt&quot;),
+			    outChecker);
+       } catch (FileNotFoundException e) {
+           System.err.println(&quot;CheckedIOTest: &quot; + e);
+           System.exit(-1);
+       } catch (IOException e) {
+           System.err.println(&quot;CheckedIOTest: &quot; + e);
+           System.exit(-1);
+       }
+
+       int c;
+
+       while ((c = in.read()) != -1)
+          out.write(c);
+
+       System.out.println(&quot;Input stream check sum: &quot; +
+			  inChecker.getValue());
+       System.out.println(&quot;Output stream check sum: &quot; +
+			  outChecker.getValue());
+
+       in.close();
+       out.close();
+    }
+}
+</pre></blockquote>
+The <code>main</code> method
+creates two <code>Adler32</code> checksum objects, one each for a <code>CheckedOutputStream</code> and a
+<code>CheckedInputStream</code>. The example requires two checksum objects because the
+checksum objects are updated during calls to <code>read</code> and
+<code>write</code> and those calls are occurring concurrently.
+<p>
+Next, <code>main</code> opens a <code>CheckedInputStream</code> on a
+small text file, <a href="example/farrago.txt"><code>farrago.txt</code></a>, and a
+<code>CheckedOutputStream</code> on an output file named <code>outagain.txt</code>,
+which doesn't exist until you run the program for the first time.
+<p>
+The <code>main</code> method reads the text from the <code>CheckedInputStream</code> and
+simply copies it to the <code>CheckedOutputStream</code>. The <code>read</code> and
+<code>write</code> methods use the <code>Adler32</code> checksum objects to compute
+a checksum during reading and writing. After the input file has been completely
+read (and consequently the output file has been completely written), the program
+prints out the checksum for both the input and output streams (which should match)
+and then closes them both.
+<p>
+When you run <code>CheckedIOTest</code>, you should see this output:
+<blockquote><pre>
+Input stream check sum: 736868089
+Output stream check sum: 736868089
+</pre></blockquote>
+
+</blockquote>
+
+<h3>Filtering Random Access Files</h3>
+<blockquote>
+The filtered streams in <code>java.io</code> all inherit from <code>InputStream</code> or <code>OutputStream</code>,
+which implement sequential access files. So if you subclass <code>FilterInputStream</code>
+or <code>FilterOutputStream</code> your filtered streams will also be sequential access files.
+<a href=rafFilters.html>Writing Filters for Random Access Files</a>
+later in this lesson shows you how to re-write this example so that it works on a
+<code>RandomAccessFile</code> as well as on a <code>DataInputStream</code> or a <code>DataOutputStream</code>.
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="dataIO.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#io" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="serialization.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

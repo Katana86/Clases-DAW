@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Reading and Writing (but no 'rithmetic)</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="../threads/index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#io" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="overview.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+
+<br>
+<font size="-1">
+<b>Trail</b>: Essential Java Classes
+</font>
+
+<h2>
+Lesson: Reading and Writing (but no 'rithmetic)
+</h2>
+<blockquote>
+Often programs need to bring in information from an external source or
+send out information to an external destination. The information can be
+anywhere: in a file, on disk, somewhere on the network, in memory, or
+in another program. Also, it can be of any type: objects, characters,
+images, or sounds.
+<p>
+To bring in information, a program opens a stream on an information
+source (a file, memory, a socket) and reads the information serially,
+like this:
+
+<p><center><IMG SRC="../../figures/essential/19stream.gif" WIDTH="438" HEIGHT="109" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT=""></center></p>
+Similarly, a program can send information to an external destination by
+opening a stream to a destination and writing the information out
+serially, like this:
+
+<p><center><IMG SRC="../../figures/essential/20stream2.gif" WIDTH="429" HEIGHT="109" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT=""></center></p>
+No matter where the information is coming from or going to and no
+matter what type of data is being read or written, the algorithms for
+reading and writing data is pretty much always the same.
+<blockquote>
+<table>
+<tr><td><strong>Reading</strong></td><td><strong>Writing</strong></td></tr>
+<tr><td>
+<pre>
+open a stream
+while more information
+    read information
+close the stream
+</pre>
+</td><td>
+<pre>
+open a stream
+while more information
+    write information
+close the stream
+</pre>
+</td></tr>
+</table>
+</blockquote>
+The 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/io/package-summary.html"><font color="#8800bb"><code>java.io</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/io/package-summary.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> package contains a collection of stream
+classes that support these algorithms for reading and writing. These
+classes are divided into two class hierarchies based on the data type
+(either characters or bytes) on which they operate.
+
+<p><center><IMG SRC="../../figures/essential/21chstream.gif" WIDTH="264" HEIGHT="195" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT=""></center></p>
+However, it's often more convenient to group the classes based on their
+purpose rather than on the data type they read and write. Thus, we can
+cross-group the streams by whether they read from and write to data
+"sinks" or process the information as its being read or written.
+
+<p><center><a href="../../figures/essential/22charstream.gif" target="_top"><IMG SRC="../../figures/essential/22charstream.gif" WIDTH="460" HEIGHT="190" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT=""></a><br><em>This figure has been reduced to fit on the page. <br> Click the image to view it at its natural size.</em></center></p>
+</blockquote>
+<h3><a href="overview.html">Overview of I/O Streams</a>
+</h3>
+<blockquote>
+This section describes each type of stream and shows the classes in
+<code>java.io</code>
+that implement them according to the division in the class hierarchy.
+Then, because most people think in terms of what they want to do rather
+than what they are doing it to, we provide two sections
+that show you how to use selected streams based on their purpose:
+<ul>
+<li>
+<a href="datasinks.html">Using the Data Sink Streams</a>
+<li>
+<a href="processing.html">Using the Processing Streams</a>
+</ul>
+</blockquote>
+
+<h3><a href="serialization.html">Object Serialization</a></h3>
+<blockquote>
+Two of the byte streams,
+<code>ObjectInputStream</code> and <code>ObjectOutputStream</code>,
+are specialized streams that let you read and write objects.
+Reading and writing objects is a process
+known as <em>object serialization</em>.
+Object serialization has many uses,
+including remote method invocation (RMI).
+In addition to the object streams,
+<code>java.io</code> has other classes and interfaces
+that define the API to help classes perform serialization for its instances.
+</blockquote>
+
+<h3><a href="rafs.html">Working with Random Access Files</a></h3>
+<blockquote>
+The character and byte streams are all sequential access streams. In
+contrast,
+<code>RandomAccessFile</code> lets you randomly access
+the contents of a file.
+This section talks about how to
+use random access files.
+It also provides a special section that shows
+you how to write filters for objects that implement the
+<code>DataInput</code> and <code>DataOutput</code> interfaces.
+Filters implemented in this fashion are more
+flexible than regular filter streams because they can be used on random
+access files and on some sequential files.
+</blockquote>
+
+<h3><a href="rest.html">And the Rest ...</a></h3>
+<blockquote>
+This section
+briefly introduces the remaining classes in <code>java.io</code>.
+</blockquote>
+
+<h3>The I/O Classes in Action</h3>
+<blockquote>
+Many of the examples in the next trail,
+<a target="_top" href="../../networking/index.html">Custom Networking</a><a target="_top" href="../../networking/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Essential Java Classes trail)"></a> use the I/O streams described in this lesson
+to read from and write to <code>URL</code>s,
+<code>URLConnection</code>s, and <code>Socket</code>s.
+</blockquote>
+
+<p>
+
+<blockquote><hr><strong>Security consideration:</strong>&nbsp;
+Some I/O operations are subject to approval by the current security
+manager. The example programs contained in these lessons are standalone
+applications, which by default have no security manager. This code
+might not work in an applet depending on the in which browser or viewer
+it is running.
+See
+<a target="_top" href="../../applet/practical/security.html">Security Restrictions</a><a target="_top" href="../../applet/practical/security.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Essential Java Classes trail)"></a> for information about the security restrictions placed on applets.
+<hr></blockquote>
+
+<p>
+[PENDING: explain why integers are used to get results from read methods.
+fix explanation of piped streams to elaborate how piping works as per this
+reader's comment:
+<p>
+
+Also, the program in the following "How to Use Pipe Streams" section is
+poorly explained, it seems to me. Only the barest code segment that
+involves piping is highlighted, but the implications, if any, of why a
+thread (ReverseThread) needs to be called instead of a method, and how
+the piping actually works when the sort method and the final reverse
+method are called, are all left to the reader (to struggle with).
+In the same program, 'wrapped' streams is only superficially pointed
+out; obvious issues like: can any stream wrap any other stream, what are
+the considerations in wrapping, what streams commonly wrap what other
+streams and why, are not covered. Writer fatique seems to be showing.]
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="../threads/index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#io" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="overview.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
