@@ -1,0 +1,190 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Concepts: About Editor Panes and Text Panes</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="textfield.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="textapi.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Swing Components
+</font>
+
+<h2>
+Concepts: About Editor Panes and Text Panes
+</h2>
+<blockquote>
+Two Swing classes support styled text:
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JEditorPane.html"><font color="#8800bb"><code>JEditorPane</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JEditorPane.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> and its subclass
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JTextPane.html"><font color="#8800bb"><code>JTextPane</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JTextPane.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+Several facts about editor panes and text panes
+were sprinkled throughout the previous four sections.
+Here we list the facts again, to collect them in one place
+and to provide a bit more detail.
+The information here should help you understand the differences
+between editor panes and text panes, and when to use which.
+
+<ul>
+
+<li> An editor pane or a text pane
+     can easily be loaded with text from a URL
+     using the <code>setPage</code> method.
+     The <code>JEditorPane</code> class also provides constructors
+     that let you initialize an editor pane from a URL.
+     <code>JTextPane</code> has no such constructors.
+     See
+     <a href="simpletext.html#editorpane">
+     Using an Editor Pane to Display Text from a URL</a>
+     for an example of using this feature
+     to load an uneditable editor pane with HTML.
+<p>
+     Be aware that the document and editor kit
+     might change when using the <code>setPage</code> method.
+     For example,
+     if an editor pane contains plain text (the default),
+     and you load it with HTML,
+     the document will change to an <code>HTMLDocument</code> instance
+     and the editor kit will change to an <code>HTMLEditorKit</code> instance.
+     If your program uses the <code>setPage</code> method,
+     make sure the code adjusts for possible changes
+     to the pane's document and editor kit instances
+     (re-register document listeners on the new document, and so on).
+
+<p>
+<li> Editor panes, by default,
+     know how to read, write, and edit plain, HTML, and RTF text.
+     Text panes inherit this capability
+     but impose certain limitations.
+     A text pane insists that its document
+     implement the <code>StyledDocument</code> interface.
+     <code>HTMLDocument</code> and <code>RTFDocument</code>
+     are both <code>StyledDocuments</code>
+     so HTML and RTF work as expected within a text pane.
+     If you load a text pane with plain text though,
+     the text pane's document is not a <code>PlainDocument</code>
+     as you might expect,
+     but a <code>DefaultStyledDocument</code>.
+     
+<p>
+<li> To support a custom text format,
+     implement an editor kit that can read, write, and edit
+     text of that format.
+     Then call the
+     <code>registerEditorKitForContentType</code>
+     to register your kit with the <code>JEditorPane</code> class.
+     By registering an editor kit in this way,
+     all editor panes and text panes in your program will be able
+     to read, write, and edit the new format.
+     However, if the new editor kit is not a <code>StyledEditorKit</code>,
+     text panes will not support the new format.
+
+<p>
+<li> As mentioned previously,
+     a text pane requires that its document be an instance of
+     a class that implements the <code>StyledDocument</code> interface.
+     The Swing text package provides
+     a default implementation of this interface,
+     <code>DefaultStyledDocument</code>,
+     which is the document text panes use by default.
+     A text pane also requires that its editor kit be an instance of a
+     <code>StyledEditorKit</code> (or a subclass).
+     Be aware that the <code>read</code> and
+     <code>write</code> methods for <code>StyleEditorKit</code>
+     write plain text.
+<p>
+
+<li> Through its styled document and styled editor kit,
+     text panes provide support for named styles and logical styles.
+     The <code>JTextPane</code> class itself contains
+     many methods for working with styles that
+     simply call methods in its document or editor kit.
+
+<p>
+<li> Through the API provided in the <code>JTextPane</code> class,
+     you can embed images and components in a text pane.
+     You can embed images in an editor pane, too,
+     but only by including the images in an HTML or RTF file.
+
+</ul>
+
+The <a href="textapi.html">next section</a>
+provides API tables for all text components,
+including editor panes and text panes,
+and a list of examples that use text components.
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="textfield.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="textapi.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

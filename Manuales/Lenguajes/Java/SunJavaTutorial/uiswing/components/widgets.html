@@ -1,0 +1,252 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Using Atomic Components</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="rootpane.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="button.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Swing Components
+</font>
+
+<h2>
+Using Atomic Components
+</h2>
+<blockquote>
+The rest of this lesson discusses the atomic components --
+components that exist solely to present and perhaps accept information,
+rather than to contain other components.
+Although atomic components sometimes are implemented
+by combining components --
+for example, an editable combo box consists of components
+such as a text field, button, and menu --
+these combinations are look-and-feel-specific
+and thus not to be relied on or tampered with.
+An atomic component is a single entity,
+both to the user and to the programmer who uses its API.
+To see pictures of all the atomic components,
+go to <a href="components.html">A Visual Index to the Swing Components</a>.
+
+<p>
+
+All the atomic components descend from the <code>JComponent</code> class.
+Thus, they all support standard features such as 
+tool tips and borders.
+For more information about the API and features all atomic components support,
+see <a href="jcomponent.html">The JComponent Class</a>.
+
+<p>
+
+The following atomic components exist primarily to get input from the user:
+<table>
+<tr>
+<td>
+<a href="button.html">Button, Check Box, Radio Button</a>
+</td>
+<td>
+Provides easy-to-use, easy-to-customize button implementations.
+</td>
+</tr>
+<tr>
+<td>
+<a href="combobox.html">Combo Box</a>
+</td>
+<td>
+Provides both uneditable and editable combo boxes --
+buttons that bring up menus of choices.
+</td>
+</tr>
+<tr>
+<td>
+<a href="list.html">List</a>
+</td>
+<td>
+Displays a group of items that the user can choose.
+</td>
+</tr>
+<tr>
+<td>
+<a href="menu.html">Menu</a>
+</td>
+<td>
+Includes menu bar, menu, and menu item implementations,
+including specialized menu items such as check box menu items.
+</td>
+</tr>
+<tr>
+<td>
+<a href="slider.html">Slider</a>
+</td>
+<td>
+Lets the user choose
+one of a continuous range of values.
+</td>
+</tr>
+<tr>
+<td>
+<a href="textfield.html">Text Field</a>
+</td>
+<td>
+Lets the user enter a single line of text data.
+</td>
+</tr>
+</table>
+
+<p>
+Some atomic components exist only to give information:
+<table>
+<tr>
+<td>
+<a href="label.html">Label</a>
+</td>
+<td>
+Presents some text, an icon, or both.
+</td>
+</tr>
+<tr>
+<td>
+<a href="progress.html">Progress Bar</a>
+</td>
+<td>
+Displays progress toward a goal.
+</td>
+</tr>
+<tr>
+<td>
+<a href="tooltip.html">Tool Tip</a>
+</td>
+<td>
+Brings up a small window that describes another component.
+</td>
+</tr>
+</table>
+
+<p>
+The rest of the atomic components 
+provide formatted information
+and a way of editing it:
+
+<table>
+<tr>
+<td>
+<a href="colorchooser.html">Color Chooser</a>
+</td>
+<td>
+A UI for choosing colors;
+can be used inside or outside a dialog.
+</td>
+</tr>
+<tr>
+<td>
+<a href="filechooser.html">File Chooser</a>
+</td>
+<td>
+A UI for choosing files and directories.
+</td>
+</tr>
+<tr>
+<td>
+<a href="table.html">Table</a>
+</td>
+<td>
+An extremely flexible component that displays
+data in a grid format.
+</td>
+</tr>
+<tr>
+<td>
+<a href="text.html">Text Support</a>
+</td>
+<td>
+A framework including everything from simple text components,
+such as text fields,
+to a full-featured, extensible kit for building text editors.
+</td>
+</tr>
+<tr>
+<td>
+<a href="tree.html">Tree</a>
+</td>
+<td>
+A component that displays hierarchical data.
+</td>
+</tr>
+</table>
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="rootpane.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="button.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

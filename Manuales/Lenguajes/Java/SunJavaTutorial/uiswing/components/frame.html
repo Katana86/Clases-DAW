@@ -1,0 +1,540 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Make Frames (Main Windows)</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="toplevel.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="dialog.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Swing Components
+</font>
+
+<h2>
+How to Make Frames (Main Windows)
+</h2>
+<blockquote>
+A frame,
+implemented as an instance of the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JFrame.html"><font color="#8800bb"><code>JFrame</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JFrame.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> class,
+is a window that has decorations such as a border, a title,
+and buttons for closing and iconifying the window.
+Applications with a GUI typically use at least one frame.
+Applets sometimes use frames, as well.
+<p>
+To make a window that's dependent on another window --
+disappearing when the other window is iconified, for example --
+use a <a href="dialog.html">dialog</a>
+instead of a frame.
+To make a window that appears within another window,
+use an <a href="internalframe.html">internal frame</a>.
+
+<p>
+
+Here are two pictures of an empty-looking frame,
+each taken on a different platform.
+
+<table cellpadding=5>
+<tr>
+<th>Solaris</th><th>Windows</th>
+</th>
+</tr>
+<tr>
+<td>
+<p><center><IMG SRC="../../figures/uiswing/components/FrameDemo.gif" WIDTH="186" HEIGHT="130" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="A snapshot of FrameDemo running on Solaris"></center></p></td>
+
+</td>
+<td>
+<p><center><IMG SRC="../../figures/uiswing/components/4bFrameDemo-win.gif" WIDTH="185" HEIGHT="119" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="A snapshot of FrameDemo running on Windows"></center></p></td>
+</td>
+</tr>
+</tr>
+</table>
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+The decorations on a frame are platform-dependent.
+You cannot change the decorations on a frame.
+<hr></blockquote>
+
+<a name="anexample">
+</blockquote>
+<h3>
+The Example Explained
+</h3>
+</a>
+<blockquote>
+
+The following code 
+creates and sets up the frame 
+from the previous figure
+and makes it visible onscreen.
+You can find the whole program in
+
+<a target="source" href="example-swing/FrameDemo.java"><font color="#bb000f"><code>FrameDemo.java</code></font></a><a href="example-swing/FrameDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+
+<blockquote><pre>
+public static void main(String s[]) {
+    JFrame frame = new JFrame("FrameDemo");
+
+    frame.addWindowListener(new WindowAdapter() {
+        public void windowClosing(WindowEvent e) {System.exit(0);}
+    });
+
+    //<em>...create a blank label, set its preferred size...</em>
+
+    <strong>frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);</strong>
+
+    frame.pack();
+    frame.setVisible(true);
+}
+</pre></blockquote>
+The first line of code creates a frame with the 
+constructor that lets you set the frame's title.
+The only other constructor provided by <code>JFrame</code>
+is a no-argument constructor.
+<p>
+Next the code adds a window listener to the frame.
+The listener's implementation
+makes the program exit when the user closes the frame.
+This behavior is appropriate for this program
+because the program has only one frame,
+and closing the frame makes the program useless.
+If the program didn't exit,
+then it would continue to run
+but have no visible GUI and
+no way of making any GUI visible.
+See <a href="#windowevents">Responding to Window-Closing Events</a>
+for more information.
+
+<p>
+
+The bold line in the code segment 
+adds a blank label to the frame's content pane.
+If you're not already familiar with content panes
+and how to add components to them,
+please read
+<a href="toplevel.html#contentpane">Adding Components to the Content Pane</a>.
+
+<p>
+The next line 
+gives the frame a size,
+using the <code>pack</code> method.
+The <code>pack</code> method 
+sizes the frame so that all its contents are at
+or above their preferred sizes.
+An alternative to <code>pack</code>
+is to establish a frame's size explicitly
+by calling <code>setSize</code>.
+In general, using <code>pack</code>
+is preferable to calling <code>setSize</code>,
+since <code>pack</code>
+leaves the frame's layout manager in charge of the frame's size,
+and layout managers are good at adjusting to platform dependencies
+and other factors that affect component size. 
+<p>
+The last line uses the <code>setVisible</code> method
+to make the frame appear onscreen.
+Sometimes you might see the <code>show</code> method used 
+instead of 
+<code>setVisible(true)</code>.
+The two usages are equivalent,
+but we use <code>setVisible(true)</code> for consistency's sake.
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+If any part of the frame has been realized
+you should invoke <code>setVisible</code> from the event
+dispatching thread.
+For a definition of the term "realized"
+and information about the event dispatching thread,
+refer to
+<a target="_top" href="../overview/threads.html">Threads and Swing</a><a target="_top" href="../overview/threads.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+<hr></blockquote>
+
+
+
+</blockquote>
+<a name="windowevents">
+<h3>
+Responding to Window-Closing Events
+</h3>
+</a>
+<blockquote>
+
+By default,
+when the user closes a frame onscreen,
+the frame is hidden.
+Although invisible,
+the frame still exists and the program can make it visible again.
+If you want different behavior,
+then you need to either
+register a window listener
+that handles window-closing events,
+or you need to specify default close behavior using
+the <code>setDefaultCloseOperation</code> method.
+You can even do both.
+
+<p>
+
+The argument to <code>setDefaultCloseOperation</code>
+must be one of the following values,
+which are defined in the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/WindowConstants.html"><font color="#8800bb"><code>WindowConstants</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/WindowConstants.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> interface (which <code>JFrame</code> implements):
+<ul>
+<li><code>DO_NOTHING_ON_CLOSE</code> -- 
+	Don't do anything when the user's requests that the frame close.
+	Instead, the program should probably use a window listener
+	that performs some other action in its <code>windowClosing</code>
+	method.
+<li><code>HIDE_ON_CLOSE</code> (the default) --
+	Hide the frame when the user closes it.
+	This removes the frame from the screen.
+<li><code>DISPOSE_ON_CLOSE</code> --
+	Hide and dispose of the frame when the user closes it.
+	This removes the frame from the screen and
+	frees up any resources used by it.
+</ul>
+
+The default close operation is executed after the frame's
+window listeners (if any) handle the window-closing event.
+So, for example, assume that you specify that the default close
+operation is to dispose of the frame.
+You also implement a window listener
+that tests whether the frame is the last one
+and, if so, exits the application.
+Under these conditions,
+when the user closes a frame,
+the window listener will be called first.
+If it doesn't exit the application,
+then the default close operation --
+disposing of the frame --
+will then be performed.
+
+<p>
+
+For more information about handling window-closing events,
+see 
+<a target="_top" href="../events/windowlistener.html">How to Write a Window Listener</a><a target="_top" href="../events/windowlistener.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+Besides handling window-closing events,
+window listeners can also react to
+other window state changes,
+such as iconification and activation.
+
+</blockquote>
+<h3>
+<a name="api">The Frame API</a>
+</h3>
+<blockquote>
+The following tables list the commonly used
+<code>JFrame</code> constructors and methods.
+Other methods you're likely to call
+are defined by the
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Frame.html"><font color="#8800bb"><code>java.awt.Frame</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Frame.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> and
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Window.html"><font color="#8800bb"><code>java.awt.Window</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Window.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> classes,
+from which <code>JFrame</code> descends.
+These methods include
+<code>pack</code>,
+<code>setSize</code>,
+<code>setVisible</code>,
+<code>setTitle</code>, and
+<code>getTitle</code>.
+
+<p>
+
+Because each <code>JFrame</code> object has a root pane,
+frames have support for interposing input and painting behavior
+in front of the frame's children, placing children on different "layers",
+and for Swing menu bars.
+These topics are introduced in
+<a href="toplevel.html">Using Top-Level Containers</a>.
+and explained in detail in 
+<a href="rootpane.html">How to Use Root Panes</a>.
+
+<p>
+The API for using frames falls into these categories:
+
+<ul>
+<li><a href="#creating">Creating and Setting Up a Frame</a>
+<li><a href="#rootpane">Methods Related to the Root Pane</a>
+</ul>
+
+<p>
+<table border=1> 
+<caption><a name="creating">Creating and Setting Up a Frame</a></caption>
+<tr>
+<th align=left>Method
+</th>
+<th align=left>Purpose
+ 
+</th>
+</tr>
+<tr>
+<td><font size=2><code>JFrame()
+    <br>
+    JFrame(String)</code></font>
+</td>
+<td>Create a frame that is initially invisible.
+    Call <code>setVisible(true)</code> on the frame
+    to make it visible.
+    The <code>String</code> argument provides a title for the frame.
+    You can also use <code>setTitle</code> to set a frame's title.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setDefaultCloseOperation(int)
+    <br>
+    int getDefaultCloseOperation()
+    </code></font>
+</td>
+<td>Set or get the operation that occurs when the user pushes
+    the close button on this frame. Possible choices are:
+    <ul>
+    <li><code>DO_NOTHING_ON_CLOSE</code>
+    <li><code>HIDE_ON_CLOSE</code> (the default)
+    <li><code>DISPOSE_ON_CLOSE</code>
+    </ul>
+    These constants are defined in the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/WindowConstants.html"><font color="#8800bb"><code>WindowConstants</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/WindowConstants.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>    interface, which <code>JFrame</code> implements.
+</td>
+</tr>
+</table>
+
+<p>
+
+<table border=1>
+<caption><a name="rootpane">Methods Related to the Root Pane</a></caption>
+<tr>
+<th align=left>Method
+</th>
+<th align=left>Purpose
+
+</th>
+</tr>
+<tr>
+<td><font size=2><code>void setContentPane(Container)
+    <br>
+    Container getContentPane()</code></font>
+</td>
+<td>Set or get the frame's content pane.
+    The content pane contains the frame's visible GUI components
+    and should be opaque.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>JRootPane createRootPane()
+    <br>
+    void setRootPane(JRootPane)
+    <br>
+    JRootPane getRootPane()
+    </code></font>
+</td>
+<td>Create, set, or get the frame's root pane. The root pane
+    manages the interior of the frame including the content pane,
+    the glass pane, and so on.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setJMenuBar(JMenuBar)
+    <br>
+    JMenuBar getJMenuBar()</code></font>
+</td>
+<td>Set or get the frame's menu bar
+    to manage a set of menus for the frame.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setGlassPane(Component)
+    <br>
+    Component getGlassPane()</code></font>
+</td>
+<td>Set or get the frame's glass pane.
+    You can use the glass pane to intercept mouse events.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setLayeredPane(JLayeredPane)
+    <br>
+    JLayeredPane getLayeredPane()</code></font>
+</td>
+<td>Set or get the frame's layered pane.
+    You can use the frame's layered pane to put components on top of
+    or behind other components.
+</td>
+</tr>
+</table>
+
+</blockquote>
+
+<h3>
+<a name="eg">Examples that Use Frames</a>
+</h3>
+<blockquote>
+All of the examples in this trail 
+that are standalone applications
+use <code>JFrame</code>.
+The following table lists a few
+and tells you where each is discussed.
+<p>
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#FrameDemo"><code>FrameDemo</code></a>
+</td>
+<td> <a href="#anexample">The Example Explained</a>
+</td>
+<td> Displays a basic frame with one component.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#Framework"><code>Framework</code></a>
+</td>
+<td> --
+</td>
+<td> A study in creating and destroying windows,
+     in implementing a menu bar,
+     and in exiting an application.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#ColorChooserDemo"><code>ColorChooserDemo</code></a>
+</td>
+<td> <a href="colorchooser.html">How to Use Color Choosers</a>
+</td>
+<td> A subclass of <code>JFrame</code> that adds components to the
+     default content pane.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#TableDemo"><code>TableDemo</code></a>
+</td>
+<td> <a href="table.html">How to Use Tables</a>
+</td>
+<td> A subclass of <code>JFrame</code> that sets the frame's content pane.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#LayeredPaneDemo"><code>LayeredPaneDemo</code></a>
+</td>
+<td> <a href="layeredpane.html">How to Use Layered Panes</a>
+</td>
+<td> Illustrates how to use a layered pane
+     (but not the frame's layered pane).
+ 
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#GlassPaneDemo"><code>GlassPaneDemo</code></a>
+</td>
+<td> <a href="rootpane.html#glasspane">The Glass Pane</a>
+</td>
+<td> Illustrates the use of a frame's glass pane.
+ 
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#MenuDemo"><code>MenuDemo</code></a>
+</td>
+<td> <a href="menu.html">How to Use Menus</a>
+</td>
+<td> Shows how to put a <code>JMenuBar</code> in a <code>JFrame</code>.
+
+</td>
+</tr>
+</table>
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="toplevel.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="dialog.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

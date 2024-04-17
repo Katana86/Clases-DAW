@@ -1,0 +1,733 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Use Combo Boxes</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="colorchooser.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="filechooser.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Swing Components
+</font>
+
+<h2>
+How to Use Combo Boxes
+</h2>
+<blockquote>
+A 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JComboBox.html"><font color="#8800bb"><code>JComboBox</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JComboBox.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> comes in two very different forms:
+uneditable and editable.
+
+<p>
+By default, a combo box is uneditable.
+A uneditable combo box looks like a button
+until the user interacts with it.
+When the user presses or clicks it,
+the combo box displays a menu
+of items to choose from.
+Use an uneditable combo box
+to display one-of-many choices
+when space is limited,
+when the number of choices is large,
+or when the menu items are computed at run-time.
+Other components that display one-of-many choices are
+<a href="list.html">lists</a>
+and
+groups of <a href="button.html#radiobutton">radio buttons</a>.
+
+<p>
+An editable <code>JComboBox</code> looks like
+a text field with a small button abutting it.
+The user can type a value in the text field
+or click the button to choose a value from a menu.
+An editable combo box saves data-entry time by
+providing shortcuts to commonly entered values.
+
+<p>
+Because editable and uneditable combo boxes are so different,
+this section treats them separately.
+This section covers these topics:
+<ul>
+<li><a href="#uneditable">Using an Uneditable Combo Box</a>
+<li><a href="#listeners">Handling Events on a Combo Box</a>
+<li><a href="#editable">Using an Editable Combo Box</a>
+<li><a href="#renderer">Providing a Custom Renderer</a>
+<li><a href="#api">The Combo Box API</a>
+<li><a href="#eg">Examples that Use Combo Boxes</a>
+</ul>
+
+<a name="uneditable">
+</blockquote>
+<h3>Using an Uneditable Combo Box</h3>
+</a>
+<blockquote>
+The application shown here
+uses an uneditable combo box
+for choosing a pet picture:
+
+<p><center><IMG SRC="../../figures/uiswing/components/ComboBoxDemo.gif" WIDTH="228" HEIGHT="225" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="An uneditable combo box"></center></p>
+<a name="trythis">
+
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> Compile and run the program:
+     
+<a target="source" href="example-swing/ComboBoxDemo.java"><font color="#bb000f"><code>ComboBoxDemo.java</code></font></a><a href="example-swing/ComboBoxDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+     You will also need
+     <a href="example-swing/index.html#ComboBoxDemo">five image files</a>.
+     <br>
+     See <a href="../start/index.html" target="_top">Getting Started with Swing</a> if you need help compiling or running this application.
+<li> Choose a pet name from the combo box to view its picture.
+<li> <a href="button.html#radiobutton">How to Use Radio Buttons</a>
+     provides a version of this program,
+     <a href="example-swing/index.html#RadioButtonDemo"><code>RadioButtonDemo</code></a>,
+     that uses a group of radio buttons
+     instead of a combo box.
+     Compile and run that program.
+     Compare the source code, operation, and UI of the two programs.
+</ol>
+<hr></blockquote>
+</a>
+
+The following code, taken from 
+
+<a target="source" href="example-swing/ComboBoxDemo.java"><font color="#bb000f"><code>ComboBoxDemo.java</code></font></a><a href="example-swing/ComboBoxDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+creates an uneditable combo box
+and sets it up:
+<blockquote><pre>
+String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
+
+// Create the combo box, select item at index 4.
+// Indices start at 0, so 4 specifies the pig.
+JComboBox petList = new JComboBox(petStrings);
+petList.setSelectedIndex(4);
+...
+</pre></blockquote>
+The code initializes the combo box
+with an array of strings.
+You can also put icons in a combo box.
+To put other types of objects in a combo box,
+or to customize how the items in a combo box look,
+you need to write a custom renderer.
+An editable combo box would also need a custom editor.
+Refer to
+<a href="#renderer">Providing a Custom Renderer</a>
+for information and an example.
+
+<p>
+
+Although not shown above,
+the program registers an action listener on the combo box.
+To see the code and learn about other types of listeners
+supported by combo box, refer to
+<a href="#listeners">Handling Events on a Combo Box</a>.
+
+<p>
+
+No matter which constructor you use,
+a combo box uses a combo box model 
+to contain and manage the items in its menu.
+When you initialize a combo box with an array or a vector,
+the combo box creates a default model object for you.
+As with other Swing components,
+you can customize a combo box
+in part by implementing a custom model -- an object
+that implements the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/ComboBoxModel.html"><font color="#8800bb"><code>ComboBoxModel</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/ComboBoxModel.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> interface.
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+Be careful when implementing a custom model for a combo box.
+The <code>JComboBox</code> methods that change
+the items in the combo box's menu,
+such as <code>insertItemAt</code>,
+work only if the data model implements the
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/MutableComboBoxModel.html"><font color="#8800bb"><code>MutableComboBoxModel</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/MutableComboBoxModel.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> interface 
+(a subinterface of <code>ComboBoxModel</code>).
+Refer to the
+<a href="#api">API</a> tables to see which methods are affected.
+<hr></blockquote>
+
+
+</blockquote>
+<a name="listeners">
+<h3>Handling Events on a Combo Box</h3>
+</a>
+<blockquote>
+
+Here's the code from <code>ComboBoxDemo</code>
+that registers and implements an action listener on the combo box:
+
+<blockquote><pre>
+petList.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        JComboBox cb = (JComboBox)e.getSource();
+        String petName = (String)cb.getSelectedItem();
+        picture.setIcon(new ImageIcon("images/" +
+                                      petName + ".gif"));
+    }
+});
+</pre></blockquote>
+This action listener gets the newly selected item from
+the combo box, uses it to compute the name of an image file,
+and updates a label to display the image.
+The combo box fires an action event
+when the user selects an item from
+the combo box's menu.
+See
+<a target="_top" href="../events/actionlistener.html">How to Write an Action Listener</a><a target="_top" href="../events/actionlistener.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>, for general information about implementing action listeners.
+<p>
+Combo boxes also generate item events,
+which are fired when any of the items' selection state changes.
+Only one item at a time can be selected in 
+a combo box, so when the user makes a new selection
+the previously selected item becomes unselected.
+Thus two item events are fired each time the user
+selects a different item from the menu.
+If the user chooses the same item,
+no item events are fired.
+Use <code>addItemListener</code> to register an item listener
+on a combo box.
+<a target="_top" href="../events/itemlistener.html">How to Write an Item Listener</a><a target="_top" href="../events/itemlistener.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> gives general information about implementing item listeners.
+
+<p>
+
+Although <code>JComboBox</code> inherits methods
+to register listeners for low-level events --
+focus, key, and mouse events, for example --
+we recommend that
+you don't listen for low-level events on a combo box.
+Here's why:
+A combo box is a <em>compound component</em> -- it
+is comprised of two or more other components.
+The combo box itself fires high-level events such as action events.
+Its subcomponents fire low-level events such as mouse,
+key, and focus events.
+The low-level events and the subcomponent that fires
+them are look-and-feel-dependent.
+To avoid writing look-and-feel-dependent code,
+you should listen only for high-level events
+on a compound component such as a combo box.
+For information about events, including a discussion about
+high- and low-level events, refer to
+<a target="_top" href="../events/index.html">Writing Event Listeners</a><a target="_top" href="../events/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+</blockquote>
+
+<a name="editable">
+<h3>Using an Editable Combo Box</h3>
+</a>
+<blockquote>
+Here's a picture of a demo application,
+provided by our coworker
+<a href="../../information/bios.html#green">Dale Green</a>,
+that uses an editable combo box to enter a pattern
+with which to format dates.
+
+
+<p><center><IMG SRC="../../figures/uiswing/components/ComboBoxDemo2.gif" WIDTH="279" HEIGHT="163" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="An editable combo box"></center></p>
+
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> Compile and run the example:
+     
+<a target="source" href="example-swing/ComboBoxDemo2.java"><font color="#bb000f"><code>ComboBoxDemo2.java</code></font></a><a href="example-swing/ComboBoxDemo2.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+     <br>
+     See <a href="../start/index.html" target="_top">Getting Started with Swing</a> if you need help compiling or running this application.
+<li> Enter a new pattern by choosing one from the combo box's menu.
+     The program reformats the current date and time.
+<li> Enter a new pattern by typing one in and pressing Return.
+     Again the program reformats the current date and time.
+</ol>
+<hr></blockquote>
+<p>
+
+The following code, taken from
+
+<a target="source" href="example-swing/ComboBoxDemo2.java"><font color="#bb000f"><code>ComboBoxDemo2.java</code></font></a><a href="example-swing/ComboBoxDemo2.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+creates and sets up the combo box:
+<blockquote><pre>
+String[] patternExamples = {
+	 "dd MMMMM yyyy",
+	 "dd.MM.yy",
+	 "MM/dd/yy",
+	 "yyyy.MM.dd G 'at' hh:mm:ss z",
+	 "EEE, MMM d, ''yy",
+	 "h:mm a",
+	 "H:mm:ss:SSS",
+	 "K:mm a,z",
+	 "yyyy.MMMMM.dd GGG hh:mm aaa"
+};
+. . .
+JComboBox patternList = new JComboBox(patternExamples);
+<strong>patternList.setEditable(true);</strong>
+patternList.addActionListener(...);
+. . .
+</pre></blockquote>
+This code is very similar to the previous example, but warrants
+a few words of explanation.
+The bold line of code explicitly turns on editing
+to allow the user to type values in.
+This is necessary because, by default, a combo box is not editable.
+This particular example allows editing on the combo box because
+its menu does not provide all possible date formatting patterns,
+just shortcuts to frequently used patterns.
+<p>
+An editable combo box fires an action event
+when the user chooses an item from the menu
+and when the user types Return.
+Note that the menu remains unchanged
+when the user enters a value into the combo box.
+If you want,
+you can easily write an action listener that
+adds a new item to the combo box's menu
+each time the user types in a unique value.
+<p>
+See
+<a target="_top" href="../../i18n/index.html">Internationalization</a><a target="_top" href="../../i18n/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> to learn more about formatting dates
+and other types of data.
+</blockquote>
+
+<a name="renderer">
+<h3>Providing a Custom Renderer</h3>
+<blockquote>
+A combo box uses a <em>renderer</em> to display each item in its menu.
+If the combo box is uneditable,
+it also uses the renderer to display the currently selected item.
+An editable combo box, on the other hand,
+uses an <em>editor</em> to display the selected item.
+A renderer for a combo box must implement the
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/ListCellRenderer.html"><font color="#8800bb"><code>ListCellRenderer</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/ListCellRenderer.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> interface.
+A combo box's editor must implement
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/ComboBoxEditor.html"><font color="#8800bb"><code>ComboBoxEditor</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/ComboBoxEditor.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+This section shows how to provide
+a custom renderer for an uneditable combo box.
+<p>
+The default renderer knows how to render strings and icons.
+If you put other objects in a combo box,
+the default renderer calls the <code>toString</code>
+method to provide a string to display.
+You can customize the way a combo box renders itself 
+and its items
+by implementing your own <code>ListCellRenderer</code>.
+<p>
+Here's a picture of an application
+that uses a combo box with a custom renderer:
+<p><center><IMG SRC="../../figures/uiswing/components/CustomComboBoxDemo.gif" WIDTH="281" HEIGHT="207" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="A combo box with a custom renderer"></center></p>
+You can find the full source code for this example in
+
+<a target="source" href="example-swing/CustomComboBoxDemo.java"><font color="#bb000f"><code>CustomComboBoxDemo.java</code></font></a><a href="example-swing/CustomComboBoxDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+This example needs the
+<a href="example-swing/index.html#CustomComboBoxDemo">
+five pet image files</a>.
+<p>
+The following statements from the example
+create an instance of <code>ComboBoxRenderer</code>
+(a custom class)
+and set up the instance as the combo box's renderer:
+<blockquote><pre>
+JComboBox petList = new JComboBox(images);
+ComboBoxRenderer renderer = new ComboBoxRenderer();
+renderer.setPreferredSize(new Dimension(200, 130));
+petList.setRenderer(renderer);
+petList.setMaximumRowCount(3);
+</pre></blockquote>
+To see how the default renderer renders icons,
+just comment out the call to <code>setRenderer</code>,
+and compile and run the program again.
+<p>
+The code also sets the combo box's maximum row count.
+This attribute controls the number of items visible when
+the menu is displayed.
+If the number of items in the combo box is larger than
+its maximum row count, the menu has a scroll bar.
+The icons are pretty big for a menu,
+so the code limits the number of rows to 3.
+Here's the complete implementation of <code>ComboBoxRenderer</code>,
+a renderer that puts an icon and text side-by-side:
+<blockquote><pre>
+class ComboBoxRenderer extends JLabel
+                       implements ListCellRenderer {
+    public ComboBoxRenderer() {
+        setOpaque(true);
+        setHorizontalAlignment(CENTER);
+        setVerticalAlignment(CENTER);
+    }
+    public Component getListCellRendererComponent(
+        JList list,
+        Object value,
+        int index,
+        boolean isSelected,
+        boolean cellHasFocus)
+    {
+        if (isSelected) {
+            setBackground(list.getSelectionBackground());
+            setForeground(list.getSelectionForeground());
+        } else {
+            setBackground(list.getBackground());
+            setForeground(list.getForeground());
+        }
+
+        ImageIcon icon = (ImageIcon)value;
+        setText(icon.getDescription());
+        setIcon(icon);
+        return this;
+    }
+}   
+</pre></blockquote>
+As a <code>ListCellRenderer</code>,
+<code>ComboBoxRenderer</code> implements a method
+called <code>getListCellRendererComponent</code>,
+which returns a component whose <code>paintComponent</code>
+method is used to display the combo box and each of its items.
+The easiest way to display an image and an icon
+is to use a label.
+So <code>ComboBoxRenderer</code> is a subclass of label
+and returns itself.
+The implementation of <code>getListCellRendererComponent</code>
+configures the renderer to display the currently selected
+icon and its description.
+<p>
+These arguments are passed to <code>getListCellRendererComponent</code>:
+<ul>
+<li> <code>JList list</code> -- a list object used behind the scenes
+	to display the items.
+	The example uses this object's colors
+	to set up foreground and background colors.
+<li> <code>Object value</code> -- the object to render.
+	An <code>Icon</code> in this example.
+<li> <code>int index</code> -- the index of the object to render.
+<li> <code>boolean isSelected</code> -- indicates whether the
+	object to render is selected.
+ 	Used by the example to determine which colors to use.
+<li> <code>boolean cellHasFocus</code> -- indicates whether the
+	object to render has the focus.
+</ul>
+
+Note that combo boxes and <a href="list.html">lists</a>
+use the same type of renderer -- <code>ListCellRenderer</code>.
+You can save yourself some time
+by sharing renderers between
+combo boxes and lists,
+if it makes sense for your program.
+</blockquote>
+
+<h3>
+<a name="api">The Combo Box API</a>
+</h3>
+<blockquote>
+The following tables list the commonly used
+<code>JComboBox</code> constructors and methods.
+Other methods you are most likely to invoke on
+a <code>JComboBox</code> object are those
+it inherits from its superclasses,
+such as <code>setPreferredSize</code>.
+See
+<a href="jcomponent.html#api">The JComponent API</a>
+for tables of commonly used inherited methods.
+
+<p>
+
+The API for using combo boxes falls into two categories:
+
+<ul>
+<li><a href="#list">Setting or Getting the Items in the Combo Boxes's Menu</a>
+<li><a href="#configuring">Customizing the Combo Box's Operation</a>
+</ul>
+
+<p>
+
+<table border=1>
+<caption><a name="list">Setting or Getting the Items in the Combo Boxes's Menu</a></caption>
+
+<tr>
+<th>Method
+</th>
+<th>Purpose
+
+</th>
+</tr>
+<tr>
+<td><font size=2><code>JComboBox()
+    <br>
+    JComboBox(ComboBoxModel)
+    <br>
+    JComboBox(Object[])
+    <br>
+    JComboBox(Vector)
+    </code></font>
+</td>
+<td>Create a combo box with the specified items in its menu.
+    A combo box created with the default constructor has no
+    items in the menu initially.
+    Each of the other constructors initializes the menu
+    from its argument: a model object,
+    an array of objects, or a <code>Vector</code> of objects.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void addItem(Object)
+    <br>
+    void insertItemAt(Object, int)
+    </code></font>
+</td>
+<td>Add or insert the specified object into the combo box's menu.
+    The insert method places the specified object <em>at</em>
+    the specified index, thus inserting it before the object currently
+    at that index.
+    These methods require that the combo box's data model
+    be an instance of <code>MutableComboBoxModel</code>.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>
+    Object getItemAt(int)
+    <br>
+    Object getSelectedItem()
+    </code></font>
+</td>
+<td>Get an item from the combo box's menu.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>
+    void removeAllItems()
+    <br>
+    void removeItemAt(int)
+    <br>
+    void removeItem(Object)
+    </code></font>
+</td>
+<td>Remove one or more items from the combo box's menu.
+    These methods require that the combo box's data model
+    be an instance of <code>MutableComboBoxModel</code>.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>int getItemCount()</code></font>
+</td>
+<td>Get the number of items in the combo box's menu.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setModel(ComboBoxModel)
+    <br>
+    ComboBoxModel getModel()
+    </code></font>
+</td>
+<td>Set or get the data model that provides the items in the combo box's menu.
+
+</td>
+</tr>
+</table>
+
+<p>
+
+<table border=1>
+<caption><a name="configuring">Customizing the Combo Box's Operation</a></caption>
+
+<tr>
+<th>Method
+</th>
+<th>Purpose
+
+</th>
+</tr>
+<tr>
+<td><font size=2><code>void addActionListener(ActionListener)</code></font>
+</td>
+<td>Add an action listener to the combo box.
+    The listener's <code>actionPerformed</code> method is called
+    when the user selects an item from the combo box's menu
+    or, in an editable combo box, when the user presses Return.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void addItemListener(ItemListener)</code></font>
+</td>
+<td>Add an item listener to the combo box.
+    The listener's <code>itemStateChanged</code> method is called
+    when the selection state of any of the combo box's items change.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setEditable(boolean)
+    <br>
+    boolean isEditable()
+    </code></font>
+</td>
+<td>Set or get whether the user can type in the combo box.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setRenderer(ListCellRenderer)
+    <br>
+    ListCellRenderer getRenderer()
+    </code></font>
+</td>
+<td>Set or get the object responsible for painting
+    the selected item in the combo box.
+    The renderer is used only when the combo box is uneditable.
+    If the combo box is editable,
+    the editor is used to paint the selected item instead.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setEditor(ComboBoxEditor)
+    <br>
+    ComboBoxEditor getEditor()
+    </code></font>
+</td>
+<td>Set or get the object responsible for painting and editing
+    the selected item in the combo box.
+    The editor is used only when the combo box is editable.
+    If the combo box is uneditable, the renderer is used to paint
+    the selected item instead.
+</td>
+</tr>
+</table>
+
+</blockquote>
+
+<h3>
+<a name="eg">Examples that Use Combo Boxes</a>
+</h3>
+<blockquote>
+This table shows the examples that use <code>JComboBox</code>
+and where those examples are described.
+<p>
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#ComboBoxDemo"><code>ComboBoxDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> Uses an uneditable combo box.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#ComboBoxDemo2"><code>ComboBoxDemo2</code></a>
+</td>
+<td> This section
+</td>
+<td> Uses an editable combo box.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#CustomComboBoxDemo"><code>CustomComboBoxDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> Provides a custom renderer for a combo box.
+
+</td>
+</tr>
+<tr>
+<td><a href="example-swing/index.html#TableRenderDemo"><code>TableRenderDemo</code></a>
+</td>
+<td>How to Use Tables (<a href="table.html#custom">Further Customizing Table
+Display and Event Handling</a>)
+</td>
+<td>Shows how to use a combo box as a table cell editor.
+</td>
+</tr>
+</table>
+
+</blockquote>
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="colorchooser.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="filechooser.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

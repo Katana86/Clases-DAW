@@ -1,0 +1,1001 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Use Text Fields</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="generaltext.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="editorpane.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Swing Components
+</font>
+
+<h2>
+How to Use Text Fields
+</h2>
+<blockquote>
+A text field is a basic text control
+that lets the user enter a small amount of text.
+When the user indicates that text entry is complete
+(usually by pressing Return),
+the text field fires an
+<a target="_top" href="../events/actionlistener.html">action event</a><a target="_top" href="../events/actionlistener.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+Generally you use the
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JTextField.html"><font color="#8800bb"><code>JTextField</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JTextField.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> class to provide text fields.
+If you need to provide a <em>password field</em> --
+an editable text field that doesn't show
+the characters the user types --
+use the 
+<a href="#password"><code>JPasswordField</code></a>
+class instead.
+This section discusses both text fields and password fields.
+
+<p>
+If you want a text field that also provides a menu of strings
+to choose from, consider using an editable
+<a href="combobox.html">combo box</a>.
+If you need to obtain more than one line of input from the user,
+then you should use one of the classes that implements
+a general-purpose <a href="text.html">text area</a>.
+
+<p>
+The applet below displays a basic text field and a text area.
+The text field is editable; the text area isn't.
+When the user presses Return
+in the text field,
+the applet copies the text field's
+contents to the text area,
+and then selects all the text in the text field.
+
+<p>
+
+<p><center><a href="TextDemo.html" target="_blank"><IMG SRC="../../figures/uiswing/components/TextDemoSwing.gif" WIDTH="261" HEIGHT="206" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Click this figure to run the applet."></a><br><em>This is a picture of the applet's GUI.  To run the applet, click the picture.  The applet will appear in a new browser window.</em></center></p>
+<p>
+
+You can find the source for the program in
+
+<a target="source" href="example-swing/TextDemo.java"><font color="#bb000f"><code>TextDemo.java</code></font></a><a href="example-swing/TextDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+Here's the code from <code>TextDemo</code>
+that creates the text field in the applet:
+<blockquote><pre>
+textField = new JTextField(20);
+textField.addActionListener(this);
+...
+contentPane.add(textField);
+</pre></blockquote>
+The integer argument passed
+to the <code>JTextField</code> constructor,
+<code>20</code> in the example,
+indicates the number of columns in the field.
+This number is used along with metrics provided by
+the field's current font
+to calculate the field's preferred width.
+It does not limit the number of characters the user
+can enter.
+To do that, you need to implement a custom document, 
+as described in 
+<a href="generaltext.html">General Rules for Using Text Components</a>.
+
+<p>
+The next lines of code
+register the applet as an action listener for the text field
+and add the text field to the applet's content pane.
+Here's the <code>actionPerformed</code> method
+that handles action events from the text field:
+<blockquote><pre>
+public void actionPerformed(ActionEvent evt) {
+    String text = textField.getText();
+    textArea.append(text + newline);
+    textField.selectAll();
+}
+</pre></blockquote>
+Notice the use of <code>JTextField</code>'s <code>getText</code>
+method to retrieve the text currently contained by the text field.
+The text returned by this method
+does <em>not</em> include a newline character
+for the Return key that fired the action event.
+
+<p>
+This example illustrates
+using a basic, off-the-shelf text field
+for entering textual data
+and performing a task
+when the text field fires an action event.
+This is sufficient for many programs.
+Other programs, however, need more advanced behavior.
+As a subclass of 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/text/JTextComponent.html"><font color="#8800bb"><code>JTextComponent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/text/JTextComponent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, <code>JTextField</code> can be configured and customized.
+One common customization is to provide a text field
+whose contents are validated.
+
+<p>
+This section covers the following advanced text field topics.
+To get most out of the information,
+you need to understand the material presented in the previous section,
+<a href="generaltext.html">General Rules for Using Text Components</a>.
+<ul>
+<li><a href="#validation">Creating a Validated Text Field</a>
+<li><a href="#documentlistener">Using a Document Listener on a Text Field</a>
+<li><a href="#layout">Laying Out Label-Text Field Pairs</a>
+<li><a href="#password">Providing a Password Field</a>
+<li><a href="#api">The Text Field and Password Field API</a>
+<li><a href="#eg">Examples that Use Text Fields and Password Fields</a>
+</ul>
+
+<a name="validation">
+</blockquote>
+<h3>Creating a Validated Text Field</h3>
+</a>
+<blockquote>
+Many programs require users to enter textual data of
+a certain type or format.
+For example, a program might provide a text field
+for entering a date, a decimal number, or a phone number.
+The contents of such a text field must be validated
+before being used for any purpose.
+A text field can be <em>action</em>-validated or <em>change</em>-validated.
+<p>
+The data in an action-validated field is checked
+each time the field fires an action event
+(each time the user presses the Return key).
+An action-validated field might, at any given point in time,
+contain invalid data.
+However, the data is validated before it's used for anything.
+To create an action-validated field,
+provide an action listener for your field and implement
+its <code>actionPerformed</code> method as follows:
+<ul>
+<li> Use <code>getText</code> to get the contents of the text field,
+     or <code>getPassword</code> if you're using a password field.
+<li> Evaluate the value returned.
+<li> If the value is valid, do whatever task or calculation is required.
+     If the value is invalid, report an error and return without
+	performing a task or calculation.
+</ul>
+<a href="example-swing/index.html#PasswordDemo">
+<code>PasswordDemo</code></a>,
+described later in this section,
+action-validates a password field in this manner.
+<p>
+
+The data in a change-validated field is checked
+each time the field changes.
+A field that is change-validated can never contain invalid data
+because every change (keystroke, cut, copy, and so on)
+that might cause the data to be invalid is rejected.
+To create a change-validated text field you need to
+provide a custom document for your text field.
+If you aren't familiar with documents yet,
+see
+<a href="generaltext.html#document">Concepts: About Documents</a>.
+
+
+<blockquote><hr><strong>Warning:</strong>&nbsp;
+Do not use a document
+listener for change validation.
+By the time a document listener has been notified of a change,
+it's too late, the change has already taken place.
+See the last couple of paragraphs in
+<a href="generaltext.html#dontdothis">Listening for Changes on a Document</a>
+for more information.
+<hr></blockquote>
+
+The application shown in the following figure
+has three change-validated text fields.
+The user enters loan information
+into the first three text fields.
+Each time the user types a character,
+the program validates the input and
+updates the result in the fourth text field.
+
+<p><center><IMG SRC="../../figures/uiswing/components/TextFieldDemo.gif" WIDTH="297" HEIGHT="142" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="A snapshot of TextFieldDemo, which uses three validated text fields"></center></p>
+
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> Compile and run the application.
+     The source file is
+     
+<a target="source" href="example-swing/TextFieldDemo.java"><font color="#bb000f"><code>TextFieldDemo.java</code></font></a><a href="example-swing/TextFieldDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+     You will also need 
+     
+<a target="source" href="example-swing/WholeNumberField.java"><font color="#bb000f"><code>WholeNumberField.java</code></font></a><a href="example-swing/WholeNumberField.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+     
+<a target="source" href="example-swing/DecimalField.java"><font color="#bb000f"><code>DecimalField.java</code></font></a><a href="example-swing/DecimalField.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>, and
+     
+<a target="source" href="example-swing/FormattedDocument.java"><font color="#bb000f"><code>FormattedDocument.java</code></font></a><a href="example-swing/FormattedDocument.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+     <br>
+     See <a href="../start/index.html" target="_top">Getting Started with Swing</a> if you need help compiling or running this application.
+
+<li> Enter information into the text fields and see the results.
+	<br>
+	If you attempt to enter invalid data, the program beeps.
+
+<li> Try to type into the fourth text field.
+     <br>
+     You can't because it isn't editable. 
+     However, you can select the text.
+
+<li> Resize the window.
+     <br>
+     Note how the labels and text fields remain aligned.
+     <a href="#layout">Laying Out Label-Text Field Pairs</a>
+     talks more about this feature of the program.
+
+</ol>
+<hr></blockquote>
+
+The <strong>Years</strong> field is an instance of
+
+<a target="source" href="example-swing/WholeNumberField.java"><font color="#bb000f"><code>WholeNumberField</code></font></a><a href="example-swing/WholeNumberField.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+which is a subclass of <code>JTextField</code>.
+By overriding the <code>createDefaultModel</code> method,
+<code>WholeNumberField</code> establishes a custom <code>Document</code>
+subclass -- an instance of
+<code>WholeNumberDocument</code> --
+as the document for each <code>WholeNumberField</code> created:
+<blockquote><pre>
+protected Document createDefaultModel() {
+    return new WholeNumberDocument();
+}
+</pre></blockquote>
+
+Here's the implementation of <code>WholeNumberDocument</code>:
+<blockquote><pre>
+protected class WholeNumberDocument extends PlainDocument {
+
+    public void insertString(int offs, String str, AttributeSet a)
+                    throws BadLocationException {
+
+        char[] source = str.toCharArray();
+        char[] result = new char[source.length];
+        int j = 0;
+
+        for (int i = 0; i < result.length; i++) {
+	    if (Character.isDigit(source[i]))
+	        result[j++] = source[i];
+	    else {
+	        toolkit.beep();
+	        System.err.println("insertString: " + source[i]);
+	    }
+        }    
+        super.insertString(offs, new String(result, 0, j), a);
+    }
+}
+</pre></blockquote>
+This class overrides the <code>insertString</code> method,
+which is called every time any string or character
+is about to be inserted into the document.
+<code>WholeNumberDocument</code>'s implementation of
+<code>insertString</code> evaluates
+each character to be inserted into the text field.
+If the character is a digit, the document allows it to be inserted.
+Otherwise, the method beeps and prints an error message.
+Thus <code>WholeNumberDocument</code> allows the numbers
+in the range 0, 1, 2, ...
+
+<p>
+
+An interesting implementation detail
+is that our custom document class does not have to override
+the <code>remove</code> method.
+The <code>remove</code> method is called each time
+a character or group of characters is removed from the
+text field.
+Because removing a digit from an integer cannot produce an
+invalid result, this class does not 
+pay attention to removals.
+
+<p>
+
+The other two input fields in the example,
+as well as the uneditable <strong>Monthly Payment</strong> field,
+are all instances of
+
+<a target="source" href="example-swing/DecimalField.java"><font color="#bb000f"><code>DecimalField</code></font></a><a href="example-swing/DecimalField.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+a custom <code>JTextField</code> subclass.
+<code>DecimalField</code> uses a custom document,
+
+<a target="source" href="example-swing/FormattedDocument.java"><font color="#bb000f"><code>FormattedDocument</code></font></a><a href="example-swing/FormattedDocument.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+that allows only data of a particular format to be entered.
+
+<p>
+
+<code>FormattedDocument</code> has no knowledge
+of the actual format of its content.
+Instead, <code>FormattedDocument</code> relies on a format,
+an instance of a subclass of
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/text/Format.html"><font color="#8800bb"><code>Format</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/text/Format.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, to accept or reject a proposed change.
+The text field that uses the <code>FormattedDocument</code>
+must specify which format the <code>FormattedDocument</code> uses.
+
+<p>
+
+The <strong>Loan Amount</strong> 
+and <strong>Monthly Payment</strong> text fields
+use a 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/text/NumberFormat.html"><font color="#8800bb"><code>NumberFormat</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/text/NumberFormat.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> object created like this:
+
+<blockquote><pre>
+moneyFormat = NumberFormat.getNumberInstance();
+</pre></blockquote>
+
+The following code creates the <strong>APR</strong> text field's format:
+
+<blockquote><pre>
+percentFormat = NumberFormat.getNumberInstance();
+percentFormat.setMinimumFractionDigits(3);
+</pre></blockquote>
+
+As the code shows, the same class (<code>NumberFormat</code>)
+can support different formats.
+Furthermore, <code>Format</code> and its
+subclasses are locale-sensitive, so a decimal field can be
+made to support formats for specific countries and regions.
+Refer to
+<a target="_top" href="../../i18n/format/index.html">Formatting</a><a target="_top" href="../../i18n/format/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> in the internationalization trail
+for detailed information about formats.
+
+<p>
+
+Here is <code>FormattedDocument</code>'s implementation
+of <code>insertString</code>:
+
+<blockquote><pre>
+public void insertString(int offs, String str, AttributeSet a)
+                throws BadLocationException {
+
+    String currentText = getText(0, getLength());
+    String beforeOffset = currentText.substring(0, offs);
+    String afterOffset = currentText.substring(offs,
+                                         currentText.length());
+    String proposedResult = beforeOffset + str + afterOffset;
+
+    try {
+        format.parseObject(proposedResult);
+        super.insertString(offs, str, a);
+    } catch (ParseException e) {
+        Toolkit.getDefaultToolkit().beep();
+        System.err.println("insertString: could not parse: "
+                           + proposedResult);
+    }
+}    
+</pre></blockquote>
+
+The method uses the format to parse the result
+of the proposed insertion.
+If the result is properly formatted,
+this method calls its superclass's <code>insert</code> method
+to do the insertion.
+If the result is not properly
+formatted, the program beeps.
+<p>
+In addition to overriding <code>insertString</code>,
+<code>FormattedDocument</code> also overrides the
+<code>remove</code> method.
+Recall that the <code>remove</code> method is called
+each time a character or group of characters
+is to be removed from the document.
+
+<blockquote><pre>
+public void remove(int offs, int len)
+    throws BadLocationException
+{
+    String currentText = getText(0, getLength());
+    String beforeOffset = currentText.substring(0, offs);
+    String afterOffset = currentText.substring(len + offs,
+                                         currentText.length());
+    String proposedResult = beforeOffset + afterOffset;
+
+    try {
+        if (proposedResult.length() != 0)
+            format.parseObject(proposedResult);
+        super.remove(offs, len);
+    } catch (ParseException e) {
+        Toolkit.getDefaultToolkit().beep();
+        System.err.println("remove: could not parse: "
+                           + proposedResult);
+    }
+}    
+</pre></blockquote>
+
+The <code>FormattedDocument</code> implementation of
+the <code>remove</code> method
+is similar to its implementation of the <code>insertString</code> method.
+The format parses the result
+of the proposed change
+and performs the removal or not,
+depending on whether the result is valid.
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+The solution provided by this example
+is not a general solution for all types of formats.
+Some formats
+-- most notably <code>DateFormat</code> --
+can't be change-validated simply
+by calling the <code>parseObject</code> method.
+Here's an example to help you understand why.
+Suppose you have a text field that contains the date "May 25, 1996"
+and want to change it to "June 11, 1996".
+You would select May and begin typing "June".
+As soon as you've typed the "J", the field won't parse
+because "J 25, 1996" is not a valid date even though
+it's a valid change.
+A number of solutions are possible for dates
+and other types of data where a partially completed change creates
+an invalid result.
+You can change the change-validation such that
+it rejects all definitely invalid changes
+(typing "X" into a date for example) but allows
+all possibly valid changes.
+Or you can switch to an action-validated field.
+<hr></blockquote>
+</blockquote>
+
+<a name="documentlistener">
+<h3>Using a Document Listener on a Text Field</h3>
+</a>
+<blockquote>
+If you can't use a document listener
+for field validation, what can you use it for?
+Use it to listen to, but not interfere with,
+changes to the document's content.
+The loan calculator uses the following document listener
+to update the monthly payment after every change:
+<blockquote><pre>
+class MyDocumentListener implements DocumentListener {
+    public void insertUpdate(DocumentEvent e) {
+        calculateValue(e);
+    }
+    public void removeUpdate(DocumentEvent e) {
+        calculateValue(e);
+    }
+    public void changedUpdate(DocumentEvent e) {
+        // we won't ever get this with a PlainDocument
+    }
+    private void calculateValue(DocumentEvent e) {
+        Document whatsup = e.getDocument();
+        if (whatsup.getProperty("name").equals("amount"))
+            amount = amountField.getValue();
+        else if (whatsup.getProperty("name").equals("rate"))
+            rate = rateField.getValue();
+        else if (whatsup.getProperty("name").equals("numPeriods"))
+            numPeriods = numPeriodsField.getValue();
+        payment = computePayment(amount, rate, numPeriods);
+        paymentField.setValue(payment);
+    }
+}    
+</pre></blockquote>
+This is an appropriate use of a document listener.
+For general information about document listeners,
+see
+<a href="generaltext.html#doclisteners">Listening for Changes on a Document</a>
+and
+<a target="_top" href="../events/documentlistener.html">How to Write a Document Listener</a><a target="_top" href="../events/documentlistener.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+</blockquote>
+
+<a name="layout">
+<h3>Laying Out Label-Text Field Pairs</h3>
+<blockquote>
+This section describes how the label and the text fields 
+in the example are aligned and requires some knowledge of
+<a href="../layout/index.html">layout managers</a>.
+<p>
+Rows of label and text field pairs such as those found in the loan calculator
+are quite common on preference panels and panels that implement forms.
+Here's the code that lays out the label and text field pairs.
+<blockquote><pre>
+. . .
+//Layout the labels in a panel
+JPanel labelPane = new JPanel();
+labelPane.setLayout(new GridLayout(0, 1));
+labelPane.add(amountLabel);
+labelPane.add(rateLabel);
+labelPane.add(numPeriodsLabel);
+labelPane.add(paymentLabel);
+
+//Layout the text fields in a panel
+JPanel fieldPane = new JPanel();
+fieldPane.setLayout(new GridLayout(0, 1));
+fieldPane.add(amountField);
+fieldPane.add(rateField);
+fieldPane.add(numPeriodsField);
+fieldPane.add(paymentField);
+
+//Put the panels in another panel, labels on left,
+//text fields on right
+JPanel contentPane = new JPanel();
+contentPane.setBorder(BorderFactory.createEmptyBorder(20, 20,
+                                                      20, 20));
+contentPane.setLayout(new BorderLayout());
+contentPane.add(labelPane, BorderLayout.CENTER);
+contentPane.add(fieldPane, BorderLayout.EAST);
+
+setContentPane(contentPane);
+. . .
+</pre></blockquote>
+You may be surprised to find
+that the labels are laid out without reference to the text fields
+and, in fact, are in a different panel,
+yet align correctly with them.
+This is a side effect of the layout managers
+used by the program.
+
+<p><center><IMG SRC="../../figures/uiswing/components/TextFieldDemoWithLayout.gif" WIDTH="278" HEIGHT="201" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Laying out label-text field pairs"></center></p>
+As the diagram illustrates,
+the program uses two <code>GridLayout</code> managers,
+one to lay out the column of labels and one for the column of text fields.
+<code>GridLayout</code> guarantees that all of its components
+are the same size, so all of the text fields are the same
+height and all of the labels are the same height.
+But the text fields are not the same height as the labels.
+This is achieved with a third layout manager, a <code>BorderLayout</code>.
+With just two components at East and Center,
+<code>BorderLayout</code> guarantees the columns are the same height.
+Now the labels and text fields are the same height,
+and thus, they are aligned.
+
+<p>
+
+Another way to get labels and text fields to align
+is to use the AWT's most flexible, complex layout manager:
+<a target="_top" href="../layout/gridbag.html"><code>GridBagLayout</code></a><a target="_top" href="../layout/gridbag.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+Refer to the <code>TextSamplerDemo</code> program for an example.
+In particular, look at this handy method, which you can probably
+copy verbatim into your programs:
+<blockquote><pre>
+addLabelTextRows(JLabel[] labels,
+		 JTextField[] textFields,
+		 GridBagLayout gridbag,
+		 Container container)
+</pre></blockquote>
+</blockquote>
+
+<a name="password">
+<h3>Providing a Password Field</h3>
+</a>
+<blockquote>
+Swing provides the
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JPasswordField.html"><font color="#8800bb"><code>JPasswordField</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JPasswordField.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> class, a subclass of <code>JTextField</code>,
+to use in place of a text field for password entry.
+For security reasons,
+a password field doesn't show the characters the user types.
+Instead the field displays another character
+such as an asterisk '*'.
+As another security precaution,
+the password field stores its value
+as an array of characters,
+rather than as a string.
+<p>
+
+<a target="source" href="example-swing/PasswordDemo.java"><font color="#bb000f"><code>PasswordDemo</code></font></a><a href="example-swing/PasswordDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+brings up a small window to prompt the
+user to type in a password:
+
+<p><center><IMG SRC="../../figures/uiswing/components/PasswordDemo.gif" WIDTH="290" HEIGHT="89" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="A snapshot of PasswordDemo, which uses a password field"></center></p>
+Here's the code from <code>PasswordDemo</code> that creates
+and sets up the password field.
+<blockquote><pre>
+JPasswordField passwordField = new JPasswordField(10);
+passwordField.setEchoChar('#');
+passwordField.addActionListener(new ActionListener() {
+    ...
+});
+</pre></blockquote>
+
+As with text fields,
+the argument passed into the <code>JPasswordField</code> constructor 
+indicates that the field should be 10 columns wide.
+By default a password field displays an asterisk '*' for
+each character typed. The call to <code>setEchoChar</code>
+changes it to a pound sign '#'.
+Finally, the code adds an action listener to the password field,
+which <a href="#validation">action-validates</a>
+the value typed in by the user.
+Here's the implementation of the action listener's
+<code>actionPerformed</code> method:
+<blockquote><pre>
+public void actionPerformed(ActionEvent e) {
+    JPasswordField input = (JPasswordField)e.getSource();
+    char[] password = input.getPassword();
+    if (isPasswordCorrect(password)) {
+	JOptionPane.showMessageDialog(f,
+	    "Success! You typed the right password.");
+    } else {
+	JOptionPane.showMessageDialog(f,
+	    "Invalid password. Try again.",
+	    "Error Message",
+	    JOptionPane.ERROR_MESSAGE);
+    }
+}
+</pre></blockquote>
+The <code>getPassword</code> returns a character array.
+Password information should not be stored or passed around in
+strings because strings are not secure.
+<p>
+A program using a password field typically
+validates the password before completing any actions
+requiring the password.
+This program calls a private method,
+<code>isPasswordCorrect</code>,
+that compares the value returned by <code>getPassword</code>
+to a value stored in a character array.
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp; The <code>getPassword</code> method
+did not exist in Swing 1.0.3 and earlier releases.
+In those releases, you have to use <code>getText</code>.
+In that case, your program should convert the value returned from
+<code>getText</code> to a character array upon return.
+You should not store the value in a <code>String</code>.
+In releases that contain the <code>getPassword</code> method,
+<code>getText</code> has been deprecated.
+<hr></blockquote>
+
+</blockquote>
+
+<h3>
+<a name="api">The Text Field and Password Field API</a>
+</h3>
+<blockquote>
+The following tables list the commonly used
+<code>JTextField</code> and <code>JPasswordField</code>
+constructors and methods.
+Other methods you are likely to call
+are defined in <code>JTextComponent</code>.
+Refer to the API tables in
+<a href="textapi.html#api">Summary of Text</a>.
+<p>
+You might also invoke methods on a
+text field or password field
+that it inherits from its other ancestors,
+such as <code>setPreferredSize</code>,
+<code>setForeground</code>, 
+<code>setBackground</code>, 
+<code>setFont</code>, and so on.
+See
+<a href="jcomponent.html">The JComponent Class</a>
+for tables of commonly used inherited methods.
+
+<p>
+The API for using text fields and password fields
+falls into these categories:
+
+<ul>
+<li><a href="#contents">Setting or Getting the Field's Contents</a>
+<li><a href="#looks">Fine Tuning the Field's Appearance</a>
+<li><a href="#function">Implementing the Field's Functionality</a>
+</ul>
+
+<p>
+
+<table border=1>
+<caption><a name="contents">Setting or Getting the Field's Contents</a></caption>
+<tr>
+<th>Method or Constructor
+</th>
+<th>Purpose
+
+</th>
+</tr>
+<tr>
+<td><font size=2><code>JTextField()
+    <br>
+    JTextField(String)
+    <br>
+    JTextField(String, int)
+    <br>
+    JTextField(int)
+    <br>
+    JTextField(Document, String, int)</code>
+
+</td>
+<td>Create a text field.
+    When present, the <code>int</code> argument specifies the desired width
+    in columns.
+    The <code>String</code> argument contains the field's initial text.
+    The <code>Document</code> argument provides a custom document for the field.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>
+    JPasswordField()
+    <br>
+    JPasswordField(String)
+    <br>
+    JPasswordField(String, int)
+    <br>
+    JPasswordField(int)
+    <br>
+    JPasswordField(Document, String, int)</code>
+
+</td>
+<td>Create a password field.
+    When present, the <code>int</code> argument specifies the desired width
+    in columns.
+    The <code>String</code> argument contains the field's initial text.
+    The <code>Document</code> argument provides a custom document for the field.
+ 
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setText(String)
+    <br>
+    String getText()</code></font>
+</td>
+<td>Set or get the text displayed by the text field.
+    Note that <code>getText</code> is deprecated for
+    password fields in Swing 1.0.3 and higher releases.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>char[] getPassword()
+    </code></font>
+    <br>
+    <em>(in <code>JPasswordField</code>)</em>
+</td>
+<td>Set or get the text displayed by the text field.
+    Note that this method does not exist in
+    Swing 1.0.3 and lower releases.
+
+</td>
+</tr>
+</table>
+
+<p>
+
+<table border=1>
+<caption><a name="looks">Fine Tuning the Field's Appearance</a></caption>
+<tr>
+<th>Method or Constructor
+</th>
+<th>Purpose
+ 
+</th>
+</tr>
+<tr>
+<td><font size=2><code>void setEditable(boolean)
+    <br>
+    boolean isEditable()
+    </code></font>
+</td>
+<td>Set or get whether the user can edit the text in the text field.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setColumns(int);
+    <br>
+    int getColumns()
+    </code></font>
+</td>
+<td>Set or get the number of columns displayed by the text field.
+    This is really just a hint for computing the field's preferred width.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>int getColumnWidth()
+    </code></font>
+</td>
+<td>Get the width of the text field's columns.
+    This value is established implicitly by the font.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setHorizontalAlignment(int);
+    <br>
+    int getHorizontalAlignment()
+    </code></font>
+</td>
+<td>Set or get how the text is aligned horizontally within its area.
+    You can use <code>JTextField.LEFT</code>,
+    <code>JTextField.CENTER</code>,
+    and <code>JTextField.RIGHT</code> for arguments.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setEchoChar(char)
+    <br>
+    char getEchoChar()
+    </code></font>
+    <br>
+    <em>(in <code>JPasswordField</code>)</em>
+</td>
+<td>Set or get the echo character -- the character displayed
+    instead of the actual characters typed by the user.
+
+</td>
+</tr>
+</table>
+
+<p>
+
+<table border=1>
+<caption><a name="function">Implementing the Field's Functionality</a></caption>
+<tr>
+<th>Method or Constructor
+</th>
+<th>Purpose
+ 
+</th>
+</tr>
+<tr>
+<td><font size=2><code>void addActionListener(ActionListener)
+    <br>
+    void removeActionListener(ActionListener)
+    </code></font>
+</td>
+<td>Add or remove an action listener.
+ 
+</td>
+</tr>
+<tr>
+<td><font size=2><code>Document createDefaultModel()
+    </code></font>
+</td>
+<td>Override this method to provide a subclass with a custom document.
+
+</td>
+</tr>
+</table>
+</blockquote>
+
+<h3>
+<a name="eg">Examples that Use Text Fields and Password Fields</a>
+</h3>
+<blockquote>
+This table shows the examples that use <code>JTextField</code>
+or <code>JPasswordField</code>
+and where those examples are described.
+<p>
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#TextDemo"><code>TextDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> An applet that uses a basic text field with an action listener.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#TextFieldDemo"><code>TextFieldDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> Uses and provides implementations for
+     two different types of change-validated fields.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#PasswordDemo"><code>PasswordDemo</code></a> 
+</td>
+<td> This section
+</td>
+<td> Uses an action-validated password field.
+
+</td>
+</tr>
+<tr>
+<td> 
+<a target="source" href="../../together/bingo/example-swing/bingo/player/ControlPane.java"><font color="#bb000f"><code>ControlPane</code></font></a><a href="../../together/bingo/example-swing/bingo/player/ControlPane.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>, 
+     
+<a target="source" href="../../together/bingo/example-swing/bingo/shared/Utilities.java"><font color="#bb000f"><code>Utilities</code></font></a><a href="../../together/bingo/example-swing/bingo/shared/Utilities.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+</td>
+<td> 
+<a target="_top" href="../../together/bingo/letsplay.html">Let's Play!</a><a target="_top" href="../../together/bingo/letsplay.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Uses a grid bag layout to align labels with text fields.
+     See the <code>addParameterRow</code> method
+     in
+<a target="source" href="../../together/bingo/example-swing/bingo/shared/Utilities.java"><font color="#bb000f"><code>Utilities</code></font></a><a href="../../together/bingo/example-swing/bingo/shared/Utilities.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+     Part of the BINGO player application.
+
+</td>
+</tr>
+<tr>
+<td> 
+<a target="source" href="example-swing/CustomDialog.java"><font color="#bb000f"><code>CustomDialog.java</code></font></a><a href="example-swing/CustomDialog.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+</td>
+<td> <a href="dialog.html">How to Make Dialogs</a>
+</td>
+<td> Includes a text field whose value is checked.
+     Part of <a href="example-swing/index.html#DialogDemo"><code>DialogDemo</code></a>
+     (under the More Dialogs tab).
+
+</td>
+</tr>
+</table>
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="generaltext.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="editorpane.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

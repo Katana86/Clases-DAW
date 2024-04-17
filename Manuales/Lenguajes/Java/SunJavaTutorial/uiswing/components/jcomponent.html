@@ -1,0 +1,1022 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>The JComponent Class</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="components.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="toplevel.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Swing Components
+</font>
+
+<h2>
+The JComponent Class
+</h2>
+<blockquote>
+With the exception of top-level containers,
+all Swing components whose names begin with "J"
+descend from the
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JComponent.html"><font color="#8800bb"><code>JComponent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JComponent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> class.
+For example, 
+<code>JPanel</code>,
+<code>JScrollPane</code>,
+<code>JButton</code>, and
+<code>JTable</code>
+all inherit from <code>JComponent</code>.
+However, <code>JFrame</code> doesn't
+because it implements a top-level container.
+
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+A few Swing components 
+aren't top-level containers
+and yet 
+don't inherit from <code>JComponent</code>.
+The one you're most likely to need is the 
+<code>Box.Filler</code> class,
+which is a non-painting component
+designed for use with
+<a target="_top" href="../layout/box.html"><code>BoxLayout</code></a><a target="_top" href="../layout/box.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+The <code>Box.Filler</code> class
+doesn't inherit from <code>JComponent</code>
+because it is so specialized that
+it needs no <code>JComponent</code> features,
+and because it is instantiated so often
+that it should be as small and fast as possible.
+<hr></blockquote>
+
+<p>
+
+The <code>JComponent</code> class
+extends the
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Container.html"><font color="#8800bb"><code>Container</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Container.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> class,
+which itself extends
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Component.html"><font color="#8800bb"><code>Component</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Component.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+The <code>Component</code> class includes everything from
+providing layout hints 
+to supporting painting and events.
+The <code>Container</code> class has support 
+for adding components to the container and
+laying them out.
+This section's 
+<a href="#api">API tables</a> summarize the most often used
+methods of <code>Component</code> and <code>Container</code>.
+Information about how to use the methods
+is scattered throughout this trail.
+
+<a name="jcomponent">
+</blockquote>
+<h3>
+JComponent Features
+</h3>
+</a>
+<blockquote>
+
+The <code>JComponent</code> class provides
+the following functionality to its descendants:
+
+<ul>
+<li> <a href="#tooltips">Tool tips</a>
+<li> <a href="#borders">Borders</a>
+<li> <a href="#keyboardAction">Keyboard-generated actions</a>
+<li> <a href="#plug">Application-wide pluggable look and feel</a>
+<li> <a href="#properties">Properties</a>
+<li> <a href="#layout">Support for layout</a>
+<li> <a href="#access">Support for accessibility</a>
+<li> <a href="#buffer">Double buffering</a>
+<li> <a href="#quick">Methods to increase efficiency</a>
+</ul>
+
+<dl>
+<dt> <a name="tooltips"><strong>Tool tips</strong></a>
+<dd> By specifying a string
+     with the <code>setToolTipText</code> method,
+     you can provide help to users of a component.
+     When the cursor pauses over the component,
+     the specified string is displayed in a small window
+     that appears near the component.
+     See <a href="tooltip.html">How to Use Tool Tips</a>
+     for more information.
+<p>
+<dt> <a name="borders"><strong>Borders</strong></a>
+<dd> The <code>setBorder</code> method allows you
+     to specify the border 
+     that a component displays around its edges.
+    See
+<a target="_top" href="../misc/border.html">How to Use Borders</a><a target="_top" href="../misc/border.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>    for details.
+<p>
+<dt> <a name="keyboardAction"><strong>Keyboard-generated actions</strong></a>
+<dd> Using the <code>registerKeyboardAction</code> method, 
+     you can enable the user
+     to use the keyboard, instead of the mouse,
+     to operate the GUI.
+
+     
+<blockquote><hr><strong>Note:</strong>&nbsp;
+     Some classes provide convenience methods for keyboard actions.
+     For example, <code>AbstractButton</code> provides 
+     <code>setMnemonic</code>,
+     which lets you specify the key that,
+     in combination with a look-and-feel-specific modifier key,
+     causes the button's action to be performed.
+     See <a href="button.html">How to Use Buttons, Check Boxes, and Radio Buttons</a>
+     for an example of using mnemonics in buttons.
+     <hr></blockquote>
+
+     The combination of character and modifier keys
+     that the user must press to start an action
+     is represented by a
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/KeyStroke.html"><font color="#8800bb"><code>KeyStroke</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/KeyStroke.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>     object.
+     The resulting action event
+     must be handled by an
+<a target="_top" href="../events/actionlistener.html">action listener</a><a target="_top" href="../events/actionlistener.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+     Each keyboard action works under exactly one of three
+     conditions:
+     only when the actual component has the focus,
+     only when the component or one of its containers has the focus,
+     or any time that anything in the component's window has the focus.
+<p>
+<dt> <a name="plug"><strong>Application-wide pluggable look and feel</strong></a>
+<dd> Behind the scenes, each <code>JComponent</code> object
+     has a corresponding <code>ComponentUI</code> object
+     that performs all the drawing, event handling, size determination,
+     and so on for that <code>JComponent</code>.
+     Exactly which <code>ComponentUI</code> object is used
+     depends on the current look and feel,
+     which you can set using the <code>UIManager.setLookAndFeel</code>
+     method.  See
+<a target="_top" href="../misc/plaf.html">How to Set the Look and Feel</a><a target="_top" href="../misc/plaf.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>     for details.
+<p>
+<dt> <a name="properties"><strong>Properties</strong></a>
+<dd> You can associate one or more properties
+     (name/object pairs)
+     with any <code>JComponent</code>.
+     For example, 
+     a layout manager might use properties
+     to associate a constraints object
+     with each <code>JComponent</code> it manages.
+     You put and get properties using the 
+     <code>putClientProperty</code> and
+     <code>getClientProperty</code> methods.
+     For general information about properties, see
+<a target="_top" href="../../essential/attributes/properties.html">Using Properties to Manage Program Attributes</a><a target="_top" href="../../essential/attributes/properties.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+     <p>
+<dt> <a name="layout"><strong>Support for layout</strong></a>
+<dd> Although the <code>Component</code> class
+     provides layout hint methods such as 
+     <code>getPreferredSize</code> and <code>getAlignmentX</code>,
+     it doesn't provide any way to set these layout hints,
+     short of creating a subclass and overriding the methods.
+     To give you another way to set layout hints,
+     the <code>JComponent</code> class adds 
+     setter methods --
+     <code>setPreferredSize</code>,
+     <code>setMinimumSize</code>, 
+     <code>setMaximumSize</code>,
+     <code>setAlignmentX</code>, and
+     <code>setAlignmentY</code>.
+     See 
+<a target="_top" href="../overview/layout.html">Layout Management</a><a target="_top" href="../overview/layout.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>     for more information.
+
+<p>
+<dt> <a name="access"><strong>Support for accessibility</strong></a>
+<dd> The <code>JComponent</code> class provides
+     API and basic functionality 
+     to help assistive technologies 
+     such as screen readers
+     get information from Swing components,
+     For more information about accessibility, see 
+<a target="_top" href="../misc/access.html">How to Support Assistive Technologies</a><a target="_top" href="../misc/access.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+<p>
+<dt> <a name="buffer"><strong>Double buffering</strong></a>
+<dd> Double buffering smooths on-screen painting.
+     For details, see
+<a target="_top" href="../overview/draw.html">Painting</a><a target="_top" href="../overview/draw.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+<p>
+<dt> <a name="quick"><strong>Methods to increase efficiency</strong></a>
+<dd> <code>JComponent</code> has a few methods that provide
+     more efficient ways to get information
+     than the JDK 1.1 API allowed.
+     The methods include
+     <code>getX</code> and
+     <code>getY</code>,
+     which you can use instead of <code>getLocation</code>;
+     and <code>getWidth</code> and
+     <code>getHeight</code>,
+     which you can use instead of <code>getSize</code>.
+     It also adds one-argument forms of
+     <code>getBounds</code>,
+     <code>getLocation</code>, and
+     <code>getSize</code>
+     for which you specify the object to be modified and returned,
+     letting you avoid unnecessary object creation.
+     These methods have been added to <code>Component</code>
+     for Java 2 (JDK 1.2).
+</dl>
+
+
+
+
+</blockquote>
+<a name="api">
+<h3>
+The JComponent API
+</h3>
+</a>
+<blockquote>
+The <code>JComponent</code> class provides many new methods
+and inherits many methods
+from <code>Component</code> and <code>Container</code>.
+The following tables summarize the methods
+we use the most.
+The table is for reference only.
+Wherever possible, we provide links 
+to where the API is discussed in more detail.
+
+<UL>
+  <LI><A HREF="#complookapi">Customizing Component Appearance</A>
+  <LI><A HREF="#stateapi">Setting Component State</A>
+  <LI><A HREF="#eventapi">Handling Events</A>
+  <LI><A HREF="#custompaintingapi">Painting Components</A>
+  <LI><A HREF="#containmentapi">Dealing with the Containment Hierarchy</A>
+  <LI><A HREF="#layoutapi">Laying Out Components</A>
+  <LI><A HREF="#sizeapi">Getting Size and Position Information</A>
+  <LI><A HREF="#absoluteapi">Specifying Absolute Size and Position</A>
+</UL>
+
+<p>
+
+<TABLE BORDER="1">
+<caption><A NAME="complookapi">
+<b>Customizing Component Appearance</b>
+</A></caption>
+<TR> <th> Method </th><th> Purpose</th>
+  <TR>
+    <TD>
+    <code><font size="2">void setBorder(Border)
+    <br>
+    Border getBorder()
+    </font></code>
+    <br><em>(in <code>JComponent</code>)</em></TD>
+    <TD>
+    Set or get the border of the component.
+    See
+<a target="_top" href="../misc/border.html">How to Use Borders</a><a target="_top" href="../misc/border.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>    for details.
+</TD>
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void setForeground(Color)
+    <br>
+    Color getForeground()
+    <br>
+    void setBackground(Color)
+    <br>
+    Color getBackground()</font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em> </TD> 
+    <TD>
+    Set or get the foreground or background color for the component.
+    The foreground is generally the color used
+    to draw the text in a component.
+    The background is (not surprisingly)
+    the color of the background
+    areas of the component,
+    assuming that the component is opaque.
+    </TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">
+    void setOpaque(boolean)
+    </font></code>
+    <br><em>(in <code>JComponent</code>)</em></TD>
+    <TD>
+    Set whether the component is opaque.
+    An opaque component fills its background with its background color.</TD>
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">boolean isOpaque
+    </font></code>
+    <br><em>(in <code>JComponent</code>)</em></TD>
+    <TD>
+    Get whether the component is opaque.
+    This method (but not <code>setOpaque</code>) 
+    was added to <code>Component</code> in 1.2.
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void setFont(Font)
+    <br>
+    Font getFont()
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Set or get the component's font.
+    If a font has not been set for the component,
+    the font of its parent is returned.</TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">FontMetrics getFontMetrics(Font)
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Get the font metrics for the specified font.</TD> 
+  </TR>
+  </TR>
+</TABLE>
+
+<p>
+
+<TABLE BORDER="1">
+<caption><A NAME="stateapi">
+<b>Setting Component State</b>
+</A></caption>
+<TR> <th> Method </th> <th> Purpose</th> 
+  <TR>
+    <TD>
+    <code><font size="2">void setToolTipText(String)
+    </font></code>
+    <br><em>(in <code>JComponent</code>)</em></TD>
+    <TD>
+    Set the text to display in a tool tip.
+    See <a href="tooltip.html">How to Use Tool Tips</a>
+    for more information.</TD>
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2"> void setEnabled(boolean b)
+    <br>
+    boolean isEnabled()
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Set or get whether the component is enabled.
+    An enabled component can respond
+    to user input and generate events.</TD>
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void setLocale(Locale l)
+    <br>
+    Locale getLocale()
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Set or get the component's locale.
+    If the component does not have a locale,
+    the locale of its parent is returned.
+    See 
+<a target="_top" href="../../i18n/index.html">Internationalization</a><a target="_top" href="../../i18n/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>    for information about locales.
+    </TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void setCursor(Cursor)
+    <br>
+    Cursor getCursor()
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Set or get the cursor image to display
+    when the mouse is over the component.</TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">
+    void setVisible(boolean)
+    <br>
+    boolean isVisible()
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Set or get whether the component is visible.
+    Components are initially visible,
+    with the exception of top-level components.
+  </TR>
+</TABLE>
+
+<p>
+
+<TABLE BORDER="1">
+<caption><A NAME="eventapi">
+<b>Handling Events</b>
+<br>
+(see
+<a target="_top" href="../overview/event.html">Event Handling</a><a target="_top" href="../overview/event.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for details)
+</A></caption>
+<TR> <th> Method </th> <th> Purpose</th> 
+  <TR>
+    <TD>
+    <code><font size="2">
+    void addComponentListener(ComponentListener)
+    <br>
+    void removeComponentListener(ComponentListener)
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Add or remove a
+<a target="_top" href="../events/componentlistener.html">component listener</a><a target="_top" href="../events/componentlistener.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>    to or from the component.
+    Component listeners are notified
+    when the listened-to component is hidden, shown, moved, or resized.</TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void addKeyListener(KeyListener)
+    <br>
+    void removeKeyListener(KeyListener l)
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Add or remove a
+<a target="_top" href="../events/keylistener.html">key listener</a><a target="_top" href="../events/keylistener.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>    to or from the component.
+    Key listeners are notified
+    when the user types at the keyboard
+    and the listened-to component has the keyboard focus.</TD>
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">addMouseListener(MouseListener l)
+    <br>
+    void removeMouseListener(MouseListener)
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Add or remove a 
+<a target="_top" href="../events/mouselistener.html ">mouse listener</a><a target="_top" href="../events/mouselistener.html "><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>    to or from the component. 
+    Mouse listeners are notified 
+    when the user uses the mouse to interact with
+    the listened-to component.</TD>
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void addMouseMotionListener(MouseMotionListener)
+    <br>
+    void removeMouseMotionListener(MouseMotionListener)
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Add or remove a  
+<a target="_top" href="../events/mousemotionlistener.html  ">mouse motion listener</a><a target="_top" href="../events/mousemotionlistener.html  "><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>    to or from the component.  
+    Mouse motion listeners are notified  
+    when the user moves the mouse within
+    the listened-to component's bounds.</TD>
+
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void addContainerListener(ContainerListener)
+    <br>
+    void removeContainerListener(ContainerListener)
+    </font></code>
+    <br><em>(in <code>java.awt.Container</code>)</em></TD>
+    <TD>
+    Add or remove a
+<a target="_top" href="../events/containerlistener.html">container listener</a><a target="_top" href="../events/containerlistener.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>    to or from the container.
+    Container listeners are notified
+    when a component is added to or removed from
+    the listened-to container.</TD>
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void addFocusListener(FocusListener)
+    <br>
+    void removeFocusListener(FocusListener)
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Add or remove a
+<a target="_top" href="../events/focuslistener.html">focus listener</a><a target="_top" href="../events/focuslistener.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>    to or from the component.
+    Focus listeners are notified
+    when the listened-to component gains or loses keyboard focus.</TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">Component getNextFocusableComponent()
+    <br>
+    void setNextFocusableComponent(Component)
+    </font></code>
+    <br><em>(in <code>JComponent</code>)</em></TD>
+    <TD>
+    Set or get the next focusable component.
+    <code>null</code> indicates that the focus manager
+    should choose the next focusable component automatically.</TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void requestFocus()
+    <br>
+    boolean hasFocus()
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Request that the component get the keyboard focus,
+    or detect whether it has the focus.
+    </TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">boolean contains(int, int)
+    <br>
+    boolean contains(Point p)
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Determine whether the specified point is within the component.
+    The argument should be specified
+    in terms of the component's coordinate system.
+    The two <code>int</code> arguments specify x and y coordinates,
+    respectively.</TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">Component getComponentAt(int, int)
+    </font></code>
+    <br><em>(in <code>java.awt.Container</code>)</em></TD>
+    <TD>
+    Return the component that contains the specified x, y position.
+    The top-most child component is returned
+    in the case where components overlap.
+    This is determined by finding the component closest to the index 0
+    that claims to contain the given point via
+    <code>Component.contains()</code>.</TD>
+  </TR>
+</TABLE>
+
+<p>
+
+<TABLE BORDER="1">
+<caption><A NAME="custompaintingapi">
+<b>Painting Components</b>
+<br>
+(see
+<a target="_top" href="../overview/draw.html">Painting</a><a target="_top" href="../overview/draw.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for details)
+</A></caption>
+<TR> <th> Method </th> <th> Purpose</th> 
+  <TR>
+    <TD>
+    <code><font size="2">void repaint()
+    <br>
+    void repaint(int, int, int, int)
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Request that all or part of the component be repainted.
+    The four <code>int</code> arguments specify
+    the bounds (x, y, width, height, in that order)
+    of the rectangle to be painted.
+    </TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void repaint(Rectangle)
+    </font></code>
+    <br><em>(in <code>JComponent</code>)</em></TD>
+    <TD>
+    Request that the specified area within the component be repainted.
+    </TD>
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void revalidate()
+    </font></code>
+    <br><em>(in <code>JComponent</code>)</em></TD>
+    <TD>
+    Request that the component and its affected containers
+    be laid out again.
+    You shouldn't generally need to invoke this method
+    unless you explicitly change a component's size/alignment hints
+    after it's visible,
+    change a containment hierarchy after it's visible,
+    or perhaps change the data in a component's model directly
+    (without going through the component's API).
+    You might need to invoke <code>repaint</code>
+    after <code>revalidate</code>.
+    </TD> 
+  <TR>
+    <TD>
+    <code><font size="2">void paintComponent(Graphics)</font></code>
+    <br><em>(in <code>JComponent</code>)</em></TD>
+    <TD>
+    Paint the component.
+    Override this method to implement painting
+    for custom components.</TD> 
+  </TR>
+</TABLE>
+
+<P>
+<TABLE BORDER="1">
+<caption><A NAME="containmentapi">
+<b>Dealing with the Containment Hierarchy</b>
+<br>
+      (see 
+<a target="_top" href="../overview/hierarchy.html">Swing Components and the Containment Hierarchy</a><a target="_top" href="../overview/hierarchy.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for more information)
+</A></caption>
+<TR> <th> Method </th> <th> Purpose</th> 
+  <TR>
+    <TD>
+    <code><font size="2">Component add(Component)
+    <br>
+    Component add(Component, int)
+    <br>
+    void add(Component, Object)
+    </font></code>
+    <br><em>(in <code>java.awt.Container</code>)</em></TD>
+    <TD>
+    Add the specified component to the container.
+    The one-argument version of this method adds
+    the component to the end of the container.
+    When present, the <code>int</code> argument indicates the
+    new component's position within the container.
+    When present, the <code>Object</code> argument
+    provides layout constraints to the current layout manager.</TD>
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void remove(int)
+    <br>
+    void remove(Component comp)
+    <br>
+    void removeAll()
+    </font></code>
+    <br><em>(in <code>java.awt.Container</code>)</em></TD>
+    <TD>
+    Remove one of or all of the components from the container.
+    When present, the <code>int</code> argument indicates the
+    position within the container of the component to remove.
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">JRootPane getRootPane()
+    </font></code>
+    <br><em>(in <code>JComponent</code>)</em></TD>
+    <TD>
+    Get the root pane ancestor for the component.</TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">Container getParent()
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></TD>
+    <TD>
+    Get the component's parent.</TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">int getComponentCount()
+    </font></code>
+    <br><em>(in <code>java.awt.Container</code>)</em></TD>
+    <TD>
+    Get the number of components in the container.</TD>
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">Component getComponent(int)
+    <br>
+    Component[] getComponents()
+    </font></code>
+    <br><em>(in <code>java.awt.Container</code>)</em></TD>
+    <TD>
+    Get the one of or all of the components in the container.
+    The <code>int</code> argument indicates
+    the position of the component to get.
+    </TD>
+  </TR>
+</TABLE>
+
+<p>
+
+<TABLE BORDER="1">
+<caption><a NAME="layoutapi">
+<b>Laying Out Components</b>
+<br>
+      (see 
+<a target="_top" href="../layout/index.html">Laying Out Components Within a Container</a><a target="_top" href="../layout/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for more information)
+</a></caption>
+
+<TR> <th> Method </th> <th> Purpose</th> 
+<TR>
+    <TD>
+    <font size="2"><code>void setPreferredSize(Dimension)
+    <br>
+    void setMaximumSize(Dimension)
+    <br>
+    void setMinimumSize(Dimension)
+    </code></font>
+    <br><em>(in <code>JComponent</code>)</em>
+    </TD>
+    <TD>
+    Set the component's preferred, maximum, or minimum size,
+    measured in pixels.
+    The preferred size indicates the best size for the component.
+    The component should be no larger than its maximum size
+    and no smaller than its minimum size.
+    Be aware that these are hints only
+    and might be ignored by certain layout managers.
+    </TD> 
+  </TR>
+  <TR>
+    <TD>
+    <font size="2"><code>Dimension getPreferredSize()
+    <br>
+    Dimension getMaximumSize()
+    <br>
+    Dimension getMinimumSize()
+    </code></font>
+    <br><em>(in <code>java.awt.Component</code>)</em>
+    </TD> 
+    <TD>
+    Get the preferred, maximum, or minimum size of the component,
+    measured in pixels.
+    For non-<code>JComponent</code> subclasses,
+    which don't have the corresponding setter methods,
+    you can set a component's preferred, maximum, or minimum size
+    by creating a subclass and overriding these methods.
+    </TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">void setAlignmentX(float)
+    <br>
+    void setAlignmentY(float)
+    </code></font>
+    <br><em>(in <code>JComponent</code>)</em>
+    </TD> 
+    <TD>
+    Set the alignment along the x or y axis.
+    These values indicate how the component would like to be aligned
+    relative to other components.
+    The value should be a number between 0 and 1 where 0 represents
+    alignment along the origin, 1 is aligned the furthest away from
+    the origin, and 0.5 is centered, and so on.
+    Be aware that these are hints only
+    and might be ignored by certain layout managers.
+    </TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">float getAlignmentX()
+    <br>
+    float getAlignmentY()
+    </code></font>
+    <br><em>(in <code>java.awt.Component</code>)</em>
+    </TD>
+    <TD>
+    Get the preferred, maximum, or minimum size of the component.
+    For non-Swing components, which don't have the corresponding setter methods,
+    you can set a component's preferred, maximum, or minimum size
+    by creating a subclass and overriding these methods.
+    </TD>
+  </TR>
+  <TR>
+    <TD>
+    <font size="2"><code>void setLayout(LayoutManager)
+    <br>
+    LayoutManager getLayout()
+    </code></font>
+    <br><em>(in <code>java.awt.Container</code>)</em>
+    </TD> 
+    <TD>
+    Set or get the component's layout manager.
+    The layout manager is responsible for sizing and positioning
+    the components within a container.
+    </TD>
+  </TR>
+</TABLE>
+
+<p>
+
+<TABLE BORDER="1">
+<caption><A NAME="sizeapi">
+<b>Getting Size and Position Information</b>
+<br>
+</A></caption>
+<TR> <th> Method </th> <th> Purpose</th> 
+  <TR>
+    <TD>
+    <code><font size="2">int getWidth()
+    <br>
+    int getHeight()
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em>
+    </TD> 
+    <TD>
+    Get the current width or height of the component
+    measured in pixels.</TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">Dimension getSize()
+    <br>
+    Dimension getSize(Dimension)
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em>
+    </TD> 
+    <TD>
+    Get the component's current size measured in pixels.
+    When using the one-argument version of this method,
+    the caller is responsible for creating the <code>Dimension</code>
+    instance in which the result is returned.
+    </TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">int getX()
+    <br>
+    int getY()
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em>
+    </TD> 
+    <TD>
+    Get the current x or y coordinate of the component's origin
+    relative to the parent's upper left corner
+    measured in pixels.
+    </TD> 
+  </TR>
+  <TR>
+    <TD>
+    <code><font size="2">Rectangle getBounds()
+    <br>
+    Rectangle getBounds(Rectangle)
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em>
+    </TD> 
+    <TD>
+    Get the bounds of the component measured in pixels.
+    The bounds specify the component's width, height,
+    and origin relative to its parent.
+    When using the one-argument version of this method,
+    the caller is responsible for creating the <code>Rectangle</code>
+    instance in which the result is returned.</TD> 
+  </TR>
+
+  <TR>
+    <TD>
+    <code><font size="2">Point getLocation()
+    <br>
+    Point getLocation(Point)
+    <br>
+    Point getLocationOnScreen()
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em></td>
+    <TD>
+    Gets the current location of the component
+    relative to the parent's upper left corner
+    measured in pixels.
+    When using the one-argument version of <code>getLocation</code> method,
+    the caller is responsible for creating the <code>Point</code>
+    instance in which the result is returned.
+    The <code>getLocationOnScreen</code> method returns the position
+    relative to the upper left corner of the screen.</TD>
+  <TR>
+    <TD>
+    <code><font size="2">Insets getInsets()
+    </font></code>
+    <br><em>(in <code>java.awt.Container</code>)</em></TD>
+    <TD>
+    Get the insets of the component.</TD>
+  </TR>
+
+</TABLE>
+
+<p>
+
+<TABLE BORDER="1">
+<caption><A NAME="absoluteapi">
+<b>Specifying Absolute Size and Position</b>
+<br>
+      (see 
+<a target="_top" href="../layout/none.html">Doing Without a Layout Manager (Absolute Positioning)</a><a target="_top" href="../layout/none.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> for more information)
+</A></caption>
+<TR> <th> Method </th> <th> Purpose</th> 
+  <TR>
+    <TD>
+    <code><font size="2">void setLocation(int, int)
+    <br>
+    void setLocation(Point)
+    </font></code>
+    <br><em>(in <code>java.awt.Component</code>)</em>
+    </TD>
+    <TD> 
+    Set the location of the component, in pixels,
+    relative to the parent's upper left corner.
+    The two <code>int</code> arguments specify x and y,
+    in that order.
+    Use these methods to position a component
+    when you aren't using layout manager.</TD>
+  </TR>
+  <TR> 
+    <TD> 
+    <code><font size="2">void setSize(int, int)
+    <br>
+    void setSize(Dimension)
+    </font></code> 
+    <br><em>(in <code>java.awt.Component</code>)</em> 
+    </TD>
+    <TD>  
+    Set the size of the component measured in pixels.   
+    The two <code>int</code> arguments specify width and height,
+    in that order.
+    Use these methods to size a component
+    when you aren't using layout manager.</TD>
+  </TR> 
+  <TR> 
+    <TD> 
+    <code><font size="2">void setBounds(int, int, int, int)
+    <br>
+    void setBounds(Rectangle)
+    </font></code> 
+    <br><em>(in <code>java.awt.Component</code>)</em> 
+    </TD>
+    <TD>  
+    Set the size and location
+    relative to the parent's upper left corner,
+    in pixels,
+    of the component.
+    The four <code>int</code> arguments specify x, y, width, and height,
+    in that order.
+    Use these methods to position and size a component
+    when you aren't using layout manager.</TD>
+  </TR> 
+</TABLE>
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="components.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="toplevel.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

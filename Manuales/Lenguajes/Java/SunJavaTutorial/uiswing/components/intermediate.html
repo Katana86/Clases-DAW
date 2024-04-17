@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Using Intermediate Swing Containers</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="applet.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="panel.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Swing Components
+</font>
+
+<h2>
+Using Intermediate Swing Containers
+</h2>
+<blockquote>
+This section describes intermediate containers --
+Swing components that, 
+while not <a href="toplevel.html">top-level containers</a>,
+exist solely to contain
+other components.
+Technically, menu bars are intermediate containers,
+but we discuss them elsewhere,
+in the <a href="menu.html">How to Use Menus</a> section.
+To use intermediate containers,
+you should understand the concepts presented in
+<a target="_top" href="../overview/hierarchy.html">Swing Components and the Containment Hierarchy</a><a target="_top" href="../overview/hierarchy.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+You can see all the intermediate containers in the
+<a href="components.html">Visual Index to Swing Components</a>.
+
+<p>
+
+Swing provides several
+general-purpose intermediate containers:
+
+<table cellpadding=5 border=0>
+<tr>
+<td valign=top> <a href="panel.html">Panel</a>
+</td>
+<td> 
+The most flexible, frequently used intermediate container.
+Implemented with the <code>JPanel</code> class,
+panels add almost no functionality 
+beyond what all <code>JComponent</code> objects have.
+They are often used to group components,
+whether because the components are related
+or just because grouping them makes layout easier.
+A panel can use any layout manager,
+and you can easily give it a border.
+The content panes of top-level containers 
+are often implemented as <code>JPanel</code> instances.
+
+</td>
+</tr>
+<tr>
+<td valign=top> <a href="scrollpane.html">Scroll Pane</a>
+</td>
+<td> Provides scroll bars around a large or growable component.
+
+</td>
+</tr>
+<tr>
+<td valign=top> <a href="splitpane.html">Split Pane</a>
+</td>
+<td> Displays two components in a fixed amount of space,
+     letting the user adjust the amount of space
+     devoted to each component.
+
+</td>
+</tr>
+<tr>
+<td valign=top> <a href="tabbedpane.html">Tabbed Pane</a>
+</td>
+<td> Contains multiple components but shows only one at a time.
+     The user can easily switch between components.
+
+</td>
+</tr>
+<tr>
+<td valign=top> <a href="toolbar.html">Tool Bar</a>
+</td>
+<td> Holds a group of components (usually buttons)
+     in a row or column, optionally allowing the user
+     to drag the tool bar into different locations.
+
+</td>
+</tr>
+</table>
+
+<p>
+
+The rest of the Swing intermediate containers
+are more specialized:
+
+<p>
+
+<table cellpadding=5 border=0>
+<tr>
+<td valign=top> <a href="internalframe.html">Internal Frame</a>
+</td>
+<td> Looks like a frame and has much the same API,
+     but must appear within another window.
+
+</td>
+</tr>
+<tr>
+<td valign=top> <a href="layeredpane.html">Layered Pane</a>
+</td>
+<td> Provides a third dimension, depth, for positioning components.
+     You specify the position and size of each component.
+     One type of layered pane, a desktop pane,
+     is designed primarily to contain and manage
+     internal frames.
+
+</td>
+</tr>
+<tr>
+<td valign=top> <a href="rootpane.html">Root Pane</a>
+</td>
+<td> Provides behind-the-scenes support to
+     top-level containers.
+</td>
+</tr>
+</table>
+
+<p>
+
+
+<p>
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="applet.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="panel.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

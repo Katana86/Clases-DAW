@@ -1,0 +1,228 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Using Text Components</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="table.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="simpletext.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Swing Components
+</font>
+
+<h2>
+Using Text Components
+</h2>
+<blockquote>
+Swing's text components display text and
+optionally allow the user to edit the text.
+Programs need text components for tasks
+ranging from the straightforward
+(enter a word and press Return)
+to the complex
+(display and edit styled text with
+embedded images in an Asian language).
+<p>
+Swing provides five text components,
+along with supporting classes and interfaces,
+that meet even the most complex text requirements.
+In spite of their different uses and capabilities,
+all of Swing's text components inherit from
+the same superclass,
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/text/JTextComponent.html"><font color="#8800bb"><code>JTextComponent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/text/JTextComponent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, which provides a highly-configurable
+and powerful foundation for text manipulation.
+
+<p>
+The following figure shows the <code>JTextComponent</code> hierarchy
+and places each text component class into one of three groups:
+
+<p><center><IMG SRC="../../figures/uiswing/components/10jtextcomp.gif" WIDTH="495" HEIGHT="161" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Swing's hierarchy of text components"></center></p>
+The following paragraphs describe the three
+groups of text components.
+
+<p>
+<table cellpadding=5 border=1 width=80%>
+<tr>
+<th> Group
+</th>
+<th> Description
+</th>
+<th> Swing Classes
+
+</th>
+</tr>
+<tr>
+<th> Text Controls
+</th>
+<td>
+Also known simply as text fields,
+text controls
+can display and edit only one line of text
+and are action-based, like buttons.
+Use them to get a small amount
+of textual information from the user
+and take some action after the text entry is complete.
+</td>
+<td>
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JTextField.html"><font color="#8800bb"><code>JTextField</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JTextField.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a><br>
+ and its subclass
+<br>
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JPasswordField.html"><font color="#8800bb"><code>JPasswordField</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JPasswordField.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>
+</td>
+</tr>
+<tr>
+<th> Plain Text Areas
+</th>
+<td>
+<code>JTextArea</code>
+can display and edit multiple lines of text.
+Although a text area can display text in any font,
+all of the text is in the same font.
+Use a text area to allow the user to enter
+unformatted text of any length
+or to display unformatted help information.
+</td>
+<td>
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JTextArea.html"><font color="#8800bb"><code>JTextArea</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JTextArea.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>
+</td>
+</tr>
+<tr>
+<th> Styled Text Areas
+</th>
+<td>
+A styled text component
+can display and edit text using more than one font.
+Some styled text components allow embedded images
+and even embedded components.
+Styled text components are powerful and multi-faceted
+components suitable for high-end needs,
+and offer more avenues for customization than
+the other text components.
+Because they are so powerful and flexible,
+styled text components typically require
+more up-front programming to set up and use.
+The one exception is that
+editor panes can be easily loaded with
+formatted text from a URL, which makes them useful
+for displaying uneditable help information.
+</td>
+<td>
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JEditorPane.html"><font color="#8800bb"><code>JEditorPane</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JEditorPane.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a><br>
+ and its subclass
+<br>
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JTextPane.html"><font color="#8800bb"><code>JTextPane</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JTextPane.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a></td>
+</tr>
+</table>
+
+<p>
+The next section,
+<a href="simpletext.html">An Example of Using Each Text Component</a>,
+shows an application that creates one of each of
+the Swing text components.
+By studying this example
+you can learn the basics of creating and including
+each text component in a program,
+what each component can and cannot do,
+and how the components differ.
+
+<p>
+
+The following sections discuss different aspects of text components:
+
+<ul>
+<li> <a href="simpletext.html">An Example of Using Each Text Component</a>
+<li> <a href="generaltext.html">General Rules for Using Text Components</a>
+     <br>
+     (This section is a prerequisite for the following two.)
+<li> <a href="textfield.html">How to Use Text Fields</a>
+<li> <a href="editorpane.html">Concepts: About Editor Panes and Text Panes</a>
+<li> <a href="textapi.html">Summary of Text</a>
+</ul>
+
+In this tutorial, we give you information
+about the foundation laid by <code>JTextComponent</code>
+and tell you how to accomplish
+some common text-related tasks.
+Because <code>JTextComponent</code> and its subclasses
+have too many features
+to be completely described in this tutorial,
+please periodically search
+<a href="http://java.sun.com/products/jfc/tsc/index.html">The Swing
+Connection</a> for pointers to more information.
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="table.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="simpletext.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,459 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Use Panels</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="intermediate.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="scrollpane.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Swing Components
+</font>
+
+<h2>
+How to Use Panels
+</h2>
+<blockquote>
+The 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JPanel.html"><font color="#8800bb"><code>JPanel</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JPanel.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> class provides general-purpose containers for lightweight components.
+By default, panels don't paint anything except for their background;
+however, you can easily add borders to them
+and otherwise customize their painting.
+For information about using panels to perform custom painting, see
+<a target="_top" href="../painting/overview.html">Overview of Custom Painting</a><a target="_top" href="../painting/overview.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+
+By default, panels are opaque.
+This makes them work well as content panes,
+and can help painting efficiency,
+as described in
+<a target="_top" href="../overview/draw.html">Painting</a><a target="_top" href="../overview/draw.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+You can make a panel transparent
+by invoking <code>setOpaque(false)</code>.
+A transparent panel draws no background,
+so that any components underneath show through.
+
+<p>
+
+</blockquote>
+<h3>
+<a name="anexample">An Example</a>
+</h3>
+<blockquote>
+
+The Converter application
+described in 
+<a target="_top" href="../overview/anatomy.html">The Anatomy of a Swing-Based Program</a><a target="_top" href="../overview/anatomy.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a> uses panels in several ways:
+
+<ul>
+<li> One <code>JPanel</code> instance serves as a content pane
+     for the application's frame.
+     This content pane uses a two-row 
+<a target="_top" href="../layout/grid.html"><code>GridLayout</code></a><a target="_top" href="../layout/grid.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>     to lay out its contents,
+     and an empty border
+     to put 5 pixels of space around them.
+     See <a href="toplevel.html">Using Top-Level Containers</a>
+     for information about content panes.
+<li> Two instances of a <code>JPanel</code> subclass,
+     named <code>ConversionPanel</code>,
+     are used to both contain components
+     and coordinate communication between components.
+     The panels also have titled borders,
+     which describe their contents and paint a line around them.
+     The panels use left-to-right
+<a target="_top" href="../layout/box.html"><code>BoxLayout</code></a><a target="_top" href="../layout/box.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>     objects to lay out their contents.
+<li> Two instances of an unnamed <code>JPanel</code> subclass
+     are used to group components and restrict their size.
+     The panels use top-to-bottom
+<a target="_top" href="../layout/box.html"><code>BoxLayout</code></a><a target="_top" href="../layout/box.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>     objects to lay out their contents.
+</ul>
+
+The following picture
+is the same as a picture in
+<a target="_top" href="../overview/anatomy.html">The Anatomy of a Swing-Based Program</a><a target="_top" href="../overview/anatomy.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.  It shows a colorized version of Converter,
+in which each panel has a background color.
+
+<p><center><IMG SRC="../../figures/uiswing/components/ConverterCOLORS.gif" WIDTH="505" HEIGHT="180" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="Colorful Converter"></center></p>
+<p>
+
+As the figure shows, panels are useful for
+grouping components,
+simplifying component layout,
+and putting borders around groups of components.
+The rest of this section gives hints on
+grouping and laying out components.
+For information about using borders, see
+<a target="_top" href="../misc/border.html">How to Use Borders</a><a target="_top" href="../misc/border.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+
+</blockquote>
+<h3>
+<a name="layout">Setting the Layout Manager</a>
+</h3>
+<blockquote>
+
+Like other containers, a panel uses a layout manager
+ to position and size its components.
+By default, a panel's layout manager
+is an instance of 
+<a target="_top" href="../layout/flow.html"><code>FlowLayout</code></a><a target="_top" href="../layout/flow.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>,
+which places the panel's contents in a row.
+You can easily make a panel use any other layout manager
+by invoking the <code>setLayout</code> method
+or specifying a layout manager when creating the panel.
+Here is an example of the first approach:
+
+<blockquote><pre>
+JPanel aPanel = new JPanel();
+aPanel.setLayout(new BorderLayout());
+</pre></blockquote>
+
+Here is an example of setting the layout manager
+at instantiation:
+
+<blockquote><pre>
+JPanel aPanel = new JPanel(new BorderLayout());
+</pre></blockquote>
+<p>
+
+For more information about choosing and using layout managers, see
+<a target="_top" href="../layout/index.html">Laying Out Components Within a Container</a><a target="_top" href="../layout/index.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+
+</blockquote>
+<h3>
+<a name="add">Adding Components</a>
+</h3>
+<blockquote>
+When you add components to a panel, 
+you use the <code>add</code> method.
+Exactly which arguments you specify to the <code>add</code> method
+depend on which layout manager the panel uses.
+When the layout manager is <code>FlowLayout</code>, <code>BoxLayout</code>, 
+<code>GridLayout</code>,
+or <code>GridBagLayout</code>,
+you'll typically use the one-argument <code>add</code> method, like this:
+
+<blockquote><pre>
+aFlowPanel.add(aComponent);
+aFlowPanel.add(anotherComponent);
+</pre></blockquote>
+
+When the layout manager is <code>BorderLayout</code>,
+you need to provide a second argument
+specifying the added component's position within the panel.
+For example:
+<blockquote><pre>
+aBorderPanel.add(aComponent, BorderLayout.CENTER);
+aBorderPanel.add(anotherComponent, BorderLayout.SOUTH);
+</pre></blockquote>
+
+For information on the arguments to use with
+<code>BorderLayout</code>,
+see 
+<a target="_top" href="../misc/border.html">How to Use Borders</a><a target="_top" href="../misc/border.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+
+</blockquote>
+<h3>
+<a name="api">The Panel API</a>
+</h3>
+<blockquote>
+The API in the <code>JPanel</code> class itself is minimal.
+The methods you are most likely to invoke on
+a <code>JPanel</code> object are those it inherits from its superclasses --
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JComponent.html"><font color="#8800bb"><code>JComponent</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JComponent.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Container.html"><font color="#8800bb"><code>Container</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Container.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>, and
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Component.html"><font color="#8800bb"><code>Component</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/java/awt/Component.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>.
+The following tables list the API
+you're most likely to use,
+with the exception of methods
+related to borders and layout hints.
+For more information about the API all <code>JComponent</code>s
+can use, see
+<a href="jcomponent.html">The JComponent Class</a>.
+
+<p>
+
+
+<ul>
+<li><a href="#creating">Creating a <code>JPanel</code></a>
+<li><a href="#contents">Managing a Container's Components</a>
+<li><a href="#layout">Setting/Getting the Layout Manager</a>
+</ul>
+
+<table border=1>
+<caption><a name="creating">Creating a <code>JPanel</code></a></caption>
+<tr>
+<th align=left>Constructor
+</th>
+<th align=left>Purpose
+
+</th>
+</tr>
+<tr>
+<td><font size=2><code>JPanel()
+    <br>
+    JPanel(LayoutManager)</code></font>
+</td>
+<td>Create a panel.
+    The <code>LayoutManager</code> parameter provides a
+    layout manager for the new panel.
+    By default, a panel uses a <code>FlowLayout</code>
+    to lay out its components.
+</td>
+</tr>
+</table>
+
+<p>
+<table border=1> 
+<caption><a name="contents">Managing a Container's Components</a></caption>
+<tr>
+<th align=left>Method
+</th>
+<th align=left>Purpose
+
+</th>
+</tr>
+<tr>
+<td><font size=2><code>void add(Component)
+    <br>
+    void add(Component, int)
+    <br>
+    void add(Component, Object)
+    <br>
+    void add(Component, Object, int)
+    <br>
+    void add(String, Component)</code></font>
+</td>
+<td>Add the specified component to the panel.
+    When present, the <code>int</code>
+    parameter is the index of the component
+    within the container.
+    By default, the first component added is at index 0,
+    the second is at index 1, and so on.
+    The <code>Object</code> parameter 
+    is layout manager dependent and typically provides
+    information to the layout manager regarding positioning
+    and other layout constraints for the added component.
+    The <code>String</code> parameter 
+    is similar to the <code>Object</code> parameter.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>int getComponentCount()</code></font>
+</td>
+<td>Get the number of components in this panel.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>Component getComponent(int)
+    <br>
+    Component getComponentAt(int, int)
+    <br>
+    Component getComponentAt(Point)
+    <br>
+    Component[] getComponents()</code></font>
+</td>
+<td>Get the specified component or components.
+    You can get a component based on its index or x, y position.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void remove(Component)
+    <br>
+    void remove(int)
+    <br>
+    void removeAll()</code></font>
+</td>
+<td>Remove the specified component(s).
+
+</td>
+</tr>
+</table>
+
+<p>
+<table border=1>
+<caption><a name="layout">Setting/Getting the Layout Manager</a></caption>
+<tr>
+<th align=left>Method
+</th>
+<th align=left>Purpose
+
+</th>
+</tr>
+<tr>
+<td><font size=2><code>void setLayout(LayoutManager)
+    <br>
+    LayoutManager getLayout()</code></font>
+</td>
+<td>Set or get the layout manager for this panel.
+    The layout manager is responsible for positioning the
+    panel's components within the panel's bounds according
+    to some philosophy.
+</td>
+</tr>
+</table>
+
+</blockquote>
+
+<h3>
+<a name="eg">Examples that Use Panels</a>
+</h3>
+<blockquote>
+Many examples contained in this lesson use <code>JPanel</code> objects.
+The following table lists a few.
+
+<p>
+
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="../overview/example-swing/index.html#Converter"><code>Converter</code></a>
+     <br>
+     and other files
+</td>
+<td> This section and
+<a target="_top" href="../overview/anatomy.html">The Anatomy of a Swing-Based Program</a><a target="_top" href="../overview/anatomy.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a></td>
+<td> Uses five panels, four of which use <code>BoxLayout</code>
+     and one of which uses <code>GridLayout</code>.
+     The panels use borders and, as necessary,
+     size and alignment hints to affect layout.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#ListDemo"><code>ListDemo</code></a>
+</td>
+<td> <a href="tabbedpane.html">How to Use Lists</a>
+</td>
+<td> Uses a panel, with its default <code>FlowLayout</code>
+     manager, to center three components in a row.
+
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#ToolBarDemo"><code>ToolBarDemo</code></a>
+</td>
+<td> <a href="toolbar.html">How to Use Toolbar</a>
+</td>
+<td> Uses a panel as a content pane.
+     The panel contains three components,
+     laid out by <code>BorderLayout</code>.
+
+</td>
+</tr>
+<tr>
+<td> <a href="../misc/example-swing/index.html#BorderDemo"><code>BorderDemo</code></a>
+</td>
+<td> <a href="../misc/border.html">How to Use Borders</a>
+</td>
+<td> Contains many panels that have
+     various kinds of borders.
+     Several panels use <code>BoxLayout</code>.
+
+</td>
+</tr>
+<tr>
+<td> <a href="../layout/example-swing/index.html#BoxLayoutDemo"><code>BoxLayoutDemo</code></a>
+</td>
+<td> <a href="../layout/box.html">How to Use BoxLayout</a>
+</td>
+<td> Illustrates the use of a panel with
+     Swing's <code>BoxLayout</code> manager.
+
+
+</td>
+</tr>
+</table>
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="intermediate.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="scrollpane.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

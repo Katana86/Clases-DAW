@@ -1,0 +1,634 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>How to Use Labels</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="filechooser.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="list.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Creating a GUI with JFC/Swing
+<br>
+<b>Lesson</b>: Using Swing Components
+</font>
+
+<h2>
+How to Use Labels
+</h2>
+<blockquote>
+With the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JLabel.html"><font color="#8800bb"><code>JLabel</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/JLabel.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a> class,
+you can display unselectable text and images.
+If you need to create a component
+that displays a string or an image (or both),
+optionally reacting to user input,
+you can do so by using or extending <code>JLabel</code>.
+If the interactive component has state,
+then you should probably use a 
+<a href="button.html">button</a>
+instead of a label.
+
+<p>
+
+Here's a picture of an application
+that displays three labels.
+The window is divided into three rows of equal height;
+the label in each row is as wide as possible.
+
+<p><center><IMG SRC="../../figures/uiswing/components/LabelDemo.gif" WIDTH="235" HEIGHT="143" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="A snapshot of LabelDemo, which uses labels with text and icons."></center></p>
+
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> Compile and run the application.
+     The source code is in
+     
+<a target="source" href="example-swing/LabelDemo.java"><font color="#bb000f"><code>LabelDemo.java</code></font></a><a href="example-swing/LabelDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>,
+     and the image is
+     <a href="example-swing/images/middle.gif"><code>middle.gif</code></a>.
+     <br>
+     See <a href="../start/index.html" target="_top">Getting Started with Swing</a> if you need help compiling or running this application.
+
+<li> Resize the window so you can see
+     how the labels' contents are placed 
+     with the labels' drawing area.
+     <br>
+     All the label contents have the default vertical alignment --
+     the label contents are centered vertically
+     in the label's drawing area.
+     The top label,
+     which contains both image and text,
+     is specified to have horizontal center alignment.
+     The second label, which contains just text,
+     has the left alignment
+     that is the default for text-only labels.
+     The third label, which contains just an image,
+     has horizontal center alignment,
+     which is the default for image-only labels.
+
+</ol>
+<hr></blockquote>
+
+<p>
+
+Below is the code from 
+     
+<a target="source" href="example-swing/LabelDemo.java"><font color="#bb000f"><code>LabelDemo.java</code></font></a><a href="example-swing/LabelDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>
+that creates the labels in the previous example.
+
+<blockquote><pre>
+ImageIcon icon = new ImageIcon("images/middle.gif");
+. . .
+label1 = new JLabel("Image and Text",
+		    icon,
+		    JLabel.CENTER);
+//Set the position of the text, relative to the icon:
+label1.setVerticalTextPosition(JLabel.BOTTOM);
+label1.setHorizontalTextPosition(JLabel.CENTER);
+
+label2 = new JLabel("Text-Only Label");
+
+label3 = new JLabel(icon);
+
+//Add labels to the JPanel. 
+add(label1);
+add(label2);
+add(label3);
+</pre></blockquote>
+
+Note that label alignment is different from
+X and Y alignment.
+X and Y alignment are used by layout managers
+and can affect the way any component -- not just a label --
+is sized or positioned.
+Label alignment, on the other hand,
+has no effect on a label's size or position.
+It simply determines where, 
+inside the label's painting area,
+the label's contents are positioned.
+In the usual case,
+the label's painting area is exactly the size needed
+to paint the label,
+and thus label alignment is irrelevant.
+For more information about X and Y alignment, see
+<a target="_top" href="../layout/box.html">How to Use BoxLayout</a><a target="_top" href="../layout/box.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+<p>
+
+Often, a label describes another component.
+When this is true,
+you can improve your program's accessibility
+by using the <code>setLabelFor</code> method
+to identify the component the label describes.
+For example:
+
+<blockquote><pre>
+amountLabel.setLabelFor(amountField);
+</pre></blockquote>
+
+The preceding code,
+taken from the <code>TextFieldDemo</code> example
+discussed in
+<a href="textfield.html">How to Use Text Fields</a>,
+lets assistive technologies know
+that the label (<code>amountLabel</code>)
+provides information about the text field (<code>amountField</code>).
+For more information about assistive technologies, see
+<a target="_top" href="../misc/access.html">How to Support Assistive Technologies</a><a target="_top" href="../misc/access.html"><img src="../../images/tutorialIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the Creating a GUI with JFC/Swing trail)"></a>.
+
+
+</blockquote>
+<h3>
+<a name="html">Using HTML on a Label</a>
+</h3>
+<blockquote>
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+The information in this section documents a feature
+available only in Swing 1.1.1 Beta 1 or compatible releases.
+<hr></blockquote>
+
+Have you ever wanted to put multiple lines on a label?
+Have you ever wanted to make part of a label bold or italic?
+Now you can.
+As of Swing 1.1.1 Beta 1,
+<code>JLabel</code> supports multiple lines, multiple fonts,
+and a whole lot more because
+you can specify a label's text using HTML.
+
+<p>
+Here's an application that dynamically sets
+the text on a label.
+
+<p><center><IMG SRC="../../figures/uiswing/components/HtmlDemo.gif" WIDTH="534" HEIGHT="299" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT="A snapshot of HtmlDemo, which lets you customize a label with HTML."></center></p>
+
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> Compile and run the application.
+     The source code is in
+     
+<a target="source" href="example-swing/HtmlDemo.java"><font color="#bb000f"><code>HtmlDemo.java</code></font></a><a href="example-swing/HtmlDemo.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+     <br>
+     See <a href="../start/index.html" target="_top">Getting Started with Swing</a> if you need help compiling or running this application.
+     Make sure you compile this program and run it using
+     Swing 1.1.1 Beta 1 or a compatible release.
+
+<li> Edit the HTML in the text area at the left and click the
+     <strong>Change the label</strong> button.
+     The label at the right shows the result.
+
+<li> Remove <code>&lt;html&gt;</code> from the text area on the left.
+     The label at the right shows the result.
+
+</ol>
+<hr></blockquote>
+
+The action listener for the button executes this single
+line of code:
+<blockquote><pre>
+theLabel.setText(htmlTextArea.getText());
+</pre></blockquote>
+If the string in the text area on the left begins
+with &lt;html&gt;, then the label parses it as HTML.
+Otherwise, the label assumes it's straight text.
+<p>
+Because this is an early release of this feature,
+there are some gotchas to be aware of:
+<ul>
+<li> Don't use &lt;br&gt; in your HTML.
+     The label's preferred size won't be computed correctly
+     (it will be computed as if the &lt;br&gt; weren't there).
+     Use a regular paragraph tag (&lt;p&gt;) instead .
+<li> If you specify an invalid HTML tag,
+     an exception is thrown deep in the text package.
+     Fix your HTML and try again.
+</ul>
+
+As of Swing 1.1.1 Beta 1,
+you can use HTML to set the text for
+labels and <a href="button.html#html">buttons</a>.
+In the near future, many more Swing components --
+tool tips, tabbed panes, and menu items, for example --
+will support HTML.
+
+
+<blockquote><hr><strong>Warning:</strong>&nbsp;
+There is no programmatic way to test
+whether a component supports HTML text.
+Do not specify HTML text unless you are absolutely sure
+that your program is running in a release
+that supports HTML text in the desired component.
+<hr></blockquote>
+
+</blockquote>
+<h3>
+<a name="api">The Label API</a>
+</h3>
+<blockquote>
+
+
+The following tables list the commonly used
+<code>JLabel</code> constructors and methods.
+Other methods you're likely to call 
+are defined by the
+    <code>Component</code>
+    and
+    <code>JComponent</code> classes.
+They include <code>setFont</code>,
+<code>setForeground</code>,
+<code>setBorder</code>,
+<code>setOpaque</code>, and
+<code>setBackground</code>.
+See <a href="jcomponent.html">The JComponent Class</a>
+for details.
+The API for using labels falls into three categories:
+
+<ul>
+<li><a href="#contentsapi">Setting or Getting the Label's Contents</a>
+<li><a href="#looksapi">Fine Tuning the Label's Appearance</a>
+<li><a href="#accessapi">Supporting Accessibility</a>
+</ul>
+
+<p>
+
+<table border=1>
+<caption><a name="contentsapi">Setting or Getting the Label's Contents</a></caption>
+<tr>
+<th>Method or Constructor
+</th>
+<th>Purpose
+
+</th>
+</tr>
+<tr>
+<td><font size=2><code>JLabel(Icon)
+    <br>
+    JLabel(Icon, int)
+    <br>
+    JLabel(String)
+    <br>
+    JLabel(String, Icon, int)
+    <br>
+    JLabel(String, int)
+    <br>
+    JLabel()</code>
+
+</td>
+<td>Create a <code>JLabel</code> instance,
+    initializing it to have the specified text/image/alignment.
+    The <code>int</code> argument 
+    specifies the horizontal alignment 
+    of the label's contents within its drawing area.
+    The horizontal alignment must be one of the following constants
+    defined in the 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/SwingConstants.html"><font color="#8800bb"><code>SwingConstants</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/SwingConstants.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>    interface (which <code>JLabel</code> implements):
+    <code>LEFT</code>, <code>CENTER</code>, <code>RIGHT</code>,
+    <code>LEADING</code>, or <code>TRAILING</code>.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setText(String)
+    <br>
+    String getText()</code></font>
+</td>
+<td>Set or get the text displayed by the label.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setIcon(Icon)
+    <br>
+    Icon getIcon()</code></font>
+</td>
+<td>Set or get the image displayed by the label.
+
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setDisplayedMnemonic(char)
+    <br>
+    char getDisplayedMnemonic()</code></font>
+</td>
+<td>Set or get the letter
+    that should look like a keyboard alternative.
+    This is handy when a label describes a
+    component (such as a text field)
+    that has a keyboard alternative
+    but can't display it.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setDisabledIcon(Icon)
+    <br>
+    Icon getDisabledIcon()</code></font>
+</td>
+<td>Set or get the image displayed by the label
+    when it's disabled.
+    If you don't specify a disabled image,
+    then the look-and-feel creates one
+    by manipulating the default image.
+</td>
+</tr>
+</table>
+
+<p>
+
+<table border=1>
+<caption><a name="looksapi">Fine Tuning the Label's Appearance</a></caption>
+<tr>
+<th>Method
+</th>
+<th>Purpose
+
+</th>
+</tr>
+<tr>
+<td><font size=2><code>void setHorizontalAlignment(int)
+    <br>
+    void setVerticalAlignment(int)
+    <br>
+    int getHorizontalAlignment()
+    <br>
+    int getVerticalAlignment()</code></font>
+</td>
+<td>Set or get where in the label its contents should be placed.
+    The 
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/SwingConstants.html"><font color="#8800bb"><code>SwingConstants</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/SwingConstants.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>    interface defines five possible values for horizontal alignment:
+    <code>LEFT</code> (the default for text-only labels),
+    <code>CENTER</code> (the default for image-only labels),
+    <code>RIGHT</code>,
+    <code>LEADING</code>, and
+    <code>TRAILING</code>.
+    For vertical alignment:
+    <code>TOP</code>, 
+    <code>CENTER</code> (the default), and
+    <code>BOTTOM</code>.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setHorizontalTextPosition(int)
+    <br>
+    void setVerticalTextPosition(int)
+    <br>
+    int getHorizontalTextPosition()
+    <br>
+    int getVerticalTextPosition()
+    </code></font>
+</td>
+<td>Set or get where the button's text should be placed,
+    relative to the button's image.
+    The
+<a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/SwingConstants.html"><font color="#8800bb"><code>SwingConstants</code></font></a><a target="apidoc" href="http://java.sun.com/products/j2se/1.3/docs/api/javax/swing/SwingConstants.html"><img src="../../images/apiIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in the API reference documentation)"></a>    interface defines three possible values
+    for horizontal position:
+    <code>LEFT</code>, 
+    <code>CENTER</code>, and
+    <code>RIGHT</code> (the default).
+    For vertical position:
+    <code>TOP</code>, 
+    <code>CENTER</code> (the default), and
+    <code>BOTTOM</code>.
+
+</td>
+</tr>
+<tr>
+<td><font size=2><code>void setIconTextGap(int)
+    <br>
+    int getIconTextGap()</code></font>
+</td>
+<td>Set or get the number of pixels
+    between the label's text and its image.
+
+</td>
+</tr>
+</table>
+<p>
+
+<table border=1>
+<caption><a name="accessapi">Supporting Accessibility</a></caption>
+<tr>
+<th>Method
+</th>
+<th>Purpose
+
+</th>
+</tr>
+<tr>
+<td><font size=2><code>void setLabelFor(component)
+    <br>
+    Component getLabelFor()</code></font>
+</td>
+<td>Set or get which component the label describes.
+
+</td>
+</tr>
+</table>
+
+</blockquote>
+<h3>
+<a name="eg">Examples that Use Labels</a>
+</h3>
+<blockquote>
+
+The following table lists some of the many
+examples that use labels.
+
+<p>
+
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#LabelDemo"><code>LabelDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> Shows how to specify horizontal and vertical alignment,
+     as well as aligning a label's text and image.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#HtmlDemo"><code>HtmlDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> Lets you experiment with specifying HTML text 
+     for a label.
+
+</td>
+</tr>
+<tr>
+<td> <a href="../layout/example-swing/index.html#AlignmentDemo"><code>AlignmentDemo</code></a>
+</td>
+<td> <a href="../layout/box.html#alignment">Fixing Alignment Problems</a>
+</td>
+<td> Demonstrates a possible alignment problem
+     when using a label in a vertical box layout.
+     Shows how to solve the problem.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#DialogDemo"><code>DialogDemo</code></a>
+</td>
+<td> <a href="dialog.html">How to Use Dialogs</a>
+</td>
+<td> Uses a changeable label to display instructions
+     and provide feedback.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#SplitPaneDemo"><code>SplitPaneDemo</code></a>
+</td>
+<td> <a href="splitpane.html">How to Use Split Panes</a> and
+     <a href="list.html">How to Use Lists</a>.
+</td>
+<td> Displays an image using a label inside of a scroll pane.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#SliderDemo2"><code>SliderDemo2</code></a>
+</td>
+<td> <a href="slider.html">How to Use Sliders</a>
+</td>
+<td> Uses <code>JLabel</code> to provide labels for a slider.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#TableDialogEditDemo"><code>TableDialogEditDemo</code></a>
+</td>
+<td> <a href="table.html">How to Use Tables</a>
+</td>
+<td> Implements a label subclass, 
+     <code>ColorRenderer</code>,
+     to display colors in table cells.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#TextFieldDemo"><code>TextFieldDemo</code></a>
+</td>
+<td> <a href="textfield.html">How to Use Text Fields</a>
+</td>
+<td> Has four rows, 
+     each containing a label and the text field it describes.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#TextComponentDemo"><code>TextComponentDemo</code></a>
+</td>
+<td> <a href="generaltext.html">General Rules for Using Text Components</a>
+</td>
+<td> Has an inner class 
+     (<code>CaretListenerLabel</code>) 
+     that extends <code>JLabel</code>
+     to provide a label that listens for events,
+     updating itself based on the events.
+     To run the example, you also need
+     
+<a target="source" href="example-swing/LimitedStyledDocument.java"><font color="#bb000f"><code>LimitedStyledDocument.java</code></font></a><a href="example-swing/LimitedStyledDocument.java"><img src="../../images/sourceIcon.gif" width=11 height=11 border=0 align="ABSMIDDLE" alt="(in a .java source file)"></a>.
+
+</td>
+</tr>
+<tr>
+<td> <a href="example-swing/index.html#ColorChooserDemo"><code>ColorChooserDemo</code></a>
+</td>
+<td> <a href="colorchooser.html">How to Use Color Choosers</a>
+</td>
+<td> Uses an opaque label to display the currently chosen color
+     against a fixed-color background.
+
+</td>
+</tr>
+</table>
+
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="filechooser.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#components" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="list.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
