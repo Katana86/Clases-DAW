@@ -1,0 +1,56 @@
+// Decompiled by DJ v2.0.0.35 Copyright 2000 Atanas Neshkov  Date: 15/11/00 10:36:25 p.m.
+// Home Page : http//members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   LamePrintThread.java
+
+import java.applet.Applet;
+import java.awt.*;
+import java.io.PrintStream;
+
+public class LamePrintThread extends Applet
+{
+
+    public void init()
+    {
+        display = new TextArea(1, 80);
+        display.setEditable(false);
+        setLayout(new GridLayout(1, 0));
+        add(display);
+        validate();
+        addItem("init: " + threadInfo(Thread.currentThread()));
+    }
+
+    public void start()
+    {
+        addItem("start: " + threadInfo(Thread.currentThread()));
+    }
+
+    public void stop()
+    {
+        addItem("stop: " + threadInfo(Thread.currentThread()));
+    }
+
+    public void destroy()
+    {
+        addItem("destroy: " + threadInfo(Thread.currentThread()));
+    }
+
+    String threadInfo(Thread thread)
+    {
+        return "thread=" + thread.getName() + ", " + "thread group=" + thread.getThreadGroup().getName();
+    }
+
+    void addItem(String s)
+    {
+        System.out.println(s);
+        display.appendText(s + "\n");
+        display.repaint();
+    }
+
+    public LamePrintThread()
+    {
+        display = new TextArea(1, 80);
+    }
+
+    TextArea display;
+}
