@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Overview of Servlets</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="../index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#overview" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="architecture.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+
+<br>
+<font size="-1">
+<b>Trail</b>: Servlets
+</font>
+
+<h2>
+Lesson: Overview of Servlets
+</h2>
+<blockquote>
+<p>Servlets are modules that extend request/response-oriented servers, such as
+Java-enabled web servers.  For example, a servlet might be responsible for
+taking data in an HTML order-entry form and applying the business logic used
+to update a company's order database.
+
+<p><center><IMG SRC="../../figures/servlets/overview.gif" WIDTH="414" HEIGHT="145" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT=""></center></p>
+
+<p>Servlets are to servers what applets are to browsers.  Unlike applets,
+however, servlets have no graphical user interface.
+
+<p>Servlets can be embedded in many different servers because the servlet
+API, which you use to write servlets, assumes nothing about the server's
+environment or protocol.  Servlets have become most widely used within HTTP
+servers; many <a href=
+"http://java.sun.com/products/servlet/industry.html"
+>web servers support the Servlet API</a>.
+
+<p>&nbsp;
+<h2>Use Servlets instead of CGI Scripts!</h2>
+
+<p>Servlets are an effective replacement for CGI scripts.  They provide a
+way to generate dynamic documents that is both easier to write and faster
+to run.  Servlets also address the problem of doing server-side programming
+with platform-specific APIs: they are developed with the Java Servlet API,
+a standard Java extension.
+
+<p>So use servlets to handle HTTP client requests.  For example, have
+servlets process data POSTed over HTTPS using an HTML form, including
+purchase order or credit card data.  A servlet like this could be part of
+an order-entry and processing system, working with product and inventory
+databases, and perhaps an on-line payment system.
+
+<p>&nbsp;
+<h2><a name="uses">Other Uses for Servlets</a></h2>
+
+<p>Here are a few more of the many applications for servlets: <p>
+
+<ul>
+<li>Allowing collaboration between people.  A servlet can handle multiple
+requests concurrently, and can synchronize requests.  This allows servlets to
+support systems such as on-line conferencing. <br>&nbsp;
+
+<li>Forwarding requests.  Servlets can forward requests to other servers
+and servlets.  Thus servlets can be used to balance load among several
+servers that mirror the same content, and to partition a single logical
+service over several servers, according to task type or organizational
+boundaries. <br>&nbsp;
+
+</ul>
+
+<p>&nbsp;
+<h2>Get Ready to Write</h2>
+
+<p>To prepare you to write servlets, this lesson discusses: <p>
+
+</blockquote>
+<h3><a href="architecture.html">Architecture of the Servlet Package</a></h3>
+
+<blockquote>
+Discusses the purposes of the
+main interfaces and objects in the Servlet package.
+</blockquote>
+
+<h3><a href="simple.html">A Simple Servlet</a></h3>
+
+<blockquote>
+Shows you what the code for a very
+simple servlet looks like.
+</blockquote>
+
+<h3><a href="example.html">The Trail's Servlets</a></h3>
+
+<blockquote>
+Tells you about the example used in the rest of this trail.
+</blockquote>
+
+</ul>
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="../index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#overview" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="architecture.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Servlet Properties</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#servletrunner" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="server-start.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Servlets
+<br>
+<b>Lesson</b>: The servletrunner Utility
+</font>
+
+<h2>
+Servlet Properties
+</h2>
+<blockquote>
+<p>Properties are key-value pairs used for the configuration, creation and
+initialization of a servlet.  For example, in JSDK2.0
+<code>servlet.catalog.code=CatalogServlet</code> is a property whose key is
+<code>servlet.catalog.code</code> and whose value is
+<code>CatalogServlet</code>.  In JSDK2.1 that same property would be named
+<code>catalog.code=CatalogServlet</code> is a property whose key is
+<code>catalog.code</code> and whose value is <code>CatalogServlet</code>.
+
+<p>Using properties requires you to name your servlet.  (The string
+<code>catalog</code> in the property names above is the catalog servlet's
+name.)  The servlet name enables the servlet-running utilities to associate
+properties with the correct servlets.  It is also the name that clients
+will use when they <a href="../call-servlets/index.html" >access
+your servlet</a>.
+
+<p>The JSDK servlet running utilities have two properties for servlets.
+They associate the name that you choose for your servlet with: <br>
+
+<ul>
+<li>The class name of the servlet
+<li>Any initialization parameters that the servlet requires
+</ul>
+
+<br> &nbsp;
+<h2><a name="servlet-name">The Servlet Class</a></h2>
+
+<p>This section uses the shorter JSDK2.1 property names.  If you are using
+JSDK2.0, add &quot;<code>servlet.</code>&quot; to the beginning of the
+property name.
+
+<p>The property that associates the name that you choose for your servlet
+with the servlet class is <code><i>name</i>.code</code>.  The value of the
+property is the servlet's full class name, including its package.  For
+example if the duke's bookstore classes were in an
+<code>examples.bookstore</code> package, the catalog servlet would have
+this property: <br>
+
+<pre>
+    catalog.code=examples.bookstore.CatalogServlet
+</pre>
+
+<p>The <code><i>name</i>.code</code> property names your servlet by
+associating a <i>name</i> (in the example, <code>catalog</code>) with a
+class (in the example, <code>examples.bookstore.CatalogServlet</code>).
+
+<br> &nbsp;
+<h2>Initialization Parameters</h2>
+
+<p>The value of the <code><i>name</i>.initParams</code> property holds a
+JSDK2.1 servlet's initialization parameters.  For JSDK2.0 servlets, the
+property name is<code>servlet.<i>name</i>.initArgs</code>.  (This section
+uses the JSDK2.1 property names.)
+
+<p>The syntax of a single initialization parameter is
+<code><i>parameterName</i>=<i>parameterValue</i></code>.  The entire
+property (the entire key-value pair) must be a single logical line.  For
+readability, you can use the backquote syntax to allow the property to span
+multiple lines in the file.  For example, if the bookstore servlet took the
+name of the initial HTML file as a parameter, the servlet's initial
+argument might look like this: <br>
+
+<pre>
+    servlet.bookdb.initArgs=\
+        mainFile=examples/bookstore/Bookstore.html
+</pre>
+
+<p>Multiple initialization parameters are specified as a comma-separated
+list.  For example, if the book detail servlet got its book information by
+connecting to a real database, its initial arguments might look like this:
+<br>
+
+<pre>
+    bookdetails.initParams=\
+	user=duke,\
+	password=dukes_password,\
+	url=fill_in_the_database_url
+</pre>
+
+<br>&nbsp;
+<h2>The Property File</h2>
+
+<p>Properties are stored in a text file with a default name of
+<code>servlets.properties</code> in JSDK2.1 and
+<code>servlet.properties</code> in JSDK2.0.  The file holds the properties
+for all the servlets that the servlet-running utility will run.  Here is the
+servlet.properties file for the Duke's Bookstore example: <br>
+
+<pre>
+    # This file contains the properties for the Duke's Bookstore servlets.
+
+    # Duke's Book Store -- main page
+    bookstore.code=BookStoreServlet
+    
+    # View all the books in the bookstore
+    catalog.code=CatalogServlet
+    
+    # Show information about a specific book
+    bookdetails.code=BookDetailServlet
+    
+    # See the books that you've chosen to buy
+    showcart.code=ShowCartServlet
+    
+    # Collects information for buying the chosen books
+    cashier.code=CashierServlet
+    
+    # Provide a receipt to the user who's bought books
+    receipt.code=ReceiptServlet
+    
+</pre>
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#servletrunner" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="server-start.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>The Servlet Life Cycle</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="../client-interaction/index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#lifecycle" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="init.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+
+<br>
+<font size="-1">
+<b>Trail</b>: Servlets
+</font>
+
+<h2>
+Lesson: The Servlet Life Cycle
+</h2>
+<blockquote>
+<p>Each servlet has the same life cycle: <br>
+
+<ul>
+
+<li>A server loads and initializes the servlet <br>&nbsp;
+
+<li>The servlet handles zero or more client requests <br>&nbsp;
+
+<li>The server removes the servlet <br> (some servers do this step only when
+they shut down)
+
+</ul>
+
+<center>
+
+<p><center><IMG SRC="../../figures/servlets/lifecycle.gif" WIDTH="320" HEIGHT="233" ALIGN="BOTTOM" NATURALSIZEFLAG="3" ALT=""></center></p></center>
+
+
+<p>
+</blockquote>
+<h3><a href="init.html">Initializing a Servlet</a></h3>
+
+<blockquote>
+<p>When a server loads a servlet, the server runs the servlet's
+<code>init</code> method.  Initialization completes before client requests
+are handled and before the servlet is destroyed.
+
+<p>Even though most servlets are run in multi-threaded servers, servlets
+have no concurrency issues during servlet initialization.  The server calls
+the <code>init</code> method once, when the server loads the servlet, and
+will not call the init method again unless the server is reloading the
+servlet.  The server can not reload a servlet until after the server has
+destroyed the servlet by running the <code>destroy</code> method.
+</blockquote>
+
+<br>&nbsp;
+<h3>Interacting with Clients</h3>
+
+<blockquote>
+<p>After initialization, the servlet is able to handle client requests.  This
+part of the servlet life cycle was handled in the <a
+href="../client-interaction/index.html">previous lesson</a>.
+</blockquote>
+
+<br>&nbsp;
+<h3><a href="destroy.html">Destroying a Servlet</a></h3>
+
+<blockquote> <p>Servlets run until the server destroys them, for example,
+at the request of a system administrator.  When a server destroys a
+servlet, the server runs the servlet's <code>destroy</code> method.  The
+method is run once; the server will not run the <code>destroy</code> method
+again until after the server reloads and reinitializes the servlet.
+
+<p>When the server calls the <code>destroy</code> method, another thread
+might be running a service request.  The <a
+href="service-threads.html">Handling Service Threads at Servlet
+Termination</a> lesson shows you how to provide a clean shutdown when there
+could be long-running threads still running service requests.
+
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="../client-interaction/index.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#lifecycle" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="init.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>

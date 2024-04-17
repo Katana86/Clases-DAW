@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>A Simple Servlet</title>
+<script language="JavaScript">
+<!-- hide
+function openWin(term) {
+  url="../../information/glossary.html#" + term;
+  myWin= window.open(url, "Glossary",
+              "width=400,height=150,scrollbars=yes,status=no,toolbar=no,menubar=no");
+  myWin.focus();
+}
+//-->
+</script>
+</head>
+<body BGCOLOR="#ffffff" LINK="#000099">
+<B><FONT SIZE="-1">The Java</font><sup><font size="-2">TM</font></sup> <font size="-1">Tutorial</FONT></B>
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="architecture.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#overview" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="example.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+
+<font size="-1">
+<b>Trail</b>: Servlets
+<br>
+<b>Lesson</b>: Overview of Servlets
+</font>
+
+<h2>
+A Simple Servlet
+</h2>
+<blockquote>
+<p>The following class completely defines servlet: <br>&nbsp;
+
+<pre>
+    <b>public class SimpleServlet extends HttpServlet</b>
+    { 
+        /**
+         * Handle the HTTP GET method by building a simple web page.
+         */
+        public void doGet <b>(HttpServletRequest request,
+                	   HttpServletResponse response)
+</b>        throws ServletException, IOException
+        {
+	    PrintWriter		out;
+	    String		title = "Simple Servlet Output";
+
+	    // set content type and other response header fields first
+<b>            response.setContentType("text/html");
+</b>
+	    // then write the data of the response
+<b>	    out = response.getWriter();
+</b>
+            out.println("&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;");
+	    out.println(title);
+	    out.println("&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;");
+	    out.println("&lt;H1&gt;" + title + "&lt;/H1&gt;");
+	    out.println("&lt;P&gt;This is output from SimpleServlet.");
+	    out.println("&lt;/BODY&gt;&lt;/HTML&gt;");
+	    out.close();
+        }
+    }
+
+</pre>
+
+<p><b>That's it!</b>
+
+<p>The classes mentioned in the <a href=architecture.html>Architecture of the
+Servlet Package</a> section are shown in the example in bold: <p>
+
+<ul>
+<li><code>SimpleServlet</code> extends the <code>HttpServlet</code> class,
+which implements the <code>Servlet</code> interface. <br>&nbsp;
+
+<li><code>SimpleServlet</code> overrides the <code>doGet</code> method in
+the <code>HttpServlet</code> class.  The <code>doGet</code> method is
+called when a client makes a GET request (the default HTTP request method),
+and results in the simple HTML page being returned to the
+client. <br>&nbsp;
+
+<li>Within the <code>doGet</code> method, <br>&nbsp;
+
+<ul>
+<li>The user's request is represented by an <code>HttpServletRequest</code>
+object. <br>&nbsp;
+
+<li>The response to the user is represented by an
+<code>HttpServletResponse</code> object. <br>&nbsp;
+
+<li>Because text data is returned to the client, the reply is sent using the
+<code>Writer</code> object obtained from the <code>HttpServletResponse</code>
+object. <br>&nbsp;
+</ul>
+
+</ul>
+
+</blockquote>
+
+<img src="../../images/blueline.gif" width="550" height="8" ALIGN="BOTTOM" NATURALSIZEFLAG="3">
+<br>
+<table width="550">
+<tr>
+<td align="left" valign="center">
+<a href="architecture.html" target="_top"><img src="../../images/PreviousArrow.gif" width="26" height="26" align="center" border="0" alt="Previous Page"></a>
+<a href="../TOC.html#overview" target="_top"><img src="../../images/TOCIcon.gif" width="26" height="26" align="center" border="0" alt="Lesson Contents"></a>
+<a href="example.html" target="_top"><img src="../../images/NextArrow.gif" width="26" height="26" align="center" border="0" alt="Next Page"></a></td>
+
+<td align="center" valign="center">
+<font size="-1">
+<a href="../../index.html" target="_top">Start of Tutorial</a>
+&gt;
+<a href="../index.html" target="_top">Start of Trail</a>
+&gt;
+<a href="index.html" target="_top">Start of Lesson</a>
+</font>
+</td>
+
+<td align="right" valign="center">
+<font size="-1">
+<a href="../../search.html" target="_top">Search</a>
+<br><a href="../../forms/sendusmail.html">Feedback Form</a>
+</font>
+</td>
+
+</tr>
+</table>
+</body>
+</html>
