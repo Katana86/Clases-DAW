@@ -12,6 +12,7 @@ MCLIBRE:
 https://www.mclibre.org/consultar/xml/lecciones/xml-xslt.html
 
 HTML OPERADORES:
+[XSL:IF y XSL:WHEN]
 < = &lt;
 > = &gt;
 <= = &le;
