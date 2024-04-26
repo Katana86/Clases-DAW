@@ -17,3 +17,11 @@ HTML OPERADORES:
 > = &gt;
 <= = &le;
 >= = &ge;
+
+[HERRAMIENTAS PARA XSLT]
+
+W3SCHOOL TRY XSLT:
+https://www.w3schools.com/XML/tryxslt.asp?xmlfile=cdcatalog&xsltfile=cdcatalog
+
+XSLT VALIDATOR:
+https://freeformatter.com/xsl-transformer.html
