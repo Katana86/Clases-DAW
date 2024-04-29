@@ -7,6 +7,7 @@
         <category>Clothing</category>
         <price>29.99</price>
         <available>true</available>
+        <imagen>imagenes/1.png</imagen>
     </item>
     <item id="2">
         <name>Sneakers</name>
@@ -14,6 +15,7 @@
         <category>Footwear</category>
         <price>89.99</price>
         <available>true</available>
+        <imagen>imagenes/2.png</imagen>
     </item>
     <item id="3">
         <name>Backpack</name>
@@ -21,6 +23,7 @@
         <category>Accessories</category>
         <price>49.99</price>
         <available>false</available>
+        <imagen>imagenes/3.png</imagen>
     </item>
     <item id="4">
         <name>Jeans</name>
@@ -28,6 +31,7 @@
         <category>Clothing</category>
         <price>59.99</price>
         <available>false</available>
+        <imagen>imagenes/4.png</imagen>
     </item>
     <item id="5">
         <name>Hoodie</name>
@@ -35,6 +39,7 @@
         <category>Clothing</category>
         <price>39.99</price>
         <available>true</available>
+        <imagen>imagenes/5.png</imagen>
     </item>
     <item id="6">
         <name>Running Shoes</name>
@@ -42,5 +47,6 @@
         <category>Footwear</category>
         <price>79.99</price>
         <available>false</available>
+        <imagen>imagenes/5.png</imagen>
     </item>
 </inventario>
