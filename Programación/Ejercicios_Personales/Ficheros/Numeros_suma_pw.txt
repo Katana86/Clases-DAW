@@ -1,0 +1,5 @@
+Suma: -419
+Media: 2
+Numeros Totales: 15
+Numeros Positivos: 4
+Numeros Negativos: 11
