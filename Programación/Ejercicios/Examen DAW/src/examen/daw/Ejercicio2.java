@@ -45,6 +45,7 @@ static String linea;
                 }
                 linea = br.readLine();
             }
+            System.out.println("La palabra aparece: "+contador);
         }catch (FileNotFoundException ex){
             ex.printStackTrace();
         }catch (IOException ex){
