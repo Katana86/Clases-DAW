@@ -7,7 +7,9 @@ package Ejercicio_Aeropuerto;
 import examen240314.Datos;
 import examen240314.Usuarios;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Iterator;
@@ -22,23 +24,27 @@ public class main {
     static Scanner sc = new Scanner(System.in);
     private static int opcion = 0;
     private static ArrayList<vuelo> Vuelos = new ArrayList();
+
     public static void main(String[] args) {
         cargarDatos();
         if (loguear()) {
-            do{
-            opcion = menu();
-            switch (opcion){
-                case 1:
-                    mostrarLista();
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
+            do {
+                opcion = menu();
+                switch (opcion) {
+                    case 1:
+                        mostrarLista();
+                        break;
+                    case 2:
+                        darSalida();
+                        break;
+                    case 3:
+                        actualizarLista();
+                        break;
+                    case 4:
+                        modificarVuelo();
+                        break;
                 }
-            }while(opcion != 5);
+            } while (opcion != 5);
         }
 
     }
@@ -79,9 +85,9 @@ public class main {
         System.out.println("(5) Salir.");
         System.out.println("");
         System.out.print("Escoge una opcion ");
-        try{
+        try {
             op = sc.nextInt();
-        }catch(InputMismatchException ex){
+        } catch (InputMismatchException ex) {
             System.out.println("Valor no valido. Repita la eleccion.");
         }
         return op;
@@ -89,20 +95,69 @@ public class main {
 
     private static void cargarDatos() {
         String[][] datos = Datos.getVuelos();
-        
-        for (String[] datosVuelo:datos) {
-            Vuelos.add(new vuelo(datosVuelo[0],datosVuelo[1],datosVuelo[2],
+
+        for (String[] datosVuelo : datos) {
+            Vuelos.add(new vuelo(datosVuelo[0], datosVuelo[1], datosVuelo[2],
                     LocalDateTime.parse(datosVuelo[3]),
                     LocalDateTime.parse(datosVuelo[4])));
         }
     }
 
     private static void mostrarLista() {
-        
+
+        Collections.sort(Vuelos);
         Iterator it = Vuelos.iterator();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             System.out.println(it.next());
         }
-        
+
+    }
+
+    private static void darSalida() {
+        //Lo contrario de estar vacio
+        if (!Vuelos.isEmpty()) {
+            Vuelos.remove(0);
+        }
+    }
+
+    private static void actualizarLista() {
+        //vuelo vue;
+        Iterator it = Vuelos.iterator();
+
+        while (it.hasNext()) {
+            //vue = (vuelo)it.next();
+            if (((vuelo) it.next()).getSalida().isBefore(LocalDateTime.now())) {
+                {
+                    //if (vue.getSalida().isBefore(LocalDateTime.now())) {
+                    //Vuelos.remove(vue);
+                    it.remove();
+                }
+            }
+        }
+    }
+
+    private static void modificarVuelo() {
+        long minutos = 0;
+        String code = "";
+        Iterator it;
+        vuelo vue;
+        try {
+            System.out.println("Introduce el codigo del vuelo");
+            code = sc.next();
+            it = Vuelos.iterator();
+            while (it.hasNext()) {
+                vue = (vuelo) it.next();
+                if (vue.getCodigo().equals(code)) {
+                    System.out.println("Valores negativos retrasan el vuelo.");
+                    System.out.println("introduce los minutos a retrasar a modificar la salida del vuelo:");
+                    minutos = sc.nextLong();
+                    vue.setSalida(vue.getSalida().plusMinutes(minutos));
+                    break;
+                }
+            }
+
+        } catch (InputMismatchException ex) {
+            System.out.println("Valor no valido: Repita la eleccion.user");
+        }
     }
 }
