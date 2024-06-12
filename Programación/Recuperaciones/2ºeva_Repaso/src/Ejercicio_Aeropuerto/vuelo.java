@@ -30,11 +30,11 @@ public class vuelo extends VueloAbstract implements Comparable {
     // COMPARAMOS POR FECHAS CON UN ISBEFORE/ISAFTER y devolvemos 
     public int compareTo(Object o) {
         if (this.getSalida().isBefore(((vuelo) o).getSalida())) {
-            return -1;
+            return -1; // v1 < v2
         } else if (this.getSalida().isAfter(((vuelo) o).getSalida())) {
-            return 1;
+            return 1; // v1 > v2
         } else {
-            return 0;
+            return 0; // v1 == v2
         }
     }
 

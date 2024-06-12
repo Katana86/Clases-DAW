@@ -148,7 +148,7 @@ public class main {
             while (it.hasNext()) {
                 vue = (vuelo) it.next();
                 if (vue.getCodigo().equals(code)) {
-                    System.out.println("Valores negativos retrasan el vuelo.");
+                    System.out.println("Valores negativos adelantan el vuelo.");
                     System.out.println("introduce los minutos a retrasar a modificar la salida del vuelo:");
                     minutos = sc.nextLong();
                     vue.setSalida(vue.getSalida().plusMinutes(minutos));
