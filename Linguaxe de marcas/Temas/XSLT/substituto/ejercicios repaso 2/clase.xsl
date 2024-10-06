@@ -7,11 +7,11 @@
        <xsl:for-each select="inventario/item">
         <xsl:sort select="name" order="ascending"/>
         <h1><xsl:value-of select="name"/></h1>
-          <img>
+        <img src="imagenes/[1.png-6.png]">
             <xsl:attribute name="src">
-              <xsl:value-of select="imagen"/>
+              <xsl:value-of select="@id"/><xsl:text>.png</xsl:text>
             </xsl:attribute>
-          </img>
+        </img>
         <p><xsl:value-of select="brand"/><xsl:text> - </xsl:text><xsl:value-of select="category"/></p>
         <p>Precio: $<xsl:value-of select="price"/></p>
         <xsl:if test="available = 'true'">
