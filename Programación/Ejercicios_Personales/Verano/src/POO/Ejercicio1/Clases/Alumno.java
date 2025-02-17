@@ -13,7 +13,7 @@ public class Alumno {
     private String nombre;
     private float[] notas = new float[3];
 
-    public Alumno(String n,float[] nt) {
+    public Alumno(String n, float[] nt) {
         this.nombre = n;
         this.notas = nt;
     }
@@ -29,9 +29,26 @@ public class Alumno {
     public float calcularMedia() {
         float suma = 0, media;
         for (int i = 0; i < notas.length; i++) {
-            suma = suma+notas[i];
+            suma = suma + notas[i];
         }
-         media=suma/ notas.length;
+        media = suma / notas.length;
         return media;
     }
+
+    public String notasToString() {
+        String s = "";
+        for (int i = 0; i < notas.length; i++) {
+            s = s + notas[i] + " ";
+        }
+        return s;
+    }
+
+    public float[] getNotas() {
+        return notas;
+    }
+
+    public String toString() {
+        return "Alumno{" + "nombre= " + nombre + ", notas= " + notasToString() + "Medias= " + calcularMedia()+"}";
+    }
+
 }
